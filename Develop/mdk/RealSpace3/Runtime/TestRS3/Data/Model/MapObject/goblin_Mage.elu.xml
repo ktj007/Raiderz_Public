@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="at_goblin_Mage">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>goblin_Mage_pc.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>goblin_Mage_sp.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <OPACITYMAP>goblin_Mage_sp.tga.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+            <USEPARTSCOLOR />
+        </MATERIAL>
+        <MATERIAL name="goblin_Mage_w">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>goblin_Mage_pc.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>goblin_Mage_sp.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <OPACITYMAP>goblin_Mage_sp.tga.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEOPACITY />
+            <USEPARTSCOLOR />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST />
+    <SCENE />
+    <COLLISION />
+	<AUTOANIMATION />
+</XML>

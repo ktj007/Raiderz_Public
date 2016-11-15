@@ -1,0 +1,4122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="game">
+      <UniqueIdentifier>{2287ecad-85a5-4a6e-b885-2fed2ef3065a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\base">
+      <UniqueIdentifier>{9ad854bc-2da0-4072-9a13-6985b86ba524}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\base\global">
+      <UniqueIdentifier>{70d80bac-9d21-4dbb-973d-40c171c28e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\base\Interface">
+      <UniqueIdentifier>{6a027dae-3d08-4de7-990e-f65725527a43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\base\XGame">
+      <UniqueIdentifier>{6eae6a64-a660-4a50-a15e-6d7fd97844c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\base\Resource">
+      <UniqueIdentifier>{aac74dc5-4093-41ac-b881-73dd2e0e1764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\gameframe">
+      <UniqueIdentifier>{90acba60-ebac-4c8a-8be2-edb776cf99c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\gameframe\Loading">
+      <UniqueIdentifier>{b473700a-106a-42f4-8407-ca57b2f86c0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\gameframe\Replay">
+      <UniqueIdentifier>{fdfd5f2a-e891-44a7-b806-1ad8200630c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\gameframe\Base">
+      <UniqueIdentifier>{a3c59a1d-5099-4d9c-b616-9a8cae392971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\gameframe\PlayFrame">
+      <UniqueIdentifier>{c1fea921-dc41-48d1-9baf-45ba83700216}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\gameframe\EngineDebug">
+      <UniqueIdentifier>{5c667f53-4211-4309-84c5-62580f71a92d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\gameframe\EngineDebug\DebugContext">
+      <UniqueIdentifier>{757c28e9-fd69-4794-8155-47539323ce85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\lua">
+      <UniqueIdentifier>{9c726619-1dff-42d2-aeec-9a9c9f1a86ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\lua\event">
+      <UniqueIdentifier>{78072ad5-e260-4b92-a84f-e95d274c93a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\lua\function">
+      <UniqueIdentifier>{29561cfa-c45a-4495-a90b-7eca9cc25f1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\lua\gamefunction">
+      <UniqueIdentifier>{286ce7e2-24c1-403c-9fea-6ca60323b3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\lua\NewUI">
+      <UniqueIdentifier>{1509c8a6-717b-43fc-9f2e-52c5696f6c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui">
+      <UniqueIdentifier>{b15f870c-4bdf-4044-b2c6-6a77ad4ca670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\mint">
+      <UniqueIdentifier>{760cc316-385d-4a88-bbb0-0a48bd25417f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\chat">
+      <UniqueIdentifier>{ead4e3ce-01c6-4257-aa49-511430c5d56c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\console">
+      <UniqueIdentifier>{ca43ce5b-12ed-4a5d-98e5-610646b80ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\game">
+      <UniqueIdentifier>{5918a8bf-de4e-40cc-aa0c-52b59323b1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\game\Caption">
+      <UniqueIdentifier>{c7c474f3-37a3-4fef-a272-a303320e77e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\debug">
+      <UniqueIdentifier>{9781f8d3-8b52-4ba2-853f-e9e1d197018e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\cursor">
+      <UniqueIdentifier>{d765f662-2ece-4891-a49d-6609e528cf8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\net">
+      <UniqueIdentifier>{b538429a-9818-4aef-90fb-4890206caeba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\net\post">
+      <UniqueIdentifier>{6e8b676a-3292-4723-ba67-8df99bb0c873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\net\cmdHandler">
+      <UniqueIdentifier>{b12c683e-78eb-42b3-81dd-350ffe12c087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\net\Client">
+      <UniqueIdentifier>{670c849b-0edb-4a33-8838-320d7a3f119f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\input">
+      <UniqueIdentifier>{f9869fac-1320-4a4c-a4cb-d930b5124728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\sound">
+      <UniqueIdentifier>{fe8b73f2-6a26-46f9-8c4f-bf10ef0b085b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\world">
+      <UniqueIdentifier>{34bf8276-4382-4ec4-a93e-b251bf04b61f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity">
+      <UniqueIdentifier>{922408da-7e93-4444-9fa1-6d07a7335932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module">
+      <UniqueIdentifier>{37cca3ee-904a-4cef-a8b3-c174a46735aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Action">
+      <UniqueIdentifier>{226cdf58-70fe-4835-aa4b-88dd76ae1696}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Entity">
+      <UniqueIdentifier>{e3325603-45c1-4195-ad5c-60b3bad08658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Entity\AnimationController">
+      <UniqueIdentifier>{0df58662-faf1-4907-94b8-c481b014a5be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Entity\XCharacter">
+      <UniqueIdentifier>{d91bbcc5-4584-48a8-b9d7-bfe11a590099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Talent">
+      <UniqueIdentifier>{c8e4ce32-1cee-4668-8f31-65efc75684b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Talent\effector">
+      <UniqueIdentifier>{023c9ff5-c5a2-4ab9-91d9-fe2fea4ba262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Movable">
+      <UniqueIdentifier>{c55e4fef-6e15-4112-aef6-19be3aae7fd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control">
+      <UniqueIdentifier>{5de8a44f-cf4e-4d70-b559-ca2d0a221939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\NetControl">
+      <UniqueIdentifier>{247fa4ec-5a14-4a8e-b73e-22dd42a7f6c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\NetControl\ActionState">
+      <UniqueIdentifier>{3e816a86-6fce-496a-95cc-f48b23d119c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\NonColtrol">
+      <UniqueIdentifier>{cdd03966-7947-46b4-baf2-4e8197844782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\NonColtrol\XNPCActionState">
+      <UniqueIdentifier>{a7cc9881-61c6-49dd-9875-b027fc6bcc78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\MyControl">
+      <UniqueIdentifier>{a6d19315-3695-447e-9d19-dfbdbb20711f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\MyControl\MyAction">
+      <UniqueIdentifier>{a8219554-3195-4809-b0b8-f93ff80223e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\MyControl\Interactor">
+      <UniqueIdentifier>{252594e8-af4c-4860-ac37-05affc94aa7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\Common">
+      <UniqueIdentifier>{75c46522-e113-480e-a10b-e276d1ebfd42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\CutSceneControl">
+      <UniqueIdentifier>{5b40f1f4-13f8-42ac-b52a-7cbe1e297ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState">
+      <UniqueIdentifier>{b547b54c-07ed-44bd-8d5f-a1765ce8d33a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Post">
+      <UniqueIdentifier>{5abc6280-1250-4fc9-82b3-5a27c8eb8bd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Collision">
+      <UniqueIdentifier>{c4de96d5-e88d-4268-ab35-8a7cdb321a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Motion">
+      <UniqueIdentifier>{2f66de2c-0d62-4a46-a8f7-02a0b2e7f312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Motion\Trigger">
+      <UniqueIdentifier>{9d6b5dbb-dd8a-4fcd-a8c7-80a74573f903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Motion\Event">
+      <UniqueIdentifier>{de557bdd-add1-40be-b74d-1e454f7d337c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Effect">
+      <UniqueIdentifier>{9f79fab6-0c4c-4bbc-8023-bddd50fa10c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Buff">
+      <UniqueIdentifier>{6da6620c-ce86-4453-975b-265a42153f80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Sound">
+      <UniqueIdentifier>{e4f6ac8e-a1c4-468e-bf36-6c35e0096515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\Data">
+      <UniqueIdentifier>{1c09c136-ada8-450a-8aa2-d9c76d76e270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\BackgroundWork">
+      <UniqueIdentifier>{f98c82e1-f94d-423c-8bc4-2533d3e34dd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\module\BPart">
+      <UniqueIdentifier>{3b0f884c-dd6c-4d1b-afa5-b48a63fb2514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\base">
+      <UniqueIdentifier>{349c64d0-15b1-4d8e-a30c-b6de7a1a2aa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\object">
+      <UniqueIdentifier>{ff27ec80-1b8e-4605-8210-a6838c91872b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\object\Actor">
+      <UniqueIdentifier>{f10b5947-4e4c-4b91-ba48-a449afcc86f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\object\Effect">
+      <UniqueIdentifier>{9798a81f-d76f-4df9-9016-e65b500c4ae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\entity\etc">
+      <UniqueIdentifier>{80f67a77-e293-4cc7-9362-7ea18dea890d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\customscenenode">
+      <UniqueIdentifier>{d441657d-e301-4ede-bef4-700f82db313e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\customscenenode\camera">
+      <UniqueIdentifier>{11a9f9a2-396e-4775-ba22-7205fd0e33f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\customscenenode\camera\Controller">
+      <UniqueIdentifier>{ab5229f4-c6e9-4711-a2d0-2f4a88b06abd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\info">
+      <UniqueIdentifier>{f61c0394-a037-414b-8e89-8ee7e97c328a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\info\condition">
+      <UniqueIdentifier>{531630ed-0eb6-422d-b990-0edbfc5a2017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\BattleArena">
+      <UniqueIdentifier>{4e587330-4711-4ecd-9bfe-bd06a8e889fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Feedback">
+      <UniqueIdentifier>{dfd7e4a8-414d-4393-9dd4-60ecdd0e2402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\faction">
+      <UniqueIdentifier>{3d69ec79-5ab7-4c63-a4b0-4a9dd4450b8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\guild">
+      <UniqueIdentifier>{a12cbd47-712d-485d-9d54-7e1345f50e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\talent">
+      <UniqueIdentifier>{d05080ea-e09f-4629-8fd2-cd55957c1f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\item">
+      <UniqueIdentifier>{40d39597-ef3d-48f9-919c-510b3ad7ae16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\party">
+      <UniqueIdentifier>{63dea2af-fa27-487c-9f10-1e576e72d35f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\quest">
+      <UniqueIdentifier>{72c6ce99-4f56-412d-9156-8105abdbdd17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\pvp">
+      <UniqueIdentifier>{b352fb89-28d5-45ba-908c-f02f4b94b45a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\cutscene">
+      <UniqueIdentifier>{a2cfecea-3b7f-4c2a-a061-24a332a6cb80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\cutscene\contents">
+      <UniqueIdentifier>{1dac0eab-e197-4bb2-ad63-2f7430efa1e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\sensor">
+      <UniqueIdentifier>{f78f496b-c6df-4117-91c9-b7f69ae75865}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\msg">
+      <UniqueIdentifier>{4f4650d8-34c3-4342-a3f8-86caa6631bb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\msg\NormalChat">
+      <UniqueIdentifier>{ce2d967f-46d3-44bb-857e-c0f9af3f6f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\msg\SpecialChat">
+      <UniqueIdentifier>{272845ee-f182-4c2f-b6ee-7384ff155848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\msg\Base">
+      <UniqueIdentifier>{e289bd75-9c91-4895-ac19-35ecf94124bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\msg\SystemMessage">
+      <UniqueIdentifier>{822dbca7-f347-4c3f-8195-2e9092a6f9cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\msg\ChatChannel">
+      <UniqueIdentifier>{423a1691-345a-4f90-b91d-a8820b564da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\msg\GuideMsg">
+      <UniqueIdentifier>{a0d6f6a0-52d8-4ce1-826f-274ff96c9279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\mail">
+      <UniqueIdentifier>{cac825e3-48ef-41e1-b1c2-535467568d25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\duel">
+      <UniqueIdentifier>{c1788dc4-2de9-4fe6-a6c9-35bef684a72d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\WorldLocator">
+      <UniqueIdentifier>{271bd468-9e83-477b-9a0a-001887995142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{fbaa7bda-0df4-4d44-8a10-5ea8a8aa2930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\debug">
+      <UniqueIdentifier>{b69a36bf-3e03-4f8c-b77f-a3547997b493}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\base">
+      <UniqueIdentifier>{b14bcd4a-1762-4187-85c0-d8e705d31fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\util">
+      <UniqueIdentifier>{461b437c-d017-4de1-aae1-2733ae1213c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\render">
+      <UniqueIdentifier>{1e2ccec0-945d-4c12-b8a7-2b01fa1ce275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\math">
+      <UniqueIdentifier>{ed81759f-a798-4eba-8e13-837ffaa840aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{181d0935-e35b-443c-ab34-67ea5774da35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\ui">
+      <UniqueIdentifier>{6b74e28e-e874-4d3d-a9dd-934bbc74db09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\ui\xml">
+      <UniqueIdentifier>{7aa51056-29a2-4861-92f4-f4ce55f4789f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\ui\lua">
+      <UniqueIdentifier>{038c4b4f-c5ba-4b8d-9c8c-e02917d9ba17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rs3">
+      <UniqueIdentifier>{c35ab56c-0026-4221-93da-784cf6ae7950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{3cb10d8d-b936-4e26-a1ae-e8c56006a05c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{c8e79758-e49c-4678-8758-a27465c488ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{dc8b10fc-ea86-4812-9e24-91ae94797944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Mock">
+      <UniqueIdentifier>{dadd5010-8207-47cf-ada2-c26e0d9aaecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Validator">
+      <UniqueIdentifier>{3ffa9eb8-a28a-4df1-969f-baba23cd2b88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ext">
+      <UniqueIdentifier>{6b5f1c61-09ea-4d73-a9b7-fe760757fe4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anti-hack">
+      <UniqueIdentifier>{901c4b55-f016-412e-a363-0d060e369136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="checksum">
+      <UniqueIdentifier>{a9b29c9e-96f7-412f-a888-c694675fc126}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="XCalculator.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XConfig.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XController.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XControlNetCmdState.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XGamePlayController.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameStateSwitchResourceMgr.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XMemPoolScopeReleaser.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XMMCode.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XMMCodeProc.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XNaming.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XSystem.cpp">
+      <Filter>game\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XBattleArenaInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XDialogInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XEnemyInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlobal.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlobalInstance.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlobalVar.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlobalVar_Game.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlobalVar_MyInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlobalVar_World.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XInteractionInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCInteractionInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCShopInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XPvPAreaInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XTargetActorInfo.cpp">
+      <Filter>game\base\global</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameInterface.cpp">
+      <Filter>game\base\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameInterfaceOption.cpp">
+      <Filter>game\base\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="XGame.cpp">
+      <Filter>game\base\XGame</Filter>
+    </ClCompile>
+    <ClCompile Include="XGamePlayState.cpp">
+      <Filter>game\base\XGame</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameState.cpp">
+      <Filter>game\base\XGame</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameStateMgr.cpp">
+      <Filter>game\base\XGame</Filter>
+    </ClCompile>
+    <ClCompile Include="XAlwaysResourceGrabber.cpp">
+      <Filter>game\base\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="XCampaign.cpp">
+      <Filter>game\gameframe</Filter>
+    </ClCompile>
+    <ClCompile Include="XCharFrame.cpp">
+      <Filter>game\gameframe</Filter>
+    </ClCompile>
+    <ClCompile Include="XHelloWorldFrame.cpp">
+      <Filter>game\gameframe</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoginFrame.cpp">
+      <Filter>game\gameframe</Filter>
+    </ClCompile>
+    <ClCompile Include="XMintDesignFrame.cpp">
+      <Filter>game\gameframe</Filter>
+    </ClCompile>
+    <ClCompile Include="XTestFrame.cpp">
+      <Filter>game\gameframe</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingChecker_BackgroundWork.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingChecker_MyPlayer.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingChecker_Server.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingChecker_World.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingCompleter.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingFrame.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingMgr.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingStarter.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XTips.cpp">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="XReplay.cpp">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClCompile>
+    <ClCompile Include="XReplayAnalyzer.cpp">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClCompile>
+    <ClCompile Include="XReplayAutoTest.cpp">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClCompile>
+    <ClCompile Include="XReplayFrame.cpp">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameFrame.cpp">
+      <Filter>game\gameframe\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameFrameHelper.cpp">
+      <Filter>game\gameframe\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameFrameManager.cpp">
+      <Filter>game\gameframe\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameFrameUILoader.cpp">
+      <Filter>game\gameframe\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="XPlayFrame.cpp">
+      <Filter>game\gameframe\PlayFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="XPlayFrame_Debugger.cpp">
+      <Filter>game\gameframe\PlayFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="XScreenShotSaver.cpp">
+      <Filter>game\gameframe\PlayFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="XEngineDebugFrame.cpp">
+      <Filter>game\gameframe\EngineDebug</Filter>
+    </ClCompile>
+    <ClCompile Include="XEngineDebugger.cpp">
+      <Filter>game\gameframe\EngineDebug</Filter>
+    </ClCompile>
+    <ClCompile Include="XCommonFunction.cpp">
+      <Filter>game\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueCharEvent.cpp">
+      <Filter>game\lua\event</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueCutSceneEvent.cpp">
+      <Filter>game\lua\event</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueFieldEvent.cpp">
+      <Filter>game\lua\event</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameEvent.cpp">
+      <Filter>game\lua\event</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueCharFunction.cpp">
+      <Filter>game\lua\function</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueMyInfoFunction.cpp">
+      <Filter>game\lua\function</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueScreenEffectFunction.cpp">
+      <Filter>game\lua\function</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueUtilFunction.cpp">
+      <Filter>game\lua\function</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameCraftFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameDuelFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameFieldFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameGuildFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameInteractionFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameItemFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameLootFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGamePartyFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameQuestFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameRepairFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameTradeFunction.cpp">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueDebugFunction.cpp">
+      <Filter>game\lua\NewUI</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueFunctions.cpp">
+      <Filter>game\lua\NewUI</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGame.cpp">
+      <Filter>game\lua\NewUI</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGame_GuildStorage.cpp">
+      <Filter>game\lua\NewUI</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGame_Storage.cpp">
+      <Filter>game\lua\NewUI</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueGameOption.cpp">
+      <Filter>game\lua\NewUI</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlueOption.cpp">
+      <Filter>game\lua\NewUI</Filter>
+    </ClCompile>
+    <ClCompile Include="XGatherMSG.cpp">
+      <Filter>game\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="XUISystem.cpp">
+      <Filter>game\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Mint4Game.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDK\Mint3.2\Util\Mint4Null.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDK\Mint3.2\Util\Mint4R3.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XColorPallete.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XCommandLogFrm.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XLoadingPanel.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XLuaLogFrm.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XMintLoader.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XMintScriptDeclarer.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XMsgBoxListener.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XNarrationLabel.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XScreenFader.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentAvailable.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIBalloonTextBox.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIBuffViewer.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIChattingBox.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIControlKey.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUICustomLook.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIEquippedItemSlot.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIFadeBox.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIFieldMap.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIGauge.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIHDRMonitor.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIJournalIndicator.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIKeyMonitor.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIMapViewer.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIMiniMap.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIPaletteSlot.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIPresentationBox.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUITalentSlot.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUITray.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XUIVideo.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XWeaponBindingMenu.cpp">
+      <Filter>game\ui\mint</Filter>
+    </ClCompile>
+    <ClCompile Include="XChatCmdLoader.cpp">
+      <Filter>game\ui\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="XChatCmds.cpp">
+      <Filter>game\ui\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="XConsoleCmds.cpp">
+      <Filter>game\ui\console</Filter>
+    </ClCompile>
+    <ClCompile Include="XCrossHair.cpp">
+      <Filter>game\ui\game</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugScreenDialog.cpp">
+      <Filter>game\ui\game</Filter>
+    </ClCompile>
+    <ClCompile Include="XMiniHpBar.cpp">
+      <Filter>game\ui\game</Filter>
+    </ClCompile>
+    <ClCompile Include="XOnScreenDialog.cpp">
+      <Filter>game\ui\game</Filter>
+    </ClCompile>
+    <ClCompile Include="XScreenEffectManager.cpp">
+      <Filter>game\ui\game</Filter>
+    </ClCompile>
+    <ClCompile Include="XCaptionMgr.cpp">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClCompile>
+    <ClCompile Include="XCharacterCaption.cpp">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClCompile>
+    <ClCompile Include="XDamageCaptionDraw.cpp">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClCompile>
+    <ClCompile Include="XExpCaption.cpp">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugCategoryFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugCollisionFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugCombat.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugDashBoard.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugFPSFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugLootFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugMovableFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugNPCLogFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugNPCMonitor.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugObjListFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugRenderGraph.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugSoundFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XHelpFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLogFrm.cpp">
+      <Filter>game\ui\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XCursor.cpp">
+      <Filter>game\ui\cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="XCursorSmartReleaser.cpp">
+      <Filter>game\ui\cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="XCursorSmartShower.cpp">
+      <Filter>game\ui\cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="XCommandTable.cpp">
+      <Filter>game\net</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Action.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_BattleArena.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Char.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_ChatChannel.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Craft.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_CutScene.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Duel.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Enchant.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Faction.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Fatigue.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Field.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_GameStart.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Global.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_GM.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Guild.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Inn.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Interaction.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Item.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Local.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_LoginServer.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Loot.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Mail.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Map.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_MoveServer.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Msg.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Net.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_NPCAction.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_NPCShop.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Palette.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Party.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Quest.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_QuestPVP.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Soul.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Storage.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Talent.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Trade.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandler_Training.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdHandlerGroup.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XCmdParam_LoginServer.cpp">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="XConnectionManager.cpp">
+      <Filter>game\net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetClient.cpp">
+      <Filter>game\net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetDebuger.cpp">
+      <Filter>game\net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetwork.cpp">
+      <Filter>game\net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="XRequestCommandFilter.cpp">
+      <Filter>game\net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="XWhoIsRequester.cpp">
+      <Filter>game\net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="XActionKeyDef.cpp">
+      <Filter>game\input</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameInput.cpp">
+      <Filter>game\input</Filter>
+    </ClCompile>
+    <ClCompile Include="XKeyBuffer.cpp">
+      <Filter>game\input</Filter>
+    </ClCompile>
+    <ClCompile Include="XKeyMapTable.cpp">
+      <Filter>game\input</Filter>
+    </ClCompile>
+    <ClCompile Include="XAutoSoundChecker.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XRealSound.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XRealSoundLoader.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XSoundField.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XSoundHelper.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XSoundLootItem.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XSoundNonPlayer.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XSoundResMgr.cpp">
+      <Filter>game\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XCollisionTree.cpp">
+      <Filter>game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="XFieldChanger.cpp">
+      <Filter>game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="XFieldInfoBuilder.cpp">
+      <Filter>game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="XWorld.cpp">
+      <Filter>game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="XWorldChanger.cpp">
+      <Filter>game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="XWorldEnv.cpp">
+      <Filter>game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="XZone.cpp">
+      <Filter>game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="XCollision.cpp">
+      <Filter>game\entity\module</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleMessageQueue.cpp">
+      <Filter>game\entity\module</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleUI.cpp">
+      <Filter>game\entity\module</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCIcon.cpp">
+      <Filter>game\entity\module</Filter>
+    </ClCompile>
+    <ClCompile Include="XTargetIndicator.cpp">
+      <Filter>game\entity\module</Filter>
+    </ClCompile>
+    <ClCompile Include="XActionDie.cpp">
+      <Filter>game\entity\module\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="XAnimationEventHandler.cpp">
+      <Filter>game\entity\module\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="XHitFrameFreezer.cpp">
+      <Filter>game\entity\module\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleAction.cpp">
+      <Filter>game\entity\module\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionFactorHelper.cpp">
+      <Filter>game\entity\module\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="XEntityDirectionInterpolator.cpp">
+      <Filter>game\entity\module\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleEntity.cpp">
+      <Filter>game\entity\module\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameTransformControllerManager.cpp">
+      <Filter>game\entity\module\Entity\AnimationController</Filter>
+    </ClCompile>
+    <ClCompile Include="XCharacterSerializer.cpp">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="XCharacterSerializeStrategy.cpp">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="XEntityFader.cpp">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCSerializeStrategy.cpp">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="XPlayerSerializeStrategy.cpp">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="XArcheryTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XExtraActiveTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XGuardTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XMagicTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XMeleeTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentEffectMgr.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentEvent.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentHelper.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentHitParam.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTarget.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTargetCollisionBox.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTargetGround.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTargetLine.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTargetSticky.cpp">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XModEffector.cpp">
+      <Filter>game\entity\module\Talent\effector</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleMovable.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableDebugger.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableFactor.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableProcInterpolation.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableProcObject.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableProcObjectChecker.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableProcTerrain.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableProcTerrainNPC.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableProcThrow.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XMovableProcWater.cpp">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleNetControl.cpp">
+      <Filter>game\entity\module\Control\NetControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionGesture.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionGrappled.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionGuard.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionHit.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionSit.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionState.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionSwallowed.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetActionTalent.cpp">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XControlCmd.cpp">
+      <Filter>game\entity\module\Control\NonColtrol</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleNonControl.cpp">
+      <Filter>game\entity\module\Control\NonColtrol</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCAligner.cpp">
+      <Filter>game\entity\module\Control\NonColtrol</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCActionHit.cpp">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCActionMove.cpp">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCActionNA.cpp">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCActionState.cpp">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCActionTalent.cpp">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XBPartWeaponController.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XChallengerQuestExitChecker.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XKeyTransition.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XMapSignAreaChecker.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleMyControl.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyCharacterAlphaMgr.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyHitController.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XPvPAreaChecker.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XRestrictedAreaChecker.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XSpecialActionTransition.cpp">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XCombo.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionBow.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionChangeChannel.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionChangeState.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionDeactivative.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionDie.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionDieTransChecker.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionDye.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionEnchant.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionFalling.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionGesture.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionGrappled.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionGuard.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionHit.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionHold.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionIdle.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionJump.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionLootingItem.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionMapObj.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionNormalAttack.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionNPCInteraction.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionQuestInteraction.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionRebirth.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionSit.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionState.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionSwallowed.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionSwitchingWeapon.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionUseItem.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyActionUseTalent.cpp">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClCompile>
+    <ClCompile Include="XFeedbackInteractor.cpp">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClCompile>
+    <ClCompile Include="XInteraction.cpp">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClCompile>
+    <ClCompile Include="XInteractionHelper.cpp">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClCompile>
+    <ClCompile Include="XInteractor.cpp">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClCompile>
+    <ClCompile Include="XMouseBase.cpp">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClCompile>
+    <ClCompile Include="XMouseInteractor.cpp">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClCompile>
+    <ClCompile Include="XMouseMove.cpp">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClCompile>
+    <ClCompile Include="XDeathController.cpp">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="XGrappledController.cpp">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleActorControl.cpp">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="XSwallowedController.cpp">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutScenePlayerAligner.cpp">
+      <Filter>game\entity\module\Control\CutSceneControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleCutSceneControl.cpp">
+      <Filter>game\entity\module\Control\CutSceneControl</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutScenePlayerActionNA.cpp">
+      <Filter>game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutScenePlayerActionState.cpp">
+      <Filter>game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutScenePlayerActionTalent.cpp">
+      <Filter>game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState</Filter>
+    </ClCompile>
+    <ClCompile Include="XModulePost.cpp">
+      <Filter>game\entity\module\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="XDuelFightChecker.cpp">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="XHitEffectPosCalculator.cpp">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleCollision.cpp">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="XMoveCollision.cpp">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="XMoveCollisionDebug.cpp">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="XObjectCollisionDebug.cpp">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleMotion.cpp">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionHelper.cpp">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionIdleMemory.cpp">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionLogic.cpp">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionTimeModifier.cpp">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="XUpperMotionLogic.cpp">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="XUpperMotionTimeModifier.cpp">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionTrigger_Checker.cpp">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionTrigger_Execute.cpp">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionTrigger_Executor.cpp">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionTrigger_If.cpp">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionEventListener__NPC_IDLE.cpp">
+      <Filter>game\entity\module\Motion\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="XCaptionEffect.cpp">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XChangeNPCColor.cpp">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XCheckTargetableEffect.cpp">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XHeadIcon.cpp">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleEffect.cpp">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleEffectReserve.cpp">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XBuffAttribute.cpp">
+      <Filter>game\entity\module\Buff</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleBuff.cpp">
+      <Filter>game\entity\module\Buff</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleSound.cpp">
+      <Filter>game\entity\module\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleBaseData.cpp">
+      <Filter>game\entity\module\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleNPCData.cpp">
+      <Filter>game\entity\module\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="XModulePlayerData.cpp">
+      <Filter>game\entity\module\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleBackgroundWork.cpp">
+      <Filter>game\entity\module\BackgroundWork</Filter>
+    </ClCompile>
+    <ClCompile Include="XBPartActorManager.cpp">
+      <Filter>game\entity\module\BPart</Filter>
+    </ClCompile>
+    <ClCompile Include="XModuleBParts.cpp">
+      <Filter>game\entity\module\BPart</Filter>
+    </ClCompile>
+    <ClCompile Include="XEvent.cpp">
+      <Filter>game\entity\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XModule.cpp">
+      <Filter>game\entity\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XMagicArea.cpp">
+      <Filter>game\entity\object</Filter>
+    </ClCompile>
+    <ClCompile Include="XObject.cpp">
+      <Filter>game\entity\object</Filter>
+    </ClCompile>
+    <ClCompile Include="XObjectManager.cpp">
+      <Filter>game\entity\object</Filter>
+    </ClCompile>
+    <ClCompile Include="XProjectile.cpp">
+      <Filter>game\entity\object</Filter>
+    </ClCompile>
+    <ClCompile Include="XProjectileController.cpp">
+      <Filter>game\entity\object</Filter>
+    </ClCompile>
+    <ClCompile Include="XSoulObject.cpp">
+      <Filter>game\entity\object</Filter>
+    </ClCompile>
+    <ClCompile Include="XSwordTrail.cpp">
+      <Filter>game\entity\object</Filter>
+    </ClCompile>
+    <ClCompile Include="XActor.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XBPartNonPlayer.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XDuel.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XFeedbackObject.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyPlayer.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XNetPlayer.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XNonPlayer.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XPlayer.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XPlayerFaction.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XPlayerPVP.cpp">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="XBuffEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XDecalEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectInvoker.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectManager.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectPostEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectTrace.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectWaitActorLoadingComplete.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XHeadEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XHitEffectSelecter.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XInteractionEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XLightEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XMagicAreaEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XNoiseFadeEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCIConEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XPEEdgeMgr.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XProjectileEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XSelfIlluminationEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XSwordTrailEffectController.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentEffectHitCapsule.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentEffectPreLoader.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XWeaponEffect.cpp">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XBaseCameraSceneNode.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XBaseGameCamera.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraControllerGroup.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraGroundTarget.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraHelper.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraInteraction.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraLock.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraManager.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XFreeCamTracer.cpp">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraBackViewController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraCutSceneController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraEngineDebugController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraFreeLookController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraGrappledController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraPVPFreeViewController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraReplayBackViewController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XCameraSceneNodeController.cpp">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="XAccountInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XCraftableRecipeInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XDialogTextInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XFieldInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XFieldInfoHelper.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameEffectInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XHistory.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XInnInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XInnInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XItem_DroperInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XItem_QuestRewarderInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XItem_RecipeProductInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemRelatedNPCInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemRelatedNPCInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XModelAnimationInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyRecipeInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XQuestInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XRecipeInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XRecipeInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XRecipeNPCInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XRecipeNPCInfoMgr.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XTextureMtInfo.cpp">
+      <Filter>game\info</Filter>
+    </ClCompile>
+    <ClCompile Include="XConditionHelper.cpp">
+      <Filter>game\info\condition</Filter>
+    </ClCompile>
+    <ClCompile Include="XConditionInfo.cpp">
+      <Filter>game\info\condition</Filter>
+    </ClCompile>
+    <ClCompile Include="XConditionsInfo.cpp">
+      <Filter>game\info\condition</Filter>
+    </ClCompile>
+    <ClCompile Include="XConditionsInfoMgr.cpp">
+      <Filter>game\info\condition</Filter>
+    </ClCompile>
+    <ClCompile Include="XConditionStringMaker.cpp">
+      <Filter>game\info\condition</Filter>
+    </ClCompile>
+    <ClCompile Include="XBattleArena.cpp">
+      <Filter>game\BattleArena</Filter>
+    </ClCompile>
+    <ClCompile Include="XFeedback.cpp">
+      <Filter>game\Feedback</Filter>
+    </ClCompile>
+    <ClCompile Include="XFeedbackFetcher.cpp">
+      <Filter>game\Feedback</Filter>
+    </ClCompile>
+    <ClCompile Include="XFeedbackSender.cpp">
+      <Filter>game\Feedback</Filter>
+    </ClCompile>
+    <ClCompile Include="XFeedbackSystem.cpp">
+      <Filter>game\Feedback</Filter>
+    </ClCompile>
+    <ClCompile Include="XFactionInfo.cpp">
+      <Filter>game\faction</Filter>
+    </ClCompile>
+    <ClCompile Include="XFactionInfoMgr.cpp">
+      <Filter>game\faction</Filter>
+    </ClCompile>
+    <ClCompile Include="XGuild.cpp">
+      <Filter>game\guild</Filter>
+    </ClCompile>
+    <ClCompile Include="XGuildMember.cpp">
+      <Filter>game\guild</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyTalent.cpp">
+      <Filter>game\talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XEquipmentSlot.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemContainer.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemHelper.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemManager.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyGuildStorage.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyInventory.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XMyStorage.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XTradeContents.cpp">
+      <Filter>game\item</Filter>
+    </ClCompile>
+    <ClCompile Include="XParty.cpp">
+      <Filter>game\party</Filter>
+    </ClCompile>
+    <ClCompile Include="XPlayerQuest.cpp">
+      <Filter>game\quest</Filter>
+    </ClCompile>
+    <ClCompile Include="XPvPAreaLogic.cpp">
+      <Filter>game\pvp</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneController.cpp">
+      <Filter>game\cutscene</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneFieldIntroMgr.cpp">
+      <Filter>game\cutscene</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneGameEntity.cpp">
+      <Filter>game\cutscene</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutScenePlayer.cpp">
+      <Filter>game\cutscene</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneState.cpp">
+      <Filter>game\cutscene</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneWorldResourceMgr.cpp">
+      <Filter>game\cutscene</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneContent.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObject.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectController.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerAnimation.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerBGM.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerCaption.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerDOF.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerEffect.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerEnv.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerFade.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerKeyEvent.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerLetterBox.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerMove.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XCutSceneObjectControllerTalent.cpp">
+      <Filter>game\cutscene\contents</Filter>
+    </ClCompile>
+    <ClCompile Include="XLocalSensor.cpp">
+      <Filter>game\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="XQuestSensor.cpp">
+      <Filter>game\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="XSensor.cpp">
+      <Filter>game\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="XSensorController.cpp">
+      <Filter>game\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="XSensorInfo.cpp">
+      <Filter>game\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="XSensorManager.cpp">
+      <Filter>game\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="XAuctionMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XChannelMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XGuildMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XPartyMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XSayMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XShoutMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XWhisperBackMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XWhisperMsgHandler.cpp">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XAnnounceMsgHandler.cpp">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XFieldMsgHandler.cpp">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlobalMsgHandler.cpp">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XNarrationMsgHandler.cpp">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XShoutFakeMsgHandler.cpp">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClCompile>
+    <ClCompile Include="XMsgCommandFacade.cpp">
+      <Filter>game\msg\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="XMsgHandler.cpp">
+      <Filter>game\msg\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="XAdviceMsgHandler.cpp">
+      <Filter>game\msg\SystemMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="XNoticeMsgHandler.cpp">
+      <Filter>game\msg\SystemMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="XSystemMsgHandler.cpp">
+      <Filter>game\msg\SystemMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="XChatChannel.cpp">
+      <Filter>game\msg\ChatChannel</Filter>
+    </ClCompile>
+    <ClCompile Include="XChatChannelManager.cpp">
+      <Filter>game\msg\ChatChannel</Filter>
+    </ClCompile>
+    <ClCompile Include="XGuideMsg.cpp">
+      <Filter>game\msg\GuideMsg</Filter>
+    </ClCompile>
+    <ClCompile Include="XMail.cpp">
+      <Filter>game\mail</Filter>
+    </ClCompile>
+    <ClCompile Include="XMailbox.cpp">
+      <Filter>game\mail</Filter>
+    </ClCompile>
+    <ClCompile Include="XDuelGestureChecker.cpp">
+      <Filter>game\duel</Filter>
+    </ClCompile>
+    <ClCompile Include="XWorldLocatorClient.cpp">
+      <Filter>game\WorldLocator</Filter>
+    </ClCompile>
+    <ClCompile Include="XScreenDebugger.cpp">
+      <Filter>core\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="XApplicationConfig.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XArgumentsParser.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XBaseApplication.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XColorTable.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XGameInitializer.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XInputDevice.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XPhysX.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XScript.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XStrCmd.cpp">
+      <Filter>core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="XCrashReporter.cpp">
+      <Filter>core\util</Filter>
+    </ClCompile>
+    <ClCompile Include="XHelp.cpp">
+      <Filter>core\util</Filter>
+    </ClCompile>
+    <ClCompile Include="XInterpolation.cpp">
+      <Filter>core\util</Filter>
+    </ClCompile>
+    <ClCompile Include="XMath.cpp">
+      <Filter>core\util</Filter>
+    </ClCompile>
+    <ClCompile Include="XTimer.cpp">
+      <Filter>core\util</Filter>
+    </ClCompile>
+    <ClCompile Include="XUtil.cpp">
+      <Filter>core\util</Filter>
+    </ClCompile>
+    <ClCompile Include="XRenderHelper.cpp">
+      <Filter>core\render</Filter>
+    </ClCompile>
+    <ClCompile Include="XSceneManager.cpp">
+      <Filter>core\render</Filter>
+    </ClCompile>
+    <ClCompile Include="XCylinder.cpp">
+      <Filter>core\math</Filter>
+    </ClCompile>
+    <ClCompile Include="XActorLoader.cpp">
+      <Filter>rs3</Filter>
+    </ClCompile>
+    <ClCompile Include="XDebugInfoBuilder.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="XSTLUtil.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="XSystemInfoUtil.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="MockAnimationController.cpp">
+      <Filter>Test\Mock</Filter>
+    </ClCompile>
+    <ClCompile Include="MockCharacter.cpp">
+      <Filter>Test\Mock</Filter>
+    </ClCompile>
+    <ClCompile Include="MockInteractionEffect.cpp">
+      <Filter>Test\Mock</Filter>
+    </ClCompile>
+    <ClCompile Include="MockNetClient.cpp">
+      <Filter>Test\Mock</Filter>
+    </ClCompile>
+    <ClCompile Include="MockWorld.cpp">
+      <Filter>Test\Mock</Filter>
+    </ClCompile>
+    <ClCompile Include="XBaseUnitTestHelper.cpp">
+      <Filter>Test\Mock</Filter>
+    </ClCompile>
+    <ClCompile Include="XUnitTestUtil.cpp">
+      <Filter>Test\Mock</Filter>
+    </ClCompile>
+    <ClCompile Include="XAnimationEventValidator.cpp">
+      <Filter>Test\Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="XIsAnimationValidator.cpp">
+      <Filter>Test\Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemValidator.cpp">
+      <Filter>Test\Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCInfoValidator.cpp">
+      <Filter>Test\Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="XResourceValidator.cpp">
+      <Filter>Test\Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentInfoValidator.cpp">
+      <Filter>Test\Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="XValidateLogger.cpp">
+      <Filter>Test\Validator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SDK\bandi_video_library\v2.1.1\source\BandiVideoLibrary.cpp">
+      <Filter>ext</Filter>
+    </ClCompile>
+    <ClCompile Include="XBandiCapturer.cpp">
+      <Filter>ext</Filter>
+    </ClCompile>
+    <ClCompile Include="XBandiVideoPlayer.cpp">
+      <Filter>ext</Filter>
+    </ClCompile>
+    <ClCompile Include="XBandiVideoTexture.cpp">
+      <Filter>ext</Filter>
+    </ClCompile>
+    <ClCompile Include="XAntiHack.cpp">
+      <Filter>anti-hack</Filter>
+    </ClCompile>
+    <ClCompile Include="XAntiHackModuleGameGuardKor.cpp">
+      <Filter>anti-hack</Filter>
+    </ClCompile>
+    <ClCompile Include="XCheckSum.cpp">
+      <Filter>checksum</Filter>
+    </ClCompile>
+    <ClCompile Include="XCheckSumEncrypt.cpp">
+      <Filter>checksum</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="XAppErrorCollector.cpp" />
+    <ClCompile Include="XEffectPreLoaderResourceMgr.cpp" />
+    <ClCompile Include="XPath.cpp" />
+    <ClCompile Include="XYouthSelfRegulation.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XCalculator.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XConfig.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XController.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XControlNetCmdState.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XGamePlayController.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameStateSwitchResourceMgr.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XMemPoolScopeReleaser.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XMMCode.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XMMCodeProc.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XNaming.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XPath.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XState.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XSystem.h">
+      <Filter>game\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XBattleArenaInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XBuffContainer.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XDialogInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XEnemyInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobal.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalInstance.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar_Char.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar_Debug.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar_Game.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar_MyInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar_Network.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar_Temp.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalVar_World.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XInteractionInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCInteractionInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCShopInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XPvPAreaInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XTargetActorInfo.h">
+      <Filter>game\base\global</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameInterface.h">
+      <Filter>game\base\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameInterfaceOption.h">
+      <Filter>game\base\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="XGame.h">
+      <Filter>game\base\XGame</Filter>
+    </ClInclude>
+    <ClInclude Include="XGamePlayState.h">
+      <Filter>game\base\XGame</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameState.h">
+      <Filter>game\base\XGame</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameStateMgr.h">
+      <Filter>game\base\XGame</Filter>
+    </ClInclude>
+    <ClInclude Include="XAlwaysResourceGrabber.h">
+      <Filter>game\base\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="XCampaign.h">
+      <Filter>game\gameframe</Filter>
+    </ClInclude>
+    <ClInclude Include="XCharFrame.h">
+      <Filter>game\gameframe</Filter>
+    </ClInclude>
+    <ClInclude Include="XHelloWorldFrame.h">
+      <Filter>game\gameframe</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoginFrame.h">
+      <Filter>game\gameframe</Filter>
+    </ClInclude>
+    <ClInclude Include="XMintDesignFrame.h">
+      <Filter>game\gameframe</Filter>
+    </ClInclude>
+    <ClInclude Include="XTestFrame.h">
+      <Filter>game\gameframe</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingChecker.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingChecker_BackgroundWork.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingChecker_MyPlayer.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingChecker_Server.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingChecker_World.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingCompleter.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingFrame.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingMgr.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingStarter.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XTips.h">
+      <Filter>game\gameframe\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="XReplay.h">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClInclude>
+    <ClInclude Include="XReplayAnalyzer.h">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClInclude>
+    <ClInclude Include="XReplayAutoTest.h">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClInclude>
+    <ClInclude Include="XReplayFrame.h">
+      <Filter>game\gameframe\Replay</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameFrame.h">
+      <Filter>game\gameframe\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameFrameHelper.h">
+      <Filter>game\gameframe\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameFrameID.h">
+      <Filter>game\gameframe\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameFrameManager.h">
+      <Filter>game\gameframe\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameFrameUILoader.h">
+      <Filter>game\gameframe\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayFrame.h">
+      <Filter>game\gameframe\PlayFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayFrame_Debugger.h">
+      <Filter>game\gameframe\PlayFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="XScreenShotSaver.h">
+      <Filter>game\gameframe\PlayFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugFrame.h">
+      <Filter>game\gameframe\EngineDebug</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugger.h">
+      <Filter>game\gameframe\EngineDebug</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContext.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContextCamera.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContextDynamicActorNode.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContextHit.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContextRagDoll.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContextStun.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContextSwallowed.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngineDebugContextTalent.h">
+      <Filter>game\gameframe\EngineDebug\DebugContext</Filter>
+    </ClInclude>
+    <ClInclude Include="XCommonFunction.h">
+      <Filter>game\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueFunction.h">
+      <Filter>game\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueCharEvent.h">
+      <Filter>game\lua\event</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueCutSceneEvent.h">
+      <Filter>game\lua\event</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueFieldEvent.h">
+      <Filter>game\lua\event</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameEvent.h">
+      <Filter>game\lua\event</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueCharFunction.h">
+      <Filter>game\lua\function</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueMyInfoFunction.h">
+      <Filter>game\lua\function</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueScreenEffectFunction.h">
+      <Filter>game\lua\function</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueUtilFunction.h">
+      <Filter>game\lua\function</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameCraftFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameDuelFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameFieldFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameGuildFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameInteractionFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameItemFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameLootFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGamePartyFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameQuestFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameRepairFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameTradeFunction.h">
+      <Filter>game\lua\gamefunction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueDebugFunction.h">
+      <Filter>game\lua\NewUI</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueFunctions.h">
+      <Filter>game\lua\NewUI</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGame.h">
+      <Filter>game\lua\NewUI</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGame_GuildStorage.h">
+      <Filter>game\lua\NewUI</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGame_Storage.h">
+      <Filter>game\lua\NewUI</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueGameOption.h">
+      <Filter>game\lua\NewUI</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlueOption.h">
+      <Filter>game\lua\NewUI</Filter>
+    </ClInclude>
+    <ClInclude Include="XGatherMSG.h">
+      <Filter>game\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="XUISystem.h">
+      <Filter>game\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="Mint4Game.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDK\Mint3.2\Util\Mint4Null.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDK\Mint3.2\Util\Mint4R3.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XColorPallete.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XCommandLogFrm.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XLoadingPanel.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XLuaLogFrm.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XMintLoader.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XMintScriptDeclarer.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XMsgBoxListener.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XNarrationLabel.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XScreenFader.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentAvailable.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIBalloonTextBox.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIBuffViewer.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIChattingBox.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIControlKey.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUICustomLook.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIEquippedItemSlot.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIFadeBox.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIFieldMap.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIGauge.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIHDRMonitor.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIJournalIndicator.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIKeyMonitor.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIMapViewer.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIMiniMap.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIPaletteSlot.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIPresentationBox.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUITalentSlot.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUITray.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIVideo.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XWeaponBindingMenu.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XWidgetNameDef.h">
+      <Filter>game\ui\mint</Filter>
+    </ClInclude>
+    <ClInclude Include="XChatCmdID.h">
+      <Filter>game\ui\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="XChatCmdLoader.h">
+      <Filter>game\ui\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="XChatCmds.h">
+      <Filter>game\ui\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="XConsoleCmds.h">
+      <Filter>game\ui\console</Filter>
+    </ClInclude>
+    <ClInclude Include="XConsoleCmdsModifier.h">
+      <Filter>game\ui\console</Filter>
+    </ClInclude>
+    <ClInclude Include="XCrossHair.h">
+      <Filter>game\ui\game</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugScreenDialog.h">
+      <Filter>game\ui\game</Filter>
+    </ClInclude>
+    <ClInclude Include="XMiniHpBar.h">
+      <Filter>game\ui\game</Filter>
+    </ClInclude>
+    <ClInclude Include="XOnScreenDialog.h">
+      <Filter>game\ui\game</Filter>
+    </ClInclude>
+    <ClInclude Include="XScreenEffectManager.h">
+      <Filter>game\ui\game</Filter>
+    </ClInclude>
+    <ClInclude Include="XCaptionMgr.h">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClInclude>
+    <ClInclude Include="XCharacterCaption.h">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClInclude>
+    <ClInclude Include="XDamageCaptionDraw.h">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClInclude>
+    <ClInclude Include="XExpCaption.h">
+      <Filter>game\ui\game\Caption</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugCategoryFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugCollisionFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugCombat.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugDashBoard.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugFPSFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugLootFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugMovableFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugNPCLogFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugNPCMonitor.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugObjListFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugRenderGraph.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugSoundFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XHelpFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLogFrm.h">
+      <Filter>game\ui\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XCursor.h">
+      <Filter>game\ui\cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="XCursorSmartReleaser.h">
+      <Filter>game\ui\cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="XCursorSmartShower.h">
+      <Filter>game\ui\cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="XCommandTable.h">
+      <Filter>game\net</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Action.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Channel.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Char.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_ChatChannel.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Comm.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Craft.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Cutscene.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Duel.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Enchant.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_GM.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Guild.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Inn.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Interaction.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Item.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Local.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Loot.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Mail.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Map.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Msg.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_NPCShop.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Palette.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_QPVP.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Quest.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Sensor.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Storage.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Trade.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XPost_Training.h">
+      <Filter>game\net\post</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Action.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_BattleArena.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Char.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_ChatChannel.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Craft.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_CutScene.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Duel.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Enchant.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Faction.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Fatigue.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Field.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_GameStart.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Global.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_GM.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Guild.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Inn.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Interaction.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Item.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Local.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_LoginServer.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Loot.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Mail.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Map.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_MoveServer.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Msg.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Net.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_NPCAction.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_NPCShop.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Palette.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Party.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Quest.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_QuestPVP.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Soul.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Storage.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Talent.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Trade.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandler_Training.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdHandlerGroup.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdParam.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XCmdParam_LoginServer.h">
+      <Filter>game\net\cmdHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="XConnectionManager.h">
+      <Filter>game\net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetClient.h">
+      <Filter>game\net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetDebuger.h">
+      <Filter>game\net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetwork.h">
+      <Filter>game\net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="XRequestCommandFilter.h">
+      <Filter>game\net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="XWhoISRequester.h">
+      <Filter>game\net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="XActionKeyDef.h">
+      <Filter>game\input</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameInput.h">
+      <Filter>game\input</Filter>
+    </ClInclude>
+    <ClInclude Include="XKeyBuffer.h">
+      <Filter>game\input</Filter>
+    </ClInclude>
+    <ClInclude Include="XKeyCodes.h">
+      <Filter>game\input</Filter>
+    </ClInclude>
+    <ClInclude Include="XKeyMapTable.h">
+      <Filter>game\input</Filter>
+    </ClInclude>
+    <ClInclude Include="XVirtualKeyDef.h">
+      <Filter>game\input</Filter>
+    </ClInclude>
+    <ClInclude Include="XAutoSoundChecker.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XRealSound.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XRealSoundLoader.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XSoundField.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XSoundHelper.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XSoundLootItem.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XSoundNonPlayer.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XSoundResMgr.h">
+      <Filter>game\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XCollisionTree.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XFieldChanger.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XFieldInfoBuilder.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XSceneNodeEnvModifier.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XWorld.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XWorldChanger.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XWorldEnv.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XZone.h">
+      <Filter>game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="XCollision.h">
+      <Filter>game\entity\module</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleMessageQueue.h">
+      <Filter>game\entity\module</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleUI.h">
+      <Filter>game\entity\module</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCIcon.h">
+      <Filter>game\entity\module</Filter>
+    </ClInclude>
+    <ClInclude Include="XTargetIndicator.h">
+      <Filter>game\entity\module</Filter>
+    </ClInclude>
+    <ClInclude Include="XActionDie.h">
+      <Filter>game\entity\module\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnimationEventHandler.h">
+      <Filter>game\entity\module\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="XHitFrameFreezer.h">
+      <Filter>game\entity\module\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleAction.h">
+      <Filter>game\entity\module\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionFactorHelper.h">
+      <Filter>game\entity\module\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="XEntityDirectionInterpolator.h">
+      <Filter>game\entity\module\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleEntity.h">
+      <Filter>game\entity\module\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameTransformControllerManager.h">
+      <Filter>game\entity\module\Entity\AnimationController</Filter>
+    </ClInclude>
+    <ClInclude Include="XCharacterSerializer.h">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="XCharacterSerializeStrategy.h">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="XEntityFader.h">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCSerializeStrategy.h">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayerSerializeStrategy.h">
+      <Filter>game\entity\module\Entity\XCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="XArcheryTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XExtraActiveTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XGuardTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XMagicTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XMeleeTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentEffectMgr.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentEvent.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentHelper.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentHitParam.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTarget.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTargetCollisionBox.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTargetGround.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTargetLine.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTargetSticky.h">
+      <Filter>game\entity\module\Talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XModEffector.h">
+      <Filter>game\entity\module\Talent\effector</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleMovable.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableDebugger.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableFactor.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableGoParam.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcessor.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcInterpolation.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcObject.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcObjectChecker.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcTerrain.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcTerrainNPC.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcThrow.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XMovableProcWater.h">
+      <Filter>game\entity\module\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleNetControl.h">
+      <Filter>game\entity\module\Control\NetControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionGesture.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionGrappled.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionGuard.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionHit.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionID.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionNA.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionSit.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionState.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionSwallowed.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetActionTalent.h">
+      <Filter>game\entity\module\Control\NetControl\ActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleNonControl.h">
+      <Filter>game\entity\module\Control\NonColtrol</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCAligner.h">
+      <Filter>game\entity\module\Control\NonColtrol</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCActionDie.h">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCActionHit.h">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCActionID.h">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCActionMove.h">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCActionNA.h">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCActionState.h">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCActionTalent.h">
+      <Filter>game\entity\module\Control\NonColtrol\XNPCActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XBPartWeaponController.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XChallengerQuestExitChecker.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XKeyTransition.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XMapSignAreaChecker.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleMyControl.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyCharacterAlphaMgr.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyHitController.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XPvPAreaChecker.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XRestrictedAreaChecker.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XSpecialActionTransition.h">
+      <Filter>game\entity\module\Control\MyControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XCombo.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionBow.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionChangeChannel.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionChangeState.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionDeactivative.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionDie.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionDieTransChecker.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionDye.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionEnchant.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionFalling.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionGesture.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionGrappled.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionGuard.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionHit.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionHold.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionID.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionIdle.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionJump.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionLootingItem.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionMapObj.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionNormalAttack.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionNPCInteraction.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionQuestInteraction.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionRebirth.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionSit.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionState.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionSwallowed.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionSwitchingWeapon.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionUseItem.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyActionUseTalent.h">
+      <Filter>game\entity\module\Control\MyControl\MyAction</Filter>
+    </ClInclude>
+    <ClInclude Include="XFeedbackInteractor.h">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClInclude>
+    <ClInclude Include="XInteraction.h">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClInclude>
+    <ClInclude Include="XInteractionHelper.h">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClInclude>
+    <ClInclude Include="XInteractor.h">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClInclude>
+    <ClInclude Include="XMouseBase.h">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClInclude>
+    <ClInclude Include="XMouseInteractor.h">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClInclude>
+    <ClInclude Include="XMouseMove.h">
+      <Filter>game\entity\module\Control\MyControl\Interactor</Filter>
+    </ClInclude>
+    <ClInclude Include="XControlCmd.h">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="XDeathController.h">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="XGrappledController.h">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleActorControl.h">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="XSwallowedController.h">
+      <Filter>game\entity\module\Control\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutScenePlayerAligner.h">
+      <Filter>game\entity\module\Control\CutSceneControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleCutSceneControl.h">
+      <Filter>game\entity\module\Control\CutSceneControl</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutScenePlayerActionID.h">
+      <Filter>game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutScenePlayerActionNA.h">
+      <Filter>game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutScenePlayerActionState.h">
+      <Filter>game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutScenePlayerActionTalent.h">
+      <Filter>game\entity\module\Control\CutSceneControl\XCutScenePlayerActionState</Filter>
+    </ClInclude>
+    <ClInclude Include="XModulePost.h">
+      <Filter>game\entity\module\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="XDuelFightChecker.h">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="XHitEffectPosCalculator.h">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleCollision.h">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="XMoveCollision.h">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="XMoveCollisionDebug.h">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="XObjectCollisionDebug.h">
+      <Filter>game\entity\module\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleMotion.h">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionHelper.h">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionIdleMemory.h">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionLogic.h">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionTimeModifier.h">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="XUpperMotionLogic.h">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="XUpperMotionTimeModifier.h">
+      <Filter>game\entity\module\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionTrigger_Checker.h">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionTrigger_Execute.h">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionTrigger_Executor.h">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionTrigger_If.h">
+      <Filter>game\entity\module\Motion\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionEventListener.h">
+      <Filter>game\entity\module\Motion\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionEventListener__NPC_IDLE.h">
+      <Filter>game\entity\module\Motion\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="XCaptionEffect.h">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XChangeNPCColor.h">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XCheckTargetableEffect.h">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XHeadIcon.h">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleEffect.h">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleEffectReserve.h">
+      <Filter>game\entity\module\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XBuffAttribute.h">
+      <Filter>game\entity\module\Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleBuff.h">
+      <Filter>game\entity\module\Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleSound.h">
+      <Filter>game\entity\module\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleBaseData.h">
+      <Filter>game\entity\module\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleNPCData.h">
+      <Filter>game\entity\module\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="XModulePlayerData.h">
+      <Filter>game\entity\module\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleBackgroundWork.h">
+      <Filter>game\entity\module\BackgroundWork</Filter>
+    </ClInclude>
+    <ClInclude Include="XBPartActorManager.h">
+      <Filter>game\entity\module\BPart</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleBParts.h">
+      <Filter>game\entity\module\BPart</Filter>
+    </ClInclude>
+    <ClInclude Include="XEvent.h">
+      <Filter>game\entity\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XEventID.h">
+      <Filter>game\entity\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XModule.h">
+      <Filter>game\entity\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XModuleID.h">
+      <Filter>game\entity\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XMagicArea.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XObject.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XObjectID.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XObjectManager.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XProjectile.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XProjectileController.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XSoulObject.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XSwordTrail.h">
+      <Filter>game\entity\object</Filter>
+    </ClInclude>
+    <ClInclude Include="XActor.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XBPartNonPlayer.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XDuel.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XFeedbackObject.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyPlayer.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XNetPlayer.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XNonPlayer.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayer.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayerFaction.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayerInfo.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayerPVP.h">
+      <Filter>game\entity\object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="XBuffEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XDecalEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectInvoker.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectManager.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectPostEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectTrace.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectWaitActorLoadingComplete.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XHeadEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XHitEffectSelecter.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XInteractionEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XLightEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XMagicAreaEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XNoiseFadeEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCIConEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XPEEdgeMgr.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XProjectileEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XSelfIlluminationEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XSwordTrailEffectController.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentEffectHitCapsule.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentEffectPreLoader.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XWeaponEffect.h">
+      <Filter>game\entity\object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseCameraSceneNode.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseGameCamera.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraControllerGroup.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraGroundTarget.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraHelper.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraInteraction.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraLock.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraManager.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XFreeCamTracer.h">
+      <Filter>game\customscenenode\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraBackViewController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraCutSceneController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraEngineDebugController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraFreeLookController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraGrappledController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraPVPFreeViewController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraReplayBackViewController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XCameraSceneNodeController.h">
+      <Filter>game\customscenenode\camera\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="XAccountInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XCraftableRecipeInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XDialogTextInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XFieldInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XFieldInfoHelper.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameEffectInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XHistory.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XInnInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XInnInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XItem_DroperInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XItem_QuestRewarderInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XItem_RecipeProductInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemRelatedNPCInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemRelatedNPCInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XModelAnimationInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyRecipeInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XQuestInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XRecipeInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XRecipeInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XRecipeNPCInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XRecipeNPCInfoMgr.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XTextureMtInfo.h">
+      <Filter>game\info</Filter>
+    </ClInclude>
+    <ClInclude Include="XConditionHelper.h">
+      <Filter>game\info\condition</Filter>
+    </ClInclude>
+    <ClInclude Include="XConditionInfo.h">
+      <Filter>game\info\condition</Filter>
+    </ClInclude>
+    <ClInclude Include="XConditionsInfo.h">
+      <Filter>game\info\condition</Filter>
+    </ClInclude>
+    <ClInclude Include="XConditionsInfoMgr.h">
+      <Filter>game\info\condition</Filter>
+    </ClInclude>
+    <ClInclude Include="XConditionStringMaker.h">
+      <Filter>game\info\condition</Filter>
+    </ClInclude>
+    <ClInclude Include="XBattleArena.h">
+      <Filter>game\BattleArena</Filter>
+    </ClInclude>
+    <ClInclude Include="XFeedback.h">
+      <Filter>game\Feedback</Filter>
+    </ClInclude>
+    <ClInclude Include="XFeedbackFetcher.h">
+      <Filter>game\Feedback</Filter>
+    </ClInclude>
+    <ClInclude Include="XFeedbackSender.h">
+      <Filter>game\Feedback</Filter>
+    </ClInclude>
+    <ClInclude Include="XFeedbackSystem.h">
+      <Filter>game\Feedback</Filter>
+    </ClInclude>
+    <ClInclude Include="XFactionInfo.h">
+      <Filter>game\faction</Filter>
+    </ClInclude>
+    <ClInclude Include="XFactionInfoMgr.h">
+      <Filter>game\faction</Filter>
+    </ClInclude>
+    <ClInclude Include="XGuild.h">
+      <Filter>game\guild</Filter>
+    </ClInclude>
+    <ClInclude Include="XGuildMember.h">
+      <Filter>game\guild</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyTalent.h">
+      <Filter>game\talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XContainer.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XEquipmentSlot.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemContainer.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemHelper.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemManager.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyGuildStorage.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyInventory.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyLootingItemContainer.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XMyStorage.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XPaletteContainer.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XRepairItemContainer.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XTradeContents.h">
+      <Filter>game\item</Filter>
+    </ClInclude>
+    <ClInclude Include="XParty.h">
+      <Filter>game\party</Filter>
+    </ClInclude>
+    <ClInclude Include="XPlayerQuest.h">
+      <Filter>game\quest</Filter>
+    </ClInclude>
+    <ClInclude Include="XPvPAreaLogic.h">
+      <Filter>game\pvp</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneController.h">
+      <Filter>game\cutscene</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneFieldIntroMgr.h">
+      <Filter>game\cutscene</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneGameEntity.h">
+      <Filter>game\cutscene</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutScenePlayer.h">
+      <Filter>game\cutscene</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneState.h">
+      <Filter>game\cutscene</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneWorldResourceMgr.h">
+      <Filter>game\cutscene</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneContent.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneKeyFrameUpdator.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObject.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectController.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerAnimation.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerBGM.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerCaption.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerDOF.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerEffect.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerEnv.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerFade.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerKeyEvent.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerLetterBox.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerMove.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XCutSceneObjectControllerTalent.h">
+      <Filter>game\cutscene\contents</Filter>
+    </ClInclude>
+    <ClInclude Include="XLocalSensor.h">
+      <Filter>game\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="XQuestSensor.h">
+      <Filter>game\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="XSensor.h">
+      <Filter>game\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="XSensorController.h">
+      <Filter>game\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="XSensorInfo.h">
+      <Filter>game\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="XSensorManager.h">
+      <Filter>game\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="XAuctionMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XChannelMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XGuildMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XPartyMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XSayMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XShoutMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XWhisperBackMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XWhisperMsgHandler.h">
+      <Filter>game\msg\NormalChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnnounceMsgHandler.h">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XFieldMsgHandler.h">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlobalMsgHandler.h">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XNarrationMsgHandler.h">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XShoutFakeMsgHandler.h">
+      <Filter>game\msg\SpecialChat</Filter>
+    </ClInclude>
+    <ClInclude Include="XMsgCommandFacade.h">
+      <Filter>game\msg\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XMsgHandler.h">
+      <Filter>game\msg\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XAdviceMsgHandler.h">
+      <Filter>game\msg\SystemMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="XNoticeMsgHandler.h">
+      <Filter>game\msg\SystemMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="XSystemMsgHandler.h">
+      <Filter>game\msg\SystemMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="XChatChannel.h">
+      <Filter>game\msg\ChatChannel</Filter>
+    </ClInclude>
+    <ClInclude Include="XChatChannelManager.h">
+      <Filter>game\msg\ChatChannel</Filter>
+    </ClInclude>
+    <ClInclude Include="XGuideMsg.h">
+      <Filter>game\msg\GuideMsg</Filter>
+    </ClInclude>
+    <ClInclude Include="XGuideMsgEnum.h">
+      <Filter>game\msg\GuideMsg</Filter>
+    </ClInclude>
+    <ClInclude Include="XMail.h">
+      <Filter>game\mail</Filter>
+    </ClInclude>
+    <ClInclude Include="XMailbox.h">
+      <Filter>game\mail</Filter>
+    </ClInclude>
+    <ClInclude Include="XDuelGestureChecker.h">
+      <Filter>game\duel</Filter>
+    </ClInclude>
+    <ClInclude Include="XWorldLocatorClient.h">
+      <Filter>game\WorldLocator</Filter>
+    </ClInclude>
+    <ClInclude Include="XProfiler.h">
+      <Filter>core\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XScreenDebugger.h">
+      <Filter>core\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="XApplicationConfig.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XArgumentsParser.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseApplication.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XColorTable.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XGameInitializer.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XInputDevice.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XPhysX.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XScript.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XStrCmd.h">
+      <Filter>core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="XCrashReporter.h">
+      <Filter>core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="XHelp.h">
+      <Filter>core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="XInterpolation.h">
+      <Filter>core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="XMath.h">
+      <Filter>core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="XTimer.h">
+      <Filter>core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="XUIDGenerator.h">
+      <Filter>core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="XUtil.h">
+      <Filter>core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="XRenderHelper.h">
+      <Filter>core\render</Filter>
+    </ClInclude>
+    <ClInclude Include="XSceneManager.h">
+      <Filter>core\render</Filter>
+    </ClInclude>
+    <ClInclude Include="XCylinder.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="XActorLoader.h">
+      <Filter>rs3</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexPage.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="XDebugInfoBuilder.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="XSTLUtil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="XSystemInfoUtil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="MockAnimationController.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="MockCharacter.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="MockInteractionEffect.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="MockMesh.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="MockNetClient.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="MockWorld.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseUnitTestHelper.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="XUnitTestUtil.h">
+      <Filter>Test\Mock</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnimationEventValidator.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseValidator.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="XIsAnimationValidator.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemValidator.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCInfoValidator.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="XResourceValidator.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfoValidator.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="XValidateLogger.h">
+      <Filter>Test\Validator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SDK\bandi_video_library\v2.1.1\source\BandiVideoLibrary.h">
+      <Filter>ext</Filter>
+    </ClInclude>
+    <ClInclude Include="XBandiCapturer.h">
+      <Filter>ext</Filter>
+    </ClInclude>
+    <ClInclude Include="XBandiVideoPlayer.h">
+      <Filter>ext</Filter>
+    </ClInclude>
+    <ClInclude Include="XBandiVideoTexture.h">
+      <Filter>ext</Filter>
+    </ClInclude>
+    <ClInclude Include="XAntiHack.h">
+      <Filter>anti-hack</Filter>
+    </ClInclude>
+    <ClInclude Include="XAntiHackModuleGameGuardKor.h">
+      <Filter>anti-hack</Filter>
+    </ClInclude>
+    <ClInclude Include="XCheckSum.h">
+      <Filter>checksum</Filter>
+    </ClInclude>
+    <ClInclude Include="XCheckSumEncrypt.h">
+      <Filter>checksum</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="XAppErrorCollector.h" />
+    <ClInclude Include="XEffectPreLoaderResourceMgr.h" />
+    <ClInclude Include="XYouthSelfRegulation.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="runtime\Data\Interface\game.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\Game_Character.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\Game_Chat.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\Game_Inventory.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\Game_Palette.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\Game_Quest.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\Game_Talent.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\GameMain.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\login.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\LoginMain.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\main.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\sandbox.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+    <Xml Include="runtime\Data\Interface\templete.xml">
+      <Filter>resource\ui\xml</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtime\Data\Interface\Game.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\Game_Character.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\Game_Chat.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\Game_Inventory.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\Game_Palette.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\Game_Quest.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\Game_Talent.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\GameEvent.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\GameGlobal.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\GameHeader.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\Login.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\sandbox.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="runtime\Data\Interface\shGameEvent.lua">
+      <Filter>resource\ui\lua</Filter>
+    </None>
+    <None Include="Doc\Doxyfile">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="Doc\doxygen.css">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram4.cd" />
+    <None Include="CodeCoverages.inc" />
+  </ItemGroup>
+</Project>

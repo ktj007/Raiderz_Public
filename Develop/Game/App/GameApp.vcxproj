@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_duck|Win32">
+      <Configuration>Debug_duck</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_ed|Win32">
+      <Configuration>Debug_ed</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_vld|Win32">
+      <Configuration>Debug_vld</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD|Win32">
+      <Configuration>ReleaseMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_duck|Win32">
+      <Configuration>Release_duck</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_ed|Win32">
+      <Configuration>Release_ed</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_publish|Win32">
+      <Configuration>Release_publish</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnitTest_Debug|Win32">
+      <Configuration>UnitTest_Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnitTest|Win32">
+      <Configuration>UnitTest</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8A6EF9D7-9C75-4BE8-854E-722ADCE51C34}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <LinkIncremental>true</LinkIncremental>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../runtime/runtime</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <OutDir>../Runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>../runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'">
+    <OutDir>../runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest|Win32'">
+    <OutDir>../Runtime\</OutDir>
+    <IntDir>UnitTest_Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
+    <OutDir>../runtime\</OutDir>
+    <IntDir>Debug_vld\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'">
+    <OutDir>../runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'">
+    <OutDir>../Runtime\</OutDir>
+    <IntDir>Release_ed\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <OutDir>../Runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'">
+    <OutDir>../../Runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'">
+    <OutDir>../../Runtime\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MTd_NoException.lib;MPathFinderd.lib;MPhysXd.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollisiond.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../Runtime/Gamed.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt;msvcrt;msvcrtd;msvcprtd;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Gamed.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\..\..\..\..\..\Clients\UnpackedRaiderZ\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_PUBLISH;_DO_NOT_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MT.lib;MPathFinder.lib;MPhysX.lib;MCollision.lib;PhysXCore.lib;PhysXCooking.lib;PhysX.vc8.lib;PhysXLoader.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../Runtime/Runtime/Hope.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalManifestDependencies>adapt.xml;%(AdditionalManifestDependencies)</AdditionalManifestDependencies>
+      <IgnoreSpecificDefaultLibraries>libc;libcp;MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>../Runtime/Runtime/Hope.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <DelayLoadDLLs>PhysXLoader.dll</DelayLoadDLLs>
+      <MapFileName>../Runtime/Runtime/Hope.map</MapFileName>
+      <MapExports>true</MapExports>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)Game.exe" "$(SolutionDir)..\..\..\..\..\..\Clients\UnpackedRaiderZ\Game.exe"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_PUBLISH;_DO_NOT_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MT.lib;MPathFinder.lib;MPhysX.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollision.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../Runtime/Game_publish.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>libc;libcp;MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Game_publish.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_DEBUG_MD;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua51.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;UnitTest++.vsnet2008MDd_NoException.lib;SpeedTreeRT_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../Runtime/Gamed.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/Mint3.2/lib;../../mdk/RealSpace3/lib;../../../sdk/speedtree;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmtd;libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Gamed.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_UNITTEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MTd_NoException.lib;MPathFinderd.lib;MPhysXd.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollisiond.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../Runtime/Game_Td.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt;msvcrt;msvcrtd;msvcprtd;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Gamed.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_UNITTEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MT.lib;MPathFinder.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MPhysX.lib;MCollision.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../Runtime/Game_T.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc;libcp;MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)Game_T.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;VLD_CHECK_LEAK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MTd_NoException.lib;MPathFinderd.lib;MPhysXd.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollisiond.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../Runtime/Gamed.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt;msvcrt;msvcrtd;msvcprtd;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Gamed.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MTd_NoException.lib;MPathFinderd.lib;MPhysXd.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollisiond.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../Runtime/Gamed.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt;msvcrt;msvcrtd;msvcprtd;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Gamed.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_DEBUG_ENGINE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MT.lib;MPathFinder.lib;MPhysX.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollision.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../Runtime/Game_ed.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc;libcp;MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_RELEASE_MD;_WINDOWS;_USRDLL;REALSPACE3_IMPORT;CML2_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MD_NoException.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib</AdditionalDependencies>
+      <OutputFile>../Runtime/Game.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc;libcp;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MTd_NoException.lib;MPathFinderd.lib;MPhysXd.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollisiond.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(OutDir)Gamed.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt;msvcrt;msvcrtd;msvcprtd;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Gamed.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'">
+    <PreBuildEvent>
+      <Command>"../runtime/dev/utils/SVNRevisionGenerator" ../../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../GameCommon;../../mdk/CML2;../../mdk/MCollision;../../mdk/RealSpace3;../../mdk/RealSpace3/Ragdoll;../../mdk/RealInput;../../mdk/MiNet/include;../../CSCommon/include;../../mdk/Mint3.2/Util;../../mdk/Mint3.2/Include;../../mdk/RealSound3;../../../sdk/dx9/Include;../../../sdk/tinyxml/include;../../../sdk/fmodex/inc;../../../sdk/speedtree;../../../sdk/newton;../../mdk/CML2/lua;../../../sdk/UnitTest++/v1.4/src;../../../sdk/pathengine;../../mdk/MPathFinder;../../mdk/MPhysX;../../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>lua5.1.lib;UnitTest++.vsnet2008MT.lib;MPathFinder.lib;MPhysX.lib;PhysXLoader.lib;NxCharacter.lib;NxCooking.lib;MCollision.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Game.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;../../../sdk/dx9/lib;../../../sdk/vld/;../../../sdk/UnitTest++/v1.4/lib;../../mdk/MPathFinder/lib;../../mdk/MPhysX/lib;../../../sdk/PhysX/v2.8.1/SDKs/lib/win32;../../mdk/MCollision/lib;../../mdk/cml2/lib;../../mdk/RealSpace3/Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc;libcp;MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="XGameApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Raiderz.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SVNRevision.h" />
+    <ClInclude Include="version.h" />
+    <ClInclude Include="XGameApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\crl\crl.vcxproj">
+      <Project>{2d063418-4e8d-4689-8394-a80baa738631}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CSCommon\CSCommon.vcxproj">
+      <Project>{7dcc03b9-dd72-4803-aee2-1f2be6ce60c2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\cml2\cml2.vcxproj">
+      <Project>{8d451493-65c2-49c3-adae-acb17e6b0650}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\MCollision\MCollision.vcxproj">
+      <Project>{97861011-05bd-450a-a221-db5f7a2f4b7b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\MiNet\MiNet.vcxproj">
+      <Project>{595010c3-5427-4453-9f44-5adb4edddb28}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\Mint3.2\Mint.vcxproj">
+      <Project>{20b5465d-8790-43fa-a2a2-ee29f3f0f9bc}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\MPathFinder\MPathFinder.vcxproj">
+      <Project>{7ed97bba-e770-4144-b656-c837fb08d1e7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\MPhysX\MPhysX.vcxproj">
+      <Project>{a1019d76-911a-4a80-b780-16f247e2f2ad}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\MPhysX\MPhysX4R3\MPhysX4R3.vcxproj">
+      <Project>{94a262d9-481e-423e-baa8-ac4d3cd8e527}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\MTest\MTest.vcxproj">
+      <Project>{249d9b5b-bc66-4d30-ab85-f936f737d3ca}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\RealInput\RealInput.vcxproj">
+      <Project>{8a4fbcec-ab89-49ef-aa18-d0712d6f4f55}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\RealSound3\RealSound3.vcxproj">
+      <Project>{c49a3dec-c70b-451e-8d7b-f30d93e4e9d2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mdk\RealSpace3\RealSpace3.vcxproj">
+      <Project>{7070fa22-c0d4-40f5-beb7-ec09f3a58a51}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.vcxproj">
+      <Project>{3d5e7a29-8c2b-450e-86d9-22767101a9d6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\GameCommon\GameCommon.vcxproj">
+      <Project>{7820a4c8-b56a-40ed-9b44-86e215a93681}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

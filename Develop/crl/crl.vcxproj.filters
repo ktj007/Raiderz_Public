@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{b9c84598-d31b-4a4c-b96a-916eded39387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libraries">
+      <UniqueIdentifier>{796a3399-a6e9-4d22-9136-7e38e355c0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libraries\options">
+      <UniqueIdentifier>{06e3b147-8e55-4f5b-9fcb-7e372b10703c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libraries\math">
+      <UniqueIdentifier>{7ee54f0b-7f52-4d60-a556-ae13340677f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libraries\util">
+      <UniqueIdentifier>{9f2f3b9f-6c45-43bd-b990-06e69ae8b969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libraries\string">
+      <UniqueIdentifier>{ea890d5c-0163-49b5-941d-6b3570172036}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\crlLib.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AOptions.h">
+      <Filter>libraries\options</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AOptionSet.h">
+      <Filter>libraries\options</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AOptionSetBase.h">
+      <Filter>libraries\options</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AMath.h">
+      <Filter>libraries\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AStlUtil.h">
+      <Filter>libraries\util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AString.h">
+      <Filter>libraries\string</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AOptions.cpp">
+      <Filter>libraries\options</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AOptionSet.cpp">
+      <Filter>libraries\options</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AOptionSetBase.cpp">
+      <Filter>libraries\options</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AMath.cpp">
+      <Filter>libraries\math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AString.cpp">
+      <Filter>libraries\string</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

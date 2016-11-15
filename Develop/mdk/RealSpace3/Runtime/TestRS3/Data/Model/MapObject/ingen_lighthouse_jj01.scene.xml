@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="ingen_lighthouse_jj01" />
+            <PROPERTY>
+                <FILENAME>ingen_lighthouse_jj01.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE>
+                <LIGHT>
+                    <COMMON name="Omni_win_b08">
+                        <POSITION>555.6372070 327.7871094 1313.8359375</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.8823530 0.5607843</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <ATTENUATIONSTART>84.0918732</ATTENUATIONSTART>
+                        <ATTENUATIONEND>145.1724091</ATTENUATIONEND>
+                        <CASTSHADOW />
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_win_b10">
+                        <POSITION>-542.4052734 -274.7871094 1313.8359375</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.8823530 0.5607843</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <ATTENUATIONSTART>84.0918732</ATTENUATIONSTART>
+                        <ATTENUATIONEND>145.1724091</ATTENUATIONEND>
+                        <CASTSHADOW />
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_win_b11">
+                        <POSITION>510.2128906 -318.4736328 2267.6796875</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.8823530 0.5607843</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <ATTENUATIONSTART>84.0918732</ATTENUATIONSTART>
+                        <ATTENUATIONEND>145.1724091</ATTENUATIONEND>
+                        <CASTSHADOW />
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_win_b12">
+                        <POSITION>-496.7861328 336.4882813 2267.6796875</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.8823530 0.5607843</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <ATTENUATIONSTART>84.0918732</ATTENUATIONSTART>
+                        <ATTENUATIONEND>145.1724091</ATTENUATIONEND>
+                        <CASTSHADOW />
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_win_b13">
+                        <POSITION>49.6313477 573.9492188 3201.0605469</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.8823530 0.5607843</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <ATTENUATIONSTART>84.0918732</ATTENUATIONSTART>
+                        <ATTENUATIONEND>145.1724091</ATTENUATIONEND>
+                        <CASTSHADOW />
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_win_b14">
+                        <POSITION>42.9399414 -560.0058594 3209.0458984</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.8823530 0.5607843</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <ATTENUATIONSTART>84.0918732</ATTENUATIONSTART>
+                        <ATTENUATIONEND>145.1724091</ATTENUATIONEND>
+                        <CASTSHADOW />
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_a">
+                        <POSITION>0.0000235 -1251.0042725 4397.4052734</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.7058824 0.5607843</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <ATTENUATIONSTART>333.6429138</ATTENUATIONSTART>
+                        <ATTENUATIONEND>600.1132202</ATTENUATIONEND>
+                        <CASTSHADOW />
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_b">
+                        <POSITION>0.0000235 977.0621338 4532.9394531</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.6274510 0.2941177</COLOR>
+                        <INTENSITY>1.2000000</INTENSITY>
+                        <ATTENUATIONSTART>387.7268677</ATTENUATIONSTART>
+                        <ATTENUATIONEND>762.9041138</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_b01">
+                        <POSITION>846.1605835 488.5310364 4532.9394531</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.6274510 0.2941177</COLOR>
+                        <INTENSITY>1.2000000</INTENSITY>
+                        <ATTENUATIONSTART>387.7268677</ATTENUATIONSTART>
+                        <ATTENUATIONEND>762.9041138</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_b02">
+                        <POSITION>846.1605835 -488.5310974 4532.9394531</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.6274510 0.2941177</COLOR>
+                        <INTENSITY>1.2000000</INTENSITY>
+                        <ATTENUATIONSTART>387.7268677</ATTENUATIONSTART>
+                        <ATTENUATIONEND>762.9041138</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_b03">
+                        <POSITION>-0.0000610 -977.0621338 4532.9394531</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.6274510 0.2941177</COLOR>
+                        <INTENSITY>1.2000000</INTENSITY>
+                        <ATTENUATIONSTART>387.7268677</ATTENUATIONSTART>
+                        <ATTENUATIONEND>762.9041138</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_b04">
+                        <POSITION>-846.1606445 -488.5310059 4532.9394531</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.6274510 0.2941177</COLOR>
+                        <INTENSITY>1.2000000</INTENSITY>
+                        <ATTENUATIONSTART>387.7268677</ATTENUATIONSTART>
+                        <ATTENUATIONEND>762.9041138</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_b05">
+                        <POSITION>-846.1605835 488.5311279 4532.9394531</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.6274510 0.2941177</COLOR>
+                        <INTENSITY>1.2000000</INTENSITY>
+                        <ATTENUATIONSTART>387.7268677</ATTENUATIONSTART>
+                        <ATTENUATIONEND>762.9041138</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <LIGHT>
+                    <COMMON name="Omni_lhouse_c">
+                        <POSITION>0.0000000 -0.0002879 6585.7973633</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 0.6313726 0.4274510</COLOR>
+                        <INTENSITY>3.0000000</INTENSITY>
+                        <ATTENUATIONSTART>431.3461304</ATTENUATIONSTART>
+                        <ATTENUATIONEND>877.3397217</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                        <USERPROPERTYLIST />
+                    </PROPERTY>
+                </LIGHT>
+                <SCENEINSTANCE>
+                    <COMMON name="ingen_streetlight_03.max">
+                        <POSITION>157.644485 -734.320618 452.486938</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                        <UP>0.000000 0.000000 1.000000</UP>
+                        <SCALE>1.000000 1.000000 1.000000</SCALE>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>ingen_streetlight_03.scene.xml</FILENAME>
+                    </PROPERTY>
+                </SCENEINSTANCE>
+            </SCENE>
+        </ACTOR>
+    </SCENE>
+</ROOT>

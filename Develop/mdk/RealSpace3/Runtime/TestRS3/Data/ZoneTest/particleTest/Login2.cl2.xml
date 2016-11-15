@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TABLE size="5">
+    <MATERIAL name="login_meteorite_01_mt_con" id="0" />
+    <MATERIAL name="login_meteorite_02_mt_con" id="1" />
+    <MATERIAL name="login_meteorite_03_si_mt_con" id="2" />
+    <MATERIAL name="login_tile_mt_drt" id="3" />
+    <MATERIAL name="login_rock_mt_con" id="4" />
+</TABLE>

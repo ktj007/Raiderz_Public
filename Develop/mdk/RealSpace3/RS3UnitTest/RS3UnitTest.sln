@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RS3UnitTest", "RS3UnitTest.vcproj", "{BB906C8B-A729-4115-9FFB-31A052C4ECD5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B} = {97861011-05BD-450A-A221-DB5F7A2F4B7B}
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51} = {7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RealSpace3", "..\RealSpace3.vcproj", "{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B} = {97861011-05BD-450A-A221-DB5F7A2F4B7B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cml2", "..\..\cml2\cml2.vcproj", "{8D451493-65C2-49C3-ADAE-ACB17E6B0650}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MCollision", "..\..\MCollision\MCollision.vcproj", "{97861011-05BD-450A-A221-DB5F7A2F4B7B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB906C8B-A729-4115-9FFB-31A052C4ECD5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BB906C8B-A729-4115-9FFB-31A052C4ECD5}.Debug|Win32.Build.0 = Debug|Win32
+		{BB906C8B-A729-4115-9FFB-31A052C4ECD5}.Release|Win32.ActiveCfg = Release|Win32
+		{BB906C8B-A729-4115-9FFB-31A052C4ECD5}.Release|Win32.Build.0 = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.Build.0 = Debug|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.ActiveCfg = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.Build.0 = Release|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.Build.0 = Debug|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.ActiveCfg = Release|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.Build.0 = Release|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Debug|Win32.Build.0 = Debug|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release|Win32.ActiveCfg = Release|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

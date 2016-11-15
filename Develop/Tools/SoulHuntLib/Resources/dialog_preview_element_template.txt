@@ -1,0 +1,10 @@
+<table class="dialog_table">
+<tr>
+<td>
+<div class="dialog_text">
+	<p>[[DIALOG_TEXT]]</p>
+</div>
+</td>
+</tr>
+</table>
+<br/>

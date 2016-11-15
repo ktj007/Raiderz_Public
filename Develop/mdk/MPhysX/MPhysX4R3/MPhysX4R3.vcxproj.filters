@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="TransformController">
+      <UniqueIdentifier>{e4a75464-ee5c-46da-8cf8-46f8fed94889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RPhysX">
+      <UniqueIdentifier>{6032d592-df02-4b59-93c5-944f303ac76f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MPxAniLookUpTC.cpp">
+      <Filter>TransformController</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxAttacherTC.cpp">
+      <Filter>TransformController</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxDynamicActorNodeTC.cpp">
+      <Filter>TransformController</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxDynamicCollisionTC.cpp">
+      <Filter>TransformController</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxDynamicObjectEntity.cpp">
+      <Filter>TransformController</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxRagDollTC.cpp">
+      <Filter>TransformController</Filter>
+    </ClCompile>
+    <ClCompile Include="RPhysXActorController.cpp">
+      <Filter>RPhysX</Filter>
+    </ClCompile>
+    <ClCompile Include="RPhysXDynamicActorNodeBuilder.cpp">
+      <Filter>RPhysX</Filter>
+    </ClCompile>
+    <ClCompile Include="RPhysXRagDollBuilder.cpp">
+      <Filter>RPhysX</Filter>
+    </ClCompile>
+    <ClCompile Include="RPhysXStream.cpp">
+      <Filter>RPhysX</Filter>
+    </ClCompile>
+    <ClCompile Include="MPhysX4R3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MPxAniLookUpTC.h">
+      <Filter>TransformController</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxAttacherTC.h">
+      <Filter>TransformController</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxDynamicActorNodeTC.h">
+      <Filter>TransformController</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxDynamicCollisionTC.h">
+      <Filter>TransformController</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxDynamicObjectEntity.h">
+      <Filter>TransformController</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxRagDollTC.h">
+      <Filter>TransformController</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxTransformController.h">
+      <Filter>TransformController</Filter>
+    </ClInclude>
+    <ClInclude Include="RPhysXActorController.h">
+      <Filter>RPhysX</Filter>
+    </ClInclude>
+    <ClInclude Include="RPhysXActorControllerBuilder.h">
+      <Filter>RPhysX</Filter>
+    </ClInclude>
+    <ClInclude Include="RPhysXDynamicActorNodeBuilder.h">
+      <Filter>RPhysX</Filter>
+    </ClInclude>
+    <ClInclude Include="RPhysXRagDollBuilder.h">
+      <Filter>RPhysX</Filter>
+    </ClInclude>
+    <ClInclude Include="RPhysXStream.h">
+      <Filter>RPhysX</Filter>
+    </ClInclude>
+    <ClInclude Include="MPhysX4R3.h" />
+  </ItemGroup>
+</Project>

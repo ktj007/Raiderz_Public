@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genie", "Genie.csproj", "{9B9EC5B6-0E35-4EA9-820D-23C921144393}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B9EC5B6-0E35-4EA9-820D-23C921144393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B9EC5B6-0E35-4EA9-820D-23C921144393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B9EC5B6-0E35-4EA9-820D-23C921144393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B9EC5B6-0E35-4EA9-820D-23C921144393}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

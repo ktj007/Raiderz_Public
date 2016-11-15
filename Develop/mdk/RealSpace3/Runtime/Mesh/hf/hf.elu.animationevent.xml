@@ -1,0 +1,1061 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <Animation name="1hp_run_b">
+        <EVENT name="sh_custom" frame="1993" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="0" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hp_run_f">
+        <EVENT name="sh_custom" frame="1278" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2905" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hp_run_l">
+        <EVENT name="sh_custom" frame="1025" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2643" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hp_run_r">
+        <EVENT name="sh_custom" frame="1038" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2667" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk1">
+        <EVENT name="sh_walk" frame="1343" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="1618" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2069" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1413" param1="swing1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk1_r">
+        <EVENT name="sh_custom" frame="2441" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk1f">
+        <EVENT name="sh_sound" frame="2000" param1="1hs_swing4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2828" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3480" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2470" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="786" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="2193" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="4960" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk1f_r">
+        <EVENT name="sh_custom" frame="2399" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk2">
+        <EVENT name="sh_sword_trail_start" frame="1931" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2791" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2150" param1="swing2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk3">
+        <EVENT name="sh_custom" frame="2329" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2277" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2656" param1="pc_vox_8" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="2260" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2923" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk3_r">
+        <EVENT name="sh_custom" frame="3458" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_die">
+        <EVENT name="sh_sound" frame="5977" param1="as_fall_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="7697" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="825" param1="pc_vox_10" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1758" param1="1hs_drop" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_dodge_b">
+        <EVENT name="sh_custom" frame="1781" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3039" param1="foot_back" param2="" param3="" unconditional="true" />
+        <EVENT name="sh_sound" frame="2260" param1="pc_vox_8" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_dodge_f">
+        <EVENT name="sh_custom" frame="1803" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2739" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_dodge_l">
+        <EVENT name="sh_custom" frame="1632" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2355" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hs_dodge_r">
+        <EVENT name="sh_custom" frame="1803" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2767" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hs_end">
+        <EVENT name="sh_sound" frame="1455" param1="swd_sheath_in1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_ends">
+        <EVENT name="sh_sound" frame="1455" param1="swd_sheath_in1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_guard_kb">
+        <EVENT name="sh_sound" frame="0" param1="as_fall_4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="335" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_guards_kb">
+        <EVENT name="sh_sound" frame="600" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="0" param1="as_fall_4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4776" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_BT1_1">
+        <EVENT name="sh_sound" frame="329" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_BT2_1">
+        <EVENT name="sh_sound" frame="333" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_DT">
+        <EVENT name="sh_sound" frame="504" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_KB2">
+        <EVENT name="sh_sound" frame="1039" param1="pc_vox_4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_KB3">
+        <EVENT name="sh_custom" frame="3316" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_KD1">
+        <EVENT name="sh_sound" frame="279" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5342" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_KD2">
+        <EVENT name="sh_sound" frame="2301" param1="pc_vox_5" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_KD3">
+        <EVENT name="sh_custom" frame="7388" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5459" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_ST">
+        <EVENT name="sh_sound" frame="209" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="554" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3639" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="6399" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hs_MF_STS">
+        <EVENT name="sh_sound" frame="471" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3210" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="6399" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hs_MF_TU1">
+        <EVENT name="sh_sound" frame="0" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_TU2">
+        <EVENT name="sh_sound" frame="831" param1="as_fall_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4214" param1="as_fall_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="6144" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="831" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_MF_UP">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4606" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="6719" param1="foot_attack" param2="" param3="" unconditional="true" />
+        <EVENT name="sh_sound" frame="2597" param1="pc_vox_4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_run_b">
+        <EVENT name="sh_custom" frame="629" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2790" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_run_f">
+        <EVENT name="sh_custom" frame="1427" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3247" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_run_l">
+        <EVENT name="sh_custom" frame="1475" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3310" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_run_r">
+        <EVENT name="sh_custom" frame="1343" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3225" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_start">
+        <EVENT name="sh_sound" frame="1404" param1="swd_sheath_out1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4196" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2569" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_starts">
+        <EVENT name="sh_sound" frame="1611" param1="swd_sheath_out1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4176" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2569" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active101">
+        <EVENT name="sh_sword_trail_start" frame="1501" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2079" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="3813" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="5092" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2254" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4324" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1190" param1="pc_shield" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4188" param1="swing2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active102">
+        <EVENT name="sh_sound" frame="2365" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5804" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="7211" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="8372" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4774" param1="pc_shield" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="6355" param1="pc_shield" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active103">
+        <EVENT name="sh_camera" frame="5549" param1="dummy_camera_s" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2226" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4971" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4500" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="8310" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4401" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active104">
+        <EVENT name="sh_sword_trail_start" frame="3195" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="5412" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="713" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4433" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="9919" param1="foot_back" param2="" param3="" unconditional="true" />
+        <EVENT name="sh_sound" frame="348" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4077" param1="swing1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active105">
+        <EVENT name="sh_sword_trail_start" frame="2629" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="6352" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3800" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5421" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="12304" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2308" param1="pc_tornado" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2404" param1="pc_vox_9" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5368" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active108">
+        <EVENT name="sh_sword_trail_start" frame="4804" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="6926" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="12393" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="13106" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="812" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4712" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="12363" param1="swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="11300" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="12895" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="11610" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="472" param1="2hd_draw" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active109">
+        <EVENT name="sh_sword_trail_start" frame="10871" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="12159" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="8338" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="12104" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3065" param1="2hd_draw" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="10500" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3521" param1="2hd_bang" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="11543" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3170" param1="pc_vox_9" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_active110">
+        <EVENT name="sh_sword_trail_start" frame="1399" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2578" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="4296" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="5973" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="7273" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="8912" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="15366" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="17124" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2434" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5685" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="9301" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="10675" param1="pc_kick" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="15456" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="20480" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1860" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4833" param1="swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="8015" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="14969" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5355" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="14917" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk1">
+        <EVENT name="sh_sword_trail_start" frame="1288" param1="" param2="7" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2769" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1159" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3175" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4000" param1="pc_vox_8" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk1_r">
+        <EVENT name="sh_custom" frame="3205" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="100" param1="2hd_draw" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk1b_r">
+        <EVENT name="sh_custom" frame="3149" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="0" param1="2hd_draw" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk1f">
+        <EVENT name="sh_sword_trail_start" frame="2563" param1="" param2="7" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3968" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1267" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3666" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2682" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3318" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk1f_r">
+        <EVENT name="sh_custom" frame="2892" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk2">
+        <EVENT name="sh_sword_trail_start" frame="1499" param1="" param2="7" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3744" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1578" param1="swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2800" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2123" param1="pc_vox_9" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk2_r">
+        <EVENT name="sh_custom" frame="3199" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="2hd_atk3">
+        <EVENT name="sh_sword_trail_start" frame="2820" param1="" param2="9" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="4396" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2225" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3368" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3199" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk3_r">
+        <EVENT name="sh_custom" frame="5599" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="2hd_die">
+        <EVENT name="sh_sound" frame="433" param1="pc_vox_10" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3543" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5751" param1="as_fall_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="7485" param1="as_fall_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="6644" param1="2hd_drop" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_dodge_b">
+        <EVENT name="sh_custom" frame="1897" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3039" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_dodge_f">
+        <EVENT name="sh_custom" frame="1768" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2762" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_dodge_l">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1763" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_dodge_r">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1798" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2789" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_end">
+        <EVENT name="sh_walk" frame="836" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2719" param1="swd_sheath_in2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_BT1_1">
+        <EVENT name="sh_sound" frame="482" param1="pc_vox_4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_BT2_1">
+        <EVENT name="sh_sound" frame="957" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_KB1">
+        <EVENT name="sh_sound" frame="109" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_KB2">
+        <EVENT name="sh_sound" frame="1027" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_KB3">
+        <EVENT name="sh_custom" frame="3394" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_KD1">
+        <EVENT name="sh_sound" frame="288" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5363" param1="as_fall_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5083" param1="as_fall_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_KD2">
+        <EVENT name="sh_sound" frame="0" param1="pc_vox_5" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_KD3">
+        <EVENT name="sh_custom" frame="5616" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="9208" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2024" param1="pc_vox_8" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_TU2">
+        <EVENT name="sh_sound" frame="873" param1="as_fall_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4246" param1="as_fall_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5475" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="873" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_MF_UP">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5119" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2329" param1="pc_vox_9" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_run_b">
+        <EVENT name="sh_custom" frame="0" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2942" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_run_f">
+        <EVENT name="sh_custom" frame="1655" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3949" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_run_l">
+        <EVENT name="sh_custom" frame="1817" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4200" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_run_r">
+        <EVENT name="sh_walk" frame="1645" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_walk" frame="4070" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_start">
+        <EVENT name="sh_sound" frame="2116" param1="swd_sheath_out2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1544" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_die">
+        <EVENT name="sh_sound" frame="3195" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="8021" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_dodge_b">
+        <EVENT name="sh_sound" frame="1456" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4392" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5151" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_dodge_f">
+        <EVENT name="sh_sound" frame="1891" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3386" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5069" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_dodge_l">
+        <EVENT name="sh_sound" frame="1732" param1="as_fall_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3594" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4247" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_dodge_r">
+        <EVENT name="sh_sound" frame="1262" param1="as_fall_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3182" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5238" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_jump_land">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_down" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="none_jump_up">
+        <EVENT name="sh_custom" frame="459" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_MF_BT1_1">
+        <EVENT name="sh_custom" frame="988" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="239" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_MF_BT2_1">
+        <EVENT name="sh_custom" frame="4799" param1="foot_back" param2="" param3="" unconditional="true" />
+        <EVENT name="sh_sound" frame="125" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_MF_KB3">
+        <EVENT name="sh_custom" frame="1996" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3679" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="none_MF_KD1">
+        <EVENT name="sh_sound" frame="3442" param1="as_fall_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="566" param1="pc_vox_2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="223" param1="as_fall_4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_MF_KD3">
+        <EVENT name="sh_custom" frame="5741" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="9522" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="none_MF_TU2">
+        <EVENT name="sh_sound" frame="1129" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_MF_UP">
+        <EVENT name="sh_custom" frame="584" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4825" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_run_b">
+        <EVENT name="sh_custom" frame="100" param1="foot_back" param2="" param3="" unconditional="true" />
+        <EVENT name="sh_custom" frame="2315" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="none_run_f">
+        <EVENT name="sh_custom" frame="1510" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3394" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_run_l">
+        <EVENT name="sh_custom" frame="1151" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3115" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_run_r">
+        <EVENT name="sh_custom" frame="1234" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3075" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_walk">
+        <EVENT name="sh_custom" frame="1447" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4070" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_die">
+        <EVENT name="sh_sound" frame="9873" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="12000" param1="as_fall_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3725" param1="sta_drop" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_dodge_b">
+        <EVENT name="sh_custom" frame="1781" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2916" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_dodge_f">
+        <EVENT name="sh_custom" frame="1788" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2767" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_dodge_l">
+        <EVENT name="sh_custom" frame="1634" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2585" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_dodge_r">
+        <EVENT name="sh_custom" frame="1776" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2742" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_end">
+        <EVENT name="sh_custom" frame="3722" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="768" param1="swd_sheath_in4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_guard_kb">
+        <EVENT name="sh_sound" frame="218" param1="as_fall_4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="6294" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_MF_BT1_1">
+        <EVENT name="sh_custom" frame="4651" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_MF_KB3">
+        <EVENT name="sh_custom" frame="3679" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="sta_MF_KD1">
+        <EVENT name="sh_sound" frame="5434" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="6500" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_MF_KD3">
+        <EVENT name="sh_custom" frame="5318" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="7459" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="9599" param1="foot_left" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="sta_MF_ST">
+        <EVENT name="sh_custom" frame="3535" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5851" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_MF_TU1">
+        <EVENT name="sh_sound" frame="4008" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="7082" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_MF_TU2">
+        <EVENT name="sh_sound" frame="774" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4361" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_MF_UP">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4974" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_run_b">
+        <EVENT name="sh_custom" frame="1519" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3643" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_run_f">
+        <EVENT name="sh_custom" frame="1533" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3586" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_run_l">
+        <EVENT name="sh_custom" frame="1502" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3582" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_run_r">
+        <EVENT name="sh_custom" frame="1502" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3589" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_start">
+        <EVENT name="sh_custom" frame="2973" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4799" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2500" param1="swd_sheath_out4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk_start">
+        <EVENT name="sh_sword_trail_start" frame="3108" param1="" param2="4" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="4706" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1597" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3221" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2200" param1="swing3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk_start">
+        <EVENT name="sh_sword_trail_start" frame="2380" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3389" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="627" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2857" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3259" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2376" param1="swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2568" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_active1">
+        <EVENT name="sh_effect" frame="3538" param1="ef_dirt_m" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1156" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4520" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4486" param1="swing4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4486" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="3485" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="5100" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_active2">
+        <EVENT name="sh_effect" frame="2636" param1="ef_dirt_m" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4229" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5072" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4444" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3340" param1="pc_shield" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_dodge_f_r">
+        <EVENT name="sh_custom" frame="1065" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2559" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="2hd_dodge_l_r">
+        <EVENT name="sh_custom" frame="1299" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2108" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_dodge_r_r">
+        <EVENT name="sh_custom" frame="1571" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2439" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_dodge_b_r">
+        <EVENT name="sh_custom" frame="1370" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2559" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hs_active5">
+        <EVENT name="sh_custom" frame="1713" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2444" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2543" param1="pc_shield" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2697" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk_start_r">
+        <EVENT name="sh_custom" frame="1349" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_active3">
+        <EVENT name="sh_sound" frame="2293" param1="pc_kick" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2338" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk4_r">
+        <EVENT name="sh_custom" frame="1301" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk5">
+        <EVENT name="sh_custom" frame="503" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2119" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1500" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2101" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="1924" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2846" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk5_r">
+        <EVENT name="sh_custom" frame="1693" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk4">
+        <EVENT name="sh_sound" frame="2455" param1="1hd_swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2280" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2271" param1="swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2449" param1="pc_vox_9" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="2127" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2834" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_active7">
+        <EVENT name="sh_custom" frame="2749" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5402" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4307" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1840" param1="pc_shield" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4627" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2145" param1="pc_vox_9" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="4265" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="5706" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atksp">
+        <EVENT name="sh_sword_trail_start" frame="1548" param1="" param2="5" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2600" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1622" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4382" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1538" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1889" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk1b">
+        <EVENT name="sh_custom" frame="2408" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1863" param1="pc_vox_4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk1b_r">
+        <EVENT name="sh_custom" frame="4110" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_dodge_b_r">
+        <EVENT name="sh_custom" frame="1679" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_rotate">
+        <EVENT name="sh_custom" frame="373" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1861" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_rotate">
+        <EVENT name="sh_custom" frame="637" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1817" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_dodge_f_r">
+        <EVENT name="sh_custom" frame="989" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2559" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hs_dodge_l_r">
+        <EVENT name="sh_custom" frame="1328" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2161" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_dodge_r_r">
+        <EVENT name="sh_custom" frame="1491" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2422" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hp_rotate">
+        <EVENT name="sh_custom" frame="539" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1600" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_rotate">
+        <EVENT name="sh_custom" frame="451" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1722" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_rotate">
+        <EVENT name="sh_custom" frame="696" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1712" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_atk_start_r">
+        <EVENT name="sh_custom" frame="2620" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_active4">
+        <EVENT name="sh_custom" frame="1010" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3616" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2218" param1="swing4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1010" param1="pc_vox_9" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3000" param1="pc_vox_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="1929" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3402" param1="" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_jump_land">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_jump_down">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_jump_land">
+        <EVENT name="sh_custom" frame="0" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_atk1b">
+        <EVENT name="sh_sound" frame="1500" param1="2hd_swing1b" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hs_warcry_fire">
+        <EVENT name="sh_sound" frame="1000" param1="pc_vox_6" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_rage_fire">
+        <EVENT name="sh_custom" frame="1976" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2002" param1="pc_vox_6" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="2hd_rage_idle">
+        <EVENT name="sh_sound" frame="0" param1="pc_vox_8" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_swim_b">
+        <EVENT name="sh_sound" frame="0" param1="pc_swim_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_swim_f">
+        <EVENT name="sh_sound" frame="1192" param1="pc_swim_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_swim_l">
+        <EVENT name="sh_sound" frame="0" param1="pc_swim_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_swim_r">
+        <EVENT name="sh_sound" frame="0" param1="pc_swim_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_sit_rise">
+        <EVENT name="sh_custom" frame="4524" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="7199" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="2hd_MF_DT">
+        <EVENT name="sh_sound" frame="246" param1="pc_vox_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="89" param1="as_fall_4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2207" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk2_r">
+        <EVENT name="sh_custom" frame="3869" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk3">
+        <EVENT name="sh_sword_trail_start" frame="2094" param1="" param2="2" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3877" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4528" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5141" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5000" param1="pc_punch" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk3_r">
+        <EVENT name="sh_custom" frame="3716" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk1">
+        <EVENT name="sh_sword_trail_start" frame="1482" param1="" param2="2" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2947" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1821" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2556" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk1_r">
+        <EVENT name="sh_custom" frame="4162" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk2">
+        <EVENT name="sh_custom" frame="3567" param1="swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3852" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk1f">
+        <EVENT name="sh_sword_trail_start" frame="1516" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3052" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2005" param1="sta_swing1f" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2248" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk1b">
+        <EVENT name="sh_sword_trail_start" frame="1677" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2746" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1808" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2368" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_atk1b_r">
+        <EVENT name="sh_custom" frame="2858" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_run_l">
+        <EVENT name="sh_custom" frame="1544" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3539" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_run_r">
+        <EVENT name="sh_custom" frame="1462" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3360" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_start">
+        <EVENT name="sh_custom" frame="4322" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2000" param1="swd_sheath_out3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_starts">
+        <EVENT name="sh_custom" frame="4263" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1843" param1="swd_sheath_out3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_active1">
+        <EVENT name="sh_sword_trail_start" frame="3485" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="5100" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4942" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5264" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_active2">
+        <EVENT name="sh_custom" frame="4294" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4987" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3362" param1="pc_whoosh_2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_active3">
+        <EVENT name="sh_sound" frame="2209" param1="pc_kick" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_active4">
+        <EVENT name="sh_sword_trail_start" frame="1929" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3402" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1187" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2000" param1="swing3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_active5">
+        <EVENT name="sh_custom" frame="1500" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2100" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2513" param1="pc_punch" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_active7">
+        <EVENT name="sh_sword_trail_start" frame="4265" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="5706" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="4399" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2250" param1="pc_punch" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2609" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5100" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="9021" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk1">
+        <EVENT name="sh_custom" frame="1938" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="1487" param1="" param2="2" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2236" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1312" param1="swing1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk1_r">
+        <EVENT name="sh_custom" frame="3999" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hb_atk1b">
+        <EVENT name="sh_custom" frame="1888" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2447" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk1b_r">
+        <EVENT name="sh_custom" frame="4169" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk1f">
+        <EVENT name="sh_custom" frame="1272" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3003" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="2824" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3497" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="2146" param1="1hb_swing1f" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk1f_r">
+        <EVENT name="sh_custom" frame="3679" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk2">
+        <EVENT name="sh_sound" frame="1958" param1="1hd_swing2" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="1907" param1="" param2="2" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2673" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1513" param1="swing1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk2_r">
+        <EVENT name="sh_custom" frame="2775" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk3">
+        <EVENT name="sh_custom" frame="2165" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="2261" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2769" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1100" param1="swing2" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk3_r">
+        <EVENT name="sh_custom" frame="3059" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk4">
+        <EVENT name="sh_custom" frame="2105" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="2170" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3022" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2272" param1="swing1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk4_r">
+        <EVENT name="sh_custom" frame="1350" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk5">
+        <EVENT name="sh_custom" frame="314" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2556" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="2768" param1="" param2="3" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3650" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2200" param1="swing3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk5_r">
+        <EVENT name="sh_custom" frame="2879" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk_start">
+        <EVENT name="sh_sword_trail_start" frame="2725" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="3635" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2552" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="633" param1="swd_sheath_out3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_atk_start_r">
+        <EVENT name="sh_custom" frame="3546" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_die">
+        <EVENT name="sh_sound" frame="5402" param1="as_fall_3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1550" param1="1hb_drop" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_dodge_b">
+        <EVENT name="sh_custom" frame="724" param1="foot_jump_up" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1643" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2855" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_dodge_b_r">
+        <EVENT name="sh_custom" frame="1558" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_dodge_f">
+        <EVENT name="sh_custom" frame="1803" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2728" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_dodge_f_r">
+        <EVENT name="sh_custom" frame="2559" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hb_dodge_l">
+        <EVENT name="sh_custom" frame="1615" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2541" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_dodge_l_r">
+        <EVENT name="sh_custom" frame="1317" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2177" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_dodge_r">
+        <EVENT name="sh_custom" frame="1868" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2643" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_dodge_r_r">
+        <EVENT name="sh_custom" frame="1478" param1="foot_left" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2436" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_end">
+        <EVENT name="sh_sound" frame="184" param1="swd_sheath_in3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1027" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_ends">
+        <EVENT name="sh_custom" frame="1141" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="137" param1="swd_sheath_in3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_guard_kb">
+        <EVENT name="sh_sound" frame="443" param1="as_fall_4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3887" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_jump_down">
+        <EVENT name="sh_custom" frame="7999" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_jump_land">
+        <EVENT name="sh_custom" frame="1759" param1="foot_jump_down" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="1hb_MF_KB3">
+        <EVENT name="sh_custom" frame="2120" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3444" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_MF_KD1">
+        <EVENT name="sh_sound" frame="5410" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_MF_KD3">
+        <EVENT name="sh_custom" frame="5564" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="7664" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_MF_ST">
+        <EVENT name="sh_custom" frame="3336" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="6035" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_MF_STS">
+        <EVENT name="sh_custom" frame="3517" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="5032" param1="foot_right" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_MF_TU2">
+        <EVENT name="sh_sound" frame="626" param1="as_fall_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4089" param1="as_fall_3" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_MF_UP">
+        <EVENT name="sh_custom" frame="4683" param1="foot_jump_down" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_rotate">
+        <EVENT name="sh_custom" frame="737" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1561" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_run_b">
+        <EVENT name="sh_custom" frame="0" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2199" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_run_f">
+        <EVENT name="sh_custom" frame="1556" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3325" param1="foot_left" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="none_swim_idle">
+        <EVENT name="sh_sound" frame="0" param1="pc_swim_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_active501">
+        <EVENT name="sh_sword_trail_start" frame="1765" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2779" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="9385" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="10171" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2000" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="9000" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="10098" param1="foot_attack" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_dodge_b_r">
+        <EVENT name="sh_custom" frame="1299" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2559" param1="foot_back" param2="" param3="" unconditional="true" />
+    </Animation>
+    <Animation name="sta_dodge_f_r">
+        <EVENT name="sh_custom" frame="981" param1="foot_right" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2559" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_dodge_l_r">
+        <EVENT name="sh_custom" frame="1318" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2250" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_dodge_r_r">
+        <EVENT name="sh_custom" frame="1449" param1="foot_back" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="2393" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_active501">
+        <EVENT name="sh_sword_trail_start" frame="1723" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="2272" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="3811" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="4410" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_start" frame="9920" param1="" param2="1" param3="" unconditional="false" />
+        <EVENT name="sh_sword_trail_end" frame="10654" param1="" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="1718" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3966" param1="swing1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="10274" param1="swing3" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="10081" param1="foot_attack" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="10074" param1="dirt_m" param2="" param3="Bip01 L Foot" unconditional="false" />
+        <EVENT name="sh_custom" frame="10439" param1="dirt_m" param2="" param3="Bip01 R Foot" unconditional="false" />
+        <EVENT name="sh_custom" frame="11321" param1="dirt_m" param2="" param3="Bip01 R Foot" unconditional="false" />
+        <EVENT name="sh_custom" frame="14911" param1="dirt_m" param2="" param3="Bip01 L Foot" unconditional="false" />
+    </Animation>
+    <Animation name="1hb_guards_kb">
+        <EVENT name="sh_sound" frame="446" param1="as_fall_4" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3887" param1="foot_back" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="sta_active502">
+        <EVENT name="sh_sound" frame="29051" param1="pc_punch" param2="" param3="" unconditional="false" />
+    </Animation>
+</XML>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TABLE size="8">
+    <MATERIAL name="staticmesh_0_Teress_drum_k01_mt_wod" id="0" />
+    <MATERIAL name="staticmesh_1_ingen_rguild_birdge_gh01_mt_wod" id="1" />
+    <MATERIAL name="staticmesh_2_ingen_rguild_bar_gh01_mt_wod" id="2" />
+    <MATERIAL name="staticmesh_3_ingen_rguild_bulleye_gh01_mt_pnt" id="3" />
+    <MATERIAL name="staticmesh_5_ingen_rguild_roof_gh01_mt_wod " id="4" />
+    <MATERIAL name="staticmesh_6_ingen_rguild_bar_gh01_mt_wod " id="5" />
+    <MATERIAL name="staticmesh_7_ingen_rguild_floor_gh01_mt_wod " id="6" />
+    <MATERIAL name="staticmesh_8_at_ingen_rguild_alpha_gh01_mask_2s_mt_wod " id="7" />
+</TABLE>

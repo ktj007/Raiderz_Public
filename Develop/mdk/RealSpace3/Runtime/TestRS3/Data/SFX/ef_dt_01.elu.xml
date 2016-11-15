@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="02 - Default">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>Particle.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>Particle.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+            <TWOSIDED />
+            <USEOPACITY />
+        </MATERIAL>
+        <MATERIAL name="ef_dmg_01">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ef_dmg_01.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ef_dmg_01.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+            <TWOSIDED />
+            <USEOPACITY />
+        </MATERIAL>
+        <MATERIAL name="03 - Default">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>dracorich_breath01.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="1920">0.000 1.900</TEX_OFFSET>
+                    <TEX_SCALE time="0">1.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <ADDITIVE />
+            <TWOSIDED />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="Sphere01" property="noshade" />
+        <USERPROPERTY node="Sphere01" property="vertexcolor" />
+        <USERPROPERTY node="Object01" property="noshade" />
+        <USERPROPERTY node="Object01" property="vertexcolor" />
+    </USERPROPERTYLIST>
+    <SCENE>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy01</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy02</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy03</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy04</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy05</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy06</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy07</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy08</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy09</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy10</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy11</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy12</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy13</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy14</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy15</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ef_dt_trail.effect.xml</FILENAME>
+                <PARENT>Dummy16</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>em_dt.effect.xml</FILENAME>
+                <PARENT>Dummy17</PARENT>
+            </PROPERTY>
+        </EFFECT>
+    </SCENE>
+    <COLLISION />
+</XML>

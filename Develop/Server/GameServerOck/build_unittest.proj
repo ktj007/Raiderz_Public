@@ -1,0 +1,34 @@
+<Project DefaultTargets="BuildForCI" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <PropertyGroup>
+      <BuildConditionForCI>Build</BuildConditionForCI>
+   </PropertyGroup>
+
+  <Choose>
+    <When Condition=" '$(CCNetBuildCondition)'=='IfModificationExists' ">
+      <PropertyGroup>
+        <BuildConditionForCI>Build</BuildConditionForCI>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <BuildConditionForCI>Rebuild</BuildConditionForCI>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+   
+  <Target Name="BuildForCI">
+    <Message Text="$(BuildConditionForCI) 조건에서 빌드를 시도합니다. " Importance="high"/>
+    <MSBuild Projects="GameServer_unittest.sln" Targets="$(BuildConditionForCI)" Properties="Configuration=Release" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+  <Target Name="BuildDBUnitTest">
+    <MSBuild Projects="GameServer_unittest.sln" Targets="$(BuildConditionForCI)" Properties="Configuration=UnitTest_DB" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+  <Target Name="ReleaseBuild">
+    <MSBuild Projects="GameServer_unittest.sln" Targets="Build" Properties="Configuration=Release" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+  <Target Name="ReleaseRebuild">
+    <MSBuild Projects="GameServer_unittest.sln" Targets="Rebuild" Properties="Configuration=Release" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+
+</Project>

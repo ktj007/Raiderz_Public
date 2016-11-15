@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TABLE size="17">
+    <MATERIAL name="staticmesh_0_Rengot_rock_k01_mt_con" id="0" />
+    <MATERIAL name="staticmesh_1_Teress_drum_k01_mt_wod" id="1" />
+    <MATERIAL name="staticmesh_2_Rengot_rock_k01_mt_con" id="2" />
+    <MATERIAL name="staticmesh_3_at_teress_grass_g01_mask_2s_mt_pnt " id="3" />
+    <MATERIAL name="staticmesh_4_ingen_rguild_birdge_gh01_mt_wod" id="4" />
+    <MATERIAL name="staticmesh_5_ingen_rguild_bar_gh01_mt_wod" id="5" />
+    <MATERIAL name="staticmesh_11_ingen_rguild_birdge_gh01_mt_wod" id="6" />
+    <MATERIAL name="staticmesh_12_ingen_rguild_bulleye_gh01_mt_pnt" id="7" />
+    <MATERIAL name="staticmesh_13_at_ingen_rguild_alpha_gh01_mask_2s_mt_wod" id="8" />
+    <MATERIAL name="staticmesh_14_ingen_rguild_roof_gh01_mt_wod " id="9" />
+    <MATERIAL name="staticmesh_15_ingen_rguild_bar_gh01_mt_wod " id="10" />
+    <MATERIAL name="staticmesh_16_ingen_rguild_floor_gh01_mt_wod " id="11" />
+    <MATERIAL name="staticmesh_18_ingen_rguild_roof_gh01_mt_wod " id="12" />
+    <MATERIAL name="staticmesh_19_ingen_rguild_bar_gh01_mt_wod " id="13" />
+    <MATERIAL name="staticmesh_20_ingen_rguild_floor_gh01_mt_wod " id="14" />
+    <MATERIAL name="staticmesh_0_" id="15" />
+    <MATERIAL name="staticmesh_1_Teress_drum_k01" id="16" />
+</TABLE>

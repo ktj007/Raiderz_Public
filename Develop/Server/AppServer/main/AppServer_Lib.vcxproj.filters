@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{e687a546-6d87-4299-b1d3-7e6978b2b1c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic">
+      <UniqueIdentifier>{fde7042a-f748-4222-8fd0-182e3f6e639c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Log">
+      <UniqueIdentifier>{06384bf5-a67a-42d9-9324-944fd4d7afab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\DB">
+      <UniqueIdentifier>{e496b345-8341-411f-8083-2782f3b31200}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Login">
+      <UniqueIdentifier>{d86daa43-79ed-4170-805b-1e023bb38a2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\LogicChecker">
+      <UniqueIdentifier>{41050187-12e6-4171-9b16-bcc48fe9d63b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\LogicChecker\Checkers">
+      <UniqueIdentifier>{974aa436-d855-4e1e-a93f-741b03f372db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Player">
+      <UniqueIdentifier>{34dd808b-38d1-45b5-bbd8-7b9b334031de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Field">
+      <UniqueIdentifier>{a6777894-bb7b-41d8-9a15-a9cadb53f3c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\PMS">
+      <UniqueIdentifier>{7ba77ab0-a48c-4d4d-8dfe-0256dc5a262f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameServer">
+      <UniqueIdentifier>{cbad76e9-71e7-4fa5-981b-94782f640b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{9d5769fb-fdb8-49e3-91d5-91b6402ce99a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net\Command">
+      <UniqueIdentifier>{5662eff8-d328-422d-b3fc-14324727a461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net\Server">
+      <UniqueIdentifier>{f8766de8-041c-4b4e-9610-9c3f1e6db9f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net\Client">
+      <UniqueIdentifier>{bfab2ad0-5f84-4e54-bb40-18ff0cdf982d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chatting">
+      <UniqueIdentifier>{2863c213-768b-48e6-bd25-1f56bd9391b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chatting\Command">
+      <UniqueIdentifier>{765531cf-7016-4c0b-ab38-5b25c206c4fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chatting\Channel">
+      <UniqueIdentifier>{2abf07ed-5373-4191-b1ab-e8254043749a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chatting\ChatModule">
+      <UniqueIdentifier>{5a69cf21-8854-44cb-a8d1-906b696a88f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chatting\ChatMessage">
+      <UniqueIdentifier>{3e44b372-2870-45dd-a899-6e9c2d5f2427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mail">
+      <UniqueIdentifier>{d868a3c8-ebfd-4f71-8288-741164a45be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mail\System">
+      <UniqueIdentifier>{34708b0e-b1e1-4235-8969-e769646d5ed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mail\Command">
+      <UniqueIdentifier>{6624c0ee-c4a8-43e5-ac6a-c99bdb32acb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TradeMarket">
+      <UniqueIdentifier>{631c70a5-0d0e-4f26-b492-7f9d26172dd2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PBaseApplication.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PConfig.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PGlobal.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PMemory.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PServableChecker.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PServer.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PServerManagers.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PServerStatusUpdater.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PServerSystems.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PStrings.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PSystem.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\PCmdHandler_Log.cpp">
+      <Filter>logic\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\PLog.cpp">
+      <Filter>logic\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\PLog_Char.cpp">
+      <Filter>logic\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\PLog_ItemAcquire.cpp">
+      <Filter>logic\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\PLog_ItemLost.cpp">
+      <Filter>logic\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\PLog_ItemTrade.cpp">
+      <Filter>logic\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\PLog_Quest.cpp">
+      <Filter>logic\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="PDBManager.cpp">
+      <Filter>logic\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="PDBTaskSQL.cpp">
+      <Filter>logic\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="PLoginLogic.cpp">
+      <Filter>logic\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="PCheckerFactory.cpp">
+      <Filter>logic\LogicChecker</Filter>
+    </ClCompile>
+    <ClCompile Include="PCheckRunner.cpp">
+      <Filter>logic\LogicChecker</Filter>
+    </ClCompile>
+    <ClCompile Include="PCommandVersionChecker.cpp">
+      <Filter>logic\LogicChecker\Checkers</Filter>
+    </ClCompile>
+    <ClCompile Include="PWorldIDChecker.cpp">
+      <Filter>logic\LogicChecker\Checkers</Filter>
+    </ClCompile>
+    <ClCompile Include="PProxyPlayerListener.cpp">
+      <Filter>logic\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PFieldInfoManager.cpp">
+      <Filter>logic\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="PPMSSystem.cpp">
+      <Filter>logic\PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="PGameServerObject.cpp">
+      <Filter>GameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="PGameServerObjectManager.cpp">
+      <Filter>GameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="PCommandCenter.cpp">
+      <Filter>net\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="PCommandLogger.cpp">
+      <Filter>net\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="PCommandTable.cpp">
+      <Filter>net\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdHandler_Master.cpp">
+      <Filter>net\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdHandlerGroup.cpp">
+      <Filter>net\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="PLoginRouter.cpp">
+      <Filter>net\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="PNetServer.cpp">
+      <Filter>net\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="PClientConnectionKeeper.cpp">
+      <Filter>net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdHandler_Master_Global.cpp">
+      <Filter>net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="PMasterNetClient.cpp">
+      <Filter>net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="PMasterServerFacade.cpp">
+      <Filter>net\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="PChattingLogic.cpp">
+      <Filter>Chatting</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdHandler_Chat.cpp">
+      <Filter>Chatting\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdRouter_Chat.cpp">
+      <Filter>Chatting\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatChannel.cpp">
+      <Filter>Chatting\Channel</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatChannelFactory.cpp">
+      <Filter>Chatting\Channel</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatChannelManager.cpp">
+      <Filter>Chatting\Channel</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatPlayer.cpp">
+      <Filter>Chatting\Channel</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatModule_EnterChannel.cpp">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatModule_EnterPrivateChannel.cpp">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatModule_LeaveChannel.cpp">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatModule_LeavePartyChannel.cpp">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatModule_LeavePrivateChannel.cpp">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClCompile>
+    <ClCompile Include="PChatModules_PrivateChannel.cpp">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClCompile>
+    <ClCompile Include="PAnnounceMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PAuctionMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PChannelMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PFieldMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PGlobalMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PGuildMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PMsgCommandFacade.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PNoticeMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PPartyMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PWhisperMsgHandler.cpp">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="PBounceMail.cpp">
+      <Filter>Mail\System</Filter>
+    </ClCompile>
+    <ClCompile Include="PPostOfficeSystem.cpp">
+      <Filter>Mail\System</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdHandler_Mail.cpp">
+      <Filter>Mail\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdRouter_Mail.cpp">
+      <Filter>Mail\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="PCmdHandler_TradeMarket.cpp">
+      <Filter>TradeMarket</Filter>
+    </ClCompile>
+    <ClCompile Include="PTradeMarketService.cpp">
+      <Filter>TradeMarket</Filter>
+    </ClCompile>
+    <ClCompile Include="PTradeMarketServiceConsumer.cpp">
+      <Filter>TradeMarket</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PBaseApplication.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PConfig.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PDef.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PGlobal.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PMemory.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PServableChecker.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PServer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PServerInfo.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PServerManagers.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PServerStatusUpdater.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PServerSystems.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PStrings.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PSystem.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\PCmdHandler_Log.h">
+      <Filter>logic\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\PLog.h">
+      <Filter>logic\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\PLog_Char.h">
+      <Filter>logic\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\PLog_ItemAcquire.h">
+      <Filter>logic\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\PLog_ItemLost.h">
+      <Filter>logic\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\PLog_ItemTrade.h">
+      <Filter>logic\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\PLog_Quest.h">
+      <Filter>logic\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="PDBManager.h">
+      <Filter>logic\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="PDBTaskSQL.h">
+      <Filter>logic\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="PLoginLogic.h">
+      <Filter>logic\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="PCheckerFactory.h">
+      <Filter>logic\LogicChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="PCheckRunner.h">
+      <Filter>logic\LogicChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="PLogicChecker.h">
+      <Filter>logic\LogicChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="PCommandVersionChecker.h">
+      <Filter>logic\LogicChecker\Checkers</Filter>
+    </ClInclude>
+    <ClInclude Include="PWorldIDChecker.h">
+      <Filter>logic\LogicChecker\Checkers</Filter>
+    </ClInclude>
+    <ClInclude Include="PProxyPlayerListener.h">
+      <Filter>logic\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PFieldInfoManager.h">
+      <Filter>logic\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="PPMSSystem.h">
+      <Filter>logic\PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="PGameServerObject.h">
+      <Filter>GameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="PGameServerObjectManager.h">
+      <Filter>GameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="PCommandCenter.h">
+      <Filter>net\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="PCommandLogger.h">
+      <Filter>net\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="PCommandTable.h">
+      <Filter>net\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdHandler_Master.h">
+      <Filter>net\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdHandlerGroup.h">
+      <Filter>net\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="PLoginRouter.h">
+      <Filter>net\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="PNetServer.h">
+      <Filter>net\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="PClientConnectionKeeper.h">
+      <Filter>net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdHandler_Master_Global.h">
+      <Filter>net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="PMasterNetClient.h">
+      <Filter>net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="PMasterServerFacade.h">
+      <Filter>net\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="PChattingLogic.h">
+      <Filter>Chatting</Filter>
+    </ClInclude>
+    <ClInclude Include="PDef_Chatting.h">
+      <Filter>Chatting</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdHandler_Chat.h">
+      <Filter>Chatting\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdRouter_Chat.h">
+      <Filter>Chatting\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatChannel.h">
+      <Filter>Chatting\Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatChannelFactory.h">
+      <Filter>Chatting\Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatChannelManager.h">
+      <Filter>Chatting\Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatPlayer.h">
+      <Filter>Chatting\Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatModule_EnterChannel.h">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatModule_EnterPrivateChannel.h">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatModule_LeaveChannel.h">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatModule_LeavePartyChannel.h">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatModule_LeavePrivateChannel.h">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatModuleBase.h">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClInclude>
+    <ClInclude Include="PChatModules_PrivateChannel.h">
+      <Filter>Chatting\ChatModule</Filter>
+    </ClInclude>
+    <ClInclude Include="PAnnounceMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PAuctionMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PChannelMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PFieldMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PGlobalMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PGuildMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PMsgCommandFacade.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PNoticeMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PPartyMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PWhisperMsgHandler.h">
+      <Filter>Chatting\ChatMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="PBounceMail.h">
+      <Filter>Mail\System</Filter>
+    </ClInclude>
+    <ClInclude Include="PPostOfficeSystem.h">
+      <Filter>Mail\System</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdHandler_Mail.h">
+      <Filter>Mail\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdRouter_Mail.h">
+      <Filter>Mail\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="PCmdHandler_TradeMarket.h">
+      <Filter>TradeMarket</Filter>
+    </ClInclude>
+    <ClInclude Include="PTradeMarketService.h">
+      <Filter>TradeMarket</Filter>
+    </ClInclude>
+    <ClInclude Include="PTradeMarketServiceConsumer.h">
+      <Filter>TradeMarket</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

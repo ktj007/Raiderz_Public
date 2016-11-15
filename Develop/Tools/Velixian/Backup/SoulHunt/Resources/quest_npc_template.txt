@@ -1,0 +1,3 @@
+<table class="content_table">
+	<tr class="grayed"><td>[[NPC_NAME]] (<a href="javascript:window.external.Navigate('NPC', '[[NPC_ID]]')">[[NPC_ID]]</a>) , [[QUEST_TYPE]]</td></tr>
+</table>

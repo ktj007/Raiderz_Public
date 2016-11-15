@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>.</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style type="text/css">
+			body { background-color: #fff; color: #303030; padding: 5px; margin: 0; font-family: "돋움"; font-size: 12px; line-height: 1.5em; }
+			h1 { font-size: 16px; font-weight: bold; color: #0072bc; width: 100%; border-bottom: 2px solid #0072bc; }
+			h2 { font-size: 12px; font-weight: bold; border-bottom: 1px dotted #0072bc; color: #0072bc; width: 100%; }
+			table.content_table { margin: 12px 0; border: 2px solid #808080; width: 100%; }
+			table.content_table td { padding: 5px; }
+			table.content_table .grayed { background-color: #f0f0f0; }
+			table.content_table th { background-color: #f0f0f0; }
+			div.error { margin: 12px auto; background-color: red; width: 95%; color: white; padding: 5px; border: 2px solid black; }
+			a { color: #0072bc; text-decoration: underline; }
+			a:hover { color: blue; text-decoration: underline; background-color: yellow; }
+			.gray { color: gray; }
+			.gray a { color: gray; text-decoration: none; border-bottom: 1px dotted gray; }
+			.gray a:hover { color: blue; text-decoration: none; border-bottom: 1px dotted gray; background-color: white; }
+			.ml2em { margin-left: 2em; }
+			q { font-style: italic; }
+			div.content { margin: 12px auto; border 2px solid #808080; width: 95% padding: 5px; }
+			span.warning { color: red; font-weight: bold; }
+			
+			table.dialog_table { margin: 0; border: 0px ;width: 440px; padding: 0px; background-color: black; }
+			table.dialog_table td { padding: 0px; }
+			div.dialog_npc_name { margin-left: 0px; font-weight: bold; font-size: 20px; font-family: "맑은 고딕"; line-height: 1.8em; background-color: black; width: 100%; color: white; padding: 1px; border: 0px solid black; }
+			div.dialog_select { margin-left: 4px; font-weight: bold; font-size: 15px; font-family: "맑은 고딕"; line-height: 1.8em; width: 98%; color: #B48C50; padding: 3px; }
+			div.dialog_text { margin-left: 4px; font-weight: bold; font-size: 15px; font-family: "맑은 고딕"; line-height: 1.8em; background-color: black; width: 98%; color: #EEEEEE; padding: 3px; border: 2px solid black; }
+			
+			table.quest_table { margin: 0; border: 0px ;width: 370px; padding: 0px; background-color: #DCC9A7; }
+			table.quest_table td { padding: 0px; }
+			div.quest_title { margin-left: 0px; font-weight: bold; font-size: 20px; font-family: "맑은 고딕"; line-height: 1.8em; background-color: #DCC9A7; width: 100%; color: white; padding: 1px; border: 0px solid black; }
+			div.quest_text { margin-left: 8px; font-weight: bold; font-size: 14px; font-family: "맑은 고딕"; line-height: 1.8em; background-color: #DCC9A7; width: 92%; color: #414141; padding: 3px; border: 0px solid black; }
+			div.quest_select { margin-left: 8px; font-weight: bold; font-size: 14px; font-family: "맑은 고딕"; line-height: 1.8em; width: 92%; color: #B48C50; padding: 3px; }
+
+		</style>
+	</head>
+	<body>
+		[[CONTENT_BODY]]
+	</body>
+</html>

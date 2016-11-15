@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="resource">
+      <UniqueIdentifier>{c80d23bb-5688-4406-84f0-f9762fb4f853}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="command_app">
+      <UniqueIdentifier>{f3512f0e-a024-4b78-8097-235e9ac99040}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MasterServer.ico">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MasterServer.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ZCmdHandler_App.h">
+      <Filter>command_app</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ZApplication.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ZCmdHandler_App.cpp">
+      <Filter>command_app</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="ZApplication.cpp" />
+  </ItemGroup>
+</Project>

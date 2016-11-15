@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY />
+    <SCENE>
+        <STATICMESH>
+            <COMMON name="TestPortal">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>TestPortal.rs</FILENAME>
+            </PROPERTY>
+        </STATICMESH>
+        <STATICMESH>
+            <COMMON name="login">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>login.rs</FILENAME>
+            </PROPERTY>
+        </STATICMESH>
+        <RTERRAIN>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY version="1.2">
+                <MAP_WIDTH type="int">
+                    <int>128</int>
+                </MAP_WIDTH>
+                <MAP_HEIGHT type="int">
+                    <int>128</int>
+                </MAP_HEIGHT>
+                <MAP_SIZE type="vec3">
+                    <vec3>20000.000000 20000.000000 0.000000</vec3>
+                </MAP_SIZE>
+                <MAP_NAME>Login_dis.dds</MAP_NAME>
+                <LIGHTMAP index="0" number="2">Login.zone_light0.dds</LIGHTMAP>
+                <LIGHTMAP index="1" number="2">Login.zone_light0.dds</LIGHTMAP>
+                <GRASS>Login.zone_grass.grs</GRASS>
+                <LAYER type="array" size="5">
+                    <LAYERINFO index="0">
+                        <ALPHAMAP>Login_mask0.dds</ALPHAMAP>
+                        <TILEMAP type="specular">MtEda_stone_g03.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="1">
+                        <ALPHAMAP>Login_mask1.dds</ALPHAMAP>
+                        <TILEMAP type="specular">Cemetery_ground_k06.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="2">
+                        <ALPHAMAP>Login_mask2.dds</ALPHAMAP>
+                        <TILEMAP type="specular">MtEda_stone_g04.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="3">
+                        <ALPHAMAP>Login_mask3.dds</ALPHAMAP>
+                        <TILEMAP type="specular">MtEda_stone_g02.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="4">
+                        <ALPHAMAP>Login_mask4.dds</ALPHAMAP>
+                        <TILEMAP type="specular">Cemetery_ground_k03.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                </LAYER>
+            </PROPERTY>
+        </RTERRAIN>
+        <DIRLIGHT>
+            <COMMON name="TerrainLightMap0">
+                <POSITION>-1.000000 -1.000000 1.500000</POSITION>
+                <DIRECTION>0.485071 0.485071 -0.727607</DIRECTION>
+                <UP>0.514496 0.514496 0.685994</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <ENV />
+            </PROPERTY>
+        </DIRLIGHT>
+        <WATERPLANE>
+            <COMMON name="login_water_p_01.elu">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <MESHFILE>login_water_p_01.elu</MESHFILE>
+                <DEPTHLIMIT>1150.000</DEPTHLIMIT>
+                <BUMPUVSCALE>750.000000 8600.000000 250.000000 3950.000000</BUMPUVSCALE>
+                <BUMPUVMOVE>-0.016000 -0.050000 -0.002000 -0.044000 -0.050000 0.016000 0.003000 0.028000</BUMPUVMOVE>
+                <BUMPADJUST>4.500</BUMPADJUST>
+                <BUMPWEIGHT>0.110000 0.110000 0.140000 0.340000</BUMPWEIGHT>
+                <BUMPTEX1>WaterBumps1.tga</BUMPTEX1>
+                <BUMPTEX2>WaterBumps2.tga</BUMPTEX2>
+                <CUSTOMFOG>false</CUSTOMFOG>
+                <FOGNEAR>0.000</FOGNEAR>
+                <FOGFAR>0.000</FOGFAR>
+                <FOGCOLOR>0.000000 0.000000 0.000000</FOGCOLOR>
+                <WATERCOLOR>0.015686 0.094118 0.141176</WATERCOLOR>
+                <RGBHALFLIFE>1220.000000 2980.000000 7060.000000</RGBHALFLIFE>
+                <FRESNELCONSTANT>0.210</FRESNELCONSTANT>
+                <REFLECTADJUST>1.000</REFLECTADJUST>
+                <PORTALS>
+                    <PORTAL>
+                        <POSITION>10306.949219 4870.378906 -65.000000</POSITION>
+                        <POSITION>15306.949219 4870.378906 -65.000000</POSITION>
+                        <POSITION>15306.949219 12870.378906 -65.000000</POSITION>
+                        <POSITION>10306.949219 12870.378906 -65.000000</POSITION>
+                    </PORTAL>
+                </PORTALS>
+            </PROPERTY>
+        </WATERPLANE>
+        <ACTOR>
+            <COMMON name="login_elu_001">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>login_elu.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_018">
+                <POSITION>15309.440430 6192.732422 128.160400</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.704607 26.704607 26.704607</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_025">
+                <POSITION>12827.506836 8258.992188 471.901428</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.704607 26.704607 26.704607</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_026">
+                <POSITION>13367.971680 10983.031250 12.633667</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.704607 26.704607 26.704607</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_027">
+                <POSITION>9055.092773 8383.367188 1771.611938</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_028">
+                <POSITION>15892.903320 9298.265625 26.035522</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>25.380053 25.380053 25.380053</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_007">
+                <POSITION>15303.416992 6558.408203 96.746826</POSITION>
+                <DIRECTION>-0.342020 0.939693 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>25.403633 25.403633 25.403633</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_014">
+                <POSITION>16789.703125 8737.679688 43.030212</POSITION>
+                <DIRECTION>-0.798635 -0.601815 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441069</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_015">
+                <POSITION>16847.781250 9585.296875 53.163757</POSITION>
+                <DIRECTION>-0.798635 -0.601815 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441067</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_016">
+                <POSITION>14627.116211 9213.898438 -14.093140</POSITION>
+                <DIRECTION>-0.798635 -0.601815 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441065</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_017">
+                <POSITION>13118.354492 7842.216797 444.299377</POSITION>
+                <DIRECTION>0.104529 -0.994522 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_018">
+                <POSITION>11852.639648 9939.914063 487.463684</POSITION>
+                <DIRECTION>0.104529 -0.994522 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_019">
+                <POSITION>10971.366211 7350.087891 438.794739</POSITION>
+                <DIRECTION>0.104529 -0.994522 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_020">
+                <POSITION>10002.659180 6432.966797 472.250061</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_021">
+                <POSITION>12993.264648 6849.353516 23.556274</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_022">
+                <POSITION>13745.647461 7160.712891 -43.121948</POSITION>
+                <DIRECTION>-0.034900 0.999391 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_023">
+                <POSITION>8991.612305 8911.179688 1785.349976</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_024">
+                <POSITION>13178.561523 8793.242188 449.449768</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_025">
+                <POSITION>14538.416992 8838.078125 -67.732300</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>22.292234 22.292234 22.292215</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_026">
+                <POSITION>15723.420898 11290.669922 29.441040</POSITION>
+                <DIRECTION>0.390731 0.920505 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>24.139299 24.139299 24.139271</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_027">
+                <POSITION>14271.131836 9652.289063 26.914917</POSITION>
+                <DIRECTION>-0.956305 0.292371 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>24.139299 24.139299 24.139271</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_028">
+                <POSITION>13577.788086 10484.156250 -4.806763</POSITION>
+                <DIRECTION>-0.956305 0.292371 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>24.139299 24.139299 24.139271</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_CommonOlive_RT_009">
+                <POSITION>8191.549805 10487.937500 1785.348511</POSITION>
+                <DIRECTION>0.882948 -0.469472 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>34.339935 34.339935 34.339935</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_CommonOlive_RT.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_CommonOlive_RT_010">
+                <POSITION>14410.471680 13323.115234 854.416077</POSITION>
+                <DIRECTION>0.997564 -0.069757 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>34.339939 34.339939 34.339935</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_CommonOlive_RT.spt</FILENAME>
+            </PROPERTY>
+        </TREE>
+    </SCENE>
+</ROOT>

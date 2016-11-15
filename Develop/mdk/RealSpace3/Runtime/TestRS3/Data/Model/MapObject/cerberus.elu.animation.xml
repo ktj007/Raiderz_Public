@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <AddAnimation name="idle" filename="cerberus_idle.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="walk" filename="cerberus_walk.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="run" filename="cerberus_run.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="backjump" filename="cerberus_backjump.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="jump_1" filename="cerberus_jump_1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="jump_2" filename="cerberus_jump_2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="roar1" filename="cerberus_roar1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="roar2" filename="cerberus_roar2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_2" filename="cerberus_atk_2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_1" filename="cerberus_atk_1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_3" filename="cerberus_atk_3.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_d" filename="cerberus_atk_d.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_cast" filename="cerberus_spell_cast.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="spell_fire3" filename="cerberus_spell_fire3.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_fire2_l" filename="cerberus_spell_fire2_l.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_fire2_r" filename="cerberus_spell_fire2_r.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_fire" filename="cerberus_spell_fire.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_mode" filename="cerberus_spell_mode.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="die" filename="cerberus_die.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_BT1" filename="cerberus_mf_bt1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_fire2_c" filename="cerberus_spell_fire2_c.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KD2" filename="cerberus_mf_kd2.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_KD3" filename="cerberus_mf_kd3.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_BT2" filename="cerberus_mf_bt2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KD1" filename="cerberus_mf_kd1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_bite" filename="cerberus_atk_bite.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_bite_fail" filename="cerberus_atk_bite_fail.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_bite2" filename="cerberus_atk_bite2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="turn_r" filename="cerberus_turn_r.elu.ani" motion_loop_type="lastframe" speed="1.500000" />
+    <AddAnimation name="turn_l" filename="cerberus_turn_l.elu.ani" motion_loop_type="lastframe" speed="1.500000" />
+    <AddAnimation name="break" filename="cerberus_break.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="knockdown" filename="cerberus_knockdown.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+</XML>

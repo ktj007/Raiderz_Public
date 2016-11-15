@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY />
+    <SCENE>
+
+        <RTERRAIN>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY version="1.2">
+                <MAP_WIDTH type="int">
+                    <int>128</int>
+                </MAP_WIDTH>
+                <MAP_HEIGHT type="int">
+                    <int>128</int>
+                </MAP_HEIGHT>
+                <MAP_SIZE type="vec3">
+                    <vec3>20000.000000 20000.000000 0.000000</vec3>
+                </MAP_SIZE>
+                <MAP_NAME>Login_dis.dds</MAP_NAME>
+				  <BASEMAP_NAME>Login_baked.bmp</BASEMAP_NAME>
+                <LIGHTMAP index="0" number="1">Login_light0.dds</LIGHTMAP>
+                <GRASS>Login_grass.grs</GRASS>
+                <LAYER type="array" size="5">
+                    <LAYERINFO index="0">
+                        <ALPHAMAP>Login_mask0.dds</ALPHAMAP>
+                        <TILEMAP type="specular">MtEda_stone_g03.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="1">
+                        <ALPHAMAP>Login_mask1.dds</ALPHAMAP>
+                        <TILEMAP type="specular">Cemetery_ground_k09.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="2">
+                        <ALPHAMAP>Login_mask2.dds</ALPHAMAP>
+                        <TILEMAP type="specular">MtEda_stone_g04.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="3">
+                        <ALPHAMAP>Login_mask3.dds</ALPHAMAP>
+                        <TILEMAP type="specular">MtEda_stone_g02.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="4">
+                        <ALPHAMAP>Login_mask4.dds</ALPHAMAP>
+                        <TILEMAP type="specular">Cemetery_ground_k03.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                </LAYER>
+            </PROPERTY>
+        </RTERRAIN>
+        <DIRLIGHT>
+            <COMMON name="TerrainLightMap0">
+                <POSITION>2.500000 -1.000000 2.000000</POSITION>
+                <DIRECTION>-0.745356 0.298142 -0.596285</DIRECTION>
+                <UP>-0.553637 0.221455 0.802773</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <ENV />
+                <SHADOWLUMINOSITY>0.350</SHADOWLUMINOSITY>
+                <AMBIENTBOOST>0.000000 0.000000 0.000000</AMBIENTBOOST>
+            </PROPERTY>
+        </DIRLIGHT>
+        <WATERPLANE>
+            <COMMON name="login_water_p_01.elu">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <MESHFILE>login_water_p_01.elu</MESHFILE>
+                <DEPTHLIMIT>260.000</DEPTHLIMIT>
+                <BUMPUVSCALE>750.000000 4250.000000 250.000000 3950.000000</BUMPUVSCALE>
+                <BUMPUVMOVE>-0.040000 -0.050000 -0.033000 -0.044000 -0.033000 -0.031000 -0.026000 -0.014000</BUMPUVMOVE>
+                <BUMPADJUST>0.400</BUMPADJUST>
+                <BUMPWEIGHT>0.110000 0.110000 0.140000 0.340000</BUMPWEIGHT>
+                <BUMPTEX1>WaterBumps1.tga</BUMPTEX1>
+                <BUMPTEX2>WaterBumps2.tga</BUMPTEX2>
+                <CUSTOMFOG>false</CUSTOMFOG>
+                <FOGNEAR>0.000</FOGNEAR>
+                <FOGFAR>0.000</FOGFAR>
+                <FOGCOLOR>0.000000 0.000000 0.000000</FOGCOLOR>
+                <WATERCOLOR>1.000000 1.000000 1.000000</WATERCOLOR>
+                <RGBHALFLIFE>1140.000000 2980.000000 7060.000000</RGBHALFLIFE>
+                <FRESNELCONSTANT>0.200</FRESNELCONSTANT>
+                <REFLECTADJUST>1.000</REFLECTADJUST>
+                <PORTALS>
+                    <PORTAL>
+                        <POSITION>10306.949219 4870.378906 -65.000000</POSITION>
+                        <POSITION>15306.949219 4870.378906 -65.000000</POSITION>
+                        <POSITION>15306.949219 12870.378906 -65.000000</POSITION>
+                        <POSITION>10306.949219 12870.378906 -65.000000</POSITION>
+                    </PORTAL>
+                </PORTALS>
+            </PROPERTY>
+        </WATERPLANE>
+		<EFFECTINSTANCE>
+			<COMMON>
+				<POSITION>15394.411133 7135.804688 400.948199</POSITION>
+				<DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+				<UP>0.000000 0.000000 1.000000</UP>
+				<SCALE>1.000000 1.000000 1.000000</SCALE>
+			</COMMON>
+			<PROPERTY>
+				<FILENAME>ef_slash_dmg1</FILENAME>
+				<AUTOSTART />
+			</PROPERTY>
+			<SCENE />
+		</EFFECTINSTANCE>
+        <ACTOR>
+            <COMMON name="hm_kid">
+                <POSITION>15139.576172 6978.922852 -15.496646</POSITION>
+                <DIRECTION>-0.559193 0.829038 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>hm_kid.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="goblin_Mage">
+                <POSITION>15258.020508 7060.955566 -14.492211</POSITION>
+                <DIRECTION>-0.559193 0.829038 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>goblin_Mage.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="ghost_knight">
+                <POSITION>15394.411133 7135.804688 -11.948199</POSITION>
+                <DIRECTION>-0.559193 0.829038 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ghost_knight.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="spider02">
+                <POSITION>15512.589844 7208.416504 -6.507367</POSITION>
+                <DIRECTION>-0.559193 0.829038 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>spider02.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="porcupine">
+                <POSITION>15637.877930 7279.039063 -1.232554</POSITION>
+                <DIRECTION>-0.559193 0.829038 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>porcupine.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="ingen_waterfall.max">
+                <POSITION>11118.076172 12336.573242 -322.334106</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ingen_waterfall.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_017">
+                <POSITION>15219.178711 6277.083984 81.756653</POSITION>
+                <DIRECTION>-0.970296 -0.241922 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>35.030170 35.030170 35.030167</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.846</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_018">
+                <POSITION>15316.412109 6691.216797 9.080688</POSITION>
+                <DIRECTION>-0.438371 0.898794 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000004 33.000004 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.848</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_023">
+                <POSITION>14881.526367 8184.115234 -18.238403</POSITION>
+                <DIRECTION>-0.438371 -0.898794 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>28.373247 28.373247 28.373236</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.849</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_024">
+                <POSITION>14648.291992 8840.445313 -43.055054</POSITION>
+                <DIRECTION>-0.891007 0.453990 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>35.030174 35.030174 35.030167</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.937</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_025">
+                <POSITION>14745.526367 9254.578125 3.320435</POSITION>
+                <DIRECTION>-0.438371 0.898794 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000004 33.000004 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>1.000</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_026">
+                <POSITION>13029.374023 7771.802734 433.059631</POSITION>
+                <DIRECTION>-0.707107 0.707107 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>28.373247 28.373247 28.373236</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.898</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_027">
+                <POSITION>12875.206055 8323.646484 471.948303</POSITION>
+                <DIRECTION>-0.707107 0.707107 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>35.030170 35.030170 35.030167</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.939</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_028">
+                <POSITION>13251.870117 8451.367188 415.990540</POSITION>
+                <DIRECTION>0.544639 0.838671 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000008 33.000008 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.889</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_029">
+                <POSITION>13255.135742 11034.429688 1.380493</POSITION>
+                <DIRECTION>-0.190809 -0.981627 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>35.030170 35.030170 35.030167</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.814</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_030">
+                <POSITION>13626.424805 11470.826172 29.392456</POSITION>
+                <DIRECTION>-0.190809 -0.981627 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>28.373251 28.373251 28.373236</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.829</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_031">
+                <POSITION>12916.643555 11419.529297 7.931763</POSITION>
+                <DIRECTION>-0.999848 -0.017453 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000004 33.000004 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.742</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_032">
+                <POSITION>9837.190430 6413.677734 490.823792</POSITION>
+                <DIRECTION>-0.190809 -0.981627 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>35.030170 35.030170 35.030167</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.507</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_033">
+                <POSITION>11101.338867 7312.845703 411.157471</POSITION>
+                <DIRECTION>-0.190809 -0.981627 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>27.530539 27.530539 27.530521</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.799</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_034">
+                <POSITION>9502.940430 6676.814453 504.747375</POSITION>
+                <DIRECTION>-0.999848 -0.017453 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000004 33.000004 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.469</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_035">
+                <POSITION>11448.674805 7443.087891 397.251465</POSITION>
+                <DIRECTION>0.974370 -0.224951 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>30.419970 30.419970 30.419947</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.918</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_039">
+                <POSITION>16911.476563 8798.750000 39.986938</POSITION>
+                <DIRECTION>-0.970296 -0.241922 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>28.373247 28.373247 28.373236</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.942</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_040">
+                <POSITION>16671.003906 9831.468750 42.323181</POSITION>
+                <DIRECTION>-0.438371 0.898794 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000008 33.000008 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.947</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Agarwood_RT_2_041">
+                <POSITION>16742.875000 8593.359375 41.001343</POSITION>
+                <DIRECTION>-0.945519 0.325568 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000008 33.000008 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Agarwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.939</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_018">
+                <POSITION>15309.440430 6192.732422 128.160400</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.704607 26.704607 26.704607</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.641</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_025">
+                <POSITION>12827.506836 8258.992188 471.901428</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.704607 26.704607 26.704607</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.728</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_026">
+                <POSITION>13367.971680 10983.031250 12.633667</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.704607 26.704607 26.704607</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.721</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_027">
+                <POSITION>9055.092773 8383.367188 1771.611938</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.470</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_028">
+                <POSITION>15892.903320 9298.265625 26.035522</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>25.380053 25.380053 25.380053</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.750</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_007">
+                <POSITION>15303.416992 6558.408203 96.746826</POSITION>
+                <DIRECTION>-0.342020 0.939693 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>25.403633 25.403633 25.403633</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.644</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_014">
+                <POSITION>16789.703125 8737.679688 43.030212</POSITION>
+                <DIRECTION>-0.798635 -0.601815 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441069</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.937</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_015">
+                <POSITION>16847.781250 9585.296875 53.163757</POSITION>
+                <DIRECTION>-0.798635 -0.601815 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441067</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.947</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_016">
+                <POSITION>14627.116211 9213.898438 -14.093140</POSITION>
+                <DIRECTION>-0.798635 -0.601815 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441065</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.677</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_017">
+                <POSITION>13118.354492 7842.216797 444.299377</POSITION>
+                <DIRECTION>0.104529 -0.994522 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.836</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_018">
+                <POSITION>11852.639648 9939.914063 487.463684</POSITION>
+                <DIRECTION>0.104529 -0.994522 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.666</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_019">
+                <POSITION>10971.366211 7350.087891 438.794739</POSITION>
+                <DIRECTION>0.104529 -0.994522 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.450</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_020">
+                <POSITION>10002.659180 6432.966797 472.250061</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.285</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_021">
+                <POSITION>12993.264648 6849.353516 23.556274</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.485</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_022">
+                <POSITION>13745.647461 7160.712891 -43.121948</POSITION>
+                <DIRECTION>-0.034900 0.999391 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.627</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_023">
+                <POSITION>8991.612305 8911.179688 1785.349976</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.488</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_024">
+                <POSITION>13178.561523 8793.242188 449.449768</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>23.441084 23.441084 23.441063</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.742</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_025">
+                <POSITION>14538.416992 8838.078125 -67.732300</POSITION>
+                <DIRECTION>0.798635 0.601815 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>22.292234 22.292234 22.292215</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.818</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_026">
+                <POSITION>15723.420898 11290.669922 29.441040</POSITION>
+                <DIRECTION>0.390731 0.920505 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>24.139299 24.139299 24.139271</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.486</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_027">
+                <POSITION>14271.131836 9652.289063 26.914917</POSITION>
+                <DIRECTION>-0.956305 0.292371 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>24.139299 24.139299 24.139271</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.649</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_AmericanBoxwood_RT_2_028">
+                <POSITION>13577.788086 10484.156250 -4.806763</POSITION>
+                <DIRECTION>-0.956305 0.292371 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>24.139299 24.139299 24.139271</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_AmericanBoxwood_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.588</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_CommonOlive_RT_009">
+                <POSITION>8191.549805 10487.937500 1785.348511</POSITION>
+                <DIRECTION>0.882948 -0.469472 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>34.339935 34.339935 34.339935</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_CommonOlive_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.776</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_CommonOlive_RT_010">
+                <POSITION>14410.471680 13323.115234 854.416077</POSITION>
+                <DIRECTION>0.997564 -0.069757 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>34.339939 34.339939 34.339935</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_CommonOlive_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.651</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_006">
+                <POSITION>6817.958008 7220.830078 1785.348999</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>44.829922 44.829922 44.829922</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.585</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_007">
+                <POSITION>15831.691406 11395.802734 36.523315</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.870</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_008">
+                <POSITION>9761.237305 7543.775391 514.696594</POSITION>
+                <DIRECTION>0.374607 -0.927184 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 32.999996</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.537</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_009">
+                <POSITION>12383.202148 5432.280273 71.894043</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.823</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_011">
+                <POSITION>11339.014648 13522.982422 2533.869629</POSITION>
+                <DIRECTION>-0.970296 0.241922 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>38.308220 38.308220 38.308220</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.721</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_012">
+                <POSITION>9921.823242 12472.154297 2533.869629</POSITION>
+                <DIRECTION>-0.998630 0.052336 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>38.308224 38.308224 38.308220</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.723</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_2_006">
+                <POSITION>17589.226563 9681.906250 434.228333</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.876</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_2_007">
+                <POSITION>14643.596680 6097.630859 -91.008911</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>33.000000 33.000000 33.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.774</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_ElmStocky_RT_2_008">
+                <POSITION>10498.541992 14008.279297 2295.184570</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>52.053040 52.053040 52.053040</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_ElmStocky_RT_2.spt</FILENAME>
+                <DIFFUSE_SCALE>0.711</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Linden_RT_009">
+                <POSITION>8476.706055 7621.728516 1785.349976</POSITION>
+                <DIRECTION>-0.669130 -0.743145 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>27.263571 27.263571 27.263554</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Linden_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.641</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Linden_RT_010">
+                <POSITION>12665.897461 9347.367188 435.025452</POSITION>
+                <DIRECTION>-0.669130 -0.743145 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>27.263571 27.263571 27.263554</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Linden_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.785</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_003">
+                <POSITION>16015.114258 9532.218750 26.523804</POSITION>
+                <DIRECTION>-0.956305 0.292372 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130194 26.130194 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.806</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_004">
+                <POSITION>14699.186523 9526.578125 20.666382</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130194 26.130194 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.733</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_005">
+                <POSITION>14947.088867 6478.291016 -19.329956</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130194 26.130194 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.735</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_006">
+                <POSITION>13662.389648 6507.044922 -59.742798</POSITION>
+                <DIRECTION>-0.788011 0.615661 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130194 26.130194 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.687</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_007">
+                <POSITION>13182.151367 8173.013672 482.792542</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130194 26.130194 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.784</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_008">
+                <POSITION>13931.877930 11430.865234 29.208374</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130194 26.130194 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.713</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_009">
+                <POSITION>10594.061523 7886.154297 497.370667</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130194 26.130194 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.406</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_010">
+                <POSITION>10160.916992 8014.537109 507.261292</POSITION>
+                <DIRECTION>-0.981627 0.190809 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>28.015108 28.015108 28.015099</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.351</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_011">
+                <POSITION>10602.178711 6519.158203 341.354980</POSITION>
+                <DIRECTION>-0.981627 0.190809 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>28.015106 28.015106 28.015099</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.365</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_012">
+                <POSITION>12799.670898 5317.107422 -51.630249</POSITION>
+                <DIRECTION>-0.587785 -0.809017 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>28.015106 28.015106 28.015099</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.524</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_Ocotillo_014">
+                <POSITION>17525.738281 9367.367188 406.954102</POSITION>
+                <DIRECTION>0.656059 0.754710 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>26.130196 26.130196 26.130194</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_Ocotillo.spt</FILENAME>
+                <DIFFUSE_SCALE>0.866</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_PinOak_RT_044">
+                <POSITION>15021.475586 7479.275391 -44.898315</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>21.158308 21.158308 21.158308</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_PinOak_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.855</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_PinOak_RT_045">
+                <POSITION>10188.956055 9882.625000 506.957825</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>21.158308 21.158308 21.158308</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_PinOak_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.539</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_PinOak_RT_046">
+                <POSITION>13318.803711 6003.794922 -100.855103</POSITION>
+                <DIRECTION>-0.939693 0.342020 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>21.158308 21.158308 21.158308</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_PinOak_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.663</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+        <TREE>
+            <COMMON name="k_teress_PinOak_RT_047">
+                <POSITION>13437.225586 10543.148438 -26.885620</POSITION>
+                <DIRECTION>-0.927184 -0.374607 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>21.158310 21.158310 21.158308</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>k_teress_PinOak_RT.spt</FILENAME>
+                <DIFFUSE_SCALE>0.735</DIFFUSE_SCALE>
+            </PROPERTY>
+        </TREE>
+    </SCENE>
+</ROOT>

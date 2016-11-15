@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="Teress_drum_k01_mt_wod">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>Teress_drum_k01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>Teress_drum_k01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_birdge_gh01_mt_wod">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_birdge_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_birdge_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_bar_gh01_mt_wod">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_bar_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_bar_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_bulleye_gh01_mt_pnt">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_bulleye_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_bulleye_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="at_ingen_rguild_alpha_gh01_mask_2s_mt_wod">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_alpha_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ingen_rguild_alpha_gh01.tga.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_roof_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_roof_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_roof_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_bar_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_bar_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_bar_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_floor_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_floor_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_floor_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="at_ingen_rguild_alpha_gh01_mask_2s_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_alpha_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ingen_rguild_alpha_gh01.tga.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+        </MATERIAL>
+    </MATERIALLIST>
+    <LIGHTMAPS>
+        <LIGHTMAP name="login01_lightmap.tga" />
+    </LIGHTMAPS>
+    <USERPROPERTYLIST />
+    <COLLISION />
+</XML>

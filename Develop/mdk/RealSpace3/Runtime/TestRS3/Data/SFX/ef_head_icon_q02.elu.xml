@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="at_head_effect">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ef_head_icon.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+        </MATERIAL>
+        <MATERIAL name="add_head_effect">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ef_head_icon.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="Object" property="noshade" />
+        <USERPROPERTY node="Mesher01" property="noshade" />
+        <USERPROPERTY node="Object01" property="noshade" />
+    </USERPROPERTYLIST>
+    <SCENE>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>em_head_icon_q02.effect.xml</FILENAME>
+                <PARENT>Dummy03</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>em_head_icon_q02.effect.xml</FILENAME>
+                <PARENT>Dummy02</PARENT>
+            </PROPERTY>
+        </EFFECT>
+    </SCENE>
+    <COLLISION />
+</XML>

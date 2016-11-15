@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="sphere_tiling" />
+            <PROPERTY>
+                <FILENAME>sphere_tiling.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+    </SCENE>
+</ROOT>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY />
+    <SCENE>
+        <DIRLIGHT>
+            <COMMON name="TerrainLightMap0">
+                <POSITION>-1.000000 -1.000000 1.500000</POSITION>
+                <DIRECTION>0.485071 0.485071 -0.727607</DIRECTION>
+                <UP>0.514496 0.514496 0.685994</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <ENV />
+                <SHADOWLUMINOSITY>0.350</SHADOWLUMINOSITY>
+            </PROPERTY>
+        </DIRLIGHT>
+    </SCENE>
+</ROOT>

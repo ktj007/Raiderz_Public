@@ -1,0 +1,30 @@
+<Project DefaultTargets="BuildForCI" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <PropertyGroup>
+      <BuildConditionForCI>Build</BuildConditionForCI>
+   </PropertyGroup>
+
+  <Choose>
+    <When Condition=" '$(CCNetBuildCondition)'=='IfModificationExists' ">
+      <PropertyGroup>
+        <BuildConditionForCI>Build</BuildConditionForCI>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <BuildConditionForCI>Rebuild</BuildConditionForCI>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+   
+  <Target Name="BuildForCI">
+    <MSBuild Projects="Character_NET.sln" Targets="$(BuildConditionForCI)" Properties="Configuration=Debug" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+  <Target Name="ReleaseBuild">
+    <MSBuild Projects="Character_NET.sln" Targets="Build" Properties="Configuration=Debug" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+  <Target Name="ReleaseRebuild">
+    <MSBuild Projects="Character_NET.sln" Targets="Rebuild" Properties="Configuration=Debug" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+
+</Project>

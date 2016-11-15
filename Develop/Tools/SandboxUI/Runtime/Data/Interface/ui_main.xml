@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UI>
+
+  <!-- Include Develop Kit XMLs -->
+  <Include>devkit/devkit.xml</Include>
+
+  
+  <!-- Include UI XMLs -->
+  <Include>common/com_resource.xml</Include>     <!-- Common Resource -->
+  <Include>common/com_template.xml</Include>     <!-- Common Template -->
+  <Include>game/game.xml</Include>
+  
+</UI>

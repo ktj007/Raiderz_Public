@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="feet">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>hf_feet03_h01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>hf_feet03_m01_sp.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEPARTSCOLOR />
+        </MATERIAL>
+        <MATERIAL name="hands">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>hf_hands03_h01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>hf_hands03_m01_sp.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEPARTSCOLOR />
+        </MATERIAL>
+        <MATERIAL name="hat">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>hm_hat09_h01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>hm_hat09_m01_sp.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEPARTSCOLOR />
+        </MATERIAL>
+        <MATERIAL name="chest">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>hf_chest08_h01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>hf_chest08_m01_sp.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEPARTSCOLOR />
+        </MATERIAL>
+        <MATERIAL name="legs">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>hf_legs04_h01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>hf_legs04_m01_sp.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEPARTSCOLOR />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="Bip01" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Unyielding = 1" />
+        <USERPROPERTY node="Bip01 Spine" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 Spine" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 Spine" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 Spine" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 Spine" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 Spine" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 Spine" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 Spine" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 Spine" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 Spine" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 Spine" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 Spine" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 Spine" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 Spine" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 Spine" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 Spine1" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 Spine1" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 Spine1" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 Spine1" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 Spine1" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 Spine1" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 Spine1" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 Spine1" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 Spine1" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 Spine1" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 Spine1" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 Spine1" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 Spine1" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 Spine1" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 Spine1" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 Spine2" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 Spine2" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 Spine2" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 Spine2" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 Spine2" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 Spine2" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 Spine2" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 Spine2" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 Spine2" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 Spine2" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 Spine2" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 Spine2" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 Spine2" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 Spine2" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 Spine2" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 Neck" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 Neck" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 Neck" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 Neck" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 Neck" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 Neck" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 Neck" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 Neck" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 Neck" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 Neck" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 Neck" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 Neck" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 Neck" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 Neck" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 Neck" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 Head" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 Head" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 Head" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 Head" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 Head" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 Head" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 Head" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 Head" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 Head" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 Head" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 Head" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 Head" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 Head" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 Head" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 Head" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone01_m01" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone01_m01" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone01_m01" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone01_m01" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone01_m01" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone01_m01" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone01_m01" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone01_m01" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone01_m01" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone01_m01" property="Inactive = 0" />
+        <USERPROPERTY node="Bone01_m01" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone01_m01" property="Phantom = 0" />
+        <USERPROPERTY node="Bone01_m01" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone01_m01" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone01_m01" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone01_e01" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone01_e01" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone01_e01" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone01_e01" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone01_e01" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone01_e01" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone01_e01" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone01_e01" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone01_e01" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone01_e01" property="Inactive = 0" />
+        <USERPROPERTY node="Bone01_e01" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone01_e01" property="Phantom = 0" />
+        <USERPROPERTY node="Bone01_e01" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone01_e01" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone01_e01" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Unyielding = 1" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L UpperArm" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Forearm" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Hand" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Hand" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Hand" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Hand" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Hand" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Hand" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Hand" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Hand" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Hand" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Hand" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Hand" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Hand" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Hand" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Hand" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Hand" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger0" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger01" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger02" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger1" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger11" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger12" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger2" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger21" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger22" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger3" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger31" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger32" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger4" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger41" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Finger42" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_shield" property="Mass = 0.000000" />
+        <USERPROPERTY node="dummy_shield" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="dummy_shield" property="Friction = 0.300000" />
+        <USERPROPERTY node="dummy_shield" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_shield" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_shield" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_shield" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_shield" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_shield" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_shield" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_shield" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_shield" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="dummy_shield" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="dummy_shield" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hs_l" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hs_l" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hs_l" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hs_l" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hs_l" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hs_l" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hs_l" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hs_l" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hs_l" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hs_l" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hs_l" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hs_l" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hs_l" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hs_l" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hs_l" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hp_l" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hp_l" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hp_l" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hp_l" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hp_l" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hp_l" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hp_l" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hp_l" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hp_l" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hp_l" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hp_l" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hp_l" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hp_l" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hp_l" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hp_l" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hb_l" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hb_l" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hb_l" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hb_l" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hb_l" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hb_l" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hb_l" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hb_l" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hb_l" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hb_l" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hb_l" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hb_l" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hb_l" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hb_l" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hb_l" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_arc" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_arc" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_arc" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_arc" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_arc" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_arc" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_arc" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_arc" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_arc" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_arc" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_arc" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_arc" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_arc" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_arc" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_arc" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_shield_b" property="Mass = 0.000000" />
+        <USERPROPERTY node="dummy_shield_b" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="dummy_shield_b" property="Friction = 0.300000" />
+        <USERPROPERTY node="dummy_shield_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_shield_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_shield_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_shield_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_shield_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_shield_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_shield_b" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_shield_b" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_shield_b" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="dummy_shield_b" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="dummy_shield_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Mass = 0.000000" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Friction = 0.300000" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="Bip01 L ForeTwist" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone22" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone22" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone22" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone22" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone22" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone22" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone22" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone22" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone22" property="Inactive = 0" />
+        <USERPROPERTY node="Bone22" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone22" property="Phantom = 0" />
+        <USERPROPERTY node="Bone22" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone22" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone22" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone22" property="Mass = 50.0" />
+        <USERPROPERTY node="Bone21" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone21" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone21" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone21" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone21" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone21" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone21" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone21" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone21" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone21" property="Inactive = 0" />
+        <USERPROPERTY node="Bone21" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone21" property="Phantom = 0" />
+        <USERPROPERTY node="Bone21" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone21" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone21" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Unyielding = 1" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R UpperArm" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Forearm" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Hand" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Hand" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Hand" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Hand" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Hand" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Hand" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Hand" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Hand" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Hand" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Hand" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Hand" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Hand" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Hand" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Hand" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Hand" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger0" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger01" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger02" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger1" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger11" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger12" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger2" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger21" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger22" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger3" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger31" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger32" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger4" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger41" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Finger42" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hs_r" property="Mass = 0.000000" />
+        <USERPROPERTY node="dummy_1hs_r" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="dummy_1hs_r" property="Friction = 0.300000" />
+        <USERPROPERTY node="dummy_1hs_r" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hs_r" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hs_r" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hs_r" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hs_r" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hs_r" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hs_r" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_1hs_r" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_1hs_r" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="dummy_1hs_r" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="dummy_1hs_r" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_2hs" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_2hs" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_2hs" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_2hs" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_2hs" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_2hs" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_2hs" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_2hs" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_2hs" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_2hs" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_2hs" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_2hs" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_2hs" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_2hs" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_2hs" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_2hp" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_2hp" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_2hp" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_2hp" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_2hp" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_2hp" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_2hp" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_2hp" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_2hp" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_2hp" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_2hp" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_2hp" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_2hp" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_2hp" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_2hp" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hb_r" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hb_r" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hb_r" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hb_r" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hb_r" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hb_r" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hb_r" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hb_r" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hb_r" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hb_r" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hb_r" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hb_r" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hb_r" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hb_r" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hb_r" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hp_r" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hp_r" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hp_r" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hp_r" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hp_r" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hp_r" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hp_r" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hp_r" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hp_r" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hp_r" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hp_r" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hp_r" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hp_r" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hp_r" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hp_r" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_arrow" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_arrow" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_arrow" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_arrow" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_arrow" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_arrow" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_arrow" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_arrow" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_arrow" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_arrow" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_arrow" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_arrow" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_arrow" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_arrow" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_arrow" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_sta" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_sta" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_sta" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_sta" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_sta" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_sta" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_sta" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_sta" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_sta" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_sta" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_sta" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_sta" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_sta" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_sta" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_sta" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone03" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone03" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone03" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone03" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone03" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone03" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone03" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone03" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone03" property="Inactive = 0" />
+        <USERPROPERTY node="Bone03" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone03" property="Phantom = 0" />
+        <USERPROPERTY node="Bone03" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone03" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone03" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone03" property="Mass = 50.0" />
+        <USERPROPERTY node="Bone08" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone08" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone08" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone08" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone08" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone08" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone08" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone08" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone08" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone08" property="Inactive = 0" />
+        <USERPROPERTY node="Bone08" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone08" property="Phantom = 0" />
+        <USERPROPERTY node="Bone08" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone08" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone08" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_arc_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_arc_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_arc_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_arc_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_arc_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_arc_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_arc_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_arc_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_arc_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_arc_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_arc_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_arc_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_arc_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_arc_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_arc_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_sta_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_sta_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_sta_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_sta_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_sta_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_sta_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_sta_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_sta_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_sta_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_sta_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_sta_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_sta_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_sta_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_sta_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_sta_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_2hs_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_2hs_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_2hs_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_2hs_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_2hs_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_2hs_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_2hs_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_2hs_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_2hs_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_2hs_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_2hs_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_2hs_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_2hs_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_2hs_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_2hs_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_2hp_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_2hp_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_2hp_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_2hp_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_2hp_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_2hp_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_2hp_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_2hp_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_2hp_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_2hp_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_2hp_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_2hp_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_2hp_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_2hp_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_2hp_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Thigh" property="Unyielding = 1" />
+        <USERPROPERTY node="Bip01 L Calf" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Calf" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Calf" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Calf" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Calf" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Calf" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Calf" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Calf" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Calf" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Calf" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Calf" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Calf" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Calf" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Calf" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Calf" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Foot" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Foot" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Foot" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Foot" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Foot" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Foot" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Foot" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Foot" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Foot" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Foot" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Foot" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Foot" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Foot" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Foot" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Foot" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Toe0" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Thigh" property="Unyielding = 1" />
+        <USERPROPERTY node="Bip01 R Calf" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Calf" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Calf" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Calf" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Calf" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Calf" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Calf" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Calf" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Calf" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Calf" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Calf" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Calf" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Calf" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Calf" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Calf" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Foot" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Foot" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Foot" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Foot" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Foot" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Foot" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Foot" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Foot" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Foot" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Foot" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Foot" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Foot" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Foot" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Foot" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Foot" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Toe0" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone04" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone04" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone04" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone04" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone04" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone04" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone04" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone04" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone04" property="Inactive = 0" />
+        <USERPROPERTY node="Bone04" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone04" property="Phantom = 0" />
+        <USERPROPERTY node="Bone04" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone04" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone04" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone04" property="Mass = 50.0" />
+        <USERPROPERTY node="Bone02" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone02" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone02" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone02" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone02" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone02" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone02" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone02" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone02" property="Inactive = 0" />
+        <USERPROPERTY node="Bone02" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone02" property="Phantom = 0" />
+        <USERPROPERTY node="Bone02" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone02" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone02" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone02" property="Mass = 50.0" />
+        <USERPROPERTY node="Bone01" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone01" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone01" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone01" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone01" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone01" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone01" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone01" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone01" property="Inactive = 0" />
+        <USERPROPERTY node="Bone01" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone01" property="Phantom = 0" />
+        <USERPROPERTY node="Bone01" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone01" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone01" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone01" property="Mass = 50.0" />
+        <USERPROPERTY node="Bone23" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone23" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone23" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone23" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone23" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone23" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone23" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone23" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone23" property="Inactive = 0" />
+        <USERPROPERTY node="Bone23" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone23" property="Phantom = 0" />
+        <USERPROPERTY node="Bone23" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone23" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone23" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone23" property="Mass = 50.0" />
+        <USERPROPERTY node="Bone24" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone24" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone24" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone24" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone24" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone24" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone24" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone24" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone24" property="Inactive = 0" />
+        <USERPROPERTY node="Bone24" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone24" property="Phantom = 0" />
+        <USERPROPERTY node="Bone24" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone24" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone24" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone24" property="Mass = 50.0" />
+        <USERPROPERTY node="dummy_quiver" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_quiver" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_quiver" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_quiver" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_quiver" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_quiver" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_quiver" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_quiver" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_quiver" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_quiver" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_quiver" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_quiver" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_quiver" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_quiver" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_quiver" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_arrow_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_arrow_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_arrow_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_arrow_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_arrow_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_arrow_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_arrow_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_arrow_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_arrow_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_arrow_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_arrow_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_arrow_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_arrow_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_arrow_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_arrow_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Mass = 0.000000" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Friction = 0.300000" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="dummy_1hs_r_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hs_l_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hb_r_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hp_l_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hp_r_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Mass = 0.0" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Friction = 0.3" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Unyielding = 0" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Inactive = 0" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Display_Proxy = None" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Phantom = 0" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="dummy_1hb_l_b" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone05" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone05" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone05" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone05" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone05" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone05" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone05" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone05" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone05" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone05" property="Inactive = 0" />
+        <USERPROPERTY node="Bone05" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone05" property="Phantom = 0" />
+        <USERPROPERTY node="Bone05" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone05" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone05" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone10" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone10" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone10" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone10" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone10" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone10" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone10" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone10" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone10" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone10" property="Inactive = 0" />
+        <USERPROPERTY node="Bone10" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone10" property="Phantom = 0" />
+        <USERPROPERTY node="Bone10" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone10" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone10" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone12" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone12" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone12" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone12" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone12" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone12" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone12" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone12" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone12" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone12" property="Inactive = 0" />
+        <USERPROPERTY node="Bone12" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone12" property="Phantom = 0" />
+        <USERPROPERTY node="Bone12" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone12" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone12" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone07" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone07" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone07" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone07" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone07" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone07" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone07" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone07" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone07" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone07" property="Inactive = 0" />
+        <USERPROPERTY node="Bone07" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone07" property="Phantom = 0" />
+        <USERPROPERTY node="Bone07" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone07" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone07" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone16" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone16" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone16" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone16" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone16" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone16" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone16" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone16" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone16" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone16" property="Inactive = 0" />
+        <USERPROPERTY node="Bone16" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone16" property="Phantom = 0" />
+        <USERPROPERTY node="Bone16" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone16" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone16" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone20" property="Mass = 0.0" />
+        <USERPROPERTY node="Bone20" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone20" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone20" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone20" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone20" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone20" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone20" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone20" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone20" property="Inactive = 0" />
+        <USERPROPERTY node="Bone20" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone20" property="Phantom = 0" />
+        <USERPROPERTY node="Bone20" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone20" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone20" property="Quality_Type = 3" />
+        <USERPROPERTY node="feet" property="Mass = 0.0" />
+        <USERPROPERTY node="feet" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="feet" property="Friction = 0.3" />
+        <USERPROPERTY node="feet" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="feet" property="Unyielding = 0" />
+        <USERPROPERTY node="feet" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="feet" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="feet" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="feet" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="feet" property="Inactive = 0" />
+        <USERPROPERTY node="feet" property="Display_Proxy = None" />
+        <USERPROPERTY node="feet" property="Phantom = 0" />
+        <USERPROPERTY node="feet" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="feet" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="feet" property="Quality_Type = 3" />
+        <USERPROPERTY node="hands" property="Mass = 0.0" />
+        <USERPROPERTY node="hands" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="hands" property="Friction = 0.3" />
+        <USERPROPERTY node="hands" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="hands" property="Unyielding = 0" />
+        <USERPROPERTY node="hands" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="hands" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="hands" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="hands" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="hands" property="Inactive = 0" />
+        <USERPROPERTY node="hands" property="Display_Proxy = None" />
+        <USERPROPERTY node="hands" property="Phantom = 0" />
+        <USERPROPERTY node="hands" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="hands" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="hands" property="Quality_Type = 3" />
+        <USERPROPERTY node="hat" property="set_cover = hair" />
+        <USERPROPERTY node="hat" property="set_subcover = faceMass = 0.0" />
+        <USERPROPERTY node="hat" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="hat" property="Friction = 0.3" />
+        <USERPROPERTY node="hat" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="hat" property="Unyielding = 0" />
+        <USERPROPERTY node="hat" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="hat" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="hat" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="hat" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="hat" property="Inactive = 0" />
+        <USERPROPERTY node="hat" property="Display_Proxy = None" />
+        <USERPROPERTY node="hat" property="Phantom = 0" />
+        <USERPROPERTY node="hat" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="hat" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="hat" property="Quality_Type = 3" />
+        <USERPROPERTY node="hat" property="Mass = 0.0" />
+        <USERPROPERTY node="chest" property="Mass = 0.0" />
+        <USERPROPERTY node="chest" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="chest" property="Friction = 0.3" />
+        <USERPROPERTY node="chest" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="chest" property="Unyielding = 0" />
+        <USERPROPERTY node="chest" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="chest" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="chest" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="chest" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="chest" property="Inactive = 0" />
+        <USERPROPERTY node="chest" property="Display_Proxy = None" />
+        <USERPROPERTY node="chest" property="Phantom = 0" />
+        <USERPROPERTY node="chest" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="chest" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="chest" property="Quality_Type = 3" />
+        <USERPROPERTY node="legs" property="Mass = 0.0" />
+        <USERPROPERTY node="legs" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="legs" property="Friction = 0.3" />
+        <USERPROPERTY node="legs" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="legs" property="Unyielding = 0" />
+        <USERPROPERTY node="legs" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="legs" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="legs" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="legs" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="legs" property="Inactive = 0" />
+        <USERPROPERTY node="legs" property="Display_Proxy = None" />
+        <USERPROPERTY node="legs" property="Phantom = 0" />
+        <USERPROPERTY node="legs" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="legs" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="legs" property="Quality_Type = 3" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+</XML>

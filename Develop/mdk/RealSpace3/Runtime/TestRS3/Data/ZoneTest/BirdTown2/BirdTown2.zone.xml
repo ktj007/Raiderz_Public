@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY></PROPERTY>
+    <SCENE>
+        <DIRLIGHT>
+            <COMMON name="TerrainLightMap0">
+                <POSITION>-1.000000 -1.000000 1.200000</POSITION>
+                <DIRECTION>0.539164 0.539164 -0.646997</DIRECTION>
+                <UP>0.457496 0.457496 0.762493</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <SHADOWLUMINOSITY>0.350</SHADOWLUMINOSITY>
+                <HALFLAMBERTFACTOR>1.000</HALFLAMBERTFACTOR>
+                <POWER>1.000</POWER>
+                <AMBIENT>0.000 0.000 0.000</AMBIENT>
+                <DIFFUSE>1.000 1.000 1.000</DIFFUSE>
+                <SPECULAR>1.000 1.000 1.000</SPECULAR>
+                <SKYCOLOR>0.000 0.000 0.000</SKYCOLOR>
+                <GROUNDCOLOR>0.000 0.000 0.000</GROUNDCOLOR>
+            </PROPERTY>
+        </DIRLIGHT>
+        <SCENEINSTANCE>
+            <COMMON name="hero_statue3.scene_003">
+                <POSITION>30188.378906 30998.292969 -1231.873779</POSITION>
+                <DIRECTION>0.999391 -0.034900 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>hero_statue3.scene.xml</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </SCENEINSTANCE>
+        <SCENEINSTANCE>
+            <COMMON name="hero_statue3.scene_004">
+                <POSITION>29176.328125 36986.937500 -2389.776855</POSITION>
+                <DIRECTION>0.484810 0.874620 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>1.408561 1.408561 1.408561</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>hero_statue3.scene.xml</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </SCENEINSTANCE>
+        <SCENEINSTANCE>
+            <COMMON name="hero_statue3.scene_008">
+                <POSITION>28813.710938 30101.125000 -1488.473389</POSITION>
+                <DIRECTION>-0.172987 0.956163 0.236280</DIRECTION>
+                <UP>0.087156 -0.224095 0.970662</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>hero_statue3.scene.xml</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </SCENEINSTANCE>
+        <SCENEINSTANCE>
+            <COMMON name="hero_statue3.scene_013">
+                <POSITION>27208.845703 32200.554688 -1185.212402</POSITION>
+                <DIRECTION>-0.819152 0.573576 0.000000</DIRECTION>
+                <UP>0.010010 0.014296 0.999848</UP>
+                <SCALE>1.206795 1.206795 1.206795</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>hero_statue3.scene.xml</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </SCENEINSTANCE>
+    </SCENE>
+</ROOT>

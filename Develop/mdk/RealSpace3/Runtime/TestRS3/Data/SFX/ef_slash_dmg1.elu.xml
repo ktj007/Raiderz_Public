@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="07 - Default">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>10.000</SPECULAR_LEVEL>
+            <GLOSSINESS>0.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ef_circle.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ef_circle.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+            <USEOPACITY />
+        </MATERIAL>
+        <MATERIAL name="01 - Default">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>10.000</SPECULAR_LEVEL>
+            <GLOSSINESS>0.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ef_slash.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+            <TWOSIDED />
+        </MATERIAL>
+        <MATERIAL name="Material #0">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>10.000</SPECULAR_LEVEL>
+            <GLOSSINESS>0.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ef_circle.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ef_circle.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+            <USEOPACITY />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST />
+    <SCENE>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>em_spread01.effect.xml</FILENAME>
+                <PARENT>Dummy03</PARENT>
+            </PROPERTY>
+        </EFFECT>
+    </SCENE>
+    <COLLISION />
+</XML>

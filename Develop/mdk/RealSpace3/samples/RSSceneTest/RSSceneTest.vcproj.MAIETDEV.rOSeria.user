@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ks_c_5601-1987"?>
+<VisualStudioUserFile
+	ProjectType="Visual C++"
+	Version="8.00"
+	ShowAllFiles="false"
+	>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			>
+			<DebugSettings
+				Command="$(TargetPath)"
+				WorkingDirectory=""
+				CommandArguments="Riode 7403.631836 5741.729004 6402.256348 -0.065993 0.439016 -0.896053 -0.133199 0.886097 0.443948"
+				Attach="false"
+				DebuggerType="3"
+				Remote="1"
+				RemoteMachine="DEVROSERIA"
+				RemoteCommand=""
+				HttpUrl=""
+				PDBPath=""
+				SQLDebugging=""
+				Environment=""
+				EnvironmentMerge="true"
+				DebuggerFlavor="0"
+				MPIRunCommand=""
+				MPIRunArguments=""
+				MPIRunWorkingDirectory=""
+				ApplicationCommand=""
+				ApplicationArguments=""
+				ShimCommand=""
+				MPIAcceptMode=""
+				MPIAcceptFilter=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			>
+			<DebugSettings
+				Command="$(TargetPath)"
+				WorkingDirectory=""
+				CommandArguments="Riode 7403.631836 5741.729004 6402.256348 -0.065993 0.439016 -0.896053 -0.133199 0.886097 0.443948"
+				Attach="false"
+				DebuggerType="3"
+				Remote="1"
+				RemoteMachine="DEVROSERIA"
+				RemoteCommand=""
+				HttpUrl=""
+				PDBPath=""
+				SQLDebugging=""
+				Environment=""
+				EnvironmentMerge="true"
+				DebuggerFlavor="0"
+				MPIRunCommand=""
+				MPIRunArguments=""
+				MPIRunWorkingDirectory=""
+				ApplicationCommand=""
+				ApplicationArguments=""
+				ShimCommand=""
+				MPIAcceptMode=""
+				MPIAcceptFilter=""
+			/>
+		</Configuration>
+	</Configurations>
+</VisualStudioUserFile>

@@ -1,0 +1,340 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\Main.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""l.KOR\\afxres.rc""      // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Main.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN_DIALOG DIALOGEX 0, 0, 474, 371
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Real Sound 3"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Sound",IDC_STATIC,6,6,228,198
+    LTEXT           "Sound 1 :",IDC_STATIC,12,18,216,8
+    EDITTEXT        IDC_FILE1,12,30,102,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Search...",IDC_SEARCH1,114,30,54,12
+    COMBOBOX        IDC_TYPE1,174,30,54,60,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "▶",IDC_PLAY1,12,44,12,12
+    CONTROL         "",IDC_TIMELINE1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,24,44,144,12
+    LTEXT           "Sound 2 :",IDC_STATIC,12,60,216,8
+    EDITTEXT        IDC_FILE2,12,72,102,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Search...",IDC_SEARCH2,114,72,54,12
+    COMBOBOX        IDC_TYPE2,174,72,54,60,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "▶",IDC_PLAY2,12,86,12,12
+    CONTROL         "",IDC_TIMELINE2,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,24,86,144,12
+    LTEXT           "Sound 3 :",IDC_STATIC,12,102,216,8
+    EDITTEXT        IDC_FILE3,12,114,102,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Search...",IDC_SEARCH3,114,114,54,12
+    COMBOBOX        IDC_TYPE3,174,114,54,60,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "▶",IDC_PLAY3,12,128,12,12
+    CONTROL         "",IDC_TIMELINE3,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,24,128,144,12
+    LTEXT           "Sound 4 :",IDC_STATIC,12,144,216,8
+    EDITTEXT        IDC_FILE4,12,156,102,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Search...",IDC_SEARCH4,114,156,54,12
+    COMBOBOX        IDC_TYPE4,174,156,54,60,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "▶",IDC_PLAY4,12,170,12,12
+    CONTROL         "",IDC_TIMELINE4,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,24,170,144,12
+    PUSHBUTTON      "Play all",IDC_PLAYALL,12,186,96,12
+    PUSHBUTTON      "Stop all",IDC_STOPALL,114,186,54,12
+    PUSHBUTTON      "Release all",IDC_RELEASEALL,174,186,54,12
+    GROUPBOX        "Option",IDC_STATIC,6,210,228,48
+    CONTROL         "Hardware acceleration",IDC_HWACCEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,222,96,8
+    LTEXT           "Speaker mode",IDC_STATIC,12,240,48,12
+    COMBOBOX        IDC_SPEAKERMODE,66,240,54,60,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Volume",IDC_STATIC,6,264,228,66
+    LTEXT           "Master",IDC_STATIC,12,276,60,12
+    CONTROL         "",IDC_VOLUME1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,72,276,114,12
+    CONTROL         "Mute",IDC_MUTE1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,276,36,12
+    LTEXT           "2D",IDC_STATIC,12,288,60,12
+    CONTROL         "",IDC_VOLUME2,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,72,288,114,12
+    CONTROL         "Mute",IDC_MUTE2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,288,36,12
+    LTEXT           "3D",IDC_STATIC,12,300,60,12
+    CONTROL         "",IDC_VOLUME3,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,72,300,114,12
+    CONTROL         "Mute",IDC_MUTE3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,300,36,12
+    LTEXT           "BGM",IDC_STATIC,12,312,60,12
+    CONTROL         "",IDC_VOLUME4,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,72,312,114,12
+    CONTROL         "Mute",IDC_MUTE4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,192,312,36,12
+    GROUPBOX        "Reverb",IDC_STATIC,6,336,228,30
+    LTEXT           "Reverb preset",IDC_STATIC,12,348,54,12
+    COMBOBOX        IDC_REVERB,72,348,96,150,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Compressor",IDC_STATIC,240,282,228,84
+    CONTROL         "Enable compressor",IDC_ENCOMPRESSOR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,246,294,96,12
+    LTEXT           "Threshold",IDC_STATIC,246,312,60,12
+    CONTROL         "",IDC_THRESHOLD,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,312,312,114,12
+    LTEXT           "",IDC_COMPVAL1,432,312,30,12
+    LTEXT           "Attack",IDC_STATIC,246,324,60,12
+    CONTROL         "",IDC_ATTACK,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,312,324,114,12
+    LTEXT           "",IDC_COMPVAL2,432,324,30,12
+    LTEXT           "Release",IDC_STATIC,246,336,60,12
+    CONTROL         "",IDC_RELEASE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,312,336,114,12
+    LTEXT           "",IDC_COMPVAL3,432,336,30,12
+    LTEXT           "Gain Make-up",IDC_STATIC,246,348,60,12
+    CONTROL         "",IDC_GAINMAKEUP,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,312,348,114,12
+    LTEXT           "",IDC_COMPVAL4,432,348,30,12
+    CONTROL         "",IDC_RANGE,"Static",SS_BLACKFRAME | SS_NOTIFY,240,6,228,270
+    CONTROL         "Silence",IDC_SILENCE,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_TABSTOP,132,240,96,12
+    CONTROL         "Loop",IDC_LOOP1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,174,44,54,12
+    CONTROL         "Loop",IDC_LOOP2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,174,86,54,12
+    CONTROL         "Loop",IDC_LOOP3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,174,128,54,12
+    CONTROL         "Loop",IDC_LOOP4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,174,170,54,12
+    CONTROL         "Doppler effect",IDC_DOPPLER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,132,222,96,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "Main.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "Main.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MAIN_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 467
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 364
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MAIN_DIALOG DLGINIT
+BEGIN
+    IDC_TYPE1, 0x403, 3, 0
+0x4432, "\000" 
+    IDC_TYPE1, 0x403, 3, 0
+0x4433, "\000" 
+    IDC_TYPE1, 0x403, 4, 0
+0x4742, 0x004d, 
+    IDC_TYPE2, 0x403, 3, 0
+0x4432, "\000" 
+    IDC_TYPE2, 0x403, 3, 0
+0x4433, "\000" 
+    IDC_TYPE2, 0x403, 4, 0
+0x4742, 0x004d, 
+    IDC_TYPE3, 0x403, 3, 0
+0x4432, "\000" 
+    IDC_TYPE3, 0x403, 3, 0
+0x4433, "\000" 
+    IDC_TYPE3, 0x403, 4, 0
+0x4742, 0x004d, 
+    IDC_TYPE4, 0x403, 3, 0
+0x4432, "\000" 
+    IDC_TYPE4, 0x403, 3, 0
+0x4433, "\000" 
+    IDC_TYPE4, 0x403, 4, 0
+0x4742, 0x004d, 
+    IDC_SPEAKERMODE, 0x403, 5, 0
+0x7541, 0x6f74, "\000" 
+    IDC_SPEAKERMODE, 0x403, 7, 0
+0x7453, 0x7265, 0x6f65, "\000" 
+    IDC_SPEAKERMODE, 0x403, 5, 0
+0x7551, 0x6461, "\000" 
+    IDC_SPEAKERMODE, 0x403, 4, 0
+0x2e35, 0x0031, 
+    IDC_SPEAKERMODE, 0x403, 4, 0
+0x2e37, 0x0031, 
+    IDC_REVERB, 0x403, 4, 0
+0x664f, 0x0066, 
+    IDC_REVERB, 0x403, 8, 0
+0x6547, 0x656e, 0x6972, 0x0063, 
+    IDC_REVERB, 0x403, 12, 0
+0x6150, 0x6464, 0x6465, 0x6320, 0x6c65, 0x006c, 
+    IDC_REVERB, 0x403, 5, 0
+0x6f52, 0x6d6f, "\000" 
+    IDC_REVERB, 0x403, 10, 0
+0x6142, 0x6874, 0x7220, 0x6f6f, 0x006d, 
+    IDC_REVERB, 0x403, 12, 0
+0x694c, 0x6976, 0x676e, 0x7220, 0x6f6f, 0x006d, 
+    IDC_REVERB, 0x403, 11, 0
+0x7453, 0x6e6f, 0x2065, 0x6f72, 0x6d6f, "\000" 
+    IDC_REVERB, 0x403, 11, 0
+0x7541, 0x6964, 0x6f74, 0x6972, 0x6d75, "\000" 
+    IDC_REVERB, 0x403, 13, 0
+0x6f43, 0x636e, 0x7265, 0x2074, 0x6168, 0x6c6c, "\000" 
+    IDC_REVERB, 0x403, 5, 0
+0x6143, 0x6576, "\000" 
+    IDC_REVERB, 0x403, 6, 0
+0x7241, 0x6e65, 0x0061, 
+    IDC_REVERB, 0x403, 7, 0
+0x6148, 0x676e, 0x7261, "\000" 
+    IDC_REVERB, 0x403, 19, 0
+0x6143, 0x7072, 0x7265, 0x7474, 0x6465, 0x6820, 0x6c61, 0x776c, 0x7961, 
+"\000" 
+    IDC_REVERB, 0x403, 8, 0
+0x6148, 0x6c6c, 0x6177, 0x0079, 
+    IDC_REVERB, 0x403, 15, 0
+0x7453, 0x6e6f, 0x2065, 0x6f63, 0x7272, 0x6469, 0x726f, "\000" 
+    IDC_REVERB, 0x403, 6, 0
+0x6c41, 0x656c, 0x0079, 
+    IDC_REVERB, 0x403, 7, 0
+0x6f46, 0x6572, 0x7473, "\000" 
+    IDC_REVERB, 0x403, 5, 0
+0x6943, 0x7974, "\000" 
+    IDC_REVERB, 0x403, 9, 0
+0x6f4d, 0x6e75, 0x6174, 0x6e69, "\000" 
+    IDC_REVERB, 0x403, 7, 0
+0x7551, 0x7261, 0x7972, "\000" 
+    IDC_REVERB, 0x403, 6, 0
+0x6c50, 0x6961, 0x006e, 
+    IDC_REVERB, 0x403, 12, 0
+0x6150, 0x6b72, 0x6e69, 0x2067, 0x6f6c, 0x0074, 
+    IDC_REVERB, 0x403, 11, 0
+0x6553, 0x6577, 0x2072, 0x6970, 0x6570, "\000" 
+    IDC_REVERB, 0x403, 12, 0
+0x6e55, 0x6564, 0x2072, 0x6177, 0x6574, 0x0072, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_RANGE               BITMAP                  "res\\range.bmp"
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\Main.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "l.KOR\afxres.rc"      // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

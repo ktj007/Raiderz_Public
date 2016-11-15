@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeViewMS", "TreeViewMS.csproj", "{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demoapp", "..\demoapp\demoapp.csproj", "{B35F9164-6BF0-4D29-B4E1-99C3141983CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Debug.ActiveCfg = Debug|.NET
+		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Debug.Build.0 = Debug|.NET
+		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release.ActiveCfg = Release|.NET
+		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release.Build.0 = Release|.NET
+		{B35F9164-6BF0-4D29-B4E1-99C3141983CD}.Debug.ActiveCfg = Debug|.NET
+		{B35F9164-6BF0-4D29-B4E1-99C3141983CD}.Debug.Build.0 = Debug|.NET
+		{B35F9164-6BF0-4D29-B4E1-99C3141983CD}.Release.ActiveCfg = Release|.NET
+		{B35F9164-6BF0-4D29-B4E1-99C3141983CD}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

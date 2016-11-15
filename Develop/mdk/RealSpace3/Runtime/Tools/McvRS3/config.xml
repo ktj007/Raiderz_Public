@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+	<SHADERPATH>../../Shader/;../../Shader/components/</SHADERPATH>
+	<TEXTUREPATH>../../../Data/Texture/SpeedTree/;../../../Data/Texture/IndoorMap/;../../../Data/Texture/Map/;../../../Data/Texture/Character/;../../../Data/Texture/SFX;../../../Data/Texture/Sky/;../../../Data/Texture/weapon</TEXTUREPATH>
+	<EFFECTPATH>../../../Data/SFX</EFFECTPATH>
+	<SOUNDPATH>../../../Data/Sound/Effect</SOUNDPATH>
+	<FARZ>10000</FARZ>
+</XML>

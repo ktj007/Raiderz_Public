@@ -1,0 +1,44 @@
+<obstacle version="0">
+    <mesh count="8">
+        <polygon count="3">
+            <vertex>-294.534729 -378.726746 -20.000000</vertex>
+            <vertex>-212.610886 -296.802856 -20.000000</vertex>
+            <vertex>-296.911713 -212.502060 -20.000000</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>-296.911713 -212.502060 -20.000000</vertex>
+            <vertex>-378.835541 -294.425903 -20.000000</vertex>
+            <vertex>-294.534729 -378.726746 -20.000000</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>241.619797 -361.561829 -19.999998</vertex>
+            <vertex>357.477631 -361.561829 -19.999998</vertex>
+            <vertex>357.477631 -242.342468 -19.999998</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>357.477631 -242.342468 -19.999998</vertex>
+            <vertex>241.619797 -242.342468 -19.999998</vertex>
+            <vertex>241.619797 -361.561829 -19.999998</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>-375.695984 272.047424 -19.999998</vertex>
+            <vertex>-275.360138 214.118484 -19.999996</vertex>
+            <vertex>-215.750473 317.365479 -20.000000</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>-215.750473 317.365479 -20.000000</vertex>
+            <vertex>-316.086304 375.294434 -19.999996</vertex>
+            <vertex>-375.695984 272.047424 -19.999998</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>259.021759 225.401779 -20.000000</vertex>
+            <vertex>370.931915 255.388016 -19.999998</vertex>
+            <vertex>340.075653 370.545074 -19.999996</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>340.075653 370.545074 -19.999996</vertex>
+            <vertex>228.165512 340.558838 -19.999998</vertex>
+            <vertex>259.021759 225.401779 -20.000000</vertex>
+        </polygon>
+    </mesh>
+</obstacle>

@@ -1,0 +1,1052 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugDLL_Profile|Win32">
+      <Configuration>DebugDLL_Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugDLL|Win32">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL_Profile|Win32">
+      <Configuration>ReleaseDLL_Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL|Win32">
+      <Configuration>ReleaseDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Nvperfhud|Win32">
+      <Configuration>Release_Nvperfhud</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_profile|Win32">
+      <Configuration>Release_profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}</ProjectGuid>
+    <RootNamespace>RealSpace3</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.51106.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;D3D_DEBUG_INFO;_NVPERFHUD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>SpeedTreeRT_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>lib/RealSpace3d.lib</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/dx9/lib;Dependencies/speedtree;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>SpeedTreeRT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib/RealSpace3.lib</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/dx9/lib;Dependencies/speedtree;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_USRDLL;D3D_DEBUG_INFO;REALSPACE3_EXPORT;CML2_IMPORT;_NVPERFHUD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SpeedTreeRT_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib/$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/speedtree;Dependencies/dx9/lib;../cml2/lib;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+    <PostBuildEvent>
+      <Command>cd $(SolutionDir)
+!copy_dll.bat $(TargetDir)$(TargetName)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_USRDLL;REALSPACE3_EXPORT;CML2_IMPORT;_NVPERFHUD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SpeedTreeRT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>lib/$(ProjectName)_.dll</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/speedtree;Dependencies/dx9/lib;../cml2/lib;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+    <PostBuildEvent>
+      <Command>cd $(SolutionDir)
+!copy_dll.bat $(TargetDir)$(TargetName)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MinSpace</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_NVPERFHUD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>SpeedTreeRT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib/RealSpace3.lib</OutputFile>
+      <AdditionalLibraryDirectories>../../../sdk/speedtree;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;D3D_DEBUG_INFO;_NVPERFHUD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>SpeedTreeRT_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>lib/RealSpace3MDd.lib</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/dx9/lib;Dependencies/speedtree;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>SpeedTreeRT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib/RealSpace3.lib</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/dx9/lib;Dependencies/speedtree;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_USRDLL;REALSPACE3_EXPORT;CML2_IMPORT;_NVPERFHUD;_USE_ENGINE_RESOURCE_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SpeedTreeRT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>lib/$(ProjectName)_.dll</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/speedtree;Dependencies/dx9/lib;../cml2/lib;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+    <PostBuildEvent>
+      <Command>cd $(SolutionDir)
+!copy_dll.bat $(TargetDir)$(TargetName)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../cml2;../cml2/lua;../MCollision;Dependencies/dx9/include;Dependencies/tbb/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_USRDLL;D3D_DEBUG_INFO;REALSPACE3_EXPORT;CML2_IMPORT;_NVPERFHUD;_USE_ENGINE_RESOURCE_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SpeedTreeRT_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib/$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>Dependencies/speedtree;Dependencies/dx9/lib;../cml2/lib;Dependencies/tbb/lib/ia32/vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+    <PostBuildEvent>
+      <Command>cd $(SolutionDir)
+!copy_dll.bat $(TargetDir)$(TargetName)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Data">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Xml">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RDevice.cpp" />
+    <ClCompile Include="RDeviceD3D.cpp" />
+    <ClCompile Include="RDeviceOpenGL.cpp" />
+    <ClCompile Include="RTexture.cpp" />
+    <ClCompile Include="RTextureManager.cpp" />
+    <ClCompile Include="RShaderComposer.cpp" />
+    <ClCompile Include="RShaderComposite.cpp" />
+    <ClCompile Include="RShaderCompositeManager.cpp" />
+    <ClCompile Include="RShaderConstant.cpp" />
+    <ClCompile Include="RShaderFX.cpp" />
+    <ClCompile Include="RTechnique.cpp" />
+    <ClCompile Include="RFont.cpp" />
+    <ClCompile Include="RD3DQuery.cpp" />
+    <ClCompile Include="RQuery.cpp" />
+    <ClCompile Include="RAStar.cpp" />
+    <ClCompile Include="RNavigationMesh.cpp" />
+    <ClCompile Include="RNavigationNode.cpp" />
+    <ClCompile Include="RCompositeLayer.cpp" />
+    <ClCompile Include="RMaterial.cpp" />
+    <ClCompile Include="RMaterialResource.cpp" />
+    <ClCompile Include="RMaterialResourceMgr.cpp" />
+    <ClCompile Include="RMaterialTexture.cpp" />
+    <ClCompile Include="RUVTransform.cpp" />
+    <ClCompile Include="RBackgroundWorker.cpp" />
+    <ClCompile Include="RBackgroundWorkUnit.cpp" />
+    <ClCompile Include="RConfiguration.cpp" />
+    <ClCompile Include="RLoadingWorkUnit.cpp" />
+    <ClCompile Include="RMemPoolReleaser.cpp" />
+    <ClCompile Include="RMeshProfileInfo.cpp" />
+    <ClCompile Include="RPathSplitter.cpp" />
+    <ClCompile Include="RRenderHelper.cpp" />
+    <ClCompile Include="RRenderHelper2.cpp" />
+    <ClCompile Include="RSceneLoader.cpp" />
+    <ClCompile Include="RSUtil.cpp" />
+    <ClCompile Include="RSystemInfo.cpp" />
+    <ClCompile Include="RTimer.cpp" />
+    <ClCompile Include="RTypes.cpp" />
+    <ClCompile Include="RUtil.cpp" />
+    <ClCompile Include="RVType.cpp" />
+    <ClCompile Include="RXMLTemplate.cpp" />
+    <ClCompile Include="RResource.cpp" />
+    <ClCompile Include="RResourceLoader.cpp" />
+    <ClCompile Include="RResourceLoadingGroup.cpp" />
+    <ClCompile Include="RResourceManager.cpp" />
+    <ClCompile Include="RMemoryAlloc.cpp" />
+    <ClCompile Include="RStlCustomAlloc.cpp" />
+    <ClCompile Include="RFile.cpp" />
+    <ClCompile Include="RSceneNode.cpp" />
+    <ClCompile Include="RSceneNodeID.cpp" />
+    <ClCompile Include="RActor.cpp" />
+    <ClCompile Include="RActorCollision.cpp" />
+    <ClCompile Include="RActorNode.cpp" />
+    <ClCompile Include="RActorNodePhysique.cpp" />
+    <ClCompile Include="RActorNodeRenderStrategy.cpp" />
+    <ClCompile Include="RMesh.cpp" />
+    <ClCompile Include="RMeshAnimationMgr.cpp" />
+    <ClCompile Include="RMeshCollision.cpp" />
+    <ClCompile Include="RMeshMgr.cpp" />
+    <ClCompile Include="RMeshNode.cpp" />
+    <ClCompile Include="RMeshNodeData.cpp" />
+    <ClCompile Include="RMeshNodeLoadImpl.cpp" />
+    <ClCompile Include="RMeshUtil.cpp" />
+    <ClCompile Include="RAnimation.cpp" />
+    <ClCompile Include="RAnimationBlendTable.cpp" />
+    <ClCompile Include="RAnimationFileLoadImpl.cpp" />
+    <ClCompile Include="RAnimationManager.cpp" />
+    <ClCompile Include="RAnimationNode.cpp" />
+    <ClCompile Include="RAnimationResource.cpp" />
+    <ClCompile Include="RSkeleton.cpp" />
+    <ClCompile Include="RAccumMotionBlurPassRenderer.cpp" />
+    <ClCompile Include="RActorPassRenderer.cpp" />
+    <ClCompile Include="REdgePassRender.cpp" />
+    <ClCompile Include="RPixelMotionBlurPassRenderer.cpp" />
+    <ClCompile Include="RPostEffectEdgePassRender.cpp" />
+    <ClCompile Include="RVertexMotionBlurPassRenderer.cpp" />
+    <ClCompile Include="RClothActorNode.cpp" />
+    <ClCompile Include="RClothCollision.cpp" />
+    <ClCompile Include="RClothConstraint.cpp" />
+    <ClCompile Include="RClothEdgeAndTriangleInfo.cpp" />
+    <ClCompile Include="RClothInfo.cpp" />
+    <ClCompile Include="RClothLocalActorNode.cpp" />
+    <ClCompile Include="RClothParameter.cpp" />
+    <ClCompile Include="RClothParticle.cpp" />
+    <ClCompile Include="RClothSimulator.cpp" />
+    <ClCompile Include="RClothUtility.cpp" />
+    <ClCompile Include="RClothWorldActorNode.cpp" />
+    <ClCompile Include="RActorAlignController.cpp" />
+    <ClCompile Include="RActorController.cpp" />
+    <ClCompile Include="RActorNodeConstraintController.cpp" />
+    <ClCompile Include="RAnimationController.cpp" />
+    <ClCompile Include="RAnimationControllerNode.cpp" />
+    <ClCompile Include="REnvironment.cpp" />
+    <ClCompile Include="REnvironmentSet.cpp" />
+    <ClCompile Include="RSceneSky.cpp" />
+    <ClCompile Include="RSkyManager.cpp" />
+    <ClCompile Include="RWeatherEffect.cpp" />
+    <ClCompile Include="RWeatherEffectSet.cpp" />
+    <ClCompile Include="RSkyPassRenderer.cpp" />
+    <ClCompile Include="RAlignController.cpp" />
+    <ClCompile Include="RRotateSettingController.cpp" />
+    <ClCompile Include="RSceneNodeController.cpp" />
+    <ClCompile Include="RSceneNodeControllerFactory.cpp" />
+    <ClCompile Include="RShaderEffectController.cpp" />
+    <ClCompile Include="RSimpleRotationController.cpp" />
+    <ClCompile Include="RDirectionalLightSceneNode.cpp" />
+    <ClCompile Include="RLightingShader.cpp" />
+    <ClCompile Include="RLightSceneNode.cpp" />
+    <ClCompile Include="RPointLightSceneNode.cpp" />
+    <ClCompile Include="RSpotLightSceneNode.cpp" />
+    <ClCompile Include="RGIProcessor.cpp" />
+    <ClCompile Include="RHBAOProcessor.cpp" />
+    <ClCompile Include="RSSAOProcessor.cpp" />
+    <ClCompile Include="RDirectionalLightPassRenderer.cpp" />
+    <ClCompile Include="RPointLightPassRenderer.cpp" />
+    <ClCompile Include="RSpotLightPassRenderer.cpp" />
+    <ClCompile Include="RSceneNodeInstance.cpp" />
+    <ClCompile Include="RSceneNodePolygonCollector_Collision.cpp" />
+    <ClCompile Include="RScreenEffectManager.cpp" />
+    <ClCompile Include="RTextSceneNode.cpp" />
+    <ClCompile Include="RWorldSceneNode.cpp" />
+    <ClCompile Include="Horizon.cpp" />
+    <ClCompile Include="RTerrain.cpp" />
+    <ClCompile Include="RTerrainPatch.cpp" />
+    <ClCompile Include="RTerrainProcess.cpp" />
+    <ClCompile Include="RTerrainPVS.cpp" />
+    <ClCompile Include="RTerrainQuadTree.cpp" />
+    <ClCompile Include="RTerrainResource.cpp" />
+    <ClCompile Include="RTerrainShader.cpp" />
+    <ClCompile Include="RTerrainPassRenderer.cpp" />
+    <ClCompile Include="RWaterSceneNode.cpp" />
+    <ClCompile Include="RWaterPassRenderer.cpp" />
+    <ClCompile Include="RGrassLoader.cpp" />
+    <ClCompile Include="RGrassSystem.cpp" />
+    <ClCompile Include="RSpeedGrass.cpp" />
+    <ClCompile Include="RSpeedGrassGPUInstance.cpp" />
+    <ClCompile Include="RSpeedGrassShader.cpp" />
+    <ClCompile Include="Dependencies\speedgrass\IdvVectorMath.cpp" />
+    <ClCompile Include="Dependencies\speedgrass\SpeedGrassRT.cpp" />
+    <ClCompile Include="RTreeSceneNode.cpp" />
+    <ClCompile Include="RTreePassRenderer.cpp" />
+    <ClCompile Include="RTreeResource.cpp" />
+    <ClCompile Include="RTreeResourceMgr.cpp" />
+    <ClCompile Include="RTreeCollision.cpp" />
+    <ClCompile Include="RSceneManager.cpp" />
+    <ClCompile Include="RSceneManager_Create.cpp" />
+    <ClCompile Include="RCameraArcBallSceneNode.cpp" />
+    <ClCompile Include="RCameraFPSSceneNode.cpp" />
+    <ClCompile Include="RCameraSceneNode.cpp" />
+    <ClCompile Include="RPolarCameraSceneNode.cpp" />
+    <ClCompile Include="RVariableFrustum.cpp" />
+    <ClCompile Include="RViewFrustum.cpp" />
+    <ClCompile Include="RCameraAnimationController.cpp" />
+    <ClCompile Include="RCameraSceneNodeController.cpp" />
+    <ClCompile Include="RCameraShakeController.cpp" />
+    <ClCompile Include="RAdditivePassRenderer.cpp" />
+    <ClCompile Include="RAlphaPassRenderer.cpp" />
+    <ClCompile Include="RDebugPassRenderer.cpp" />
+    <ClCompile Include="RDistortionPassRenderer.cpp" />
+    <ClCompile Include="RPassRenderer.cpp" />
+    <ClCompile Include="RBspline.cpp" />
+    <ClCompile Include="RCardinal.cpp" />
+    <ClCompile Include="REffectActor.cpp" />
+    <ClCompile Include="REffectBase.cpp" />
+    <ClCompile Include="REffectInstance.cpp" />
+    <ClCompile Include="REffectManager.cpp" />
+    <ClCompile Include="REffectSceneNode.cpp" />
+    <ClCompile Include="REmitter.cpp" />
+    <ClCompile Include="REmitter_Renderer.cpp" />
+    <ClCompile Include="REmitter_UVModifier.cpp" />
+    <ClCompile Include="RGlareDef.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="RParticle.cpp" />
+    <ClCompile Include="RParticle_Create.cpp" />
+    <ClCompile Include="RParticleShader.cpp" />
+    <ClCompile Include="RTrail.cpp" />
+    <ClCompile Include="REffectPassRenderer.cpp" />
+    <ClCompile Include="RStaticMeshDepthRenderStrategy.cpp" />
+    <ClCompile Include="RStaticMeshGStageRenderStrategy.cpp" />
+    <ClCompile Include="RStaticMeshMStageRenderStrategy.cpp" />
+    <ClCompile Include="RStaticMeshRenderStrategy.cpp" />
+    <ClCompile Include="RStaticMeshResource.cpp" />
+    <ClCompile Include="RStaticMeshResourceFileLoadImpl.cpp" />
+    <ClCompile Include="RStaticMeshSceneNode.cpp" />
+    <ClCompile Include="RStaticMeshPassRenderer.cpp" />
+    <ClCompile Include="RDecalCollision.cpp" />
+    <ClCompile Include="RDecalPolygonSceneNode.cpp" />
+    <ClCompile Include="RDecalProjectionSceneNode.cpp" />
+    <ClCompile Include="RDecalPolygonPassRenderer.cpp" />
+    <ClCompile Include="RDecalProjectionPassRenderer.cpp" />
+    <ClCompile Include="RDeferredRenderingStrategy.cpp" />
+    <ClCompile Include="RInferredRenderingStrategy.cpp" />
+    <ClCompile Include="RNullRenderingStrategy.cpp" />
+    <ClCompile Include="RRenderingCallbackInterface.cpp" />
+    <ClCompile Include="RRenderingStrategy.cpp" />
+    <ClCompile Include="RPostEffectAccumMotionBlur.cpp" />
+    <ClCompile Include="RPostEffectDistortion.cpp" />
+    <ClCompile Include="RPostEffectDistortionParameter.cpp" />
+    <ClCompile Include="RPostEffectDOF.cpp" />
+    <ClCompile Include="RPostEffectEdge.cpp" />
+    <ClCompile Include="RPostEffectFinalScene.cpp" />
+    <ClCompile Include="RPostEffectHDR.cpp" />
+    <ClCompile Include="RPostEffectInterface.cpp" />
+    <ClCompile Include="RPostEffectManager.cpp" />
+    <ClCompile Include="RPostEffectPixelMotionBlur.cpp" />
+    <ClCompile Include="RPostEffectScreenMotionBlur.cpp" />
+    <ClCompile Include="ROctreeManager.cpp" />
+    <ClCompile Include="RCullingList.cpp" />
+    <ClCompile Include="RCullingMgr.cpp" />
+    <ClCompile Include="ROccluderList.cpp" />
+    <ClCompile Include="ROcclusionCullingMgr.cpp" />
+    <ClCompile Include="RRenderChain.cpp" />
+    <ClCompile Include="RRenderingList.cpp" />
+    <ClCompile Include="RViewFrustumCullingMgr.cpp" />
+    <ClCompile Include="RDepthMapShadowStrategy.cpp" />
+    <ClCompile Include="RLiSPSMShadowStrategy.cpp" />
+    <ClCompile Include="RProjectionShadow.cpp" />
+    <ClCompile Include="RProjectionShadowStrategy.cpp" />
+    <ClCompile Include="RPSSMShadowStrategy.cpp" />
+    <ClCompile Include="RShadowStrategy.cpp" />
+    <ClCompile Include="RDuplicateUpdateCheckContext.cpp" />
+    <ClCompile Include="ROccluderContext.cpp" />
+    <ClCompile Include="ROccluderSceneNode.cpp" />
+    <ClCompile Include="RLODContext.cpp" />
+    <ClCompile Include="RLODController.cpp" />
+    <ClCompile Include="RLODMetric.cpp" />
+    <ClCompile Include="RLODMetricInfo.cpp" />
+    <ClCompile Include="RLODNode.cpp" />
+    <ClCompile Include="RLODProcessorBase.cpp" />
+    <ClCompile Include="RLODProcessorDistance.cpp" />
+    <ClCompile Include="RLODProcessorFog.cpp" />
+    <ClCompile Include="RLODProcessorProjection.cpp" />
+    <ClCompile Include="RApplication.cpp" />
+    <ClCompile Include="RD3DApplication.cpp" />
+    <ClCompile Include="RLibTypes.cpp" />
+    <ClCompile Include="MImagePacker.cpp" />
+    <ClCompile Include="RToolApplication.cpp" />
+    <ClCompile Include="RToolHelper.cpp" />
+    <ClCompile Include="RToolUtil.cpp" />
+    <ClCompile Include="MFileLoader.cpp" />
+    <ClCompile Include="Dependencies\SOIL\image_DXT.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\SOIL\SOIL.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Dependencies\SOIL\stb_image_aug.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="RUnitTestRunner.cpp" />
+    <ClCompile Include="RDebuggingInfo.cpp" />
+    <ClCompile Include="RAnalyst.cpp" />
+    <ClCompile Include="RCPUAnalyst.cpp" />
+    <ClCompile Include="RGPUAnalyst.cpp" />
+    <ClCompile Include="RResourceAnalyst.cpp" />
+    <ClCompile Include="RGPUProfiler.cpp" />
+    <ClCompile Include="RProfileInfo.cpp" />
+    <ClCompile Include="Util\RUSceneXML.cpp" />
+    <ClCompile Include="REngine.cpp" />
+    <ClCompile Include="RListener.cpp" />
+    <ClCompile Include="RMaterialDecal.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL_Profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL_Profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Nvperfhud|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RDevice.h" />
+    <ClInclude Include="RDeviceD3D.h" />
+    <ClInclude Include="RDeviceNull.h" />
+    <ClInclude Include="RDeviceOpenGL.h" />
+    <ClInclude Include="RTexture.h" />
+    <ClInclude Include="RTextureManager.h" />
+    <ClInclude Include="RD3DVertexUtil.h" />
+    <ClInclude Include="RShaderComponentID.h" />
+    <ClInclude Include="RShaderComposer.h" />
+    <ClInclude Include="RShaderComposite.h" />
+    <ClInclude Include="RShaderCompositeManager.h" />
+    <ClInclude Include="RShaderConstant.h" />
+    <ClInclude Include="RShaderFX.h" />
+    <ClInclude Include="RTechnique.h" />
+    <ClInclude Include="RFont.h" />
+    <ClInclude Include="RD3DQuery.h" />
+    <ClInclude Include="RQuery.h" />
+    <ClInclude Include="RAStar.h" />
+    <ClInclude Include="RLine.h" />
+    <ClInclude Include="RNavigationMesh.h" />
+    <ClInclude Include="RNavigationNode.h" />
+    <ClInclude Include="RCompositeLayer.h" />
+    <ClInclude Include="RMaterial.h" />
+    <ClInclude Include="RMaterialResource.h" />
+    <ClInclude Include="RMaterialResourceMgr.h" />
+    <ClInclude Include="RMaterialTexture.h" />
+    <ClInclude Include="RUVTransform.h" />
+    <ClInclude Include="RBackgroundWorker.h" />
+    <ClInclude Include="RBackgroundWorkUnit.h" />
+    <ClInclude Include="RConfiguration.h" />
+    <ClInclude Include="RListener.h" />
+    <ClInclude Include="RLoadingWorkUnit.h" />
+    <ClInclude Include="RMemPoolReleaser.h" />
+    <ClInclude Include="RMeshProfileInfo.h" />
+    <ClInclude Include="RPathSplitter.h" />
+    <ClInclude Include="RRenderHelper.h" />
+    <ClInclude Include="RRenderHelper2.h" />
+    <ClInclude Include="RRule.h" />
+    <ClInclude Include="RSceneLoader.h" />
+    <ClInclude Include="RSUtil.h" />
+    <ClInclude Include="RSystemInfo.h" />
+    <ClInclude Include="RTimer.h" />
+    <ClInclude Include="RToken.h" />
+    <ClInclude Include="RTypes.h" />
+    <ClInclude Include="RUtil.h" />
+    <ClInclude Include="RVersions.h" />
+    <ClInclude Include="RVType.h" />
+    <ClInclude Include="RXMLTemplate.h" />
+    <ClInclude Include="RPreDefine.h" />
+    <ClInclude Include="RResource.h" />
+    <ClInclude Include="RResourceID.h" />
+    <ClInclude Include="RResourceLoader.h" />
+    <ClInclude Include="RResourceLoadingGroup.h" />
+    <ClInclude Include="RResourceManager.h" />
+    <ClInclude Include="RMemoryAlloc.h" />
+    <ClInclude Include="RStlCustomAlloc.h" />
+    <ClInclude Include="RFile.h" />
+    <ClInclude Include="RSceneNode.h" />
+    <ClInclude Include="RSceneNodeID.h" />
+    <ClInclude Include="RActor.h" />
+    <ClInclude Include="RActorCollision.h" />
+    <ClInclude Include="RActorNode.h" />
+    <ClInclude Include="RActorNodePhysique.h" />
+    <ClInclude Include="RActorNodeRenderStrategy.h" />
+    <ClInclude Include="RMesh.h" />
+    <ClInclude Include="RMeshAnimationMgr.h" />
+    <ClInclude Include="RMeshCollision.h" />
+    <ClInclude Include="RMeshMgr.h" />
+    <ClInclude Include="RMeshNode.h" />
+    <ClInclude Include="RMeshNodeData.h" />
+    <ClInclude Include="RMeshNodeLoadImpl.h" />
+    <ClInclude Include="RMeshUtil.h" />
+    <ClInclude Include="RAnimation.h" />
+    <ClInclude Include="RAnimationBlendTable.h" />
+    <ClInclude Include="RAnimationDef.h" />
+    <ClInclude Include="RAnimationFileLoadImpl.h" />
+    <ClInclude Include="RAnimationKey.h" />
+    <ClInclude Include="RAnimationManager.h" />
+    <ClInclude Include="RAnimationNode.h" />
+    <ClInclude Include="RAnimationResource.h" />
+    <ClInclude Include="RSkeleton.h" />
+    <ClInclude Include="RAccumMotionBlurPassRenderer.h" />
+    <ClInclude Include="RActorPassRenderer.h" />
+    <ClInclude Include="REdgePassRender.h" />
+    <ClInclude Include="RPixelMotionBlurPassRenderer.h" />
+    <ClInclude Include="RPostEffectEdgePassRender.h" />
+    <ClInclude Include="RVertexMotionBlurPassRenderer.h" />
+    <ClInclude Include="RClothActorNode.h" />
+    <ClInclude Include="RClothCollision.h" />
+    <ClInclude Include="RClothConstraint.h" />
+    <ClInclude Include="RClothEdgeAndTriangleInfo.h" />
+    <ClInclude Include="RClothInfo.h" />
+    <ClInclude Include="RClothLocalActorNode.h" />
+    <ClInclude Include="RClothParameter.h" />
+    <ClInclude Include="RClothParticle.h" />
+    <ClInclude Include="RClothSimulator.h" />
+    <ClInclude Include="RClothType.h" />
+    <ClInclude Include="RClothUtility.h" />
+    <ClInclude Include="RClothWorldActorNode.h" />
+    <ClInclude Include="RActorAlignController.h" />
+    <ClInclude Include="RActorController.h" />
+    <ClInclude Include="RActorNodeConstraintController.h" />
+    <ClInclude Include="RAnimationController.h" />
+    <ClInclude Include="RAnimationControllerNode.h" />
+    <ClInclude Include="REnvironment.h" />
+    <ClInclude Include="REnvironmentSet.h" />
+    <ClInclude Include="RSceneSky.h" />
+    <ClInclude Include="RSkyManager.h" />
+    <ClInclude Include="RWeatherEffect.h" />
+    <ClInclude Include="RWeatherEffectSet.h" />
+    <ClInclude Include="RSkyPassRenderer.h" />
+    <ClInclude Include="RAlignController.h" />
+    <ClInclude Include="RRotateSettingController.h" />
+    <ClInclude Include="RSceneNodeController.h" />
+    <ClInclude Include="RSceneNodeControllerFactory.h" />
+    <ClInclude Include="RShaderEffectController.h" />
+    <ClInclude Include="RSimpleRotationController.h" />
+    <ClInclude Include="RDirectionalLightSceneNode.h" />
+    <ClInclude Include="RLightingShader.h" />
+    <ClInclude Include="RLightSceneNode.h" />
+    <ClInclude Include="RPointLightSceneNode.h" />
+    <ClInclude Include="RSpotLightSceneNode.h" />
+    <ClInclude Include="RGIProcessor.h" />
+    <ClInclude Include="RHBAOProcessor.h" />
+    <ClInclude Include="RSSAOProcessor.h" />
+    <ClInclude Include="RDirectionalLightPassRenderer.h" />
+    <ClInclude Include="RPointLightPassRenderer.h" />
+    <ClInclude Include="RSpotLightPassRenderer.h" />
+    <ClInclude Include="RSceneNodeInstance.h" />
+    <ClInclude Include="RSceneNodePolygonCollector_Collision.h" />
+    <ClInclude Include="RScreenEffectManager.h" />
+    <ClInclude Include="RTextSceneNode.h" />
+    <ClInclude Include="RWorldSceneNode.h" />
+    <ClInclude Include="Horizon.h" />
+    <ClInclude Include="RTerrain.h" />
+    <ClInclude Include="RTerrainPatch.h" />
+    <ClInclude Include="RTerrainPVS.h" />
+    <ClInclude Include="RTerrainQuadTree.h" />
+    <ClInclude Include="RTerrainResource.h" />
+    <ClInclude Include="RTerrainShader.h" />
+    <ClInclude Include="RTerrainPassRenderer.h" />
+    <ClInclude Include="RWaterDef.h" />
+    <ClInclude Include="RWaterSceneNode.h" />
+    <ClInclude Include="RWaterPassRenderer.h" />
+    <ClInclude Include="RGrassLoader.h" />
+    <ClInclude Include="RGrassSystem.h" />
+    <ClInclude Include="RSpeedGrass.h" />
+    <ClInclude Include="RSpeedGrassGPUInstance.h" />
+    <ClInclude Include="RSpeedGrassShader.h" />
+    <ClInclude Include="Dependencies\speedgrass\IdvVectorMath.h" />
+    <ClInclude Include="Dependencies\speedgrass\SpeedGrassConstants.h" />
+    <ClInclude Include="Dependencies\speedgrass\SpeedGrassRT.h" />
+    <ClInclude Include="Dependencies\speedgrass\stl_vector.h" />
+    <ClInclude Include="RTreeDef.h" />
+    <ClInclude Include="RTreeSceneNode.h" />
+    <ClInclude Include="RTreePassRenderer.h" />
+    <ClInclude Include="RTreeBillboard.h" />
+    <ClInclude Include="RTreeMaterial.h" />
+    <ClInclude Include="RTreeMeshBuffer.h" />
+    <ClInclude Include="RTreeMeshFormat.h" />
+    <ClInclude Include="RTreeResource.h" />
+    <ClInclude Include="RTreeResourceMgr.h" />
+    <ClInclude Include="RTreeCollision.h" />
+    <ClInclude Include="RSceneManager.h" />
+    <ClInclude Include="RCameraArcBallSceneNode.h" />
+    <ClInclude Include="RCameraFPSSceneNode.h" />
+    <ClInclude Include="RCameraSceneNode.h" />
+    <ClInclude Include="RPolarCameraSceneNode.h" />
+    <ClInclude Include="RVariableFrustum.h" />
+    <ClInclude Include="RViewFrustum.h" />
+    <ClInclude Include="RCameraAnimationController.h" />
+    <ClInclude Include="RCameraSceneNodeController.h" />
+    <ClInclude Include="RCameraShakeController.h" />
+    <ClInclude Include="RAdditivePassRenderer.h" />
+    <ClInclude Include="RAlphaPassRenderer.h" />
+    <ClInclude Include="RDebugPassRenderer.h" />
+    <ClInclude Include="RDistortionPassRenderer.h" />
+    <ClInclude Include="RPassRenderer.h" />
+    <ClInclude Include="RBspline.h" />
+    <ClInclude Include="RCardinal.h" />
+    <ClInclude Include="REffectActor.h" />
+    <ClInclude Include="REffectBase.h" />
+    <ClInclude Include="REffectInstance.h" />
+    <ClInclude Include="REffectManager.h" />
+    <ClInclude Include="REffectSceneNode.h" />
+    <ClInclude Include="REmitter.h" />
+    <ClInclude Include="REmitterType.h" />
+    <ClInclude Include="RGlareDef.h" />
+    <ClInclude Include="RParticle.h" />
+    <ClInclude Include="RParticle_Create.h" />
+    <ClInclude Include="RParticlePool.h" />
+    <ClInclude Include="RParticleShader.h" />
+    <ClInclude Include="RPCollection.h" />
+    <ClInclude Include="RPType.h" />
+    <ClInclude Include="RTrail.h" />
+    <ClInclude Include="REffectPassRenderer.h" />
+    <ClInclude Include="RStaticMeshDepthRenderStrategy.h" />
+    <ClInclude Include="RStaticMeshGStageRenderStrategy.h" />
+    <ClInclude Include="RStaticMeshMStageRenderStrategy.h" />
+    <ClInclude Include="RStaticMeshRenderStrategy.h" />
+    <ClInclude Include="RStaticMeshResource.h" />
+    <ClInclude Include="RStaticMeshResourceFileLoadImpl.h" />
+    <ClInclude Include="RStaticMeshSceneNode.h" />
+    <ClInclude Include="RStaticMeshPassRenderer.h" />
+    <ClInclude Include="RDecalCollision.h" />
+    <ClInclude Include="RDecalPolygonSceneNode.h" />
+    <ClInclude Include="RDecalProjectionSceneNode.h" />
+    <ClInclude Include="RDecalPolygonPassRenderer.h" />
+    <ClInclude Include="RDecalProjectionPassRenderer.h" />
+    <ClInclude Include="RDeferredRenderingStrategy.h" />
+    <ClInclude Include="RInferredRenderingStrategy.h" />
+    <ClInclude Include="RNullRenderingStrategy.h" />
+    <ClInclude Include="RRenderingCallbackInterface.h" />
+    <ClInclude Include="RRenderingStrategy.h" />
+    <ClInclude Include="RPostEffectAccumMotionBlur.h" />
+    <ClInclude Include="RPostEffectDistortion.h" />
+    <ClInclude Include="RPostEffectDistortionParameter.h" />
+    <ClInclude Include="RPostEffectDOF.h" />
+    <ClInclude Include="RPostEffectEdge.h" />
+    <ClInclude Include="RPostEffectFinalScene.h" />
+    <ClInclude Include="RPostEffectHDR.h" />
+    <ClInclude Include="RPostEffectInterface.h" />
+    <ClInclude Include="RPostEffectManager.h" />
+    <ClInclude Include="RPostEffectPixelMotionBlur.h" />
+    <ClInclude Include="RPostEffectScreenMotionBlur.h" />
+    <ClInclude Include="ROctreeManager.h" />
+    <ClInclude Include="RCullingList.h" />
+    <ClInclude Include="RCullingMgr.h" />
+    <ClInclude Include="ROccluderList.h" />
+    <ClInclude Include="ROcclusionCullingMgr.h" />
+    <ClInclude Include="RRenderChain.h" />
+    <ClInclude Include="RRenderingList.h" />
+    <ClInclude Include="RViewFrustumCullingMgr.h" />
+    <ClInclude Include="RDepthMapShadowStrategy.h" />
+    <ClInclude Include="RLiSPSMShadowStrategy.h" />
+    <ClInclude Include="RProjectionShadow.h" />
+    <ClInclude Include="RProjectionShadowStrategy.h" />
+    <ClInclude Include="RPSSMShadowStrategy.h" />
+    <ClInclude Include="RShadowStrategy.h" />
+    <ClInclude Include="RDuplicateUpdateCheckContext.h" />
+    <ClInclude Include="ROccluderContext.h" />
+    <ClInclude Include="ROccluderSceneNode.h" />
+    <ClInclude Include="RLODContext.h" />
+    <ClInclude Include="RLODController.h" />
+    <ClInclude Include="RLODMetric.h" />
+    <ClInclude Include="RLODMetricInfo.h" />
+    <ClInclude Include="RLODNode.h" />
+    <ClInclude Include="RLODProcessorBase.h" />
+    <ClInclude Include="RLODProcessorDistance.h" />
+    <ClInclude Include="RLODProcessorFog.h" />
+    <ClInclude Include="RLODProcessorProjection.h" />
+    <ClInclude Include="RApplication.h" />
+    <ClInclude Include="RD3DApplication.h" />
+    <ClInclude Include="RLibTypes.h" />
+    <ClInclude Include="MImagePacker.h" />
+    <ClInclude Include="RToolApplication.h" />
+    <ClInclude Include="RToolHelper.h" />
+    <ClInclude Include="RToolUtil.h" />
+    <ClInclude Include="MFileLoader.h" />
+    <ClInclude Include="Dependencies\SOIL\image_DXT.h" />
+    <ClInclude Include="Dependencies\SOIL\SOIL.h" />
+    <ClInclude Include="Dependencies\SOIL\stb_image_aug.h" />
+    <ClInclude Include="Dependencies\SOIL\stbi_DDS_aug.h" />
+    <ClInclude Include="Dependencies\SOIL\stbi_DDS_aug_c.h" />
+    <ClInclude Include="RUnitTestReporter.h" />
+    <ClInclude Include="RUnitTestRunner.h" />
+    <ClInclude Include="RDebuggingInfo.h" />
+    <ClInclude Include="RAnalyst.h" />
+    <ClInclude Include="RCPUAnalyst.h" />
+    <ClInclude Include="RGPUAnalyst.h" />
+    <ClInclude Include="RResourceAnalyst.h" />
+    <ClInclude Include="RGPUProfiler.h" />
+    <ClInclude Include="RProfileInfo.h" />
+    <ClInclude Include="RProfiler.h" />
+    <ClInclude Include="Util\RUSceneXML.h" />
+    <ClInclude Include="Util\RUDataDesc.h" />
+    <ClInclude Include="RActorResourceDependencyGraph.h" />
+    <ClInclude Include="RealSpace3.h" />
+    <ClInclude Include="REngine.h" />
+    <ClInclude Include="RMaterialDecal.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Doc\Grass 정보파일의 바이너리 구조.txt" />
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cml2\cml2.vcxproj">
+      <Project>{8d451493-65c2-49c3-adae-acb17e6b0650}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\MCollision\MCollision.vcxproj">
+      <Project>{97861011-05bd-450a-a221-db5f7a2f4b7b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

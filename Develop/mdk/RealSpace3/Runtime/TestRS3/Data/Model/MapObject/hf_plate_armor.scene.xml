@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="hf_plate_armor" />
+            <PROPERTY>
+                <FILENAME>hf_plate_armor.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+    </SCENE>
+</ROOT>

@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD|Win32">
+      <Configuration>ReleaseMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_publish|Win32">
+      <Configuration>Release_publish</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>AppServer_lib</ProjectName>
+    <ProjectGuid>{426ABE06-AF8C-40B4-8B60-EFDE85670BDB}</ProjectGuid>
+    <RootNamespace>GameServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConnD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\AppServer_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\AppServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../mdk/MDatabase;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_PUBLISH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\AppServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="PBaseApplication.cpp" />
+    <ClCompile Include="PConfig.cpp" />
+    <ClCompile Include="PGlobal.cpp" />
+    <ClCompile Include="PMemory.cpp" />
+    <ClCompile Include="PServableChecker.cpp" />
+    <ClCompile Include="PServer.cpp" />
+    <ClCompile Include="PServerManagers.cpp" />
+    <ClCompile Include="PServerStatusUpdater.cpp" />
+    <ClCompile Include="PServerSystems.cpp" />
+    <ClCompile Include="PStrings.cpp" />
+    <ClCompile Include="PSystem.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Log\PCmdHandler_Log.cpp" />
+    <ClCompile Include="Log\PLog.cpp" />
+    <ClCompile Include="Log\PLog_Char.cpp" />
+    <ClCompile Include="Log\PLog_ItemAcquire.cpp" />
+    <ClCompile Include="Log\PLog_ItemLost.cpp" />
+    <ClCompile Include="Log\PLog_ItemTrade.cpp" />
+    <ClCompile Include="Log\PLog_Quest.cpp" />
+    <ClCompile Include="PDBManager.cpp" />
+    <ClCompile Include="PDBTaskSQL.cpp" />
+    <ClCompile Include="PLoginLogic.cpp" />
+    <ClCompile Include="PCheckerFactory.cpp" />
+    <ClCompile Include="PCheckRunner.cpp" />
+    <ClCompile Include="PCommandVersionChecker.cpp" />
+    <ClCompile Include="PWorldIDChecker.cpp" />
+    <ClCompile Include="PProxyPlayerListener.cpp" />
+    <ClCompile Include="PFieldInfoManager.cpp" />
+    <ClCompile Include="PPMSSystem.cpp" />
+    <ClCompile Include="PGameServerObject.cpp" />
+    <ClCompile Include="PGameServerObjectManager.cpp" />
+    <ClCompile Include="PCommandCenter.cpp" />
+    <ClCompile Include="PCommandLogger.cpp" />
+    <ClCompile Include="PCommandTable.cpp" />
+    <ClCompile Include="PCmdHandler_Master.cpp" />
+    <ClCompile Include="PCmdHandlerGroup.cpp" />
+    <ClCompile Include="PLoginRouter.cpp" />
+    <ClCompile Include="PNetServer.cpp" />
+    <ClCompile Include="PClientConnectionKeeper.cpp" />
+    <ClCompile Include="PCmdHandler_Master_Global.cpp" />
+    <ClCompile Include="PMasterNetClient.cpp" />
+    <ClCompile Include="PMasterServerFacade.cpp" />
+    <ClCompile Include="PChattingLogic.cpp" />
+    <ClCompile Include="PCmdHandler_Chat.cpp" />
+    <ClCompile Include="PCmdRouter_Chat.cpp" />
+    <ClCompile Include="PChatChannel.cpp" />
+    <ClCompile Include="PChatChannelFactory.cpp" />
+    <ClCompile Include="PChatChannelManager.cpp" />
+    <ClCompile Include="PChatPlayer.cpp" />
+    <ClCompile Include="PChatModule_EnterChannel.cpp" />
+    <ClCompile Include="PChatModule_EnterPrivateChannel.cpp" />
+    <ClCompile Include="PChatModule_LeaveChannel.cpp" />
+    <ClCompile Include="PChatModule_LeavePartyChannel.cpp" />
+    <ClCompile Include="PChatModule_LeavePrivateChannel.cpp" />
+    <ClCompile Include="PChatModules_PrivateChannel.cpp" />
+    <ClCompile Include="PAnnounceMsgHandler.cpp" />
+    <ClCompile Include="PAuctionMsgHandler.cpp" />
+    <ClCompile Include="PChannelMsgHandler.cpp" />
+    <ClCompile Include="PFieldMsgHandler.cpp" />
+    <ClCompile Include="PGlobalMsgHandler.cpp" />
+    <ClCompile Include="PGuildMsgHandler.cpp" />
+    <ClCompile Include="PMsgCommandFacade.cpp" />
+    <ClCompile Include="PMsgHandler.cpp" />
+    <ClCompile Include="PNoticeMsgHandler.cpp" />
+    <ClCompile Include="PPartyMsgHandler.cpp" />
+    <ClCompile Include="PWhisperMsgHandler.cpp" />
+    <ClCompile Include="PBounceMail.cpp" />
+    <ClCompile Include="PPostOfficeSystem.cpp" />
+    <ClCompile Include="PCmdHandler_Mail.cpp" />
+    <ClCompile Include="PCmdRouter_Mail.cpp" />
+    <ClCompile Include="PCmdHandler_TradeMarket.cpp" />
+    <ClCompile Include="PTradeMarketService.cpp" />
+    <ClCompile Include="PTradeMarketServiceConsumer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PBaseApplication.h" />
+    <ClInclude Include="PConfig.h" />
+    <ClInclude Include="PDef.h" />
+    <ClInclude Include="PGlobal.h" />
+    <ClInclude Include="PMemory.h" />
+    <ClInclude Include="PServableChecker.h" />
+    <ClInclude Include="PServer.h" />
+    <ClInclude Include="PServerInfo.h" />
+    <ClInclude Include="PServerManagers.h" />
+    <ClInclude Include="PServerStatusUpdater.h" />
+    <ClInclude Include="PServerSystems.h" />
+    <ClInclude Include="PStrings.h" />
+    <ClInclude Include="PSystem.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Log\PCmdHandler_Log.h" />
+    <ClInclude Include="Log\PLog.h" />
+    <ClInclude Include="Log\PLog_Char.h" />
+    <ClInclude Include="Log\PLog_ItemAcquire.h" />
+    <ClInclude Include="Log\PLog_ItemLost.h" />
+    <ClInclude Include="Log\PLog_ItemTrade.h" />
+    <ClInclude Include="Log\PLog_Quest.h" />
+    <ClInclude Include="PDBManager.h" />
+    <ClInclude Include="PDBTaskSQL.h" />
+    <ClInclude Include="PLoginLogic.h" />
+    <ClInclude Include="PCheckerFactory.h" />
+    <ClInclude Include="PCheckRunner.h" />
+    <ClInclude Include="PLogicChecker.h" />
+    <ClInclude Include="PCommandVersionChecker.h" />
+    <ClInclude Include="PWorldIDChecker.h" />
+    <ClInclude Include="PProxyPlayerListener.h" />
+    <ClInclude Include="PFieldInfoManager.h" />
+    <ClInclude Include="PPMSSystem.h" />
+    <ClInclude Include="PGameServerObject.h" />
+    <ClInclude Include="PGameServerObjectManager.h" />
+    <ClInclude Include="PCommandCenter.h" />
+    <ClInclude Include="PCommandLogger.h" />
+    <ClInclude Include="PCommandTable.h" />
+    <ClInclude Include="PCmdHandler_Master.h" />
+    <ClInclude Include="PCmdHandlerGroup.h" />
+    <ClInclude Include="PLoginRouter.h" />
+    <ClInclude Include="PNetServer.h" />
+    <ClInclude Include="PClientConnectionKeeper.h" />
+    <ClInclude Include="PCmdHandler_Master_Global.h" />
+    <ClInclude Include="PMasterNetClient.h" />
+    <ClInclude Include="PMasterServerFacade.h" />
+    <ClInclude Include="PChattingLogic.h" />
+    <ClInclude Include="PDef_Chatting.h" />
+    <ClInclude Include="PCmdHandler_Chat.h" />
+    <ClInclude Include="PCmdRouter_Chat.h" />
+    <ClInclude Include="PChatChannel.h" />
+    <ClInclude Include="PChatChannelFactory.h" />
+    <ClInclude Include="PChatChannelManager.h" />
+    <ClInclude Include="PChatPlayer.h" />
+    <ClInclude Include="PChatModule_EnterChannel.h" />
+    <ClInclude Include="PChatModule_EnterPrivateChannel.h" />
+    <ClInclude Include="PChatModule_LeaveChannel.h" />
+    <ClInclude Include="PChatModule_LeavePartyChannel.h" />
+    <ClInclude Include="PChatModule_LeavePrivateChannel.h" />
+    <ClInclude Include="PChatModuleBase.h" />
+    <ClInclude Include="PChatModules_PrivateChannel.h" />
+    <ClInclude Include="PAnnounceMsgHandler.h" />
+    <ClInclude Include="PAuctionMsgHandler.h" />
+    <ClInclude Include="PChannelMsgHandler.h" />
+    <ClInclude Include="PFieldMsgHandler.h" />
+    <ClInclude Include="PGlobalMsgHandler.h" />
+    <ClInclude Include="PGuildMsgHandler.h" />
+    <ClInclude Include="PMsgCommandFacade.h" />
+    <ClInclude Include="PMsgHandler.h" />
+    <ClInclude Include="PNoticeMsgHandler.h" />
+    <ClInclude Include="PPartyMsgHandler.h" />
+    <ClInclude Include="PWhisperMsgHandler.h" />
+    <ClInclude Include="PBounceMail.h" />
+    <ClInclude Include="PPostOfficeSystem.h" />
+    <ClInclude Include="PCmdHandler_Mail.h" />
+    <ClInclude Include="PCmdRouter_Mail.h" />
+    <ClInclude Include="PCmdHandler_TradeMarket.h" />
+    <ClInclude Include="PTradeMarketService.h" />
+    <ClInclude Include="PTradeMarketServiceConsumer.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="GameServer.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

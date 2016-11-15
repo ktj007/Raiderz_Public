@@ -1,0 +1,7 @@
+#include "StdAfx.h"
+#include "ZPMSObject.h"
+#include "PmRegionStat.h"
+#include "MLocale.h"
+#include "ZCommandCenter.h"
+#include "CCommandTable_Master.h"
+#include "MLocale.h"

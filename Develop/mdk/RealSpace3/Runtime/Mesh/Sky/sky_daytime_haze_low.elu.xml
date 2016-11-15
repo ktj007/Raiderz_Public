@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="sky_haze">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>haze.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>haze.tga</OPACITYMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST />
+    <SCENE />
+</XML>

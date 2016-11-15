@@ -1,0 +1,31 @@
+<table class="dialog_table">
+<tr>
+<td>
+<div class="dialog_npc_name">
+<P>NPC 이름</P>
+</div>
+</td>
+</tr>
+
+<tr>
+<td>
+[[DIALOG_TEXT_ELEMENT]]
+</td>
+</tr>
+
+<tr>
+<td>
+<div class="dialog_text">
+----------------------------------------------------------------------
+</div>
+<div class="dialog_select">
+▶ 선택1<br/>
+▶ 선택2
+</div>
+<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+

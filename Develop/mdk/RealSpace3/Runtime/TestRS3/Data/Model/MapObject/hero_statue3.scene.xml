@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="hero_statue3" />
+            <PROPERTY>
+                <FILENAME>hero_statue3.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+    </SCENE>
+</ROOT>

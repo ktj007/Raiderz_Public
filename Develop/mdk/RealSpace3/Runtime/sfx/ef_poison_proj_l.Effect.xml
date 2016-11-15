@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<REFFECT_SOURCE name="ef_poison_proj_l">
+    <RMESHEFFECT Align="false" Loop="true" scale="1.000000" starttime="0.000000">ef_poison_proj_l.elu</RMESHEFFECT>
+    <REMITTER starttime="0.000000">ef_poison_proj_l01.Emitter.xml</REMITTER>
+    <REMITTER starttime="0.000000">ef_poison_proj_l02.Emitter.xml</REMITTER>
+    <REMITTER starttime="0.000000">ef_poison_proj_l03.Emitter.xml</REMITTER>
+</REFFECT_SOURCE>

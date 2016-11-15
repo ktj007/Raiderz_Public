@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <RESOURCE type="animation" id="4" cnt="34">
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_atk_n.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_die.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_guard_end.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_guard_idle.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_idle.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_bt1.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_bt2.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_dt.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_kb1.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_kb2.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_kb3.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_kd1.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_kd2.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_kd3.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_st.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_tu1.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_tu2.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mf_up.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mode1_idle.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mode_change.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_mode_change1.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_run.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_sleep.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_spell_cast.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_spell_fire.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_tackle.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_talent_magic.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_taunt_1.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_taunt_2.elu.ani" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/../bonbon_mage/bonbon_mage_walk.elu.ani" />
+        <li name="../../Data/Model/Sky/sky_daytime_cloud_layer01.elu.ani" />
+        <li name="../../Data/Model/Sky/weather_heavy_rainy.elu.ani" />
+        <li name="../../Data/Model/Sky/weather_heavy_snow.elu.ani" />
+        <li name="../../Data/Model/Sky/weather_rainy.elu.ani" />
+    </RESOURCE>
+    <RESOURCE type="material" id="3" cnt="28">
+        <li name="../../Data/Model/Monster/bonbon_mage_01/bonbon_mage_01.elu.0" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/bonbon_mage_01.elu.1" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/bonbon_mage_01.elu.2" />
+        <li name="../../Data/Model/Monster/bonbon_mage_01/bonbon_mage_01.elu.3" />
+        <li name="default" />
+        <li name="sky_daytime_clear.elu.0" />
+        <li name="sky_daytime_cloud_layer01.elu.0" />
+        <li name="sky_daytime_haze_high.elu.0" />
+        <li name="sky_sun_red.elu.0" />
+        <li name="staticmesh_0_" />
+        <li name="staticmesh_0_Teress_drum_k01_mt_wod" />
+        <li name="staticmesh_10_ingen_rguild_roof_gh01_mt_wod " />
+        <li name="staticmesh_11_ingen_rguild_bar_gh01_mt_wod " />
+        <li name="staticmesh_12_ingen_rguild_floor_gh01_mt_wod " />
+        <li name="staticmesh_1_Teress_drum_k01" />
+        <li name="staticmesh_1_ingen_rguild_birdge_gh01_mt_wod" />
+        <li name="staticmesh_2_ingen_rguild_bar_gh01_mt_wod" />
+        <li name="staticmesh_3_ingen_rguild_birdge_gh01_mt_wod" />
+        <li name="staticmesh_4_ingen_rguild_bulleye_gh01_mt_pnt" />
+        <li name="staticmesh_5_at_ingen_rguild_alpha_gh01_mask_2s_mt_wod" />
+        <li name="staticmesh_6_ingen_rguild_roof_gh01_mt_wod " />
+        <li name="staticmesh_7_ingen_rguild_bar_gh01_mt_wod " />
+        <li name="staticmesh_8_ingen_rguild_floor_gh01_mt_wod " />
+        <li name="staticmesh_9_at_ingen_rguild_alpha_gh01_mask_2s_mt_wod " />
+        <li name="weather_heavy_rainy.elu.0" />
+        <li name="weather_heavy_rainy.elu.1" />
+        <li name="weather_heavy_snow.elu.0" />
+        <li name="weather_rainy.elu.0" />
+    </RESOURCE>
+    <RESOURCE type="mesh" id="0" cnt="8">
+        <li name="../../Data/Model/Monster/bonbon_mage_01/bonbon_mage_01.elu" />
+        <li name="sky_daytime_clear.elu" />
+        <li name="sky_daytime_cloud_layer01.elu" />
+        <li name="sky_daytime_haze_high.elu" />
+        <li name="sky_sun_red.elu" />
+        <li name="weather_heavy_rainy.elu" />
+        <li name="weather_heavy_snow.elu" />
+        <li name="weather_rainy.elu" />
+    </RESOURCE>
+    <RESOURCE type="texture" id="-1" cnt="37">
+        <li name="Cemetery_ground_k03.dds" />
+        <li name="Cemetery_ground_k09.dds" />
+        <li name="CommonOliveBark.dds" />
+        <li name="Distortion_nm.dds" />
+        <li name="MtEda_stone_g02.dds" />
+        <li name="MtEda_stone_g03.dds" />
+        <li name="MtEda_stone_g04.dds" />
+        <li name="Rengot_rock_k01.tga.dds" />
+        <li name="Teress_drum_k01.tga.dds" />
+        <li name="blank.tga" />
+        <li name="cloudshadow.tga" />
+        <li name="haze_eda1.tga" />
+        <li name="ingen_rguild_alpha_gh01.tga.dds" />
+        <li name="ingen_rguild_bar_gh01.tga.dds" />
+        <li name="ingen_rguild_birdge_gh01.tga.dds" />
+        <li name="ingen_rguild_bulleye_gh01.tga.dds" />
+        <li name="ingen_rguild_floor_gh01.tga.dds" />
+        <li name="ingen_rguild_roof_gh01.tga.dds" />
+        <li name="man eater_Mage.tga.dds" />
+        <li name="man eater_Mage_hat.tga.dds" />
+        <li name="man eater_Mage_w.tga.dds" />
+        <li name="mouse.tga.dds" />
+        <li name="rain.tga" />
+        <li name="rain_tex.tga" />
+        <li name="rain_tex_s.tga" />
+        <li name="sky_daytime_clear.BMP" />
+        <li name="sky_sun_red.BMP" />
+        <li name="skybox_day_cloud_ani01.tga" />
+        <li name="snow.tga" />
+        <li name="snow_p.TGA" />
+        <li name="teress_com_k01_Diffuse.tga" />
+        <li name="teress_com_k01_Diffuse_Billboards.tga" />
+        <li name="teress_com_k01_Normal_Billboards.tga" />
+        <li name="teress_com_k01_Self-Shadows.tga" />
+        <li name="tree_blue" />
+        <li name="tree_gray" />
+        <li name="wind.tga" />
+    </RESOURCE>
+    <RESOURCE type="tree" id="1" cnt="3">
+        <li name="k_teress_AmericanBoxwood_RT.spt" />
+        <li name="k_teress_AmericanBoxwood_RT_2.spt" />
+        <li name="k_teress_CommonOlive_RT.spt" />
+    </RESOURCE>
+</ROOT>

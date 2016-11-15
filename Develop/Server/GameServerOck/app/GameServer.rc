@@ -1,0 +1,192 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_SYSTEM_MENU MENU 
+BEGIN
+    POPUP "System(&S)"
+    BEGIN
+        MENUITEM "Start(&S)",                   ID_MENU_START
+        MENUITEM "Stop(&T)",                    ID_MENU_STOP
+        MENUITEM SEPARATOR
+        MENUITEM "Reload(&R)",                  ID_MENU_RELOAD
+        MENUITEM SEPARATOR
+        MENUITEM "Exit(X)",                     ID_MENU_EXIT
+    END
+    POPUP "Tools(&T)"
+    BEGIN
+        MENUITEM "Profile Start",               ID_MENU_PROFILE_START
+        MENUITEM "Profile Finish",              ID_TOOLS_PROFILE_FINISH
+        MENUITEM "Command Profile Start",       ID_TOOLS_CMD_PROFILE_START
+        MENUITEM "Command Profile Finish",      ID_TOOLS_CMD_PROFILE_FINISH
+    END
+END
+
+IDR_TRAY_MENU MENU 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "열기...(&O)",                   ID_POPUP_OPEN
+        MENUITEM "숨기기",                         ID_POPUP_HIDE
+        MENUITEM SEPARATOR
+        MENUITEM "종료...(&X)",                   ID_POPUP_QUIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_SERVER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 561
+        VERTGUIDE, 7
+        VERTGUIDE, 177
+        VERTGUIDE, 250
+        TOPMARGIN, 8
+        BOTTOMMARGIN, 401
+        HORZGUIDE, 210
+        HORZGUIDE, 380
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SERVER_DIALOG DIALOGEX 65535, 65535, 568, 408
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_RICHEDIT21,"RichEdit20A",ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_HSCROLL,255,8,306,132
+    CONTROL         "",IDC_RICHEDIT22,"RichEdit20A",ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_HSCROLL,256,206,305,194
+    COMBOBOX        IDC_COMBO_FIELD,7,384,170,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_RICHEDIT_ERRORLOG,"RichEdit20A",ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_HSCROLL,256,143,305,61
+    CONTROL         "",IDC_RICHEDIT_MONITOR,"RichEdit20A",ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_HSCROLL,7,8,243,196
+    CONTROL         "",IDC_STATIC_MINIMAP,"Static",SS_BLACKFRAME,7,210,170,170
+    LISTBOX         IDC_LIST_SELECT_ENTITY,185,219,63,164,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    GROUPBOX        "Select List",IDC_STATIC_CONNECT_NUMBER,181,210,70,191
+    PUSHBUTTON      "Report",IDC_BUTTON_REPORT,184,384,65,15
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GameServer.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,0,0,0
+ PRODUCTVERSION 0,8,0,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x0L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204b0"
+        BEGIN
+            VALUE "FileDescription", "GameServ"
+            VALUE "FileVersion", "0.45"
+            VALUE "InternalName", "GameServ"
+            VALUE "LegalCopyright", "Copyright (C) 2009"
+            VALUE "OriginalFilename", "GameServ"
+            VALUE "ProductName", "GameServ"
+            VALUE "ProductVersion", "0.45"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <STATICMESH>
+            <COMMON name="login" />
+            <PROPERTY>
+                <FILENAME>login.rs</FILENAME>
+            </PROPERTY>
+            <SCENE>
+                <EFFECTINSTANCE>
+                    <COMMON>
+                        <POSITION>11199.479492 12138.905273 10.524536</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>waterfall_bubble</FILENAME>
+                        <AUTOSTART />
+                    </PROPERTY>
+                </EFFECTINSTANCE>
+                <EFFECTINSTANCE>
+                    <COMMON>
+                        <POSITION>11336.377930 12018.530273 40.525269</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>wet_fog</FILENAME>
+                        <AUTOSTART />
+                    </PROPERTY>
+                </EFFECTINSTANCE>
+                <EFFECTINSTANCE>
+                    <COMMON>
+                        <POSITION>10285.300781 13239.237305 2765.950195</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>waterfall_bubble2</FILENAME>
+                        <AUTOSTART />
+                    </PROPERTY>
+                </EFFECTINSTANCE>
+                <DIRLIGHT>
+                    <COMMON name="Direct01">
+                        <POSITION>25000.0000000 -10000.0000000 20000.0000000</POSITION>
+                        <DIRECTION>-0.7453560 0.2981424 -0.5962848</DIRECTION>
+                        <UP>-0.5536366 0.2214546 0.8027729</UP>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>1.0000000 1.0000000 1.0000000</COLOR>
+                        <INTENSITY>1.0000000</INTENSITY>
+                        <CASTSHADOW />
+                    </PROPERTY>
+                </DIRLIGHT>
+            </SCENE>
+        </STATICMESH>
+        <WATERPLANE>
+            <COMMON name="login_water_p_01.elu">
+                <POSITION>0.0 0.0 0.0</POSITION>
+                <DIRECTION>0.0 1.0 0.0</DIRECTION>
+                <UP>0.0 0.0 1.0</UP>
+                <SCALE>1.0 1.0 1.0</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <MESHFILE>login_water_p_01.elu</MESHFILE>
+                <PORTALS>
+                    <PORTAL>
+                        <POSITION>12306.9492188 12870.3789063 -65.0000000</POSITION>
+                        <POSITION>10306.9492188 12870.3789063 -65.0000000</POSITION>
+                        <POSITION>10306.9492188 11370.3789063 -65.0000000</POSITION>
+                        <POSITION>12306.9492188 4870.3789063 -65.0000000</POSITION>
+                        <POSITION>14306.9492188 4870.3789063 -65.0000000</POSITION>
+                        <POSITION>15306.9492188 5870.3789063 -65.0000000</POSITION>
+                        <POSITION>15306.9492188 8870.3789063 -65.0000000</POSITION>
+                        <POSITION>14806.9492188 9870.3789063 -65.0000000</POSITION>
+                    </PORTAL>
+                </PORTALS>
+            </PROPERTY>
+        </WATERPLANE>
+        <ACTOR>
+            <COMMON name="ingen_waterfall.max">
+                <POSITION>11118.076172 12336.573242 -322.334106</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ingen_waterfall.elu</FILENAME>
+            </PROPERTY>
+        </ACTOR>
+    </SCENE>
+</ROOT>

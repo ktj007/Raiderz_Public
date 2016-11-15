@@ -1,0 +1,16 @@
+<h2>전리품 목록</h2>
+
+<ul>
+	<li>아이디: <a href="javascript:window.external.Navigate('LOOTING', '[[LOOT_ID]]')">[[LOOT_ID]]</a></li>
+	<li>최대갯수: [[LOOT_MAX]]</li>
+</ul>
+
+<table class="content_table">
+<tr>
+	<th>내용</th>
+	<th>확률</th>
+	<th>최소</th>
+	<th>최대</th>
+</tr>
+	[[LOOT_ELEMENTS]]
+</table>

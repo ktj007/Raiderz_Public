@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerMonitorClient", "ServerMonitorClient_app\ServerMonitorClient.csproj", "{4591046B-AA05-417A-899F-800DB898F05E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerMonitorClient_unittest", "ServerMonitorClient_unittest\ServerMonitorClient_unittest.csproj", "{35C1493D-3D42-4E42-A543-2BD5A1EE2872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMCommon", "SMCommon\SMCommon.csproj", "{A1670AE3-7267-4A1B-A5DB-DE3538568A7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4591046B-AA05-417A-899F-800DB898F05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4591046B-AA05-417A-899F-800DB898F05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4591046B-AA05-417A-899F-800DB898F05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4591046B-AA05-417A-899F-800DB898F05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C1493D-3D42-4E42-A543-2BD5A1EE2872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C1493D-3D42-4E42-A543-2BD5A1EE2872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C1493D-3D42-4E42-A543-2BD5A1EE2872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C1493D-3D42-4E42-A543-2BD5A1EE2872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1670AE3-7267-4A1B-A5DB-DE3538568A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1670AE3-7267-4A1B-A5DB-DE3538568A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1670AE3-7267-4A1B-A5DB-DE3538568A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1670AE3-7267-4A1B-A5DB-DE3538568A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

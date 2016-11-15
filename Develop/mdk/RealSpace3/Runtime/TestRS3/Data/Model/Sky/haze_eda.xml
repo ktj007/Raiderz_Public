@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <AABBTREE>
+            <PROPERTY>
+                <FILENAME>haze_eda.rs</FILENAME>
+            </PROPERTY>
+        </AABBTREE>
+    </SCENE>
+</ROOT>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY></PROPERTY>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="gunz2test">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>gunz2test.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <DIRLIGHT>
+            <COMMON name="DummyEnvLight0">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>-0.000000 -0.000000 -0.000000</DIRECTION>
+                <UP>0.000000 0.000000 0.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <ENV />
+            </PROPERTY>
+        </DIRLIGHT>
+    </SCENE>
+</ROOT>

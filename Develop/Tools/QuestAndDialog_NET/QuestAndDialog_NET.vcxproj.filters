@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Bring">
+      <UniqueIdentifier>{0cf33988-7103-4691-aab2-2e42945d3aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make">
+      <UniqueIdentifier>{01fd0217-5286-4d98-8dc2-9bdcded2f692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\Base">
+      <UniqueIdentifier>{9ce84206-133b-4f67-ada8-4ac0b89eb6bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Make\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Make\Controller">
+      <UniqueIdentifier>{cb0ab8ad-0e3f-4741-bac5-35083e4714a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Make\Model">
+      <UniqueIdentifier>{d8ef9bc1-b21d-43e9-8f42-e65485e1f349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\Model\Dialog">
+      <UniqueIdentifier>{17462be8-7c5f-4fc8-b30b-8dbe531c24a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\Model\NPC">
+      <UniqueIdentifier>{e6aea2f4-0e57-45c4-a6c3-7cb589b308e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\Model\String">
+      <UniqueIdentifier>{4d20a1a2-7fd7-4b92-9247-4c86c8a9fe86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\Model\DB">
+      <UniqueIdentifier>{ab34bcd1-9c79-4b5f-a94d-c9bc2343211b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make\Model\Config">
+      <UniqueIdentifier>{4675cf86-8930-4969-a8fa-5e93683fb044}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>Make</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Tdef.h">
+      <Filter>Make\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogForm.h">
+      <Filter>Make\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InsertDialog.h">
+      <Filter>Make\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InsertQuest.h">
+      <Filter>Make\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestForm.h">
+      <Filter>Make\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Make\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Make\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TDialogController.h">
+      <Filter>Make\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="TQuestController.h">
+      <Filter>Make\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="TDialogInfo.h">
+      <Filter>Make\Model\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="TNPCInfo.h">
+      <Filter>Make\Model\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="TStringResMgr.h">
+      <Filter>Make\Model\String</Filter>
+    </ClInclude>
+    <ClInclude Include="TDataBase.h">
+      <Filter>Make\Model\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="TDBManager.h">
+      <Filter>Make\Model\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="TQuestDBManager.h">
+      <Filter>Make\Model\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="TQuestConfig.h">
+      <Filter>Make\Model\Config</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>Make\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Make\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DialogForm.cpp">
+      <Filter>Make\헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="InsertDialog.cpp">
+      <Filter>Make\헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="InsertQuest.cpp">
+      <Filter>Make\헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestForm.cpp">
+      <Filter>Make\헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TDialogController.cpp">
+      <Filter>Make\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="TQuestController.cpp">
+      <Filter>Make\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Make\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestAndDialog_NET.cpp">
+      <Filter>Make\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Make\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TDialogInfo.cpp">
+      <Filter>Make\Model\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="TNPCInfo.cpp">
+      <Filter>Make\Model\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="TStringResMgr.cpp">
+      <Filter>Make\Model\String</Filter>
+    </ClCompile>
+    <ClCompile Include="TDataBase.cpp">
+      <Filter>Make\Model\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="TDBManager.cpp">
+      <Filter>Make\Model\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="TQuestConfig.cpp">
+      <Filter>Make\Model\Config</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,875 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Mcv.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.kor\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Mcv.ico"
+IDR_MCVTYPE             ICON                    "res\\McvDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_OPEN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "파일(&F)"
+    BEGIN
+        MENUITEM "열기(&O)...\tCtrl+O",           ID_FILE_OPEN
+        MENUITEM "animation.xml 저장(&S)...\tCtrl+S", ID_FILE_SAVE
+        MENUITEM "animation.xml 다른이름으로 저장(&A)...\tCtrl+A", ID_FILE_SAVE_AS
+        MENUITEM "무기파일열기(&W)...\t Ctrl+W",      ID_FILE_WOPEN
+        MENUITEM SEPARATOR
+        MENUITEM "종료(&X)",                      ID_APP_EXIT
+        MENUITEM SEPARATOR
+        MENUITEM "최근 파일 없음",                    ID_FILE_MRU_FILE1
+    END
+    POPUP "보기(&V)"
+    BEGIN
+        MENUITEM "도구 모음(&T)",                   ID_VIEW_TOOLBAR
+        MENUITEM "상태 표시줄(&S)",                  ID_VIEW_STATUS_BAR
+        MENUITEM "텍스쳐 렌더링 On/Off ( Toon TexTure On/Off )", ID_TEX_ON_OFF, CHECKED
+        MENUITEM "버텍스 노멀 On/Off",               ID_VERTEX_NORMAL
+        MENUITEM "카메라 초기화",                     ID_CAMERA_RESET
+        MENUITEM "맵 오브젝트 위치 보정",                ID_MAP_OBJ_POS
+        MENUITEM "Grid On/Off",                 ID_GRID_ONOFF, CHECKED
+        MENUITEM "Bbox On/Off",                 ID_BBOX_ONOFF, CHECKED
+        MENUITEM "Effect Render On/Off",        ID_EFFECT_RENDER
+        MENUITEM "Character View Mode",         ID_CHAR_VIEW_MODE, CHECKED
+        MENUITEM "Show Bones",                  ID_SHOW_BONES, CHECKED
+        MENUITEM "Show Collision",              ID_SHOW_COLLISION, CHECKED
+        MENUITEM "깨지지 않는 알파렌더링",                ID_ALPHA2PASS
+        MENUITEM "HDR On/Off",                  ID_HDR_ONOFF
+    END
+    POPUP "유틸(&U)"
+    BEGIN
+        MENUITEM "Scale Dlg",                   ID_SCALEDLG
+        MENUITEM "Reload model",                ID__RELOADMODEL
+        MENUITEM "Background Color",            ID_BKCOLOR
+        MENUITEM "Parts Color",                 ID_PARTS_COLOR
+        MENUITEM "Animation blend",             ID_ANIMATION_BLEND
+        MENUITEM "Material Decal",              ID_MATERIALDECALDLG
+    END
+    POPUP "도움말(&H)"
+    BEGIN
+        MENUITEM "Mcv 정보(&A)...",               ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_ANIBLEND MENU 
+BEGIN
+    POPUP "블렌딩"
+    BEGIN
+        MENUITEM "None",                        ID_ANIBLEND_DELETE
+        MENUITEM "Immediate",                   ID_ANIBLEND_IMMEDIATE
+        MENUITEM "Delayed",                     ID_ANIBLEND_DELAYED
+        MENUITEM "Crossfade",                   ID_ANIBLEND_CROSSFADE
+        MENUITEM "Edit Duration",               ID_ANIBLEND_EDIT_DURATION
+    END
+END
+
+IDR_MENU_ANIBLEND_TARGET_ALL MENUEX 
+BEGIN
+    POPUP "블렌딩*",                           65535,MFT_STRING | MFT_RIGHTJUSTIFY,MFS_ENABLED
+    BEGIN
+        MENUITEM "None*",                       ID_ANIBLEND_DELETE_TARGET_ALL,MFT_STRING,MFS_ENABLED
+        MENUITEM "Immediate*",                  ID_ANIBLEND_IMMEDIATE_TARGET_ALL,MFT_STRING,MFS_ENABLED
+        MENUITEM "Delayed*",                    ID_ANIBLEND_DELAYED_TARGET_ALL,MFT_STRING,MFS_ENABLED
+        MENUITEM "Crossfade*",                  ID_ANIBLEND_CROSSFADE_TARGET_ALL,MFT_STRING,MFS_ENABLED
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "P",            ID_PARTS_COLOR,         VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 234, 113
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Mcv 정보"
+FONT 9, "굴림", 0, 0, 0x0
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,18,21
+    LTEXT           "마이에트 캐릭터 뷰어 (버전 0.12)",IDC_STATIC,38,17,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002",IDC_STATIC,38,31,119,8
+    DEFPUSHBUTTON   "확인",IDOK,91,74,50,20,WS_GROUP
+END
+
+IDD_MCV_FORM DIALOGEX 0, 0, 407, 404
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_ACCEPTFILES
+FONT 9, "굴림", 0, 0, 0x0
+BEGIN
+END
+
+IDD_SCALE DIALOGEX 0, 0, 131, 85
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Scale"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "확인",IDOK,43,64,50,14
+    CONTROL         "",IDC_SX,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,23,14,101,12
+    CONTROL         "",IDC_SY,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,23,30,101,12
+    CONTROL         "",IDC_SZ,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,23,47,101,12
+    LTEXT           "X",IDC_STATIC,14,15,8,8
+    LTEXT           "Y",IDC_STATIC,14,31,8,8
+    LTEXT           "Z",IDC_STATIC,14,47,8,8
+END
+
+IDD_MTRLEDITDLG DIALOGEX 0, 0, 431, 231
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "저장",IDOKSAVE,272,206,50,14
+    PUSHBUTTON      "취소",IDCANCEL,327,206,50,14
+    LISTBOX         IDC_MTRLLIST,5,6,200,216,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Texture Name",IDC_STATIC,212,9,130,12
+    LTEXT           "Alpha Texture Name",IDC_STATIC,211,39,129,11
+    EDITTEXT        IDC_TEX_NAME,209,22,207,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ALPHA_TEX_NAME,210,51,207,12,ES_AUTOHSCROLL
+    LTEXT           "Ambient  (R,G,B,A)",IDC_STATIC,211,70,130,10
+    EDITTEXT        IDC_ECAR,211,81,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECAG,242,81,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECAB,272,81,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECBA,302,81,28,14,ES_AUTOHSCROLL
+    LTEXT           "Diffuse  (R,G,B,A)",IDC_STATIC,211,99,130,10
+    EDITTEXT        IDC_ECAR2,211,110,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECAG2,242,110,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECAB2,272,110,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECBA2,302,110,28,14,ES_AUTOHSCROLL
+    LTEXT           "Specular  (R,G,B,A)",IDC_STATIC,211,128,130,10
+    EDITTEXT        IDC_ECAR3,211,139,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECAG3,242,139,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECAB3,272,139,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ECBA3,302,139,28,14,ES_AUTOHSCROLL
+    LTEXT           "Power",IDC_STATIC,339,82,28,11
+    EDITTEXT        IDC_EDIT4,381,81,36,13,ES_AUTOHSCROLL
+    CONTROL         "Twoside",IDC_TWOSIDE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,341,119,59,10
+    CONTROL         "Additive",IDC_ADDITIVE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,341,140,59,10
+    CTEXT           "Alpha Ref",IDC_STATIC,338,100,37,10
+    EDITTEXT        IDC_ALPHA_REF,382,100,36,13,ES_AUTOHSCROLL
+END
+
+IDD_FRAME_INFO DIALOGEX 0, 0, 189, 300
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_NOFAILCREATE | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Frame Info"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "확인",IDOK,66,282,50,14,WS_DISABLED
+    LISTBOX         IDC_NODE_LISTBOX,5,5,178,269,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PARTSINFO_DLG DIALOGEX 0, 0, 186, 95
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "확인",IDOK,129,7,50,14
+    PUSHBUTTON      "취소",IDCANCEL,129,24,50,14
+END
+
+IDD_MODEL_INFO DIALOGEX 0, 0, 323, 298
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "정보"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "확인",IDOK,138,281,50,14
+    LISTBOX         IDC_LIST_MESHNODE,12,16,121,126,LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST_MTRLNODE,12,165,121,109,LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "모델 정보",IDC_STATIC,5,4,306,146,BS_CENTER
+    GROUPBOX        "재질 정보",IDC_STATIC,6,152,305,127,BS_CENTER
+    PUSHBUTTON      "Color",IDC_BUTTON_MESHNODE_COLOR,142,18,51,14
+    PUSHBUTTON      "Color",IDC_BUTTON_MTRLNODE_COLOR,140,166,75,14
+    GROUPBOX        "Texture",IDC_STATIC,141,186,164,41
+    GROUPBOX        "Toon Texture",IDC_STATIC,142,232,164,41
+    PUSHBUTTON      "Toon File",IDC_TOON_FILE,223,166,76,14
+    LTEXT           "Filtering",IDC_STATIC,149,197,53,11
+    LTEXT           "Blend Mode",IDC_STATIC,149,210,54,12
+    LTEXT           "Filtering",IDC_STATIC,149,243,53,11
+    LTEXT           "Blend Mode",IDC_STATIC,149,256,54,12
+    COMBOBOX        IDC_COMBO_TEX_FILTER,220,194,78,80,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_TEX_BLEND,220,209,78,80,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_TOON_FILTER,220,240,78,80,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_TOON_BLEND,220,256,78,80,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_EDIT_ANIMATION DIALOGEX 0, 0, 300, 61
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Animation"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "확인",IDOK,243,7,50,14
+    PUSHBUTTON      "취소",IDCANCEL,243,24,50,14
+    LTEXT           "Name",IDC_STATIC,7,9,36,10
+    EDITTEXT        IDC_EDIT_ANIMATION_NAME,50,7,150,14,ES_AUTOHSCROLL
+    LTEXT           "File Name",IDC_STATIC,7,26,36,10
+    EDITTEXT        IDC_EDIT_ANIMATION_FILENAME,50,24,151,14,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE_SOUND,210,24,25,13,WS_DISABLED
+    CONTROL         "Loop",IDC_CHECK_LOOP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,51,41,64,12
+END
+
+IDD_DIALOG_CONTROL DIALOGEX 0, 0, 164, 380
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TAB_MENU,"SysTabControl32",0x0,0,6,162,18
+END
+
+IDD_DIALOG_OUTPUT DIALOGEX 0, 0, 356, 50
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_OUTPUT,0,0,354,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | NOT WS_BORDER | WS_VSCROLL
+END
+
+IDD_DIALOG_EDIT_ANIBLEND DIALOGEX 0, 0, 511, 335
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "애니메이션 블렌딩 메소드 편집"
+FONT 9, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    CONTROL         "Custom1",IDC_GRID,"MFCGridCtrl",WS_TABSTOP,0,0,511,336
+END
+
+IDD_DIALOG_EDIT_ANIBLEND_DURATION DIALOGEX 0, 0, 300, 28
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Enter Animation Blend Duration"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_ANIBLEND_DURATION,7,7,286,14,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_ANIMATION DIALOGEX 0, 0, 164, 338
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Animation",IDC_GROUP1,6,0,150,210
+    CONTROL         "",IDC_ANIMATION_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,12,12,138,174
+    PUSHBUTTON      "Add",IDC_BUTTON_ADDANI,12,192,42,12,WS_DISABLED
+    PUSHBUTTON      "Edit",IDC_BUTTON_EDITANI,60,192,42,12,WS_DISABLED
+    PUSHBUTTON      "Delete",IDC_BUTTON_DELANI,108,192,42,12,WS_DISABLED
+    GROUPBOX        "Event",IDC_GROUP2,6,222,150,108
+    LISTBOX         IDC_EVENT_LIST,12,234,138,72,LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add",IDC_BUTTON_ADDEVENT,12,312,42,12,WS_DISABLED
+    PUSHBUTTON      "Edit",IDC_BUTTON_EDITEVENT,60,312,42,12,WS_DISABLED
+    PUSHBUTTON      "Delete",IDC_BUTTON_DELEVENT,108,312,42,12,WS_DISABLED
+END
+
+IDD_DIALOG_MODELINFO DIALOGEX 0, 0, 164, 338
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Model Info",IDC_GROUP3,6,0,150,216
+    CONTROL         "Mesh",IDC_CHECK_NODE_MESH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,12,36,12
+    CONTROL         "Bone",IDC_CHECK_NODE_BONE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,60,12,42,12
+    CONTROL         "Dummy",IDC_CHECK_NODE_DUMMY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,108,12,42,12
+    CONTROL         "",IDC_TREE_NODES,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,12,30,138,180
+    CONTROL         "Trace Locale Dummy",IDC_CHECK_TRACE_LOC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,222,150,10
+    GROUPBOX        "Node Info",IDC_GROUP4,6,249,150,81
+    EDITTEXT        IDC_EDIT_NODE_INFO,12,261,138,63,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | NOT WS_BORDER
+    LTEXT           "Static",IDC_STATIC_TM_INFO,7,236,150,8
+END
+
+IDD_DIALOG_FRAMECONTROL DIALOGEX 0, 0, 638, 68
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Animation Frame Controller",IDC_STATIC_FRAMEGROUP,6,6,516,54
+    CONTROL         "",IDC_SLIDER_ANIMATION,"msctls_trackbar32",TBS_TOP | WS_TABSTOP,12,18,504,24
+    LTEXT           "0 / 0 frame",IDC_STATIC_INFO,18,42,120,10
+    PUSHBUTTON      "Play",IDC_PLAY_PAUSE,408,42,48,12
+    PUSHBUTTON      "Stop",IDC_STOP,462,42,48,12
+    GROUPBOX        "Speed",IDC_STATIC_SPEEDGROUP,534,6,96,54
+    CONTROL         "",IDC_SLIDER_SPEED,"msctls_trackbar32",TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,540,18,84,24
+    LTEXT           "Speed : x1.0",IDC_STATIC_SPEED,540,42,84,8
+    LTEXT           "0.00 / 0.00 sec",IDC_STATIC_MSECOND,138,42,126,10
+END
+
+IDD_DIALOG_VIEWCONTROL DIALOGEX 0, 0, 164, 338
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Visibility",IDC_STATIC,6,0,150,54
+    CONTROL         "",IDC_SLIDER_VISIBILITY,"msctls_trackbar32",TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,12,12,138,24
+    LTEXT           "Visibility : 1.0",IDC_STATIC_VISIBILITY,12,42,78,8
+    PUSHBUTTON      "Reset",IDC_BTN_VISIBILITY_RESET,102,36,48,12
+    CONTROL         "",IDC_SLIDER_BONE_LOD,"msctls_trackbar32",TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,12,78,138,24
+    LTEXT           "LOD : 0 / 0 / 0",IDC_STATIC_LOD_INFO,12,102,138,8
+    GROUPBOX        "LOD",IDC_STATIC,6,66,150,48
+END
+
+IDD_DIALOG_EVENT DIALOGEX 0, 0, 228, 150
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Event"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Frame :",IDC_STATIC,12,18,36,12
+    EDITTEXT        IDC_EDIT_EVENT_FRAME,54,18,162,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPIN_FRAME,"msctls_updown32",UDS_WRAP | UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,210,12,11,14
+    LTEXT           "Name :",IDC_STATIC,12,36,36,12
+    COMBOBOX        IDC_COMBO_EVENTNAME,54,36,54,132,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_EVENT_NAME,114,36,102,12,ES_AUTOHSCROLL
+    LTEXT           "Param 1 :",IDC_STATIC,12,54,36,12
+    EDITTEXT        IDC_EDIT_EVENT_PARAM1,54,54,162,12,ES_AUTOHSCROLL
+    LTEXT           "Param 2 :",IDC_STATIC,12,72,36,12
+    EDITTEXT        IDC_EDIT_EVENT_PARAM2,54,72,162,12,ES_AUTOHSCROLL
+    LTEXT           "Param 3 :",IDC_STATIC,12,90,36,12
+    EDITTEXT        IDC_EDIT_EVENT_PARAM3,54,90,162,12,ES_AUTOHSCROLL
+    LTEXT           "Uncond. :",IDC_STATIC,12,108,36,12
+    COMBOBOX        IDC_COMBO_EVENT_UNCOND,54,108,162,66,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,48,132,60,12
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,120,132,60,12
+    GROUPBOX        "Parameter",IDC_STATIC,6,6,216,120
+END
+
+IDD_DIALOG_ADDANIMATION DIALOGEX 0, 0, 240, 121
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "애니메이션 추가/편집"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "애니메이션 속성",IDC_STATIC,6,6,228,90
+    LTEXT           "Name :",IDC_STATIC,12,24,30,12
+    EDITTEXT        IDC_EDIT_ANINAME,48,23,180,13,ES_AUTOHSCROLL
+    LTEXT           "File :",IDC_STATIC,12,42,30,12
+    EDITTEXT        IDC_EDIT_FILENAME,48,42,138,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Find...",IDC_BUTTON_FINDFILE,186,42,42,12
+    LTEXT           "Loop :",IDC_STATIC,12,60,30,12
+    COMBOBOX        IDC_COMBO_LOOP,48,60,84,48,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Speed :",IDC_STATIC,12,78,30,12
+    EDITTEXT        IDC_EDIT_SPEED,48,78,84,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,54,102,60,12
+    PUSHBUTTON      "Cancel",IDCANCEL,126,102,60,12
+END
+
+IDD_DIALOG_LIGHT DIALOGEX 0, 0, 164, 380
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Directional Light",IDC_STATIC,6,60,150,66
+    CONTROL         "Match Camera Direction",IDC_CHECK_DIRLIGHT_MATCH_CAMERAPOS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,72,138,12
+    LTEXT           "Diffuse",IDC_STATIC,12,90,30,8
+    LTEXT           "Ambient",IDC_STATIC,12,108,30,8
+    EDITTEXT        IDC_EDIT_DIRLIGHT_DIFFUSE_R,54,90,18,12,ES_CENTER | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DIRLIGHT_DIFFUSE_G,78,90,18,12,ES_CENTER | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DIRLIGHT_DIFFUSE_B,102,90,18,12,ES_CENTER | ES_READONLY | ES_NUMBER
+    CONTROL         "",IDC_COLOR_DIRLIGHT_DIFFUSE,"Static",SS_BLACKFRAME | SS_NOTIFY,126,90,24,13
+    EDITTEXT        IDC_EDIT_DIRLIGHT_AMBIENT_R,54,108,18,12,ES_CENTER | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DIRLIGHT_AMBIENT_G,78,108,18,12,ES_CENTER | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DIRLIGHT_AMBIENT_B,102,108,18,12,ES_CENTER | ES_READONLY | ES_NUMBER
+    CONTROL         "",IDC_COLOR_DIRLIGHT_AMBIENT,"Static",SS_BLACKFRAME | SS_NOTIFY,126,108,24,12
+    GROUPBOX        "",IDC_STATIC,6,0,150,48
+    CONTROL         "Enable Specular",IDC_CHECK_ENABLE_SPECULAR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,12,138,12
+    CONTROL         "Lighting Only",IDC_CHECK_LIGHTING_ONLY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,30,138,10
+    GROUPBOX        "Point Light",IDC_STATIC,6,138,150,234
+    CONTROL         "Enable Point Light #1",IDC_CHECK_POINTLIGHT1_ENABLE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,150,138,8
+    CONTROL         "Enable Point Light #2",IDC_CHECK_POINTLIGHT2_ENABLE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,216,138,8
+    CONTROL         "Enable Point Light #3",IDC_CHECK_POINTLIGHT3_ENABLE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,288,138,8
+END
+
+IDD_MATERIALDECAL DIALOGEX 0, 0, 337, 197
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Material Decal 설정"
+FONT 9, "굴림", 400, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_MATERIALINDEX,78,13,67,14,ES_AUTOHSCROLL
+    LTEXT           "Material Name",IDC_STATIC,11,16,48,8
+    PUSHBUTTON      "적 용",IDC_BUTTON1,190,168,50,14
+    PUSHBUTTON      "제 거",IDC_BUTTON2,267,168,50,14
+    LTEXT           "Texture Name",IDC_STATIC,11,63,47,8
+    LTEXT           "UV offset",IDC_STATIC,12,97,30,8
+    EDITTEXT        IDC_TEXTURENAME,78,60,70,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UVOFFSETX,78,95,23,14,ES_AUTOHSCROLL
+    LTEXT           "UV scale",IDC_STATIC,12,116,30,8
+    EDITTEXT        IDC_UVSCALEX,78,114,23,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UVOFFSETY,106,95,23,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAPCHANNEL,78,77,20,14,ES_AUTOHSCROLL
+    LTEXT           "Map Channel",IDC_STATIC,11,80,44,8
+    COMBOBOX        IDC_UVADDRESS,78,134,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "UV Address",IDC_STATIC,13,136,39,8
+    EDITTEXT        IDC_UVSCALEY,106,114,23,14,ES_AUTOHSCROLL
+    LTEXT           "Texture Name",IDC_STATIC,175,61,47,8
+    EDITTEXT        IDC_TEXTURENAME2,242,58,69,14,ES_AUTOHSCROLL
+    LTEXT           "UV offset",IDC_STATIC,176,95,30,8
+    EDITTEXT        IDC_UVOFFSETX2,242,93,23,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UVOFFSETY2,270,93,23,14,ES_AUTOHSCROLL
+    LTEXT           "UV scale",IDC_STATIC,176,114,30,8
+    EDITTEXT        IDC_UVSCALEX2,242,112,23,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UVSCALEY2,270,112,23,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAPCHANNEL2,242,75,20,14,ES_AUTOHSCROLL
+    LTEXT           "Map Channel",IDC_STATIC,175,78,44,8
+    COMBOBOX        IDC_UVADDRESS2,242,132,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "UV Address",IDC_STATIC,177,134,39,8
+    GROUPBOX        "Diffuse texture",IDC_STATIC,6,43,149,112
+    GROUPBOX        "Mask texture",IDC_STATIC,166,43,151,112
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204B0"
+        BEGIN
+            VALUE "FileDescription", "Mcv MFC 응용 프로그램"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "Mcv"
+            VALUE "LegalCopyright", "Copyright (C) 2002"
+            VALUE "OriginalFilename", "Mcv.EXE"
+            VALUE "ProductName", "Mcv 응용 프로그램"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 106
+    END
+
+    IDD_SCALE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 124
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 78
+    END
+
+    IDD_PARTSINFO_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_MODEL_INFO, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 297
+    END
+
+    IDD_DIALOG_EDIT_ANIMATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 54
+    END
+
+    IDD_DIALOG_CONTROL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 157
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 375
+    END
+
+    IDD_DIALOG_OUTPUT, DIALOG
+    BEGIN
+        RIGHTMARGIN, 36
+        BOTTOMMARGIN, 38
+    END
+
+    IDD_DIALOG_EDIT_ANIBLEND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 504
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 328
+    END
+
+    IDD_DIALOG_EDIT_ANIBLEND_DURATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 21
+    END
+
+    IDD_DIALOG_ANIMATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 157
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 331
+    END
+
+    IDD_DIALOG_MODELINFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 157
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 331
+    END
+
+    IDD_DIALOG_VIEWCONTROL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 157
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 331
+    END
+
+    IDD_DIALOG_EVENT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 221
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+
+    IDD_DIALOG_ADDANIMATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 114
+    END
+
+    IDD_DIALOG_LIGHT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 157
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 373
+    END
+
+    IDD_MATERIALDECAL, DIALOG
+    BEGIN
+        RIGHTMARGIN, 317
+        BOTTOMMARGIN, 182
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+IDR_HTML_RCFRAMEINFODLG HTML                    "RCFrameInfoDlg.htm"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_EVENT DLGINIT
+BEGIN
+    IDC_COMBO_EVENTNAME, 0x403, 7, 0
+0x7543, 0x7473, 0x6d6f, "\000" 
+    IDC_COMBO_EVENTNAME, 0x403, 6, 0
+0x7645, 0x6e65, 0x0074, 
+    IDC_COMBO_EVENTNAME, 0x403, 6, 0
+0x6f53, 0x6e75, 0x0064, 
+    IDC_COMBO_EVENTNAME, 0x403, 7, 0
+0x6645, 0x6566, 0x7463, "\000" 
+    IDC_COMBO_EVENTNAME, 0x403, 7, 0
+0x6143, 0x656d, 0x6172, "\000" 
+    IDC_COMBO_EVENT_UNCOND, 0x403, 6, 0
+0x4146, 0x534c, 0x0045, 
+    IDC_COMBO_EVENT_UNCOND, 0x403, 5, 0
+0x5254, 0x4555, "\000" 
+    0
+END
+
+IDD_DIALOG_ADDANIMATION DLGINIT
+BEGIN
+    IDC_COMBO_LOOP, 0x403, 5, 0
+0x6f4c, 0x706f, "\000" 
+    IDC_COMBO_LOOP, 0x403, 11, 0
+0x614c, 0x7473, 0x4620, 0x6172, 0x656d, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "Mcv\n\nMcv\n\n\nMcv.Document\nMcv Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Maiet Charactor Viewer"
+    AFX_IDS_IDLEMESSAGE     "준비"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "새 문서를 작성합니다\n새 파일"
+    ID_FILE_OPEN            "캐릭터를 불러오기\n열기"
+    ID_FILE_CLOSE           "현재 열린 문서를 닫습니다\n닫기"
+    ID_FILE_SAVE            "현재 열린 문서를 저장합니다\n저장"
+    ID_FILE_SAVE_AS         "현재 열린 문서를 다른 이름으로 저장합니다\n다른 이름으로 저장"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "프로그램 정보와 버전 정보, 저작권 정보를 표시합니다\n정보"
+    ID_APP_EXIT             "응용 프로그램을 종료하기 위해 문서를 저장할 것인지 묻습니다\n종료"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE2       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE3       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE4       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE5       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE6       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE7       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE8       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE9       "이 문서를 엽니다"
+    ID_FILE_MRU_FILE10      "이 문서를 엽니다"
+    ID_FILE_MRU_FILE11      "이 문서를 엽니다"
+    ID_FILE_MRU_FILE12      "이 문서를 엽니다"
+    ID_FILE_MRU_FILE13      "이 문서를 엽니다"
+    ID_FILE_MRU_FILE14      "이 문서를 엽니다"
+    ID_FILE_MRU_FILE15      "이 문서를 엽니다"
+    ID_FILE_MRU_FILE16      "이 문서를 엽니다"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "다음 창으로 전환합니다\n다음 창"
+    ID_PREV_PANE            "이전 창으로 전환합니다\n이전 창"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "현재 열린 창을 나눕니다\n나누기"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "선택 부분을 지웁니다\n지우기"
+    ID_EDIT_CLEAR_ALL       "모든 것을 지웁니다\n모두 지우기"
+    ID_EDIT_COPY            "선택 부분을 복사하여 클립보드에 넣습니다\n복사"
+    ID_EDIT_CUT             "선택 부분을 잘라내어 클립보드에 넣습니다\n잘라내기"
+    ID_EDIT_FIND            "지정한 문자열을 찾습니다\n찾기"
+    ID_EDIT_PASTE           "클립보드의 내용을 붙여 넣습니다\n붙여넣기"
+    ID_EDIT_REPEAT          "마지막으로 실행한 동작을 반복합니다\n반복"
+    ID_EDIT_REPLACE         "지정한 문자열을 다른 문자열로 바꿉니다\n바꾸기"
+    ID_EDIT_SELECT_ALL      "문서 전체를 선택합니다\n전체 선택"
+    ID_EDIT_UNDO            "마지막으로 한 동작을 취소합니다\n실행 취소"
+    ID_EDIT_REDO            "이전에 취소한 동작을 다시 수행합니다\n다시 실행"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "도구 모음을 보이거나 감춥니다\n도구 모음 전환"
+    ID_VIEW_STATUS_BAR      "상태 표시줄을 표시하거나 감춥니다\n상태 표시줄 전환"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "창의 크기를 변경합니다"
+    AFX_IDS_SCMOVE          "창의 위치를 변경합니다"
+    AFX_IDS_SCMINIMIZE      "창을 아이콘으로 줄여서 표시합니다"
+    AFX_IDS_SCMAXIMIZE      "창을 최대 크기로 확장합니다"
+    AFX_IDS_SCNEXTWINDOW    "다음 문서 창으로 전환합니다"
+    AFX_IDS_SCPREVWINDOW    "이전 문서 창으로 전환합니다"
+    AFX_IDS_SCCLOSE         "현재 열린 창을 닫고 문서를 저장할 것인지를 묻습니다"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "창을 원래 크기로 복원합니다"
+    AFX_IDS_SCTASKLIST      "작업 목록을 활성화합니다"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_SAVE                 "XML 파일로 저장합니다"
+    ID_SAVE_AS              "다른이름으로 저장합니다"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE를 초기화할 수 없습니다. OLE 라이브러리 버전이 올바른지 확인하십시오."
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE 18, 1
+#pragma code_page(949)
+#endif //_WIN32
+#include "res\Mcv.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.kor\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

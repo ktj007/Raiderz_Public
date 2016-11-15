@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD|Win32">
+      <Configuration>ReleaseMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_publish|Win32">
+      <Configuration>Release_publish</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>LoginServer_lib</ProjectName>
+    <ProjectGuid>{1B44ACA5-5176-4464-A303-338B2BF64BF1}</ProjectGuid>
+    <RootNamespace>GameServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\LoginServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../mdk/MiNet/include;../../../crl/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../mdk/MDatabase;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_PUBLISH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\LoginServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../mdk/MiNet/include;../../../crl/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConnD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\LoginServer_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="LConfig.cpp" />
+    <ClCompile Include="LGlobal.cpp" />
+    <ClCompile Include="LMemory.cpp" />
+    <ClCompile Include="LSystem.cpp" />
+    <ClCompile Include="LServableChecker.cpp" />
+    <ClCompile Include="LServer.cpp" />
+    <ClCompile Include="LServerManagers.cpp" />
+    <ClCompile Include="LServerStatusUpdater.cpp" />
+    <ClCompile Include="LServerSystems.cpp" />
+    <ClCompile Include="LBaseApplication.cpp" />
+    <ClCompile Include="LClientConnectionKeeper.cpp" />
+    <ClCompile Include="LNetServer.cpp" />
+    <ClCompile Include="LMasterClient.cpp" />
+    <ClCompile Include="LMasterNetClient.cpp" />
+    <ClCompile Include="LMasterServer.cpp" />
+    <ClCompile Include="LMasterServerMgr.cpp" />
+    <ClCompile Include="LLoginLogic.cpp" />
+    <ClCompile Include="LPlayerLogic.cpp" />
+    <ClCompile Include="LPlayerObject.cpp" />
+    <ClCompile Include="LPlayerObjectManager.cpp" />
+    <ClCompile Include="LPlayerLoginGameServerProcManager.cpp" />
+    <ClCompile Include="LPlayerLoginGameServerRetryer.cpp" />
+    <ClCompile Include="LMoveServerTimeoutHandler.cpp" />
+    <ClCompile Include="LSelMyCharTimeoutHandler.cpp" />
+    <ClCompile Include="LTimeoutManager.cpp" />
+    <ClCompile Include="LTimeoutWatcher.cpp" />
+    <ClCompile Include="LCommandCenter.cpp" />
+    <ClCompile Include="LCommandLogger.cpp" />
+    <ClCompile Include="LCommandTable.cpp" />
+    <ClCompile Include="LCmdRouter_MoveServer.cpp" />
+    <ClCompile Include="LCmdRouter_Player.cpp" />
+    <ClCompile Include="LCmdHandler_Login.cpp" />
+    <ClCompile Include="LCmdHandler_MoveServer.cpp" />
+    <ClCompile Include="LCmdHandler_NotServable.cpp" />
+    <ClCompile Include="LCmdHandlerGroup.cpp" />
+    <ClCompile Include="LCmdHandler_Master_Global.cpp" />
+    <ClCompile Include="LCmdHandler_Master_MoveServer.cpp" />
+    <ClCompile Include="LCmdHandler_Master_Net.cpp" />
+    <ClCompile Include="LPMSObject.cpp" />
+    <ClCompile Include="LPMSSystem.cpp" />
+    <ClCompile Include="LMoveServerLogicFromGameServer.cpp" />
+    <ClCompile Include="LPlayerAcceptManager.cpp" />
+    <ClCompile Include="LPlayerAcceptor_FromGameServer.cpp" />
+    <ClCompile Include="LWorldLocatorServer.cpp" />
+    <ClCompile Include="LDBTask.cpp" />
+    <ClCompile Include="LDBTaskAccountInsert.cpp" />
+    <ClCompile Include="LDBTaskCharDelete.cpp" />
+    <ClCompile Include="LDBTaskCharGetLookList.cpp" />
+    <ClCompile Include="LDBTaskCharInsert.cpp" />
+    <ClCompile Include="LDBTaskGetWorldInfo.cpp" />
+    <ClCompile Include="LDBTaskLogin.cpp" />
+    <ClCompile Include="LDBTaskPmangAccountInsert.cpp" />
+    <ClCompile Include="LDBTaskPmangLogin.cpp" />
+    <ClCompile Include="LDBTaskServerGetStatus.cpp" />
+    <ClCompile Include="LDBManager.cpp" />
+    <ClCompile Include="LDBAsyncTask.cpp" />
+    <ClCompile Include="LDBTaskQuery.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LConfig.h" />
+    <ClInclude Include="LDef.h" />
+    <ClInclude Include="LGlobal.h" />
+    <ClInclude Include="LMemory.h" />
+    <ClInclude Include="LSystem.h" />
+    <ClInclude Include="LServableChecker.h" />
+    <ClInclude Include="LServer.h" />
+    <ClInclude Include="LServerInfo.h" />
+    <ClInclude Include="LServerManagers.h" />
+    <ClInclude Include="LServerStatusUpdater.h" />
+    <ClInclude Include="LServerSystems.h" />
+    <ClInclude Include="LBaseApplication.h" />
+    <ClInclude Include="LClientConnectionKeeper.h" />
+    <ClInclude Include="LNetServer.h" />
+    <ClInclude Include="LMasterClient.h" />
+    <ClInclude Include="LMasterNetClient.h" />
+    <ClInclude Include="LMasterServer.h" />
+    <ClInclude Include="LMasterServerMgr.h" />
+    <ClInclude Include="LLoginLogic.h" />
+    <ClInclude Include="LPlayerLogic.h" />
+    <ClInclude Include="LPlayerObject.h" />
+    <ClInclude Include="LPlayerObjectManager.h" />
+    <ClInclude Include="LPlayerLoginGameServerProcManager.h" />
+    <ClInclude Include="LPlayerLoginGameServerRetryer.h" />
+    <ClInclude Include="LMoveServerTimeoutHandler.h" />
+    <ClInclude Include="LSelMyCharTimeoutHandler.h" />
+    <ClInclude Include="LTimeoutHandler.h" />
+    <ClInclude Include="LTimeoutManager.h" />
+    <ClInclude Include="LTimeoutWatcher.h" />
+    <ClInclude Include="LCommandCenter.h" />
+    <ClInclude Include="LCommandLogger.h" />
+    <ClInclude Include="LCommandTable.h" />
+    <ClInclude Include="LCmdRouter_MoveServer.h" />
+    <ClInclude Include="LCmdRouter_Player.h" />
+    <ClInclude Include="LCmdHandler_Login.h" />
+    <ClInclude Include="LCmdHandler_MoveServer.h" />
+    <ClInclude Include="LCmdHandler_NotServable.h" />
+    <ClInclude Include="LCmdHandlerGroup.h" />
+    <ClInclude Include="LCmdHandler_Master_Global.h" />
+    <ClInclude Include="LCmdHandler_Master_MoveServer.h" />
+    <ClInclude Include="LCmdHandler_Master_Net.h" />
+    <ClInclude Include="LPMSObject.h" />
+    <ClInclude Include="LPMSSystem.h" />
+    <ClInclude Include="LMoveServerLogicFromGameServer.h" />
+    <ClInclude Include="LPlayerAcceptManager.h" />
+    <ClInclude Include="LPlayerAcceptor_FromGameServer.h" />
+    <ClInclude Include="LWorldLocatorServer.h" />
+    <ClInclude Include="LDBTask.h" />
+    <ClInclude Include="LDBTaskGlobal.h" />
+    <ClInclude Include="LDBTaskHeaderList.h" />
+    <ClInclude Include="LDBTaskAccountInsert.h" />
+    <ClInclude Include="LDBTaskCharDelete.h" />
+    <ClInclude Include="LDBTaskCharGetLookList.h" />
+    <ClInclude Include="LDBTaskCharInsert.h" />
+    <ClInclude Include="LDBTaskGetWorldInfo.h" />
+    <ClInclude Include="LDBTaskLogin.h" />
+    <ClInclude Include="LDBTaskPmangAccountInsert.h" />
+    <ClInclude Include="LDBTaskPmangLogin.h" />
+    <ClInclude Include="LDBTaskServerGetStatus.h" />
+    <ClInclude Include="LDBManager.h" />
+    <ClInclude Include="LDBAsyncTask.h" />
+    <ClInclude Include="LDBTaskQuery.h" />
+    <ClInclude Include="LDBTaskDataAccount.h" />
+    <ClInclude Include="LDBParamData.h" />
+    <ClInclude Include="LDBTaskDataWorld.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="GameServer.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

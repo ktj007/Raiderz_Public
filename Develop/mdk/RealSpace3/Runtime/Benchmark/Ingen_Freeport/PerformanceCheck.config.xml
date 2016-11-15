@@ -1,0 +1,12 @@
+<CONFIG>
+    <SCENE filename="Ingen_Freeport.zone.xml" env_filename="Ingen_Freeport.zone.env.xml" />
+    <RESOURCE path="../EngineRes;Ingen_Freeport/" />
+    <SCREEN width="1024" height="768" fullscreen="false" />
+    <CAMERA pos_x="62907.578125" pos_y="43062.671875" pos_z="396.566193" dir_x="-0.463253" dir_y="0.879301" dir_z="0.110570" fov="60.000000" near="10.000000" far="50000.000000" />
+    <SHADOW enable="true" type="PSSM" size="512" count="4" dist0="500.000000" dist1="1500.000000" dist2="10000.000000" dist3="20000.000000" />
+    <HDR enable="true" />
+    <DOF enable="false" focus_dist="100.000000" focus_range="2500.000000" coc_size="5.000000" />
+    <Distortion enable="true" />
+    <SoftParticle enable="true" />
+    <SSAO enable="false" quality="1" />
+</CONFIG>

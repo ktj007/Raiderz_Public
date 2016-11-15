@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="at_2hb">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>2hbp.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>2hbp_sp.tga</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST />
+    <SCENE />
+    <COLLISION />
+</XML>

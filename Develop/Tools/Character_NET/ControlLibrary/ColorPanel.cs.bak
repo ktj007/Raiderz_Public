@@ -1,0 +1,1001 @@
+using System;
+using System.Collections;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Data;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+
+using System.Diagnostics;
+
+namespace Sano.PersonalProjects.ColorPicker {
+
+	// TODO: change data types of RGB from int16 to byte
+	
+	[ComVisible(false)]
+	public class ColorPanel : UserControl {
+
+		private IContainer components;
+
+		// controls
+		private ColorFieldPanel colorFieldPanel;
+		private ColorSwatchPanel colorSwatchPanel;
+		private DragForm dragForm;
+		private HexTextBox hexTextBox;
+		private HsbColorSpace hsbColorSpace;
+		private Label hexLabel;
+		private PictureBox picCurrentColor;
+		private PictureBox picColorSlider;
+		private RgbColorSpace rgbColorSpace;
+		private System.Windows.Forms.Timer sliderTimer;	
+		
+		// member fields
+		private int m_currentColorSliderArrowYLocation;
+		private Rectangle m_selectedColorRegion;
+		private Rectangle m_selectedColorColorRegion;
+		private Bitmap m_colorSliderBitmap = new Bitmap( 18, 256 );
+		private Rectangle m_leftColorSliderArrowRegion;
+		private Rectangle m_rightColorSliderArrowRegion;
+		private ColorSpace m_currentColorSpace;
+		private BitVector32 m_panelState;
+
+		// rectangles for drawing.
+		private readonly Rectangle m_valueAxisRegion = new Rectangle( 296, 6, 21, 259 );
+		private readonly Rectangle m_valueAxisColorRegion = new Rectangle( 298, 8, 18, 256 );
+		private readonly Rectangle m_colorFieldOuterRegion = new Rectangle( 12, 4, 265, 265 );
+		private readonly Rectangle m_colorFieldInnerRegion = new Rectangle( 15, 7, 257, 257 );
+		private readonly Rectangle m_valueFieldOuterRegion = new Rectangle( 295, 4, 27, 265 );
+		private readonly Rectangle m_valueFieldInnerRegion = new Rectangle( 298, 7, 19, 257 );
+		private readonly Rectangle m_swatchRegion = new Rectangle( 464, 4, 164, 263 );
+
+		// constants
+		private const int PANELSTATE_isLeftMouseDown = 0x1;								// 1
+		private const int PANELSTATE_isLeftMouseDownOverPicCurrentColor = 0x2;			// 2
+		private const int PANELSTATE_isDragFormIntersectingWithColorSwatchPanel = 0x4;	// 4
+		private const int PANELSTATE_isLeftMouseDownAndMoving = 0x8;					// 8
+		private const int ARROW_HEIGHT = 10;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private const int ARROW_WIDTH = 6;
+		
+		/// <summary>
+		/// Constructor. Initializes all of the components and member fields 
+		/// and configures the control for double buffering support.
+		/// </summary>
+
+		public ColorPanel() {
+
+			InitializeComponent();
+			InitializeCustomComponents();
+
+			m_currentColorSliderArrowYLocation = m_valueAxisRegion.Bottom - 2;
+			m_leftColorSliderArrowRegion = this.GetLeftTrianglePointerInvalidationRegion( m_currentColorSliderArrowYLocation );
+			m_rightColorSliderArrowRegion = this.GetRightTrianglePointerInvalidationRegion( m_currentColorSliderArrowYLocation );
+			m_selectedColorRegion = new Rectangle( 344, 8, 88, 40 );
+			m_selectedColorColorRegion = new Rectangle( 346, 10, 85, 37 );
+			m_colorSliderBitmap = new Bitmap( 18, 256 );
+			m_panelState = new BitVector32( 0 );
+
+			this.SetStyle( ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true );
+
+		}
+		
+		/// <summary>
+		/// Returns the color of the color slider at the current arrow location.
+		/// </summary>
+
+		private Color ColorSliderColor {
+
+			get {
+
+				int arrowLocation = m_currentColorSliderArrowYLocation - m_valueAxisColorRegion.Top;
+				return m_colorSliderBitmap.GetPixel( 10, arrowLocation );
+
+			}
+
+		}
+
+		/// <summary>
+		/// Returns the hex value of the colors in the RGB color space.
+		/// </summary>
+
+		private string HexValue {
+			get { return rgbColorSpace.ConvertToHex().ToString(); }
+		}
+
+		/// <summary>
+		/// Overrides the base class' OnLoad method and instantiates a new
+		/// DragForm object that will be used to create the visual drag effect
+		/// when adding the currently selected color to the color swatch panel.
+		/// </summary>
+		/// <param name="e">An EventArgs that contains the event data.</param>
+
+		protected override void OnLoad(EventArgs e) {
+			
+			dragForm = new DragForm( this.picCurrentColor.Size );		
+			// the form is an orphan :( give it a parent. :)
+			this.ParentForm.AddOwnedForm( dragForm );
+		
+		}
+
+
+		/// <summary>
+		/// Overrides the panel's OnPaint method to performs all of the painting 
+		/// operations.
+		/// </summary>
+		/// <param name="e">A PaintEventArgs that contains the event data.</param>
+
+		protected override void OnPaint(PaintEventArgs e) {
+
+			base.OnPaint (e);
+
+			// using defines a scope at the end of which the graphics object is disposed.
+			using ( Graphics g = e.Graphics ) {
+								
+				Point[] leftTriangle = CreateLeftTrianglePointer( m_currentColorSliderArrowYLocation );
+				Point[] rightTriangle = CreateRightTrianglePointer( m_currentColorSliderArrowYLocation ); 
+
+				g.DrawPolygon( Pens.Black, leftTriangle );
+				g.DrawPolygon( Pens.Black, rightTriangle );
+
+				ControlPaint.DrawBorder3D( g, m_colorFieldOuterRegion );
+				g.DrawRectangle( Pens.Black, m_colorFieldInnerRegion );
+
+				ControlPaint.DrawBorder3D( g, m_valueFieldOuterRegion );
+				g.DrawRectangle( Pens.Black, m_valueFieldInnerRegion );
+
+				ControlPaint.DrawBorder3D( g, new Rectangle( 
+					picCurrentColor.Location.X - 3,
+					picCurrentColor.Location.Y - 3,
+					picCurrentColor.Width + 7,
+					picCurrentColor.Height + 7 ) );
+				
+			}
+			
+		}
+		
+		/// <summary>
+		/// Calculates the points needed to draw the left triangle pointer for
+		/// the value strip.
+		/// </summary>
+		/// <param name="y">Current cursor y-value</param>
+		/// <returns>An array of points representing the left triangle pointer 
+		/// for the value strip.</returns>
+
+		private Point[] CreateLeftTrianglePointer( int y ) {
+
+			Point[] points = { 
+				new Point( m_valueFieldOuterRegion.Left - ARROW_WIDTH - 1, y - ( ARROW_HEIGHT / 2 ) ), 
+				new Point( m_valueFieldOuterRegion.Left - 2, y ), 
+				new Point( m_valueFieldOuterRegion.Left - ARROW_WIDTH - 1, y + ( ARROW_HEIGHT / 2 ) ) };
+			
+			return points;
+		
+		}
+
+		/// <summary>
+		/// Calculates the points needed to draw the right triangle pointer for
+		/// the color slider.
+		/// </summary>
+		/// <param name="y">Current cursor y-value</param>
+		/// <returns>An array of points representing the right triangle pointer 
+		/// for the color slider.</returns>
+		
+		private Point[] CreateRightTrianglePointer( int y ) {
+
+			Point[] points = { 
+				new Point( m_valueFieldOuterRegion.Right - 1 + ARROW_WIDTH, y - ( ARROW_HEIGHT / 2 ) ), 
+				new Point( m_valueFieldOuterRegion.Right, y ), 
+				new Point( m_valueFieldOuterRegion.Right - 1 + ARROW_WIDTH, y + ( ARROW_HEIGHT / 2 ) ) };
+			
+			return points;
+			
+		}
+		
+		/// <summary>
+		/// Determines the color slider left triangle pointer invalidation 
+		/// region.
+		/// </summary>
+		/// <param name="arrowY">Current cursor y-value.</param>
+		/// <returns>A rectangle object representing the area to be 
+		/// invalidated.</returns>
+
+		private Rectangle GetLeftTrianglePointerInvalidationRegion( int arrowY ) {
+
+			int leftPadding = ARROW_WIDTH + 2;
+			int x = m_valueFieldOuterRegion.Left - leftPadding;
+			int y = arrowY - ( ARROW_HEIGHT / 2 ) - 1;
+			int width = ARROW_WIDTH + 2;
+			int height = ARROW_HEIGHT + 3;
+			
+			return new Rectangle( x, y, width, height );
+
+		}
+		
+		/// <summary>
+		/// Determines the color slider right triangle pointer invalidation 
+		/// region.
+		/// </summary>
+		/// <param name="arrowY">Current cursor y-value</param>
+		/// <returns>A rectangle object representing the area to be 
+		/// invalidated.</returns>
+		
+		private Rectangle GetRightTrianglePointerInvalidationRegion( int arrowY ) {
+
+			int x = m_valueFieldOuterRegion.Right;
+			int y = arrowY - ( ARROW_HEIGHT / 2 ) - 1;
+			int width = ARROW_WIDTH + 2;
+			int height = ARROW_HEIGHT + 3;
+			
+			return new Rectangle( x, y, width, height );
+
+		}
+
+		#region Overridden methods
+
+		protected override void OnMouseMove(MouseEventArgs e) {
+			
+			if ( m_panelState[ PANELSTATE_isLeftMouseDown ] ) {	
+				
+				m_panelState[ PANELSTATE_isLeftMouseDownAndMoving ] = true;
+				CheckCursorYRegion( e.Y );			
+			
+			}
+
+			base.OnMouseMove( e );
+
+		}
+
+		protected override void OnMouseDown(MouseEventArgs e) {
+			
+			base.OnMouseDown( e );
+
+			if ( e.Button == MouseButtons.Left ) {
+			
+				// TODO: constrict X position. too much flexibility is given there.
+				
+				m_panelState[ PANELSTATE_isLeftMouseDown ] = true;
+				CheckCursorYRegion( e.Y );		
+			
+			}
+		
+		}
+
+		protected override void OnMouseUp(MouseEventArgs e) {
+			
+			base.OnMouseUp( e );
+
+			if ( m_panelState[ PANELSTATE_isLeftMouseDown ] ) {
+				UpdateColorField( false );
+			}
+
+			m_panelState[ PANELSTATE_isLeftMouseDown ] = false;
+			m_panelState[ PANELSTATE_isLeftMouseDownAndMoving ] = false;
+
+		}
+
+		#endregion Overridden methods
+
+		#region Event handlers
+
+		/// <summary>
+		/// Handles the MouseDown event raised by the picColorSlider object.
+		/// When the user clicks on the color slider, the arrow regions are
+		/// updated to assume the clicked y-coordinate as their new
+		/// vertical position.
+		/// </summary>
+		/// <param name="sender">The object that raised the event.</param>
+		/// <param name="e">A MouseEventArgs containing event data.</param>
+		
+		private void picColorSlider_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e) {						
+			
+			m_currentColorSliderArrowYLocation = this.m_valueAxisColorRegion.Top + e.Y;
+
+			this.InvalidateColorSliderArrowRegions();
+				
+			m_leftColorSliderArrowRegion = this.GetLeftTrianglePointerInvalidationRegion( m_currentColorSliderArrowYLocation );
+			m_rightColorSliderArrowRegion = this.GetRightTrianglePointerInvalidationRegion( m_currentColorSliderArrowYLocation );
+
+			this.InvalidateColorSliderArrowRegions();
+			
+			CheckCursorYRegion( e.Y + m_valueAxisColorRegion.Top );
+
+		}
+
+		/// <summary>
+		/// Handles the SelectedColorSpaceComponentChanged event raised by the
+		/// color spaces. When this occurs, the color slider arrow regions and 
+		/// the color panels are updated.
+		/// </summary>
+		/// <param name="sender">The ColorSpace object that raised the event.</param>
+		/// <param name="e">An EventArgs containing the event data.</param>
+
+		private void SelectedColorSpaceComponentChanged( ColorSpace sender, EventArgs e ) {
+
+			if ( sender is RgbColorSpace ) {
+				hsbColorSpace.ResetComponents();
+			} else if ( sender is HsbColorSpace ) {
+				rgbColorSpace.ResetComponents();
+			}
+
+			m_currentColorSpace = sender;
+			
+			UpdateColorSliderArrowRegions();			
+			UpdateColorPanels( true, true, true );
+
+		}
+
+		/// <summary>
+		/// Handles the ComponentValueChanged event that the ColorSpace raises 
+		/// when the value of one of its components is changed by way of a
+		/// keyboard user input. The color spaces are synced up and the color
+		/// panels updated.
+		/// </summary>
+		/// <param name="sender">The ColorSpace object that raised the event.</param>
+		/// <param name="e">An EventArgs object containing the event data.</param>
+
+		private void ColorSpaceComponentValueChanged( ColorSpace sender, EventArgs e ) {
+
+			if ( sender is RgbColorSpace ) {
+				hsbColorSpace.Structure = ColorConverter.RgbToHsb( ( RGB ) rgbColorSpace.Structure );
+			} else if ( sender is HsbColorSpace ) {
+				rgbColorSpace.Structure = ColorConverter.HsbToRgb( ( HSB ) hsbColorSpace.Structure ); //, ( 255 - ( this.m_currentColorSliderArrowYLocation - m_valueAxisColorRegion.Top ) ) );
+			}
+
+			UpdateColorSliderArrowRegions();
+			UpdateColorPanels( true, true, true );
+
+		}
+
+		private void sliderTimer_Tick(object sender, System.EventArgs e) {
+					
+			int difference = m_currentYValue - m_targetYValue;												
+			int nextValue = ( int ) Math.Round( ( double ) difference / 2 );
+
+			if ( nextValue == 0 && m_currentYValue != m_targetYValue ) {
+				m_currentYValue = m_targetYValue;
+			} else if ( nextValue != 0 ) {
+				m_currentYValue += -nextValue;
+			} else {
+				sliderTimer.Stop();
+			}
+
+			//m_currentColorSpace.SelectedComponent.Value = m_currentYValue;
+					
+			if ( m_currentColorSpace is RgbColorSpace ) {
+				hsbColorSpace.Structure = ColorConverter.RgbToHsb( ( RGB ) rgbColorSpace.Structure );
+			} else if ( m_currentColorSpace is HsbColorSpace ) {
+				rgbColorSpace.Structure = ColorConverter.HsbToRgb( ( HSB ) hsbColorSpace.Structure ); 
+			}
+											
+			UpdateColorPanels( false, false, true );
+								
+
+		}
+
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="color">A Color object containing the color that was
+		/// recently selected.</param>
+		
+		private void ColorSelected( Color color ) {
+			
+			RGB rgb = ColorConverter.ColorToRgb( color );
+
+			rgbColorSpace.Structure = rgb;
+			hsbColorSpace.Structure = ColorConverter.RgbToHsb( rgb );
+
+			this.UpdateColorPanels( true, true, true );
+
+		}
+
+		private void colorSwatchPanel_ColorSwatchSelected( object sender, ColorSelectedEventArgs e ) {
+			
+			// make sure the color that was just clicked isn't the color that
+			// is currently displayed.
+
+			if ( !ColorConverter.ColorToRgb( e.Color ).Equals( rgbColorSpace.Structure ) ) {
+				
+				ColorSelected( e.Color );
+				UpdateColorSliderArrowRegions();
+
+			}
+
+		}
+
+		private void colorFieldPanel_ColorSelected( object sender, ColorSelectedEventArgs e ) {
+			ColorSelected( e.Color );
+		}
+
+		#endregion Event handlers
+
+		#region Helper methods
+
+		private void InitializeCustomComponents() {
+
+			this.SuspendLayout();
+
+			// hexTextBox
+			hexTextBox = new HexTextBox();
+			hexTextBox.Location = new Point( 376, 231 );
+			hexTextBox.Size = new Size( 55, 20 );
+			hexTextBox.BorderStyle = BorderStyle.FixedSingle;
+			hexTextBox.ReadOnly = false;
+			hexTextBox.KeyUp += new KeyEventHandler(hexTextBox_KeyUp);
+			hexTextBox.KeyDown += new KeyEventHandler(hexTextBox_KeyDown);
+			this.Controls.Add( hexTextBox );
+
+			// colorFieldPanel
+			colorFieldPanel = new ColorFieldPanel();
+			colorFieldPanel.BackColor = System.Drawing.SystemColors.Desktop;
+			colorFieldPanel.Location = new System.Drawing.Point(16, 8);
+			colorFieldPanel.Name = "colorFieldPanel";
+			colorFieldPanel.Size = new System.Drawing.Size(256, 256);
+			colorFieldPanel.TabIndex = 52;
+			colorFieldPanel.ColorSelected += new ColorFieldPanel.ColorSelectedHandler(colorFieldPanel_ColorSelected);
+			Controls.Add( colorFieldPanel );
+
+			// colorSwatchPanel
+			colorSwatchPanel = new ColorSwatchPanel();
+			colorSwatchPanel.Location = new System.Drawing.Point(464, 4);
+			colorSwatchPanel.Name = "colorSwatchPanel";
+			colorSwatchPanel.Size = new System.Drawing.Size(96, 264);
+			colorSwatchPanel.TabIndex = 53;
+			colorSwatchPanel.ColorSwatchSelected += new ColorSwatchSelectedHandler(colorSwatchPanel_ColorSwatchSelected);
+			Controls.Add( colorSwatchPanel );
+
+			// rgbColorSpace
+			rgbColorSpace = new RgbColorSpace();
+			rgbColorSpace.DisplayRadioButtons = true;
+			rgbColorSpace.Location = new System.Drawing.Point(336, 138);
+			rgbColorSpace.Name = "rgbColorSpace";
+			rgbColorSpace.ReadOnly = false;
+			rgbColorSpace.Size = new System.Drawing.Size(112, 96);
+			rgbColorSpace.TabIndex = 48;
+			rgbColorSpace.ComponentValueChanged += new ColorSpaceEventHandler(ColorSpaceComponentValueChanged);
+			rgbColorSpace.SelectedComponentChanged += new ColorSpaceEventHandler(SelectedColorSpaceComponentChanged);
+			Controls.Add(rgbColorSpace);
+
+			// hsbColorSpace
+			hsbColorSpace = new HsbColorSpace();
+			hsbColorSpace.DisplayRadioButtons = true;
+			hsbColorSpace.Location = new System.Drawing.Point(336, 58);
+			hsbColorSpace.Name = "hsbColorSpace";
+			hsbColorSpace.ReadOnly = false;
+			hsbColorSpace.Size = new System.Drawing.Size(112, 96);
+			hsbColorSpace.TabIndex = 47;
+			hsbColorSpace.ComponentValueChanged += new ColorSpaceEventHandler(ColorSpaceComponentValueChanged);
+			hsbColorSpace.SelectedComponentChanged += new ColorSpaceEventHandler(SelectedColorSpaceComponentChanged);
+			hsbColorSpace.SetDefaultSelection();
+			Controls.Add(hsbColorSpace);
+			
+			this.ResumeLayout( false );
+
+		}
+
+		
+		private void CheckCursorYRegion( int y ) {
+
+			if ( ( y > m_valueFieldInnerRegion.Top && y < m_valueFieldInnerRegion.Bottom  ) ) {
+
+				this.m_currentColorSliderArrowYLocation = y;
+
+				this.Invalidate( m_leftColorSliderArrowRegion );
+				this.Invalidate( m_rightColorSliderArrowRegion );
+				
+				m_leftColorSliderArrowRegion = this.GetLeftTrianglePointerInvalidationRegion( y );
+				m_rightColorSliderArrowRegion = this.GetRightTrianglePointerInvalidationRegion( y );
+
+				this.Invalidate( m_leftColorSliderArrowRegion );
+				this.Invalidate( m_rightColorSliderArrowRegion );
+								
+				ValueChanged( 255 - ( y - m_valueAxisColorRegion.Top ) );
+				
+			}
+
+		}
+
+		private int m_oldValue;
+
+		private void ValueChanged( int newValue ) {
+				
+			int mValue = newValue;
+
+			switch ( m_currentColorSpace.SelectedComponent.Unit ) {
+		
+				case ComponentUnit.Percentage:
+					mValue = ( int ) Math.Ceiling(  mValue / ( ( ( double ) 255 ) / 100 ) );
+					break;
+		
+				case ComponentUnit.Degree:
+					mValue = ( int ) Math.Ceiling( mValue / ( ( ( double ) 255 ) / 360 ) );
+					if ( mValue == 360 ) {
+						mValue = 0;
+					}
+					break;
+				
+			}
+
+			if ( m_oldValue != mValue && m_panelState[ PANELSTATE_isLeftMouseDownAndMoving ] ) {
+					
+				m_currentColorSpace.SelectedComponent.Value = mValue;
+
+				m_targetYValue = mValue;
+				m_currentYValue = m_oldValue;
+				m_oldValue = mValue;
+				sliderTimer.Start();				
+
+			} else {
+				Debug.WriteLine( "clicked" );
+				UpdateColorField( false );
+			}
+
+		}
+
+		private int m_currentYValue;
+		private int m_targetYValue;
+
+		private void SetCurrentSliderArrowYLocation( double sValue ) {		
+			m_currentColorSliderArrowYLocation = ( int )( m_valueAxisColorRegion.Top + ( 255 - sValue ) );
+		}
+
+		private void UpdateColorSliderArrowRegions() {
+
+			this.InvalidateColorSliderArrowRegions();
+			
+			CalculateValueRegionMapping( this.m_currentColorSpace.SelectedComponent );
+			
+			m_leftColorSliderArrowRegion = this.GetLeftTrianglePointerInvalidationRegion( m_currentColorSliderArrowYLocation );
+			m_rightColorSliderArrowRegion = this.GetRightTrianglePointerInvalidationRegion( m_currentColorSliderArrowYLocation );
+
+			this.InvalidateColorSliderArrowRegions();
+
+		}
+		
+		/// <summary>
+		/// Invalidate the color slider arrow regions.
+		/// </summary>
+
+		private void InvalidateColorSliderArrowRegions() {
+
+			this.Invalidate( m_leftColorSliderArrowRegion );
+			this.Invalidate( m_rightColorSliderArrowRegion );
+
+		}
+
+
+		private void CalculateValueRegionMapping( ColorSpaceComponent csc ) {
+			
+			int mValue = csc.Value;
+			
+			switch ( csc.Unit ) {
+			
+				case ComponentUnit.Percentage:
+					mValue = ( int ) Math.Ceiling( ( ( ( double ) 255 ) / 100 ) * mValue );
+					break;
+				
+				case ComponentUnit.Degree:
+					mValue = ( int ) Math.Ceiling( ( ( ( double ) 255 ) / 360 ) * mValue );
+					break;
+					
+			}
+
+			SetCurrentSliderArrowYLocation( mValue );
+
+		}
+		
+		/// <summary>
+		/// Updates the color panels and the hex value.
+		/// </summary>
+		/// <param name="updateSlider">A boolean value indicating whether or 
+		/// not the color slider should be updated.</param>
+		/// <param name="resetPreviouslyPickedPointOnColorField">A boolean 
+		/// value indicating whether or not the previously picked point on the 
+		/// color field should be reset.</param>
+		/// <param name="updateHexValue">A boolean value indicating whether or
+		/// not the hex value should be updated.</param>
+
+		private void UpdateColorPanels( bool updateSlider, bool resetPreviouslyPickedPointOnColorField, bool updateHexValue ) {
+						
+			picCurrentColor.BackColor =	rgbColorSpace.GetColor();
+			
+			if ( updateSlider ) {
+				this.UpdateColorSlider();
+			}
+
+			this.UpdateColorField( resetPreviouslyPickedPointOnColorField );
+			
+			if ( updateHexValue ) {
+				this.UpdateHexValue();
+			}
+			
+		}
+		
+		/// <summary>
+		/// Updates the hexadecimal text value.
+		/// </summary>
+
+		private void UpdateHexValue() {
+			hexTextBox.Text = this.HexValue;
+			hexTextBox.SelectionStart = this.HexValue.Length;
+		}
+
+		/// <summary>
+		/// Updates the color field panel.
+		/// </summary>
+		/// <param name="resetPreviouslyPickedPoint">A boolean value indicating
+		/// whether or not the previously picked point should be reset.</param>
+
+		private void UpdateColorField( bool resetPreviouslyPickedPoint ) {
+
+			int sValue = this.m_currentColorSpace.SelectedComponent.Value;
+			char component = m_currentColorSpace.SelectedComponent.DisplayCharacter;
+						
+			if ( m_currentColorSpace is HsbColorSpace ) {
+				
+				if ( component == 'H' ) {
+
+					Color color = this.ColorSliderColor;
+					colorFieldPanel.UpdateColor( m_currentColorSpace, component, color, resetPreviouslyPickedPoint );
+				
+				} else if ( component == 'S' || component == 'B' ) {
+					colorFieldPanel.UpdateColor( m_currentColorSpace, component, sValue, resetPreviouslyPickedPoint );
+				}
+							
+			} else if ( m_currentColorSpace is RgbColorSpace ) {
+				colorFieldPanel.UpdateColor( m_currentColorSpace, component, sValue, resetPreviouslyPickedPoint );
+			}
+
+		}
+
+		/// <summary>
+		/// Updates the color slider.
+		/// </summary>
+
+		private void UpdateColorSlider() {
+
+			RGB rgb = ( RGB ) this.rgbColorSpace.Structure;
+			HSB hsb = ( HSB ) this.hsbColorSpace.Structure;
+			Rectangle region = new Rectangle( 0, -1, 18, 257 );
+			
+			using ( Graphics g = Graphics.FromImage( m_colorSliderBitmap ) ) {
+
+				if ( this.m_currentColorSpace is RgbColorSpace ) {
+						
+					char dChar = this.m_currentColorSpace.SelectedComponent.DisplayCharacter;
+					int red = rgb.Red;
+					int green = rgb.Green;
+					int blue = rgb.Blue;
+						
+					Color startColor;
+					Color endColor;
+
+					switch ( dChar ) {
+							
+						case 'R':
+							startColor = Color.FromArgb( 0, green, blue );
+							endColor = Color.FromArgb( 255, green, blue );
+							break;
+
+						case 'G':
+							startColor = Color.FromArgb( red, 0, blue );
+							endColor = Color.FromArgb( red, 255, blue );
+							break;
+
+						default:
+							startColor = Color.FromArgb( red, green, 0 );
+							endColor = Color.FromArgb( red, green, 255 );
+							break;
+
+					}
+
+					using ( LinearGradientBrush lgb = new LinearGradientBrush( region, startColor, endColor, 270f ) ) {
+						g.FillRectangle( lgb, region );
+					}
+					
+				} else if ( this.m_currentColorSpace is HsbColorSpace ) {
+					
+					if ( this.m_currentColorSpace.SelectedComponent.DisplayCharacter == 'H' ) { 
+										
+						Rectangle rect = new Rectangle( 0, 0, 20, 256 );
+
+						using ( LinearGradientBrush brBrush = new LinearGradientBrush( rect, Color.Blue, Color.Red, 90f, false ) ) {
+
+							Color[] colorArray = { Color.Red, Color.Magenta, Color.Blue, Color.Cyan, Color.FromArgb( 0, 255, 0 ), Color.Yellow, Color.Red };
+							float[] posArray = { 0.0f, 0.1667f, 0.3372f, 0.502f, 0.6686f, 0.8313f, 1.0f };
+
+							ColorBlend colorBlend = new ColorBlend();
+							colorBlend.Colors = colorArray;
+							colorBlend.Positions = posArray;
+							brBrush.InterpolationColors = colorBlend;
+
+							g.FillRectangle( brBrush, region );
+								
+						}
+
+					} else if ( this.m_currentColorSpace.SelectedComponent.DisplayCharacter == 'B' ) {
+							
+						RGB sRgb = ColorConverter.HsbToRgb( new HSB( hsb.Hue, hsb.Saturation, 100 ) );
+						RGB eRgb = ColorConverter.HsbToRgb( new HSB( hsb.Hue, hsb.Saturation, 0 ) );
+							
+						using ( LinearGradientBrush lgb = new LinearGradientBrush( region, Color.FromArgb( sRgb.Red, sRgb.Green, sRgb.Blue ), Color.FromArgb( eRgb.Red, eRgb.Green, eRgb.Blue ), 90f ) ) {
+							g.FillRectangle( lgb, region );
+						}
+
+					} else {
+
+						RGB sRgb = ColorConverter.HsbToRgb( new HSB( hsb.Hue, 100, hsb.Brightness ) );
+						RGB eRgb = ColorConverter.HsbToRgb( new HSB( hsb.Hue, 0, hsb.Brightness ) );
+
+						using ( LinearGradientBrush lgb = new LinearGradientBrush( region, Color.FromArgb( sRgb.Red, sRgb.Green, sRgb.Blue ), Color.FromArgb( eRgb.Red, eRgb.Green, eRgb.Blue ), 90f ) ) {
+							g.FillRectangle( lgb, region );
+						}
+
+					}
+
+				}
+			
+			}
+
+			if ( this.picCurrentColor.Image != null ) {
+				this.picCurrentColor.Image.Dispose();
+			}
+			this.picColorSlider.Image = m_colorSliderBitmap;
+
+		}
+
+		#endregion Helper methods
+
+		#region Dispose
+		
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+
+		protected override void Dispose( bool disposing ) {
+
+			if( disposing ) {
+
+				if( components != null ) {
+					components.Dispose();
+				}
+
+				if ( m_colorSliderBitmap != null ) {
+					Debug.WriteLine( "Disposed" );
+					m_colorSliderBitmap.Dispose();
+				}
+
+				if ( dragForm != null ) {
+					dragForm.Dispose();
+				}
+
+			}
+
+			base.Dispose( disposing );
+		
+		}
+		
+		#endregion
+
+		#region Component Designer generated code
+		
+		/// <summary> 
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
+		/// </summary>
+
+		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
+			this.picCurrentColor = new System.Windows.Forms.PictureBox();
+			this.hexLabel = new System.Windows.Forms.Label();
+			this.picColorSlider = new System.Windows.Forms.PictureBox();
+			this.sliderTimer = new System.Windows.Forms.Timer(this.components);
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.SuspendLayout();
+			// 
+			// picCurrentColor
+			// 
+			this.picCurrentColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.picCurrentColor.Location = new System.Drawing.Point(352, 7);
+			this.picCurrentColor.Name = "picCurrentColor";
+			this.picCurrentColor.Size = new System.Drawing.Size(85, 37);
+			this.picCurrentColor.TabIndex = 42;
+			this.picCurrentColor.TabStop = false;
+			this.picCurrentColor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCurrentColor_MouseUp);
+			this.picCurrentColor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCurrentColor_MouseMove);
+			this.picCurrentColor.MouseLeave += new System.EventHandler(this.picCurrentColor_MouseLeave);
+			this.picCurrentColor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCurrentColor_MouseDown);
+			// 
+			// hexLabel
+			// 
+			this.hexLabel.Location = new System.Drawing.Point(344, 231);
+			this.hexLabel.Name = "hexLabel";
+			this.hexLabel.Size = new System.Drawing.Size(31, 23);
+			this.hexLabel.TabIndex = 40;
+			this.hexLabel.Text = "HEX:";
+			this.hexLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// picColorSlider
+			// 
+			this.picColorSlider.Location = new System.Drawing.Point(299, 8);
+			this.picColorSlider.Name = "picColorSlider";
+			this.picColorSlider.Size = new System.Drawing.Size(18, 256);
+			this.picColorSlider.TabIndex = 50;
+			this.picColorSlider.TabStop = false;
+			this.picColorSlider.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picColorSlider_MouseDown);
+			// 
+			// sliderTimer
+			// 
+			this.sliderTimer.Interval = 10;
+			this.sliderTimer.Tick += new System.EventHandler(this.sliderTimer_Tick);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Location = new System.Drawing.Point(328, 8);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(18, 256);
+			this.pictureBox1.TabIndex = 51;
+			this.pictureBox1.TabStop = false;
+			// 
+			// ColorPanel
+			// 
+			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.picColorSlider);
+			this.Controls.Add(this.hexLabel);
+			this.Controls.Add(this.picCurrentColor);
+			this.Name = "ColorPanel";
+			this.Size = new System.Drawing.Size(584, 272);
+			this.ResumeLayout(false);
+
+		}
+
+		#endregion Component Designer generated code
+
+		/// <summary>
+		/// Handles the MouseDown event raised by the picCurrentColor object.
+		/// </summary>
+
+		private void picCurrentColor_MouseDown( object sender, System.Windows.Forms.MouseEventArgs e ) {
+
+			if ( e.Button == MouseButtons.Left ) {
+
+				// update form properties
+				dragForm.Location = this.PointToScreen( picCurrentColor.Location );
+				dragForm.BackColor = rgbColorSpace.GetColor();
+				dragForm.Show();
+
+				// BUG: for some reason, when calling dragForm.Show(), the form size
+				// is reset to 112 x 37. the following code fixes this issue.
+				dragForm.Size = picCurrentColor.Size;
+
+				// make sure that the parent form retains focus
+				this.ParentForm.Activate();
+
+				// calculate the difference between the current cursor position and
+				// the upper left corner of the picCurrentColor picture box. this
+				// allows us to persist the distance between the cursor and the 
+				// upper left corner of the drag form as it is being dragged.
+				dragForm.CursorXDifference = e.X - picCurrentColor.Location.X;
+				dragForm.CursorYDifference = e.Y - picCurrentColor.Location.Y;
+
+				// update the panel state to show that the left mouse button has 
+				// been pressed.
+				m_panelState[ PANELSTATE_isLeftMouseDownOverPicCurrentColor ] = true;
+
+				this.Cursor = Cursors.Hand;
+			
+			}
+		
+		}
+
+		/// <summary>
+		/// Handles the MouseMove event raised by the picCurrentColor object. 
+		/// </summary>
+
+		private void picCurrentColor_MouseMove( object sender, MouseEventArgs e ) {
+
+			// is the left mouse button pressed?
+			if ( m_panelState[ PANELSTATE_isLeftMouseDownOverPicCurrentColor ] ) {
+				
+				dragForm.Location = this.PointToScreen( new Point( e.X - dragForm.CursorXDifference, e.Y - dragForm.CursorYDifference) );
+			
+				Rectangle swatch = new Rectangle( this.PointToScreen( colorSwatchPanel.Location ), colorSwatchPanel.Size );
+				Rectangle dragFormRect = new Rectangle( dragForm.Location, dragForm.Size );
+
+				// is dragForm hovering above the color swatch panel?
+				if ( dragFormRect.IntersectsWith( swatch ) ) {
+					
+					colorSwatchPanel.EmulateDragDropEnter();
+					m_panelState[ PANELSTATE_isDragFormIntersectingWithColorSwatchPanel ] = true;
+
+				} else {
+					
+					colorSwatchPanel.EmulateDragDropLeave();
+					m_panelState[ PANELSTATE_isDragFormIntersectingWithColorSwatchPanel ] = false;
+				
+				}
+			
+			} 
+
+		}
+
+		/// <summary>
+		/// Handles the MouseUp event raised by the picCurrentColor object. 
+		/// </summary>
+
+		private void picCurrentColor_MouseUp( object sender, MouseEventArgs e ) {
+			
+			// TODO: refactor the next four statements into a method (duplicate
+			// code in picCurrentColor_MouseLeave).
+			
+			m_panelState[ PANELSTATE_isLeftMouseDownOverPicCurrentColor ] = false;
+			dragForm.Hide();
+
+			// TODO: better method name
+			colorSwatchPanel.EmulateDragDropLeave();
+						
+			this.Cursor = Cursors.Default;
+
+			// if dragForm was hovering above the color swatch panel when the
+			// left mouse button was released, let the color swatch panel 
+			// know that there's a new color that needs to be added.
+			if ( m_panelState[ PANELSTATE_isDragFormIntersectingWithColorSwatchPanel ] ) {
+				colorSwatchPanel.AddColor( picCurrentColor.BackColor );
+			}
+			
+
+		}
+
+		/// <summary>
+		/// Handles the MouseLeave event raised by the picCurrentColor object. 
+		/// This is done to address the problem with losing control of dragForm 
+		/// when the application loses focus.
+		/// </summary>
+
+		private void picCurrentColor_MouseLeave(object sender, System.EventArgs e) {
+			
+			m_panelState[ PANELSTATE_isLeftMouseDownOverPicCurrentColor ] = false;
+			dragForm.Hide();
+
+			// TODO: better method name
+			colorSwatchPanel.EmulateDragDropLeave();
+						
+			this.Cursor = Cursors.Default;
+
+		}
+
+		/// <summary>
+		/// Handles the KeyUp event raised by the hexTextBox object.
+		/// </summary>
+		
+		private void hexTextBox_KeyUp( object sender, KeyEventArgs e ) {
+			HexUpdate();		
+		}
+
+		// TODO: f
+		/// <summary>
+		/// Helper method.
+		/// </summary>
+		private void HexUpdate() {
+
+			RGB rgb = ColorConverter.HexToRgb( hexTextBox.Text );							
+
+			rgbColorSpace.Structure = rgb;
+			hsbColorSpace.Structure = ColorConverter.RgbToHsb( rgb );
+			
+			UpdateColorSliderArrowRegions();
+
+			// reset the location of the arrows in the value region.
+			this.UpdateColorPanels( true, true, false );
+
+		}
+
+		private void hexTextBox_KeyDown(object sender, KeyEventArgs e) {
+			HexUpdate();
+		}
+	} // ColorPanel
+
+} // Sano.PersonalProjects.ColorPicker

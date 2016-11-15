@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<RTERRAIN version="0.000000">
+    <MAP_WIDTH type="int">
+        <int>256</int>
+    </MAP_WIDTH>
+    <MAP_HEIGHT type="int">
+        <int>256</int>
+    </MAP_HEIGHT>
+    <MAP_SIZE type="vec3">
+        <vec3>10000.000000 10000.000000 3000.000000</vec3>
+    </MAP_SIZE>
+    <MAP_NAME>disp.bmp</MAP_NAME>
+    <PVS>terrain.pvs</PVS>
+    <LAYER type="array" size="2">
+        <LAYERINFO index="0">
+            <ALPHAMAP>alpha1.dds</ALPHAMAP>
+            <TILEMAP>tile1.bmp</TILEMAP>
+            <TILEUV type="vec3">
+                <vec3>4.000000 4.000000 1.000000</vec3>
+            </TILEUV>
+        </LAYERINFO>
+        <LAYERINFO index="1">
+            <ALPHAMAP>alpha2.dds</ALPHAMAP>
+            <TILEMAP>tile2.bmp</TILEMAP>
+            <TILEUV type="vec3">
+                <vec3>6.000000 6.000000 1.000000</vec3>
+            </TILEUV>
+        </LAYERINFO>
+    </LAYER>
+</RTERRAIN>

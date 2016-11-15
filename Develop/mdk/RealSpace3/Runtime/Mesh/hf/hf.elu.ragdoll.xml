@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <Info>
+    </Info>
+
+    <Context name="default">
+        <Density>1.0</Density>
+        <ElbowLimitRatio>0.7</ElbowLimitRatio>
+        <ElbowSpring>1.0</ElbowSpring>
+        <ElbowDamping>5.0</ElbowDamping>
+        <KneeLimitRatio>0.4</KneeLimitRatio>
+        <KneeSpring>1.0</KneeSpring>
+        <KneeDamping>5.0</KneeDamping>
+        <HipLimitRatio>0.2</HipLimitRatio>
+        <HipSpring>1000.0</HipSpring>
+        <HipDamping>5000.0</HipDamping>
+        <HipTwistSpring>100.0</HipTwistSpring>
+        <HipTwistDamping>500.0</HipTwistDamping>
+        <HipSwingSpring>100.0</HipSwingSpring>
+        <HipSwingDamping>500.0</HipSwingDamping>
+        <ShoulderLimitRatio>0.25</ShoulderLimitRatio>
+        <ShoulderSpring>1000.0</ShoulderSpring>
+        <ShoulderDamping>5000.0</ShoulderDamping>
+        <ShoulderTwistSpring>100.0</ShoulderTwistSpring>
+        <ShoulderTwistDamping>500.0</ShoulderTwistDamping>
+        <ShoulderSwingSpring>100.0</ShoulderSwingSpring>
+        <ShoulderSwingDamping>500.0</ShoulderSwingDamping>
+        <VertLimitRatio>0.25</VertLimitRatio>
+        <VertSpring>1000.0</VertSpring>
+        <VertDamping>5000.0</VertDamping>
+        <VertTwistSpring>100.0</VertTwistSpring>
+        <VertTwistDamping>500.0</VertTwistDamping>
+        <VertSwingSpring>100.0</VertSwingSpring>
+        <VertSwingDamping>500.0</VertSwingDamping>
+    </Context>
+
+</XML>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="geometry">
+      <UniqueIdentifier>{ca580b47-9e0e-45db-9a0a-05999fbec982}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RHeightField.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="MCollision.cpp" />
+    <ClCompile Include="RAABBTreeBuilder.cpp" />
+    <ClCompile Include="RCollision.cpp" />
+    <ClCompile Include="RCollisionTree.cpp" />
+    <ClCompile Include="RCollisionTreeBuilder.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RHeightField.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MCollision.h" />
+    <ClInclude Include="MCollisionVersion.h" />
+    <ClInclude Include="RAABBTreeBuilder.h" />
+    <ClInclude Include="RCollision.h" />
+    <ClInclude Include="RCollisionTree.h" />
+    <ClInclude Include="RCollisionTreeBuilder.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

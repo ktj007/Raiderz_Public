@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rs3Font", "rs3Font.vcproj", "{20AFF37B-F7BB-407B-B332-F9BA3846A80B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51} = {7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RealSpace3", "..\..\RealSpace3.vcproj", "{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugDll_NVPerf|Win32 = DebugDll_NVPerf|Win32
+		DebugDLL|Win32 = DebugDLL|Win32
+		Release_Nvperfhud|Win32 = Release_Nvperfhud|Win32
+		Release|Win32 = Release|Win32
+		ReleaseDLL_Nvperf|Win32 = ReleaseDLL_Nvperf|Win32
+		ReleaseDLL|Win32 = ReleaseDLL|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.Debug|Win32.Build.0 = Debug|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.DebugDll_NVPerf|Win32.ActiveCfg = Debug|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.DebugDll_NVPerf|Win32.Build.0 = Debug|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.DebugDLL|Win32.ActiveCfg = Debug|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.DebugDLL|Win32.Build.0 = Debug|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.Release_Nvperfhud|Win32.ActiveCfg = Release|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.Release_Nvperfhud|Win32.Build.0 = Release|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.Release|Win32.ActiveCfg = Release|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.Release|Win32.Build.0 = Release|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.ReleaseDLL_Nvperf|Win32.ActiveCfg = Release|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.ReleaseDLL_Nvperf|Win32.Build.0 = Release|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.ReleaseDLL|Win32.ActiveCfg = Release|Win32
+		{20AFF37B-F7BB-407B-B332-F9BA3846A80B}.ReleaseDLL|Win32.Build.0 = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.Build.0 = Debug|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDll_NVPerf|Win32.ActiveCfg = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDll_NVPerf|Win32.Build.0 = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDLL|Win32.ActiveCfg = DebugDLL|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDLL|Win32.Build.0 = DebugDLL|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release_Nvperfhud|Win32.ActiveCfg = Release_Nvperfhud|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release_Nvperfhud|Win32.Build.0 = Release_Nvperfhud|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.ActiveCfg = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.Build.0 = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL_Nvperf|Win32.ActiveCfg = ReleaseDLL_Nvperf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL_Nvperf|Win32.Build.0 = ReleaseDLL_Nvperf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL|Win32.ActiveCfg = ReleaseDLL|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL|Win32.Build.0 = ReleaseDLL|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+<CONFIG>
+    <SCENE filename="catacomb_of_damned.zone.xml" env_filename="catacomb_of_damned.zone.env.xml" />
+    <RESOURCE path="../EngineRes/;Catacomb/" />
+    <SCREEN width="1024" height="768" fullscreen="false" />
+    <CAMERA pos_x="-0.036473" pos_y="13429.888672" pos_z="1000.387756" dir_x="0.023288" dir_y="-0.999149" dir_z="-0.034049" fov="60.000000" near="10.000000" far="50000.000000" />
+    <SHADOW enable="true" type="PSSM" size="512" count="4" dist0="500.000000" dist1="1500.000000" dist2="10000.000000" dist3="20000.000000" />
+    <HDR enable="true" />
+    <DOF enable="false" focus_dist="100.000000" focus_range="2500.000000" coc_size="5.000000" />
+    <Distortion enable="true" />
+    <SoftParticle enable="true" />
+    <SSAO enable="false" quality="1" />
+</CONFIG>

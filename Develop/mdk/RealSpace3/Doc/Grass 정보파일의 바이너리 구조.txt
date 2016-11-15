@@ -1,0 +1,33 @@
+------------- header ----------------------
+4					bytes	:	rows				- 전체 Scene을 나누는 바둑판의 행 수
+4					bytes	:	cols				- 전체 Scene을 나누는 바둑판의 열 수
+4					bytes	:	field_width			- 전체 Scene의 가로 크기
+4					bytes	:	field_height		- 전체 Scene을 세로 크기
+4					bytes	:	texturefile_length	- 텍스쳐 파일이름의 글자 수
+texturefile_length	bytes	:	texture_name		- 텍스쳐 이름
+4					bytes	:	horz_count			- 텍스쳐에 작은 텍스쳐가 가로로 몇장인가?
+4					bytes	:	vert_count			- 텍스쳐에 작은 텍스쳐가 세로로 몇장인가?
+4					bytes	:	blade_count			- 풀을 나타내는 빌보드의 수
+
+------------- body ------------------------
+CSpeedGrassRT::SPackedBlade가 blade_count만큼 그대로 들어 있음.
+는 쓰지 않는다. (버린 버젼)
+
+HEAD			: 4byte ( 무조건 GRS + 공백 )
+VERSION			: 4byte
+Region Rows		: 4Byte (int)
+Region Cols		: 4Byte (int)
+Field Width		: 4Byte (float)
+Field Height	: 4Byte (float)
+
+.dds 파일 이름  : 256byte (fixed size)
+grass 구성 개수 : 4byte (int) // Packing 된 texture의 개수와 동일하다.
+grass id		: 4byte (int)
+grass를 구성하는 텍스쳐 이름	: 256byte
+u-offset		: 4byte (float)
+v-offset		: 4byte (float)
+u-width			: 4byte (float)
+h-width			: 4byte (float)
+.... (반복 )
+blade 개수 : 4Byte
+Packeblade 구조체 배열 그대로 복사 ...... : sizeof(SPacekedBlade)*blade개수

@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{a923830c-ea45-4589-a0c3-3688b12dd205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Server">
+      <UniqueIdentifier>{2983bb17-c7cf-4d74-8e82-d1b809de6d5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Application">
+      <UniqueIdentifier>{ec6bda83-b439-46b6-b9f3-3c159efe93bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Net">
+      <UniqueIdentifier>{0a8fe1c2-d2b6-4eee-8459-82b0702ba3b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic">
+      <UniqueIdentifier>{0a68e4f1-673e-4fd8-a86e-ed7d999ea18f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\master_server">
+      <UniqueIdentifier>{e7ae3077-b9cd-4f7a-a602-798e7a4543f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Player">
+      <UniqueIdentifier>{1b3168be-886c-4175-87f5-6579245b3b12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Player\Instance">
+      <UniqueIdentifier>{8c486973-ca99-4766-b80f-472cf111628c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Player\LoginGameServer">
+      <UniqueIdentifier>{96e51c7c-5031-4c08-ab2a-02f2fdd6115c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\TimeoutWatcher">
+      <UniqueIdentifier>{3a6a603e-21e8-4d83-b0f2-24b344b01f96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Command">
+      <UniqueIdentifier>{0e3a21e8-7155-4add-b058-ed985fcb7823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Command\Router">
+      <UniqueIdentifier>{7be245fb-4954-4686-8bf4-bff14ec0c718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Command\Handler">
+      <UniqueIdentifier>{f8431ad7-f01c-4d90-b051-3c7168a4f680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\Command\Handler\MasterServer">
+      <UniqueIdentifier>{15bf8df2-61fa-4ead-9552-4c8a5865c4c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\PMS">
+      <UniqueIdentifier>{73d5a774-b542-4ebf-a0b1-e63cab37b7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\MoveServer">
+      <UniqueIdentifier>{95d34556-4a0f-4468-97a4-26531f5a1e5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\WorldLocator">
+      <UniqueIdentifier>{2b7fde44-ad79-430c-b6a3-0ab4f7e8ccc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db">
+      <UniqueIdentifier>{94402316-5981-4abb-aa84-a44e3ea88c40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\DBTask">
+      <UniqueIdentifier>{4aad4855-f3f7-4634-9263-da76a791468d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\DBManager">
+      <UniqueIdentifier>{e967b1f5-f040-4a5e-9898-676d782c9951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\AsyncTask">
+      <UniqueIdentifier>{7ff40e8f-7e20-4eda-bdf7-715b2839d2dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\Util">
+      <UniqueIdentifier>{90b20a42-8d7f-41de-a531-2a46b6f3e070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\DATA">
+      <UniqueIdentifier>{b5cdfcfa-ccd0-4b26-8921-9ea0be4fec28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\DBData">
+      <UniqueIdentifier>{5ae745cc-0eef-4807-8f62-b23209e034ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LConfig.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="LGlobal.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="LMemory.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="LSystem.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="LServableChecker.cpp">
+      <Filter>Framework\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="LServer.cpp">
+      <Filter>Framework\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="LServerManagers.cpp">
+      <Filter>Framework\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="LServerStatusUpdater.cpp">
+      <Filter>Framework\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="LServerSystems.cpp">
+      <Filter>Framework\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="LBaseApplication.cpp">
+      <Filter>Framework\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="LClientConnectionKeeper.cpp">
+      <Filter>Framework\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="LNetServer.cpp">
+      <Filter>Framework\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="LMasterClient.cpp">
+      <Filter>logic\master_server</Filter>
+    </ClCompile>
+    <ClCompile Include="LMasterNetClient.cpp">
+      <Filter>logic\master_server</Filter>
+    </ClCompile>
+    <ClCompile Include="LMasterServer.cpp">
+      <Filter>logic\master_server</Filter>
+    </ClCompile>
+    <ClCompile Include="LMasterServerMgr.cpp">
+      <Filter>logic\master_server</Filter>
+    </ClCompile>
+    <ClCompile Include="LLoginLogic.cpp">
+      <Filter>logic\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="LPlayerLogic.cpp">
+      <Filter>logic\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="LPlayerObject.cpp">
+      <Filter>logic\Player\Instance</Filter>
+    </ClCompile>
+    <ClCompile Include="LPlayerObjectManager.cpp">
+      <Filter>logic\Player\Instance</Filter>
+    </ClCompile>
+    <ClCompile Include="LPlayerLoginGameServerProcManager.cpp">
+      <Filter>logic\Player\LoginGameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LPlayerLoginGameServerRetryer.cpp">
+      <Filter>logic\Player\LoginGameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LMoveServerTimeoutHandler.cpp">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="LSelMyCharTimeoutHandler.cpp">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="LTimeoutManager.cpp">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="LTimeoutWatcher.cpp">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="LCommandCenter.cpp">
+      <Filter>logic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="LCommandLogger.cpp">
+      <Filter>logic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="LCommandTable.cpp">
+      <Filter>logic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdRouter_MoveServer.cpp">
+      <Filter>logic\Command\Router</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdRouter_Player.cpp">
+      <Filter>logic\Command\Router</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdHandler_Login.cpp">
+      <Filter>logic\Command\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdHandler_MoveServer.cpp">
+      <Filter>logic\Command\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdHandler_NotServable.cpp">
+      <Filter>logic\Command\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdHandlerGroup.cpp">
+      <Filter>logic\Command\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdHandler_Master_Global.cpp">
+      <Filter>logic\Command\Handler\MasterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdHandler_Master_MoveServer.cpp">
+      <Filter>logic\Command\Handler\MasterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LCmdHandler_Master_Net.cpp">
+      <Filter>logic\Command\Handler\MasterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LPMSObject.cpp">
+      <Filter>logic\PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="LPMSSystem.cpp">
+      <Filter>logic\PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="LMoveServerLogicFromGameServer.cpp">
+      <Filter>logic\MoveServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LPlayerAcceptManager.cpp">
+      <Filter>logic\MoveServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LPlayerAcceptor_FromGameServer.cpp">
+      <Filter>logic\MoveServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LWorldLocatorServer.cpp">
+      <Filter>logic\WorldLocator</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTask.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskAccountInsert.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskCharDelete.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskCharGetLookList.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskCharInsert.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskGetWorldInfo.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskLogin.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskPmangAccountInsert.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskPmangLogin.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskServerGetStatus.cpp">
+      <Filter>db\DBTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBManager.cpp">
+      <Filter>db\DBManager</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBAsyncTask.cpp">
+      <Filter>db\AsyncTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskQuery.cpp">
+      <Filter>db\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LConfig.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="LDef.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="LGlobal.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="LMemory.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="LSystem.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="LServableChecker.h">
+      <Filter>Framework\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="LServer.h">
+      <Filter>Framework\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="LServerInfo.h">
+      <Filter>Framework\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="LServerManagers.h">
+      <Filter>Framework\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="LServerStatusUpdater.h">
+      <Filter>Framework\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="LServerSystems.h">
+      <Filter>Framework\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="LBaseApplication.h">
+      <Filter>Framework\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="LClientConnectionKeeper.h">
+      <Filter>Framework\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="LNetServer.h">
+      <Filter>Framework\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="LMasterClient.h">
+      <Filter>logic\master_server</Filter>
+    </ClInclude>
+    <ClInclude Include="LMasterNetClient.h">
+      <Filter>logic\master_server</Filter>
+    </ClInclude>
+    <ClInclude Include="LMasterServer.h">
+      <Filter>logic\master_server</Filter>
+    </ClInclude>
+    <ClInclude Include="LMasterServerMgr.h">
+      <Filter>logic\master_server</Filter>
+    </ClInclude>
+    <ClInclude Include="LLoginLogic.h">
+      <Filter>logic\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="LPlayerLogic.h">
+      <Filter>logic\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="LPlayerObject.h">
+      <Filter>logic\Player\Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="LPlayerObjectManager.h">
+      <Filter>logic\Player\Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="LPlayerLoginGameServerProcManager.h">
+      <Filter>logic\Player\LoginGameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LPlayerLoginGameServerRetryer.h">
+      <Filter>logic\Player\LoginGameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LMoveServerTimeoutHandler.h">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClInclude>
+    <ClInclude Include="LSelMyCharTimeoutHandler.h">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClInclude>
+    <ClInclude Include="LTimeoutHandler.h">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClInclude>
+    <ClInclude Include="LTimeoutManager.h">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClInclude>
+    <ClInclude Include="LTimeoutWatcher.h">
+      <Filter>logic\TimeoutWatcher</Filter>
+    </ClInclude>
+    <ClInclude Include="LCommandCenter.h">
+      <Filter>logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="LCommandLogger.h">
+      <Filter>logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="LCommandTable.h">
+      <Filter>logic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdRouter_MoveServer.h">
+      <Filter>logic\Command\Router</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdRouter_Player.h">
+      <Filter>logic\Command\Router</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdHandler_Login.h">
+      <Filter>logic\Command\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdHandler_MoveServer.h">
+      <Filter>logic\Command\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdHandler_NotServable.h">
+      <Filter>logic\Command\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdHandlerGroup.h">
+      <Filter>logic\Command\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdHandler_Master_Global.h">
+      <Filter>logic\Command\Handler\MasterServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdHandler_Master_MoveServer.h">
+      <Filter>logic\Command\Handler\MasterServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LCmdHandler_Master_Net.h">
+      <Filter>logic\Command\Handler\MasterServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LPMSObject.h">
+      <Filter>logic\PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="LPMSSystem.h">
+      <Filter>logic\PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="LMoveServerLogicFromGameServer.h">
+      <Filter>logic\MoveServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LPlayerAcceptManager.h">
+      <Filter>logic\MoveServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LPlayerAcceptor_FromGameServer.h">
+      <Filter>logic\MoveServer</Filter>
+    </ClInclude>
+    <ClInclude Include="LWorldLocatorServer.h">
+      <Filter>logic\WorldLocator</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTask.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskGlobal.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskHeaderList.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskAccountInsert.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskCharDelete.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskCharGetLookList.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskCharInsert.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskGetWorldInfo.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskLogin.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskPmangAccountInsert.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskPmangLogin.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskServerGetStatus.h">
+      <Filter>db\DBTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBManager.h">
+      <Filter>db\DBManager</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBAsyncTask.h">
+      <Filter>db\AsyncTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskQuery.h">
+      <Filter>db\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskDataAccount.h">
+      <Filter>db\DATA</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBParamData.h">
+      <Filter>db\DBData</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskDataWorld.h">
+      <Filter>db\DBData</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+</Project>

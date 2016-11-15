@@ -1,0 +1,210 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B365850A-3A42-4D57-986B-7D208F856620}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServerMonitor</RootNamespace>
+    <AssemblyName>ServerMonitor</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ApplicationIcon>Resource\ServerMonitor.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+    <StartupObject>
+    </StartupObject>
+    <PublishUrl>http://localhost/ServerKeeper/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Runtime_d\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Runtime\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Command\CommandSender.cs" />
+    <Compile Include="ServableStateUpdater.cs" />
+    <Compile Include="ServerDBInfoUpdater.cs" />
+    <Compile Include="DB\DBMgr.cs" />
+    <Compile Include="DB\DBTaskInsertLogServerMonitoring.cs" />
+    <Compile Include="Form\FormServerDetailInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormServerDetailInfo.Designer.cs">
+      <DependentUpon>FormServerDetailInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonitoringLog\LogStringIDTable.cs" />
+    <Compile Include="MonitoringLog\LogStringMgr.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="MonitoringLog\MonitoringLogger_Network.cs" />
+    <Compile Include="ProcessSystem.cs" />
+    <Compile Include="MonitoringLog\MonitoringLoggerMgr.cs" />
+    <Compile Include="ServerController.cs" />
+    <Compile Include="MonitoringLog\MonitoringLogger.cs" />
+    <Compile Include="MonitoringLog\MonitoringLogger_DB.cs" />
+    <Compile Include="MonitoringLog\MonitoringLogger_ListBox.cs" />
+    <Compile Include="MonitoringLog\MonitoringLogger_LogFile.cs" />
+    <Compile Include="ServerInfo\ServerInfo.cs" />
+    <Compile Include="ServerInfo\ServerInfoMgr.cs" />
+    <Compile Include="Form\FormSettingsAddServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSettingsAddServer.Designer.cs">
+      <DependentUpon>FormSettingsAddServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormServerMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormServerMonitor.Designer.cs">
+      <DependentUpon>FormServerMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\FormServerDetailInfo.resx">
+      <DependentUpon>FormServerDetailInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSettingsAddServer.resx">
+      <DependentUpon>FormSettingsAddServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormServerMonitor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormServerMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ServerListViewUpdater.cs" />
+    <Compile Include="ServerMonitor.cs" />
+    <Compile Include="ServerMonitorClientMgr.cs" />
+    <Compile Include="ServerReviver.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Network\NetAcceptor.cs" />
+    <Compile Include="Command\CommandHandler.cs" />
+    <Compile Include="Network\NetServer.cs" />
+    <Compile Include="Network\NetSession.cs" />
+    <Compile Include="Network\NetSessionMgr.cs" />
+    <Compile Include="ProcessStateChecker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0%28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0%28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\ServerMonitor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AsyncDatabase\AsyncDatabase.csproj">
+      <Project>{29E46E50-9F34-4C3F-BD18-6BEC42BC8253}</Project>
+      <Name>AsyncDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMCommon\SMCommon.csproj">
+      <Project>{A1670AE3-7267-4A1B-A5DB-DE3538568A7B}</Project>
+      <Name>SMCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

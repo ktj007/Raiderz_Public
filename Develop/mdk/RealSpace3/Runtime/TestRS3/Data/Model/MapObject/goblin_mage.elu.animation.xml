@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <AddAnimation name="spell_cast" filename="goblin_mage_spell_cast.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="spell_fire" filename="goblin_mage_spell_fire.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="idle" filename="goblin_mage_idle.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_KD1" filename="goblin_mage_mf_kd1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KD2" filename="goblin_mage_mf_kd2.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_KD3" filename="goblin_mage_mf_kd3.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_BT1" filename="goblin_mage_mf_bt1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_BT2" filename="goblin_mage_mf_bt2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="die" filename="goblin_mage_die.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="run" filename="goblin_mage_run.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="walk" filename="goblin_mage_walk.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_KB1" filename="goblin_mage_mf_kb1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KB2" filename="goblin_mage_mf_kb2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KB3" filename="goblin_mage_mf_kb3.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="guard_end" filename="goblin_mage_guard_end.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="guard_idle" filename="goblin_mage_guard_idle.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_ST" filename="goblin_mage_mf_st.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_UP" filename="goblin_mage_mf_up.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_r" filename="goblin_mage_atk_r.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_DT" filename="goblin_mage_mf_dt.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="roar" filename="goblin_mage_roar.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="taunt" filename="goblin_mage_taunt.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="sleep" filename="goblin_mage_sleep.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="talent_magic" filename="goblin_mage_talent_magic.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="idle2" filename="goblin_mage_idle2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_TU1" filename="goblin_mage_mf_tu1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_TU2" filename="goblin_mage_mf_tu2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_throw" filename="goblin_mage_spell_throw.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="spell_throw_fail" filename="goblin_mage_spell_cast.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AnimationTransitions />
+</XML>

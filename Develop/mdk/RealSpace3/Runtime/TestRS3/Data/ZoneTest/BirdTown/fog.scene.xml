@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="ritz_sign_adventurer_01_001">
+                <POSITION>3136.929199 3363.280762 950.047180</POSITION>
+                <DIRECTION>0.990268 -0.139173 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ritz_sign_adventurer_01.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="ritz_sign_adventurer_02_001">
+                <POSITION>3496.044434 3363.280762 950.047180</POSITION>
+                <DIRECTION>-0.990268 0.139173 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ritz_sign_adventurer_02.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="ritz_sign_adventurer_02_002">
+                <POSITION>3742.655762 3363.071777 950.047180</POSITION>
+                <DIRECTION>0.984808 0.173648 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ritz_sign_adventurer_02.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="cerberus_001">
+                <POSITION>3630.236084 3717.332275 950.047180</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>cerberus.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="ghost_knight_001">
+                <POSITION>4047.305908 3363.280762 950.047180</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ghost_knight.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="ingen_lighthouse_jj01_001">
+                <POSITION>3017.454346 3767.132324 985.012207</POSITION>
+                <DIRECTION>-0.999848 -0.017452 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>0.117989 0.117989 0.117989</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ingen_lighthouse_jj01.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="goblin_Mage_001">
+                <POSITION>3902.763672 3352.381104 985.012207</POSITION>
+                <DIRECTION>-0.069756 0.997564 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.267708 1.267708 1.267708</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>goblin_Mage.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+    </SCENE>
+</ROOT>

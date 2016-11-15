@@ -1,0 +1,6 @@
+<h1>[[Name]][[Clan]] (<a href="javascript:window.external.CopyString('[[ID]]')">[[ID]]</a>)</h1>
+<ul>
+	<li>타입: [[Type]]</li>
+	<li>레벨: [[Level]]</li>
+	<li>등급: [[Grade]]</li>
+</ul>

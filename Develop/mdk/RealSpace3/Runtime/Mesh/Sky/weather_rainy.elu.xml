@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="rainy">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>rain_tex_s.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>rain_tex_s.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="40000">0.000 -7.000</TEX_OFFSET>
+                    <TEX_SCALE time="0">7.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="heavy rainy02" property="noshade" />
+        <USERPROPERTY node="heavy rainy02" property="vertexcolor" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+</XML>

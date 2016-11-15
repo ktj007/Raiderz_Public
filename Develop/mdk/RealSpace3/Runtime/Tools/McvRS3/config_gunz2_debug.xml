@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <NAME>Gunz2</NAME>
+	<SHADERPATH>../../Shader/;../../Shader/components/</SHADERPATH>
+	<TEXTUREPATH>../../../../../Gunz2/Runtime/data/Texture/sfx;../../../../../Gunz2/Runtime/Texture/Character;../../../../../Gunz2/Runtime/texture/Map;../../../../../Gunz2/Runtime/texture/Weapon;</TEXTUREPATH>
+	<EFFECTPATH>../../../../../Gunz2/Runtime/data/SFX</EFFECTPATH>
+	<SOUNDPATH>../../../../../Gunz2/Runtime/data/Sound/Effect</SOUNDPATH>
+	<MODELPATH>../../../../../Gunz2/Runtime/Model;../../../../../Gunz2/Runtime/Model/MapObject;../../../../../Gunz2/Runtime/Model/Sky;../../../../../Gunz2/Runtime/Model/Player;../../../../../Gunz2/Runtime/Model/weapons;../../../../../Gunz2/Runtime/Model/weapon;../../../../../Gunz2/Runtime/SFX</MODELPATH>
+	<FARZ>10000</FARZ>
+	<LIGHTANI>zcircle</LIGHTANI>
+</XML>

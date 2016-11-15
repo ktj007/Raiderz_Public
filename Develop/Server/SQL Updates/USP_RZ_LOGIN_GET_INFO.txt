@@ -1,0 +1,45 @@
+USE [RZ_ACCOUNTDB]
+GO
+/****** Object:  StoredProcedure [dbo].[USP_RZ_LOGIN_GET_INFO]    Script Date: 06/13/2013 20:31:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+----
+
+ALTER PROC [dbo].[USP_RZ_LOGIN_GET_INFO]
+(
+	@SITE_USER_ID 	NVARCHAR(128),
+	@SITE_CODE 		NVARCHAR(128)
+)
+AS
+	SET NOCOUNT ON;
+		
+  	BEGIN TRY
+	declare @MD5FromPwd varchar(100)
+	exec RZ_ACCOUNTDB.dbo.USP_RZ_CREATEMD5WARZ @SITE_CODE, @MD5FromPwd OUTPUT
+  
+	declare @MD5FromAcct varchar(100)
+	SELECT @MD5FromAcct = RZ_ACCOUNTDB.dbo.RZ_GT_USER.PWD FROM RZ_ACCOUNTDB.dbo.RZ_GT_USER WHERE RZ_ACCOUNTDB.dbo.RZ_GT_USER.USER_ID = @SITE_USER_ID
+
+	SELECT RZ_ACCOUNTDB.dbo.RZ_GT_USER.GSN AS ACCN_ID
+		     , 0 AS PWD
+		     , 0 AS NEW_ACC
+	      FROM RZ_ACCOUNTDB.dbo.RZ_GT_USER
+	     WHERE  RZ_ACCOUNTDB.dbo.RZ_GT_USER.USER_ID = @SITE_USER_ID
+	     AND @MD5FromAcct = @MD5FromPwd
+    END TRY BEGIN CATCH
+		DECLARE @ErrorMessage NVARCHAR(4000);
+		DECLARE @ErrorSeverity INT;
+		DECLARE @ErrorState INT;
+
+		SELECT 
+			@ErrorMessage = ERROR_MESSAGE(),
+			@ErrorSeverity = ERROR_SEVERITY(),
+			@ErrorState = ERROR_STATE();
+
+		RAISERROR (@ErrorMessage, 
+				   @ErrorSeverity, 
+				   @ErrorState);
+	END CATCH	       

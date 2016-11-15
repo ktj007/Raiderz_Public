@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="ingen_waterfall" />
+            <PROPERTY>
+                <FILENAME>ingen_waterfall.elu</FILENAME>
+				<ANI />
+            </PROPERTY>
+            <SCENE>
+                <EFFECTINSTANCE>
+                    <COMMON>
+                        <POSITION>0.000000 0.000000 0.000000</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <CONTROLLERS>
+                        <ACTORNODECONSTRAINTCONTROLLER>
+                            <TARGET>ef_waterfall_bubble04</TARGET>
+                        </ACTORNODECONSTRAINTCONTROLLER>
+                    </CONTROLLERS>
+                    <PROPERTY>
+                        <FILENAME>waterfall_bubble</FILENAME>
+                        <AUTOSTART />
+                    </PROPERTY>
+                </EFFECTINSTANCE>
+                <EFFECTINSTANCE>
+                    <COMMON>
+                        <POSITION>0.000000 0.000000 0.000000</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <CONTROLLERS>
+                        <ACTORNODECONSTRAINTCONTROLLER>
+                            <TARGET>ef_wet_fog02</TARGET>
+                        </ACTORNODECONSTRAINTCONTROLLER>
+                    </CONTROLLERS>
+                    <PROPERTY>
+                        <FILENAME>wet_fog</FILENAME>
+                        <AUTOSTART />
+                    </PROPERTY>
+                </EFFECTINSTANCE>
+                <EFFECTINSTANCE>
+                    <COMMON>
+                        <POSITION>0.000000 0.000000 0.000000</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <CONTROLLERS>
+                        <ACTORNODECONSTRAINTCONTROLLER>
+                            <TARGET>ef_waterfall_bubble202</TARGET>
+                        </ACTORNODECONSTRAINTCONTROLLER>
+                    </CONTROLLERS>
+                    <PROPERTY>
+                        <FILENAME>waterfall_bubble2</FILENAME>
+                        <AUTOSTART />
+                    </PROPERTY>
+                </EFFECTINSTANCE>
+            </SCENE>
+        </ACTOR>
+    </SCENE>
+</ROOT>

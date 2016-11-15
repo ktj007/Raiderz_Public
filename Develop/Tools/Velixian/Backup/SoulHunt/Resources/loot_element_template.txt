@@ -1,0 +1,6 @@
+<tr>
+	<td>[[LOOT_DETAIL]]</td>
+	<td>[[LOOT_RATE]]</td>
+	<td>[[LOOT_MIN]]</td>
+	<td>[[LOOT_MAX]]</td>
+</tr>

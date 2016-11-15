@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="Standard_4">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>sky_night_nebula.BMP</DIFFUSEMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+            <ADDITIVE />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="Plane01" property="noshade" />
+        <USERPROPERTY node="Plane02" property="noshade" />
+        <USERPROPERTY node="Object01" property="noshade" />
+        <USERPROPERTY node="Plane04" property="noshade" />
+        <USERPROPERTY node="sky_daytime_nebula" property="noshade" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+</XML>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <Animation name="atk1">
+        <EVENT name="sh_sound" frame="3310" param1="goblin_atk_6" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="die">
+        <EVENT name="sh_sound" frame="3289" param1="goblin_fall" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="0" param1="goblin_vox_12" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="MF_BT1">
+        <EVENT name="sh_sound" frame="2200" param1="goblin_as_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="659" param1="goblin_vox_12" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="MF_BT2">
+        <EVENT name="sh_sound" frame="1217" param1="goblin_as_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="635" param1="goblin_vox_9" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="run">
+        <EVENT name="sh_sound" frame="1816" param1="goblin_fs" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4322" param1="goblin_fs" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="walk">
+        <EVENT name="sh_sound" frame="1868" param1="goblin_fs" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4739" param1="goblin_fs" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="3158" param1="goblin_as_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="MF_DT">
+        <EVENT name="sh_sound" frame="716" param1="goblin_vox_13" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="MF_KD1">
+        <EVENT name="sh_sound" frame="3300" param1="goblin_fall" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="0" param1="goblin_vox_4" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="MF_KD3">
+        <EVENT name="sh_sound" frame="2453" param1="goblin_as_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="MF_UP">
+        <EVENT name="sh_sound" frame="257" param1="goblin_fs" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4342" param1="goblin_as_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="5591" param1="kobold_fs_1" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="tackle">
+        <EVENT name="sh_sound" frame="1624" param1="goblin_atk_6" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="atk_s">
+        <EVENT name="sh_sound" frame="2142" param1="goblin_atk_6" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="atk_d">
+        <EVENT name="sh_sound" frame="2466" param1="goblin_atk_5" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="0" param1="goblin_vox_11" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3151" param1="dirt_s" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_custom" frame="3536" param1="dirt_s" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="roar">
+        <EVENT name="sh_sound" frame="2275" param1="goblin_vox_5" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="tackle2">
+        <EVENT name="sh_sound" frame="1212" param1="goblin_fs" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1878" param1="goblin_as_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="1537" param1="goblin_vox_11" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="taunt">
+        <EVENT name="sh_sound" frame="2668" param1="goblin_as_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="4137" param1="goblin_fs" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="9977" param1="goblin_fart_1" param2="" param3="" unconditional="false" />
+        <EVENT name="sh_sound" frame="18347" param1="goblin_fs" param2="" param3="" unconditional="false" />
+    </Animation>
+    <Animation name="MF_TU2">
+        <EVENT name="sh_sound" frame="1500" param1="goblin_fall" param2="" param3="" unconditional="false" />
+    </Animation>
+</XML>

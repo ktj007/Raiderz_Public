@@ -1,0 +1,2 @@
+<h1>[[DIALOG_TEXT]] (<a href="javascript:window.external.CopyString('[[ID]]')">[[ID]]</a>)</h1>
+

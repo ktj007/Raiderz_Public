@@ -1,0 +1,116 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cml2", "..\..\cml2\cml2.vcproj", "{8D451493-65C2-49C3-ADAE-ACB17E6B0650}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RealSpace3", "..\RealSpace3.vcproj", "{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B} = {97861011-05BD-450A-A221-DB5F7A2F4B7B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FullSceneShadow", "FullSceneShadow\FullSceneShadow.vcproj", "{547F68F5-5E48-47ED-8983-15B871A4D375}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51} = {7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MCollision", "..\..\MCollision\MCollision.vcproj", "{97861011-05BD-450A-A221-DB5F7A2F4B7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugDll_NVPerf|Win32 = DebugDll_NVPerf|Win32
+		DebugDLL|Win32 = DebugDLL|Win32
+		DebugMD|Win32 = DebugMD|Win32
+		DebugMDd|Win32 = DebugMDd|Win32
+		Release_Nvperfhud|Win32 = Release_Nvperfhud|Win32
+		Release|Win32 = Release|Win32
+		ReleaseDLL_Nvperf|Win32 = ReleaseDLL_Nvperf|Win32
+		ReleaseDLL|Win32 = ReleaseDLL|Win32
+		ReleaseMD|Win32 = ReleaseMD|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.Build.0 = Debug|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugDll_NVPerf|Win32.ActiveCfg = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugDll_NVPerf|Win32.Build.0 = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugDLL|Win32.ActiveCfg = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugDLL|Win32.Build.0 = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugMD|Win32.ActiveCfg = DebugMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugMD|Win32.Build.0 = DebugMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugMDd|Win32.ActiveCfg = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugMDd|Win32.Build.0 = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release_Nvperfhud|Win32.ActiveCfg = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release_Nvperfhud|Win32.Build.0 = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.ActiveCfg = Release|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.Build.0 = Release|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseDLL_Nvperf|Win32.ActiveCfg = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseDLL_Nvperf|Win32.Build.0 = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseDLL|Win32.ActiveCfg = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseDLL|Win32.Build.0 = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseMD|Win32.ActiveCfg = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseMD|Win32.Build.0 = ReleaseMD|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.Build.0 = Debug|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDll_NVPerf|Win32.ActiveCfg = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDll_NVPerf|Win32.Build.0 = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDLL|Win32.ActiveCfg = DebugDLL|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugDLL|Win32.Build.0 = DebugDLL|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugMD|Win32.ActiveCfg = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugMD|Win32.Build.0 = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugMDd|Win32.ActiveCfg = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.DebugMDd|Win32.Build.0 = DebugDll_NVPerf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release_Nvperfhud|Win32.ActiveCfg = Release_Nvperfhud|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release_Nvperfhud|Win32.Build.0 = Release_Nvperfhud|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.ActiveCfg = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.Build.0 = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL_Nvperf|Win32.ActiveCfg = ReleaseDLL_Nvperf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL_Nvperf|Win32.Build.0 = ReleaseDLL_Nvperf|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL|Win32.ActiveCfg = ReleaseDLL|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseDLL|Win32.Build.0 = ReleaseDLL|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseMD|Win32.ActiveCfg = Release_Nvperfhud|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.ReleaseMD|Win32.Build.0 = Release_Nvperfhud|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.Debug|Win32.ActiveCfg = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.Debug|Win32.Build.0 = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugDll_NVPerf|Win32.ActiveCfg = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugDll_NVPerf|Win32.Build.0 = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugDLL|Win32.ActiveCfg = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugDLL|Win32.Build.0 = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugMD|Win32.ActiveCfg = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugMD|Win32.Build.0 = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugMDd|Win32.ActiveCfg = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.DebugMDd|Win32.Build.0 = Debug|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.Release_Nvperfhud|Win32.ActiveCfg = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.Release_Nvperfhud|Win32.Build.0 = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.Release|Win32.ActiveCfg = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.Release|Win32.Build.0 = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.ReleaseDLL_Nvperf|Win32.ActiveCfg = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.ReleaseDLL_Nvperf|Win32.Build.0 = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.ReleaseDLL|Win32.ActiveCfg = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.ReleaseDLL|Win32.Build.0 = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.ReleaseMD|Win32.ActiveCfg = Release|Win32
+		{547F68F5-5E48-47ED-8983-15B871A4D375}.ReleaseMD|Win32.Build.0 = Release|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Debug|Win32.Build.0 = Debug|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugDll_NVPerf|Win32.ActiveCfg = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugDll_NVPerf|Win32.Build.0 = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugDLL|Win32.ActiveCfg = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugDLL|Win32.Build.0 = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugMD|Win32.ActiveCfg = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugMD|Win32.Build.0 = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugMDd|Win32.ActiveCfg = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.DebugMDd|Win32.Build.0 = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release_Nvperfhud|Win32.ActiveCfg = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release_Nvperfhud|Win32.Build.0 = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release|Win32.ActiveCfg = Release|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release|Win32.Build.0 = Release|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.ReleaseDLL_Nvperf|Win32.ActiveCfg = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.ReleaseDLL_Nvperf|Win32.Build.0 = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.ReleaseDLL|Win32.ActiveCfg = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.ReleaseDLL|Win32.Build.0 = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.ReleaseMD|Win32.ActiveCfg = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.ReleaseMD|Win32.Build.0 = ReleaseMD|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

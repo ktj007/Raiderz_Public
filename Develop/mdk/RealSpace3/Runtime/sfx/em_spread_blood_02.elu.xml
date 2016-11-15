@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST />
+    <USERPROPERTYLIST />
+    <SCENE>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>em_spread_blood_02.effect.xml</FILENAME>
+                <PARENT>Dummy01</PARENT>
+            </PROPERTY>
+        </EFFECT>
+    </SCENE>
+    <COLLISION />
+</XML>

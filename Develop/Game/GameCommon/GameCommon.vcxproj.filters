@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="talent">
+      <UniqueIdentifier>{87035340-4197-4e7e-a1a0-9e0584c5586f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item">
+      <UniqueIdentifier>{47984fe3-e9ff-42f5-8381-6f87805eee87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="animation">
+      <UniqueIdentifier>{b99a2941-87c1-4d54-ada0-86c7f962b49f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="character">
+      <UniqueIdentifier>{68dfc5ed-3458-460c-a23e-7553d7ad4ba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="effect">
+      <UniqueIdentifier>{aaed5a09-b8f4-404b-b11b-c29aefdfbd14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{f100b2c6-ef26-46a4-ad7f-46541288824b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{6190e01d-6786-4671-8d62-fab9e7bbf6cf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="XBaseTalentEvent.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XBuffInfo.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentEffectInfo.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentEffectInfoParser.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentInfo.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentInfoExtParser.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentInfoLoader.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentInfoMgr.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XTalentInfoParser.cpp">
+      <Filter>talent</Filter>
+    </ClCompile>
+    <ClCompile Include="XItem.cpp">
+      <Filter>item</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemData.cpp">
+      <Filter>item</Filter>
+    </ClCompile>
+    <ClCompile Include="XItemInfoLoader.cpp">
+      <Filter>item</Filter>
+    </ClCompile>
+    <ClCompile Include="XAnimationBlendInfo.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XAnimationHitSoundInfo.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XAnimationInfoLoader.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XAnimationInfoMgr.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XBaseAnimationTC.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XFaceAnimationTC.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XFakeBeatenAnimationTC.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotion.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XMotionMgr.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XOverlayAnimationInfo.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XOverlayAnimationTC.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XRAnimationController.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XReActionAnimationInfo.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XTransformController.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XTransformControllerManager.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XUpperAnimationTC.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="XCharacter.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XCharacterBParts.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XCharacterParts.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XCoverMesh.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XMeshInfoLoader.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XMeshInfoSaver.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XModelParts.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCInfo.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XNPCInfoHelper.cpp">
+      <Filter>character</Filter>
+    </ClCompile>
+    <ClCompile Include="XAlphaTestFadeEffect.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XBaseTalentEffectHitCapsule.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectBase.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectBaseInvoker.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEffectInfo.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XGlowEffect.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XModelEffect.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XPostEffect.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XSwordTrailEffect.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="XEngine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="XBaseResourceGrabber.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="XFieldResourceGrabber.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="XResourceCache.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="XResourceManager.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="XResourceRefMgr.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="XConst.cpp" />
+    <ClCompile Include="XFader.cpp" />
+    <ClCompile Include="XStrings.cpp" />
+    <ClCompile Include="XSwordTrailSamplingData.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XBaseTalentEvent.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XBuffInfo.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentEffectInfo.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentEffectInfoParser.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfo.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfoDef.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfoEnum.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfoExtParser.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfoLoader.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfoMgr.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XTalentInfoParser.h">
+      <Filter>talent</Filter>
+    </ClInclude>
+    <ClInclude Include="XItem.h">
+      <Filter>item</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemData.h">
+      <Filter>item</Filter>
+    </ClInclude>
+    <ClInclude Include="XItemInfoLoader.h">
+      <Filter>item</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnim.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnimationBlendInfo.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnimationHitSoundInfo.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnimationInfoLoader.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XAnimationInfoMgr.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseAnimationTC.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XFaceAnimationTC.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XFakeBeatenAnimationTC.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotion.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionMgr.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XOverlayAnimationInfo.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XOverlayAnimationTC.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XRAnimationController.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XReActionAnimationInfo.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XTransformController.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XTransformControllerManager.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XUpperAnimationTC.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="XCharacter.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XCharacterBParts.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XCharacterParts.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XCoverMesh.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XMeshInfoLoader.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XMeshInfoSaver.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XModelParts.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XMotionTrigger.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCInfo.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XNPCInfoHelper.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XPartsParam.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XPartsSlotType.h">
+      <Filter>character</Filter>
+    </ClInclude>
+    <ClInclude Include="XAlphaTestFadeEffect.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseTalentEffectHitCapsule.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectBase.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectBaseInvoker.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEffectInfo.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XGlowEffect.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XModelEffect.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XPostEffect.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XSwordTrailEffect.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="XEngine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="XBaseResourceGrabber.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="XFieldResourceGrabber.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="XResourceCache.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="XResourceManager.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="XResourceRefMgr.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="XCommonData.h" />
+    <ClInclude Include="XConst.h" />
+    <ClInclude Include="XDef.h" />
+    <ClInclude Include="XFader.h" />
+    <ClInclude Include="XStrings.h" />
+    <ClInclude Include="XSwordTrailSamplingData.h" />
+  </ItemGroup>
+</Project>

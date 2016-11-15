@@ -1,0 +1,19 @@
+<h1>[[QUEST_TEXT]] (<a href="javascript:window.external.CopyString('[[ID]]')">[[ID]]</a>)</h1>
+
+<h2>NPC</h2>
+
+[[QUEST_NPCS]]
+
+<h2>Objectives</h2>
+
+[[QUEST_OBJECTIVES]]
+
+<h2>Rewards</h2>
+
+[[QUEST_REWARDS]]
+
+<h2>Items</h2>
+
+<h2>미리 보기</h2>
+
+[[QUEST_PREVIEW]]

@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="orig_14 - Defaulthuysds">
+            <DIFFUSE>0 0 0</DIFFUSE>
+            <AMBIENT>0 0 0</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>30.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_02_D.tga.dds</DIFFUSEMAP>
+                    <MAPCHANNEL>1</MAPCHANNEL>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_Sub_D.tga.dds</DIFFUSEMAP>
+                    <TEX_SCALE>6.000000 6.000000</TEX_SCALE>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_Sub_DD.jpg.dds</DIFFUSEMAP>
+                    <TEX_SCALE>10.000000 10.000000</TEX_SCALE>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_Sub_AAA.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>N_bos_003_02_SP.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>N_bos_003_Sub_S.tga.dds</SPECULARMAP>
+                    <TEX_SCALE>15.000000 15.000000</TEX_SCALE>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>N_bos_003_02_N.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>N_bos_003_Sub_N.tga.dds</NORMALMAP>
+                    <TEX_SCALE>15.000000 10.000000</TEX_SCALE>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+            <COMPOSITELAYERLIST>
+                <COMPOSITELAYER index="1" count="3">
+                    <LAYER index="0">
+                        <LAYERMAP>N_bos_003_02_D.tga.dds</LAYERMAP>
+                        <OPACITY>1.000</OPACITY>
+                        <BLENDMODE>0</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="1">
+                        <LAYERMAP>N_bos_003_Sub_D.tga.dds</LAYERMAP>
+                        <OPACITY>0.300</OPACITY>
+                        <BLENDMODE>6</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="2">
+                        <LAYERMAP>N_bos_003_Sub_DD.jpg.dds</LAYERMAP>
+                        <MASKMAP>N_bos_003_Sub_AAA.tga.dds</MASKMAP>
+                        <OPACITY>0.400</OPACITY>
+                        <BLENDMODE>6</BLENDMODE>
+                    </LAYER>
+                </COMPOSITELAYER>
+                <COMPOSITELAYER index="3" count="2">
+                    <LAYER index="0">
+                        <LAYERMAP>N_bos_003_02_SP.tga.dds</LAYERMAP>
+                        <OPACITY>0.800</OPACITY>
+                        <BLENDMODE>0</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="1">
+                        <LAYERMAP>N_bos_003_Sub_S.tga.dds</LAYERMAP>
+                        <OPACITY>0.800</OPACITY>
+                        <BLENDMODE>6</BLENDMODE>
+                    </LAYER>
+                </COMPOSITELAYER>
+                <COMPOSITELAYER index="4" count="2">
+                    <LAYER index="0">
+                        <LAYERMAP>N_bos_003_02_N.tga.dds</LAYERMAP>
+                        <OPACITY>1.000</OPACITY>
+                        <BLENDMODE>0</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="1">
+                        <LAYERMAP>N_bos_003_Sub_N.tga.dds</LAYERMAP>
+                        <OPACITY>0.040</OPACITY>
+                        <BLENDMODE>14</BLENDMODE>
+                    </LAYER>
+                </COMPOSITELAYER>
+            </COMPOSITELAYERLIST>
+        </MATERIAL>
+        <MATERIAL name="orig_14 - Defaulthuydda">
+            <DIFFUSE>0 0 0</DIFFUSE>
+            <AMBIENT>0 0 0</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>30.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_01_D.tga.dds</DIFFUSEMAP>
+                    <MAPCHANNEL>1</MAPCHANNEL>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_Sub_D.tga.dds</DIFFUSEMAP>
+                    <TEX_SCALE>6.000000 6.000000</TEX_SCALE>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_Sub_DD.jpg.dds</DIFFUSEMAP>
+                    <TEX_SCALE>10.000000 10.000000</TEX_SCALE>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>N_bos_003_Sub_AA.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>N_bos_003_01_SP.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>N_bos_003_Sub_S.tga.dds</SPECULARMAP>
+                    <TEX_SCALE>15.000000 15.000000</TEX_SCALE>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>N_bos_003_01_N.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>N_bos_003_Sub_N.tga.dds</NORMALMAP>
+                    <TEX_SCALE>15.000000 15.000000</TEX_SCALE>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+            <COMPOSITELAYERLIST>
+                <COMPOSITELAYER index="1" count="3">
+                    <LAYER index="0">
+                        <LAYERMAP>N_bos_003_01_D.tga.dds</LAYERMAP>
+                        <OPACITY>1.000</OPACITY>
+                        <BLENDMODE>0</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="1">
+                        <LAYERMAP>N_bos_003_Sub_D.tga.dds</LAYERMAP>
+                        <OPACITY>0.300</OPACITY>
+                        <BLENDMODE>6</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="2">
+                        <LAYERMAP>N_bos_003_Sub_DD.jpg.dds</LAYERMAP>
+                        <MASKMAP>N_bos_003_Sub_AA.tga.dds</MASKMAP>
+                        <OPACITY>0.400</OPACITY>
+                        <BLENDMODE>6</BLENDMODE>
+                    </LAYER>
+                </COMPOSITELAYER>
+                <COMPOSITELAYER index="3" count="2">
+                    <LAYER index="0">
+                        <LAYERMAP>N_bos_003_01_SP.tga.dds</LAYERMAP>
+                        <OPACITY>1.000</OPACITY>
+                        <BLENDMODE>0</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="1">
+                        <LAYERMAP>N_bos_003_Sub_S.tga.dds</LAYERMAP>
+                        <OPACITY>0.800</OPACITY>
+                        <BLENDMODE>10</BLENDMODE>
+                    </LAYER>
+                </COMPOSITELAYER>
+                <COMPOSITELAYER index="4" count="2">
+                    <LAYER index="0">
+                        <LAYERMAP>N_bos_003_01_N.tga.dds</LAYERMAP>
+                        <OPACITY>1.000</OPACITY>
+                        <BLENDMODE>0</BLENDMODE>
+                    </LAYER>
+                    <LAYER index="1">
+                        <LAYERMAP>N_bos_003_Sub_N.tga.dds</LAYERMAP>
+                        <OPACITY>0.040</OPACITY>
+                        <BLENDMODE>14</BLENDMODE>
+                    </LAYER>
+                </COMPOSITELAYER>
+            </COMPOSITELAYERLIST>
+        </MATERIAL>
+    </MATERIALLIST>
+    <COLLISION />
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="P_Bone01" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone01" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone01" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone01" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone01" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone01" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone01" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone01" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone01" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone01" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone01" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone01" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone01" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone01" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone01" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone07" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone07" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone07" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone07" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone07" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone07" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone07" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone07" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone07" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone07" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone07" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone07" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone07" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone07" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone07" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone07(mirrored)" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone04" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone04" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone04" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone04" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone04" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone04" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone04" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone04" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone04" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone04" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone04" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone04" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone04" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone04" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone04" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone03" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone03" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone03" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone03" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone03" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone03" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone03" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone03" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone03" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone03" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone03" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone03" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone03" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone03" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone03" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone02" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone02" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone02" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone02" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone02" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone02" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone02" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone02" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone02" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone02" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone02" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone02" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone02" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone02" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone02" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone04(mirrored)" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone03(mirrored)" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone02(mirrored)" property="EnableCCD = false" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="Density = 1.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="GeometryType = 1" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="MaterialType = 2" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="Friction = 0.3" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="PutToSleep = false" />
+        <USERPROPERTY node="P_SubCannon_Rotate" property="EnableCCD = false" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="Density = 1.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="GeometryType = 1" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="MaterialType = 2" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="Friction = 0.3" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="PutToSleep = false" />
+        <USERPROPERTY node="P_MainCannon_Shot" property="EnableCCD = false" />
+        <USERPROPERTY node="P_MainCannon_Move" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_MainCannon_Move" property="Density = 1.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="GeometryType = 1" />
+        <USERPROPERTY node="P_MainCannon_Move" property="MaterialType = 2" />
+        <USERPROPERTY node="P_MainCannon_Move" property="Friction = 0.3" />
+        <USERPROPERTY node="P_MainCannon_Move" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_MainCannon_Move" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_MainCannon_Move" property="PutToSleep = false" />
+        <USERPROPERTY node="P_MainCannon_Move" property="EnableCCD = false" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="Density = 1.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="GeometryType = 1" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="MaterialType = 2" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="Friction = 0.3" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="PutToSleep = false" />
+        <USERPROPERTY node="P_AAgun_Shot_L" property="EnableCCD = false" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="Density = 1.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="GeometryType = 1" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="MaterialType = 2" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="Friction = 0.3" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="PutToSleep = false" />
+        <USERPROPERTY node="P_AAgun_Shot_R" property="EnableCCD = false" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="Density = 1.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="GeometryType = 1" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="MaterialType = 2" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="Friction = 0.3" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="PutToSleep = false" />
+        <USERPROPERTY node="P_AAgun_Rotate" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Point03" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Point03" property="Density = 1.0" />
+        <USERPROPERTY node="P_Point03" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Point03" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Point03" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Point03" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Point03" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Point03" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Point03" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Point03" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Point03" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Point03" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Point03" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Point03" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Point03" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Point09" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Point09" property="Density = 1.0" />
+        <USERPROPERTY node="P_Point09" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Point09" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Point09" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Point09" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Point09" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Point09" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Point09" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Point09" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Point09" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Point09" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Point09" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Point09" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Point09" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone06" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone06" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone06" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone06" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone06" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone06" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone06" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone06" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone06" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone06" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone06" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone06" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone06" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone06" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone06" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="Density = 1.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Bone06(mirrored)" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="Density = 1.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Tomahawk_Open01" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="Density = 1.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Tomahawk_Open02" property="EnableCCD = false" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="PhysicsType = 2" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="Density = 1.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="GeometryType = 1" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="MaterialType = 2" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="Friction = 0.3" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="StaticFriction = 0.3" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="Restitution = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="InitialVelocityX = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="InitialVelocityY = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="InitialVelocityZ = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="InitialSpinX = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="InitialSpinY = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="InitialSpinZ = 0.0" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="PutToSleep = false" />
+        <USERPROPERTY node="P_Tomahawk_Open03" property="EnableCCD = false" />
+    </USERPROPERTYLIST>
+</XML>

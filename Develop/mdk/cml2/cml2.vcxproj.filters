@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="math">
+      <UniqueIdentifier>{e5f4c953-13cf-45c6-bf0a-7f6f640e79fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern">
+      <UniqueIdentifier>{68f2a8f4-a642-4076-8998-391b6b945d4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\tinyXml">
+      <UniqueIdentifier>{119e9b89-97d1-4f1a-8a7d-66d73e6a726f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\lua">
+      <UniqueIdentifier>{e2d2693c-a536-4f30-b8c2-60b463661a45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\profile">
+      <UniqueIdentifier>{6a57b31f-202b-4e45-8d23-9452e97fb99d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\LZMA">
+      <UniqueIdentifier>{c3fe3324-5aa9-42d1-882f-6a19a0fe2102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header">
+      <UniqueIdentifier>{40558ed2-b7c5-4e37-9b85-505a3ef608d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="concurrent">
+      <UniqueIdentifier>{39843752-2a7a-496c-9b07-8cd7a16c129d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MBox.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MCapsule.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MConvexHullAlgorithm.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MCylinder.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MMath.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MMathLinear.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MMatrix.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MMatrix3.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MOBox.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MSphere.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MSVector.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MVector2.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MVector3.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="MVector4.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXml\tinystr.cpp">
+      <Filter>extern\tinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXml\tinyxml.cpp">
+      <Filter>extern\tinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXml\tinyxmlerror.cpp">
+      <Filter>extern\tinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXml\tinyxmlparser.cpp">
+      <Filter>extern\tinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Profile\profile.cpp">
+      <Filter>extern\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="Profile\profileVisitor.cpp">
+      <Filter>extern\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\Alloc.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\LzFind.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\LzFindMt.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\Lzma2Dec.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\Lzma2Enc.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\LzmaDec.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\LzmaEnc.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\LzmaLib.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\MtCoder.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\Sha256.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="LZMA\Threads.c">
+      <Filter>extern\LZMA</Filter>
+    </ClCompile>
+    <ClCompile Include="MSync.cpp">
+      <Filter>concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="MThread.cpp">
+      <Filter>concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="MThread2.cpp">
+      <Filter>concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="CfgFile.cpp" />
+    <ClCompile Include="CMLexicalAnalyzer.cpp" />
+    <ClCompile Include="CommonLog.cpp" />
+    <ClCompile Include="FileInfo.cpp" />
+    <ClCompile Include="LibPak.cpp" />
+    <ClCompile Include="lua_tinker.cpp" />
+    <ClCompile Include="MArchive.cpp" />
+    <ClCompile Include="MAsyncHttp.cpp" />
+    <ClCompile Include="MBlob.cpp" />
+    <ClCompile Include="MBlobArray.cpp" />
+    <ClCompile Include="MBuffer.cpp" />
+    <ClCompile Include="MCheckSum.cpp" />
+    <ClCompile Include="MChunkReWriter.cpp" />
+    <ClCompile Include="MCodeCoverage.cpp" />
+    <ClCompile Include="MCommandLine.cpp" />
+    <ClCompile Include="MCrashDump.cpp" />
+    <ClCompile Include="MCrashReporter.cpp" />
+    <ClCompile Include="MCRC32.cpp" />
+    <ClCompile Include="MCsvParser.cpp" />
+    <ClCompile Include="MDataChecker.cpp" />
+    <ClCompile Include="MDebug.cpp" />
+    <ClCompile Include="MemPoolObjCounter.cpp" />
+    <ClCompile Include="MFileBuffer.cpp" />
+    <ClCompile Include="MFileSystem.cpp" />
+    <ClCompile Include="MHttp.cpp" />
+    <ClCompile Include="MHttpSpooler.cpp" />
+    <ClCompile Include="MInetUtil.cpp" />
+    <ClCompile Include="MIOCP.cpp" />
+    <ClCompile Include="MLex.cpp" />
+    <ClCompile Include="MLocale.cpp" />
+    <ClCompile Include="MLua.cpp" />
+    <ClCompile Include="MMCode.cpp" />
+    <ClCompile Include="MMD5.cpp" />
+    <ClCompile Include="MPageArray.cpp" />
+    <ClCompile Include="MPdb.cpp" />
+    <ClCompile Include="MProcessController.cpp" />
+    <ClCompile Include="MProfiler.cpp" />
+    <ClCompile Include="MReferenceCounted.cpp" />
+    <ClCompile Include="MRegistry.cpp" />
+    <ClCompile Include="MSmartRefresh.cpp" />
+    <ClCompile Include="MStateMachine.cpp" />
+    <ClCompile Include="MStatisticsProfiler.cpp" />
+    <ClCompile Include="MStrEx.cpp" />
+    <ClCompile Include="MStringUtil.cpp" />
+    <ClCompile Include="MTstring.cpp" />
+    <ClCompile Include="MUID.cpp" />
+    <ClCompile Include="MUtil.cpp" />
+    <ClCompile Include="MWLua.cpp" />
+    <ClCompile Include="MXml.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MBox.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MCapsule.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MConvexHullAlgorithm.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MCylinder.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MLine.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MMath.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MMathLinear.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MMatrix.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MMatrix3.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MOBox.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MPlane.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MQuat.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MSphere.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MSVector.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MVector2.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MVector3.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="MVector4.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyXml\tinystr.h">
+      <Filter>extern\tinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyXml\tinyxml.h">
+      <Filter>extern\tinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lauxlib.h">
+      <Filter>extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lua.h">
+      <Filter>extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lua.hpp">
+      <Filter>extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\luaconf.h">
+      <Filter>extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lualib.h">
+      <Filter>extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="Profile\profile.h">
+      <Filter>extern\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="Profile\profileVisitor.h">
+      <Filter>extern\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\7z.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\7zAlloc.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\7zBuf.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\7zCrc.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\7zFile.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\7zVersion.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Alloc.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Bcj2.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Bra.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\CpuArch.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Delta.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\LzFind.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\LzFindMt.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\LzHash.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Lzma2Dec.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Lzma2Enc.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Lzma86.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\LzmaDec.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\LzmaEnc.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\LzmaLib.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\MtCoder.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Ppmd.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Ppmd7.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Ppmd8.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\RotateDefs.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Sha256.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Threads.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Types.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\Xz.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\XzCrc64.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="LZMA\XzEnc.h">
+      <Filter>extern\LZMA</Filter>
+    </ClInclude>
+    <ClInclude Include="ddsfile.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="MFutureResult.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="MSync.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="MThread.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="MThread2.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="CfgFile.h" />
+    <ClInclude Include="CMLexicalAnalyzer.h" />
+    <ClInclude Include="CMList.h" />
+    <ClInclude Include="CMPtrList.h" />
+    <ClInclude Include="CommonLog.h" />
+    <ClInclude Include="FileInfo.h" />
+    <ClInclude Include="LibPak.h" />
+    <ClInclude Include="lua_tinker.h" />
+    <ClInclude Include="MArchive.h" />
+    <ClInclude Include="MArray.h" />
+    <ClInclude Include="MAsyncHttp.h" />
+    <ClInclude Include="MBlob.h" />
+    <ClInclude Include="MBlobArray.h" />
+    <ClInclude Include="MBuffer.h" />
+    <ClInclude Include="MCheckSum.h" />
+    <ClInclude Include="MChunkReWriter.h" />
+    <ClInclude Include="MCodeCoverage.h" />
+    <ClInclude Include="MCommandLine.h" />
+    <ClInclude Include="MCrashDump.h" />
+    <ClInclude Include="MCrashReporter.h" />
+    <ClInclude Include="MCRC32.h" />
+    <ClInclude Include="MCsvParser.h" />
+    <ClInclude Include="MDataChecker.h" />
+    <ClInclude Include="MDebug.h" />
+    <ClInclude Include="MemPoolObjCounter.h" />
+    <ClInclude Include="MFileBuffer.h" />
+    <ClInclude Include="MFileSystem.h" />
+    <ClInclude Include="MHandle.h" />
+    <ClInclude Include="MHttp.h" />
+    <ClInclude Include="MHttpSpooler.h" />
+    <ClInclude Include="MInetUtil.h" />
+    <ClInclude Include="MinMax.h" />
+    <ClInclude Include="MIOCP.h" />
+    <ClInclude Include="MLex.h" />
+    <ClInclude Include="MListSTL.h" />
+    <ClInclude Include="MLocale.h" />
+    <ClInclude Include="MLua.h" />
+    <ClInclude Include="MMCode.h" />
+    <ClInclude Include="MMD5.h" />
+    <ClInclude Include="MMemoryLeak.h" />
+    <ClInclude Include="MMemoryProxy.h" />
+    <ClInclude Include="MMemPool.h" />
+    <ClInclude Include="MPageArray.h" />
+    <ClInclude Include="MPdb.h" />
+    <ClInclude Include="MProcessController.h" />
+    <ClInclude Include="MProfiler.h" />
+    <ClInclude Include="MReferenceCounted.h" />
+    <ClInclude Include="MRegistry.h" />
+    <ClInclude Include="MRTTI.h" />
+    <ClInclude Include="MSingleton.h" />
+    <ClInclude Include="MSmartRefresh.h" />
+    <ClInclude Include="MStateMachine.h" />
+    <ClInclude Include="MStatisticsProfiler.h" />
+    <ClInclude Include="MStrEx.h" />
+    <ClInclude Include="MStringUtil.h" />
+    <ClInclude Include="MTime.h" />
+    <ClInclude Include="MTrafficLog.h" />
+    <ClInclude Include="MTstring.h" />
+    <ClInclude Include="MTypelist.h" />
+    <ClInclude Include="MTypes.h" />
+    <ClInclude Include="MUID.h" />
+    <ClInclude Include="MUtil.h" />
+    <ClInclude Include="MWindowFinder.h" />
+    <ClInclude Include="MWLua.h" />
+    <ClInclude Include="MXml.h" />
+    <ClInclude Include="RLib.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+<table class="content_table">
+	<tr class="grayed"><td>[[QUEST_OBJ_ID]] , [[QUEST_OBJ_DESC]]</td></tr>
+	<tr>
+		<td>
+			<UL>
+<!--				<LI>type: [[QUEST_OBJ_TYPE]]</LI> -->
+				<LI>param1: [[QUEST_OBJ_PARAM1]]</LI>
+				<LI>param2: [[QUEST_OBJ_PARAM2]]</LI>
+<!--				<LI>public_progress: [[QUEST_OBJ_PUBLIC_PROGRESS]]</LI> -->
+				<LI>field: [[QUEST_OBJ_FIELD]]</LI>
+				<LI>marker: [[QUEST_OBJ_MARKER]]</LI>
+			</UL>
+		</TD>
+	</TR>
+</table>

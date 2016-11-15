@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Object">
+      <UniqueIdentifier>{1cabcd2a-ae06-47f8-83b0-1004dcecf512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Rigid">
+      <UniqueIdentifier>{0b07e05b-4091-4fe2-8434-8acff391d25b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Cloth">
+      <UniqueIdentifier>{0ac78b07-222c-4fe4-9617-f85e48258a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\RagDoll">
+      <UniqueIdentifier>{13394403-6ba7-4dd6-a142-039703cedc1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{9539841f-67e6-4075-8480-e56ff13c081d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape">
+      <UniqueIdentifier>{3894fbc9-a1e0-4045-acbd-75865e53b4af}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MPhysXObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxObjDynamic.cpp">
+      <Filter>Object\Rigid</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxObjStatic.cpp">
+      <Filter>Object\Rigid</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxObjClothed.cpp">
+      <Filter>Object\Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="MPxObjRagDoll.cpp">
+      <Filter>Object\RagDoll</Filter>
+    </ClCompile>
+    <ClCompile Include="MphysXResourceFactory.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="MPhysXStream.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="MPhysXUserAllocator.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="MPhysXShape.cpp">
+      <Filter>Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="MPhysX.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MPhysXObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxObjDynamic.h">
+      <Filter>Object\Rigid</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxObjStatic.h">
+      <Filter>Object\Rigid</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxObjStaticSubActorBuilder.h">
+      <Filter>Object\Rigid</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxObjClothed.h">
+      <Filter>Object\Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="MPxObjRagDoll.h">
+      <Filter>Object\RagDoll</Filter>
+    </ClInclude>
+    <ClInclude Include="MphysXResourceFactory.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="MPhysXStream.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="MPhysXUserAllocator.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="MPhysXShape.h">
+      <Filter>Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="MPhysX.h" />
+    <ClInclude Include="MPhysXDef.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,48 @@
+<Project DefaultTargets="BuildForCI" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <PropertyGroup>
+      <BuildConditionForCI>Build</BuildConditionForCI>
+   </PropertyGroup>
+
+  <Choose>
+    <When Condition=" '$(CCNetBuildCondition)'=='IfModificationExists' ">
+      <PropertyGroup>
+        <BuildConditionForCI>Build</BuildConditionForCI>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <BuildConditionForCI>Rebuild</BuildConditionForCI>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+<!-- 
+  <PropertyGroup>
+    <OutputPath>.\output</OutputPath>
+  </PropertyGroup>
+
+ 
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Optimize>false</Optimize>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>$(OutputPath)\Debug</OutputPath>
+   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>$(OutputPath)\Release</OutputPath>
+  </PropertyGroup>
+ -->
+   
+  <Target Name="BuildForCI">
+    <Message Text="$(BuildConditionForCI) 조건에서 빌드를 시도합니다. " Importance="high"/>
+    <MSBuild Projects="AppServer.sln" Targets="$(BuildConditionForCI)" Properties="Configuration=Release" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+  <Target Name="ReleaseBuild">
+    <MSBuild Projects="AppServer.sln" Targets="Build" Properties="Configuration=Release" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+  <Target Name="ReleaseRebuild">
+    <MSBuild Projects="AppServer.sln" Targets="Rebuild" Properties="Configuration=Release" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+
+</Project>

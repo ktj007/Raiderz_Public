@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="ritz_sign_adventurer_01" />
+            <PROPERTY>
+                <FILENAME>ritz_sign_adventurer_01.elu</FILENAME>
+            </PROPERTY>
+            <SCENE>
+                <LIGHT>
+                    <COMMON name="Omni01">
+                        <POSITION>-18.7971191 -0.7309002 338.3887634</POSITION>
+                    </COMMON>
+                    <PROPERTY>
+                        <COLOR>0.9411765 0.6039216 0.0745098</COLOR>
+                        <INTENSITY>0.8000000</INTENSITY>
+                        <ATTENUATIONSTART>498.5491638</ATTENUATIONSTART>
+                        <ATTENUATIONEND>934.3537598</ATTENUATIONEND>
+                        <FOV>-1.0000000</FOV>
+                    </PROPERTY>
+                </LIGHT>
+            </SCENE>
+        </ACTOR>
+    </SCENE>
+</ROOT>

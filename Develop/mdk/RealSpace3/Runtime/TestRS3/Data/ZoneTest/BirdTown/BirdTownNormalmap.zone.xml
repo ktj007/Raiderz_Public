@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY />
+    <SCENE>
+        <RTERRAIN>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY version="1.2">
+                <MAP_WIDTH type="int">
+                    <int>256</int>
+                </MAP_WIDTH>
+                <MAP_HEIGHT type="int">
+                    <int>256</int>
+                </MAP_HEIGHT>
+                <MAP_SIZE type="vec3">
+                    <vec3>60000.000000 60000.000000 0.000000</vec3>
+                </MAP_SIZE>
+                <MAP_NAME>BirdTown_dis.dds</MAP_NAME>
+				        <BASEMAP_NAME>BirdTown_baked.bmp</BASEMAP_NAME>
+                <LIGHTMAP index="0" number="1">BirdTown_light0.dds</LIGHTMAP>
+                <LAYER type="array" size="1">
+                    <LAYERINFO index="0">
+                        <ALPHAMAP>BirdTown_mask0.dds</ALPHAMAP>
+                        <TILEMAP type="specular">broken_mast_sand_g01.dds</TILEMAP>
+                        <NORMALMAP>broken_mast_sand_g01_nm.dds</NORMALMAP>
+                        <TILEUV type="vec3">
+                            <vec3>100.000000 100.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                </LAYER>
+            </PROPERTY>
+        </RTERRAIN>
+        <DIRLIGHT>
+            <COMMON name="TerrainLightMap0">
+                <POSITION>-1.000000 -1.000000 1.200000</POSITION>
+                <DIRECTION>0.539164 0.539164 -0.646997</DIRECTION>
+                <UP>0.457496 0.457496 0.762493</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <ENV />
+                <SHADOWLUMINOSITY>0.350</SHADOWLUMINOSITY>
+            </PROPERTY>
+        </DIRLIGHT>
+    </SCENE>
+</ROOT>

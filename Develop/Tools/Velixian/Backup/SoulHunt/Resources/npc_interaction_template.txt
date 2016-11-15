@@ -1,0 +1,5 @@
+<table class="content_table">
+	<tr class="grayed"><td>Á¶°Ç: [[Condition]]</td></tr>
+	<tr><td>[[Interaction]]</td></tr>
+	<tr><td><q><span class="gray">[[Details]]</span></q></td></tr>
+</table>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BA17B7DB-2BC2-45D6-83CF-63E8CF02E668}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <TypeLibraryName>.\Debug/MRSPacker.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\LZMA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\Debug/MRSPacker.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>Runtime\MRSPacker.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/7lzma.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/MRSPacker.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <TypeLibraryName>.\Release/MRSPacker.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>.\LZMA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/MRSPacker.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>Runtime\MRSPacker.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/7lzma.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/MRSPacker.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="LZMA\7z.h" />
+    <ClInclude Include="LZMA\7zAlloc.h" />
+    <ClInclude Include="LZMA\7zBuf.h" />
+    <ClInclude Include="LZMA\7zCrc.h" />
+    <ClInclude Include="LZMA\7zFile.h" />
+    <ClInclude Include="LZMA\7zVersion.h" />
+    <ClInclude Include="LZMA\Alloc.h" />
+    <ClInclude Include="LZMA\Bcj2.h" />
+    <ClInclude Include="LZMA\Bra.h" />
+    <ClInclude Include="LZMA\CpuArch.h" />
+    <ClInclude Include="LZMA\Delta.h" />
+    <ClInclude Include="LZMA\LzFind.h" />
+    <ClInclude Include="LZMA\LzFindMt.h" />
+    <ClInclude Include="LZMA\LzHash.h" />
+    <ClInclude Include="LZMA\Lzma2Dec.h" />
+    <ClInclude Include="LZMA\Lzma2Enc.h" />
+    <ClInclude Include="LZMA\Lzma86.h" />
+    <ClInclude Include="LZMA\LzmaDec.h" />
+    <ClInclude Include="LZMA\LzmaEnc.h" />
+    <ClInclude Include="LZMA\LzmaLib.h" />
+    <ClInclude Include="LZMA\MtCoder.h" />
+    <ClInclude Include="LZMA\Ppmd.h" />
+    <ClInclude Include="LZMA\Ppmd7.h" />
+    <ClInclude Include="LZMA\Ppmd8.h" />
+    <ClInclude Include="LZMA\RotateDefs.h" />
+    <ClInclude Include="LZMA\Sha256.h" />
+    <ClInclude Include="LZMA\Threads.h" />
+    <ClInclude Include="LZMA\Types.h" />
+    <ClInclude Include="LZMA\Xz.h" />
+    <ClInclude Include="LZMA\XzCrc64.h" />
+    <ClInclude Include="LZMA\XzEnc.h" />
+    <ClInclude Include="KeyTable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LZMA\7zAlloc.c" />
+    <ClCompile Include="LZMA\7zBuf.c" />
+    <ClCompile Include="LZMA\7zBuf2.c" />
+    <ClCompile Include="LZMA\7zCrc.c" />
+    <ClCompile Include="LZMA\7zCrcOpt.c" />
+    <ClCompile Include="LZMA\7zDec.c" />
+    <ClCompile Include="LZMA\7zFile.c" />
+    <ClCompile Include="LZMA\7zIn.c" />
+    <ClCompile Include="LZMA\7zStream.c" />
+    <ClCompile Include="LZMA\Alloc.c" />
+    <ClCompile Include="LZMA\Bcj2.c" />
+    <ClCompile Include="LZMA\Bra.c" />
+    <ClCompile Include="LZMA\Bra86.c" />
+    <ClCompile Include="LZMA\BraIA64.c" />
+    <ClCompile Include="LZMA\CpuArch.c" />
+    <ClCompile Include="LZMA\Delta.c" />
+    <ClCompile Include="LZMA\LzFind.c" />
+    <ClCompile Include="LZMA\LzFindMt.c" />
+    <ClCompile Include="LZMA\Lzma2Dec.c" />
+    <ClCompile Include="LZMA\Lzma2Enc.c" />
+    <ClCompile Include="LZMA\Lzma86Dec.c" />
+    <ClCompile Include="LZMA\Lzma86Enc.c" />
+    <ClCompile Include="LZMA\LzmaDec.c" />
+    <ClCompile Include="LZMA\LzmaEnc.c" />
+    <ClCompile Include="LZMA\LzmaLib.c" />
+    <ClCompile Include="LZMA\MtCoder.c" />
+    <ClCompile Include="LZMA\Ppmd7.c" />
+    <ClCompile Include="LZMA\Ppmd7Dec.c" />
+    <ClCompile Include="LZMA\Ppmd7Enc.c" />
+    <ClCompile Include="LZMA\Ppmd8.c" />
+    <ClCompile Include="LZMA\Ppmd8Dec.c" />
+    <ClCompile Include="LZMA\Ppmd8Enc.c" />
+    <ClCompile Include="LZMA\Sha256.c" />
+    <ClCompile Include="LZMA\Threads.c" />
+    <ClCompile Include="LZMA\Xz.c" />
+    <ClCompile Include="LZMA\XzCrc64.c" />
+    <ClCompile Include="LZMA\XzDec.c" />
+    <ClCompile Include="LZMA\XzEnc.c" />
+    <ClCompile Include="LZMA\XzIn.c" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Application">
+      <UniqueIdentifier>{41954f8b-a5ed-4405-b6fb-6468bfa5482e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Command">
+      <UniqueIdentifier>{b3b31a75-c2b6-42ca-b5cf-065d90f3ae6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Command\Router">
+      <UniqueIdentifier>{dd61ecc8-3dc6-4291-9c61-d78f0f8b99d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Command\Handler">
+      <UniqueIdentifier>{b9fd1730-08f2-4e29-9109-15a83266e99e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{6863864b-fb3b-4c0f-8db0-42ebaa83fb22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Net">
+      <UniqueIdentifier>{52f4adc6-c2d0-4b52-8d87-f4153043d187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Net\ProxyPlayer">
+      <UniqueIdentifier>{e0248828-49a1-4d27-a931-d9b4017b4ae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{cef29c55-325d-4eed-8be7-574d1076ffd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database\CommonBody">
+      <UniqueIdentifier>{046a2a60-c854-4f1c-b428-ab3ff2688ed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database\Task">
+      <UniqueIdentifier>{dae5b2ff-211a-4c56-93b8-5c16f7974179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database\AsyncDB">
+      <UniqueIdentifier>{5720896c-039d-4d0b-9696-374be1fe7c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database\DSN">
+      <UniqueIdentifier>{3e893d42-2953-4ade-a479-594dea56b15e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{056da2ff-1a4c-4813-9539-8ce32a631143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character">
+      <UniqueIdentifier>{03f7c7ae-6037-44f8-8897-a4c504b5ed0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RemoteProfiler">
+      <UniqueIdentifier>{56b02e48-bd82-48d4-9dbd-c64ae18232d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SAppHelper.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SApplicationHandles.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SCrashReporter.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SFilePath.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SFrameCounter.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SIOCPServiceAdapter.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SLogger.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SServerApplication.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SServiceAdapter.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="STrayIcon.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommandTable.cpp">
+      <Filter>Command</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommandTable_App.cpp">
+      <Filter>Command</Filter>
+    </ClCompile>
+    <ClCompile Include="SCmdRouter_Login.cpp">
+      <Filter>Command\Router</Filter>
+    </ClCompile>
+    <ClCompile Include="SCmdHandler_ProxyPlayer.cpp">
+      <Filter>Command\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="SChecksum.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SFieldInfo.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SLevelTable.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SServableChecker.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SServerMonitorEventListener.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SServerStatusUpdater.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SSystem.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SClientConnectionKeeper.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommandCenter.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommandLogger.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommandProfileController.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommObject.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommObjectManager.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SNetClient.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SNetworkCardMgr.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="SProxyPlayer.cpp">
+      <Filter>Net\ProxyPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="SProxyPlayerManager.cpp">
+      <Filter>Net\ProxyPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="SProxyPlayerSpeaker.cpp">
+      <Filter>Net\ProxyPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="SDBManager.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="SCommonBodyCharGetLookList.cpp">
+      <Filter>Database\CommonBody</Filter>
+    </ClCompile>
+    <ClCompile Include="SDBAsyncTaskLogWriter.cpp">
+      <Filter>Database\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="SDBTask.cpp">
+      <Filter>Database\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="SDBTaskTracer.cpp">
+      <Filter>Database\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="SAsyncDB.cpp">
+      <Filter>Database\AsyncDB</Filter>
+    </ClCompile>
+    <ClCompile Include="SDefaultDsnFactory.cpp">
+      <Filter>Database\DSN</Filter>
+    </ClCompile>
+    <ClCompile Include="SDsnFactory.cpp">
+      <Filter>Database\DSN</Filter>
+    </ClCompile>
+    <ClCompile Include="SCharacterInfoChecker.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="SRemoteProfiler.cpp">
+      <Filter>RemoteProfiler</Filter>
+    </ClCompile>
+    <ClCompile Include="SConfig.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SAppHelper.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SApplicationHandles.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SAppMonitorEditBox.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SCrashReporter.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SFilePath.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SFrameCounter.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SIOCPServiceAdapter.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SLogger.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SMinetInitScope.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SProfileScope.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SServerApplication.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SServiceAdapter.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="STrayIcon.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommandTable.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommandTable_App.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="SCmdRouter_Login.h">
+      <Filter>Command\Router</Filter>
+    </ClInclude>
+    <ClInclude Include="SCmdHandler_ProxyPlayer.h">
+      <Filter>Command\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="SChecksum.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SFieldInfo.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SLevelTable.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SServableChecker.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SServerMonitorEventListener.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SServerStatusUpdater.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SSystem.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SClientConnectionKeeper.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommandCenter.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommandLogger.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommandProfileController.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommObject.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommObjectManager.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SNetClient.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SNetworkCardMgr.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="STransData.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="STransData_A2G.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="STransData_M2G.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="SProxyPlayer.h">
+      <Filter>Net\ProxyPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="SProxyPlayerListener.h">
+      <Filter>Net\ProxyPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="SProxyPlayerManager.h">
+      <Filter>Net\ProxyPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="SProxyPlayerSpeaker.h">
+      <Filter>Net\ProxyPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="SDBManager.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="SDBTaskData.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="SDBTaskID.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="SIDBPost.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="SCommonBodyCharGetLookList.h">
+      <Filter>Database\CommonBody</Filter>
+    </ClInclude>
+    <ClInclude Include="SDBAsyncTaskLogWriter.h">
+      <Filter>Database\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="SDBTask.h">
+      <Filter>Database\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="SDBTaskExecuter.h">
+      <Filter>Database\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="SDBTaskTracer.h">
+      <Filter>Database\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="SAsyncDB.h">
+      <Filter>Database\AsyncDB</Filter>
+    </ClInclude>
+    <ClInclude Include="SDatabaseType.h">
+      <Filter>Database\AsyncDB</Filter>
+    </ClInclude>
+    <ClInclude Include="SBaseDsnFactory.h">
+      <Filter>Database\DSN</Filter>
+    </ClInclude>
+    <ClInclude Include="SDefaultDsnFactory.h">
+      <Filter>Database\DSN</Filter>
+    </ClInclude>
+    <ClInclude Include="SDsnFactory.h">
+      <Filter>Database\DSN</Filter>
+    </ClInclude>
+    <ClInclude Include="SAccountInfo.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SCharacterInfoChecker.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="SRemoteProfiler.h">
+      <Filter>RemoteProfiler</Filter>
+    </ClInclude>
+    <ClInclude Include="SConfig.h" />
+    <ClInclude Include="SDef.h" />
+    <ClInclude Include="ServerCommonLib.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="STypes.h" />
+  </ItemGroup>
+</Project>

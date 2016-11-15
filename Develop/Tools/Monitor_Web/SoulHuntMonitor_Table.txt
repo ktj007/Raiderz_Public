@@ -1,0 +1,40 @@
+USE SoulHuntMonitor
+GO
+
+IF OBJECT_ID('ReplayLog') IS NOT NULL 
+ DROP TABLE ReplayLog;
+GO
+
+CREATE TABLE ReplayLog
+( 
+ LID INT IDENTITY PRIMARY KEY CLUSTERED
+, Computer VARCHAR(32)
+, fps INT
+, LoadingTime INT
+, RegDate DATETIME NOT NULL
+);
+GO
+
+
+
+IF OBJECT_ID('Feedback') IS NOT NULL 
+ DROP TABLE Feedback;
+GO
+
+CREATE TABLE Feedback
+( 
+ FID INT IDENTITY PRIMARY KEY CLUSTERED
+, Reporter VARCHAR(32)
+, Title VARCHAR(64)
+, Comment TEXT
+, FieldID INT
+, x INT
+, y INT
+, z INT
+, RegDate DATETIME NOT NULL
+);
+GO
+
+
+
+--------------------------------------------------------------------------

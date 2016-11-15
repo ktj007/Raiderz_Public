@@ -1,0 +1,233 @@
+
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Forms;
+
+namespace Sano.PersonalProjects.ColorPicker {
+	
+	// TODO: Implement functionality that will paint preceding zeroes in a
+	// lighter color, perhaps 50% grey. This control is a pain in the butt to 
+	// customize since it's actually a wrapper around the Win32 TextBox control. 
+	// Look into the RichTextBox. This might do it.
+
+	/// <summary>
+	/// A specially designed textbox class that ensures that only HEX values 
+	/// are entered and displayed.
+	/// </summary>
+
+	internal class HexTextBox : TextBox {
+
+		private const int MINIMUM_VALUE = 0x0;
+		private const int MAXIMUM_VALUE = 0xFFFFFF;
+
+		/// <summary>
+		/// Overrides the Text property to set the DefaultValue attribute.
+		/// </summary>
+	
+		[DefaultValue( "000000" )]
+		public override string Text {
+			get { return base.Text; }
+			set { base.Text = value; }
+		}
+
+		/// <summary>
+		/// Constructor. Sets the max length to 6 and the text property to an 
+		/// empty string.
+		/// </summary>
+
+		internal HexTextBox() : base() {
+		
+			this.MaxLength = 6;
+			this.Text = String.Empty;
+
+		}
+			
+		/// <summary>
+		/// Determines whether or not the specified key is to be considered an 
+		/// input key. By overriding this method, we gain the power of being able
+		/// to dictate which keys this control processes. All other keys are 
+		/// sent to preprocessing and might eventually be sent to the control.
+		/// </summary>
+		/// <param name="keyData">A Keys object representing the key that was just
+		/// pressed.</param>
+		/// <returns>A boolean value representing whether or not the key should be
+		/// processed by the control.</returns>
+	
+		protected override bool IsInputKey( Keys keyData ) {
+
+			bool isInputKey = IsInputChar( ( char ) keyData );
+			
+			if ( keyData == ( Keys.Alt | Keys.F4 ) || 
+				keyData == ( Keys.Control | Keys.A ) ||
+				keyData == ( Keys.Control | Keys.C ) || 
+				keyData == ( Keys.Control | Keys.V ) || 
+				keyData == ( Keys.Control | Keys.X ) ) {
+
+				isInputKey = true;
+			
+			}
+	
+			return isInputKey;
+
+		}
+
+		/// <summary>
+		/// Determines whether or not the specified character is to be 
+		/// designated for preprocessing or sent directly to the control.
+		/// </summary>
+		/// <param name="charCode">The character to be evaluated.</param>
+		/// <returns>True if the key should be sent directly to the control, 
+		/// false if it should be preprocessed.</returns>
+		
+		protected override bool IsInputChar(char charCode) {
+			
+			bool isInputChar = false;
+			Keys controlModifierKey = Control.ModifierKeys;
+
+			// the only character codes that should be processed are the digits 
+			// 0-9, the letters A-F, the backspace character (8) and the arrow
+			// keys.
+			if ( ( controlModifierKey != Keys.Shift && ( charCode >= ( int ) Keys.D0 && charCode <= ( int ) Keys.D9 ) ) || 
+				 ( charCode >= ( int ) Keys.A && charCode <= ( int ) Keys.F ) || 
+				 charCode == ( int ) Keys.Back ||
+				 charCode == ( int ) Keys.Left || 
+				 charCode == ( int ) Keys.Right ) {
+				
+				isInputChar = true;
+			
+			}
+
+			return isInputChar;
+
+		}
+
+		/// <summary>
+		/// Processes a key message and generates the appropriate key-related
+		/// events. 
+		/// </summary>
+		/// <param name="m">A message representing the windows message to 
+		/// process.</param>
+		/// <returns>True if the message was processed by the control, 
+		/// otherwise, false.</returns>
+
+		protected override bool ProcessKeyEventArgs(ref Message m) {
+
+			bool processKeyEvent = false;
+			int charKey = ( int ) m.WParam;
+			int controlModifierKey = ( int ) ( Keys ) Control.ModifierKeys;
+
+			// we only want the key-related events to be generated if the 
+			// message contains a character that has been approved for 
+			// conveyance to the control.
+			if ( IsInputKey( ( Keys ) ( charKey | controlModifierKey ) ) ) {
+				processKeyEvent = base.ProcessKeyEventArgs (ref m);
+			}
+
+			return processKeyEvent;
+		
+		}
+
+		/// <summary>
+		/// Processes a dialog key. This tells Windows whether or not the control
+		/// has processed the dialog characters (Tab, Shift, Enter, Backspace, 
+		/// etc). If the control has processed the keys, they are not sent to 
+		/// their parent controls.
+		/// </summary>
+		/// <param name="keyData">The key that is to be processed.</param>		
+		/// <returns>A boolean value indicating whether or not the key was 
+		/// processed.</returns>
+
+		protected override bool ProcessDialogKey(Keys keyData) {
+		
+			bool wasKeyProcessed = true;
+			Keys controlModifierKey = Control.ModifierKeys;
+		
+			// makes sure we can still process mnemonics
+			if ( controlModifierKey == Keys.Alt ) {
+				wasKeyProcessed = false;
+			} else if ( keyData == Keys.Tab || keyData == Keys.Back || keyData == ( Keys.Shift | Keys.Tab ) ) {
+				wasKeyProcessed = base.ProcessDialogKey( keyData );
+			}
+
+			return wasKeyProcessed;
+
+		}
+
+	
+		/// <summary>
+		/// Preprocessing work that leads up to the LostFocus event.
+		/// </summary>
+		/// <param name="e">An EventArgs containing the event data.</param>
+
+		protected override void OnLostFocus(EventArgs e) {
+			
+			if ( this.Text != null && this.Text.Length == 0 ) {
+				
+				// retrieve the default value of the text property through the
+				// DefaultValueAttribute (see the override of the Text property
+				// in this class.
+
+				AttributeCollection attributes = TypeDescriptor.GetProperties( this )[ "Text" ].Attributes;
+				DefaultValueAttribute textDefaultValue = ( DefaultValueAttribute ) attributes[ typeof( DefaultValueAttribute ) ];
+				this.Text = textDefaultValue.Value.ToString();
+
+			}
+
+			// putting this here ensures that the LostFocus event is not raised 
+			// until the text property has been set to its default value.
+			base.OnLostFocus( e );
+
+		}
+
+		/// <summary>
+		/// Preprocessing leading up to the raising of the KeyUp event.
+		/// </summary>
+		/// <param name="e">A KeyEventArgs containing the event data.</param>
+
+		protected override void OnKeyUp(KeyEventArgs e) {
+
+			Debug.WriteLine( "OnKeyUp" );
+			// i thought it was weird that this functionality doesn't already
+			// exist. since it doesn't, i've decided to add it.
+			if ( e.KeyData == ( Keys.Control | Keys.A ) ) {
+				this.SelectAll();
+			}
+
+			if ( this.Text.Length > 0 ) { 
+
+				string textHexValue = String.Format( "0x{0}", this.Text );
+				int hexValue = Convert.ToInt32( textHexValue, 16 );
+
+				int incrementValue = 0;
+
+				if ( ( e.KeyData | Keys.Shift ) == ( Keys.Up | Keys.Shift ) ) {
+				
+					if ( e.KeyData == ( Keys.Up | Keys.Shift ) ) {						
+						hexValue = 0xA;
+					} else {
+						hexValue = 0x1;
+					}
+
+					if ( hexValue + incrementValue <= MAXIMUM_VALUE ) {
+						hexValue += incrementValue;
+					} else {
+						hexValue = MAXIMUM_VALUE;
+					}
+
+//					ComponentTextKeyUp( this, EventArgs.Empty );
+
+				} 			
+
+				this.Text = hexValue.ToString();
+
+			}
+
+
+			base.OnKeyUp(e);
+		
+		}
+
+	} // HexTextBox
+
+} // Sano.PersonalProjects.ColorPicker

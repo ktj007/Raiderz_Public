@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="teress_windmill_b" />
+            <PROPERTY>
+                <FILENAME>teress_windmill_b.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+    </SCENE>
+</ROOT>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="euc-kr" standalone="no"?>
+<LogStringTable>
+	<LogString id="1" name="STARTING_SERVER" string="서버 구동 중... 잠시만 기다려 주세요." />
+	
+	<LogString id="2" name="SUCCESS_START_SERVER" string="서버 프로세스 시작" />
+	<LogString id="3" name="FAILED_START_SERVER_ERROR" string="서버 프로세스 시작 실패 - 내부 처리 오류" />
+	<LogString id="4" name="FAILED_START_SERVER_ALREADY_START" string="서버 프로세스 시작 실패 - 이미 시작됐거나 시작 중인 서버" />
+	<LogString id="5" name="FAILED_START_SERVER_DEPENDENCY_CHECK" string="서버 프로세스 시작 실패 - 실행 종속된 서버의 구동 정보 체크 실패 ({0}, {1})" />
+	<LogString id="6" name="FAILED_START_SERVER_DEPENDENCY_ARG" string="서버 프로세스 시작 실패 - 실행 종속된 서버가 켜져있지 않습니다 ({0})" />
+	<LogString id="7" name="FAILED_START_SERVER_PROCESS" string="서버 프로세스 시작 실패 - 프로세스 시작 실패" />
+	
+	<LogString id="10" name="TERMINATING_SERVER" string="서버 프로세스 종료 중" />
+	
+	<LogString id="11" name="SUCCESS_TERMINATE_SERVER" string="서버 프로세스 종료" />
+	<LogString id="12" name="FAILED_TERMINATE_SERVER_ERROR" string="서버 프로세스 종료 실패 - 내부 처리 오류" />
+	<LogString id="13" name="FAILED_TERMINATE_SERVER_ALREADY_TERMINATED" string="서버 프로세스 종료 실패 - 이미 정지됐거나 정지 중인 서버" />
+	<LogString id="14" name="FAILED_TERMINATE_SERVER_SEND_DESTROY_MESSAGE" string="서버 프로세스 종료 실패 - 해당 서버로 정지 메시지를 보내지 못했습니다" />
+	<LogString id="15" name="WARN_TERMINATE_SERVER_NO_UPDATE" string="서버 프로세스 종료 경고 - 업데이트가 멈춘 서버. 정상 종료 되지 않을 수 있습니다." />
+	<LogString id="16" name="FAILED_TERMINATE_INVALID_STATE" string="서버 프로세스 종료 실패 - 정지 가능한 상태가 아닙니다" />
+	
+	<LogString id="20" name="SERVER_DIED" string="서버 죽음" />
+	<LogString id="21" name="SERVER_NOUPDATE" string="서버 업데이트 멈춤" />
+	<LogString id="22" name="SERVER_RECOVERY_NOUPDATE" string="서버 업데이트 재개" />
+	<LogString id="23" name="SERVER_INACTIVE" string="서버 비활성화 됨" />
+	<LogString id="24" name="SERVER_ACTIVE" string="서버 활성화 됨" />
+</LogStringTable>

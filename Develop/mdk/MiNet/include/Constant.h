@@ -1,0 +1,1 @@
+const DWORD DEFAULT_MEMORY_PAGE_SIZE = 4096;	// 보통의 윈도우즈 메모리 페이지 크기

@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuestAndDialog_NET", "QuestAndDialog_NET.vcproj", "{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2} = {7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CSCommon", "..\..\CSCommon\CSCommon.vcproj", "{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cml2", "..\..\mdk\cml2\cml2.vcproj", "{8D451493-65C2-49C3-ADAE-ACB17E6B0650}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugMDd|Win32 = DebugMDd|Win32
+		Release|Win32 = Release|Win32
+		ReleaseMDd|Win32 = ReleaseMDd|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.Debug|Win32.ActiveCfg = DebugMDd|Win32
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.Debug|Win32.Build.0 = DebugMDd|Win32
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.DebugMDd|Win32.ActiveCfg = DebugMDd|Win32
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.DebugMDd|Win32.Build.0 = DebugMDd|Win32
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.Release|Win32.ActiveCfg = ReleaseMDd|Win32
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.Release|Win32.Build.0 = ReleaseMDd|Win32
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.ReleaseMDd|Win32.ActiveCfg = ReleaseMDd|Win32
+		{93120706-4DB3-4AEE-99CF-66CF20A9FEBD}.ReleaseMDd|Win32.Build.0 = ReleaseMDd|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.Debug|Win32.ActiveCfg = DebugMDd|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.Debug|Win32.Build.0 = DebugMDd|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.DebugMDd|Win32.ActiveCfg = DebugMDd|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.DebugMDd|Win32.Build.0 = DebugMDd|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.Release|Win32.ActiveCfg = ReleaseMD|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.Release|Win32.Build.0 = ReleaseMD|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.ReleaseMDd|Win32.ActiveCfg = ReleaseMDd|Win32
+		{7DCC03B9-DD72-4803-AEE2-1F2BE6CE60C2}.ReleaseMDd|Win32.Build.0 = ReleaseMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.ActiveCfg = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.Build.0 = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugMDd|Win32.ActiveCfg = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.DebugMDd|Win32.Build.0 = DebugMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.ActiveCfg = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.Build.0 = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseMDd|Win32.ActiveCfg = ReleaseMDd|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.ReleaseMDd|Win32.Build.0 = ReleaseMDd|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

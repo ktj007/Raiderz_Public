@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="sky_cloud">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>skybox_day_cloud_ani02.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>skybox_day_cloud_ani02.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="16000">1.000 1.000</TEX_OFFSET>
+                    <TEX_SCALE time="0">3.000 3.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="sky_cloud01" property="noshade" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+</XML>

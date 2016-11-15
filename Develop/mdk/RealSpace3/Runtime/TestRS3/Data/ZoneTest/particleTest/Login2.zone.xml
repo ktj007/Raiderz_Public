@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY />
+    <SCENE>
+        <RTERRAIN>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY version="1.3">
+                <MAP_WIDTH type="int">
+                    <int>512</int>
+                </MAP_WIDTH>
+                <MAP_HEIGHT type="int">
+                    <int>512</int>
+                </MAP_HEIGHT>
+                <MAP_SIZE type="vec3">
+                    <vec3>60000.000000 60000.000000 0.000000</vec3>
+                </MAP_SIZE>
+                <MAP_NAME>Login2_dis.dds</MAP_NAME>
+				  <BASEMAP_NAME>Login2_baked.bmp</BASEMAP_NAME>
+                <CREATE_NAVEMESH type="bool">
+                    <bool>true</bool>
+                </CREATE_NAVEMESH>
+                <GRASS>Login2_grass.grs</GRASS>
+                <LAYER type="array" size="3">
+                    <LAYERINFO index="0">
+                        <ALPHAMAP>Login2_mask0.dds</ALPHAMAP>
+                        <TILEMAP type="specular">Limos_sand_f02.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="1">
+                        <ALPHAMAP>Login2_mask1.dds</ALPHAMAP>
+                        <TILEMAP type="specular">login_ground_02.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>800.000000 800.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                    <LAYERINFO index="2">
+                        <ALPHAMAP>Login2_mask2.dds</ALPHAMAP>
+                        <TILEMAP type="specular">lane_stone_g01.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>200.000000 200.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                </LAYER>
+            </PROPERTY>
+        </RTERRAIN>
+        <DIRLIGHT>
+            <COMMON name="TerrainLightMap0">
+                <POSITION>-1.300000 -1.000000 1.500000</POSITION>
+                <DIRECTION>0.584898 0.449921 -0.674882</DIRECTION>
+                <UP>0.534928 0.411483 0.737926</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <ENV />
+                <SHADOWLUMINOSITY>0.350</SHADOWLUMINOSITY>
+            </PROPERTY>
+        </DIRLIGHT>
+        <SCENEINSTANCE>
+            <COMMON name="ingen_waterfall.scene_001">
+                <POSITION>21452.148438 18126.468750 1248.770020</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ingen_waterfall.scene.xml</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </SCENEINSTANCE>
+        <SCENEINSTANCE>
+            <COMMON name="sandstorm.scene_046">
+                <POSITION>20804.890625 17810.132813 1222.075195</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>sandstorm.scene.xml</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </SCENEINSTANCE>
+        <SCENEINSTANCE>
+            <COMMON name="teress_windmill_b.scene_001">
+                <POSITION>21428.009766 18058.177734 1209.983643</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>teress_windmill_b.scene.xml</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </SCENEINSTANCE>
+    </SCENE>
+</ROOT>

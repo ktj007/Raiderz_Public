@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <AddAnimation name="1hs_atk1" filename="ani\hf_1hs_atk1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="2hd_atk1" filename="ani\hf_2hd_atk1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="none_run_f" filename="ani\hf_none_run_f.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="1hb_atk1" filename="ani\hf_1hb_atk1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+</XML>

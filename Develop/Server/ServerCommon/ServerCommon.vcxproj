@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugDLL|Win32">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_pyo|Win32">
+      <Configuration>Debug_pyo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD|Win32">
+      <Configuration>ReleaseMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_profile|Win32">
+      <Configuration>Release_profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnitTest_DBDebug|Win32">
+      <Configuration>UnitTest_DBDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{880A040F-EB11-4AEF-A211-53CBF492901E}</ProjectGuid>
+    <RootNamespace>ServerCommon</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../mdk/MAsyncDatabase;../../mdk/cml2;../../mdk/MiNet/include;unittest;./;../../mdk/MTest/include;../../../sdk/UnitTest++/v1.4/src;%3b../../CSCommon/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../mdk/MAsyncDatabase;../../mdk/cml2;../../mdk/MiNet/include;../../CSCommon/include;unittest;./;../../mdk/MTest/include;../../../sdk/UnitTest++/v1.4/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../mdk/MAsyncDatabase;../../mdk/cml2;../../mdk/MiNet/include;../../CSCommon/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_USRDLL;CML2_IMPORT;MINET_IMPORT;CSCOMMON_IMPORT;MADB_IMPORT;SCOMMON_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>cml2_d.lib;lua5.1.lib;zlib.lib;shlwapi.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>lib\$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../mdk/cml2/lib;../../mdk/MiNet/lib;../../../sdk/lua51/lib/vc8;../../../sdk/zlib/lib;../../../sdk/tinyxml/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../mdk/MAsyncDatabase;../../mdk/cml2;../../mdk/MiNet/include;../../CSCommon/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <OutputFile>Lib/SCommonMDd.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../../mdk/MAsyncDatabase;../../mdk/cml2;../../mdk/MiNet/include;../../CSCommon/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>Lib/SCommonMD.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../mdk/MAsyncDatabase;../../mdk/cml2;../../mdk/MiNet/include;../../CSCommon/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>Lib/SCommonMD.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="SAppHelper.cpp" />
+    <ClCompile Include="SApplicationHandles.cpp" />
+    <ClCompile Include="SCrashReporter.cpp" />
+    <ClCompile Include="SFilePath.cpp" />
+    <ClCompile Include="SFrameCounter.cpp" />
+    <ClCompile Include="SIOCPServiceAdapter.cpp" />
+    <ClCompile Include="SLogger.cpp" />
+    <ClCompile Include="SServerApplication.cpp" />
+    <ClCompile Include="SServiceAdapter.cpp" />
+    <ClCompile Include="STrayIcon.cpp" />
+    <ClCompile Include="SCommandTable.cpp" />
+    <ClCompile Include="SCommandTable_App.cpp" />
+    <ClCompile Include="SCmdRouter_Login.cpp" />
+    <ClCompile Include="SCmdHandler_ProxyPlayer.cpp" />
+    <ClCompile Include="SChecksum.cpp" />
+    <ClCompile Include="SFieldInfo.cpp" />
+    <ClCompile Include="SLevelTable.cpp" />
+    <ClCompile Include="SServableChecker.cpp" />
+    <ClCompile Include="SServerMonitorEventListener.cpp" />
+    <ClCompile Include="SServerStatusUpdater.cpp" />
+    <ClCompile Include="SSystem.cpp" />
+    <ClCompile Include="SClientConnectionKeeper.cpp" />
+    <ClCompile Include="SCommandCenter.cpp" />
+    <ClCompile Include="SCommandLogger.cpp" />
+    <ClCompile Include="SCommandProfileController.cpp" />
+    <ClCompile Include="SCommObject.cpp" />
+    <ClCompile Include="SCommObjectManager.cpp" />
+    <ClCompile Include="SNetClient.cpp" />
+    <ClCompile Include="SNetworkCardMgr.cpp" />
+    <ClCompile Include="SProxyPlayer.cpp" />
+    <ClCompile Include="SProxyPlayerManager.cpp" />
+    <ClCompile Include="SProxyPlayerSpeaker.cpp" />
+    <ClCompile Include="SDBManager.cpp" />
+    <ClCompile Include="SCommonBodyCharGetLookList.cpp" />
+    <ClCompile Include="SDBAsyncTaskLogWriter.cpp" />
+    <ClCompile Include="SDBTask.cpp" />
+    <ClCompile Include="SDBTaskTracer.cpp" />
+    <ClCompile Include="SAsyncDB.cpp" />
+    <ClCompile Include="SDefaultDsnFactory.cpp" />
+    <ClCompile Include="SDsnFactory.cpp" />
+    <ClCompile Include="SCharacterInfoChecker.cpp" />
+    <ClCompile Include="SRemoteProfiler.cpp" />
+    <ClCompile Include="SConfig.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SAppHelper.h" />
+    <ClInclude Include="SApplicationHandles.h" />
+    <ClInclude Include="SAppMonitorEditBox.h" />
+    <ClInclude Include="SCrashReporter.h" />
+    <ClInclude Include="SFilePath.h" />
+    <ClInclude Include="SFrameCounter.h" />
+    <ClInclude Include="SIOCPServiceAdapter.h" />
+    <ClInclude Include="SLogger.h" />
+    <ClInclude Include="SMinetInitScope.h" />
+    <ClInclude Include="SProfileScope.h" />
+    <ClInclude Include="SServerApplication.h" />
+    <ClInclude Include="SServiceAdapter.h" />
+    <ClInclude Include="STrayIcon.h" />
+    <ClInclude Include="SCommandTable.h" />
+    <ClInclude Include="SCommandTable_App.h" />
+    <ClInclude Include="SCmdRouter_Login.h" />
+    <ClInclude Include="SCmdHandler_ProxyPlayer.h" />
+    <ClInclude Include="SChecksum.h" />
+    <ClInclude Include="SFieldInfo.h" />
+    <ClInclude Include="SLevelTable.h" />
+    <ClInclude Include="SServableChecker.h" />
+    <ClInclude Include="SServerMonitorEventListener.h" />
+    <ClInclude Include="SServerStatusUpdater.h" />
+    <ClInclude Include="SSystem.h" />
+    <ClInclude Include="SClientConnectionKeeper.h" />
+    <ClInclude Include="SCommandCenter.h" />
+    <ClInclude Include="SCommandLogger.h" />
+    <ClInclude Include="SCommandProfileController.h" />
+    <ClInclude Include="SCommObject.h" />
+    <ClInclude Include="SCommObjectManager.h" />
+    <ClInclude Include="SNetClient.h" />
+    <ClInclude Include="SNetworkCardMgr.h" />
+    <ClInclude Include="STransData.h" />
+    <ClInclude Include="STransData_A2G.h" />
+    <ClInclude Include="STransData_M2G.h" />
+    <ClInclude Include="SProxyPlayer.h" />
+    <ClInclude Include="SProxyPlayerListener.h" />
+    <ClInclude Include="SProxyPlayerManager.h" />
+    <ClInclude Include="SProxyPlayerSpeaker.h" />
+    <ClInclude Include="SDBManager.h" />
+    <ClInclude Include="SDBTaskData.h" />
+    <ClInclude Include="SDBTaskID.h" />
+    <ClInclude Include="SIDBPost.h" />
+    <ClInclude Include="SCommonBodyCharGetLookList.h" />
+    <ClInclude Include="SDBAsyncTaskLogWriter.h" />
+    <ClInclude Include="SDBTask.h" />
+    <ClInclude Include="SDBTaskExecuter.h" />
+    <ClInclude Include="SDBTaskTracer.h" />
+    <ClInclude Include="SAsyncDB.h" />
+    <ClInclude Include="SDatabaseType.h" />
+    <ClInclude Include="SBaseDsnFactory.h" />
+    <ClInclude Include="SDefaultDsnFactory.h" />
+    <ClInclude Include="SDsnFactory.h" />
+    <ClInclude Include="SAccountInfo.h" />
+    <ClInclude Include="SCharacterInfoChecker.h" />
+    <ClInclude Include="SRemoteProfiler.h" />
+    <ClInclude Include="SConfig.h" />
+    <ClInclude Include="SDef.h" />
+    <ClInclude Include="ServerCommonLib.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="STypes.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

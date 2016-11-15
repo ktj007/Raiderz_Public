@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Authenticator">
+      <UniqueIdentifier>{dc252b88-9148-4509-b3db-b41b545b83b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{6330c4eb-c374-455f-8cda-842240d56eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{79bd9129-0b18-4e2c-a2e6-a2c70486a5e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PMS">
+      <UniqueIdentifier>{6072f119-2997-4233-ab8e-fe639ab86c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PMS\dll_interface">
+      <UniqueIdentifier>{e9ff09a8-df18-4d4f-bbd7-931d92a6ad60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PMS\statistics">
+      <UniqueIdentifier>{34cc9ea4-620a-40a7-a66a-1791175985bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{58d1695a-3572-4955-beb2-6d1962e48802}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PmAuthenticator.cpp">
+      <Filter>Authenticator</Filter>
+    </ClCompile>
+    <ClCompile Include="PmLoginFacade.cpp">
+      <Filter>Authenticator</Filter>
+    </ClCompile>
+    <ClCompile Include="PmLoginStreamParser.cpp">
+      <Filter>Authenticator</Filter>
+    </ClCompile>
+    <ClCompile Include="PmLoginTimeChecker.cpp">
+      <Filter>Authenticator</Filter>
+    </ClCompile>
+    <ClCompile Include="PmStatIndexParser.cpp">
+      <Filter>Authenticator</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="PMPMSConnector.cpp">
+      <Filter>PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="PMPMSObject.cpp">
+      <Filter>PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="PmRegionStat.cpp">
+      <Filter>PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="PMServerInitLogger.cpp">
+      <Filter>PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="CpuUsage.cpp">
+      <Filter>PMS\statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="PmDsnFactory.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PmAuthenticator.h">
+      <Filter>Authenticator</Filter>
+    </ClInclude>
+    <ClInclude Include="PmLoginFacade.h">
+      <Filter>Authenticator</Filter>
+    </ClInclude>
+    <ClInclude Include="PmLoginStreamParser.h">
+      <Filter>Authenticator</Filter>
+    </ClInclude>
+    <ClInclude Include="PmLoginTimeChecker.h">
+      <Filter>Authenticator</Filter>
+    </ClInclude>
+    <ClInclude Include="PmStatIndexParser.h">
+      <Filter>Authenticator</Filter>
+    </ClInclude>
+    <ClInclude Include="PmLib.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PmDef.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="PMPMSConnector.h">
+      <Filter>PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="PMPMSObject.h">
+      <Filter>PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="PmRegionStat.h">
+      <Filter>PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="PMServerInitLogger.h">
+      <Filter>PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="IPMSObject.h">
+      <Filter>PMS\dll_interface</Filter>
+    </ClInclude>
+    <ClInclude Include="PMSCodes.h">
+      <Filter>PMS\dll_interface</Filter>
+    </ClInclude>
+    <ClInclude Include="PMSConn.h">
+      <Filter>PMS\dll_interface</Filter>
+    </ClInclude>
+    <ClInclude Include="CpuUsage.h">
+      <Filter>PMS\statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="nwzCrypto.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="PmDsnFactory.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

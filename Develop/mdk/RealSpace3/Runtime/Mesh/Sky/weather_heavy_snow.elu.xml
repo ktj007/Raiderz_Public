@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="10 - Default">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>wind.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>wind.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="27200">4.000 0.000</TEX_OFFSET>
+                    <TEX_SCALE time="0">1.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="Line01" property="vertexcolor" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+</XML>

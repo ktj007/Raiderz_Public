@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<WEATHERSET>
+    <sunny />
+    <cloud />
+    <rainy type="RAIN">
+        <CREATENUM type="int">
+            <int>519</int>
+        </CREATENUM>
+        <WINDFORCE type="float">
+            <float>1.000</float>
+        </WINDFORCE>
+        <SIZE type="float">
+            <float>68.000</float>
+        </SIZE>
+        <VELOCITY type="float">
+            <float>162.000</float>
+        </VELOCITY>
+        <VALUE type="float">
+            <float>10.300</float>
+        </VALUE>
+        <COLOR1 type="vec4">
+            <vec4>0.600000 0.600000 0.600000 1.000000</vec4>
+        </COLOR1>
+        <COLOR2 type="vec4">
+            <vec4>0.176471 0.176471 0.176471 1.000000</vec4>
+        </COLOR2>
+        <EFFECTMESH>weather_rainy.elu</EFFECTMESH>
+        <WATEREFFECT>ripple.Effect.xml</WATEREFFECT>
+    </rainy>
+    <heavy_rainy type="RAIN">
+        <CREATENUM type="int">
+            <int>909</int>
+        </CREATENUM>
+        <WINDFORCE type="float">
+            <float>1.200</float>
+        </WINDFORCE>
+        <SIZE type="float">
+            <float>52.000</float>
+        </SIZE>
+        <VELOCITY type="float">
+            <float>162.000</float>
+        </VELOCITY>
+        <VALUE type="float">
+            <float>9.100</float>
+        </VALUE>
+        <COLOR1 type="vec4">
+            <vec4>0.490196 0.490196 0.490196 1.000000</vec4>
+        </COLOR1>
+        <COLOR2 type="vec4">
+            <vec4>0.294118 0.294118 0.294118 1.000000</vec4>
+        </COLOR2>
+        <EFFECTMESH>weather_heavy_rainy.elu</EFFECTMESH>
+        <WATEREFFECT>ripple_heavyrain.Effect.xml</WATEREFFECT>
+    </heavy_rainy>
+    <snow type="SNOW">
+        <CREATENUM type="int">
+            <int>584</int>
+        </CREATENUM>
+        <WINDFORCE type="float">
+            <float>1.000</float>
+        </WINDFORCE>
+        <SIZE type="float">
+            <float>91.000</float>
+        </SIZE>
+        <VELOCITY type="float">
+            <float>357.000</float>
+        </VELOCITY>
+        <VALUE type="float">
+            <float>81.800</float>
+        </VALUE>
+        <COLOR1 type="vec4">
+            <vec4>0.933333 0.933333 0.933333 1.000000</vec4>
+        </COLOR1>
+        <COLOR2 type="vec4">
+            <vec4>0.215686 0.215686 0.215686 1.000000</vec4>
+        </COLOR2>
+        <EFFECTMESH></EFFECTMESH>
+        <WATEREFFECT>ripple.Effect.xml</WATEREFFECT>
+    </snow>
+    <heavy_snow type="SNOW">
+        <CREATENUM type="int">
+            <int>1234</int>
+        </CREATENUM>
+        <WINDFORCE type="float">
+            <float>2.000</float>
+        </WINDFORCE>
+        <SIZE type="float">
+            <float>91.000</float>
+        </SIZE>
+        <VELOCITY type="float">
+            <float>617.000</float>
+        </VELOCITY>
+        <VALUE type="float">
+            <float>81.800</float>
+        </VALUE>
+        <COLOR1 type="vec4">
+            <vec4>0.878431 0.878431 0.878431 1.000000</vec4>
+        </COLOR1>
+        <COLOR2 type="vec4">
+            <vec4>0.243137 0.243137 0.243137 1.000000</vec4>
+        </COLOR2>
+        <EFFECTMESH>weather_heavy_snow.elu</EFFECTMESH>
+        <WATEREFFECT></WATEREFFECT>
+    </heavy_snow>
+</WEATHERSET>

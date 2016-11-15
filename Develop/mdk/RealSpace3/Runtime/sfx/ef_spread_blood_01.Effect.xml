@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<REFFECT_SOURCE name="ef_spread_blood_01">
+    <REMITTER starttime="0.000000">ef_spread_blood_0101.Emitter.xml</REMITTER>
+    <REMITTER starttime="0.000000">ef_spread_blood_0102.Emitter.xml</REMITTER>
+    <RMESHEFFECT Loop="false" Align="false" scale="1.000000" starttime="0.000000">em_spread_blood_02.elu</RMESHEFFECT>
+</REFFECT_SOURCE>

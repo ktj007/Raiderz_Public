@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<REFFECT_SOURCE name="em_spread_blood_02">
+    <REMITTER starttime="0.000000">em_spread_blood_0200.Emitter.xml</REMITTER>
+</REFFECT_SOURCE>

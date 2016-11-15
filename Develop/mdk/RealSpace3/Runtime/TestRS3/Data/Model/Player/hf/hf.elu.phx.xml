@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<ROOT>
+	<REALSPACE init="bird_town">
+		<SCENE name="bird_town" file="Zone/BirdTown/BirdTown.zone.xml">
+			<CAMERA x="2978.06" y="1537.05" z="878.32" dir_x="-0.82" dir_y="-0.08" dir_z="-0.56" />
+			<ACTOR name="girl" elu = "Model/Player/hf/hf.elu"  ani = "none_idle" x="2199.2" y="1730.3" z="2.0" dir_x="-0.6" dir_y="-0.8" dir_z="0">
+				<ACTORNODE name = "face" mesh = "Model/Player/hf/hf_face_01.elu" parent = "" color="EBB186" />
+				<ACTORNODE name = "hands" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" color="EBB186" />
+				<ACTORNODE name = "hands_item" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "legs" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "legs_item" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "feet" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "feet_item" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "hat_item" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "chest" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "chest_item" mesh = "Model/Player/hf/hf_guard_armor.elu" parent="" />
+				<ACTORNODE name = "1hd_03" mesh="Model/weapons/1hd_03.elu" parent="dummy_1hs_r" />
+			</ACTOR>
+			<ACTOR name ="arek" elu= "Model/Monster/arek/arek.elu"  ani = "idle" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" />
+			<ACTOR name ="sorena" elu= "Model/Monster/sorena/sorena.elu"  ani = "idle" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" />
+			<ACTOR name ="borgo" elu= "Model/Monster/Ogre_B/Ogre_B.elu"  ani = "idle" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" />
+			<ACTOR name ="berus" elu= "Model/Monster/cerberus/cerberus.elu"  ani = "idle" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" />
+		</SCENE>
+	</REALSPACE>
+	<MPHYSX>
+		<SIMULATION>
+			<CONTEXT name="아레크 먹기" >
+				<ACT type="move" btime="1" interpolation="0" >
+					<MOVABLE name="girl" x="2199.2" y="1730.3" z="2.0" dir_x="-0.6" dir_y="-0.8" dir_z="0" ani="1hb_idle" />
+					<MOVABLE name="arek" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" ani="idle" />
+				</ACT>
+				<ACT type="ani" btime="-1" actor="girl" ani="ragdoll_default" />
+				<ACT type="attach" btime="0" interpolation="0.1" attacher="arek" dest="dummy_grip" attachee="girl" src="Bip01 Spine1" />
+				<ACT type="ani" btime="-1" actor="arek" ani="eat_success" />
+				<ACT type="ani" btime="-1" actor="arek" ani="eat_chew" />
+			</CONTEXT>
+			<CONTEXT name="소레나 잡기" >
+				<ACT type="move" btime="1" interpolation="0" >
+					<MOVABLE name="girl" x="2199.2" y="1730.3" z="2.0" dir_x="-0.6" dir_y="-0.8" dir_z="0" ani="1hb_idle" />
+					<MOVABLE name="sorena" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" ani="idle" />
+				</ACT>
+				<ACT type="ani" btime="1.2" actor="sorena" ani="mode1_attack" />
+				<ACT type="ani" btime="-1" actor="girl" ani="ragdoll_default" />
+				<ACT type="attach" btime="2.06" interpolation="0.1" attacher="sorena" dest="dummy_grip" attachee="girl" src="Bip01 Spine1" />
+				<ACT type="ani" btime="-1" actor="sorena" ani="idle" />
+			</CONTEXT>
+			<CONTEXT name="보르고 잡기" >
+				<ACT type="move" btime="1" interpolation="0" >
+					<MOVABLE name="girl" x="2199.2" y="1730.3" z="2.0" dir_x="-0.6" dir_y="-0.8" dir_z="0" ani="1hb_idle" />
+					<MOVABLE name="borgo" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" ani="idle" />
+				</ACT>
+				<ACT type="ani" btime="0.01" actor="borgo" ani="atk_grip" />
+				<ACT type="ani" btime="-1" actor="girl" ani="ragdoll_default" />
+				<ACT type="attach" btime="5.52" interpolation="0.1" attacher="borgo" dest="dummy_grip" attachee="girl" src="Bip01 Spine1" />
+				<ACT type="ani" btime="-1" actor="borgo" ani="idle" />
+			</CONTEXT>
+			<CONTEXT name="베루스 잡기" >
+				<ACT type="move" btime="1" interpolation="0" >
+					<MOVABLE name="girl" x="2199.2" y="1730.3" z="2.0" dir_x="-0.6" dir_y="-0.8" dir_z="0" ani="1hb_idle" />
+					<MOVABLE name="berus" x="1927.3" y="1234.7" z="2.0" dir_x="0.42" dir_y="0.91" dir_z="0" ani="idle" />
+				</ACT>
+				<ACT type="ani" btime="0.01" actor="berus" ani="atk_bite2" />
+				<ACT type="ani" btime="-1" actor="girl" ani="ragdoll_default" />
+				<ACT type="attach" btime="6.86" interpolation="0.1" attacher="berus" dest="dummy_grip" attachee="girl" src="Bip01 Spine1" />
+				<ACT type="ani" btime="-1" actor="berus" ani="idle" />
+			</CONTEXT>
+		</SIMULATION>
+		<!-- builder type mx - mphysx, nx - nxu_stream -->
+		<OBJECT>
+			<RAGDOLL>
+				<CONTEXT name="default" builder = "mx" >
+					<UsingMoveFunc>false</UsingMoveFunc>
+					<!-- <Density>0.009999</Density> -->
+					<Density>0.010001</Density>
+					<Elbow limit_ratio="0.7" spring="1.0" damping="5.0" />
+					<Knee limit_ratio="0.4" spring="1.0" damping="5.0" />
+					<Shoulder limit_ratio="0.25" spring="1000.0" damping="5000.0" twist_spring="100.0" twist_damping="500.0" swing_spring="100.0" swing_damping="500.0"  />
+					<Hip limit_ratio="0.2" spring="1000.0" damping="5000.0" twist_spring="100.0" twist_damping="500.0" swing_spring="100.0" swing_damping="500.0"  />
+					<Vert limit_ratio="0.15" spring="1000.0" damping="5000.0" twist_spring="1000.0" twist_damping="5000.0" swing_spring="1000.0" swing_damping="5000.0"  />
+				</CONTEXT>
+				<CONTEXT name="original" builder = "mx" >
+					<UsingMove>false</UsingMove>
+					<Density>0.010001</Density>
+					<Elbow limit_ratio="0.3" spring="1.0" damping="5.0" />
+					<Knee limit_ratio="0.7" spring="1.0" damping="5.0" />
+					<Shoulder limit_ratio="0.25" spring="1000.0" damping="5000.0" twist_spring="100.0" twist_damping="500.0" swing_spring="100.0" swing_damping="500.0"  />
+					<Hip limit_ratio="0.2" spring="1000.0" damping="5000.0" twist_spring="100.0" twist_damping="500.0" swing_spring="100.0" swing_damping="500.0"  />
+					<Vert limit_ratio="0.25" spring="1000.0" damping="5000.0" twist_spring="100.0" twist_damping="500.0" swing_spring="100.0" swing_damping="500.0"  />
+				</CONTEXT>
+			</RAGDOLL>
+		</OBJECT>
+	</MPHYSX>
+</ROOT>

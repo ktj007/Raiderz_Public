@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="waterfall_01">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>waterfall_01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 -0.500</TEX_OFFSET>
+                    <TEX_OFFSET time="24000">0.000 -3.500</TEX_OFFSET>
+                    <TEX_SCALE time="0">1.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <ADDITIVE />
+        </MATERIAL>
+        <MATERIAL name="waterfall_01_2">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>waterfall_01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>waterfall_01.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 -0.500</TEX_OFFSET>
+                    <TEX_OFFSET time="24000">0.000 -2.500</TEX_OFFSET>
+                    <TEX_SCALE time="0">1.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+        <MATERIAL name="at_ingen_rguild_alpha_gh01_mask_2s_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_alpha_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ingen_rguild_alpha_gh01.tga.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="Surface01" property="vertexcolor" />
+        <USERPROPERTY node="Surface01" property="noshade" />
+        <USERPROPERTY node="Object02" property="vertexcolor" />
+        <USERPROPERTY node="Object02" property="noshade" />
+    </USERPROPERTYLIST>
+    <SCENE>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>waterfall_bubble.effect.xml</FILENAME>
+                <PARENT>ef_waterfall_bubble04</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>wet_fog.effect.xml</FILENAME>
+                <PARENT>ef_wet_fog02</PARENT>
+            </PROPERTY>
+        </EFFECT>
+        <EFFECT>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>waterfall_bubble2.effect.xml</FILENAME>
+                <PARENT>ef_waterfall_bubble202</PARENT>
+            </PROPERTY>
+        </EFFECT>
+    </SCENE>
+    <COLLISION />
+</XML>

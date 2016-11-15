@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD|Win32">
+      <Configuration>ReleaseMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_publish|Win32">
+      <Configuration>Release_publish</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>MasterServer_lib</ProjectName>
+    <ProjectGuid>{351F5D16-825A-4473-85AD-EEE2636FF634}</ProjectGuid>
+    <RootNamespace>GameServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../mdk/MiNet/include;../../../crl/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\MasterServer_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../app;../../ServerCommon;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\MasterServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../../mdk/CML2;../../../mdk/MiNet/include;../../../crl/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../Pmang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_PUBLISH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\MasterServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ZBaseApplication.cpp" />
+    <ClCompile Include="ZConfig.cpp" />
+    <ClCompile Include="ZGlobal.cpp" />
+    <ClCompile Include="ZMemory.cpp" />
+    <ClCompile Include="ZSystem.cpp" />
+    <ClCompile Include="ZReceiveGameServerUIDSelector.cpp" />
+    <ClCompile Include="ZChannelBeholder.cpp" />
+    <ClCompile Include="ZFieldLogic.cpp" />
+    <ClCompile Include="ZFieldInfo.cpp" />
+    <ClCompile Include="ZFieldInfoManager.cpp" />
+    <ClCompile Include="ZBaseFieldManager.cpp" />
+    <ClCompile Include="ZField.cpp" />
+    <ClCompile Include="ZFieldManager.cpp" />
+    <ClCompile Include="ZDynamicField.cpp" />
+    <ClCompile Include="ZDynamicFieldMaster.cpp" />
+    <ClCompile Include="ZSharedField.cpp" />
+    <ClCompile Include="ZSharedFieldMaster.cpp" />
+    <ClCompile Include="ZFieldFinder.cpp" />
+    <ClCompile Include="ZLoginFieldGuide.cpp" />
+    <ClCompile Include="ZSmartFieldAllocator.cpp" />
+    <ClCompile Include="ZCommandCenter.cpp" />
+    <ClCompile Include="ZCommandLogger.cpp" />
+    <ClCompile Include="ZCommandTable.cpp" />
+    <ClCompile Include="ZCmdHandler_Char.cpp" />
+    <ClCompile Include="ZCmdHandler_Comm.cpp" />
+    <ClCompile Include="ZCmdHandler_Field.cpp" />
+    <ClCompile Include="ZCmdHandler_Loot.cpp" />
+    <ClCompile Include="ZCmdHandler_MoveServer.cpp" />
+    <ClCompile Include="ZCmdHandler_Party.cpp" />
+    <ClCompile Include="ZCmdHandlerGroup.cpp" />
+    <ClCompile Include="ZAdminCommandRouter.cpp" />
+    <ClCompile Include="ZFieldCommandRouter.cpp" />
+    <ClCompile Include="ZGateCommandRouter.cpp" />
+    <ClCompile Include="ZGMCommandRouter.cpp" />
+    <ClCompile Include="ZLoginCommandRouter.cpp" />
+    <ClCompile Include="ZMoveServerCommandRouter.cpp" />
+    <ClCompile Include="ZPartyCommandRouter.cpp" />
+    <ClCompile Include="ZPlayerCommandRouter.cpp" />
+    <ClCompile Include="ZNetServer.cpp" />
+    <ClCompile Include="ZServableChecker.cpp" />
+    <ClCompile Include="ZServer.cpp" />
+    <ClCompile Include="ZServerInfoDumper.cpp" />
+    <ClCompile Include="ZServerManagers.cpp" />
+    <ClCompile Include="ZServerStatusUpdater.cpp" />
+    <ClCompile Include="ZServerSystems.cpp" />
+    <ClCompile Include="ZWorldStatusUpdater.cpp" />
+    <ClCompile Include="ZPlayer.cpp" />
+    <ClCompile Include="ZPlayerLogic.cpp" />
+    <ClCompile Include="ZPlayerManager.cpp" />
+    <ClCompile Include="ZPlayerStateChanger.cpp" />
+    <ClCompile Include="ZDBManager.cpp" />
+    <ClCompile Include="ZDBTaskSQL.cpp" />
+    <ClCompile Include="ZLoginServerFacade.cpp" />
+    <ClCompile Include="ZLoginServerInfoManager.cpp" />
+    <ClCompile Include="ZAppServerInfoLoader.cpp" />
+    <ClCompile Include="ZGameServerInfoLoader.cpp" />
+    <ClCompile Include="ZLoginServerInfoLoader.cpp" />
+    <ClCompile Include="ZAppServerAcceptor.cpp" />
+    <ClCompile Include="ZGameServerAcceptor.cpp" />
+    <ClCompile Include="ZLoginServerAcceptor.cpp" />
+    <ClCompile Include="ZGameServerInfo.cpp" />
+    <ClCompile Include="ZGameServerInfoManager.cpp" />
+    <ClCompile Include="ZGameServerFieldMap.cpp" />
+    <ClCompile Include="ZGameServerObject.cpp" />
+    <ClCompile Include="ZGameServerObjectManager.cpp" />
+    <ClCompile Include="ZGameServerPlayerMap.cpp" />
+    <ClCompile Include="ZAppServerInfoManager.cpp" />
+    <ClCompile Include="ZAppServerObject.cpp" />
+    <ClCompile Include="ZAppServerObjectManager.cpp" />
+    <ClCompile Include="ZFixedPartyInfoManager.cpp" />
+    <ClCompile Include="ZFixedPartyLogic.cpp" />
+    <ClCompile Include="ZParty.cpp" />
+    <ClCompile Include="ZPartyLogic.cpp" />
+    <ClCompile Include="ZPartyManager.cpp" />
+    <ClCompile Include="ZPartyMember.cpp" />
+    <ClCompile Include="ZConst.cpp" />
+    <ClCompile Include="ZFitnessCalculator.cpp" />
+    <ClCompile Include="ZScriptManager.cpp" />
+    <ClCompile Include="ZAppLogic.cpp" />
+    <ClCompile Include="ZLootLogic.cpp" />
+    <ClCompile Include="ZCharLogic.cpp" />
+    <ClCompile Include="ZDuplicationLoginLogic.cpp" />
+    <ClCompile Include="ZDuplicationLoginManager.cpp" />
+    <ClCompile Include="ZCmdHandler_Guild.cpp" />
+    <ClCompile Include="ZGuildLogic.cpp" />
+    <ClCompile Include="ZMoveServerLogic.cpp" />
+    <ClCompile Include="ZPMSObject.cpp" />
+    <ClCompile Include="ZPMSSystem.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ZBaseApplication.h" />
+    <ClInclude Include="ZConfig.h" />
+    <ClInclude Include="ZDef.h" />
+    <ClInclude Include="ZGlobal.h" />
+    <ClInclude Include="ZMemory.h" />
+    <ClInclude Include="ZServerInfo.h" />
+    <ClInclude Include="ZSystem.h" />
+    <ClInclude Include="ZTypes.h" />
+    <ClInclude Include="ZReceiveGameServerUIDSelector.h" />
+    <ClInclude Include="ZChannelBeholder.h" />
+    <ClInclude Include="ZFieldLogic.h" />
+    <ClInclude Include="ZFieldInfo.h" />
+    <ClInclude Include="ZFieldInfoManager.h" />
+    <ClInclude Include="ZBaseFieldManager.h" />
+    <ClInclude Include="ZField.h" />
+    <ClInclude Include="ZFieldManager.h" />
+    <ClInclude Include="ZDynamicField.h" />
+    <ClInclude Include="ZDynamicFieldMaster.h" />
+    <ClInclude Include="ZSharedField.h" />
+    <ClInclude Include="ZSharedFieldMaster.h" />
+    <ClInclude Include="ZFieldFinder.h" />
+    <ClInclude Include="ZLoginFieldGuide.h" />
+    <ClInclude Include="ZSmartFieldAllocator.h" />
+    <ClInclude Include="ZCommandCenter.h" />
+    <ClInclude Include="ZCommandLogger.h" />
+    <ClInclude Include="ZCommandTable.h" />
+    <ClInclude Include="ZCmdHandler_Char.h" />
+    <ClInclude Include="ZCmdHandler_Comm.h" />
+    <ClInclude Include="ZCmdHandler_Field.h" />
+    <ClInclude Include="ZCmdHandler_Loot.h" />
+    <ClInclude Include="ZCmdHandler_MoveServer.h" />
+    <ClInclude Include="ZCmdHandler_Party.h" />
+    <ClInclude Include="ZCmdHandlerGroup.h" />
+    <ClInclude Include="ZAdminCommandRouter.h" />
+    <ClInclude Include="ZFieldCommandRouter.h" />
+    <ClInclude Include="ZGateCommandRouter.h" />
+    <ClInclude Include="ZGMCommandRouter.h" />
+    <ClInclude Include="ZLoginCommandRouter.h" />
+    <ClInclude Include="ZMoveServerCommandRouter.h" />
+    <ClInclude Include="ZPartyCommandRouter.h" />
+    <ClInclude Include="ZPlayerCommandRouter.h" />
+    <ClInclude Include="ZNetServer.h" />
+    <ClInclude Include="ZServableChecker.h" />
+    <ClInclude Include="ZServer.h" />
+    <ClInclude Include="ZServerInfoDumper.h" />
+    <ClInclude Include="ZServerManagers.h" />
+    <ClInclude Include="ZServerStatusUpdater.h" />
+    <ClInclude Include="ZServerSystems.h" />
+    <ClInclude Include="ZWorldStatusUpdater.h" />
+    <ClInclude Include="ZPlayer.h" />
+    <ClInclude Include="ZPlayerLogic.h" />
+    <ClInclude Include="ZPlayerManager.h" />
+    <ClInclude Include="ZPlayerStateChanger.h" />
+    <ClInclude Include="ZDBManager.h" />
+    <ClInclude Include="ZDBTaskSQL.h" />
+    <ClInclude Include="ZLoginServerFacade.h" />
+    <ClInclude Include="ZLoginServerInfo.h" />
+    <ClInclude Include="ZLoginServerInfoManager.h" />
+    <ClInclude Include="ZAppServerInfoLoader.h" />
+    <ClInclude Include="ZGameServerInfoLoader.h" />
+    <ClInclude Include="ZLoginServerInfoLoader.h" />
+    <ClInclude Include="ZServerInfoLoaderDef.h" />
+    <ClInclude Include="ZAppServerAcceptor.h" />
+    <ClInclude Include="ZGameServerAcceptor.h" />
+    <ClInclude Include="ZLoginServerAcceptor.h" />
+    <ClInclude Include="ZServerAcceptor.h" />
+    <ClInclude Include="ZGameServerInfo.h" />
+    <ClInclude Include="ZGameServerInfoManager.h" />
+    <ClInclude Include="ZGameServerFieldMap.h" />
+    <ClInclude Include="ZGameServerObject.h" />
+    <ClInclude Include="ZGameServerObjectManager.h" />
+    <ClInclude Include="ZGameServerPlayerMap.h" />
+    <ClInclude Include="ZAppServerInfo.h" />
+    <ClInclude Include="ZAppServerInfoManager.h" />
+    <ClInclude Include="ZAppServerObject.h" />
+    <ClInclude Include="ZAppServerObjectManager.h" />
+    <ClInclude Include="ZFixedPartyInfoManager.h" />
+    <ClInclude Include="ZFixedPartyLogic.h" />
+    <ClInclude Include="ZParty.h" />
+    <ClInclude Include="ZPartyLogic.h" />
+    <ClInclude Include="ZPartyManager.h" />
+    <ClInclude Include="ZPartyMember.h" />
+    <ClInclude Include="ZConst.h" />
+    <ClInclude Include="ZFitnessCalculator.h" />
+    <ClInclude Include="ZScriptManager.h" />
+    <ClInclude Include="ZAppLogic.h" />
+    <ClInclude Include="ZLootLogic.h" />
+    <ClInclude Include="ZCharLogic.h" />
+    <ClInclude Include="ZDuplicationLoginLogic.h" />
+    <ClInclude Include="ZDuplicationLoginManager.h" />
+    <ClInclude Include="ZCmdHandler_Guild.h" />
+    <ClInclude Include="ZGuildLogic.h" />
+    <ClInclude Include="ZMoveServerLogic.h" />
+    <ClInclude Include="ZPMSObject.h" />
+    <ClInclude Include="ZPMSSystem.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="GameServer.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

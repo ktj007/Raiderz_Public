@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MakeCRC", "MakeCRC\MakeCRC.vcproj", "{F43EE96B-C705-4F58-8045-275897D5B36D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F43EE96B-C705-4F58-8045-275897D5B36D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F43EE96B-C705-4F58-8045-275897D5B36D}.Debug|Win32.Build.0 = Debug|Win32
+		{F43EE96B-C705-4F58-8045-275897D5B36D}.Release|Win32.ActiveCfg = Release|Win32
+		{F43EE96B-C705-4F58-8045-275897D5B36D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

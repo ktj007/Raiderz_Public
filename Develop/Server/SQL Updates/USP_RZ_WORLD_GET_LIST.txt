@@ -1,0 +1,25 @@
+USE [RZ_ACCOUNTDB]
+GO
+/****** Object:  StoredProcedure [dbo].[USP_RZ_WORLD_GET_LIST]    Script Date: 06/13/2013 20:32:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+----
+
+ALTER PROC [dbo].[USP_RZ_WORLD_GET_LIST]
+AS
+    SET NOCOUNT ON;
+    
+    SELECT WORLD_ID
+         , NAME
+         , IP
+         , TYPE
+         , CUR_PLAYER_COUNT
+         , MAX_PLAYER_COUNT
+         , SERVABLE
+         , 0 AS EXPIRE
+      FROM dbo.RZ_GT_WORLD
+      
+      RETURN 1

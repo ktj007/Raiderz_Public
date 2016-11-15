@@ -1,0 +1,38 @@
+<table class="quest_table">
+<tr>
+<td>
+<div class="quest_title">
+<P>[[QUEST_TITLE]]</P>
+</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div class="quest_text">
+[[QUEST_DESC]]
+</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<br/>
+<div class="quest_title">
+<P>보상</P>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="quest_text">
+다음의 보상을 확인하십시오.
+<br/><br/>
+</div>
+</td>
+</tr>
+
+</table>
+
+<br/>
+

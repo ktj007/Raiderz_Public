@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT filename="BirdTown_grass.dds">
+<GRASSTEXTURE uoffset="0.000000" voffset="0.000000" uwidth="1.000000" vheight="1.000000" width="256" height="256">con_garden_grass_01.tga</GRASSTEXTURE>
+</ROOT>

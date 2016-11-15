@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY></PROPERTY>
+    <SCENE>
+        <EFFECT>
+            <COMMON name="ef_dt_trail">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <SCENE>
+                <RTRAIL>
+                    <COMMON name="ef_dt_trail00">
+                        <POSITION>0.000000 0.000000 0.000000</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                        <UP>0.000000 0.000000 1.000000</UP>
+                        <SCALE>1.000000 1.000000 1.000000</SCALE>
+                    </COMMON>
+                    <PROPERTY name="ef_dt_trail00">
+                        <LIFE type="float">
+                            <float>0.300</float>
+                        </LIFE>
+                        <WIDTH type="float">
+                            <float>10.000</float>
+                        </WIDTH>
+                        <SRCBLEND type="int">
+                            <int>1</int>
+                        </SRCBLEND>
+                        <DESTBLEND type="int">
+                            <int>1</int>
+                        </DESTBLEND>
+                        <FRONTCOLOR type="vec4">
+                            <vec4>1.000000 0.760784 0.525490 1.000000</vec4>
+                        </FRONTCOLOR>
+                        <BACKCOLOR type="vec4">
+                            <vec4>0.482353 0.125490 0.050980 1.000000</vec4>
+                        </BACKCOLOR>
+                        <ALIGN type="int">
+                            <int>1</int>
+                        </ALIGN>
+                        <SEGMENT type="int">
+                            <int>1</int>
+                        </SEGMENT>
+                        <TEXUV type="vec4">
+                            <vec4>0.500978 0.876712 1.000000 1.001957</vec4>
+                        </TEXUV>
+                        <TEXTURE>ef_dmg_01.dds</TEXTURE>
+                    </PROPERTY>
+                </RTRAIL>
+            </SCENE>
+        </EFFECT>
+    </SCENE>
+</ROOT>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <AddAnimation name="atk1" filename="goblin_commander_atk1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="die" filename="goblin_commander_die.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="idle" filename="goblin_commander_idle.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_BT1" filename="goblin_commander_mf_bt1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_BT2" filename="goblin_commander_mf_bt2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="run" filename="goblin_commander_run.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="walk" filename="goblin_commander_walk.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="guard_end" filename="goblin_commander_guard_end.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="guard_idle" filename="goblin_commander_guard_idle.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_DT" filename="goblin_commander_mf_dt.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KD1" filename="goblin_commander_mf_kd1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KD2" filename="goblin_commander_mf_kd2.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="MF_KD3" filename="goblin_commander_mf_kd3.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_ST" filename="goblin_commander_mf_st.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_UP" filename="goblin_commander_mf_up.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KB1" filename="goblin_commander_mf_kb1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KB2" filename="goblin_commander_mf_kb2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_KB3" filename="goblin_commander_mf_kb3.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="tackle" filename="goblin_commander_tackle.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_s" filename="goblin_commander_atk_s.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="atk_d" filename="goblin_commander_atk_d.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="roar" filename="goblin_commander_roar.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="sleep" filename="goblin_commander_sleep.elu.ani" motion_loop_type="loop" speed="1.000000" />
+    <AddAnimation name="tackle2" filename="goblin_commander_tackle2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="taunt" filename="goblin_commander_taunt.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="idle2" filename="goblin_commander_idle2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_TU1" filename="goblin_commander_mf_tu1.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AddAnimation name="MF_TU2" filename="goblin_commander_mf_tu2.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AnimationTransitions />
+</XML>

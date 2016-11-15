@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3275EE3-C7A9-4A31-82D4-D86D8721DB03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoulHunt</RootNamespace>
+    <AssemblyName>Raiderz</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Game\Runtime\Dev\Velixian\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SourceGrid, Version=4.30.3817.19618, Culture=neutral, PublicKeyToken=df6f5e538749e85d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Velixian\Dependencies\SourceGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompareFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompareFileForm.Designer.cs">
+      <DependentUpon>CompareFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootReportExporter.cs" />
+    <Compile Include="NPCShopReportExporter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Property Grid\SoulHunt_CustomConverter.cs" />
+    <Compile Include="Property Grid\SoulHunt_CustomEditor.cs" />
+    <Compile Include="Property Grid\SoulHunt_ObjBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Property Grid\SoulHunt_ObjBrowser.Designer.cs">
+      <DependentUpon>SoulHunt_ObjBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Property Grid\SoulHunt_PgEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Property Grid\SoulHunt_PgEditor.Designer.cs">
+      <DependentUpon>SoulHunt_PgEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Property Grid\SoulHunt_Texteditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Property Grid\SoulHunt_Texteditor.Designer.cs">
+      <DependentUpon>SoulHunt_Texteditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SHLocale.cs" />
+    <Compile Include="SHStringSaver.cs" />
+    <Compile Include="SoulHunt.cs" />
+    <Compile Include="XML\SoulHunt_Colt.cs" />
+    <Compile Include="XML\SoulHunt_Condition.cs" />
+    <Compile Include="XML\SoulHunt_Craft.cs" />
+    <Compile Include="XML\SoulHunt_Dialog.cs" />
+    <Compile Include="XML\SoulHunt_Field.cs" />
+    <Compile Include="XML\SoulHunt_Field.NPC.cs" />
+    <Compile Include="XML\SoulHunt_FieldList.cs" />
+    <Compile Include="XML\SoulHunt_ItemAddRemove.cs" />
+    <Compile Include="XML\SoulHunt_ItemRelatedNPC.cs" />
+    <Compile Include="XML\SoulHunt_Items.cs" />
+    <Compile Include="XML\SoulHunt_Lootings.cs" />
+    <Compile Include="XML\SoulHunt_NPCs.cs" />
+    <Compile Include="XML\SoulHunt_NPCShop.cs" />
+    <Compile Include="XML\SoulHunt_Quest.cs" />
+    <Compile Include="XML\SoulHunt_Recipe.cs" />
+    <Compile Include="XML\SoulHunt_RecipeNPC.cs" />
+    <Compile Include="XML\SoulHunt_Strings.cs" />
+    <Compile Include="XML\SoulHunt_Talents.cs" />
+    <Compile Include="XML\SoulHunt_XmlCore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CompareFileForm.resx">
+      <DependentUpon>CompareFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Property Grid\SoulHunt_ObjBrowser.resx">
+      <DependentUpon>SoulHunt_ObjBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Property Grid\SoulHunt_PgEditor.resx">
+      <DependentUpon>SoulHunt_PgEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Property Grid\SoulHunt_Texteditor.resx">
+      <DependentUpon>SoulHunt_Texteditor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dialog_template.txt" />
+    <None Include="Resources\dialog_npc_template.txt" />
+    <None Include="Resources\dialog_preview_template.txt" />
+    <None Include="Resources\dialog_preview_element_template.txt" />
+    <Content Include="Resources\error_template.txt" />
+    <Content Include="Resources\loot_element_template.txt" />
+    <Content Include="Resources\loot_template.txt" />
+    <Content Include="Resources\npc_interaction_template.txt" />
+    <Content Include="Resources\npc_template.txt" />
+    <None Include="Resources\quest_template.txt" />
+    <None Include="Resources\quest_preview_template.txt" />
+    <None Include="Resources\quest_npc_template.txt" />
+    <None Include="Resources\quest_objective_template.txt" />
+    <None Include="Resources\quest_reward_template.txt" />
+    <Content Include="Resources\WhatsNew.txt" />
+    <Content Include="Resources\xhtml_template.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\mdk\cmlNET\cmlNET.csproj">
+      <Project>{EC575684-2562-4917-B91F-3D64FD1CA942}</Project>
+      <Name>cmlNET</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

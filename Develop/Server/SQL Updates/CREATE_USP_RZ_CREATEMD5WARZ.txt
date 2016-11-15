@@ -1,0 +1,17 @@
+USE [RZ_ACCOUNTDB]
+GO
+/****** Object:  StoredProcedure [dbo].[USP_RZ_CREATEMD5WARZ]    Script Date: 06/13/2013 17:38:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[USP_RZ_CREATEMD5WARZ]
+	@in_Password varchar(100),
+	@out_MD5 varchar(32) OUTPUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	declare @PASSWORD_SALT varchar(100) = 'g5sc4gs1fz0h'
+	set @out_MD5 = SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('md5', @PASSWORD_SALT + @in_Password)), 3, 999)
+END

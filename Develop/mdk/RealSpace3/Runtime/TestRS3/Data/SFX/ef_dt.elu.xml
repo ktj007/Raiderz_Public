@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="01 - Default">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ef_uvani_tex.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.200 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="1920">-0.300 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="3040">-0.300 0.000</TEX_OFFSET>
+                    <TEX_SCALE time="0">1.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <ADDITIVE />
+            <TWOSIDED />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="pf_13_spline 01" property="vertexcolor" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+</XML>

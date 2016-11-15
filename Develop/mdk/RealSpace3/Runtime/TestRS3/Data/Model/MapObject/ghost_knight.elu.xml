@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="ghost_knight">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ghost_knight.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+            <SHADEREFFECTS>
+                <SHADEREFFECT>ppl_ghost.rsc</SHADEREFFECT>
+            </SHADEREFFECTS>
+        </MATERIAL>
+        <MATERIAL name="ghost_sword">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ghost_sword.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <ADDITIVE />
+            <SHADEREFFECTS>
+                <SHADEREFFECT>ppl_ghost.rsc</SHADEREFFECT>
+            </SHADEREFFECTS>
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="ghost_knight" property="Mass = 0.000000" />
+        <USERPROPERTY node="ghost_knight" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="ghost_knight" property="Friction = 0.300000" />
+        <USERPROPERTY node="ghost_knight" property="Unyielding = 0" />
+        <USERPROPERTY node="ghost_knight" property="Inactive = 0" />
+        <USERPROPERTY node="ghost_knight" property="Phantom = 0" />
+        <USERPROPERTY node="ghost_knight" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="ghost_knight" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="ghost_knight" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="ghost_knight" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="ghost_knight" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="ghost_knight" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="ghost_knight" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="ghost_knight" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Mass = 0.000000" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Friction = 0.300000" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Unyielding = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="Bip01 Pelvis" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 L Clavicle" property="Unyielding = 1" />
+        <USERPROPERTY node="Bone01" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone01" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone01" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone01" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone01" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone01" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone01" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone01" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone01" property="Inactive = 0" />
+        <USERPROPERTY node="Bone01" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone01" property="Phantom = 0" />
+        <USERPROPERTY node="Bone01" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone01" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone01" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone01" property="Mass = 15.0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Mass = 0.0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Friction = 0.3" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Inactive = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Phantom = 0" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bip01 R Clavicle" property="Unyielding = 1" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Ellasticity = 0.3" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Friction = 0.3" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Optimization_Level = undefined" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Proxy_Geometry = None" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Inactive = 0" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Display_Proxy = None" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Phantom = 0" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Shell_Radius = 0.05" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Allowed_Penetration = 0.05" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone01(mirrored)" property="Mass = 15.0" />
+        <USERPROPERTY node="Bone07" property="Mass = 0.000000" />
+        <USERPROPERTY node="Bone07" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="Bone07" property="Friction = 0.300000" />
+        <USERPROPERTY node="Bone07" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone07" property="Inactive = 0" />
+        <USERPROPERTY node="Bone07" property="Phantom = 0" />
+        <USERPROPERTY node="Bone07" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone07" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone07" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone07" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="Bone07" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="Bone07" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="Bone07" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="Bone07" property="Quality_Type = 3" />
+        <USERPROPERTY node="Bone08" property="Mass = 0.000000" />
+        <USERPROPERTY node="Bone08" property="Ellasticity = 0.300000" />
+        <USERPROPERTY node="Bone08" property="Friction = 0.300000" />
+        <USERPROPERTY node="Bone08" property="Unyielding = 0" />
+        <USERPROPERTY node="Bone08" property="Inactive = 0" />
+        <USERPROPERTY node="Bone08" property="Phantom = 0" />
+        <USERPROPERTY node="Bone08" property="Disable_Collisions = 0" />
+        <USERPROPERTY node="Bone08" property="Use_Display_Proxy = 0" />
+        <USERPROPERTY node="Bone08" property="Simulation_Geometry = 2" />
+        <USERPROPERTY node="Bone08" property="Proxy_Geometry = &lt;None&gt;" />
+        <USERPROPERTY node="Bone08" property="Display_Proxy = &lt;None&gt;" />
+        <USERPROPERTY node="Bone08" property="Shell_Radius = 0.050000" />
+        <USERPROPERTY node="Bone08" property="Allowed_Penetration = 0.000000" />
+        <USERPROPERTY node="Bone08" property="Quality_Type = 3" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+    <ALPHA2PASS />
+	<AUTOANIMATION />
+</XML>

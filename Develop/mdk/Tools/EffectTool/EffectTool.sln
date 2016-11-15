@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EffectTool", "EffectTool.vcproj", "{F787A526-3BB1-456D-B8FA-CF54CC08E3A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B} = {97861011-05BD-450A-A221-DB5F7A2F4B7B}
+		{ADA8A51E-6AF1-4BB3-A15A-B7F5955C4129} = {ADA8A51E-6AF1-4BB3-A15A-B7F5955C4129}
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51} = {7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}
+		{3DE14F45-2931-4E41-8115-06687E36288F} = {3DE14F45-2931-4E41-8115-06687E36288F}
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cml2", "..\..\cml2\cml2.vcproj", "{8D451493-65C2-49C3-ADAE-ACB17E6B0650}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RealSpace3", "..\..\RealSpace3\RealSpace3.vcproj", "{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B} = {97861011-05BD-450A-A221-DB5F7A2F4B7B}
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MCollision", "..\..\MCollision\MCollision.vcproj", "{97861011-05BD-450A-A221-DB5F7A2F4B7B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650} = {8D451493-65C2-49C3-ADAE-ACB17E6B0650}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "relib", "..\..\MReflectionProperty\Reflection\relib.vcproj", "{3DE14F45-2931-4E41-8115-06687E36288F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RS3ReflectProperty", "..\..\MReflectionProperty\RS3ReflectProperty\RS3ReflectProperty.vcproj", "{ADA8A51E-6AF1-4BB3-A15A-B7F5955C4129}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F787A526-3BB1-456D-B8FA-CF54CC08E3A1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F787A526-3BB1-456D-B8FA-CF54CC08E3A1}.Debug|Win32.Build.0 = Debug|Win32
+		{F787A526-3BB1-456D-B8FA-CF54CC08E3A1}.Release|Win32.ActiveCfg = Release|Win32
+		{F787A526-3BB1-456D-B8FA-CF54CC08E3A1}.Release|Win32.Build.0 = Release|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.ActiveCfg = DebugMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Debug|Win32.Build.0 = DebugMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.ActiveCfg = ReleaseMD|Win32
+		{8D451493-65C2-49C3-ADAE-ACB17E6B0650}.Release|Win32.Build.0 = ReleaseMD|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.ActiveCfg = DebugMD|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Debug|Win32.Build.0 = DebugMD|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.ActiveCfg = Release|Win32
+		{7070FA22-C0D4-40F5-BEB7-EC09F3A58A51}.Release|Win32.Build.0 = Release|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Debug|Win32.ActiveCfg = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Debug|Win32.Build.0 = DebugMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release|Win32.ActiveCfg = ReleaseMD|Win32
+		{97861011-05BD-450A-A221-DB5F7A2F4B7B}.Release|Win32.Build.0 = ReleaseMD|Win32
+		{3DE14F45-2931-4E41-8115-06687E36288F}.Debug|Win32.ActiveCfg = DebugMD|Win32
+		{3DE14F45-2931-4E41-8115-06687E36288F}.Debug|Win32.Build.0 = DebugMD|Win32
+		{3DE14F45-2931-4E41-8115-06687E36288F}.Release|Win32.ActiveCfg = ReleaseMD|Win32
+		{3DE14F45-2931-4E41-8115-06687E36288F}.Release|Win32.Build.0 = ReleaseMD|Win32
+		{ADA8A51E-6AF1-4BB3-A15A-B7F5955C4129}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ADA8A51E-6AF1-4BB3-A15A-B7F5955C4129}.Debug|Win32.Build.0 = Debug|Win32
+		{ADA8A51E-6AF1-4BB3-A15A-B7F5955C4129}.Release|Win32.ActiveCfg = Release|Win32
+		{ADA8A51E-6AF1-4BB3-A15A-B7F5955C4129}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

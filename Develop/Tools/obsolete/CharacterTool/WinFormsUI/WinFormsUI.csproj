@@ -1,0 +1,207 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3C782BA-178E-4235-A3BA-8C11DEBB6BEE}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>WeifenLuo.WinFormsUI</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WeifenLuo.WinFormsUI</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Content.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContentCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentStatesEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentWindow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentWindowCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DockHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DockManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DocumentWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DragHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DragHandlerBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DrawHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FloatWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FloatWindowCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HiddenMdiChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InertButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Localization.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Measures.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ResourceHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TabWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabWindowSplitter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Win32\Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Win32\Gdi32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Win32\Structs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Win32\User32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Content.resx">
+      <DependentUpon>Content.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockManager.resx">
+      <DependentUpon>DockManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DockWindow.AutoHideNo.bmp" />
+    <EmbeddedResource Include="Resources\DockWindow.AutoHideYes.bmp" />
+    <EmbeddedResource Include="Resources\DockWindow.CloseDisabled.bmp" />
+    <EmbeddedResource Include="Resources\DockWindow.CloseEnabled.bmp" />
+    <EmbeddedResource Include="Resources\DocumentWindow.CloseDisabled.bmp" />
+    <EmbeddedResource Include="Resources\DocumentWindow.CloseEnabled.bmp" />
+    <EmbeddedResource Include="Resources\DocumentWindow.ScrollLeftDisabled.bmp" />
+    <EmbeddedResource Include="Resources\DocumentWindow.ScrollLeftEnabled.bmp" />
+    <EmbeddedResource Include="Resources\DocumentWindow.ScrollRightDisabled.bmp" />
+    <EmbeddedResource Include="Resources\DocumentWindow.ScrollRightEnabled.bmp" />
+    <EmbeddedResource Include="Strings.resources" />
+    <EmbeddedResource Include="Strings.zh-CN.resources" />
+    <EmbeddedResource Include="TabWindow.resx">
+      <DependentUpon>TabWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="02 - Default">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>haze_rinden.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>haze_rinden.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_OFFSET>0.000 0.000</TEX_OFFSET>
+                <TEX_SCALE>1.000 1.000</TEX_SCALE>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="sky_haze_rinden" property="noshade" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+</XML>

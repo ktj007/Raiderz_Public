@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <STATICMESH>
+            <COMMON name="login" />
+            <PROPERTY>
+                <FILENAME>login.rs</FILENAME>
+            </PROPERTY>
+            <SCENE>
+                <EFFECT>
+                    <COMMON>
+                        <POSITION>11199.479492 12138.905273 10.524536</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>waterfall_bubble.effect.xml</FILENAME>
+                        <PARENT>ef_waterfall_bubble04</PARENT>
+                    </PROPERTY>
+                </EFFECT>
+                <EFFECT>
+                    <COMMON>
+                        <POSITION>11336.377930 12018.530273 40.525269</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>wet_fog.effect.xml</FILENAME>
+                        <PARENT>ef_wet_fog02</PARENT>
+                    </PROPERTY>
+                </EFFECT>
+                <EFFECT>
+                    <COMMON>
+                        <POSITION>10285.300781 13239.237305 2765.950195</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>waterfall_bubble2.effect.xml</FILENAME>
+                        <PARENT>ef_waterfall_bubble202</PARENT>
+                    </PROPERTY>
+                </EFFECT>
+            </SCENE>
+        </STATICMESH>
+        <WATERPLANE>
+            <COMMON name="login_water_p_01.elu">
+                <POSITION>0.0 0.0 0.0</POSITION>
+                <DIRECTION>0.0 1.0 0.0</DIRECTION>
+                <UP>0.0 0.0 1.0</UP>
+                <SCALE>1.0 1.0 1.0</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <MESHFILE>login_water_p_01.elu</MESHFILE>
+                <PORTALS>
+                    <PORTAL>
+                        <POSITION>12306.9492188 12870.3789063 -65.0000000</POSITION>
+                        <POSITION>10306.9492188 12870.3789063 -65.0000000</POSITION>
+                        <POSITION>10306.9492188 11370.3789063 -65.0000000</POSITION>
+                        <POSITION>12306.9492188 4870.3789063 -65.0000000</POSITION>
+                        <POSITION>14306.9492188 4870.3789063 -65.0000000</POSITION>
+                        <POSITION>15306.9492188 5870.3789063 -65.0000000</POSITION>
+                        <POSITION>15306.9492188 8870.3789063 -65.0000000</POSITION>
+                        <POSITION>14806.9492188 9870.3789063 -65.0000000</POSITION>
+                    </PORTAL>
+                </PORTALS>
+            </PROPERTY>
+        </WATERPLANE>
+        <ACTOR>
+            <COMMON name="ingen_waterfall.max">
+                <POSITION>11118.076172 12336.573242 -322.334106</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ingen_waterfall.elu</FILENAME>
+            </PROPERTY>
+        </ACTOR>
+    </SCENE>
+</ROOT>

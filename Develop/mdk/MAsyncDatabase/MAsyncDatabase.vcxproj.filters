@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="AsyncDatabase">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{f304484d-b4d9-4a53-a8d5-c8963da42ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Profile">
+      <UniqueIdentifier>{37f5957d-ee42-4e28-a9d8-8dd7b7cbfa0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field">
+      <UniqueIdentifier>{659b23ca-2ebb-4b86-a333-57c5d11f8152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\FieldValueType">
+      <UniqueIdentifier>{cd373fb8-84e4-4fe7-bc6a-c6be40490b2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Query">
+      <UniqueIdentifier>{ae7b0383-ccce-43df-b06a-7f75fa9b1c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MDatabaseInfo">
+      <UniqueIdentifier>{0cccdb51-725b-4d21-be29-8339a87e48fa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MAsyncDatabase.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBThread.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBThreadPool.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBThreadTask.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBThreadTaskQ.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBThreadTaskResultQ.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="MDatabase.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="MDatabaseDesc.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="MSQLSTMT.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBProfileCountPerTime.cpp">
+      <Filter>Profile</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBProfiler.cpp">
+      <Filter>Profile</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBProfileTimeElapse.cpp">
+      <Filter>Profile</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeFactory.cpp">
+      <Filter>Field</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueType.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeBool.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeByte.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeFloat.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeInt64.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeLong.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeNull.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeShort.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeString.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeTimestamp.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBFieldValueTypeWString.cpp">
+      <Filter>Field\FieldValueType</Filter>
+    </ClCompile>
+    <ClCompile Include="MDatabaseQuery.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="MDBRecordSet.cpp">
+      <Filter>Query</Filter>
+    </ClCompile>
+    <ClCompile Include="MDatabaseInfo.cpp">
+      <Filter>MDatabaseInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MAsyncDatabase.h">
+      <Filter>AsyncDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBCriticalSection.h">
+      <Filter>AsyncDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBThread.h">
+      <Filter>AsyncDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBThreadPool.h">
+      <Filter>AsyncDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBThreadTask.h">
+      <Filter>AsyncDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBThreadTaskQ.h">
+      <Filter>AsyncDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBThreadTaskResultQ.h">
+      <Filter>AsyncDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="MDatabase.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="MDatabaseDefine.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="MDatabaseDesc.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="MSQLSTMT.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBProfileConst.h">
+      <Filter>Profile</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBProfileCountPerTime.h">
+      <Filter>Profile</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBProfileDefine.h">
+      <Filter>Profile</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBProfiler.h">
+      <Filter>Profile</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBProfileTimeElapse.h">
+      <Filter>Profile</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeFactory.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeHeaderList.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueType.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeBool.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeByte.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeFloat.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeInt64.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeLong.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeNull.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeShort.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeString.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeTimestamp.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBFieldValueTypeWString.h">
+      <Filter>Field\FieldValueType</Filter>
+    </ClInclude>
+    <ClInclude Include="MDatabaseQuery.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="MDBRecordSet.h">
+      <Filter>Query</Filter>
+    </ClInclude>
+    <ClInclude Include="MDatabaseInfo.h">
+      <Filter>MDatabaseInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="MADBLib.h" />
+    <ClInclude Include="MDatabaseConst.h" />
+    <ClInclude Include="ODBC_C_API_HEADER.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

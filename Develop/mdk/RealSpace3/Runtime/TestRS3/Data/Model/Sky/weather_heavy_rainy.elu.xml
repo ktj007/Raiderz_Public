@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="heavy rain">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>snow_p.TGA</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>snow_p.TGA</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="32000">1.000 -3.000</TEX_OFFSET>
+                    <TEX_SCALE time="0">1.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+        <MATERIAL name="heavy rainy">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>rain_tex.tga</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>rain_tex.tga</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION>
+                    <TEX_OFFSET time="0">0.000 0.000</TEX_OFFSET>
+                    <TEX_OFFSET time="32000">0.000 -7.000</TEX_OFFSET>
+                    <TEX_SCALE time="0">7.000 1.000</TEX_SCALE>
+                    <TEX_ROTATE time="0">0.000 0.000 0.000</TEX_ROTATE>
+                </TEX_ANIMATION>
+            </TEXTURELIST>
+            <USEOPACITY />
+        </MATERIAL>
+    </MATERIALLIST>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="heavy rainy00" property="noshade" />
+        <USERPROPERTY node="heavy rainy00" property="vertexcolor" />
+        <USERPROPERTY node="heavy rainy01" property="noshade" />
+        <USERPROPERTY node="heavy rainy01" property="vertexcolor" />
+    </USERPROPERTYLIST>
+    <SCENE />
+    <COLLISION />
+	<AUTOANIMATION />
+</XML>

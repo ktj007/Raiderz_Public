@@ -1,0 +1,4 @@
+CC_Add(biCodrdkr_GCmdHandler_Master_Global_OnRequestReadyEnterMovePlayer)
+CC_Add(birdkr_GGameStarter_GateToField)
+CC_Add(birdkr_GGameStarter_Start1)
+CC_Add(birdkr_GGameStarter_Start2)

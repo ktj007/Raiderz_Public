@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="red">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>red256.jpg</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEX_SCALE>5.000 5.000</TEX_SCALE>
+            </TEXTURELIST>
+        </MATERIAL>
+      <MATERIAL name="green">
+        <DIFFUSE>150 150 150</DIFFUSE>
+        <AMBIENT>150 150 150</AMBIENT>
+        <SPECULAR>229 229 229</SPECULAR>
+        <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+        <GLOSSINESS>10.000</GLOSSINESS>
+        <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+        <TEXTURELIST count="1">
+          <TEXTURELAYER index="0">
+            <DIFFUSEMAP>green256.jpg</DIFFUSEMAP>
+          </TEXTURELAYER>
+          <TEX_SCALE>5.000 5.000</TEX_SCALE>
+        </TEXTURELIST>
+      </MATERIAL>
+      <MATERIAL name="blue">
+        <DIFFUSE>150 150 150</DIFFUSE>
+        <AMBIENT>150 150 150</AMBIENT>
+        <SPECULAR>229 229 229</SPECULAR>
+        <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+        <GLOSSINESS>10.000</GLOSSINESS>
+        <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+        <TEXTURELIST count="1">
+          <TEXTURELAYER index="0">
+            <DIFFUSEMAP>blue256.jpg</DIFFUSEMAP>
+          </TEXTURELAYER>
+          <TEX_SCALE>5.000 5.000</TEX_SCALE>
+        </TEXTURELIST>
+      </MATERIAL>
+    </MATERIALLIST>
+    <COLLISION />
+    <USERPROPERTYLIST />
+</XML>

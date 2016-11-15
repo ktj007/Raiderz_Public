@@ -1,0 +1,2041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_duck|Win32">
+      <Configuration>Debug_duck</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_ed|Win32">
+      <Configuration>Debug_ed</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_vld|Win32">
+      <Configuration>Debug_vld</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD|Win32">
+      <Configuration>ReleaseMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_duck|Win32">
+      <Configuration>Release_duck</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_ed|Win32">
+      <Configuration>Release_ed</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_profile|Win32">
+      <Configuration>Release_profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_publish_buyer|Win32">
+      <Configuration>Release_publish_buyer</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_publish_korea|Win32">
+      <Configuration>Release_publish_korea</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_publish|Win32">
+      <Configuration>Release_publish</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnitTest_Debug|Win32">
+      <Configuration>UnitTest_Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnitTest_Release_duck|Win32">
+      <Configuration>UnitTest_Release_duck</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnitTest_Release|Win32">
+      <Configuration>UnitTest_Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>GameLib</ProjectName>
+    <ProjectGuid>{3D5E7A29-8C2B-450E-86D9-22767101A9D6}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_buyer|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_korea|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release_duck|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_buyer|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_korea|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release_duck|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release_duck|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_korea|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_buyer|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_d.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../CSCommon/include;../crl/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)\Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../CSCommon/include;../crl/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_PUBLISH;_STABLE;_DO_NOT_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../CSCommon/include;../crl/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_DEBUG_MD;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_d.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_UNITTEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_Td.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../CSCommon/include;../crl/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_UNITTEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_T.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;VLD_CHECK_LEAK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_d.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_MADDUCK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_d.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../CSCommon/include;../crl/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/include;../../sdk/bandi_video_library/v2.1.1/source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_DEBUG_ENGINE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_d.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_DEBUG_ENGINE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_RELEASE_MD;_LIB;_USRDLL;REALSPACE3_IMPORT;CML2_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy ..\mdk\cml2\lib\cml2_.dll .\Runtime
+copy ..\mdk\RealSpace3\lib\realspace3_.dll .\Runtime
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../CSCommon/include;../crl/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release_duck|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_UNITTEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game_T.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_korea|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_PUBLISH;_KOREA;_DO_NOT_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish_buyer|Win32'">
+    <PreBuildEvent>
+      <Command>"runtime/dev/utils/SVNRevisionGenerator" ../</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>GameCommon;../mdk/CML2;../mdk/MCollision;../mdk/RealSpace3;../mdk/RealSpace3/Ragdoll;../mdk/RealInput/;../mdk/MiNet/include;../crl/include;../CSCommon/include;../mdk/Mint3.2/Util;../mdk/Mint3.2/Include;../mdk/RealSound3;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/fmodex/inc;../../sdk/speedtree;../../sdk/newton;../mdk/CML2/lua;../../sdk/UnitTest++/v1.4/src;../../sdk/pathengine;../mdk/MPathFinder;../mdk/MPhysX;../../sdk/PhysX/v2.8.1/SDKs/Foundation/include;../../sdk/PhysX/v2.8.1/SDKs/Physics/include/cloth;../../sdk/PhysX/v2.8.1/SDKs/Physics/include;../../sdk/PhysX/v2.8.1/SDKs/NxCharacter/include;../../sdk/PhysX/v2.8.1/SDKs/PhysXLoader/include;../../sdk/PhysX/v2.8.1/SDKs/Framework/include;../../sdk/PhysX/v2.8.1/SDKs/Cooking/include;../mdk/MTest/include;../../sdk/bandi_video_library/v2.1.1/source;../../sdk/bandi_video_library/v2.1.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_PUBLISH;_BUYER;_DO_NOT_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$Game.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="XCalculator.cpp" />
+    <ClCompile Include="XConfig.cpp" />
+    <ClCompile Include="XController.cpp" />
+    <ClCompile Include="XControlNetCmdState.cpp" />
+    <ClCompile Include="XGamePlayController.cpp" />
+    <ClCompile Include="XGameStateSwitchResourceMgr.cpp" />
+    <ClCompile Include="XMemPoolScopeReleaser.cpp" />
+    <ClCompile Include="XMMCode.cpp" />
+    <ClCompile Include="XMMCodeProc.cpp" />
+    <ClCompile Include="XNaming.cpp" />
+    <ClCompile Include="XSystem.cpp" />
+    <ClCompile Include="XBattleArenaInfo.cpp" />
+    <ClCompile Include="XDialogInfo.cpp" />
+    <ClCompile Include="XEnemyInfo.cpp" />
+    <ClCompile Include="XGlobal.cpp" />
+    <ClCompile Include="XGlobalInstance.cpp" />
+    <ClCompile Include="XGlobalVar.cpp" />
+    <ClCompile Include="XGlobalVar_Game.cpp" />
+    <ClCompile Include="XGlobalVar_MyInfo.cpp" />
+    <ClCompile Include="XGlobalVar_World.cpp" />
+    <ClCompile Include="XInteractionInfo.cpp" />
+    <ClCompile Include="XNPCInteractionInfo.cpp" />
+    <ClCompile Include="XNPCShopInfo.cpp" />
+    <ClCompile Include="XPvPAreaInfo.cpp" />
+    <ClCompile Include="XTargetActorInfo.cpp" />
+    <ClCompile Include="XGameInterface.cpp" />
+    <ClCompile Include="XGameInterfaceOption.cpp" />
+    <ClCompile Include="XGame.cpp" />
+    <ClCompile Include="XGamePlayState.cpp" />
+    <ClCompile Include="XGameState.cpp" />
+    <ClCompile Include="XGameStateMgr.cpp" />
+    <ClCompile Include="XAlwaysResourceGrabber.cpp" />
+    <ClCompile Include="XCampaign.cpp" />
+    <ClCompile Include="XCharFrame.cpp" />
+    <ClCompile Include="XHelloWorldFrame.cpp" />
+    <ClCompile Include="XLoginFrame.cpp" />
+    <ClCompile Include="XMintDesignFrame.cpp" />
+    <ClCompile Include="XTestFrame.cpp" />
+    <ClCompile Include="XLoadingChecker_BackgroundWork.cpp" />
+    <ClCompile Include="XLoadingChecker_MyPlayer.cpp" />
+    <ClCompile Include="XLoadingChecker_Server.cpp" />
+    <ClCompile Include="XLoadingChecker_World.cpp" />
+    <ClCompile Include="XLoadingCompleter.cpp" />
+    <ClCompile Include="XLoadingFrame.cpp" />
+    <ClCompile Include="XLoadingMgr.cpp" />
+    <ClCompile Include="XLoadingStarter.cpp" />
+    <ClCompile Include="XTips.cpp" />
+    <ClCompile Include="XReplay.cpp" />
+    <ClCompile Include="XReplayAnalyzer.cpp" />
+    <ClCompile Include="XReplayAutoTest.cpp" />
+    <ClCompile Include="XReplayFrame.cpp" />
+    <ClCompile Include="XGameFrame.cpp" />
+    <ClCompile Include="XGameFrameHelper.cpp" />
+    <ClCompile Include="XGameFrameManager.cpp" />
+    <ClCompile Include="XGameFrameUILoader.cpp" />
+    <ClCompile Include="XPlayFrame.cpp" />
+    <ClCompile Include="XPlayFrame_Debugger.cpp" />
+    <ClCompile Include="XScreenShotSaver.cpp" />
+    <ClCompile Include="XEngineDebugFrame.cpp" />
+    <ClCompile Include="XEngineDebugger.cpp" />
+    <ClCompile Include="XCommonFunction.cpp" />
+    <ClCompile Include="XGlueCharEvent.cpp" />
+    <ClCompile Include="XGlueCutSceneEvent.cpp" />
+    <ClCompile Include="XGlueFieldEvent.cpp" />
+    <ClCompile Include="XGlueGameEvent.cpp" />
+    <ClCompile Include="XGlueCharFunction.cpp" />
+    <ClCompile Include="XGlueMyInfoFunction.cpp" />
+    <ClCompile Include="XGlueScreenEffectFunction.cpp" />
+    <ClCompile Include="XGlueUtilFunction.cpp" />
+    <ClCompile Include="XGlueGameCraftFunction.cpp" />
+    <ClCompile Include="XGlueGameDuelFunction.cpp" />
+    <ClCompile Include="XGlueGameFieldFunction.cpp" />
+    <ClCompile Include="XGlueGameFunction.cpp" />
+    <ClCompile Include="XGlueGameGuildFunction.cpp" />
+    <ClCompile Include="XGlueGameInteractionFunction.cpp" />
+    <ClCompile Include="XGlueGameItemFunction.cpp" />
+    <ClCompile Include="XGlueGameLootFunction.cpp" />
+    <ClCompile Include="XGlueGamePartyFunction.cpp" />
+    <ClCompile Include="XGlueGameQuestFunction.cpp" />
+    <ClCompile Include="XGlueGameRepairFunction.cpp" />
+    <ClCompile Include="XGlueGameTradeFunction.cpp" />
+    <ClCompile Include="XGlueDebugFunction.cpp" />
+    <ClCompile Include="XGlueFunctions.cpp" />
+    <ClCompile Include="XGlueGame.cpp" />
+    <ClCompile Include="XGlueGame_GuildStorage.cpp" />
+    <ClCompile Include="XGlueGame_Storage.cpp" />
+    <ClCompile Include="XGlueGameOption.cpp" />
+    <ClCompile Include="XGlueOption.cpp" />
+    <ClCompile Include="XGatherMSG.cpp" />
+    <ClCompile Include="XUISystem.cpp" />
+    <ClCompile Include="Mint4Game.cpp" />
+    <ClCompile Include="..\MDK\Mint3.2\Util\Mint4Null.cpp" />
+    <ClCompile Include="..\MDK\Mint3.2\Util\Mint4R3.cpp" />
+    <ClCompile Include="XColorPallete.cpp" />
+    <ClCompile Include="XCommandLogFrm.cpp" />
+    <ClCompile Include="XLoadingPanel.cpp" />
+    <ClCompile Include="XLuaLogFrm.cpp" />
+    <ClCompile Include="XMintLoader.cpp" />
+    <ClCompile Include="XMintScriptDeclarer.cpp" />
+    <ClCompile Include="XMsgBoxListener.cpp" />
+    <ClCompile Include="XNarrationLabel.cpp" />
+    <ClCompile Include="XScreenFader.cpp" />
+    <ClCompile Include="XTalentAvailable.cpp" />
+    <ClCompile Include="XUIBalloonTextBox.cpp" />
+    <ClCompile Include="XUIBuffViewer.cpp" />
+    <ClCompile Include="XUIChattingBox.cpp" />
+    <ClCompile Include="XUIControlKey.cpp" />
+    <ClCompile Include="XUICustomLook.cpp" />
+    <ClCompile Include="XUIEquippedItemSlot.cpp" />
+    <ClCompile Include="XUIFadeBox.cpp" />
+    <ClCompile Include="XUIFieldMap.cpp" />
+    <ClCompile Include="XUIGauge.cpp" />
+    <ClCompile Include="XUIHDRMonitor.cpp" />
+    <ClCompile Include="XUIJournalIndicator.cpp" />
+    <ClCompile Include="XUIKeyMonitor.cpp" />
+    <ClCompile Include="XUIMapViewer.cpp" />
+    <ClCompile Include="XUIMiniMap.cpp" />
+    <ClCompile Include="XUIPaletteSlot.cpp" />
+    <ClCompile Include="XUIPresentationBox.cpp" />
+    <ClCompile Include="XUITalentSlot.cpp" />
+    <ClCompile Include="XUITray.cpp" />
+    <ClCompile Include="XUIVideo.cpp" />
+    <ClCompile Include="XWeaponBindingMenu.cpp" />
+    <ClCompile Include="XChatCmdLoader.cpp" />
+    <ClCompile Include="XChatCmds.cpp" />
+    <ClCompile Include="XConsoleCmds.cpp" />
+    <ClCompile Include="XCrossHair.cpp" />
+    <ClCompile Include="XDebugScreenDialog.cpp" />
+    <ClCompile Include="XMiniHpBar.cpp" />
+    <ClCompile Include="XOnScreenDialog.cpp" />
+    <ClCompile Include="XScreenEffectManager.cpp" />
+    <ClCompile Include="XCaptionMgr.cpp" />
+    <ClCompile Include="XCharacterCaption.cpp" />
+    <ClCompile Include="XDamageCaptionDraw.cpp" />
+    <ClCompile Include="XExpCaption.cpp" />
+    <ClCompile Include="XDebugCategoryFrm.cpp" />
+    <ClCompile Include="XDebugCollisionFrm.cpp" />
+    <ClCompile Include="XDebugCombat.cpp" />
+    <ClCompile Include="XDebugDashBoard.cpp" />
+    <ClCompile Include="XDebugFPSFrm.cpp" />
+    <ClCompile Include="XDebugLootFrm.cpp" />
+    <ClCompile Include="XDebugMovableFrm.cpp" />
+    <ClCompile Include="XDebugNPCLogFrm.cpp" />
+    <ClCompile Include="XDebugNPCMonitor.cpp" />
+    <ClCompile Include="XDebugObjListFrm.cpp" />
+    <ClCompile Include="XDebugRenderGraph.cpp" />
+    <ClCompile Include="XDebugSoundFrm.cpp" />
+    <ClCompile Include="XHelpFrm.cpp" />
+    <ClCompile Include="XMLogFrm.cpp" />
+    <ClCompile Include="XCursor.cpp" />
+    <ClCompile Include="XCursorSmartReleaser.cpp" />
+    <ClCompile Include="XCursorSmartShower.cpp" />
+    <ClCompile Include="XCommandTable.cpp" />
+    <ClCompile Include="XCmdHandler_Action.cpp" />
+    <ClCompile Include="XCmdHandler_BattleArena.cpp" />
+    <ClCompile Include="XCmdHandler_Char.cpp" />
+    <ClCompile Include="XCmdHandler_ChatChannel.cpp" />
+    <ClCompile Include="XCmdHandler_Craft.cpp" />
+    <ClCompile Include="XCmdHandler_CutScene.cpp" />
+    <ClCompile Include="XCmdHandler_Duel.cpp" />
+    <ClCompile Include="XCmdHandler_Enchant.cpp" />
+    <ClCompile Include="XCmdHandler_Faction.cpp" />
+    <ClCompile Include="XCmdHandler_Fatigue.cpp" />
+    <ClCompile Include="XCmdHandler_Field.cpp" />
+    <ClCompile Include="XCmdHandler_GameStart.cpp" />
+    <ClCompile Include="XCmdHandler_Global.cpp" />
+    <ClCompile Include="XCmdHandler_GM.cpp" />
+    <ClCompile Include="XCmdHandler_Guild.cpp" />
+    <ClCompile Include="XCmdHandler_Inn.cpp" />
+    <ClCompile Include="XCmdHandler_Interaction.cpp" />
+    <ClCompile Include="XCmdHandler_Item.cpp" />
+    <ClCompile Include="XCmdHandler_Local.cpp" />
+    <ClCompile Include="XCmdHandler_LoginServer.cpp" />
+    <ClCompile Include="XCmdHandler_Loot.cpp" />
+    <ClCompile Include="XCmdHandler_Mail.cpp" />
+    <ClCompile Include="XCmdHandler_Map.cpp" />
+    <ClCompile Include="XCmdHandler_MoveServer.cpp" />
+    <ClCompile Include="XCmdHandler_Msg.cpp" />
+    <ClCompile Include="XCmdHandler_Net.cpp" />
+    <ClCompile Include="XCmdHandler_NPCAction.cpp" />
+    <ClCompile Include="XCmdHandler_NPCShop.cpp" />
+    <ClCompile Include="XCmdHandler_Palette.cpp" />
+    <ClCompile Include="XCmdHandler_Party.cpp" />
+    <ClCompile Include="XCmdHandler_Quest.cpp" />
+    <ClCompile Include="XCmdHandler_QuestPVP.cpp" />
+    <ClCompile Include="XCmdHandler_Soul.cpp" />
+    <ClCompile Include="XCmdHandler_Storage.cpp" />
+    <ClCompile Include="XCmdHandler_Talent.cpp" />
+    <ClCompile Include="XCmdHandler_Trade.cpp" />
+    <ClCompile Include="XCmdHandler_Training.cpp" />
+    <ClCompile Include="XCmdHandlerGroup.cpp" />
+    <ClCompile Include="XCmdParam_LoginServer.cpp" />
+    <ClCompile Include="XConnectionManager.cpp" />
+    <ClCompile Include="XNetClient.cpp" />
+    <ClCompile Include="XNetDebuger.cpp" />
+    <ClCompile Include="XNetwork.cpp" />
+    <ClCompile Include="XRequestCommandFilter.cpp" />
+    <ClCompile Include="XWhoIsRequester.cpp" />
+    <ClCompile Include="XActionKeyDef.cpp" />
+    <ClCompile Include="XGameInput.cpp" />
+    <ClCompile Include="XKeyBuffer.cpp" />
+    <ClCompile Include="XKeyMapTable.cpp" />
+    <ClCompile Include="XAutoSoundChecker.cpp" />
+    <ClCompile Include="XRealSound.cpp" />
+    <ClCompile Include="XRealSoundLoader.cpp" />
+    <ClCompile Include="XSoundField.cpp" />
+    <ClCompile Include="XSoundHelper.cpp" />
+    <ClCompile Include="XSoundLootItem.cpp" />
+    <ClCompile Include="XSoundNonPlayer.cpp" />
+    <ClCompile Include="XSoundResMgr.cpp" />
+    <ClCompile Include="XCollisionTree.cpp" />
+    <ClCompile Include="XFieldChanger.cpp" />
+    <ClCompile Include="XFieldInfoBuilder.cpp" />
+    <ClCompile Include="XWorld.cpp" />
+    <ClCompile Include="XWorldChanger.cpp" />
+    <ClCompile Include="XWorldEnv.cpp" />
+    <ClCompile Include="XZone.cpp" />
+    <ClCompile Include="XCollision.cpp" />
+    <ClCompile Include="XModuleMessageQueue.cpp" />
+    <ClCompile Include="XModuleUI.cpp" />
+    <ClCompile Include="XNPCIcon.cpp" />
+    <ClCompile Include="XTargetIndicator.cpp" />
+    <ClCompile Include="XActionDie.cpp" />
+    <ClCompile Include="XAnimationEventHandler.cpp" />
+    <ClCompile Include="XHitFrameFreezer.cpp" />
+    <ClCompile Include="XModuleAction.cpp" />
+    <ClCompile Include="XMotionFactorHelper.cpp" />
+    <ClCompile Include="XEntityDirectionInterpolator.cpp" />
+    <ClCompile Include="XModuleEntity.cpp" />
+    <ClCompile Include="XGameTransformControllerManager.cpp" />
+    <ClCompile Include="XCharacterSerializer.cpp" />
+    <ClCompile Include="XCharacterSerializeStrategy.cpp" />
+    <ClCompile Include="XEntityFader.cpp" />
+    <ClCompile Include="XNPCSerializeStrategy.cpp" />
+    <ClCompile Include="XPlayerSerializeStrategy.cpp" />
+    <ClCompile Include="XArcheryTalent.cpp" />
+    <ClCompile Include="XExtraActiveTalent.cpp" />
+    <ClCompile Include="XGuardTalent.cpp" />
+    <ClCompile Include="XItemTalent.cpp" />
+    <ClCompile Include="XMagicTalent.cpp" />
+    <ClCompile Include="XMeleeTalent.cpp" />
+    <ClCompile Include="XModuleTalent.cpp" />
+    <ClCompile Include="XTalent.cpp" />
+    <ClCompile Include="XTalentEffectMgr.cpp" />
+    <ClCompile Include="XTalentEvent.cpp" />
+    <ClCompile Include="XTalentHelper.cpp" />
+    <ClCompile Include="XTalentHitParam.cpp" />
+    <ClCompile Include="XTarget.cpp" />
+    <ClCompile Include="XTargetCollisionBox.cpp" />
+    <ClCompile Include="XTargetGround.cpp" />
+    <ClCompile Include="XTargetLine.cpp" />
+    <ClCompile Include="XTargetSticky.cpp" />
+    <ClCompile Include="XModEffector.cpp" />
+    <ClCompile Include="XModuleMovable.cpp" />
+    <ClCompile Include="XMovableDebugger.cpp" />
+    <ClCompile Include="XMovableFactor.cpp" />
+    <ClCompile Include="XMovableProcInterpolation.cpp" />
+    <ClCompile Include="XMovableProcObject.cpp" />
+    <ClCompile Include="XMovableProcObjectChecker.cpp" />
+    <ClCompile Include="XMovableProcTerrain.cpp" />
+    <ClCompile Include="XMovableProcTerrainNPC.cpp" />
+    <ClCompile Include="XMovableProcThrow.cpp" />
+    <ClCompile Include="XMovableProcWater.cpp" />
+    <ClCompile Include="XModuleNetControl.cpp" />
+    <ClCompile Include="XNetActionGesture.cpp" />
+    <ClCompile Include="XNetActionGrappled.cpp" />
+    <ClCompile Include="XNetActionGuard.cpp" />
+    <ClCompile Include="XNetActionHit.cpp" />
+    <ClCompile Include="XNetActionSit.cpp" />
+    <ClCompile Include="XNetActionState.cpp" />
+    <ClCompile Include="XNetActionSwallowed.cpp" />
+    <ClCompile Include="XNetActionTalent.cpp" />
+    <ClCompile Include="XControlCmd.cpp" />
+    <ClCompile Include="XModuleNonControl.cpp" />
+    <ClCompile Include="XNPCAligner.cpp" />
+    <ClCompile Include="XNPCActionHit.cpp" />
+    <ClCompile Include="XNPCActionMove.cpp" />
+    <ClCompile Include="XNPCActionNA.cpp" />
+    <ClCompile Include="XNPCActionState.cpp" />
+    <ClCompile Include="XNPCActionTalent.cpp" />
+    <ClCompile Include="XBPartWeaponController.cpp" />
+    <ClCompile Include="XChallengerQuestExitChecker.cpp" />
+    <ClCompile Include="XKeyTransition.cpp" />
+    <ClCompile Include="XMapSignAreaChecker.cpp" />
+    <ClCompile Include="XModuleMyControl.cpp" />
+    <ClCompile Include="XMyCharacterAlphaMgr.cpp" />
+    <ClCompile Include="XMyHitController.cpp" />
+    <ClCompile Include="XPvPAreaChecker.cpp" />
+    <ClCompile Include="XRestrictedAreaChecker.cpp" />
+    <ClCompile Include="XSpecialActionTransition.cpp" />
+    <ClCompile Include="XCombo.cpp" />
+    <ClCompile Include="XMyActionBow.cpp" />
+    <ClCompile Include="XMyActionChangeChannel.cpp" />
+    <ClCompile Include="XMyActionChangeState.cpp" />
+    <ClCompile Include="XMyActionDeactivative.cpp" />
+    <ClCompile Include="XMyActionDie.cpp" />
+    <ClCompile Include="XMyActionDieTransChecker.cpp" />
+    <ClCompile Include="XMyActionDye.cpp" />
+    <ClCompile Include="XMyActionEnchant.cpp" />
+    <ClCompile Include="XMyActionFalling.cpp" />
+    <ClCompile Include="XMyActionGesture.cpp" />
+    <ClCompile Include="XMyActionGrappled.cpp" />
+    <ClCompile Include="XMyActionGuard.cpp" />
+    <ClCompile Include="XMyActionHit.cpp" />
+    <ClCompile Include="XMyActionHold.cpp" />
+    <ClCompile Include="XMyActionIdle.cpp" />
+    <ClCompile Include="XMyActionJump.cpp" />
+    <ClCompile Include="XMyActionLootingItem.cpp" />
+    <ClCompile Include="XMyActionMapObj.cpp" />
+    <ClCompile Include="XMyActionNormalAttack.cpp" />
+    <ClCompile Include="XMyActionNPCInteraction.cpp" />
+    <ClCompile Include="XMyActionQuestInteraction.cpp" />
+    <ClCompile Include="XMyActionRebirth.cpp" />
+    <ClCompile Include="XMyActionSit.cpp" />
+    <ClCompile Include="XMyActionState.cpp" />
+    <ClCompile Include="XMyActionSwallowed.cpp" />
+    <ClCompile Include="XMyActionSwitchingWeapon.cpp" />
+    <ClCompile Include="XMyActionUseItem.cpp" />
+    <ClCompile Include="XMyActionUseTalent.cpp" />
+    <ClCompile Include="XFeedbackInteractor.cpp" />
+    <ClCompile Include="XInteraction.cpp" />
+    <ClCompile Include="XInteractionHelper.cpp" />
+    <ClCompile Include="XInteractor.cpp" />
+    <ClCompile Include="XMouseBase.cpp" />
+    <ClCompile Include="XMouseInteractor.cpp" />
+    <ClCompile Include="XMouseMove.cpp" />
+    <ClCompile Include="XDeathController.cpp" />
+    <ClCompile Include="XGrappledController.cpp" />
+    <ClCompile Include="XModuleActorControl.cpp" />
+    <ClCompile Include="XSwallowedController.cpp" />
+    <ClCompile Include="XCutScenePlayerAligner.cpp" />
+    <ClCompile Include="XModuleCutSceneControl.cpp" />
+    <ClCompile Include="XCutScenePlayerActionNA.cpp" />
+    <ClCompile Include="XCutScenePlayerActionState.cpp" />
+    <ClCompile Include="XCutScenePlayerActionTalent.cpp" />
+    <ClCompile Include="XModulePost.cpp" />
+    <ClCompile Include="XDuelFightChecker.cpp" />
+    <ClCompile Include="XHitEffectPosCalculator.cpp" />
+    <ClCompile Include="XModuleCollision.cpp" />
+    <ClCompile Include="XMoveCollision.cpp" />
+    <ClCompile Include="XMoveCollisionDebug.cpp" />
+    <ClCompile Include="XObjectCollisionDebug.cpp" />
+    <ClCompile Include="XModuleMotion.cpp" />
+    <ClCompile Include="XMotionHelper.cpp" />
+    <ClCompile Include="XMotionIdleMemory.cpp" />
+    <ClCompile Include="XMotionLogic.cpp" />
+    <ClCompile Include="XMotionTimeModifier.cpp" />
+    <ClCompile Include="XUpperMotionLogic.cpp" />
+    <ClCompile Include="XUpperMotionTimeModifier.cpp" />
+    <ClCompile Include="XMotionTrigger_Checker.cpp" />
+    <ClCompile Include="XMotionTrigger_Execute.cpp" />
+    <ClCompile Include="XMotionTrigger_Executor.cpp" />
+    <ClCompile Include="XMotionTrigger_If.cpp" />
+    <ClCompile Include="XMotionEventListener__NPC_IDLE.cpp" />
+    <ClCompile Include="XCaptionEffect.cpp" />
+    <ClCompile Include="XChangeNPCColor.cpp" />
+    <ClCompile Include="XCheckTargetableEffect.cpp" />
+    <ClCompile Include="XHeadIcon.cpp" />
+    <ClCompile Include="XModuleEffect.cpp" />
+    <ClCompile Include="XModuleEffectReserve.cpp" />
+    <ClCompile Include="XBuffAttribute.cpp" />
+    <ClCompile Include="XModuleBuff.cpp" />
+    <ClCompile Include="XModuleSound.cpp" />
+    <ClCompile Include="XModuleBaseData.cpp" />
+    <ClCompile Include="XModuleNPCData.cpp" />
+    <ClCompile Include="XModulePlayerData.cpp" />
+    <ClCompile Include="XModuleBackgroundWork.cpp" />
+    <ClCompile Include="XBPartActorManager.cpp" />
+    <ClCompile Include="XModuleBParts.cpp" />
+    <ClCompile Include="XEvent.cpp" />
+    <ClCompile Include="XModule.cpp" />
+    <ClCompile Include="XMagicArea.cpp" />
+    <ClCompile Include="XObject.cpp" />
+    <ClCompile Include="XObjectManager.cpp" />
+    <ClCompile Include="XProjectile.cpp" />
+    <ClCompile Include="XProjectileController.cpp" />
+    <ClCompile Include="XSoulObject.cpp" />
+    <ClCompile Include="XSwordTrail.cpp" />
+    <ClCompile Include="XActor.cpp" />
+    <ClCompile Include="XBPartNonPlayer.cpp" />
+    <ClCompile Include="XDuel.cpp" />
+    <ClCompile Include="XFeedbackObject.cpp" />
+    <ClCompile Include="XMyPlayer.cpp" />
+    <ClCompile Include="XNetPlayer.cpp" />
+    <ClCompile Include="XNonPlayer.cpp" />
+    <ClCompile Include="XPlayer.cpp" />
+    <ClCompile Include="XPlayerFaction.cpp" />
+    <ClCompile Include="XPlayerPVP.cpp" />
+    <ClCompile Include="XBuffEffect.cpp" />
+    <ClCompile Include="XCameraEffect.cpp" />
+    <ClCompile Include="XDecalEffect.cpp" />
+    <ClCompile Include="XEffect.cpp" />
+    <ClCompile Include="XEffectInvoker.cpp" />
+    <ClCompile Include="XEffectManager.cpp" />
+    <ClCompile Include="XEffectPostEffect.cpp" />
+    <ClCompile Include="XEffectTrace.cpp" />
+    <ClCompile Include="XEffectWaitActorLoadingComplete.cpp" />
+    <ClCompile Include="XHeadEffect.cpp" />
+    <ClCompile Include="XHitEffectSelecter.cpp" />
+    <ClCompile Include="XInteractionEffect.cpp" />
+    <ClCompile Include="XLightEffect.cpp" />
+    <ClCompile Include="XMagicAreaEffect.cpp" />
+    <ClCompile Include="XNoiseFadeEffect.cpp" />
+    <ClCompile Include="XNPCIConEffect.cpp" />
+    <ClCompile Include="XPEEdgeMgr.cpp" />
+    <ClCompile Include="XProjectileEffect.cpp" />
+    <ClCompile Include="XSelfIlluminationEffect.cpp" />
+    <ClCompile Include="XSwordTrailEffectController.cpp" />
+    <ClCompile Include="XTalentEffect.cpp" />
+    <ClCompile Include="XTalentEffectHitCapsule.cpp" />
+    <ClCompile Include="XTalentEffectPreLoader.cpp" />
+    <ClCompile Include="XWeaponEffect.cpp" />
+    <ClCompile Include="XBaseCameraSceneNode.cpp" />
+    <ClCompile Include="XBaseGameCamera.cpp" />
+    <ClCompile Include="XCameraControllerGroup.cpp" />
+    <ClCompile Include="XCameraGroundTarget.cpp" />
+    <ClCompile Include="XCameraHelper.cpp" />
+    <ClCompile Include="XCameraInteraction.cpp" />
+    <ClCompile Include="XCameraLock.cpp" />
+    <ClCompile Include="XCameraManager.cpp" />
+    <ClCompile Include="XFreeCamTracer.cpp" />
+    <ClCompile Include="XCameraBackViewController.cpp" />
+    <ClCompile Include="XCameraCutSceneController.cpp" />
+    <ClCompile Include="XCameraEngineDebugController.cpp" />
+    <ClCompile Include="XCameraFreeLookController.cpp" />
+    <ClCompile Include="XCameraGrappledController.cpp" />
+    <ClCompile Include="XCameraPVPFreeViewController.cpp" />
+    <ClCompile Include="XCameraReplayBackViewController.cpp" />
+    <ClCompile Include="XCameraSceneNodeController.cpp" />
+    <ClCompile Include="XAccountInfo.cpp" />
+    <ClCompile Include="XCraftableRecipeInfo.cpp" />
+    <ClCompile Include="XDialogTextInfoMgr.cpp" />
+    <ClCompile Include="XFieldInfo.cpp" />
+    <ClCompile Include="XFieldInfoHelper.cpp" />
+    <ClCompile Include="XGameEffectInfo.cpp" />
+    <ClCompile Include="XHistory.cpp" />
+    <ClCompile Include="XInnInfo.cpp" />
+    <ClCompile Include="XInnInfoMgr.cpp" />
+    <ClCompile Include="XItem_DroperInfoMgr.cpp" />
+    <ClCompile Include="XItem_QuestRewarderInfoMgr.cpp" />
+    <ClCompile Include="XItem_RecipeProductInfoMgr.cpp" />
+    <ClCompile Include="XItemRelatedNPCInfo.cpp" />
+    <ClCompile Include="XItemRelatedNPCInfoMgr.cpp" />
+    <ClCompile Include="XModelAnimationInfo.cpp" />
+    <ClCompile Include="XMyRecipeInfo.cpp" />
+    <ClCompile Include="XQuestInfo.cpp" />
+    <ClCompile Include="XRecipeInfo.cpp" />
+    <ClCompile Include="XRecipeInfoMgr.cpp" />
+    <ClCompile Include="XRecipeNPCInfo.cpp" />
+    <ClCompile Include="XRecipeNPCInfoMgr.cpp" />
+    <ClCompile Include="XTextureMtInfo.cpp" />
+    <ClCompile Include="XConditionHelper.cpp" />
+    <ClCompile Include="XConditionInfo.cpp" />
+    <ClCompile Include="XConditionsInfo.cpp" />
+    <ClCompile Include="XConditionsInfoMgr.cpp" />
+    <ClCompile Include="XConditionStringMaker.cpp" />
+    <ClCompile Include="XBattleArena.cpp" />
+    <ClCompile Include="XFeedback.cpp" />
+    <ClCompile Include="XFeedbackFetcher.cpp" />
+    <ClCompile Include="XFeedbackSender.cpp" />
+    <ClCompile Include="XFeedbackSystem.cpp" />
+    <ClCompile Include="XFactionInfo.cpp" />
+    <ClCompile Include="XFactionInfoMgr.cpp" />
+    <ClCompile Include="XGuild.cpp" />
+    <ClCompile Include="XGuildMember.cpp" />
+    <ClCompile Include="XMyTalent.cpp" />
+    <ClCompile Include="XEquipmentSlot.cpp" />
+    <ClCompile Include="XItemContainer.cpp" />
+    <ClCompile Include="XItemHelper.cpp" />
+    <ClCompile Include="XItemManager.cpp" />
+    <ClCompile Include="XMyGuildStorage.cpp" />
+    <ClCompile Include="XMyInventory.cpp" />
+    <ClCompile Include="XMyStorage.cpp" />
+    <ClCompile Include="XTradeContents.cpp" />
+    <ClCompile Include="XParty.cpp" />
+    <ClCompile Include="XPlayerQuest.cpp" />
+    <ClCompile Include="XPvPAreaLogic.cpp" />
+    <ClCompile Include="XCutSceneController.cpp" />
+    <ClCompile Include="XCutSceneFieldIntroMgr.cpp" />
+    <ClCompile Include="XCutSceneGameEntity.cpp" />
+    <ClCompile Include="XCutScenePlayer.cpp" />
+    <ClCompile Include="XCutSceneState.cpp" />
+    <ClCompile Include="XCutSceneWorldResourceMgr.cpp" />
+    <ClCompile Include="XCutSceneContent.cpp" />
+    <ClCompile Include="XCutSceneObject.cpp" />
+    <ClCompile Include="XCutSceneObjectController.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerAnimation.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerBGM.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerCaption.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerDOF.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerEffect.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerEnv.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerFade.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerKeyEvent.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerLetterBox.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerMove.cpp" />
+    <ClCompile Include="XCutSceneObjectControllerTalent.cpp" />
+    <ClCompile Include="XLocalSensor.cpp" />
+    <ClCompile Include="XQuestSensor.cpp" />
+    <ClCompile Include="XSensor.cpp" />
+    <ClCompile Include="XSensorController.cpp" />
+    <ClCompile Include="XSensorInfo.cpp" />
+    <ClCompile Include="XSensorManager.cpp" />
+    <ClCompile Include="XAuctionMsgHandler.cpp" />
+    <ClCompile Include="XChannelMsgHandler.cpp" />
+    <ClCompile Include="XGuildMsgHandler.cpp" />
+    <ClCompile Include="XPartyMsgHandler.cpp" />
+    <ClCompile Include="XSayMsgHandler.cpp" />
+    <ClCompile Include="XShoutMsgHandler.cpp" />
+    <ClCompile Include="XWhisperBackMsgHandler.cpp" />
+    <ClCompile Include="XWhisperMsgHandler.cpp" />
+    <ClCompile Include="XAnnounceMsgHandler.cpp" />
+    <ClCompile Include="XFieldMsgHandler.cpp" />
+    <ClCompile Include="XGlobalMsgHandler.cpp" />
+    <ClCompile Include="XNarrationMsgHandler.cpp" />
+    <ClCompile Include="XShoutFakeMsgHandler.cpp" />
+    <ClCompile Include="XMsgCommandFacade.cpp" />
+    <ClCompile Include="XMsgHandler.cpp" />
+    <ClCompile Include="XAdviceMsgHandler.cpp" />
+    <ClCompile Include="XNoticeMsgHandler.cpp" />
+    <ClCompile Include="XSystemMsgHandler.cpp" />
+    <ClCompile Include="XChatChannel.cpp" />
+    <ClCompile Include="XChatChannelManager.cpp" />
+    <ClCompile Include="XGuideMsg.cpp" />
+    <ClCompile Include="XMail.cpp" />
+    <ClCompile Include="XMailbox.cpp" />
+    <ClCompile Include="XDuelGestureChecker.cpp" />
+    <ClCompile Include="XWorldLocatorClient.cpp" />
+    <ClCompile Include="XScreenDebugger.cpp" />
+    <ClCompile Include="XApplicationConfig.cpp" />
+    <ClCompile Include="XArgumentsParser.cpp" />
+    <ClCompile Include="XBaseApplication.cpp" />
+    <ClCompile Include="XColorTable.cpp" />
+    <ClCompile Include="XGameInitializer.cpp" />
+    <ClCompile Include="XInputDevice.cpp" />
+    <ClCompile Include="XPhysX.cpp" />
+    <ClCompile Include="XScript.cpp" />
+    <ClCompile Include="XStrCmd.cpp" />
+    <ClCompile Include="XCrashReporter.cpp" />
+    <ClCompile Include="XHelp.cpp" />
+    <ClCompile Include="XInterpolation.cpp" />
+    <ClCompile Include="XMath.cpp" />
+    <ClCompile Include="XTimer.cpp" />
+    <ClCompile Include="XUtil.cpp" />
+    <ClCompile Include="XRenderHelper.cpp" />
+    <ClCompile Include="XSceneManager.cpp" />
+    <ClCompile Include="XCylinder.cpp" />
+    <ClCompile Include="XActorLoader.cpp" />
+    <ClCompile Include="XDebugInfoBuilder.cpp" />
+    <ClCompile Include="XSTLUtil.cpp" />
+    <ClCompile Include="XSystemInfoUtil.cpp" />
+    <ClCompile Include="MockAnimationController.cpp" />
+    <ClCompile Include="MockCharacter.cpp" />
+    <ClCompile Include="MockInteractionEffect.cpp" />
+    <ClCompile Include="MockNetClient.cpp" />
+    <ClCompile Include="MockWorld.cpp" />
+    <ClCompile Include="XBaseUnitTestHelper.cpp" />
+    <ClCompile Include="XUnitTestUtil.cpp" />
+    <ClCompile Include="XAnimationEventValidator.cpp" />
+    <ClCompile Include="XIsAnimationValidator.cpp" />
+    <ClCompile Include="XItemValidator.cpp" />
+    <ClCompile Include="XNPCInfoValidator.cpp" />
+    <ClCompile Include="XResourceValidator.cpp" />
+    <ClCompile Include="XTalentInfoValidator.cpp" />
+    <ClCompile Include="XValidateLogger.cpp" />
+    <ClCompile Include="..\..\SDK\bandi_video_library\v2.1.1\source\BandiVideoLibrary.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish_buyer|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish_korea|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="XBandiCapturer.cpp" />
+    <ClCompile Include="XBandiVideoPlayer.cpp" />
+    <ClCompile Include="XBandiVideoTexture.cpp" />
+    <ClCompile Include="XAntiHack.cpp" />
+    <ClCompile Include="XAntiHackModuleGameGuardKor.cpp" />
+    <ClCompile Include="XCheckSum.cpp" />
+    <ClCompile Include="XCheckSumEncrypt.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_duck|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_ed|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_duck|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_ed|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish_buyer|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish_korea|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release_duck|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="XAppErrorCollector.cpp" />
+    <ClCompile Include="XEffectPreLoaderResourceMgr.cpp" />
+    <ClCompile Include="XPath.cpp" />
+    <ClCompile Include="XYouthSelfRegulation.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XCalculator.h" />
+    <ClInclude Include="XConfig.h" />
+    <ClInclude Include="XController.h" />
+    <ClInclude Include="XControlNetCmdState.h" />
+    <ClInclude Include="XGamePlayController.h" />
+    <ClInclude Include="XGameStateSwitchResourceMgr.h" />
+    <ClInclude Include="XMemPoolScopeReleaser.h" />
+    <ClInclude Include="XMMCode.h" />
+    <ClInclude Include="XMMCodeProc.h" />
+    <ClInclude Include="XNaming.h" />
+    <ClInclude Include="XPath.h" />
+    <ClInclude Include="XState.h" />
+    <ClInclude Include="XSystem.h" />
+    <ClInclude Include="XBattleArenaInfo.h" />
+    <ClInclude Include="XBuffContainer.h" />
+    <ClInclude Include="XDialogInfo.h" />
+    <ClInclude Include="XEnemyInfo.h" />
+    <ClInclude Include="XGlobal.h" />
+    <ClInclude Include="XGlobalInstance.h" />
+    <ClInclude Include="XGlobalVar.h" />
+    <ClInclude Include="XGlobalVar_Char.h" />
+    <ClInclude Include="XGlobalVar_Debug.h" />
+    <ClInclude Include="XGlobalVar_Game.h" />
+    <ClInclude Include="XGlobalVar_MyInfo.h" />
+    <ClInclude Include="XGlobalVar_Network.h" />
+    <ClInclude Include="XGlobalVar_Temp.h" />
+    <ClInclude Include="XGlobalVar_World.h" />
+    <ClInclude Include="XInteractionInfo.h" />
+    <ClInclude Include="XNPCInteractionInfo.h" />
+    <ClInclude Include="XNPCShopInfo.h" />
+    <ClInclude Include="XPvPAreaInfo.h" />
+    <ClInclude Include="XTargetActorInfo.h" />
+    <ClInclude Include="XGameInterface.h" />
+    <ClInclude Include="XGameInterfaceOption.h" />
+    <ClInclude Include="XGame.h" />
+    <ClInclude Include="XGamePlayState.h" />
+    <ClInclude Include="XGameState.h" />
+    <ClInclude Include="XGameStateMgr.h" />
+    <ClInclude Include="XAlwaysResourceGrabber.h" />
+    <ClInclude Include="XCampaign.h" />
+    <ClInclude Include="XCharFrame.h" />
+    <ClInclude Include="XHelloWorldFrame.h" />
+    <ClInclude Include="XLoginFrame.h" />
+    <ClInclude Include="XMintDesignFrame.h" />
+    <ClInclude Include="XTestFrame.h" />
+    <ClInclude Include="XLoadingChecker.h" />
+    <ClInclude Include="XLoadingChecker_BackgroundWork.h" />
+    <ClInclude Include="XLoadingChecker_MyPlayer.h" />
+    <ClInclude Include="XLoadingChecker_Server.h" />
+    <ClInclude Include="XLoadingChecker_World.h" />
+    <ClInclude Include="XLoadingCompleter.h" />
+    <ClInclude Include="XLoadingFrame.h" />
+    <ClInclude Include="XLoadingMgr.h" />
+    <ClInclude Include="XLoadingStarter.h" />
+    <ClInclude Include="XTips.h" />
+    <ClInclude Include="XReplay.h" />
+    <ClInclude Include="XReplayAnalyzer.h" />
+    <ClInclude Include="XReplayAutoTest.h" />
+    <ClInclude Include="XReplayFrame.h" />
+    <ClInclude Include="XGameFrame.h" />
+    <ClInclude Include="XGameFrameHelper.h" />
+    <ClInclude Include="XGameFrameID.h" />
+    <ClInclude Include="XGameFrameManager.h" />
+    <ClInclude Include="XGameFrameUILoader.h" />
+    <ClInclude Include="XPlayFrame.h" />
+    <ClInclude Include="XPlayFrame_Debugger.h" />
+    <ClInclude Include="XScreenShotSaver.h" />
+    <ClInclude Include="XEngineDebugFrame.h" />
+    <ClInclude Include="XEngineDebugger.h" />
+    <ClInclude Include="XEngineDebugContext.h" />
+    <ClInclude Include="XEngineDebugContextCamera.h" />
+    <ClInclude Include="XEngineDebugContextDynamicActorNode.h" />
+    <ClInclude Include="XEngineDebugContextHit.h" />
+    <ClInclude Include="XEngineDebugContextRagDoll.h" />
+    <ClInclude Include="XEngineDebugContextStun.h" />
+    <ClInclude Include="XEngineDebugContextSwallowed.h" />
+    <ClInclude Include="XEngineDebugContextTalent.h" />
+    <ClInclude Include="XCommonFunction.h" />
+    <ClInclude Include="XGlueFunction.h" />
+    <ClInclude Include="XGlueCharEvent.h" />
+    <ClInclude Include="XGlueCutSceneEvent.h" />
+    <ClInclude Include="XGlueFieldEvent.h" />
+    <ClInclude Include="XGlueGameEvent.h" />
+    <ClInclude Include="XGlueCharFunction.h" />
+    <ClInclude Include="XGlueMyInfoFunction.h" />
+    <ClInclude Include="XGlueScreenEffectFunction.h" />
+    <ClInclude Include="XGlueUtilFunction.h" />
+    <ClInclude Include="XGlueGameCraftFunction.h" />
+    <ClInclude Include="XGlueGameDuelFunction.h" />
+    <ClInclude Include="XGlueGameFieldFunction.h" />
+    <ClInclude Include="XGlueGameFunction.h" />
+    <ClInclude Include="XGlueGameGuildFunction.h" />
+    <ClInclude Include="XGlueGameInteractionFunction.h" />
+    <ClInclude Include="XGlueGameItemFunction.h" />
+    <ClInclude Include="XGlueGameLootFunction.h" />
+    <ClInclude Include="XGlueGamePartyFunction.h" />
+    <ClInclude Include="XGlueGameQuestFunction.h" />
+    <ClInclude Include="XGlueGameRepairFunction.h" />
+    <ClInclude Include="XGlueGameTradeFunction.h" />
+    <ClInclude Include="XGlueDebugFunction.h" />
+    <ClInclude Include="XGlueFunctions.h" />
+    <ClInclude Include="XGlueGame.h" />
+    <ClInclude Include="XGlueGame_GuildStorage.h" />
+    <ClInclude Include="XGlueGame_Storage.h" />
+    <ClInclude Include="XGlueGameOption.h" />
+    <ClInclude Include="XGlueOption.h" />
+    <ClInclude Include="XGatherMSG.h" />
+    <ClInclude Include="XUISystem.h" />
+    <ClInclude Include="Mint4Game.h" />
+    <ClInclude Include="..\MDK\Mint3.2\Util\Mint4Null.h" />
+    <ClInclude Include="..\MDK\Mint3.2\Util\Mint4R3.h" />
+    <ClInclude Include="XColorPallete.h" />
+    <ClInclude Include="XCommandLogFrm.h" />
+    <ClInclude Include="XLoadingPanel.h" />
+    <ClInclude Include="XLuaLogFrm.h" />
+    <ClInclude Include="XMintLoader.h" />
+    <ClInclude Include="XMintScriptDeclarer.h" />
+    <ClInclude Include="XMsgBoxListener.h" />
+    <ClInclude Include="XNarrationLabel.h" />
+    <ClInclude Include="XScreenFader.h" />
+    <ClInclude Include="XTalentAvailable.h" />
+    <ClInclude Include="XUIBalloonTextBox.h" />
+    <ClInclude Include="XUIBuffViewer.h" />
+    <ClInclude Include="XUIChattingBox.h" />
+    <ClInclude Include="XUIControlKey.h" />
+    <ClInclude Include="XUICustomLook.h" />
+    <ClInclude Include="XUIEquippedItemSlot.h" />
+    <ClInclude Include="XUIFadeBox.h" />
+    <ClInclude Include="XUIFieldMap.h" />
+    <ClInclude Include="XUIGauge.h" />
+    <ClInclude Include="XUIHDRMonitor.h" />
+    <ClInclude Include="XUIJournalIndicator.h" />
+    <ClInclude Include="XUIKeyMonitor.h" />
+    <ClInclude Include="XUIMapViewer.h" />
+    <ClInclude Include="XUIMiniMap.h" />
+    <ClInclude Include="XUIPaletteSlot.h" />
+    <ClInclude Include="XUIPresentationBox.h" />
+    <ClInclude Include="XUITalentSlot.h" />
+    <ClInclude Include="XUITray.h" />
+    <ClInclude Include="XUIVideo.h" />
+    <ClInclude Include="XWeaponBindingMenu.h" />
+    <ClInclude Include="XWidgetNameDef.h" />
+    <ClInclude Include="XChatCmdID.h" />
+    <ClInclude Include="XChatCmdLoader.h" />
+    <ClInclude Include="XChatCmds.h" />
+    <ClInclude Include="XConsoleCmds.h" />
+    <ClInclude Include="XConsoleCmdsModifier.h" />
+    <ClInclude Include="XCrossHair.h" />
+    <ClInclude Include="XDebugScreenDialog.h" />
+    <ClInclude Include="XMiniHpBar.h" />
+    <ClInclude Include="XOnScreenDialog.h" />
+    <ClInclude Include="XScreenEffectManager.h" />
+    <ClInclude Include="XCaptionMgr.h" />
+    <ClInclude Include="XCharacterCaption.h" />
+    <ClInclude Include="XDamageCaptionDraw.h" />
+    <ClInclude Include="XExpCaption.h" />
+    <ClInclude Include="XDebugCategoryFrm.h" />
+    <ClInclude Include="XDebugCollisionFrm.h" />
+    <ClInclude Include="XDebugCombat.h" />
+    <ClInclude Include="XDebugDashBoard.h" />
+    <ClInclude Include="XDebugFPSFrm.h" />
+    <ClInclude Include="XDebugLootFrm.h" />
+    <ClInclude Include="XDebugMovableFrm.h" />
+    <ClInclude Include="XDebugNPCLogFrm.h" />
+    <ClInclude Include="XDebugNPCMonitor.h" />
+    <ClInclude Include="XDebugObjListFrm.h" />
+    <ClInclude Include="XDebugRenderGraph.h" />
+    <ClInclude Include="XDebugSoundFrm.h" />
+    <ClInclude Include="XHelpFrm.h" />
+    <ClInclude Include="XMLogFrm.h" />
+    <ClInclude Include="XCursor.h" />
+    <ClInclude Include="XCursorSmartReleaser.h" />
+    <ClInclude Include="XCursorSmartShower.h" />
+    <ClInclude Include="XCommandTable.h" />
+    <ClInclude Include="XPost_Action.h" />
+    <ClInclude Include="XPost_Channel.h" />
+    <ClInclude Include="XPost_Char.h" />
+    <ClInclude Include="XPost_ChatChannel.h" />
+    <ClInclude Include="XPost_Comm.h" />
+    <ClInclude Include="XPost_Craft.h" />
+    <ClInclude Include="XPost_Cutscene.h" />
+    <ClInclude Include="XPost_Duel.h" />
+    <ClInclude Include="XPost_Enchant.h" />
+    <ClInclude Include="XPost_GM.h" />
+    <ClInclude Include="XPost_Guild.h" />
+    <ClInclude Include="XPost_Inn.h" />
+    <ClInclude Include="XPost_Interaction.h" />
+    <ClInclude Include="XPost_Item.h" />
+    <ClInclude Include="XPost_Local.h" />
+    <ClInclude Include="XPost_Loot.h" />
+    <ClInclude Include="XPost_Mail.h" />
+    <ClInclude Include="XPost_Map.h" />
+    <ClInclude Include="XPost_Msg.h" />
+    <ClInclude Include="XPost_NPCShop.h" />
+    <ClInclude Include="XPost_Palette.h" />
+    <ClInclude Include="XPost_QPVP.h" />
+    <ClInclude Include="XPost_Quest.h" />
+    <ClInclude Include="XPost_Sensor.h" />
+    <ClInclude Include="XPost_Storage.h" />
+    <ClInclude Include="XPost_Trade.h" />
+    <ClInclude Include="XPost_Training.h" />
+    <ClInclude Include="XCmdHandler_Action.h" />
+    <ClInclude Include="XCmdHandler_BattleArena.h" />
+    <ClInclude Include="XCmdHandler_Char.h" />
+    <ClInclude Include="XCmdHandler_ChatChannel.h" />
+    <ClInclude Include="XCmdHandler_Craft.h" />
+    <ClInclude Include="XCmdHandler_CutScene.h" />
+    <ClInclude Include="XCmdHandler_Duel.h" />
+    <ClInclude Include="XCmdHandler_Enchant.h" />
+    <ClInclude Include="XCmdHandler_Faction.h" />
+    <ClInclude Include="XCmdHandler_Fatigue.h" />
+    <ClInclude Include="XCmdHandler_Field.h" />
+    <ClInclude Include="XCmdHandler_GameStart.h" />
+    <ClInclude Include="XCmdHandler_Global.h" />
+    <ClInclude Include="XCmdHandler_GM.h" />
+    <ClInclude Include="XCmdHandler_Guild.h" />
+    <ClInclude Include="XCmdHandler_Inn.h" />
+    <ClInclude Include="XCmdHandler_Interaction.h" />
+    <ClInclude Include="XCmdHandler_Item.h" />
+    <ClInclude Include="XCmdHandler_Local.h" />
+    <ClInclude Include="XCmdHandler_LoginServer.h" />
+    <ClInclude Include="XCmdHandler_Loot.h" />
+    <ClInclude Include="XCmdHandler_Mail.h" />
+    <ClInclude Include="XCmdHandler_Map.h" />
+    <ClInclude Include="XCmdHandler_MoveServer.h" />
+    <ClInclude Include="XCmdHandler_Msg.h" />
+    <ClInclude Include="XCmdHandler_Net.h" />
+    <ClInclude Include="XCmdHandler_NPCAction.h" />
+    <ClInclude Include="XCmdHandler_NPCShop.h" />
+    <ClInclude Include="XCmdHandler_Palette.h" />
+    <ClInclude Include="XCmdHandler_Party.h" />
+    <ClInclude Include="XCmdHandler_Quest.h" />
+    <ClInclude Include="XCmdHandler_QuestPVP.h" />
+    <ClInclude Include="XCmdHandler_Soul.h" />
+    <ClInclude Include="XCmdHandler_Storage.h" />
+    <ClInclude Include="XCmdHandler_Talent.h" />
+    <ClInclude Include="XCmdHandler_Trade.h" />
+    <ClInclude Include="XCmdHandler_Training.h" />
+    <ClInclude Include="XCmdHandlerGroup.h" />
+    <ClInclude Include="XCmdParam.h" />
+    <ClInclude Include="XCmdParam_LoginServer.h" />
+    <ClInclude Include="XConnectionManager.h" />
+    <ClInclude Include="XNetClient.h" />
+    <ClInclude Include="XNetDebuger.h" />
+    <ClInclude Include="XNetwork.h" />
+    <ClInclude Include="XRequestCommandFilter.h" />
+    <ClInclude Include="XWhoISRequester.h" />
+    <ClInclude Include="XActionKeyDef.h" />
+    <ClInclude Include="XGameInput.h" />
+    <ClInclude Include="XKeyBuffer.h" />
+    <ClInclude Include="XKeyCodes.h" />
+    <ClInclude Include="XKeyMapTable.h" />
+    <ClInclude Include="XVirtualKeyDef.h" />
+    <ClInclude Include="XAutoSoundChecker.h" />
+    <ClInclude Include="XRealSound.h" />
+    <ClInclude Include="XRealSoundLoader.h" />
+    <ClInclude Include="XSoundField.h" />
+    <ClInclude Include="XSoundHelper.h" />
+    <ClInclude Include="XSoundLootItem.h" />
+    <ClInclude Include="XSoundNonPlayer.h" />
+    <ClInclude Include="XSoundResMgr.h" />
+    <ClInclude Include="XCollisionTree.h" />
+    <ClInclude Include="XFieldChanger.h" />
+    <ClInclude Include="XFieldInfoBuilder.h" />
+    <ClInclude Include="XSceneNodeEnvModifier.h" />
+    <ClInclude Include="XWorld.h" />
+    <ClInclude Include="XWorldChanger.h" />
+    <ClInclude Include="XWorldEnv.h" />
+    <ClInclude Include="XZone.h" />
+    <ClInclude Include="XCollision.h" />
+    <ClInclude Include="XModuleMessageQueue.h" />
+    <ClInclude Include="XModuleUI.h" />
+    <ClInclude Include="XNPCIcon.h" />
+    <ClInclude Include="XTargetIndicator.h" />
+    <ClInclude Include="XActionDie.h" />
+    <ClInclude Include="XAnimationEventHandler.h" />
+    <ClInclude Include="XHitFrameFreezer.h" />
+    <ClInclude Include="XModuleAction.h" />
+    <ClInclude Include="XMotionFactorHelper.h" />
+    <ClInclude Include="XEntityDirectionInterpolator.h" />
+    <ClInclude Include="XModuleEntity.h" />
+    <ClInclude Include="XGameTransformControllerManager.h" />
+    <ClInclude Include="XCharacterSerializer.h" />
+    <ClInclude Include="XCharacterSerializeStrategy.h" />
+    <ClInclude Include="XEntityFader.h" />
+    <ClInclude Include="XNPCSerializeStrategy.h" />
+    <ClInclude Include="XPlayerSerializeStrategy.h" />
+    <ClInclude Include="XArcheryTalent.h" />
+    <ClInclude Include="XExtraActiveTalent.h" />
+    <ClInclude Include="XGuardTalent.h" />
+    <ClInclude Include="XItemTalent.h" />
+    <ClInclude Include="XMagicTalent.h" />
+    <ClInclude Include="XMeleeTalent.h" />
+    <ClInclude Include="XModuleTalent.h" />
+    <ClInclude Include="XTalent.h" />
+    <ClInclude Include="XTalentEffectMgr.h" />
+    <ClInclude Include="XTalentEvent.h" />
+    <ClInclude Include="XTalentHelper.h" />
+    <ClInclude Include="XTalentHitParam.h" />
+    <ClInclude Include="XTarget.h" />
+    <ClInclude Include="XTargetCollisionBox.h" />
+    <ClInclude Include="XTargetGround.h" />
+    <ClInclude Include="XTargetLine.h" />
+    <ClInclude Include="XTargetSticky.h" />
+    <ClInclude Include="XModEffector.h" />
+    <ClInclude Include="XModuleMovable.h" />
+    <ClInclude Include="XMovableDebugger.h" />
+    <ClInclude Include="XMovableFactor.h" />
+    <ClInclude Include="XMovableGoParam.h" />
+    <ClInclude Include="XMovableProcessor.h" />
+    <ClInclude Include="XMovableProcInterpolation.h" />
+    <ClInclude Include="XMovableProcObject.h" />
+    <ClInclude Include="XMovableProcObjectChecker.h" />
+    <ClInclude Include="XMovableProcTerrain.h" />
+    <ClInclude Include="XMovableProcTerrainNPC.h" />
+    <ClInclude Include="XMovableProcThrow.h" />
+    <ClInclude Include="XMovableProcWater.h" />
+    <ClInclude Include="XModuleNetControl.h" />
+    <ClInclude Include="XNetActionGesture.h" />
+    <ClInclude Include="XNetActionGrappled.h" />
+    <ClInclude Include="XNetActionGuard.h" />
+    <ClInclude Include="XNetActionHit.h" />
+    <ClInclude Include="XNetActionID.h" />
+    <ClInclude Include="XNetActionNA.h" />
+    <ClInclude Include="XNetActionSit.h" />
+    <ClInclude Include="XNetActionState.h" />
+    <ClInclude Include="XNetActionSwallowed.h" />
+    <ClInclude Include="XNetActionTalent.h" />
+    <ClInclude Include="XModuleNonControl.h" />
+    <ClInclude Include="XNPCAligner.h" />
+    <ClInclude Include="XNPCActionDie.h" />
+    <ClInclude Include="XNPCActionHit.h" />
+    <ClInclude Include="XNPCActionID.h" />
+    <ClInclude Include="XNPCActionMove.h" />
+    <ClInclude Include="XNPCActionNA.h" />
+    <ClInclude Include="XNPCActionState.h" />
+    <ClInclude Include="XNPCActionTalent.h" />
+    <ClInclude Include="XBPartWeaponController.h" />
+    <ClInclude Include="XChallengerQuestExitChecker.h" />
+    <ClInclude Include="XKeyTransition.h" />
+    <ClInclude Include="XMapSignAreaChecker.h" />
+    <ClInclude Include="XModuleMyControl.h" />
+    <ClInclude Include="XMyCharacterAlphaMgr.h" />
+    <ClInclude Include="XMyHitController.h" />
+    <ClInclude Include="XPvPAreaChecker.h" />
+    <ClInclude Include="XRestrictedAreaChecker.h" />
+    <ClInclude Include="XSpecialActionTransition.h" />
+    <ClInclude Include="XCombo.h" />
+    <ClInclude Include="XMyActionBow.h" />
+    <ClInclude Include="XMyActionChangeChannel.h" />
+    <ClInclude Include="XMyActionChangeState.h" />
+    <ClInclude Include="XMyActionDeactivative.h" />
+    <ClInclude Include="XMyActionDie.h" />
+    <ClInclude Include="XMyActionDieTransChecker.h" />
+    <ClInclude Include="XMyActionDye.h" />
+    <ClInclude Include="XMyActionEnchant.h" />
+    <ClInclude Include="XMyActionFalling.h" />
+    <ClInclude Include="XMyActionGesture.h" />
+    <ClInclude Include="XMyActionGrappled.h" />
+    <ClInclude Include="XMyActionGuard.h" />
+    <ClInclude Include="XMyActionHit.h" />
+    <ClInclude Include="XMyActionHold.h" />
+    <ClInclude Include="XMyActionID.h" />
+    <ClInclude Include="XMyActionIdle.h" />
+    <ClInclude Include="XMyActionJump.h" />
+    <ClInclude Include="XMyActionLootingItem.h" />
+    <ClInclude Include="XMyActionMapObj.h" />
+    <ClInclude Include="XMyActionNormalAttack.h" />
+    <ClInclude Include="XMyActionNPCInteraction.h" />
+    <ClInclude Include="XMyActionQuestInteraction.h" />
+    <ClInclude Include="XMyActionRebirth.h" />
+    <ClInclude Include="XMyActionSit.h" />
+    <ClInclude Include="XMyActionState.h" />
+    <ClInclude Include="XMyActionSwallowed.h" />
+    <ClInclude Include="XMyActionSwitchingWeapon.h" />
+    <ClInclude Include="XMyActionUseItem.h" />
+    <ClInclude Include="XMyActionUseTalent.h" />
+    <ClInclude Include="XFeedbackInteractor.h" />
+    <ClInclude Include="XInteraction.h" />
+    <ClInclude Include="XInteractionHelper.h" />
+    <ClInclude Include="XInteractor.h" />
+    <ClInclude Include="XMouseBase.h" />
+    <ClInclude Include="XMouseInteractor.h" />
+    <ClInclude Include="XMouseMove.h" />
+    <ClInclude Include="XControlCmd.h" />
+    <ClInclude Include="XDeathController.h" />
+    <ClInclude Include="XGrappledController.h" />
+    <ClInclude Include="XModuleActorControl.h" />
+    <ClInclude Include="XSwallowedController.h" />
+    <ClInclude Include="XCutScenePlayerAligner.h" />
+    <ClInclude Include="XModuleCutSceneControl.h" />
+    <ClInclude Include="XCutScenePlayerActionID.h" />
+    <ClInclude Include="XCutScenePlayerActionNA.h" />
+    <ClInclude Include="XCutScenePlayerActionState.h" />
+    <ClInclude Include="XCutScenePlayerActionTalent.h" />
+    <ClInclude Include="XModulePost.h" />
+    <ClInclude Include="XDuelFightChecker.h" />
+    <ClInclude Include="XHitEffectPosCalculator.h" />
+    <ClInclude Include="XModuleCollision.h" />
+    <ClInclude Include="XMoveCollision.h" />
+    <ClInclude Include="XMoveCollisionDebug.h" />
+    <ClInclude Include="XObjectCollisionDebug.h" />
+    <ClInclude Include="XModuleMotion.h" />
+    <ClInclude Include="XMotionHelper.h" />
+    <ClInclude Include="XMotionIdleMemory.h" />
+    <ClInclude Include="XMotionLogic.h" />
+    <ClInclude Include="XMotionTimeModifier.h" />
+    <ClInclude Include="XUpperMotionLogic.h" />
+    <ClInclude Include="XUpperMotionTimeModifier.h" />
+    <ClInclude Include="XMotionTrigger_Checker.h" />
+    <ClInclude Include="XMotionTrigger_Execute.h" />
+    <ClInclude Include="XMotionTrigger_Executor.h" />
+    <ClInclude Include="XMotionTrigger_If.h" />
+    <ClInclude Include="XMotionEventListener.h" />
+    <ClInclude Include="XMotionEventListener__NPC_IDLE.h" />
+    <ClInclude Include="XCaptionEffect.h" />
+    <ClInclude Include="XChangeNPCColor.h" />
+    <ClInclude Include="XCheckTargetableEffect.h" />
+    <ClInclude Include="XHeadIcon.h" />
+    <ClInclude Include="XModuleEffect.h" />
+    <ClInclude Include="XModuleEffectReserve.h" />
+    <ClInclude Include="XBuffAttribute.h" />
+    <ClInclude Include="XModuleBuff.h" />
+    <ClInclude Include="XModuleSound.h" />
+    <ClInclude Include="XModuleBaseData.h" />
+    <ClInclude Include="XModuleNPCData.h" />
+    <ClInclude Include="XModulePlayerData.h" />
+    <ClInclude Include="XModuleBackgroundWork.h" />
+    <ClInclude Include="XBPartActorManager.h" />
+    <ClInclude Include="XModuleBParts.h" />
+    <ClInclude Include="XEvent.h" />
+    <ClInclude Include="XEventID.h" />
+    <ClInclude Include="XModule.h" />
+    <ClInclude Include="XModuleID.h" />
+    <ClInclude Include="XMagicArea.h" />
+    <ClInclude Include="XObject.h" />
+    <ClInclude Include="XObjectID.h" />
+    <ClInclude Include="XObjectManager.h" />
+    <ClInclude Include="XProjectile.h" />
+    <ClInclude Include="XProjectileController.h" />
+    <ClInclude Include="XSoulObject.h" />
+    <ClInclude Include="XSwordTrail.h" />
+    <ClInclude Include="XActor.h" />
+    <ClInclude Include="XBPartNonPlayer.h" />
+    <ClInclude Include="XDuel.h" />
+    <ClInclude Include="XFeedbackObject.h" />
+    <ClInclude Include="XMyPlayer.h" />
+    <ClInclude Include="XNetPlayer.h" />
+    <ClInclude Include="XNonPlayer.h" />
+    <ClInclude Include="XPlayer.h" />
+    <ClInclude Include="XPlayerFaction.h" />
+    <ClInclude Include="XPlayerInfo.h" />
+    <ClInclude Include="XPlayerPVP.h" />
+    <ClInclude Include="XBuffEffect.h" />
+    <ClInclude Include="XCameraEffect.h" />
+    <ClInclude Include="XDecalEffect.h" />
+    <ClInclude Include="XEffect.h" />
+    <ClInclude Include="XEffectInvoker.h" />
+    <ClInclude Include="XEffectManager.h" />
+    <ClInclude Include="XEffectPostEffect.h" />
+    <ClInclude Include="XEffectTrace.h" />
+    <ClInclude Include="XEffectWaitActorLoadingComplete.h" />
+    <ClInclude Include="XHeadEffect.h" />
+    <ClInclude Include="XHitEffectSelecter.h" />
+    <ClInclude Include="XInteractionEffect.h" />
+    <ClInclude Include="XLightEffect.h" />
+    <ClInclude Include="XMagicAreaEffect.h" />
+    <ClInclude Include="XNoiseFadeEffect.h" />
+    <ClInclude Include="XNPCIConEffect.h" />
+    <ClInclude Include="XPEEdgeMgr.h" />
+    <ClInclude Include="XProjectileEffect.h" />
+    <ClInclude Include="XSelfIlluminationEffect.h" />
+    <ClInclude Include="XSwordTrailEffectController.h" />
+    <ClInclude Include="XTalentEffect.h" />
+    <ClInclude Include="XTalentEffectHitCapsule.h" />
+    <ClInclude Include="XTalentEffectPreLoader.h" />
+    <ClInclude Include="XWeaponEffect.h" />
+    <ClInclude Include="XBaseCameraSceneNode.h" />
+    <ClInclude Include="XBaseGameCamera.h" />
+    <ClInclude Include="XCameraControllerGroup.h" />
+    <ClInclude Include="XCameraGroundTarget.h" />
+    <ClInclude Include="XCameraHelper.h" />
+    <ClInclude Include="XCameraInteraction.h" />
+    <ClInclude Include="XCameraLock.h" />
+    <ClInclude Include="XCameraManager.h" />
+    <ClInclude Include="XFreeCamTracer.h" />
+    <ClInclude Include="XCameraBackViewController.h" />
+    <ClInclude Include="XCameraCutSceneController.h" />
+    <ClInclude Include="XCameraEngineDebugController.h" />
+    <ClInclude Include="XCameraFreeLookController.h" />
+    <ClInclude Include="XCameraGrappledController.h" />
+    <ClInclude Include="XCameraPVPFreeViewController.h" />
+    <ClInclude Include="XCameraReplayBackViewController.h" />
+    <ClInclude Include="XCameraSceneNodeController.h" />
+    <ClInclude Include="XAccountInfo.h" />
+    <ClInclude Include="XCraftableRecipeInfo.h" />
+    <ClInclude Include="XDialogTextInfoMgr.h" />
+    <ClInclude Include="XFieldInfo.h" />
+    <ClInclude Include="XFieldInfoHelper.h" />
+    <ClInclude Include="XGameEffectInfo.h" />
+    <ClInclude Include="XHistory.h" />
+    <ClInclude Include="XInnInfo.h" />
+    <ClInclude Include="XInnInfoMgr.h" />
+    <ClInclude Include="XItem_DroperInfoMgr.h" />
+    <ClInclude Include="XItem_QuestRewarderInfoMgr.h" />
+    <ClInclude Include="XItem_RecipeProductInfoMgr.h" />
+    <ClInclude Include="XItemRelatedNPCInfo.h" />
+    <ClInclude Include="XItemRelatedNPCInfoMgr.h" />
+    <ClInclude Include="XModelAnimationInfo.h" />
+    <ClInclude Include="XMyRecipeInfo.h" />
+    <ClInclude Include="XQuestInfo.h" />
+    <ClInclude Include="XRecipeInfo.h" />
+    <ClInclude Include="XRecipeInfoMgr.h" />
+    <ClInclude Include="XRecipeNPCInfo.h" />
+    <ClInclude Include="XRecipeNPCInfoMgr.h" />
+    <ClInclude Include="XTextureMtInfo.h" />
+    <ClInclude Include="XConditionHelper.h" />
+    <ClInclude Include="XConditionInfo.h" />
+    <ClInclude Include="XConditionsInfo.h" />
+    <ClInclude Include="XConditionsInfoMgr.h" />
+    <ClInclude Include="XConditionStringMaker.h" />
+    <ClInclude Include="XBattleArena.h" />
+    <ClInclude Include="XFeedback.h" />
+    <ClInclude Include="XFeedbackFetcher.h" />
+    <ClInclude Include="XFeedbackSender.h" />
+    <ClInclude Include="XFeedbackSystem.h" />
+    <ClInclude Include="XFactionInfo.h" />
+    <ClInclude Include="XFactionInfoMgr.h" />
+    <ClInclude Include="XGuild.h" />
+    <ClInclude Include="XGuildMember.h" />
+    <ClInclude Include="XMyTalent.h" />
+    <ClInclude Include="XContainer.h" />
+    <ClInclude Include="XEquipmentSlot.h" />
+    <ClInclude Include="XItemContainer.h" />
+    <ClInclude Include="XItemHelper.h" />
+    <ClInclude Include="XItemManager.h" />
+    <ClInclude Include="XMyGuildStorage.h" />
+    <ClInclude Include="XMyInventory.h" />
+    <ClInclude Include="XMyLootingItemContainer.h" />
+    <ClInclude Include="XMyStorage.h" />
+    <ClInclude Include="XPaletteContainer.h" />
+    <ClInclude Include="XRepairItemContainer.h" />
+    <ClInclude Include="XTradeContents.h" />
+    <ClInclude Include="XParty.h" />
+    <ClInclude Include="XPlayerQuest.h" />
+    <ClInclude Include="XPvPAreaLogic.h" />
+    <ClInclude Include="XCutSceneController.h" />
+    <ClInclude Include="XCutSceneFieldIntroMgr.h" />
+    <ClInclude Include="XCutSceneGameEntity.h" />
+    <ClInclude Include="XCutScenePlayer.h" />
+    <ClInclude Include="XCutSceneState.h" />
+    <ClInclude Include="XCutSceneWorldResourceMgr.h" />
+    <ClInclude Include="XCutSceneContent.h" />
+    <ClInclude Include="XCutSceneKeyFrameUpdator.h" />
+    <ClInclude Include="XCutSceneObject.h" />
+    <ClInclude Include="XCutSceneObjectController.h" />
+    <ClInclude Include="XCutSceneObjectControllerAnimation.h" />
+    <ClInclude Include="XCutSceneObjectControllerBGM.h" />
+    <ClInclude Include="XCutSceneObjectControllerCaption.h" />
+    <ClInclude Include="XCutSceneObjectControllerDOF.h" />
+    <ClInclude Include="XCutSceneObjectControllerEffect.h" />
+    <ClInclude Include="XCutSceneObjectControllerEnv.h" />
+    <ClInclude Include="XCutSceneObjectControllerFade.h" />
+    <ClInclude Include="XCutSceneObjectControllerKeyEvent.h" />
+    <ClInclude Include="XCutSceneObjectControllerLetterBox.h" />
+    <ClInclude Include="XCutSceneObjectControllerMove.h" />
+    <ClInclude Include="XCutSceneObjectControllerTalent.h" />
+    <ClInclude Include="XLocalSensor.h" />
+    <ClInclude Include="XQuestSensor.h" />
+    <ClInclude Include="XSensor.h" />
+    <ClInclude Include="XSensorController.h" />
+    <ClInclude Include="XSensorInfo.h" />
+    <ClInclude Include="XSensorManager.h" />
+    <ClInclude Include="XAuctionMsgHandler.h" />
+    <ClInclude Include="XChannelMsgHandler.h" />
+    <ClInclude Include="XGuildMsgHandler.h" />
+    <ClInclude Include="XPartyMsgHandler.h" />
+    <ClInclude Include="XSayMsgHandler.h" />
+    <ClInclude Include="XShoutMsgHandler.h" />
+    <ClInclude Include="XWhisperBackMsgHandler.h" />
+    <ClInclude Include="XWhisperMsgHandler.h" />
+    <ClInclude Include="XAnnounceMsgHandler.h" />
+    <ClInclude Include="XFieldMsgHandler.h" />
+    <ClInclude Include="XGlobalMsgHandler.h" />
+    <ClInclude Include="XNarrationMsgHandler.h" />
+    <ClInclude Include="XShoutFakeMsgHandler.h" />
+    <ClInclude Include="XMsgCommandFacade.h" />
+    <ClInclude Include="XMsgHandler.h" />
+    <ClInclude Include="XAdviceMsgHandler.h" />
+    <ClInclude Include="XNoticeMsgHandler.h" />
+    <ClInclude Include="XSystemMsgHandler.h" />
+    <ClInclude Include="XChatChannel.h" />
+    <ClInclude Include="XChatChannelManager.h" />
+    <ClInclude Include="XGuideMsg.h" />
+    <ClInclude Include="XGuideMsgEnum.h" />
+    <ClInclude Include="XMail.h" />
+    <ClInclude Include="XMailbox.h" />
+    <ClInclude Include="XDuelGestureChecker.h" />
+    <ClInclude Include="XWorldLocatorClient.h" />
+    <ClInclude Include="XProfiler.h" />
+    <ClInclude Include="XScreenDebugger.h" />
+    <ClInclude Include="XApplicationConfig.h" />
+    <ClInclude Include="XArgumentsParser.h" />
+    <ClInclude Include="XBaseApplication.h" />
+    <ClInclude Include="XColorTable.h" />
+    <ClInclude Include="XGameInitializer.h" />
+    <ClInclude Include="XInputDevice.h" />
+    <ClInclude Include="XPhysX.h" />
+    <ClInclude Include="XScript.h" />
+    <ClInclude Include="XStrCmd.h" />
+    <ClInclude Include="XCrashReporter.h" />
+    <ClInclude Include="XHelp.h" />
+    <ClInclude Include="XInterpolation.h" />
+    <ClInclude Include="XMath.h" />
+    <ClInclude Include="XTimer.h" />
+    <ClInclude Include="XUIDGenerator.h" />
+    <ClInclude Include="XUtil.h" />
+    <ClInclude Include="XRenderHelper.h" />
+    <ClInclude Include="XSceneManager.h" />
+    <ClInclude Include="XCylinder.h" />
+    <ClInclude Include="XActorLoader.h" />
+    <ClInclude Include="IndexPage.h" />
+    <ClInclude Include="XDebugInfoBuilder.h" />
+    <ClInclude Include="XSTLUtil.h" />
+    <ClInclude Include="XSystemInfoUtil.h" />
+    <ClInclude Include="MockAnimationController.h" />
+    <ClInclude Include="MockCharacter.h" />
+    <ClInclude Include="MockInteractionEffect.h" />
+    <ClInclude Include="MockMesh.h" />
+    <ClInclude Include="MockNetClient.h" />
+    <ClInclude Include="MockWorld.h" />
+    <ClInclude Include="XBaseUnitTestHelper.h" />
+    <ClInclude Include="XUnitTestUtil.h" />
+    <ClInclude Include="XAnimationEventValidator.h" />
+    <ClInclude Include="XBaseValidator.h" />
+    <ClInclude Include="XIsAnimationValidator.h" />
+    <ClInclude Include="XItemValidator.h" />
+    <ClInclude Include="XNPCInfoValidator.h" />
+    <ClInclude Include="XResourceValidator.h" />
+    <ClInclude Include="XTalentInfoValidator.h" />
+    <ClInclude Include="XValidateLogger.h" />
+    <ClInclude Include="..\..\SDK\bandi_video_library\v2.1.1\source\BandiVideoLibrary.h" />
+    <ClInclude Include="XBandiCapturer.h" />
+    <ClInclude Include="XBandiVideoPlayer.h" />
+    <ClInclude Include="XBandiVideoTexture.h" />
+    <ClInclude Include="XAntiHack.h" />
+    <ClInclude Include="XAntiHackModuleGameGuardKor.h" />
+    <ClInclude Include="XCheckSum.h" />
+    <ClInclude Include="XCheckSumEncrypt.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="XAppErrorCollector.h" />
+    <ClInclude Include="XEffectPreLoaderResourceMgr.h" />
+    <ClInclude Include="XYouthSelfRegulation.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="runtime\Data\Interface\game.xml" />
+    <Xml Include="runtime\Data\Interface\Game_Character.xml" />
+    <Xml Include="runtime\Data\Interface\Game_Chat.xml" />
+    <Xml Include="runtime\Data\Interface\Game_Inventory.xml" />
+    <Xml Include="runtime\Data\Interface\Game_Palette.xml" />
+    <Xml Include="runtime\Data\Interface\Game_Quest.xml" />
+    <Xml Include="runtime\Data\Interface\Game_Talent.xml" />
+    <Xml Include="runtime\Data\Interface\GameMain.xml" />
+    <Xml Include="runtime\Data\Interface\login.xml" />
+    <Xml Include="runtime\Data\Interface\LoginMain.xml" />
+    <Xml Include="runtime\Data\Interface\main.xml" />
+    <Xml Include="runtime\Data\Interface\sandbox.xml" />
+    <Xml Include="runtime\Data\Interface\templete.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtime\Data\Interface\Game.lua" />
+    <None Include="runtime\Data\Interface\Game_Character.lua" />
+    <None Include="runtime\Data\Interface\Game_Chat.lua" />
+    <None Include="runtime\Data\Interface\Game_Inventory.lua" />
+    <None Include="runtime\Data\Interface\Game_Palette.lua" />
+    <None Include="runtime\Data\Interface\Game_Quest.lua" />
+    <None Include="runtime\Data\Interface\Game_Talent.lua" />
+    <None Include="runtime\Data\Interface\GameEvent.lua" />
+    <None Include="runtime\Data\Interface\GameGlobal.lua" />
+    <None Include="runtime\Data\Interface\GameHeader.lua" />
+    <None Include="runtime\Data\Interface\Login.lua" />
+    <None Include="runtime\Data\Interface\sandbox.lua" />
+    <None Include="runtime\Data\Interface\shGameEvent.lua" />
+    <None Include="Doc\Doxyfile" />
+    <None Include="Doc\doxygen.css" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram4.cd" />
+    <None Include="CodeCoverages.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\crl\crl.vcxproj">
+      <Project>{2d063418-4e8d-4689-8394-a80baa738631}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\CSCommon\CSCommon.vcxproj">
+      <Project>{7dcc03b9-dd72-4803-aee2-1f2be6ce60c2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\cml2\cml2.vcxproj">
+      <Project>{8d451493-65c2-49c3-adae-acb17e6b0650}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\MCollision\MCollision.vcxproj">
+      <Project>{97861011-05bd-450a-a221-db5f7a2f4b7b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\MiNet\MiNet.vcxproj">
+      <Project>{595010c3-5427-4453-9f44-5adb4edddb28}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\Mint3.2\Mint.vcxproj">
+      <Project>{20b5465d-8790-43fa-a2a2-ee29f3f0f9bc}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\MPathFinder\MPathFinder.vcxproj">
+      <Project>{7ed97bba-e770-4144-b656-c837fb08d1e7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\MPhysX\MPhysX.vcxproj">
+      <Project>{a1019d76-911a-4a80-b780-16f247e2f2ad}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\MPhysX\MPhysX4R3\MPhysX4R3.vcxproj">
+      <Project>{94a262d9-481e-423e-baa8-ac4d3cd8e527}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\MTest\MTest.vcxproj">
+      <Project>{249d9b5b-bc66-4d30-ab85-f936f737d3ca}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\RealInput\RealInput.vcxproj">
+      <Project>{8a4fbcec-ab89-49ef-aa18-d0712d6f4f55}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\RealSound3\RealSound3.vcxproj">
+      <Project>{c49a3dec-c70b-451e-8d7b-f30d93e4e9d2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\RealSpace3\RealSpace3.vcxproj">
+      <Project>{7070fa22-c0d4-40f5-beb7-ec09f3a58a51}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,10 @@
+<table class="content_table">
+	<tr class="grayed">
+	<td>
+		<UL>
+			<LI>dialog: [[QUEST_REWARD_DIALOG_NAME]](<a href="javascript:window.external.Navigate('DIALOG', '[[QUEST_REWARD_DIALOG_ID]]')">[[QUEST_REWARD_DIALOG_ID]]</a>)</LI>
+			<LI>rewarder: [[QUEST_REWARD_REWARDER]]</LI>
+		</UL>
+	</td>
+	</tr>
+</table>

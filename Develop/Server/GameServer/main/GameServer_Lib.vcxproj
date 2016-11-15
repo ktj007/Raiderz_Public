@@ -1,0 +1,1992 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_praptor|Win32">
+      <Configuration>Debug_praptor</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_pyo|Win32">
+      <Configuration>Debug_pyo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_vld|Win32">
+      <Configuration>Debug_vld</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD_profile|Win32">
+      <Configuration>ReleaseMD_profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMD|Win32">
+      <Configuration>ReleaseMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_profile|Win32">
+      <Configuration>Release_profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnitTest_DBDebug|Win32">
+      <Configuration>UnitTest_DBDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>GameServer_lib</ProjectName>
+    <ProjectGuid>{AB477007-CF99-47F8-B81F-9A02CCBE7849}</ProjectGuid>
+    <RootNamespace>GameServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_praptor|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_praptor|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_praptor|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;../../Pmang;../../../Extern/nProtect/Korea/Server;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_RCOLLISION;_PUBLISH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;../../../Extern/nProtect/Korea/Server/ggsrvlib26_MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\GameServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_praptor|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;_RCOLLISION;_PRAPTOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>Lib\GameServer_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;../../../Extern/nProtect/Korea/Server;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;_RCOLLISION;VLD_CHECK_LEAK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../../Extern/nProtect/Korea/Server/ggsrvlib26_MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\GameServer_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;../../../Extern/nProtect/Korea/Server;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_RCOLLISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../../Extern/nProtect/Korea/Server/ggsrvlib26_MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\GameServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;_RCOLLISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>Lib\GameServer_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../app;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;../../Pmang;../../../Extern/nProtect/Korea/Server;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;_RCOLLISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConnd.lib;../../../Extern/nProtect/Korea/Server/ggsrvlib26_MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\GameServer_d.lib</OutputFile>
+      <IgnoreSpecificDefaultLibraries>MSVCRT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_profile|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;../../Pmang;../../../Extern/nProtect/Korea/Server/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_RCOLLISION;_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;../../../Extern/nProtect/Korea/Server/ggsrvlib26_MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\GameServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../framework;../../../mdk/CML2;../../../crl/include;../../../mdk/MiNet/include;../../../CSCommon/Include;../../../../sdk/tinyxml/include;../../../../sdk/lua51/include;../../../../sdk/UnitTest++/v1.4/src;../../../mdk/MAI2;../../../mdk/RealSpace3;../../../mdk/MPathFinder;../../../mdk/MCollision;../../ServerCommon;../../../mdk/MAsyncDatabase;../../../mdk/MTest/include;../../../../sdk/tbb/2.2/include;../../Pmang;../../../Extern/nProtect/Korea/Server/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_RCOLLISION;_USE_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>../../Pmang/lib/PMSConn.lib;../../../Extern/nProtect/Korea/Server/ggsrvlib26_MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Lib\GameServer.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="GEffectTargetSelector.cpp" />
+    <ClCompile Include="GTickRegulator.cpp" />
+    <ClCompile Include="GUseCostMgr.cpp" />
+    <ClCompile Include="GBuffEntity.cpp" />
+    <ClCompile Include="GEntity.cpp" />
+    <ClCompile Include="GEntityMgr.cpp" />
+    <ClCompile Include="GEntitySync.cpp" />
+    <ClCompile Include="GModule.cpp" />
+    <ClCompile Include="GModuleBuff.cpp" />
+    <ClCompile Include="GModuleCombat.cpp" />
+    <ClCompile Include="GRegenUpdater.cpp" />
+    <ClCompile Include="GMotionFactor.cpp" />
+    <ClCompile Include="GMotionFactorHandler.cpp" />
+    <ClCompile Include="GMotionFactorHelper.cpp" />
+    <ClCompile Include="GAIRoomMgr.cpp" />
+    <ClCompile Include="GEnemyFinder.cpp" />
+    <ClCompile Include="GNPCEventSender.cpp" />
+    <ClCompile Include="GColtActionInstMgr.cpp" />
+    <ClCompile Include="GColtChecker.cpp" />
+    <ClCompile Include="GColtMgr.cpp" />
+    <ClCompile Include="GColtPicker.cpp" />
+    <ClCompile Include="GColtRunner.cpp" />
+    <ClCompile Include="GBehaviorCombat.cpp" />
+    <ClCompile Include="GBehaviorDead.cpp" />
+    <ClCompile Include="GBehaviorMission.cpp" />
+    <ClCompile Include="GBehaviorPeace.cpp" />
+    <ClCompile Include="GBehaviorReturn.cpp" />
+    <ClCompile Include="GBehaviorSession.cpp" />
+    <ClCompile Include="GBehaviorState.cpp" />
+    <ClCompile Include="GCombatCombat.cpp" />
+    <ClCompile Include="GCombatFlee.cpp" />
+    <ClCompile Include="GCombatPrologue.cpp" />
+    <ClCompile Include="GCombatState.cpp" />
+    <ClCompile Include="GCombatVictory.cpp" />
+    <ClCompile Include="GFieldAIEventInvoker.cpp" />
+    <ClCompile Include="GNPCAIEventInvoker.cpp" />
+    <ClCompile Include="GSectorAIEventInvoker.cpp" />
+    <ClCompile Include="GSectorAIEventInvokerMgr.cpp" />
+    <ClCompile Include="GNPCAILod.cpp" />
+    <ClCompile Include="GNPCAILodEventSelector.cpp" />
+    <ClCompile Include="GAIEventInvoker.cpp" />
+    <ClCompile Include="GAIEventMgr.cpp" />
+    <ClCompile Include="GAIEventNotifier.cpp" />
+    <ClCompile Include="GAIEventSelector.cpp" />
+    <ClCompile Include="GNPCAIDefaultUpdater.cpp" />
+    <ClCompile Include="GNPCAIEmptyFieldUpdater.cpp" />
+    <ClCompile Include="GNPCAILod1Updater.cpp" />
+    <ClCompile Include="GNPCAILod2Updater.cpp" />
+    <ClCompile Include="GNPCAILod3Updater.cpp" />
+    <ClCompile Include="GNPCAILod4Updater.cpp" />
+    <ClCompile Include="GNPCAILod5Updater.cpp" />
+    <ClCompile Include="GNPCAIUpdater.cpp" />
+    <ClCompile Include="GBehaviorStateMachine.cpp" />
+    <ClCompile Include="GModuleAI.cpp" />
+    <ClCompile Include="GNPCAI.cpp" />
+    <ClCompile Include="GJob.cpp" />
+    <ClCompile Include="GJob_Broker.cpp" />
+    <ClCompile Include="GJob_Idle.cpp" />
+    <ClCompile Include="GJob_Speak.cpp" />
+    <ClCompile Include="GJob_Talent.cpp" />
+    <ClCompile Include="GJob_WaitFor.cpp" />
+    <ClCompile Include="GJobMgr.cpp" />
+    <ClCompile Include="GJobRunner.cpp" />
+    <ClCompile Include="GTask.cpp" />
+    <ClCompile Include="GTask_Broker.cpp" />
+    <ClCompile Include="GTask_Idle.cpp" />
+    <ClCompile Include="GTask_Move.cpp" />
+    <ClCompile Include="GTask_Talent.cpp" />
+    <ClCompile Include="GTask_WaitFor.cpp" />
+    <ClCompile Include="GTaskUtil.cpp" />
+    <ClCompile Include="GJob_FleeFromEntity.cpp" />
+    <ClCompile Include="GJob_FleeToHome.cpp" />
+    <ClCompile Include="GJob_MoveToEntity.cpp" />
+    <ClCompile Include="GJob_MoveToPos.cpp" />
+    <ClCompile Include="GJob_Patrol.cpp" />
+    <ClCompile Include="GJob_Roam.cpp" />
+    <ClCompile Include="GModuleMovable.cpp" />
+    <ClCompile Include="GMoveStrategy.cpp" />
+    <ClCompile Include="GTargetObserveRotater.cpp" />
+    <ClCompile Include="GInstantJob.cpp" />
+    <ClCompile Include="GJobT_Assist.cpp" />
+    <ClCompile Include="GJobT_Attack.cpp" />
+    <ClCompile Include="GJobT_BreakPart.cpp" />
+    <ClCompile Include="GJobT_Despawn.cpp" />
+    <ClCompile Include="GJobT_Die.cpp" />
+    <ClCompile Include="GJobT_FaceTo.cpp" />
+    <ClCompile Include="GJobT_Flee.cpp" />
+    <ClCompile Include="GJobT_GainBuff.cpp" />
+    <ClCompile Include="GJobT_NextAction.cpp" />
+    <ClCompile Include="GJobT_Script.cpp" />
+    <ClCompile Include="GJobT_Summon.cpp" />
+    <ClCompile Include="GJobT_Warp.cpp" />
+    <ClCompile Include="GJobT_Yell.cpp" />
+    <ClCompile Include="GPartyActiveFieldGroupStorage.cpp" />
+    <ClCompile Include="GPartyActiveQuestStorage.cpp" />
+    <ClCompile Include="GPartyLootingRuleStorage.cpp" />
+    <ClCompile Include="GPartyMemberStorage.cpp" />
+    <ClCompile Include="GParty.cpp" />
+    <ClCompile Include="GPartyManager.cpp" />
+    <ClCompile Include="GPartySystem.cpp" />
+    <ClCompile Include="GEntityPlayer.cpp" />
+    <ClCompile Include="GEntityPlayerDBAsyncMonitor.cpp" />
+    <ClCompile Include="GPlayerAFK.cpp" />
+    <ClCompile Include="GPlayerCombatChecker.cpp" />
+    <ClCompile Include="GPlayerCRTLogger.cpp" />
+    <ClCompile Include="GPlayerCutscene.cpp" />
+    <ClCompile Include="GPlayerDoing.cpp" />
+    <ClCompile Include="GPlayerDye.cpp" />
+    <ClCompile Include="GPlayerEmblem.cpp" />
+    <ClCompile Include="GPlayerEnchant.cpp" />
+    <ClCompile Include="GPlayerEnemyInfoSender.cpp" />
+    <ClCompile Include="GPlayerFalling.cpp" />
+    <ClCompile Include="GPlayerGameStart_AutoRebirther.cpp" />
+    <ClCompile Include="GPlayerGameStart_FieldGater.cpp" />
+    <ClCompile Include="GPlayerGameStart_State.cpp" />
+    <ClCompile Include="GPlayerLevelUpdater.cpp" />
+    <ClCompile Include="GPlayerNPCIconSender.cpp" />
+    <ClCompile Include="GPlayerPassiveTalents.cpp" />
+    <ClCompile Include="GPlayerPVPArea.cpp" />
+    <ClCompile Include="GPlayerPVPChecker.cpp" />
+    <ClCompile Include="GPlayerRecipe.cpp" />
+    <ClCompile Include="GPlayerRide.cpp" />
+    <ClCompile Include="GPlayerRole.cpp" />
+    <ClCompile Include="GPlayerSensorCacheUpdater.cpp" />
+    <ClCompile Include="GPlayerSetterForTest.cpp" />
+    <ClCompile Include="GPlayerSit.cpp" />
+    <ClCompile Include="GPlayerSpawnedNPC.cpp" />
+    <ClCompile Include="GPlayerStance.cpp" />
+    <ClCompile Include="GPlayerTargetInfoSender.cpp" />
+    <ClCompile Include="GPlayerTDCacheInfoBuilder.cpp" />
+    <ClCompile Include="GPlayerGameData.cpp" />
+    <ClCompile Include="GExpSystem.cpp" />
+    <ClCompile Include="GMoneySystem.cpp" />
+    <ClCompile Include="GPlayerSystem.cpp" />
+    <ClCompile Include="GRebirthSystem.cpp" />
+    <ClCompile Include="GEntityBPart.cpp" />
+    <ClCompile Include="GEntityNPC.cpp" />
+    <ClCompile Include="GEntityNPCUpdater.cpp" />
+    <ClCompile Include="GNPCAssist.cpp" />
+    <ClCompile Include="GNPCBParts.cpp" />
+    <ClCompile Include="GNPCCombatAnticheat.cpp" />
+    <ClCompile Include="GNPCDebugger.cpp" />
+    <ClCompile Include="GNPCHitcapsuleGroup.cpp" />
+    <ClCompile Include="GNPCLuaCallback.cpp" />
+    <ClCompile Include="GNPCMode.cpp" />
+    <ClCompile Include="GNPCPathFinder.cpp" />
+    <ClCompile Include="GNPCSensorChecker.cpp" />
+    <ClCompile Include="GNPCSwallow.cpp" />
+    <ClCompile Include="GActorBuffEntity.cpp" />
+    <ClCompile Include="GActorCooltimeChecker.cpp" />
+    <ClCompile Include="GActorCounter.cpp" />
+    <ClCompile Include="GActorDamageCalculator.cpp" />
+    <ClCompile Include="GActorHateTracker.cpp" />
+    <ClCompile Include="GActorInvisibility.cpp" />
+    <ClCompile Include="GActorObserverMgr.cpp" />
+    <ClCompile Include="GActorTalent.cpp" />
+    <ClCompile Include="GEntityActor.cpp" />
+    <ClCompile Include="GImmuneHandler.cpp" />
+    <ClCompile Include="GRiposte.cpp" />
+    <ClCompile Include="GField.cpp" />
+    <ClCompile Include="GFieldEnteringMgr.cpp" />
+    <ClCompile Include="GFieldGrid.cpp" />
+    <ClCompile Include="GFieldGrid_BoundChecker.cpp" />
+    <ClCompile Include="GFieldGrid_Sector.cpp" />
+    <ClCompile Include="GFieldGrid_Selector.cpp" />
+    <ClCompile Include="GFieldGridEntityInfoMaker.cpp" />
+    <ClCompile Include="GFieldGridRouter.cpp" />
+    <ClCompile Include="GFieldSensor.cpp" />
+    <ClCompile Include="GFieldSystem.cpp" />
+    <ClCompile Include="GPacketRouteLimiter.cpp" />
+    <ClCompile Include="GPacketRouteLimiterMgr.cpp" />
+    <ClCompile Include="GPickingZTable.cpp" />
+    <ClCompile Include="GScriptTimer.cpp" />
+    <ClCompile Include="GWeatherMgr.cpp" />
+    <ClCompile Include="GDynamicField.cpp" />
+    <ClCompile Include="GDynamicFieldFactory.cpp" />
+    <ClCompile Include="GDynamicFieldMaster.cpp" />
+    <ClCompile Include="GTrialField.cpp" />
+    <ClCompile Include="GTrialFieldBoundary.cpp" />
+    <ClCompile Include="GInnRoomField.cpp" />
+    <ClCompile Include="GDynamicFieldPolicy.cpp" />
+    <ClCompile Include="GDynamicFieldPolicy_BattleArena.cpp" />
+    <ClCompile Include="GDynamicFieldPolicy_InnRoom.cpp" />
+    <ClCompile Include="GDynamicFieldPolicy_TrialField.cpp" />
+    <ClCompile Include="GAutoPartyMgr.cpp" />
+    <ClCompile Include="GSharedField.cpp" />
+    <ClCompile Include="GSharedFieldMaster.cpp" />
+    <ClCompile Include="GSharedFieldNavigator.cpp" />
+    <ClCompile Include="GPathContextGroup.cpp" />
+    <ClCompile Include="GPathFinder.cpp" />
+    <ClCompile Include="GPathFinderImpl.cpp" />
+    <ClCompile Include="GPathResMgr.cpp" />
+    <ClCompile Include="GCollisionTree.cpp" />
+    <ClCompile Include="GCollisionTreeMgr.cpp" />
+    <ClCompile Include="GFieldAttrGrid.cpp" />
+    <ClCompile Include="GFieldInfo.cpp" />
+    <ClCompile Include="GFieldInfoLoader.cpp" />
+    <ClCompile Include="GFieldInfoMgr.cpp" />
+    <ClCompile Include="GWarpInfoChecker.cpp" />
+    <ClCompile Include="GWarpInfoCollector.cpp" />
+    <ClCompile Include="GZoneInfo.cpp" />
+    <ClCompile Include="GFieldFactory.cpp" />
+    <ClCompile Include="GFieldMgr.cpp" />
+    <ClCompile Include="GPlayerField.cpp" />
+    <ClCompile Include="GPlayerFieldDynamic.cpp" />
+    <ClCompile Include="GPlayerFieldDynamic_StandAlone.cpp" />
+    <ClCompile Include="GPlayerFieldEntry.cpp" />
+    <ClCompile Include="GPlayerFieldGateRetryer.cpp" />
+    <ClCompile Include="GPlayerFieldLazyGateway.cpp" />
+    <ClCompile Include="GPlayerFieldMasterServer.cpp" />
+    <ClCompile Include="GPlayerFieldShared.cpp" />
+    <ClCompile Include="GManagedFieldInfoMgr.cpp" />
+    <ClCompile Include="GDespawnAuto.cpp" />
+    <ClCompile Include="GSpawn.cpp" />
+    <ClCompile Include="GSpawnDelay.cpp" />
+    <ClCompile Include="GSpawnManager.cpp" />
+    <ClCompile Include="GPlayerLogoutDBExecuter.cpp" />
+    <ClCompile Include="GPlayerObject.cpp" />
+    <ClCompile Include="GPlayerObjectManager.cpp" />
+    <ClCompile Include="GCommandCenter.cpp" />
+    <ClCompile Include="GCommandLogger.cpp" />
+    <ClCompile Include="GCmdHandlerGroup.cpp" />
+    <ClCompile Include="GCmdHandler_Action.cpp" />
+    <ClCompile Include="GCmdHandler_BattleArena.cpp" />
+    <ClCompile Include="GCmdHandler_Char.cpp" />
+    <ClCompile Include="GCmdHandler_Comm.cpp" />
+    <ClCompile Include="GCmdHandler_Craft.cpp" />
+    <ClCompile Include="GCmdHandler_Cutscene.cpp" />
+    <ClCompile Include="GCmdHandler_Duel.cpp" />
+    <ClCompile Include="GCmdHandler_Game.cpp" />
+    <ClCompile Include="GCmdHandler_GM.cpp" />
+    <ClCompile Include="GCmdHandler_Guild.cpp" />
+    <ClCompile Include="GCmdHandler_Inn.cpp" />
+    <ClCompile Include="GCmdHandler_Interaction.cpp" />
+    <ClCompile Include="GCmdHandler_Item.cpp" />
+    <ClCompile Include="GCmdHandler_Loot.cpp" />
+    <ClCompile Include="GCmdHandler_Mail.cpp" />
+    <ClCompile Include="GCmdHandler_Map.cpp" />
+    <ClCompile Include="GCmdHandler_MSG.cpp" />
+    <ClCompile Include="GCmdHandler_NPCShop.cpp" />
+    <ClCompile Include="GCmdHandler_Palette.cpp" />
+    <ClCompile Include="GCmdHandler_Party.cpp" />
+    <ClCompile Include="GCmdHandler_Quest.cpp" />
+    <ClCompile Include="GCmdHandler_QuestPVP.cpp" />
+    <ClCompile Include="GCmdHandler_Storage.cpp" />
+    <ClCompile Include="GCmdHandler_Trade.cpp" />
+    <ClCompile Include="GCmdHandler_TradeMarket.cpp" />
+    <ClCompile Include="GCmdHandler_Training.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Char.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Common.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Field.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Gate.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Guild.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Login.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Loot.cpp" />
+    <ClCompile Include="GCmdHandler_Master_MoveServer.cpp" />
+    <ClCompile Include="GCmdHandler_Master_Party.cpp" />
+    <ClCompile Include="GCmdHandler_FakeLoginServer.cpp" />
+    <ClCompile Include="GCmdHandler_Login.cpp" />
+    <ClCompile Include="GGameStarter.cpp" />
+    <ClCompile Include="GCmdHandler_App_Common.cpp" />
+    <ClCompile Include="GCmdHandler_App_Mail.cpp" />
+    <ClCompile Include="GCmdHandler_App_Msg.cpp" />
+    <ClCompile Include="GMasterServerPlayerRouter.cpp" />
+    <ClCompile Include="GStandAloneModePlayerRouter.cpp" />
+    <ClCompile Include="GClientPartyRouter.cpp" />
+    <ClCompile Include="GMasterServerPartyRouter.cpp" />
+    <ClCompile Include="GServerPartyRouter.cpp" />
+    <ClCompile Include="GStandAloneModePartyRouter.cpp" />
+    <ClCompile Include="GClientFieldRouter.cpp" />
+    <ClCompile Include="GServerFieldRouter.cpp" />
+    <ClCompile Include="GServerGateRouter.cpp" />
+    <ClCompile Include="GStandAloneModeGateRouter.cpp" />
+    <ClCompile Include="GAppServerChatChannelRouter.cpp" />
+    <ClCompile Include="GClientChatChannelRouter.cpp" />
+    <ClCompile Include="GStandAloneModeChatChannelRouter.cpp" />
+    <ClCompile Include="GAppServerMailRouter.cpp" />
+    <ClCompile Include="GClientMailRouter.cpp" />
+    <ClCompile Include="GStandAloneModeMailRouter.cpp" />
+    <ClCompile Include="GClientCharRouter.cpp" />
+    <ClCompile Include="GMasterServerGuildRouter.cpp" />
+    <ClCompile Include="GServerGuildRouter.cpp" />
+    <ClCompile Include="GStandAloneModeGuildRouter.cpp" />
+    <ClCompile Include="GClientMoveServerRouter.cpp" />
+    <ClCompile Include="GMasterServerMoveServerRouter.cpp" />
+    <ClCompile Include="GStandAloneModeMoveServerRouter.cpp" />
+    <ClCompile Include="GCollision.cpp" />
+    <ClCompile Include="GCommonSystem.cpp" />
+    <ClCompile Include="GMovableComparer.cpp" />
+    <ClCompile Include="GStrings.cpp" />
+    <ClCompile Include="GLuaGlues.cpp" />
+    <ClCompile Include="GLuaResult.cpp" />
+    <ClCompile Include="GLuaThisEnchanter.cpp" />
+    <ClCompile Include="GNPCScriptBuilder.cpp" />
+    <ClCompile Include="GScriptManager.cpp" />
+    <ClCompile Include="GScriptUtil.cpp" />
+    <ClCompile Include="GScriptGroup_Field.cpp" />
+    <ClCompile Include="GScriptGroup_NPC.cpp" />
+    <ClCompile Include="GScriptGroup_Quest.cpp" />
+    <ClCompile Include="GScriptGroup_QuestPVP.cpp" />
+    <ClCompile Include="GNullGlueActor.cpp" />
+    <ClCompile Include="GNullGlueField.cpp" />
+    <ClCompile Include="GNullGlueNPC.cpp" />
+    <ClCompile Include="GNullGluePlayer.cpp" />
+    <ClCompile Include="GNullGlueQuest.cpp" />
+    <ClCompile Include="GNullGlueQuestPVP.cpp" />
+    <ClCompile Include="GGlueActor.cpp" />
+    <ClCompile Include="GGlueField.cpp" />
+    <ClCompile Include="GGlueNPC.cpp" />
+    <ClCompile Include="GGluePlayer.cpp" />
+    <ClCompile Include="GGlueQuest.cpp" />
+    <ClCompile Include="GGlueQuestPVP.cpp" />
+    <ClCompile Include="GColtInfo.cpp" />
+    <ClCompile Include="GNPCDecay.cpp" />
+    <ClCompile Include="GNPCFirstStrike.cpp" />
+    <ClCompile Include="GNPCInfo.cpp" />
+    <ClCompile Include="GNPCInfoHelper.cpp" />
+    <ClCompile Include="GNPCInfoMgr.cpp" />
+    <ClCompile Include="GNPCInfoMgr_COLT.cpp" />
+    <ClCompile Include="GNPCInfoMgr_HitInfo.cpp" />
+    <ClCompile Include="GNPCInfoMgr_Interaction.cpp" />
+    <ClCompile Include="GNPCInfoMgr_NPC.cpp" />
+    <ClCompile Include="GNPCMgr.cpp" />
+    <ClCompile Include="GNPCMinion.cpp" />
+    <ClCompile Include="GNPCMove.cpp" />
+    <ClCompile Include="GNPCPathContext.cpp" />
+    <ClCompile Include="GNPCRage.cpp" />
+    <ClCompile Include="GNPCRewarder.cpp" />
+    <ClCompile Include="GNPCSetterForTest.cpp" />
+    <ClCompile Include="GNPCStress.cpp" />
+    <ClCompile Include="GNPCTarget.cpp" />
+    <ClCompile Include="GNPCWaitFor.cpp" />
+    <ClCompile Include="GEquipmentLimiter.cpp" />
+    <ClCompile Include="GItem.cpp" />
+    <ClCompile Include="GITEM_STACK_AMT.cpp" />
+    <ClCompile Include="GItemActableChecker.cpp" />
+    <ClCompile Include="GItemAddRemoveInfo.cpp" />
+    <ClCompile Include="GItemAddRemoveInfoParser.cpp" />
+    <ClCompile Include="GItemConvertPrefixedString.cpp" />
+    <ClCompile Include="GItemData.cpp" />
+    <ClCompile Include="GItemExpirer.cpp" />
+    <ClCompile Include="GItemHolder.cpp" />
+    <ClCompile Include="GItemManager.cpp" />
+    <ClCompile Include="GItemPeriod.cpp" />
+    <ClCompile Include="GItemStateSelector.cpp" />
+    <ClCompile Include="GEquipmentSlot.cpp" />
+    <ClCompile Include="GGuildStorage.cpp" />
+    <ClCompile Include="GInventory.cpp" />
+    <ClCompile Include="GItemContainer.cpp" />
+    <ClCompile Include="GItemNullContainer.cpp" />
+    <ClCompile Include="GOverlappedEquipmentSlot.cpp" />
+    <ClCompile Include="GStorage.cpp" />
+    <ClCompile Include="GItemAddAndRemoverForInfo.cpp" />
+    <ClCompile Include="GItemAdder.cpp" />
+    <ClCompile Include="GItemDurabilityUpdater.cpp" />
+    <ClCompile Include="GItemDyer.cpp" />
+    <ClCompile Include="GItemEnchant.cpp" />
+    <ClCompile Include="GItemEquiper.cpp" />
+    <ClCompile Include="GItemEquiperForDBTask.cpp" />
+    <ClCompile Include="GItemMover.cpp" />
+    <ClCompile Include="GItemMoverForDBTask.cpp" />
+    <ClCompile Include="GItemRemover.cpp" />
+    <ClCompile Include="GItemSorter.cpp" />
+    <ClCompile Include="GItemSoulAttunement.cpp" />
+    <ClCompile Include="GItemSystem.cpp" />
+    <ClCompile Include="GItemSystemSetterForTest.cpp" />
+    <ClCompile Include="GItemUnequiper.cpp" />
+    <ClCompile Include="GItemUser.cpp" />
+    <ClCompile Include="GArcheryTalent.cpp" />
+    <ClCompile Include="GBuffInfo.cpp" />
+    <ClCompile Include="GExtraActiveTalent.cpp" />
+    <ClCompile Include="GExtraActiveTalentRunner.cpp" />
+    <ClCompile Include="GItemTalent.cpp" />
+    <ClCompile Include="GMagicTalent.cpp" />
+    <ClCompile Include="GMeleeTalent.cpp" />
+    <ClCompile Include="GPlayerTalent.cpp" />
+    <ClCompile Include="GTalent.cpp" />
+    <ClCompile Include="GTalentFactory.cpp" />
+    <ClCompile Include="GTalentHelper.cpp" />
+    <ClCompile Include="GTalentHitter.cpp" />
+    <ClCompile Include="GTalentRouter.cpp" />
+    <ClCompile Include="GTalentFocus.cpp" />
+    <ClCompile Include="GTalentFocus_Advent.cpp" />
+    <ClCompile Include="GTalentFocus_Berserk.cpp" />
+    <ClCompile Include="GTalentFocus_Counter.cpp" />
+    <ClCompile Include="GTalentFocus_Enlighten.cpp" />
+    <ClCompile Include="GTalentFocus_Precision.cpp" />
+    <ClCompile Include="GTalentFocus_Sneak.cpp" />
+    <ClCompile Include="GTalentFocusMgr.cpp" />
+    <ClCompile Include="GBuff.cpp" />
+    <ClCompile Include="GBuffEquipmentChanger.cpp" />
+    <ClCompile Include="GBuffInstantApplier.cpp" />
+    <ClCompile Include="GBuffModifierApplier.cpp" />
+    <ClCompile Include="GBuffObserverMgr.cpp" />
+    <ClCompile Include="GBuffPaletteChanger.cpp" />
+    <ClCompile Include="GBuffReleaser.cpp" />
+    <ClCompile Include="GBuffRequirement.cpp" />
+    <ClCompile Include="GBuffRouter.cpp" />
+    <ClCompile Include="GBuffScript.cpp" />
+    <ClCompile Include="GBuffStack.cpp" />
+    <ClCompile Include="GBuffTriggerApplier.cpp" />
+    <ClCompile Include="GEFfectTimingChecker.cpp" />
+    <ClCompile Include="GDeadMotionFactorImpactor.cpp" />
+    <ClCompile Include="GModEffector.cpp" />
+    <ClCompile Include="GTalentEffector.cpp" />
+    <ClCompile Include="GBPartRewardParser.cpp" />
+    <ClCompile Include="GTalentInfo.cpp" />
+    <ClCompile Include="GTalentInfoExtParser.cpp" />
+    <ClCompile Include="GTalentInfoLoader.cpp" />
+    <ClCompile Include="GTalentInfoMgr.cpp" />
+    <ClCompile Include="GTalentInfoParser.cpp" />
+    <ClCompile Include="GTalentEventChecker.cpp" />
+    <ClCompile Include="GTalentExpirer.cpp" />
+    <ClCompile Include="GTalentHit.cpp" />
+    <ClCompile Include="GTalentHitcapsule.cpp" />
+    <ClCompile Include="GTalentLogger.cpp" />
+    <ClCompile Include="GTalentMove.cpp" />
+    <ClCompile Include="GTalentProjectile.cpp" />
+    <ClCompile Include="GTalentScript.cpp" />
+    <ClCompile Include="GTalentStress.cpp" />
+    <ClCompile Include="GTalentHitCommandFactory.cpp" />
+    <ClCompile Include="GTalentHitRouter.cpp" />
+    <ClCompile Include="GEnvManager.cpp" />
+    <ClCompile Include="GWorld.cpp" />
+    <ClCompile Include="GEmblemInfoSQLMaker.cpp" />
+    <ClCompile Include="GItemInfoSQLMaker.cpp" />
+    <ClCompile Include="GItemLearnTalentSQLMaker.cpp" />
+    <ClCompile Include="GQuestInfoSQLMaker.cpp" />
+    <ClCompile Include="GRecipeInfoSQLMaker.cpp" />
+    <ClCompile Include="GSQLExporter.cpp" />
+    <ClCompile Include="GTalentInfoSQLMaker.cpp" />
+    <ClCompile Include="GExportDBStringTable.cpp" />
+    <ClCompile Include="GDBManager.cpp" />
+    <ClCompile Include="GDBTaskNPCKillLogBuilder.cpp" />
+    <ClCompile Include="GEffRemainTimeSqlBuilder.cpp" />
+    <ClCompile Include="GDBTaskExecCounter.cpp" />
+    <ClCompile Include="GDBTaskConnLogInsert.cpp" />
+    <ClCompile Include="GDBTaskLogin.cpp" />
+    <ClCompile Include="GDBTaskCharDelete.cpp" />
+    <ClCompile Include="GDBTaskCharGetLookList.cpp" />
+    <ClCompile Include="GDBTaskCharInsert.cpp" />
+    <ClCompile Include="GDBTaskCharSerialize.cpp" />
+    <ClCompile Include="GDBTaskCharSyncCache.cpp" />
+    <ClCompile Include="GDBTaskCharDecMoney.cpp" />
+    <ClCompile Include="GDBTaskCharIncMoney.cpp" />
+    <ClCompile Include="GDBTaskCharItemUpdateXP.cpp" />
+    <ClCompile Include="GDBTaskCharLevelUp.cpp" />
+    <ClCompile Include="GDBTaskCharUpdateXP.cpp" />
+    <ClCompile Include="GDBTaskTalentLearn.cpp" />
+    <ClCompile Include="GDBTaskTalentResetAll.cpp" />
+    <ClCompile Include="GDBTaskSQL.cpp" />
+    <ClCompile Include="GDBTaskQuestAccept.cpp" />
+    <ClCompile Include="GDBTaskQuestDone.cpp" />
+    <ClCompile Include="GDBTaskQuestFail.cpp" />
+    <ClCompile Include="GDBTaskQuestGiveup.cpp" />
+    <ClCompile Include="GDBTaskQuestPvPRewardInven.cpp" />
+    <ClCompile Include="GDBTaskQuestPvPRewardMail.cpp" />
+    <ClCompile Include="GDBTaskGuildDelete.cpp" />
+    <ClCompile Include="GDBTaskGuildInsert.cpp" />
+    <ClCompile Include="GDBTaskGuildMasterChange.cpp" />
+    <ClCompile Include="GDBTaskGuildMemberDelete.cpp" />
+    <ClCompile Include="GDBTaskGuildMemberInsert.cpp" />
+    <ClCompile Include="GDBTaskGuildSerialize.cpp" />
+    <ClCompile Include="GDBTaskGuildUpdateStorageMoney.cpp" />
+    <ClCompile Include="GDBTaskEmblemDelete.cpp" />
+    <ClCompile Include="GDBTaskEmblemInsert.cpp" />
+    <ClCompile Include="GDBTaskItemDecDura.cpp" />
+    <ClCompile Include="GDBTaskItemDecstackAmt.cpp" />
+    <ClCompile Include="GDBTaskItemDelete.cpp" />
+    <ClCompile Include="GDBTaskItemDye.cpp" />
+    <ClCompile Include="GDBTaskItemIncStackAmt.cpp" />
+    <ClCompile Include="GDBTaskItemInsert.cpp" />
+    <ClCompile Include="GDBTaskItemLearnTalent.cpp" />
+    <ClCompile Include="GDBTaskItemMerge.cpp" />
+    <ClCompile Include="GDBTaskItemSplit.cpp" />
+    <ClCompile Include="GDBTaskItemStackAmt.cpp" />
+    <ClCompile Include="GDBTaskItemSwapSlot.cpp" />
+    <ClCompile Include="GDBTaskItemLootInsert.cpp" />
+    <ClCompile Include="GDBTaskItemLootUpdate.cpp" />
+    <ClCompile Include="GDBTaskItemEquip.cpp" />
+    <ClCompile Include="GDBTaskItemUnequip.cpp" />
+    <ClCompile Include="GDBTaskItemEnchant.cpp" />
+    <ClCompile Include="GDBTaskTrade.cpp" />
+    <ClCompile Include="GDBTaskCacheFlush.cpp" />
+    <ClCompile Include="GDBTaskCraft.cpp" />
+    <ClCompile Include="GDBTaskCraftInsert.cpp" />
+    <ClCompile Include="GDBTaskCraftUpdate.cpp" />
+    <ClCompile Include="GDBTaskNPCShop.cpp" />
+    <ClCompile Include="GDBTaskItemBuyInsert.cpp" />
+    <ClCompile Include="GDBTaskItemBuyUpdate.cpp" />
+    <ClCompile Include="GDBTaskItemSellDelete.cpp" />
+    <ClCompile Include="GDBTaskItemSellUpdate.cpp" />
+    <ClCompile Include="GDBTaskItemSellVeryCommon.cpp" />
+    <ClCompile Include="GDBTaskItemRepair.cpp" />
+    <ClCompile Include="GDBTaskItemRepairAll.cpp" />
+    <ClCompile Include="GDBTaskMailCheckReceiver.cpp" />
+    <ClCompile Include="GDBTaskMailDelete.cpp" />
+    <ClCompile Include="GDBTaskMailGetContent.cpp" />
+    <ClCompile Include="GDBTaskMailGetItem.cpp" />
+    <ClCompile Include="GDBTaskMailGetList.cpp" />
+    <ClCompile Include="GDBTaskMailGetMoney.cpp" />
+    <ClCompile Include="GDBTaskMailSetRead.cpp" />
+    <ClCompile Include="GDBTaskMailWrite.cpp" />
+    <ClCompile Include="GDBTaskStorageSerialize.cpp" />
+    <ClCompile Include="GDBTaskStorageUpdateMoney.cpp" />
+    <ClCompile Include="GDBTaskTradeMarketPutOn.cpp" />
+    <ClCompile Include="GDBLogoutFieldBuilder.cpp" />
+    <ClCompile Include="GDBAsyncTask.cpp" />
+    <ClCompile Include="GDBTaskDataItemEquip.cpp" />
+    <ClCompile Include="GDBTaskItem.cpp" />
+    <ClCompile Include="GDBCacheFlush.cpp" />
+    <ClCompile Include="GDBCacheRegularFlush.cpp" />
+    <ClCompile Include="GDBCacheSystem.cpp" />
+    <ClCompile Include="GItemDBCacheSyncer.cpp" />
+    <ClCompile Include="GPlayerDBCache.cpp" />
+    <ClCompile Include="GPlayerDBCacheMgr.cpp" />
+    <ClCompile Include="GCharacterDBCache.cpp" />
+    <ClCompile Include="GDBCacheData.cpp" />
+    <ClCompile Include="GItemDBCache.cpp" />
+    <ClCompile Include="GItemDBCacheMgr.cpp" />
+    <ClCompile Include="GObjectDBCache.cpp" />
+    <ClCompile Include="GCharacterSyncingCache.cpp" />
+    <ClCompile Include="GItemSyncingCache.cpp" />
+    <ClCompile Include="GSyncingCacheList.cpp" />
+    <ClCompile Include="GFakeDBIDGenerator.cpp" />
+    <ClCompile Include="GFakeDBManager.cpp" />
+    <ClCompile Include="GCraftLogCache.cpp" />
+    <ClCompile Include="GItemDeleteLogCache.cpp" />
+    <ClCompile Include="GItemLogCache.cpp" />
+    <ClCompile Include="GItemMergeLogCache.cpp" />
+    <ClCompile Include="GItemMoveLogCache.cpp" />
+    <ClCompile Include="GLogCache.cpp" />
+    <ClCompile Include="GLogCacheContainer.cpp" />
+    <ClCompile Include="GMoneyLogCache.cpp" />
+    <ClCompile Include="GNpcShopLogCache.cpp" />
+    <ClCompile Include="GPartyLogCache.cpp" />
+    <ClCompile Include="GQuestItemLogCache.cpp" />
+    <ClCompile Include="GXPLogCache.cpp" />
+    <ClCompile Include="GAttackDamageCalculator.cpp" />
+    <ClCompile Include="GCalculator.cpp" />
+    <ClCompile Include="GCombatCalculator.cpp" />
+    <ClCompile Include="GCriticalCalculator.cpp" />
+    <ClCompile Include="GDamageMODTable.cpp" />
+    <ClCompile Include="GDefenseFactorCalculator.cpp" />
+    <ClCompile Include="GDodgeCalculator.cpp" />
+    <ClCompile Include="GExpCalculator.cpp" />
+    <ClCompile Include="GFactionCalculator.cpp" />
+    <ClCompile Include="GGuardCalculator.cpp" />
+    <ClCompile Include="GLevelFactorTable.cpp" />
+    <ClCompile Include="GModGradeTable.cpp" />
+    <ClCompile Include="GNpcXPTable.cpp" />
+    <ClCompile Include="GResistCalculator.cpp" />
+    <ClCompile Include="GStateFactorCalculator.cpp" />
+    <ClCompile Include="GNPCLoot.cpp" />
+    <ClCompile Include="GPlayerLoot.cpp" />
+    <ClCompile Include="GDropItem.cpp" />
+    <ClCompile Include="GDropItemAuthorizer.cpp" />
+    <ClCompile Include="GDropItems.cpp" />
+    <ClCompile Include="GDropList.cpp" />
+    <ClCompile Include="GDropSilver.cpp" />
+    <ClCompile Include="GDropSoul.cpp" />
+    <ClCompile Include="GDropSouls.cpp" />
+    <ClCompile Include="GLootBeginner.cpp" />
+    <ClCompile Include="GLootBPart.cpp" />
+    <ClCompile Include="GLootEnder.cpp" />
+    <ClCompile Include="GLootItemGetter.cpp" />
+    <ClCompile Include="GLootLooter.cpp" />
+    <ClCompile Include="GLootMasterLooter.cpp" />
+    <ClCompile Include="GLootModifyHandler.cpp" />
+    <ClCompile Include="GLootShower.cpp" />
+    <ClCompile Include="GLootSystem.cpp" />
+    <ClCompile Include="GLootSystemForMasterServer.cpp" />
+    <ClCompile Include="GLootSystemSetterForTest.cpp" />
+    <ClCompile Include="GLootInfo.cpp" />
+    <ClCompile Include="GLootInfoMgr.cpp" />
+    <ClCompile Include="GKillRewardOwner.cpp" />
+    <ClCompile Include="GNPCRewardOwner.cpp" />
+    <ClCompile Include="GInteractionSystem.cpp" />
+    <ClCompile Include="GNPCIconSelector.cpp" />
+    <ClCompile Include="GNPCIEApplier.cpp" />
+    <ClCompile Include="GNPCIEChecker.cpp" />
+    <ClCompile Include="GNPCIETextMaker.cpp" />
+    <ClCompile Include="GNPCInteraction.cpp" />
+    <ClCompile Include="GNPCInteractionInfo.cpp" />
+    <ClCompile Include="GNPCInteractor.cpp" />
+    <ClCompile Include="GPlayerInteraction.cpp" />
+    <ClCompile Include="GPlayerInteractor.cpp" />
+    <ClCompile Include="GDialogInfo.cpp" />
+    <ClCompile Include="GDialogInfoMgr.cpp" />
+    <ClCompile Include="GDialogSystem.cpp" />
+    <ClCompile Include="GQObjectiveInfo.cpp" />
+    <ClCompile Include="GQuestInfo.cpp" />
+    <ClCompile Include="GQuestInfoMgr.cpp" />
+    <ClCompile Include="GQuestAddItemCollector.cpp" />
+    <ClCompile Include="GQuestCanceler.cpp" />
+    <ClCompile Include="GQuestCompleter.cpp" />
+    <ClCompile Include="GQuestFailer.cpp" />
+    <ClCompile Include="GQuestGiver.cpp" />
+    <ClCompile Include="GQuestRemoveItemCollector.cpp" />
+    <ClCompile Include="GQuestReseter.cpp" />
+    <ClCompile Include="GQuestRewarder.cpp" />
+    <ClCompile Include="GQuestRewarderForDBTask.cpp" />
+    <ClCompile Include="GQuestSharer.cpp" />
+    <ClCompile Include="GQuestSystem.cpp" />
+    <ClCompile Include="GQuestSystemSetterForTest.cpp" />
+    <ClCompile Include="GQuestUIShower.cpp" />
+    <ClCompile Include="GQuestVarUpdater.cpp" />
+    <ClCompile Include="GQObjInteractor.cpp" />
+    <ClCompile Include="GQObjUpdater.cpp" />
+    <ClCompile Include="GQObjUpdaterForDBTask.cpp" />
+    <ClCompile Include="GPlayerQObjective.cpp" />
+    <ClCompile Include="GPlayerQuest.cpp" />
+    <ClCompile Include="GPlayerQuests.cpp" />
+    <ClCompile Include="GNPCEscortQuest.cpp" />
+    <ClCompile Include="GNPCEscortQuests.cpp" />
+    <ClCompile Include="GNPCQuest.cpp" />
+    <ClCompile Include="GChallengerQuestMgr.cpp" />
+    <ClCompile Include="GSoulBindingInfo.cpp" />
+    <ClCompile Include="GSoulBindingInfoMgr.cpp" />
+    <ClCompile Include="GTradeAcceptor.cpp" />
+    <ClCompile Include="GTradeCanceler.cpp" />
+    <ClCompile Include="GTradeChecker.cpp" />
+    <ClCompile Include="GTradeConfirmer.cpp" />
+    <ClCompile Include="GTradeExchanger.cpp" />
+    <ClCompile Include="GTradeExchangerForDBTask.cpp" />
+    <ClCompile Include="GTradeItemPutDowner.cpp" />
+    <ClCompile Include="GTradeItemPutUper.cpp" />
+    <ClCompile Include="GTradeRequester.cpp" />
+    <ClCompile Include="GTradeSilverPutUper.cpp" />
+    <ClCompile Include="GTradeSystem.cpp" />
+    <ClCompile Include="GPlayerTrade.cpp" />
+    <ClCompile Include="GTrainingSystem.cpp" />
+    <ClCompile Include="GConditionChecker.cpp" />
+    <ClCompile Include="GConditionInfo.cpp" />
+    <ClCompile Include="GConditionsInfo.cpp" />
+    <ClCompile Include="GConditionsInfoMgr.cpp" />
+    <ClCompile Include="GConditionsSystem.cpp" />
+    <ClCompile Include="GItemConditionsInfoMgr.cpp" />
+    <ClCompile Include="GFatigueSystem.cpp" />
+    <ClCompile Include="GCraftInfoMgr.cpp" />
+    <ClCompile Include="GCraftSystem.cpp" />
+    <ClCompile Include="GRecipeInfo.cpp" />
+    <ClCompile Include="GRecipeInfoMgr.cpp" />
+    <ClCompile Include="GInnRoomInfo.cpp" />
+    <ClCompile Include="GInnRoomInfoMgr.cpp" />
+    <ClCompile Include="GInnSystem.cpp" />
+    <ClCompile Include="GGuild.cpp" />
+    <ClCompile Include="GGuildMember.cpp" />
+    <ClCompile Include="GGuildMgr.cpp" />
+    <ClCompile Include="GGuildSystem.cpp" />
+    <ClCompile Include="GGuildSystemForDBTask.cpp" />
+    <ClCompile Include="GGuildSystemForMasterServer.cpp" />
+    <ClCompile Include="GDuel.cpp" />
+    <ClCompile Include="GDuelMgr.cpp" />
+    <ClCompile Include="GCheatChecker.cpp" />
+    <ClCompile Include="GPositionChecker.cpp" />
+    <ClCompile Include="GPalette.cpp" />
+    <ClCompile Include="GPaletteItem.cpp" />
+    <ClCompile Include="GPaletteSystem.cpp" />
+    <ClCompile Include="GSoulSystem.cpp" />
+    <ClCompile Include="GDespawnReporter.cpp" />
+    <ClCompile Include="GTestSystem.cpp" />
+    <ClCompile Include="GBattleArena.cpp" />
+    <ClCompile Include="GBattleArenaMatcher.cpp" />
+    <ClCompile Include="GBattleArenaMgr.cpp" />
+    <ClCompile Include="GPlayerBattleArena.cpp" />
+    <ClCompile Include="GMatchRule_SameTeamMember.cpp" />
+    <ClCompile Include="GGameRule_DeathMatch.cpp" />
+    <ClCompile Include="GGMExpoHandler.cpp" />
+    <ClCompile Include="GGmSetMeHandler.cpp" />
+    <ClCompile Include="GGMSetNPCHandler.cpp" />
+    <ClCompile Include="GPresetInfo.cpp" />
+    <ClCompile Include="GPresetInfoMgr.cpp" />
+    <ClCompile Include="GMasterServerFacade.cpp" />
+    <ClCompile Include="GProxyChatChannel.cpp" />
+    <ClCompile Include="GProxyParty.cpp" />
+    <ClCompile Include="GProxyDynamicFieldMaster.cpp" />
+    <ClCompile Include="GProxyField.cpp" />
+    <ClCompile Include="GProxyFieldManager.cpp" />
+    <ClCompile Include="GProxySharedFieldMaster.cpp" />
+    <ClCompile Include="GFakeLoginLogic.cpp" />
+    <ClCompile Include="GFakeLoginPlayerAcceptor_FromGameServerToLoginServer.cpp" />
+    <ClCompile Include="GLoginLogic.cpp" />
+    <ClCompile Include="GLoginLogicMoveGameServer.cpp" />
+    <ClCompile Include="GPlayerAcceptManager.cpp" />
+    <ClCompile Include="GPlayerAcceptor.cpp" />
+    <ClCompile Include="GPlayerAcceptor_FromGameServer.cpp" />
+    <ClCompile Include="GPlayerAcceptor_FromLoginServer.cpp" />
+    <ClCompile Include="GFactionInfo.cpp" />
+    <ClCompile Include="GFactionInfoMgr.cpp" />
+    <ClCompile Include="GFactionRelationInfo.cpp" />
+    <ClCompile Include="GFactionRelationInfoMgr.cpp" />
+    <ClCompile Include="GFactionSystem.cpp" />
+    <ClCompile Include="GPlayerFaction.cpp" />
+    <ClCompile Include="GPlayerFactions.cpp" />
+    <ClCompile Include="GRelationChecker.cpp" />
+    <ClCompile Include="GRelationSelector.cpp" />
+    <ClCompile Include="GuardEffector.cpp" />
+    <ClCompile Include="GHateTable.cpp" />
+    <ClCompile Include="GHateTableLocker.cpp" />
+    <ClCompile Include="GHateTableSwapper.cpp" />
+    <ClCompile Include="GNPCShopBuyer.cpp" />
+    <ClCompile Include="GNPCShopInfo.cpp" />
+    <ClCompile Include="GNPCShopInfoMgr.cpp" />
+    <ClCompile Include="GNPCShopRepairer.cpp" />
+    <ClCompile Include="GNPCShopSeller.cpp" />
+    <ClCompile Include="GNPCShopShower.cpp" />
+    <ClCompile Include="GNPCShopSystem.cpp" />
+    <ClCompile Include="GAppServerFacade.cpp" />
+    <ClCompile Include="GAnnounceMsgHandler.cpp" />
+    <ClCompile Include="GAuctionMsgHandler.cpp" />
+    <ClCompile Include="GChannelMsgHandler.cpp" />
+    <ClCompile Include="GFieldMsgHandler.cpp" />
+    <ClCompile Include="GGlobalMsgHandler.cpp" />
+    <ClCompile Include="GGuildMsgHandler.cpp" />
+    <ClCompile Include="GPartyMsgHandler.cpp" />
+    <ClCompile Include="GWhisperBackMsgHandler.cpp" />
+    <ClCompile Include="GWhisperMsgHandler.cpp" />
+    <ClCompile Include="GNarrationMsgHandler.cpp" />
+    <ClCompile Include="GSayMsgHandler.cpp" />
+    <ClCompile Include="GShoutFakeMsgHandler.cpp" />
+    <ClCompile Include="GShoutMsgHandler.cpp" />
+    <ClCompile Include="GMsgCommandFacade.cpp" />
+    <ClCompile Include="GMsgHandler.cpp" />
+    <ClCompile Include="GAdviceMsgHandler.cpp" />
+    <ClCompile Include="GNoticeMsgHandler.cpp" />
+    <ClCompile Include="GSystemMsgHandler.cpp" />
+    <ClCompile Include="GCutsceneInfoMgr.cpp" />
+    <ClCompile Include="GEmblemInfoMgr.cpp" />
+    <ClCompile Include="GReserveCmd.cpp" />
+    <ClCompile Include="GReserveCmdManager.cpp" />
+    <ClCompile Include="GQuestDateCalculator.cpp" />
+    <ClCompile Include="GTimeCalculator.cpp" />
+    <ClCompile Include="GMail.cpp" />
+    <ClCompile Include="GMailItemPutDowner.cpp" />
+    <ClCompile Include="GMailItemPutUper.cpp" />
+    <ClCompile Include="GMailItemTaker.cpp" />
+    <ClCompile Include="GMailMoneyTaker.cpp" />
+    <ClCompile Include="GMailSystem.cpp" />
+    <ClCompile Include="GPlayerMailBox.cpp" />
+    <ClCompile Include="GPlayerMailReserver.cpp" />
+    <ClCompile Include="GQPEventInfo.cpp" />
+    <ClCompile Include="GQPEventInfoMgr.cpp" />
+    <ClCompile Include="GQPKillRewarder.cpp" />
+    <ClCompile Include="GQPKillRewardOwner.cpp" />
+    <ClCompile Include="GQPNPCPosSender.cpp" />
+    <ClCompile Include="GQPTeamCountSender.cpp" />
+    <ClCompile Include="GQuestPVP.cpp" />
+    <ClCompile Include="GStorageSystem.cpp" />
+    <ClCompile Include="GFieldNPCSession.cpp" />
+    <ClCompile Include="GFieldNPCSessionMgr.cpp" />
+    <ClCompile Include="GSessionJobs.cpp" />
+    <ClCompile Include="GTradeMarket.cpp" />
+    <ClCompile Include="GCrashReporter.cpp" />
+    <ClCompile Include="GFieldStatusUpdater.cpp" />
+    <ClCompile Include="GGlobal.cpp" />
+    <ClCompile Include="GMemory.cpp" />
+    <ClCompile Include="GServableChecker.cpp" />
+    <ClCompile Include="GServer.cpp" />
+    <ClCompile Include="GServerCloser.cpp" />
+    <ClCompile Include="GServerDumper.cpp" />
+    <ClCompile Include="GServerManagers.cpp" />
+    <ClCompile Include="GServerModeChanger.cpp" />
+    <ClCompile Include="GServerResLoader.cpp" />
+    <ClCompile Include="GServerStatusUpdater.cpp" />
+    <ClCompile Include="GServerSystems.cpp" />
+    <ClCompile Include="GBaseApplication.cpp" />
+    <ClCompile Include="GAppNetClient.cpp" />
+    <ClCompile Include="GClientConnectionKeeper.cpp" />
+    <ClCompile Include="GCommand.cpp" />
+    <ClCompile Include="GMasterNetClient.cpp" />
+    <ClCompile Include="GNetClient.cpp" />
+    <ClCompile Include="GNetServer.cpp" />
+    <ClCompile Include="GRecordModeServer.cpp" />
+    <ClCompile Include="GASyncTask_LazyLoginMoveGameServer.cpp" />
+    <ClCompile Include="GAsyncTask_Logout.cpp" />
+    <ClCompile Include="GAsyncTask_MoveGameServer.cpp" />
+    <ClCompile Include="GAsyncTask_MoveLoginServer.cpp" />
+    <ClCompile Include="GAsyncTaskFactory.cpp" />
+    <ClCompile Include="GGameGuard.cpp" />
+    <ClCompile Include="GPlayerGameGuard.cpp" />
+    <ClCompile Include="GMonitorHelper.cpp" />
+    <ClCompile Include="GNPCSerializer.cpp" />
+    <ClCompile Include="GPlayerSerializer.cpp" />
+    <ClCompile Include="GReloader.cpp" />
+    <ClCompile Include="GSTLUtil.cpp" />
+    <ClCompile Include="GTDMaker.cpp" />
+    <ClCompile Include="GValidateLogger.cpp" />
+    <ClCompile Include="GAutoTestRunner.cpp" />
+    <ClCompile Include="GAIProfiler.cpp" />
+    <ClCompile Include="GAIProfilingTest.cpp" />
+    <ClCompile Include="GAIStatistics.cpp" />
+    <ClCompile Include="GAITest.cpp" />
+    <ClCompile Include="GQPVPTest.cpp" />
+    <ClCompile Include="GReportTableItem.cpp" />
+    <ClCompile Include="GReportTableSet.cpp" />
+    <ClCompile Include="GBirdMonitor.cpp" />
+    <ClCompile Include="GNPCReporter.cpp" />
+    <ClCompile Include="GPlayerReporter.cpp" />
+    <ClCompile Include="GReporter.cpp" />
+    <ClCompile Include="GTestDynamicField.cpp" />
+    <ClCompile Include="GVectorMUID.cpp" />
+    <ClCompile Include="GVectorMUIDPool.cpp" />
+    <ClCompile Include="GAIMonitorPort.cpp" />
+    <ClCompile Include="GCombatMonitorPort.cpp" />
+    <ClCompile Include="GMonitorPortBase.cpp" />
+    <ClCompile Include="GPMSObject.cpp" />
+    <ClCompile Include="GPMSSystem.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_praptor|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GEffectTargetSelector.h" />
+    <ClInclude Include="GObjectPool.h" />
+    <ClInclude Include="GTickRegulator.h" />
+    <ClInclude Include="GUseCostMgr.h" />
+    <ClInclude Include="GBuffEntity.h" />
+    <ClInclude Include="GEntity.h" />
+    <ClInclude Include="GEntityMgr.h" />
+    <ClInclude Include="GEntitySync.h" />
+    <ClInclude Include="GModule.h" />
+    <ClInclude Include="GModuleBuff.h" />
+    <ClInclude Include="GModuleID.h" />
+    <ClInclude Include="GModuleCombat.h" />
+    <ClInclude Include="GRegenUpdater.h" />
+    <ClInclude Include="GMotionFactor.h" />
+    <ClInclude Include="GMotionFactorHandler.h" />
+    <ClInclude Include="GMotionFactorHelper.h" />
+    <ClInclude Include="GAIRoomMgr.h" />
+    <ClInclude Include="GEnemyFinder.h" />
+    <ClInclude Include="GNPCEventSender.h" />
+    <ClInclude Include="GColtActionInstMgr.h" />
+    <ClInclude Include="GColtChecker.h" />
+    <ClInclude Include="GColtDef.h" />
+    <ClInclude Include="GColtMgr.h" />
+    <ClInclude Include="GColtPicker.h" />
+    <ClInclude Include="GColtRunner.h" />
+    <ClInclude Include="GAIState.h" />
+    <ClInclude Include="GBehaviorCombat.h" />
+    <ClInclude Include="GBehaviorDead.h" />
+    <ClInclude Include="GBehaviorMission.h" />
+    <ClInclude Include="GBehaviorPeace.h" />
+    <ClInclude Include="GBehaviorReturn.h" />
+    <ClInclude Include="GBehaviorSession.h" />
+    <ClInclude Include="GBehaviorState.h" />
+    <ClInclude Include="GCombatCombat.h" />
+    <ClInclude Include="GCombatFlee.h" />
+    <ClInclude Include="GCombatPrologue.h" />
+    <ClInclude Include="GCombatState.h" />
+    <ClInclude Include="GCombatVictory.h" />
+    <ClInclude Include="GFieldAIEventInvoker.h" />
+    <ClInclude Include="GNPCAIEventInvoker.h" />
+    <ClInclude Include="GSectorAIEventInvoker.h" />
+    <ClInclude Include="GSectorAIEventInvokerMgr.h" />
+    <ClInclude Include="GNPCAILod.h" />
+    <ClInclude Include="GNPCAILodEventSelector.h" />
+    <ClInclude Include="GAIEvent.h" />
+    <ClInclude Include="GAIEventHandler.h" />
+    <ClInclude Include="GAIEventInvoker.h" />
+    <ClInclude Include="GAIEventMgr.h" />
+    <ClInclude Include="GAIEventNotifier.h" />
+    <ClInclude Include="GAIEventSelector.h" />
+    <ClInclude Include="GNPCAIDefaultUpdater.h" />
+    <ClInclude Include="GNPCAIEmptyFieldUpdater.h" />
+    <ClInclude Include="GNPCAILod1Updater.h" />
+    <ClInclude Include="GNPCAILod2Updater.h" />
+    <ClInclude Include="GNPCAILod3Updater.h" />
+    <ClInclude Include="GNPCAILod4Updater.h" />
+    <ClInclude Include="GNPCAILod5Updater.h" />
+    <ClInclude Include="GNPCAIUpdater.h" />
+    <ClInclude Include="GBehaviorStateMachine.h" />
+    <ClInclude Include="GModuleAI.h" />
+    <ClInclude Include="GNPCAI.h" />
+    <ClInclude Include="GJob.h" />
+    <ClInclude Include="GJob_Broker.h" />
+    <ClInclude Include="GJob_Idle.h" />
+    <ClInclude Include="GJob_Speak.h" />
+    <ClInclude Include="GJob_Talent.h" />
+    <ClInclude Include="GJob_WaitFor.h" />
+    <ClInclude Include="GJobID.h" />
+    <ClInclude Include="GJobMgr.h" />
+    <ClInclude Include="GJobRunner.h" />
+    <ClInclude Include="GTask.h" />
+    <ClInclude Include="GTask_Broker.h" />
+    <ClInclude Include="GTask_Idle.h" />
+    <ClInclude Include="GTask_Move.h" />
+    <ClInclude Include="GTask_Talent.h" />
+    <ClInclude Include="GTask_WaitFor.h" />
+    <ClInclude Include="GTaskID.h" />
+    <ClInclude Include="GTaskUtil.h" />
+    <ClInclude Include="GJob_FleeFromEntity.h" />
+    <ClInclude Include="GJob_FleeToHome.h" />
+    <ClInclude Include="GJob_MoveToEntity.h" />
+    <ClInclude Include="GJob_MoveToPos.h" />
+    <ClInclude Include="GJob_Patrol.h" />
+    <ClInclude Include="GJob_Roam.h" />
+    <ClInclude Include="GModuleMovable.h" />
+    <ClInclude Include="GMoveStrategy.h" />
+    <ClInclude Include="GTargetObserveRotater.h" />
+    <ClInclude Include="GInstantJob.h" />
+    <ClInclude Include="GJobT_Assist.h" />
+    <ClInclude Include="GJobT_Attack.h" />
+    <ClInclude Include="GJobT_BreakPart.h" />
+    <ClInclude Include="GJobT_Despawn.h" />
+    <ClInclude Include="GJobT_Die.h" />
+    <ClInclude Include="GJobT_FaceTo.h" />
+    <ClInclude Include="GJobT_Flee.h" />
+    <ClInclude Include="GJobT_GainBuff.h" />
+    <ClInclude Include="GJobT_NextAction.h" />
+    <ClInclude Include="GJobT_Script.h" />
+    <ClInclude Include="GJobT_Summon.h" />
+    <ClInclude Include="GJobT_Warp.h" />
+    <ClInclude Include="GJobT_Yell.h" />
+    <ClInclude Include="GPartyActiveFieldGroupStorage.h" />
+    <ClInclude Include="GPartyActiveQuestStorage.h" />
+    <ClInclude Include="GPartyLootingRuleStorage.h" />
+    <ClInclude Include="GPartyMemberStorage.h" />
+    <ClInclude Include="GParty.h" />
+    <ClInclude Include="GPartyDef.h" />
+    <ClInclude Include="GPartyManager.h" />
+    <ClInclude Include="GPartySystem.h" />
+    <ClInclude Include="GEntityPlayer.h" />
+    <ClInclude Include="GEntityPlayerDBAsyncMonitor.h" />
+    <ClInclude Include="GPlayerAFK.h" />
+    <ClInclude Include="GPlayerCombatChecker.h" />
+    <ClInclude Include="GPlayerCRTLogger.h" />
+    <ClInclude Include="GPlayerCutscene.h" />
+    <ClInclude Include="GPlayerDoing.h" />
+    <ClInclude Include="GPlayerDye.h" />
+    <ClInclude Include="GPlayerEmblem.h" />
+    <ClInclude Include="GPlayerEnchant.h" />
+    <ClInclude Include="GPlayerEnemyInfoSender.h" />
+    <ClInclude Include="GPlayerFalling.h" />
+    <ClInclude Include="GPlayerGameStart_AutoRebirther.h" />
+    <ClInclude Include="GPlayerGameStart_FieldGater.h" />
+    <ClInclude Include="GPlayerGameStart_State.h" />
+    <ClInclude Include="GPlayerLevelUpdater.h" />
+    <ClInclude Include="GPlayerNPCIconSender.h" />
+    <ClInclude Include="GPlayerPassiveTalents.h" />
+    <ClInclude Include="GPlayerPVPArea.h" />
+    <ClInclude Include="GPlayerPVPChecker.h" />
+    <ClInclude Include="GPlayerRide.h" />
+    <ClInclude Include="GPlayerRole.h" />
+    <ClInclude Include="GPlayerSensorCacheUpdater.h" />
+    <ClInclude Include="GPlayerSetterForTest.h" />
+    <ClInclude Include="GPlayerSit.h" />
+    <ClInclude Include="GPlayerSpawnedNPC.h" />
+    <ClInclude Include="GPlayerStance.h" />
+    <ClInclude Include="GPlayerTargetInfoSender.h" />
+    <ClInclude Include="GPlayerTDCacheInfoBuilder.h" />
+    <ClInclude Include="GPlayerGameData.h" />
+    <ClInclude Include="GExpSystem.h" />
+    <ClInclude Include="GMoneySystem.h" />
+    <ClInclude Include="GPlayerSystem.h" />
+    <ClInclude Include="GRebirthSystem.h" />
+    <ClInclude Include="GEntityBPart.h" />
+    <ClInclude Include="GEntityNPC.h" />
+    <ClInclude Include="GEntityNPCUpdater.h" />
+    <ClInclude Include="GNPCAssist.h" />
+    <ClInclude Include="GNPCBParts.h" />
+    <ClInclude Include="GNPCCombatAnticheat.h" />
+    <ClInclude Include="GNPCDebugger.h" />
+    <ClInclude Include="GNPCHitcapsuleGroup.h" />
+    <ClInclude Include="GNPCLuaCallback.h" />
+    <ClInclude Include="GNPCMode.h" />
+    <ClInclude Include="GNPCPathFinder.h" />
+    <ClInclude Include="GNPCSensorChecker.h" />
+    <ClInclude Include="GNPCSwallow.h" />
+    <ClInclude Include="GActorBuffEntity.h" />
+    <ClInclude Include="GActorCooltimeChecker.h" />
+    <ClInclude Include="GActorCounter.h" />
+    <ClInclude Include="GActorDamageCalculator.h" />
+    <ClInclude Include="GActorHateTracker.h" />
+    <ClInclude Include="GActorInvisibility.h" />
+    <ClInclude Include="GActorObserver.h" />
+    <ClInclude Include="GActorObserverInterface.h" />
+    <ClInclude Include="GActorObserverMgr.h" />
+    <ClInclude Include="GActorTalent.h" />
+    <ClInclude Include="GEntityActor.h" />
+    <ClInclude Include="GImmuneHandler.h" />
+    <ClInclude Include="GImmuneInfo.h" />
+    <ClInclude Include="GRiposte.h" />
+    <ClInclude Include="GField.h" />
+    <ClInclude Include="GFieldEnteringMgr.h" />
+    <ClInclude Include="GFieldGrid.h" />
+    <ClInclude Include="GFieldGridEntityInfoMaker.h" />
+    <ClInclude Include="GFieldGridRouter.h" />
+    <ClInclude Include="GFieldSensor.h" />
+    <ClInclude Include="GFieldSystem.h" />
+    <ClInclude Include="GInnRoomField.h" />
+    <ClInclude Include="GPacketRouteLimiter.h" />
+    <ClInclude Include="GPacketRouteLimiterMgr.h" />
+    <ClInclude Include="GPickingZTable.h" />
+    <ClInclude Include="GScriptTimer.h" />
+    <ClInclude Include="GWeatherMgr.h" />
+    <ClInclude Include="GDynamicField.h" />
+    <ClInclude Include="GDynamicFieldFactory.h" />
+    <ClInclude Include="GDynamicFieldMaster.h" />
+    <ClInclude Include="GDynamicFieldObserver.h" />
+    <ClInclude Include="GTrialField.h" />
+    <ClInclude Include="GTrialFieldBoundary.h" />
+    <ClInclude Include="GDynamicFieldPolicy.h" />
+    <ClInclude Include="GDynamicFieldPolicy_BattleArena.h" />
+    <ClInclude Include="GDynamicFieldPolicy_InnRoom.h" />
+    <ClInclude Include="GDynamicFieldPolicy_TrialField.h" />
+    <ClInclude Include="GAutoPartyMgr.h" />
+    <ClInclude Include="GSharedField.h" />
+    <ClInclude Include="GSharedFieldFoward.h" />
+    <ClInclude Include="GSharedFieldMaster.h" />
+    <ClInclude Include="GSharedFieldNavigator.h" />
+    <ClInclude Include="GPathContextGroup.h" />
+    <ClInclude Include="GPathFinder.h" />
+    <ClInclude Include="GPathFinderImpl.h" />
+    <ClInclude Include="GPathResMgr.h" />
+    <ClInclude Include="GCollisionTree.h" />
+    <ClInclude Include="GCollisionTreeMgr.h" />
+    <ClInclude Include="GFieldAttrGrid.h" />
+    <ClInclude Include="GFieldInfo.h" />
+    <ClInclude Include="GFieldInfoLoader.h" />
+    <ClInclude Include="GFieldInfoMgr.h" />
+    <ClInclude Include="GWarpInfoChecker.h" />
+    <ClInclude Include="GWarpInfoCollector.h" />
+    <ClInclude Include="GZoneInfo.h" />
+    <ClInclude Include="GFieldFactory.h" />
+    <ClInclude Include="GFieldMgr.h" />
+    <ClInclude Include="GGateInfo.h" />
+    <ClInclude Include="GPlayerField.h" />
+    <ClInclude Include="GPlayerFieldDynamic.h" />
+    <ClInclude Include="GPlayerFieldDynamic_StandAlone.h" />
+    <ClInclude Include="GPlayerFieldEntry.h" />
+    <ClInclude Include="GPlayerFieldGateRetryer.h" />
+    <ClInclude Include="GPlayerFieldLazyGateway.h" />
+    <ClInclude Include="GPlayerFieldMasterServer.h" />
+    <ClInclude Include="GPlayerFieldShared.h" />
+    <ClInclude Include="GManagedFieldInfoMgr.h" />
+    <ClInclude Include="GDespawnAuto.h" />
+    <ClInclude Include="GSpawn.h" />
+    <ClInclude Include="GSpawnDelay.h" />
+    <ClInclude Include="GSpawnManager.h" />
+    <ClInclude Include="GIndexedIDMap.h" />
+    <ClInclude Include="GPlayerLogoutDBExecuter.h" />
+    <ClInclude Include="GPlayerObject.h" />
+    <ClInclude Include="GPlayerObjectManager.h" />
+    <ClInclude Include="GCommandCenter.h" />
+    <ClInclude Include="GCommandLogger.h" />
+    <ClInclude Include="GCmdHandlerGroup.h" />
+    <ClInclude Include="GCmdHandler_Action.h" />
+    <ClInclude Include="GCmdHandler_BattleArena.h" />
+    <ClInclude Include="GCmdHandler_Char.h" />
+    <ClInclude Include="GCmdHandler_Comm.h" />
+    <ClInclude Include="GCmdHandler_Craft.h" />
+    <ClInclude Include="GCmdHandler_Cutscene.h" />
+    <ClInclude Include="GCmdHandler_Duel.h" />
+    <ClInclude Include="GCmdHandler_Game.h" />
+    <ClInclude Include="GCmdHandler_GM.h" />
+    <ClInclude Include="GCmdHandler_Guild.h" />
+    <ClInclude Include="GCmdHandler_Inn.h" />
+    <ClInclude Include="GCmdHandler_Interaction.h" />
+    <ClInclude Include="GCmdHandler_Item.h" />
+    <ClInclude Include="GCmdHandler_Loot.h" />
+    <ClInclude Include="GCmdHandler_Mail.h" />
+    <ClInclude Include="GCmdHandler_Map.h" />
+    <ClInclude Include="GCmdHandler_MSG.h" />
+    <ClInclude Include="GCmdHandler_NPCShop.h" />
+    <ClInclude Include="GCmdHandler_Palette.h" />
+    <ClInclude Include="GCmdHandler_Party.h" />
+    <ClInclude Include="GCmdHandler_Quest.h" />
+    <ClInclude Include="GCmdHandler_QuestPVP.h" />
+    <ClInclude Include="GCmdHandler_Storage.h" />
+    <ClInclude Include="GCmdHandler_Trade.h" />
+    <ClInclude Include="GCmdHandler_TradeMarket.h" />
+    <ClInclude Include="GCmdHandler_Training.h" />
+    <ClInclude Include="GCmdHandler_Master_Char.h" />
+    <ClInclude Include="GCmdHandler_Master_Common.h" />
+    <ClInclude Include="GCmdHandler_Master_Field.h" />
+    <ClInclude Include="GCmdHandler_Master_Gate.h" />
+    <ClInclude Include="GCmdHandler_Master_Guild.h" />
+    <ClInclude Include="GCmdHandler_Master_Login.h" />
+    <ClInclude Include="GCmdHandler_Master_Loot.h" />
+    <ClInclude Include="GCmdHandler_Master_MoveServer.h" />
+    <ClInclude Include="GCmdHandler_Master_Party.h" />
+    <ClInclude Include="GCmdHandler_FakeLoginServer.h" />
+    <ClInclude Include="GCmdHandler_Login.h" />
+    <ClInclude Include="GGameStarter.h" />
+    <ClInclude Include="GCmdHandler_App_Common.h" />
+    <ClInclude Include="GCmdHandler_App_Mail.h" />
+    <ClInclude Include="GCmdHandler_App_Msg.h" />
+    <ClInclude Include="GMasterServerPlayerRouter.h" />
+    <ClInclude Include="GServerPlayerRouter.h" />
+    <ClInclude Include="GStandAloneModePlayerRouter.h" />
+    <ClInclude Include="GClientPartyRouter.h" />
+    <ClInclude Include="GMasterServerPartyRouter.h" />
+    <ClInclude Include="GServerPartyRouter.h" />
+    <ClInclude Include="GStandAloneModePartyRouter.h" />
+    <ClInclude Include="GClientFieldRouter.h" />
+    <ClInclude Include="GServerFieldRouter.h" />
+    <ClInclude Include="GServerGateRouter.h" />
+    <ClInclude Include="GStandAloneModeGateRouter.h" />
+    <ClInclude Include="GAppServerChatChannelRouter.h" />
+    <ClInclude Include="GClientChatChannelRouter.h" />
+    <ClInclude Include="GServerChatChannelRouter.h" />
+    <ClInclude Include="GStandAloneModeChatChannelRouter.h" />
+    <ClInclude Include="GAppServerMailRouter.h" />
+    <ClInclude Include="GClientMailRouter.h" />
+    <ClInclude Include="GServerMailRouter.h" />
+    <ClInclude Include="GStandAloneModeMailRouter.h" />
+    <ClInclude Include="GClientCharRouter.h" />
+    <ClInclude Include="GMasterServerGuildRouter.h" />
+    <ClInclude Include="GServerGuildRouter.h" />
+    <ClInclude Include="GStandAloneModeGuildRouter.h" />
+    <ClInclude Include="GClientMoveServerRouter.h" />
+    <ClInclude Include="GMasterServerMoveServerRouter.h" />
+    <ClInclude Include="GMoveServerRouter.h" />
+    <ClInclude Include="GStandAloneModeMoveServerRouter.h" />
+    <ClInclude Include="GCollision.h" />
+    <ClInclude Include="GCommonSystem.h" />
+    <ClInclude Include="GMovableComparer.h" />
+    <ClInclude Include="GStrings.h" />
+    <ClInclude Include="GLuaGlues.h" />
+    <ClInclude Include="GLuaResult.h" />
+    <ClInclude Include="GLuaThisEnchanter.h" />
+    <ClInclude Include="GNPCScriptBuilder.h" />
+    <ClInclude Include="GScriptMacro.h" />
+    <ClInclude Include="GScriptManager.h" />
+    <ClInclude Include="GScriptUtil.h" />
+    <ClInclude Include="GScriptGroup_Field.h" />
+    <ClInclude Include="GScriptGroup_NPC.h" />
+    <ClInclude Include="GScriptGroup_Quest.h" />
+    <ClInclude Include="GScriptGroup_QuestPVP.h" />
+    <ClInclude Include="GNullGlueActor.h" />
+    <ClInclude Include="GNullGlueField.h" />
+    <ClInclude Include="GNullGlueNPC.h" />
+    <ClInclude Include="GNullGluePlayer.h" />
+    <ClInclude Include="GNullGlueQuest.h" />
+    <ClInclude Include="GNullGlueQuestPVP.h" />
+    <ClInclude Include="GGlueActor.h" />
+    <ClInclude Include="GGlueField.h" />
+    <ClInclude Include="GGlueNPC.h" />
+    <ClInclude Include="GGluePlayer.h" />
+    <ClInclude Include="GGlueQuest.h" />
+    <ClInclude Include="GGlueQuestPVP.h" />
+    <ClInclude Include="GColtInfo.h" />
+    <ClInclude Include="GNPCDecay.h" />
+    <ClInclude Include="GNPCFirstStrike.h" />
+    <ClInclude Include="GNPCInfo.h" />
+    <ClInclude Include="GNPCInfoHelper.h" />
+    <ClInclude Include="GNPCInfoMgr.h" />
+    <ClInclude Include="GNPCMgr.h" />
+    <ClInclude Include="GNPCMinion.h" />
+    <ClInclude Include="GNPCMove.h" />
+    <ClInclude Include="GNPCPathContext.h" />
+    <ClInclude Include="GNPCRage.h" />
+    <ClInclude Include="GNPCRewarder.h" />
+    <ClInclude Include="GNPCSetterForTest.h" />
+    <ClInclude Include="GNPCStress.h" />
+    <ClInclude Include="GNPCTarget.h" />
+    <ClInclude Include="GNPCWaitFor.h" />
+    <ClInclude Include="GEquipmentLimiter.h" />
+    <ClInclude Include="GItem.h" />
+    <ClInclude Include="GITEM_STACK_AMT.h" />
+    <ClInclude Include="GItemActableChecker.h" />
+    <ClInclude Include="GItemAddRemoveInfo.h" />
+    <ClInclude Include="GItemAddRemoveInfoParser.h" />
+    <ClInclude Include="GItemConvertPrefixedString.h" />
+    <ClInclude Include="GItemData.h" />
+    <ClInclude Include="GItemExpirer.h" />
+    <ClInclude Include="GItemHolder.h" />
+    <ClInclude Include="GItemManager.h" />
+    <ClInclude Include="GItemPeriod.h" />
+    <ClInclude Include="GItemStateSelector.h" />
+    <ClInclude Include="GEquipmentSlot.h" />
+    <ClInclude Include="GGuildStorage.h" />
+    <ClInclude Include="GInventory.h" />
+    <ClInclude Include="GItemContainer.h" />
+    <ClInclude Include="GItemNullContainer.h" />
+    <ClInclude Include="GOverlappedEquipmentSlot.h" />
+    <ClInclude Include="GStorage.h" />
+    <ClInclude Include="GItemAddAndRemoverForInfo.h" />
+    <ClInclude Include="GItemAdder.h" />
+    <ClInclude Include="GItemDurabilityUpdater.h" />
+    <ClInclude Include="GItemDyer.h" />
+    <ClInclude Include="GItemEnchant.h" />
+    <ClInclude Include="GItemEquiper.h" />
+    <ClInclude Include="GItemEquiperForDBTask.h" />
+    <ClInclude Include="GItemMover.h" />
+    <ClInclude Include="GItemMoverForDBTask.h" />
+    <ClInclude Include="GItemRemover.h" />
+    <ClInclude Include="GItemSorter.h" />
+    <ClInclude Include="GItemSoulAttunement.h" />
+    <ClInclude Include="GItemSystem.h" />
+    <ClInclude Include="GItemSystemSetterForTest.h" />
+    <ClInclude Include="GItemUnequiper.h" />
+    <ClInclude Include="GItemUser.h" />
+    <ClInclude Include="GMessage.h" />
+    <ClInclude Include="GMessageID.h" />
+    <ClInclude Include="GArcheryTalent.h" />
+    <ClInclude Include="GBuffInfo.h" />
+    <ClInclude Include="GExtraActiveTalent.h" />
+    <ClInclude Include="GExtraActiveTalentRunner.h" />
+    <ClInclude Include="GItemTalent.h" />
+    <ClInclude Include="GMagicTalent.h" />
+    <ClInclude Include="GMeleeTalent.h" />
+    <ClInclude Include="GPlayerRecipe.h" />
+    <ClInclude Include="GPlayerTalent.h" />
+    <ClInclude Include="GTalent.h" />
+    <ClInclude Include="GTalentFactory.h" />
+    <ClInclude Include="GTalentHelper.h" />
+    <ClInclude Include="GTalentHitter.h" />
+    <ClInclude Include="GTalentRouter.h" />
+    <ClInclude Include="GTalentFocus.h" />
+    <ClInclude Include="GTalentFocus_Advent.h" />
+    <ClInclude Include="GTalentFocus_Berserk.h" />
+    <ClInclude Include="GTalentFocus_Counter.h" />
+    <ClInclude Include="GTalentFocus_Enlighten.h" />
+    <ClInclude Include="GTalentFocus_Precision.h" />
+    <ClInclude Include="GTalentFocus_Sneak.h" />
+    <ClInclude Include="GTalentFocusMgr.h" />
+    <ClInclude Include="GBuff.h" />
+    <ClInclude Include="GBuffEquipmentChanger.h" />
+    <ClInclude Include="GBuffInstantApplier.h" />
+    <ClInclude Include="GBuffModifierApplier.h" />
+    <ClInclude Include="GBuffObserver.h" />
+    <ClInclude Include="GBuffObserverMgr.h" />
+    <ClInclude Include="GBuffPaletteChanger.h" />
+    <ClInclude Include="GBuffReleaser.h" />
+    <ClInclude Include="GBuffRequirement.h" />
+    <ClInclude Include="GBuffRouter.h" />
+    <ClInclude Include="GBuffScript.h" />
+    <ClInclude Include="GBuffStack.h" />
+    <ClInclude Include="GBuffTriggerApplier.h" />
+    <ClInclude Include="GEFfectTimingChecker.h" />
+    <ClInclude Include="GDeadMotionFactorImpactor.h" />
+    <ClInclude Include="GModEffector.h" />
+    <ClInclude Include="GTalentEffector.h" />
+    <ClInclude Include="GBPartRewardParser.h" />
+    <ClInclude Include="GTalentDef.h" />
+    <ClInclude Include="GTalentInfo.h" />
+    <ClInclude Include="GTalentInfoDef.h" />
+    <ClInclude Include="GTalentInfoExtParser.h" />
+    <ClInclude Include="GTalentInfoLoader.h" />
+    <ClInclude Include="GTalentInfoMgr.h" />
+    <ClInclude Include="GTalentInfoParser.h" />
+    <ClInclude Include="GTalentEventChecker.h" />
+    <ClInclude Include="GTalentExpirer.h" />
+    <ClInclude Include="GTalentHit.h" />
+    <ClInclude Include="GTalentHitcapsule.h" />
+    <ClInclude Include="GTalentLogger.h" />
+    <ClInclude Include="GTalentMove.h" />
+    <ClInclude Include="GTalentObserver.h" />
+    <ClInclude Include="GTalentProjectile.h" />
+    <ClInclude Include="GTalentScript.h" />
+    <ClInclude Include="GTalentStress.h" />
+    <ClInclude Include="GTalentHitCommandFactory.h" />
+    <ClInclude Include="GTalentHitRouter.h" />
+    <ClInclude Include="GEnvManager.h" />
+    <ClInclude Include="GWorld.h" />
+    <ClInclude Include="GEmblemInfoSQLMaker.h" />
+    <ClInclude Include="GItemInfoSQLMaker.h" />
+    <ClInclude Include="GItemLearnTalentSQLMaker.h" />
+    <ClInclude Include="GQuestInfoSQLMaker.h" />
+    <ClInclude Include="GRecipeInfoSQLMaker.h" />
+    <ClInclude Include="GSQLExporter.h" />
+    <ClInclude Include="GSQLMaker.h" />
+    <ClInclude Include="GTalentInfoSQLMaker.h" />
+    <ClInclude Include="GExportDBStringTable.h" />
+    <ClInclude Include="GDBManager.h" />
+    <ClInclude Include="GDBTaskNPCKillLogBuilder.h" />
+    <ClInclude Include="GEffRemainTimeSqlBuilder.h" />
+    <ClInclude Include="GNpcKillerData.h" />
+    <ClInclude Include="GDBTaskExecCounter.h" />
+    <ClInclude Include="GDBTaskConnLogInsert.h" />
+    <ClInclude Include="GDBTaskLogin.h" />
+    <ClInclude Include="GDBTaskCharDelete.h" />
+    <ClInclude Include="GDBTaskCharGetLookList.h" />
+    <ClInclude Include="GDBTaskCharInsert.h" />
+    <ClInclude Include="GDBTaskCharSerialize.h" />
+    <ClInclude Include="GDBTaskCharSyncCache.h" />
+    <ClInclude Include="GDBTaskCharDecMoney.h" />
+    <ClInclude Include="GDBTaskCharIncMoney.h" />
+    <ClInclude Include="GDBTaskCharItemUpdateXP.h" />
+    <ClInclude Include="GDBTaskCharLevelUp.h" />
+    <ClInclude Include="GDBTaskCharUpdateXP.h" />
+    <ClInclude Include="GDBTaskTalentLearn.h" />
+    <ClInclude Include="GDBTaskTalentResetAll.h" />
+    <ClInclude Include="GDBTaskSQL.h" />
+    <ClInclude Include="GDBTaskQuestAccept.h" />
+    <ClInclude Include="GDBTaskQuestDone.h" />
+    <ClInclude Include="GDBTaskQuestFail.h" />
+    <ClInclude Include="GDBTaskQuestGiveup.h" />
+    <ClInclude Include="GDBTaskQuestPvPRewardInven.h" />
+    <ClInclude Include="GDBTaskQuestPvPRewardMail.h" />
+    <ClInclude Include="GDBTaskGuildDelete.h" />
+    <ClInclude Include="GDBTaskGuildInsert.h" />
+    <ClInclude Include="GDBTaskGuildMasterChange.h" />
+    <ClInclude Include="GDBTaskGuildMemberDelete.h" />
+    <ClInclude Include="GDBTaskGuildMemberInsert.h" />
+    <ClInclude Include="GDBTaskGuildSerialize.h" />
+    <ClInclude Include="GDBTaskGuildUpdateStorageMoney.h" />
+    <ClInclude Include="GDBTaskEmblemDelete.h" />
+    <ClInclude Include="GDBTaskEmblemInsert.h" />
+    <ClInclude Include="GDBTaskItemDecDura.h" />
+    <ClInclude Include="GDBTaskItemDecstackAmt.h" />
+    <ClInclude Include="GDBTaskItemDelete.h" />
+    <ClInclude Include="GDBTaskItemDye.h" />
+    <ClInclude Include="GDBTaskItemIncStackAmt.h" />
+    <ClInclude Include="GDBTaskItemInsert.h" />
+    <ClInclude Include="GDBTaskItemLearnTalent.h" />
+    <ClInclude Include="GDBTaskItemMerge.h" />
+    <ClInclude Include="GDBTaskItemSplit.h" />
+    <ClInclude Include="GDBTaskItemStackAmt.h" />
+    <ClInclude Include="GDBTaskItemSwapSlot.h" />
+    <ClInclude Include="GDBTaskItemLootInsert.h" />
+    <ClInclude Include="GDBTaskItemLootUpdate.h" />
+    <ClInclude Include="GDBTaskItemEquip.h" />
+    <ClInclude Include="GDBTaskItemUnequip.h" />
+    <ClInclude Include="GDBTaskItemEnchant.h" />
+    <ClInclude Include="GDBTaskTrade.h" />
+    <ClInclude Include="GDBTaskCacheFlush.h" />
+    <ClInclude Include="GDBTaskCraft.h" />
+    <ClInclude Include="GDBTaskCraftData.h" />
+    <ClInclude Include="GDBTaskCraftInsert.h" />
+    <ClInclude Include="GDBTaskCraftUpdate.h" />
+    <ClInclude Include="GDBTaskNPCShop.h" />
+    <ClInclude Include="GDBTaskNPCShopData.h" />
+    <ClInclude Include="GDBTaskItemBuyInsert.h" />
+    <ClInclude Include="GDBTaskItemBuyUpdate.h" />
+    <ClInclude Include="GDBTaskItemSellDelete.h" />
+    <ClInclude Include="GDBTaskItemSellUpdate.h" />
+    <ClInclude Include="GDBTaskItemSellVeryCommon.h" />
+    <ClInclude Include="GDBTaskItemRepair.h" />
+    <ClInclude Include="GDBTaskItemRepairAll.h" />
+    <ClInclude Include="GDBTaskMailCheckReceiver.h" />
+    <ClInclude Include="GDBTaskMailDelete.h" />
+    <ClInclude Include="GDBTaskMailGetContent.h" />
+    <ClInclude Include="GDBTaskMailGetItem.h" />
+    <ClInclude Include="GDBTaskMailGetList.h" />
+    <ClInclude Include="GDBTaskMailGetMoney.h" />
+    <ClInclude Include="GDBTaskMailSetRead.h" />
+    <ClInclude Include="GDBTaskMailWrite.h" />
+    <ClInclude Include="GDBTaskStorageSerialize.h" />
+    <ClInclude Include="GDBTaskStorageUpdateMoney.h" />
+    <ClInclude Include="GDBTaskTradeMarketData.h" />
+    <ClInclude Include="GDBTaskTradeMarketPutOn.h" />
+    <ClInclude Include="GDBLogoutFieldBuilder.h" />
+    <ClInclude Include="GDBAsyncTask.h" />
+    <ClInclude Include="GDBTaskGlobal.h" />
+    <ClInclude Include="GDBTaskHeaderList.h" />
+    <ClInclude Include="GDBTaskCharData.h" />
+    <ClInclude Include="GDBTaskData.h" />
+    <ClInclude Include="GDBTaskDataAccount.h" />
+    <ClInclude Include="GDBTaskDataConnection.h" />
+    <ClInclude Include="GDBTaskDataEffRemainTime.h" />
+    <ClInclude Include="GDBTaskDataEmblem.h" />
+    <ClInclude Include="GDBTaskDataFaction.h" />
+    <ClInclude Include="GDBTaskDataGuild.h" />
+    <ClInclude Include="GDBTaskDataItemEquip.h" />
+    <ClInclude Include="GDBTaskDataItemSort.h" />
+    <ClInclude Include="GDBTaskDataMail.h" />
+    <ClInclude Include="GDBTaskDataPalette.h" />
+    <ClInclude Include="GDBTaskDataParty.h" />
+    <ClInclude Include="GDBTaskDataQuestPVP.h" />
+    <ClInclude Include="GDBTaskDataRecipe.h" />
+    <ClInclude Include="GDBTaskDataStorage.h" />
+    <ClInclude Include="GDBTaskDataTalent.h" />
+    <ClInclude Include="GDBTaskDataTrade.h" />
+    <ClInclude Include="GDBTaskItemData.h" />
+    <ClInclude Include="GDBTaskQuestData.h" />
+    <ClInclude Include="cache_value_type.h" />
+    <ClInclude Include="GDBCacheFlush.h" />
+    <ClInclude Include="GDBCacheRegularFlush.h" />
+    <ClInclude Include="GDBCacheSystem.h" />
+    <ClInclude Include="GItemDBCacheSyncer.h" />
+    <ClInclude Include="GPlayerDBCache.h" />
+    <ClInclude Include="GPlayerDBCacheMgr.h" />
+    <ClInclude Include="GCharacterDBCache.h" />
+    <ClInclude Include="GDBCacheData.h" />
+    <ClInclude Include="GItemDBCache.h" />
+    <ClInclude Include="GItemDBCacheMgr.h" />
+    <ClInclude Include="GObjectDBCache.h" />
+    <ClInclude Include="GCharacterSyncingCache.h" />
+    <ClInclude Include="GItemSyncingCache.h" />
+    <ClInclude Include="GObjectSyncingCache.h" />
+    <ClInclude Include="GSyncingCacheList.h" />
+    <ClInclude Include="GFakeDBIDGenerator.h" />
+    <ClInclude Include="GFakeDBManager.h" />
+    <ClInclude Include="GCraftLogCache.h" />
+    <ClInclude Include="GDB_CODE.h" />
+    <ClInclude Include="GItemDeleteLogCache.h" />
+    <ClInclude Include="GItemLogCache.h" />
+    <ClInclude Include="GItemMergeLogCache.h" />
+    <ClInclude Include="GItemMoveLogCache.h" />
+    <ClInclude Include="GLogCache.h" />
+    <ClInclude Include="GLogCacheContainer.h" />
+    <ClInclude Include="GLogCacheData.h" />
+    <ClInclude Include="GMoneyLogCache.h" />
+    <ClInclude Include="GNpcShopLogCache.h" />
+    <ClInclude Include="GPartyLogCache.h" />
+    <ClInclude Include="GQuestItemLogCache.h" />
+    <ClInclude Include="GXPLogCache.h" />
+    <ClInclude Include="GAttackDamageCalculator.h" />
+    <ClInclude Include="GCalculator.h" />
+    <ClInclude Include="GCombatCalculator.h" />
+    <ClInclude Include="GCriticalCalculator.h" />
+    <ClInclude Include="GDamageCalculator.h" />
+    <ClInclude Include="GDamageMODTable.h" />
+    <ClInclude Include="GDefenseFactorCalculator.h" />
+    <ClInclude Include="GDodgeCalculator.h" />
+    <ClInclude Include="GExpCalculator.h" />
+    <ClInclude Include="GFactionCalculator.h" />
+    <ClInclude Include="GGuardCalculator.h" />
+    <ClInclude Include="GLevelFactorTable.h" />
+    <ClInclude Include="GModGradeTable.h" />
+    <ClInclude Include="GNpcXPTable.h" />
+    <ClInclude Include="GResistCalculator.h" />
+    <ClInclude Include="GStateFactorCalculator.h" />
+    <ClInclude Include="GNPCLoot.h" />
+    <ClInclude Include="GPlayerLoot.h" />
+    <ClInclude Include="GDropItem.h" />
+    <ClInclude Include="GDropItemAuthorizer.h" />
+    <ClInclude Include="GDropItems.h" />
+    <ClInclude Include="GDropList.h" />
+    <ClInclude Include="GDropSilver.h" />
+    <ClInclude Include="GDropSoul.h" />
+    <ClInclude Include="GDropSouls.h" />
+    <ClInclude Include="GLootBeginner.h" />
+    <ClInclude Include="GLootBPart.h" />
+    <ClInclude Include="GLootEnder.h" />
+    <ClInclude Include="GLootItemGetter.h" />
+    <ClInclude Include="GLootLooter.h" />
+    <ClInclude Include="GLootMasterLooter.h" />
+    <ClInclude Include="GLootModifyHandler.h" />
+    <ClInclude Include="GLootShower.h" />
+    <ClInclude Include="GLootSystem.h" />
+    <ClInclude Include="GLootSystemForMasterServer.h" />
+    <ClInclude Include="GLootSystemSetterForTest.h" />
+    <ClInclude Include="GLootInfo.h" />
+    <ClInclude Include="GLootInfoMgr.h" />
+    <ClInclude Include="GKillRewardOwner.h" />
+    <ClInclude Include="GNPCRewardOwner.h" />
+    <ClInclude Include="GInteractionSystem.h" />
+    <ClInclude Include="GNPCIconSelector.h" />
+    <ClInclude Include="GNPCIEApplier.h" />
+    <ClInclude Include="GNPCIEChecker.h" />
+    <ClInclude Include="GNPCIETextMaker.h" />
+    <ClInclude Include="GNPCInteraction.h" />
+    <ClInclude Include="GNPCInteractionInfo.h" />
+    <ClInclude Include="GNPCInteractor.h" />
+    <ClInclude Include="GPlayerInteraction.h" />
+    <ClInclude Include="GPlayerInteractor.h" />
+    <ClInclude Include="GDialogInfo.h" />
+    <ClInclude Include="GDialogInfoMgr.h" />
+    <ClInclude Include="GDialogSystem.h" />
+    <ClInclude Include="GQObjectiveInfo.h" />
+    <ClInclude Include="GQuestInfo.h" />
+    <ClInclude Include="GQuestInfoMgr.h" />
+    <ClInclude Include="GQuestAddItemCollector.h" />
+    <ClInclude Include="GQuestCanceler.h" />
+    <ClInclude Include="GQuestCompleter.h" />
+    <ClInclude Include="GQuestFailer.h" />
+    <ClInclude Include="GQuestGiver.h" />
+    <ClInclude Include="GQuestRemoveItemCollector.h" />
+    <ClInclude Include="GQuestReseter.h" />
+    <ClInclude Include="GQuestRewarder.h" />
+    <ClInclude Include="GQuestRewarderForDBTask.h" />
+    <ClInclude Include="GQuestSharer.h" />
+    <ClInclude Include="GQuestSystem.h" />
+    <ClInclude Include="GQuestSystemSetterForTest.h" />
+    <ClInclude Include="GQuestUIShower.h" />
+    <ClInclude Include="GQuestVarUpdater.h" />
+    <ClInclude Include="GQObjInteractor.h" />
+    <ClInclude Include="GQObjUpdater.h" />
+    <ClInclude Include="GQObjUpdaterForDBTask.h" />
+    <ClInclude Include="GPlayerQObjective.h" />
+    <ClInclude Include="GPlayerQuest.h" />
+    <ClInclude Include="GPlayerQuests.h" />
+    <ClInclude Include="GNPCEscortQuest.h" />
+    <ClInclude Include="GNPCEscortQuests.h" />
+    <ClInclude Include="GNPCQuest.h" />
+    <ClInclude Include="GChallengerQuestMgr.h" />
+    <ClInclude Include="GSoulBindingInfo.h" />
+    <ClInclude Include="GSoulBindingInfoMgr.h" />
+    <ClInclude Include="GTradeAcceptor.h" />
+    <ClInclude Include="GTradeCanceler.h" />
+    <ClInclude Include="GTradeChecker.h" />
+    <ClInclude Include="GTradeConfirmer.h" />
+    <ClInclude Include="GTradeExchanger.h" />
+    <ClInclude Include="GTradeExchangerForDBTask.h" />
+    <ClInclude Include="GTradeItemPutDowner.h" />
+    <ClInclude Include="GTradeItemPutUper.h" />
+    <ClInclude Include="GTradeRequester.h" />
+    <ClInclude Include="GTradeSilverPutUper.h" />
+    <ClInclude Include="GTradeSystem.h" />
+    <ClInclude Include="GPlayerTrade.h" />
+    <ClInclude Include="GTrainingSystem.h" />
+    <ClInclude Include="GConditionChecker.h" />
+    <ClInclude Include="GConditionInfo.h" />
+    <ClInclude Include="GConditionsInfo.h" />
+    <ClInclude Include="GConditionsInfoMgr.h" />
+    <ClInclude Include="GConditionsSystem.h" />
+    <ClInclude Include="GItemConditionsInfoMgr.h" />
+    <ClInclude Include="GFatigueSystem.h" />
+    <ClInclude Include="GCraftInfoMgr.h" />
+    <ClInclude Include="GCraftSystem.h" />
+    <ClInclude Include="GRecipeInfo.h" />
+    <ClInclude Include="GRecipeInfoMgr.h" />
+    <ClInclude Include="GInnRoomInfo.h" />
+    <ClInclude Include="GInnRoomInfoMgr.h" />
+    <ClInclude Include="GInnSystem.h" />
+    <ClInclude Include="GGuild.h" />
+    <ClInclude Include="GGuildMember.h" />
+    <ClInclude Include="GGuildMgr.h" />
+    <ClInclude Include="GGuildSystem.h" />
+    <ClInclude Include="GGuildSystemForDBTask.h" />
+    <ClInclude Include="GGuildSystemForMasterServer.h" />
+    <ClInclude Include="GDuel.h" />
+    <ClInclude Include="GDuelMgr.h" />
+    <ClInclude Include="GCheatChecker.h" />
+    <ClInclude Include="GPositionChecker.h" />
+    <ClInclude Include="GPalette.h" />
+    <ClInclude Include="GPaletteItem.h" />
+    <ClInclude Include="GPaletteSystem.h" />
+    <ClInclude Include="GSoulSystem.h" />
+    <ClInclude Include="GDespawnReporter.h" />
+    <ClInclude Include="GTestSystem.h" />
+    <ClInclude Include="GBattleArena.h" />
+    <ClInclude Include="GBattleArenaDefine.h" />
+    <ClInclude Include="GBattleArenaMatcher.h" />
+    <ClInclude Include="GBattleArenaMgr.h" />
+    <ClInclude Include="GPlayerBattleArena.h" />
+    <ClInclude Include="GMatchRule_SameTeamMember.h" />
+    <ClInclude Include="GGameRule_DeathMatch.h" />
+    <ClInclude Include="GGMExpoHandler.h" />
+    <ClInclude Include="GGmSetMeHandler.h" />
+    <ClInclude Include="GGMSetNPCHandler.h" />
+    <ClInclude Include="GPresetInfo.h" />
+    <ClInclude Include="GPresetInfoMgr.h" />
+    <ClInclude Include="GMasterServerFacade.h" />
+    <ClInclude Include="GProxyChatChannel.h" />
+    <ClInclude Include="GProxyParty.h" />
+    <ClInclude Include="GProxyDynamicFieldMaster.h" />
+    <ClInclude Include="GProxyField.h" />
+    <ClInclude Include="GProxyFieldManager.h" />
+    <ClInclude Include="GProxySharedFieldMaster.h" />
+    <ClInclude Include="GFakeLoginLogic.h" />
+    <ClInclude Include="GFakeLoginPlayerAcceptor_FromGameServerToLoginServer.h" />
+    <ClInclude Include="GLoginLogic.h" />
+    <ClInclude Include="GLoginLogicMoveGameServer.h" />
+    <ClInclude Include="GPlayerAcceptManager.h" />
+    <ClInclude Include="GPlayerAcceptor.h" />
+    <ClInclude Include="GPlayerAcceptor_FromGameServer.h" />
+    <ClInclude Include="GPlayerAcceptor_FromLoginServer.h" />
+    <ClInclude Include="GFactionInfo.h" />
+    <ClInclude Include="GFactionInfoMgr.h" />
+    <ClInclude Include="GFactionRelationInfo.h" />
+    <ClInclude Include="GFactionRelationInfoMgr.h" />
+    <ClInclude Include="GFactionSystem.h" />
+    <ClInclude Include="GPlayerFaction.h" />
+    <ClInclude Include="GPlayerFactions.h" />
+    <ClInclude Include="GRelationChecker.h" />
+    <ClInclude Include="GRelationSelector.h" />
+    <ClInclude Include="GuardEffector.h" />
+    <ClInclude Include="GHateTable.h" />
+    <ClInclude Include="GHateTableDef.h" />
+    <ClInclude Include="GHateTableLocker.h" />
+    <ClInclude Include="GHateTableSwapper.h" />
+    <ClInclude Include="GNPCShopBuyer.h" />
+    <ClInclude Include="GNPCShopInfo.h" />
+    <ClInclude Include="GNPCShopInfoMgr.h" />
+    <ClInclude Include="GNPCShopRepairer.h" />
+    <ClInclude Include="GNPCShopSeller.h" />
+    <ClInclude Include="GNPCShopShower.h" />
+    <ClInclude Include="GNPCShopSystem.h" />
+    <ClInclude Include="GAppServerFacade.h" />
+    <ClInclude Include="GAnnounceMsgHandler.h" />
+    <ClInclude Include="GAuctionMsgHandler.h" />
+    <ClInclude Include="GChannelMsgHandler.h" />
+    <ClInclude Include="GFieldMsgHandler.h" />
+    <ClInclude Include="GGlobalMsgHandler.h" />
+    <ClInclude Include="GGuildMsgHandler.h" />
+    <ClInclude Include="GPartyMsgHandler.h" />
+    <ClInclude Include="GWhisperBackMsgHandler.h" />
+    <ClInclude Include="GWhisperMsgHandler.h" />
+    <ClInclude Include="GNarrationMsgHandler.h" />
+    <ClInclude Include="GSayMsgHandler.h" />
+    <ClInclude Include="GShoutFakeMsgHandler.h" />
+    <ClInclude Include="GShoutMsgHandler.h" />
+    <ClInclude Include="GMsgCommandFacade.h" />
+    <ClInclude Include="GMsgHandler.h" />
+    <ClInclude Include="GAdviceMsgHandler.h" />
+    <ClInclude Include="GNoticeMsgHandler.h" />
+    <ClInclude Include="GSystemMsgHandler.h" />
+    <ClInclude Include="GCutsceneInfoMgr.h" />
+    <ClInclude Include="GEmblemInfoMgr.h" />
+    <ClInclude Include="GReserveCmd.h" />
+    <ClInclude Include="GReserveCmdManager.h" />
+    <ClInclude Include="GQuestDateCalculator.h" />
+    <ClInclude Include="GTimeCalculator.h" />
+    <ClInclude Include="GTimeType.h" />
+    <ClInclude Include="GMail.h" />
+    <ClInclude Include="GMailItemPutDowner.h" />
+    <ClInclude Include="GMailItemPutUper.h" />
+    <ClInclude Include="GMailItemTaker.h" />
+    <ClInclude Include="GMailMoneyTaker.h" />
+    <ClInclude Include="GMailSystem.h" />
+    <ClInclude Include="GPlayerMailBox.h" />
+    <ClInclude Include="GPlayerMailReserver.h" />
+    <ClInclude Include="GQPEventInfo.h" />
+    <ClInclude Include="GQPEventInfoMgr.h" />
+    <ClInclude Include="GQPKillRewarder.h" />
+    <ClInclude Include="GQPKillRewardOwner.h" />
+    <ClInclude Include="GQPNPCPosSender.h" />
+    <ClInclude Include="GQPTeamCountSender.h" />
+    <ClInclude Include="GQuestPVP.h" />
+    <ClInclude Include="GStorageSystem.h" />
+    <ClInclude Include="GFieldNPCSession.h" />
+    <ClInclude Include="GFieldNPCSessionMgr.h" />
+    <ClInclude Include="GSessionJobs.h" />
+    <ClInclude Include="GTradeMarket.h" />
+    <ClInclude Include="GCrashReporter.h" />
+    <ClInclude Include="GFieldStatusUpdater.h" />
+    <ClInclude Include="GGlobal.h" />
+    <ClInclude Include="GMemory.h" />
+    <ClInclude Include="GServableChecker.h" />
+    <ClInclude Include="GServer.h" />
+    <ClInclude Include="GServerCloser.h" />
+    <ClInclude Include="GServerDumper.h" />
+    <ClInclude Include="GServerInfo.h" />
+    <ClInclude Include="GServerManagers.h" />
+    <ClInclude Include="GServerModeChanger.h" />
+    <ClInclude Include="GServerResLoader.h" />
+    <ClInclude Include="GServerStatusUpdater.h" />
+    <ClInclude Include="GServerSystems.h" />
+    <ClInclude Include="GBaseApplication.h" />
+    <ClInclude Include="GAppNetClient.h" />
+    <ClInclude Include="GClientConnectionKeeper.h" />
+    <ClInclude Include="GCommand.h" />
+    <ClInclude Include="GMasterNetClient.h" />
+    <ClInclude Include="GNetClient.h" />
+    <ClInclude Include="GNetServer.h" />
+    <ClInclude Include="GRecordModeServer.h" />
+    <ClInclude Include="GASyncTask_LazyLoginMoveGameServer.h" />
+    <ClInclude Include="GAsyncTask_Logout.h" />
+    <ClInclude Include="GAsyncTask_MoveGameServer.h" />
+    <ClInclude Include="GAsyncTask_MoveLoginServer.h" />
+    <ClInclude Include="GAsyncTaskFactory.h" />
+    <ClInclude Include="GGameGuard.h" />
+    <ClInclude Include="GPlayerGameGuard.h" />
+    <ClInclude Include="GMonitorHelper.h" />
+    <ClInclude Include="GNPCSerializer.h" />
+    <ClInclude Include="GPlayerSerializer.h" />
+    <ClInclude Include="GReloader.h" />
+    <ClInclude Include="GSTLUtil.h" />
+    <ClInclude Include="GTDMaker.h" />
+    <ClInclude Include="GValidateLogger.h" />
+    <ClInclude Include="GAutoTestRunner.h" />
+    <ClInclude Include="GAIProfiler.h" />
+    <ClInclude Include="GAIProfilingTest.h" />
+    <ClInclude Include="GAIStatistics.h" />
+    <ClInclude Include="GAITest.h" />
+    <ClInclude Include="GQPVPTest.h" />
+    <ClInclude Include="GReportTableItem.h" />
+    <ClInclude Include="GReportTableSet.h" />
+    <ClInclude Include="GBirdMonitor.h" />
+    <ClInclude Include="GNPCReporter.h" />
+    <ClInclude Include="GPlayerReporter.h" />
+    <ClInclude Include="GReporter.h" />
+    <ClInclude Include="GTestDynamicField.h" />
+    <ClInclude Include="GVectorMUID.h" />
+    <ClInclude Include="GVectorMUIDPool.h" />
+    <ClInclude Include="GAIMonitorPort.h" />
+    <ClInclude Include="GCombatMonitorPort.h" />
+    <ClInclude Include="GMonitorPortBase.h" />
+    <ClInclude Include="GPMSObject.h" />
+    <ClInclude Include="GPMSSystem.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="GameServer.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,6 @@
+LIBRARY	"nwzCryptoLib"
+EXPORTS
+	encryptPwdUC
+	decryptPwdUC
+	encryptPwd
+	decryptPwd

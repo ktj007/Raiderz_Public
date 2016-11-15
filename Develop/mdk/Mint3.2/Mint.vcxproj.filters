@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="LookAndFill">
+      <UniqueIdentifier>{fe008093-0677-4f97-be66-bb0e47d27ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{2a9d2659-c0f8-4627-b5a7-a74ea54ac039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{b1986766-44ed-4f3f-adf6-ac157e8aa8fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widgets">
+      <UniqueIdentifier>{2b46518b-8f8c-4525-92ef-287527a3417e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widgets\base">
+      <UniqueIdentifier>{778061ef-974f-4f3f-89cb-c2807e8eaf4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widgets\ext">
+      <UniqueIdentifier>{df19610d-aada-4aac-9143-ad9d22d42c31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{b693e929-3234-42c4-93de-8e704524d22d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\MBitmapDrawer.cpp">
+      <Filter>LookAndFill</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MLookBase.cpp">
+      <Filter>LookAndFill</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MLookManager.cpp">
+      <Filter>LookAndFill</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MColorTable.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MDragManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MDrawContext.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MEvent.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MFrameDrawer.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mint.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MintLoader.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MintProfiler.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MintTypes.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MLayoutManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MMainFrame.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MTimerManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MToolTipManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MAnimationTemplate.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MBitmap.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MCursor.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MFont.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MResourceManager.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MStringTable.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MAnimation.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MButton.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MButtonGroup.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MCategoryCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MComboBox.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MEdit.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MEditCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MEventHandler.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MFrame.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MGroup.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MLabel.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MLabelEx.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MLayer.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MLinePrinter.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MListBox.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MListCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MPaint.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MPanel.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MPicture.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MPopupMenu.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MProgressCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MScrollBar.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MSelector.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MSheet.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MSlider.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MSlideShow.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MSpinCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MTabCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MTextFrame.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MTextView.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MTreeCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MViewCtrl.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MWidget.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MWidgetManager.cpp">
+      <Filter>Widgets\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MConsole.cpp">
+      <Filter>Widgets\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MScriptHelper.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MScriptManager.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\MBitmapDrawer.h">
+      <Filter>LookAndFill</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MLookBase.h">
+      <Filter>LookAndFill</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MLookManager.h">
+      <Filter>LookAndFill</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MColorTable.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MDragManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MDrawContext.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MEvent.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MFrameDrawer.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Mint.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MintLoader.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MintProfiler.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MintTypes.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MLayoutManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MMainFrame.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MTimerManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MToolTipManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MAnimationTemplate.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MBitmap.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MCursor.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MFont.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MResourceManager.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MStringTable.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MAnimation.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MButton.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MButtonGroup.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MCategoryCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MComboBox.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MEdit.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MEditCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MEventHandler.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MFrame.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MGroup.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MLabel.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MLabelEx.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MLayer.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MLinePrinter.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MListBox.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MListCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MPaint.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MPanel.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MPicture.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MPopupMenu.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MProgressCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MScrollBar.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MSelector.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MSheet.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MSlider.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MSlideShow.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MSpinCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MTabCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MTextFrame.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MTextView.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MTreeCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MViewCtrl.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MWidget.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MWidgetManager.h">
+      <Filter>Widgets\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MConsole.h">
+      <Filter>Widgets\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MScriptHelper.h">
+      <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MScriptManager.h">
+      <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\stdafx.h" />
+  </ItemGroup>
+</Project>

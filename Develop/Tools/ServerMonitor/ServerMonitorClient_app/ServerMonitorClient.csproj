@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4591046B-AA05-417A-899F-800DB898F05E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServerMonitorClient</RootNamespace>
+    <AssemblyName>ServerMonitorClient</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>Resource\ServerMonitorClient.ico</ApplicationIcon>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Runtime_d\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Runtime\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoModeClient.cs" />
+    <Compile Include="Command\CommandSender.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="MachineConnector.cs" />
+    <Compile Include="MachineInfo\MachineInfo.cs" />
+    <Compile Include="MachineInfo\MachineInfoMgr.cs" />
+    <Compile Include="MonitoringLogger.cs" />
+    <Compile Include="Network\NetClient.cs" />
+    <Compile Include="ServerInfo\ServerInfo.cs" />
+    <Compile Include="ServerInfo\ServerInfoMgr.cs" />
+    <Compile Include="Network\NetSession.cs" />
+    <Compile Include="Network\NetSessionMgr.cs" />
+    <Compile Include="Form\FormAutoModeClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAutoModeClient.Designer.cs">
+      <DependentUpon>FormAutoModeClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormServerMonitorClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormServerMonitorClient.Designer.cs">
+      <DependentUpon>FormServerMonitorClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\FormAutoModeClient.resx">
+      <DependentUpon>FormAutoModeClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormServerMonitorClient.resx">
+      <DependentUpon>FormServerMonitorClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ServerInfoRequester.cs" />
+    <Compile Include="ServerMonitorClient.cs" />
+    <Compile Include="Command\CommandHandler.cs" />
+    <Compile Include="Command\CommandHandler_AutoMode.cs" />
+    <Compile Include="Command\CommandHandler_Normal.cs" />
+    <Compile Include="TrayIconUpdater.cs" />
+    <Compile Include="TreeIconSelector.cs" />
+    <Compile Include="TreeViewController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\Machine.ico" />
+    <Content Include="Resource\Machine_Disconn.ico" />
+    <Content Include="Resource\ServerMonitorClient.ico" />
+    <Content Include="Resource\Server_Bad.ico" />
+    <Content Include="Resource\Server_Fine.ico" />
+    <Content Include="Resource\Server_Fine_NotRevive.ico" />
+    <Content Include="Resource\Server_Inactive.ico" />
+    <Content Include="Resource\Server_NotDetected.ico" />
+    <Content Include="Resource\Server_ProcessChange.ico" />
+    <Content Include="Resource\Tray_Bad.ico" />
+    <Content Include="Resource\Tray_Changing.ico" />
+    <Content Include="Resource\Tray_Fine.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMCommon\SMCommon.csproj">
+      <Project>{A1670AE3-7267-4A1B-A5DB-DE3538568A7B}</Project>
+      <Name>SMCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

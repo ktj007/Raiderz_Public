@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="ingen_fx_win01_2s_add">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_fx_win01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+            <ADDITIVE />
+            <TWOSIDED />
+        </MATERIAL>
+        <MATERIAL name="teress_lantern_k01_add_2s">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>Teress_lantern_k01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+            <ADDITIVE />
+            <TWOSIDED />
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_mt_met">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse.TGA.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse.TGA.dds</SPECULARMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_wall_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_wall.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_wall.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_wall_nm.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_stair_stone_k01_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_stair_stone_k01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_stair_stone_k01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_stair_stone_k01_nm.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="Rengot_rock_k01_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>Rengot_rock_k01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>Rengot_rock_k01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>Rengot_rock_k01_nm.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_wall02_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_wall02.TGA.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_wall02.TGA.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_wall02_nm.TGA.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_gate_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_gate.TGA.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_gate.TGA.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_gate_nm.TGA.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_gate02_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_gate02.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_gate02.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_gate02_nm.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_mt_met">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse.TGA.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse.TGA.dds</SPECULARMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_wall_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_wall.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_wall.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_wall_nm.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_stair_stone_k01_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_stair_stone_k01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_stair_stone_k01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="Rengot_rock_k01_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>Rengot_rock_k01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>Rengot_rock_k01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>Rengot_rock_k01_nm.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_wall02_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_wall02.TGA.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_wall02.TGA.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_wall02_nm.TGA.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_gate_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_gate.TGA.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_gate.TGA.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_gate_nm.TGA.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_lighthouse_gate02_mt_con">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <SELFILLUSIONSCALE>0.000</SELFILLUSIONSCALE>
+            <TEXTURELIST count="3">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_lighthouse_gate02.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_lighthouse_gate02.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="2">
+                    <NORMALMAP>ingen_lighthouse_gate02_nm.tga.dds</NORMALMAP>
+                </TEXTURELAYER>
+            </TEXTURELIST>
+        </MATERIAL>
+    </MATERIALLIST>
+    <COLLISION />
+    <USERPROPERTYLIST />
+    <AUTOANIMATION />
+</XML>

@@ -1,0 +1,72 @@
+<Project DefaultTargets="BuildForCI" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" /> 
+<!-- Source Monitor Command File -->
+<PropertyGroup>
+	<SourceMonitorCommand>
+		<![CDATA[
+		<?xml version='1.0' encoding='UTF-8' ?>
+		<sourcemonitor_commands>
+		<write_log>false</write_log>
+		<command>
+		<project_file>Game.smp</project_file>
+		<project_language>c++</project_language>
+		<source_directory>..\..</source_directory>
+		<source_subdirectory_list>
+			<source_subdirectory>Game</source_subdirectory>
+			<source_subdirectory>Game\GameCommon</source_subdirectory>
+			<source_subdirectory>CSCommon\include</source_subdirectory>
+			<source_subdirectory>CSCommon\source</source_subdirectory>
+			<source_subdirectory>Server\GameServer\main</source_subdirectory>
+			<source_subdirectory>Server\GameServer\unittest</source_subdirectory>
+			<source_subdirectory>Server\ServerCommon</source_subdirectory>
+			<source_subdirectory>mdk\RealSpace3</source_subdirectory>
+			<source_subdirectory>mdk\RealSound2</source_subdirectory>
+			<source_subdirectory>mdk\MiNet\include</source_subdirectory>
+			<source_subdirectory>mdk\MiNet\source</source_subdirectory>
+			<source_subdirectory>mdk\MDatabase</source_subdirectory>
+			<source_subdirectory>mdk\cml2</source_subdirectory>
+			<source_subdirectory>mdk\MCollision</source_subdirectory>
+			<source_subdirectory>mdk\Mint3\include</source_subdirectory>
+			<source_subdirectory>mdk\Mint3\source</source_subdirectory>
+			<source_subdirectory>mdk\MPhysX</source_subdirectory>
+			<source_subdirectory>mdk\MPathFinder</source_subdirectory>
+			<source_subdirectory>Tools\Character_NET</source_subdirectory>
+			<source_subdirectory>Tools\Character_NET\CharacterToolLib</source_subdirectory>
+			<source_subdirectory>Tools\CoreToolRS3</source_subdirectory>
+			<source_subdirectory>Tools\EffectTool_NET</source_subdirectory>
+		</source_subdirectory_list>
+		<include_subdirectories>false</include_subdirectories>
+		<export>
+		<export_file>.\SourceMonitorDetailedOutput.xml</export_file>
+		<export_type>2</export_type>
+		</export>
+		</command>
+		</sourcemonitor_commands>
+		]]>
+	</SourceMonitorCommand>
+</PropertyGroup>
+
+<!-- Runs the source monitor metrics program and creates a summarised report for CruiseControl-->
+<Target Name="RunSourceMonitor">
+
+	<!-- Create the command file -->
+	<WriteLinesToFile
+	File="SourceMonitorCommands.xml"
+	Lines="$(SourceMonitorCommand)"
+	Overwrite="true" />
+
+	<!-- SourceMonitor Metrics -->
+	<Exec Command="SourceMonitor.exe /C SourceMonitorCommands.xml" />
+
+	<!-- Convert the SourceMonitor Output into a more usable summarised version -->
+	<Xslt
+	Inputs=".\SourceMonitorDetailedOutput.xml"
+	Xsl="SourceMonitorSummaryGeneration.xsl"
+	Output=".\SourceMonitorResults.xml" />
+
+	<!-- Remove the intermediate files -->
+	<Delete Files=".\SourceMonitorDetailedOutput.xml;Game.smp;SourceMonitorCommands.xml" />
+
+</Target>
+
+</Project>

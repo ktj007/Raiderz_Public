@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMD|Win32">
+      <Configuration>DebugMD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Mint3.2</ProjectName>
+    <ProjectGuid>{20B5465D-8790-43FA-A2A2-EE29F3F0F9BC}</ProjectGuid>
+    <RootNamespace>Mint3</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>Release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <OutDir>Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;../CML2;../MiNet/include;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/lua50/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;MINT_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>Lib\Mint3d.lib</OutputFile>
+      <AdditionalLibraryDirectories>../../sdk/zlib/lib;../../sdk/tinyxml/lib;../../sdk/lua50/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>include;../CML2;../MiNet/include;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/lua50/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;MINT_PROFILER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation />
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>Lib\Mint2.lib</OutputFile>
+      <AdditionalLibraryDirectories>../../sdk/zlib/lib;../../sdk/tinyxml/lib;../../sdk/lua50/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;../CML2;../MiNet/include;../../sdk/dx9/Include;../../sdk/tinyxml/include;../../sdk/lua50/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>Lib\Mint3MDd.lib</OutputFile>
+      <AdditionalLibraryDirectories>../../sdk/zlib/lib;../../sdk/tinyxml/lib;../../sdk/lua50/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\MBitmapDrawer.cpp" />
+    <ClCompile Include="Source\MLookBase.cpp" />
+    <ClCompile Include="Source\MLookManager.cpp" />
+    <ClCompile Include="Source\MColorTable.cpp" />
+    <ClCompile Include="Source\MDragManager.cpp" />
+    <ClCompile Include="Source\MDrawContext.cpp" />
+    <ClCompile Include="Source\MEvent.cpp" />
+    <ClCompile Include="Source\MFrameDrawer.cpp" />
+    <ClCompile Include="Source\Mint.cpp" />
+    <ClCompile Include="Source\MintLoader.cpp" />
+    <ClCompile Include="Source\MintProfiler.cpp" />
+    <ClCompile Include="Source\MintTypes.cpp" />
+    <ClCompile Include="Source\MLayoutManager.cpp" />
+    <ClCompile Include="Source\MMainFrame.cpp" />
+    <ClCompile Include="Source\MTimerManager.cpp" />
+    <ClCompile Include="Source\MToolTipManager.cpp" />
+    <ClCompile Include="Source\MAnimationTemplate.cpp" />
+    <ClCompile Include="Source\MBitmap.cpp" />
+    <ClCompile Include="Source\MCursor.cpp" />
+    <ClCompile Include="Source\MFont.cpp" />
+    <ClCompile Include="Source\MResourceManager.cpp" />
+    <ClCompile Include="Source\MStringTable.cpp" />
+    <ClCompile Include="Source\MAnimation.cpp" />
+    <ClCompile Include="Source\MButton.cpp" />
+    <ClCompile Include="Source\MButtonGroup.cpp" />
+    <ClCompile Include="Source\MCategoryCtrl.cpp" />
+    <ClCompile Include="Source\MComboBox.cpp" />
+    <ClCompile Include="Source\MEdit.cpp" />
+    <ClCompile Include="Source\MEditCtrl.cpp" />
+    <ClCompile Include="Source\MEventHandler.cpp" />
+    <ClCompile Include="Source\MFrame.cpp" />
+    <ClCompile Include="Source\MGroup.cpp" />
+    <ClCompile Include="Source\MLabel.cpp" />
+    <ClCompile Include="Source\MLabelEx.cpp" />
+    <ClCompile Include="Source\MLayer.cpp" />
+    <ClCompile Include="Source\MLinePrinter.cpp" />
+    <ClCompile Include="Source\MListBox.cpp" />
+    <ClCompile Include="Source\MListCtrl.cpp" />
+    <ClCompile Include="Source\MPaint.cpp" />
+    <ClCompile Include="Source\MPanel.cpp" />
+    <ClCompile Include="Source\MPicture.cpp" />
+    <ClCompile Include="Source\MPopupMenu.cpp" />
+    <ClCompile Include="Source\MProgressCtrl.cpp" />
+    <ClCompile Include="Source\MScrollBar.cpp" />
+    <ClCompile Include="Source\MSelector.cpp" />
+    <ClCompile Include="Source\MSheet.cpp" />
+    <ClCompile Include="Source\MSlider.cpp" />
+    <ClCompile Include="Source\MSlideShow.cpp" />
+    <ClCompile Include="Source\MSpinCtrl.cpp" />
+    <ClCompile Include="Source\MTabCtrl.cpp" />
+    <ClCompile Include="Source\MTextFrame.cpp" />
+    <ClCompile Include="Source\MTextView.cpp" />
+    <ClCompile Include="Source\MTreeCtrl.cpp" />
+    <ClCompile Include="Source\MViewCtrl.cpp" />
+    <ClCompile Include="Source\MWidget.cpp" />
+    <ClCompile Include="Source\MWidgetManager.cpp" />
+    <ClCompile Include="Source\MConsole.cpp" />
+    <ClCompile Include="Source\MScriptHelper.cpp" />
+    <ClCompile Include="Source\MScriptManager.cpp" />
+    <ClCompile Include="Source\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\MBitmapDrawer.h" />
+    <ClInclude Include="Include\MLookBase.h" />
+    <ClInclude Include="Include\MLookManager.h" />
+    <ClInclude Include="Include\MColorTable.h" />
+    <ClInclude Include="Include\MDragManager.h" />
+    <ClInclude Include="Include\MDrawContext.h" />
+    <ClInclude Include="Include\MEvent.h" />
+    <ClInclude Include="Include\MFrameDrawer.h" />
+    <ClInclude Include="Include\Mint.h" />
+    <ClInclude Include="Include\MintLoader.h" />
+    <ClInclude Include="Include\MintProfiler.h" />
+    <ClInclude Include="Include\MintTypes.h" />
+    <ClInclude Include="Include\MLayoutManager.h" />
+    <ClInclude Include="Include\MMainFrame.h" />
+    <ClInclude Include="Include\MTimerManager.h" />
+    <ClInclude Include="Include\MToolTipManager.h" />
+    <ClInclude Include="Include\MAnimationTemplate.h" />
+    <ClInclude Include="Include\MBitmap.h" />
+    <ClInclude Include="Include\MCursor.h" />
+    <ClInclude Include="Include\MFont.h" />
+    <ClInclude Include="Include\MResource.h" />
+    <ClInclude Include="Include\MResourceManager.h" />
+    <ClInclude Include="Include\MStringTable.h" />
+    <ClInclude Include="Include\MAnimation.h" />
+    <ClInclude Include="Include\MButton.h" />
+    <ClInclude Include="Include\MButtonGroup.h" />
+    <ClInclude Include="Include\MCategoryCtrl.h" />
+    <ClInclude Include="Include\MComboBox.h" />
+    <ClInclude Include="Include\MEdit.h" />
+    <ClInclude Include="Include\MEditCtrl.h" />
+    <ClInclude Include="Include\MEventHandler.h" />
+    <ClInclude Include="Include\MFrame.h" />
+    <ClInclude Include="Include\MGroup.h" />
+    <ClInclude Include="Include\MLabel.h" />
+    <ClInclude Include="Include\MLabelEx.h" />
+    <ClInclude Include="Include\MLayer.h" />
+    <ClInclude Include="Include\MLinePrinter.h" />
+    <ClInclude Include="Include\MListBox.h" />
+    <ClInclude Include="Include\MListCtrl.h" />
+    <ClInclude Include="Include\MPaint.h" />
+    <ClInclude Include="Include\MPanel.h" />
+    <ClInclude Include="Include\MPicture.h" />
+    <ClInclude Include="Include\MPopupMenu.h" />
+    <ClInclude Include="Include\MProgressCtrl.h" />
+    <ClInclude Include="Include\MScrollBar.h" />
+    <ClInclude Include="Include\MSelector.h" />
+    <ClInclude Include="Include\MSheet.h" />
+    <ClInclude Include="Include\MSlider.h" />
+    <ClInclude Include="Include\MSlideShow.h" />
+    <ClInclude Include="Include\MSpinCtrl.h" />
+    <ClInclude Include="Include\MTabCtrl.h" />
+    <ClInclude Include="Include\MTextFrame.h" />
+    <ClInclude Include="Include\MTextView.h" />
+    <ClInclude Include="Include\MTreeCtrl.h" />
+    <ClInclude Include="Include\MViewCtrl.h" />
+    <ClInclude Include="Include\MWidget.h" />
+    <ClInclude Include="Include\MWidgetManager.h" />
+    <ClInclude Include="Include\MConsole.h" />
+    <ClInclude Include="Include\MScriptHelper.h" />
+    <ClInclude Include="Include\MScriptManager.h" />
+    <ClInclude Include="Include\stdafx.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

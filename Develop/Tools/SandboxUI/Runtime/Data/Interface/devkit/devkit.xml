@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UI>
+
+  <!-- Resource -->
+  <Resource>
+    <Bitmap name="_bkgrnd" file="Data/Interface/devkit/bkgrnd.jpg" />
+  </Resource>
+
+  
+  
+  
+  
+  <!-- Background image -->
+  <Picture>
+    <Layout>
+      <Location x="0" y="0" />
+      <Size w="%100" h="%100" />
+      <Anchor left="true" top="true" right="true" bottom="true" />
+    </Layout>
+    <Image>_bkgrnd</Image>
+    <Shape>
+      <Stretch>true</Stretch>
+    </Shape>
+  </Picture>
+
+  
+  <!-- DevKit frame -->
+  <Frame name="frmDevKit">
+    <Layout>
+      <Location x="10" y="10" />
+      <Size w="100" h="23" />
+    </Layout>
+    <Shape>
+      <Text>DevKit</Text>
+      <Resize>false</Resize>
+    </Shape>
+    <Controls>
+
+      <!-- Expand button -->
+      <Button>
+        <Layout>
+          <Location x="80" y="3" />
+          <Size w="17" h="11" />
+          <Anchor left="false" top="true" right="true" bottom="false" />
+        </Layout>
+        <Shape>
+          <Text>-</Text>
+        </Shape>
+        <Event>
+          <OnClick>
+            if ( frmDevKit:GetWidth() > 100)  then    frmDevKit:SetSize( 100, 23);
+            else                                      frmDevKit:SetSize( 425, 100);
+            end
+          </OnClick>
+        </Event>
+      </Button>
+      
+      
+      <!-- Buttons -->
+      <Button>
+        <Layout>
+          <Location x="5" y="25" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>Reload</Text>
+        </Shape>
+        <Event>
+          <OnClick>ZGlue:Reload();</OnClick>
+        </Event>
+      </Button>
+
+      <Button>
+        <Layout>
+          <Location x="110" y="25" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>Resolution</Text>
+        </Shape>
+        <Event>
+          <OnClick>ZGlue:ChangeResolution();</OnClick>
+        </Event>
+      </Button>
+
+      <Button>
+        <Layout>
+          <Location x="215" y="25" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>Profile</Text>
+        </Shape>
+        <Event>
+          <OnClick>ZGlue:Profile();</OnClick>
+        </Event>
+      </Button>
+      
+      <Button>
+        <Layout>
+          <Location x="320" y="25" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>User test</Text>
+        </Shape>
+        <Event>
+          <OnClick>ZGlue:Test();</OnClick>
+        </Event>
+      </Button>
+
+      
+      <!-- Show frame -->
+      <Button>
+        <Layout>
+          <Location x="5" y="60" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>Character</Text>
+        </Shape>
+        <Event>
+          <OnClick>frmCharacter:Show( not frmCharacter:GetShow());</OnClick>
+        </Event>
+      </Button>
+
+      <Button>
+        <Layout>
+          <Location x="110" y="60" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>Inventory</Text>
+        </Shape>
+        <Event>
+          <OnClick>frmInventory:Show( not frmInventory:GetShow());</OnClick>
+        </Event>
+      </Button>
+
+      <Button>
+        <Layout>
+          <Location x="215" y="60" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>Journal</Text>
+        </Shape>
+        <Event>
+          <OnClick>frmJournal:Show( not frmJournal:GetShow());</OnClick>
+        </Event>
+      </Button>
+
+      <Button>
+        <Layout>
+          <Location x="320" y="60" />
+          <Size w="100" h="20" />
+        </Layout>
+        <Shape>
+          <Text>Social</Text>
+        </Shape>
+        <Event>
+          <OnClick>frmSocial:Show( not frmSocial:GetShow());</OnClick>
+        </Event>
+      </Button>
+
+    </Controls>
+  </Frame>
+
+</UI>

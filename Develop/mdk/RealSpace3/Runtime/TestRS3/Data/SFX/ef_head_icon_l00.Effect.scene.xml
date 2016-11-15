@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY></PROPERTY>
+    <SCENE>
+        <EFFECT>
+            <COMMON name="ef_head_icon_l00">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <SCENE>
+                <EFFECTACTOR>
+                    <COMMON name="ef_head_icon_l00.elu">
+                        <POSITION>0.000000 0.000000 0.000000</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                        <UP>0.000000 0.000000 1.000000</UP>
+                        <SCALE>1.000000 1.000000 1.000000</SCALE>
+                    </COMMON>
+                    <PROPERTY>
+                        <FILENAME>ef_head_icon_l00.elu</FILENAME>
+                        <ANI />
+                        <ALIGN />
+                        <LOOP />
+                        <STARTTIME>0.000</STARTTIME>
+                    </PROPERTY>
+                    <SCENE />
+                </EFFECTACTOR>
+            </SCENE>
+        </EFFECT>
+    </SCENE>
+</ROOT>

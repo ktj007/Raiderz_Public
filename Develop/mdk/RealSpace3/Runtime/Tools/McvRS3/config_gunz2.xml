@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <NAME>Gunz2</NAME>
+	<SHADERPATH>../../Shader/;../../Shader/components/</SHADERPATH>
+	<TEXTUREPATH>../../Texture;../../data/Texture/sfx;../../texture/Character;../../texture/Map;../../texture/Weapon;</TEXTUREPATH>
+	<EFFECTPATH>../../../data/SFX</EFFECTPATH>
+	<SOUNDPATH>../../../data/Sound/Effect</SOUNDPATH>
+	<MODELPATH>../../Model;../../Model/MapObject;../../Model/Sky;../../Model/Player;../../Model/weapons;../../Model/weapon;../../SFX</MODELPATH>
+	<FARZ>10000</FARZ>
+	<LIGHTANI>zcircle</LIGHTANI>
+</XML>

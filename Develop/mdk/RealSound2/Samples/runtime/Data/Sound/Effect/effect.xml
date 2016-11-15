@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  거리 ?�위 cm 기본?: 200/4000, 1m = 100
+	?가??(type)
+	0 = 3d
+	1 = 2d
+	2 = 2d and 3d
+	3 = 2d stereo
+	4 = 2d loop *
+	5 = 2d stereo loop *
+	6 = 3d loop
+	* loop ?�성?� ?�시간으?�바????�음
+  -->
+<XML>
+<!--
+	<SOUND name="fx_guard" type="2d" filename="if_score_get.wv" loop="false" volume="1.0" />
+	<SOUND name="if_score_flyby" type="2d" filename="ooh_female.wav" loop="false" />
+-->	
+	<SOUND name="fx_explosion01" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion02" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+<!--
+	<SOUND name="bg01" type="stream" filename="globe - 01 DEPARTURES - RADIO EDIT.ogg" loop="true" />
+	<SOUND name="bg02" type="stream" filename="December.mp3" loop="true" />
+-->
+
+	<SOUND name="fx_explosion03" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion04" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion05" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion06" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion07" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion08" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion09" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion10" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion11" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion12" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion13" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion14" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion15" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion16" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion17" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion18" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion19" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion20" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion21" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion22" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion23" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion24" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion25" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion26" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion27" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion28" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion29" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion30" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion31" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion32" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion33" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion34" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion35" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion36" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion37" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion38" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion39" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion40" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion41" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion42" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion43" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion44" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion45" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion46" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion47" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion48" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion49" type="3d" filename="drumloop.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	<SOUND name="fx_explosion50" type="3d" filename="jaguar.wav" loop="true" volume="1.0"
+	       distance_min="2" distance_max="10000" distance_cull="3000" />
+	       
+	       
+	       
+<!-- ?�운??2?�추?�?-->
+	<EFFECT NAME="fx_guard" MINDISTANCE="150" MAXDISTANCE="1000"/>
+	<EFFECT NAME="fx_openportal" MINDISTANCE="150" MAXDISTANCE="5000" type="1"/>
+	<EFFECT NAME="fx_magic_death" MINDISTANCE="150" MAXDISTANCE="3000"/>
+	<EFFECT NAME="fx_magic_death_2d" MINDISTANCE="150" MAXDISTANCE="3000" type="1"/>
+	
+	<EFFECT NAME="we_smash" MINDISTANCE="150" MAXDISTANCE="1000"/>
+	<EFFECT NAME="we_smash_2d" MINDISTANCE="150" MAXDISTANCE="1000" type="1"/>
+	<EFFECT NAME="we_enfire" MINDISTANCE="150" MAXDISTANCE="1000"/>
+	<EFFECT NAME="we_enfire_2d" MINDISTANCE="150" MAXDISTANCE="1000" type="1"/>
+	<EFFECT NAME="we_enice" MINDISTANCE="150" MAXDISTANCE="1000"/>
+	<EFFECT NAME="we_enice_2d" MINDISTANCE="150" MAXDISTANCE="1000" type="1"/>
+	<EFFECT NAME="we_enlight" MINDISTANCE="150" MAXDISTANCE="1000"/>
+	<EFFECT NAME="we_enlight_2d" MINDISTANCE="150" MAXDISTANCE="1000" type="1"/>
+	<EFFECT NAME="we_enpoison" MINDISTANCE="150" MAXDISTANCE="1000"/>
+	<EFFECT NAME="we_enpoison_2d" MINDISTANCE="150" MAXDISTANCE="1000" type="1"/>
+
+
+
+<!-- type 0 -->
+	<!-- �?-->
+  	<EFFECT NAME="bind_a_male" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="blade_concrete" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="blade_damage" MINDISTANCE="150" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="fx_bladeon_concrete" MINDISTANCE="150" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="uppercut" MINDISTANCE="150" MAXDISTANCE="1000"/>
+  	<!-- �총알 -->
+  	<EFFECT NAME="fx_bullethit_mt_con" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<EFFECT NAME="fx_bullethit_mt_drt" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<EFFECT NAME="fx_bullethit_mt_fsh" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<EFFECT NAME="fx_bullethit_mt_gls" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<EFFECT NAME="fx_bullethit_mt_met" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<EFFECT NAME="fx_bullethit_mt_snd" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<EFFECT NAME="fx_bullethit_mt_wat" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<EFFECT NAME="fx_bullethit_mt_wod" MINDISTANCE="150" MAXDISTANCE="500"/>
+  	<!-- ?�피 -->
+  	<EFFECT NAME="fx_slugdrop_mt_con" MINDISTANCE="150" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="fx_slugdrop_mt_met" MINDISTANCE="150" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="fx_slugdrop_mt_wod" MINDISTANCE="150" MAXDISTANCE="1000"/>
+  	<!-- 총기?fire -->
+  	<EFFECT NAME="we_smg_fire" MINDISTANCE="320"/>
+  	<EFFECT NAME="we_shotgunpa_fire" MINDISTANCE="320"/>
+  	<EFFECT NAME="we_rocket_fire" MINDISTANCE="200"/>
+  	<EFFECT NAME="we_revolver_fire" MINDISTANCE="320"/>
+  	<EFFECT NAME="we_pistol_fire" MINDISTANCE="320"/>
+  	<EFFECT NAME="we_machinegun_fire" MINDISTANCE="320"/>
+<!--  	<EFFECT NAME="we_grenade_fire" MINDISTANCE="320"/>		-->
+  	<EFFECT NAME="we_rifle_fire" MINDISTANCE="320"/>
+  	<!-- �총기?reload -->
+  	<EFFECT NAME="we_smg_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="we_shotgunpa_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="we_rocket_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="we_revolver_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="we_pistol_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="we_machinegun_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="we_grenade_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="we_rifle_reload" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<!-- ??륰� -->
+	<EFFECT NAME="fx_explosion01" MINDISTANCE="1000"/>
+  	<EFFECT NAME="we_grenade_explosion" MINDISTANCE="1000"/>
+  	<EFFECT NAME="we_gasgrenade_explosion" MINDISTANCE="500"/>
+  	<EFFECT NAME="we_flashbang_explosion" MINDISTANCE="1000"/>
+	<!-- 기? -->
+	<EFFECT NAME="rebirth" MINDISTANCE="100" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="ricochet_concrete01" MINDISTANCE="100" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="hangonwall" MINDISTANCE="200" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="hitbody00" MINDISTANCE="150" MAXDISTANCE="1000"/>
+  	<EFFECT NAME="death01_a_male" MINDISTANCE="200" MAXDISTANCE="1000"/>
+<!-- type 1 -->
+  	<EFFECT NAME="fx_respawn" type="1"/>
+  	<EFFECT NAME="fx_whoosh01" type="1"/>
+  	<EFFECT NAME="fx_whoosh02" type="1"/>
+  	<EFFECT NAME="if_click" type="1"/>
+  	<EFFECT NAME="if_error" type="1"/>
+  	<EFFECT NAME="if_mouseover" type="1"/>
+  	<EFFECT NAME="fx_itemget" type="1"/>
+  	<EFFECT NAME="nice"  type="1"/>
+  	<EFFECT NAME="we_weapon_rdy" type="1"/>
+  	
+<!-- type 2 -->
+	<!-- �?-->
+	<EFFECT NAME="fx_blade_sheath" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
+	<EFFECT NAME="blade_swing" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
+	<EFFECT NAME="fx_dagger_sheath" MINDISTANCE="200" MAXDISTANCE="1000" type="2"/>
+	<!-- �?-->
+  	<EFFECT NAME="357magrevolver_dryfire" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
+  	<EFFECT NAME="762arifle_dryfire" MINDISTANCE="150" MAXDISTANCE="1000" type="2"/>
+  	<!--<EFFECT NAME="we_rocket_fire" MINDISTANCE="200" type="2"/>
+  	<EFFECT NAME="we_shotgunpa_fire" MINDISTANCE="320" type="2"/>
+  	<EFFECT NAME="we_shotgunpa_reload" MINDISTANCE="200" MAXDISTANCE="1000" type="2"/>
+  	<EFFECT NAME="we_machinegun_fire" MINDISTANCE="320" type="2"/>
+  	<EFFECT NAME="we_pistol_fire" MINDISTANCE="320" type="2"/>
+  	<EFFECT NAME="we_revolver_fire" MINDISTANCE="320" type="2"/>
+  	<EFFECT NAME="we_rifle_fire" MINDISTANCE="320" type="2"/>
+  	<EFFECT NAME="we_smg_fire" MINDISTANCE="320" type="2"/>-->
+  	<!-- �기? �무기?-->
+  	<EFFECT NAME="we_grenade_fire" MINDISTANCE="200" MAXDISTANCE="1000" type="2"/>
+  	<!-- �캐릭??-->
+  	<EFFECT NAME="fx_dash" MINDISTANCE="300" MAXDISTANCE="1000" type="2"/>
+  	<EFFECT NAME="man_jump_mt_con" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_jump_mt_drt" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_jump_mt_met" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_jump_mt_snd" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_jump_mt_wat" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_jump_mt_wod" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+
+  	<EFFECT NAME="man_fs_l_mt_con" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_r_mt_con" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_l_mt_drt" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_r_mt_drt" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_l_mt_met" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_r_mt_met" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_l_mt_snd" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_r_mt_snd" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_l_mt_wat" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_r_mt_wat" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_l_mt_wod" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="man_fs_r_mt_wod" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="run_a_male" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="ooh_female" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+  	<EFFECT NAME="ooh_male" MINDISTANCE="400" MAXDISTANCE="1200" type="2"/>
+<!-- type 3 -->
+  	<EFFECT NAME="if_score_flyby" type="3"/>
+  	<EFFECT NAME="if_score_get" type="3"/>
+  	<!-- ?�신??캐릭?�? ??�경우 ?�음??2d stereo ?�운?�? ?�레???�다 -->
+  	<!-- 총기?fire -->
+  	<EFFECT NAME="we_smg_fire_2d" type="3"/>
+  	<EFFECT NAME="we_shotgunpa_fire_2d" type="3"/>
+  	<EFFECT NAME="we_rocket_fire_2d" type="3"/>
+  	<EFFECT NAME="we_revolver_fire_2d" type="3"/>
+  	<EFFECT NAME="we_pistol_fire_2d" type="3"/>
+  	<EFFECT NAME="we_machinegun_fire_2d" type="3"/>
+  	<EFFECT NAME="we_grenade_fire_2d" type="3"/>
+  	<EFFECT NAME="we_rifle_fire_2d" type="3"/>
+  	<!-- �총기?reload -->
+  	<EFFECT NAME="we_smg_reload_2d" type="3"/>
+  	<EFFECT NAME="we_shotgunpa_reload_2d" type="3"/>
+  	<EFFECT NAME="we_rocket_reload_2d" type="3"/>
+  	<EFFECT NAME="we_revolver_reload_2d" type="3"/>
+  	<EFFECT NAME="we_pistol_reload_2d" type="3"/>
+  	<EFFECT NAME="we_machinegun_reload_2d" type="3"/>
+  	<EFFECT NAME="we_grenade_reload_2d" type="3"/>
+  	<EFFECT NAME="we_rifle_reload_2d" type="3"/>
+  	<EFFECT NAME="fx_myhit" type="3"/>
+<!-- type 4 -->
+  	<EFFECT NAME="fx_flashbang" type="4"/>
+
+   	<EFFECT NAME="amb_generator" type="4"/>
+  	<EFFECT NAME="amb_dropwater" type="4"/>
+  	<EFFECT NAME="amb_factory" type="4"/>
+  	<EFFECT NAME="amb_factory2" type="4"/>
+  	<EFFECT NAME="amb_fireplace" type="4"/>
+  	<EFFECT NAME="amb_steam" type="4"/>
+  	<EFFECT NAME="amb_steam2" type="4"/>
+	<EFFECT NAME="amb_fan" type="4"/>
+	<EFFECT NAME="amb_fan2" type="4"/>
+	<EFFECT NAME="amb_engine" type="4"/>
+	<EFFECT NAME="amb_flapping" type="4"/>
+	<EFFECT NAME="amb_chain" type="4"/>
+	<EFFECT NAME="amb_firesource" type="4"/>
+<!-- type 5 -->
+	<EFFECT NAME="amb_dropwater_2d" type="5"/>
+	<EFFECT NAME="amb_factory_2d" type="5"/>
+	<EFFECT NAME="amb_factory2_2d" type="5"/>
+	<EFFECT NAME="amb_generator_2d" type="5"/>
+	<EFFECT NAME="amb_steam_2d" type="5"/>
+	<EFFECT NAME="amb_steam2_2d" type="5"/>
+	<EFFECT NAME="amb_wind_hole_2d" type="5"/>
+	<EFFECT NAME="amb_fan_2d" type="5"/>
+	<EFFECT NAME="amb_fan2_2d" type="5"/>
+	<EFFECT NAME="amb_engine_2d" type="5"/>
+	<EFFECT NAME="amb_geyser_2d" type="5"/>
+	<EFFECT NAME="amb_shore_2d" type="5"/>
+<!-- type 6 -->
+
+</XML>

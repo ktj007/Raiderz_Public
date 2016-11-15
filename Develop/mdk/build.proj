@@ -1,0 +1,25 @@
+<Project DefaultTargets="BuildForCI" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <PropertyGroup>
+      <BuildConditionForCI>Build</BuildConditionForCI>
+   </PropertyGroup>
+
+  <Choose>
+    <When Condition=" '$(CCNetBuildCondition)'=='IfModificationExists' ">
+      <PropertyGroup>
+        <BuildConditionForCI>Build</BuildConditionForCI>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <BuildConditionForCI>Rebuild</BuildConditionForCI>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  
+  <Target Name="BuildForCI">
+    <MSBuild Projects="mdk.sln" Targets="$(BuildConditionForCI)" Properties="Configuration=Release" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+    <MSBuild Projects="mdk.sln" Targets="$(BuildConditionForCI)" Properties="Configuration=ReleaseDLL" StopOnFirstFailure="true" ContinueOnError="false"> </MSBuild>
+  </Target>
+
+</Project>

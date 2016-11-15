@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="">
+            <DIFFUSE>0 0 0</DIFFUSE>
+            <AMBIENT>0 0 0</AMBIENT>
+            <SPECULAR>0 0 0</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>0.000</GLOSSINESS>
+            <TEXTURELIST count="1">
+                <TEXTURELAYER index="0">
+                    <Unknown></Unknown>
+                </TEXTURELAYER>
+                <TEX_OFFSET>0.000 0.000</TEX_OFFSET>
+                <TEX_SCALE>1.000 1.000</TEX_SCALE>
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="hero_gravegate01_gh01_mt_con">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>hero_gravegate01_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>hero_gravegate01_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+    </MATERIALLIST>
+    <COLLISION />
+    <USERPROPERTYLIST />
+</XML>

@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <MATERIALLIST>
+        <MATERIAL name="Teress_drum_k01_mt_wod">
+            <DIFFUSE>150 150 150</DIFFUSE>
+            <AMBIENT>150 150 150</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>Teress_drum_k01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>Teress_drum_k01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_birdge_gh01_mt_wod">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_birdge_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_birdge_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_bar_gh01_mt_wod">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_bar_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_bar_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_birdge_gh01_mt_wod">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_birdge_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_birdge_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_bulleye_gh01_mt_pnt">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_bulleye_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_bulleye_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="at_ingen_rguild_alpha_gh01_mask_2s_mt_wod">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_alpha_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ingen_rguild_alpha_gh01.tga.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_roof_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_roof_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_roof_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_bar_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_bar_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_bar_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_floor_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_floor_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_floor_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="at_ingen_rguild_alpha_gh01_mask_2s_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>0.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_alpha_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <OPACITYMAP>ingen_rguild_alpha_gh01.tga.dds</OPACITYMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+            <TWOSIDED />
+            <USEALPHATEST>
+                <ALPHATESTVALUE>128</ALPHATESTVALUE>
+            </USEALPHATEST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_roof_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_roof_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_roof_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_bar_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_bar_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_bar_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+        <MATERIAL name="ingen_rguild_floor_gh01_mt_wod ">
+            <DIFFUSE>149 149 149</DIFFUSE>
+            <AMBIENT>149 149 149</AMBIENT>
+            <SPECULAR>229 229 229</SPECULAR>
+            <SPECULAR_LEVEL>100.000</SPECULAR_LEVEL>
+            <GLOSSINESS>10.000</GLOSSINESS>
+            <TEXTURELIST count="2">
+                <TEXTURELAYER index="0">
+                    <DIFFUSEMAP>ingen_rguild_floor_gh01.tga.dds</DIFFUSEMAP>
+                </TEXTURELAYER>
+                <TEXTURELAYER index="1">
+                    <SPECULARMAP>ingen_rguild_floor_gh01.tga.dds</SPECULARMAP>
+                </TEXTURELAYER>
+                <TEX_ANIMATION />
+            </TEXTURELIST>
+        </MATERIAL>
+    </MATERIALLIST>
+    <LIGHTMAPS>
+        <LIGHTMAP name="login01_lightmap.tga" />
+        <LIGHTMAP name="login01_lightmap.tga" />
+    </LIGHTMAPS>
+    <USERPROPERTYLIST>
+        <USERPROPERTY node="g_2_3" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_3_3" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_4_3" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_2_2" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_3_2" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_4_2" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_2_1" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_3_1" property="ignore_at_export = true" />
+        <USERPROPERTY node="g_4_1" property="ignore_at_export = true" />
+        <USERPROPERTY node="Object02" property="nocollision lightmap = login02_lightmap.tga" />
+        <USERPROPERTY node="Object01" property="nocollision lightmap = login02_lightmap.tga" />
+        <USERPROPERTY node="Object03" property="nocollision lightmap = login02_lightmap.tga" />
+        <USERPROPERTY node="Object04" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object04" property="set_shade = true" />
+        <USERPROPERTY node="Object04" property="set_static = true" />
+        <USERPROPERTY node="Object04" property="set_collision = true" />
+        <USERPROPERTY node="Object04" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object04" property="set_water = false" />
+        <USERPROPERTY node="Object04" property="set_cloth = false" />
+        <USERPROPERTY node="Object04" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object04" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object56" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object56" property="set_shade = true" />
+        <USERPROPERTY node="Object56" property="set_static = true" />
+        <USERPROPERTY node="Object56" property="set_collision = true" />
+        <USERPROPERTY node="Object56" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object56" property="set_water = false" />
+        <USERPROPERTY node="Object56" property="set_cloth = false" />
+        <USERPROPERTY node="Object56" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object56" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object05" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object05" property="set_shade = true" />
+        <USERPROPERTY node="Object05" property="set_static = true" />
+        <USERPROPERTY node="Object05" property="set_collision = true" />
+        <USERPROPERTY node="Object05" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object05" property="set_water = false" />
+        <USERPROPERTY node="Object05" property="set_cloth = false" />
+        <USERPROPERTY node="Object05" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object05" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object06" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object06" property="set_shade = true" />
+        <USERPROPERTY node="Object06" property="set_static = true" />
+        <USERPROPERTY node="Object06" property="set_collision = true" />
+        <USERPROPERTY node="Object06" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object06" property="set_water = false" />
+        <USERPROPERTY node="Object06" property="set_cloth = false" />
+        <USERPROPERTY node="Object06" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object06" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object07" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object07" property="set_shade = true" />
+        <USERPROPERTY node="Object07" property="set_static = true" />
+        <USERPROPERTY node="Object07" property="set_collision = false" />
+        <USERPROPERTY node="Object07" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object07" property="set_water = false" />
+        <USERPROPERTY node="Object07" property="set_cloth = false" />
+        <USERPROPERTY node="Object07" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object07" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object57" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object57" property="set_shade = true" />
+        <USERPROPERTY node="Object57" property="set_static = true" />
+        <USERPROPERTY node="Object57" property="set_collision = true" />
+        <USERPROPERTY node="Object57" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object57" property="set_water = false" />
+        <USERPROPERTY node="Object57" property="set_cloth = false" />
+        <USERPROPERTY node="Object57" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object57" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object58" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object58" property="set_shade = true" />
+        <USERPROPERTY node="Object58" property="set_static = true" />
+        <USERPROPERTY node="Object58" property="set_collision = true" />
+        <USERPROPERTY node="Object58" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object58" property="set_water = false" />
+        <USERPROPERTY node="Object58" property="set_cloth = false" />
+        <USERPROPERTY node="Object58" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object58" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object59" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object59" property="set_shade = true" />
+        <USERPROPERTY node="Object59" property="set_static = true" />
+        <USERPROPERTY node="Object59" property="set_collision = false" />
+        <USERPROPERTY node="Object59" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object59" property="set_water = false" />
+        <USERPROPERTY node="Object59" property="set_cloth = false" />
+        <USERPROPERTY node="Object59" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object59" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Cylinder03" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Cylinder03" property="set_shade = true" />
+        <USERPROPERTY node="Cylinder03" property="set_static = true" />
+        <USERPROPERTY node="Cylinder03" property="set_collision = true" />
+        <USERPROPERTY node="Cylinder03" property="set_export_ignore = false" />
+        <USERPROPERTY node="Cylinder03" property="set_water = false" />
+        <USERPROPERTY node="Cylinder03" property="set_cloth = false" />
+        <USERPROPERTY node="Cylinder03" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Cylinder03" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa" property="set_shade = true" />
+        <USERPROPERTY node="light_aa" property="set_static = true" />
+        <USERPROPERTY node="light_aa" property="set_collision = true" />
+        <USERPROPERTY node="light_aa" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa" property="set_water = false" />
+        <USERPROPERTY node="light_aa" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object11" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object11" property="set_shade = true" />
+        <USERPROPERTY node="Object11" property="set_static = true" />
+        <USERPROPERTY node="Object11" property="set_collision = true" />
+        <USERPROPERTY node="Object11" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object11" property="set_water = false" />
+        <USERPROPERTY node="Object11" property="set_cloth = false" />
+        <USERPROPERTY node="Object11" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object11" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object12" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object12" property="set_shade = true" />
+        <USERPROPERTY node="Object12" property="set_static = true" />
+        <USERPROPERTY node="Object12" property="set_collision = true" />
+        <USERPROPERTY node="Object12" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object12" property="set_water = false" />
+        <USERPROPERTY node="Object12" property="set_cloth = false" />
+        <USERPROPERTY node="Object12" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object12" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa06" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa06" property="set_shade = true" />
+        <USERPROPERTY node="light_aa06" property="set_static = true" />
+        <USERPROPERTY node="light_aa06" property="set_collision = true" />
+        <USERPROPERTY node="light_aa06" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa06" property="set_water = false" />
+        <USERPROPERTY node="light_aa06" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa06" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa06" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object19" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object19" property="set_shade = true" />
+        <USERPROPERTY node="Object19" property="set_static = true" />
+        <USERPROPERTY node="Object19" property="set_collision = true" />
+        <USERPROPERTY node="Object19" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object19" property="set_water = false" />
+        <USERPROPERTY node="Object19" property="set_cloth = false" />
+        <USERPROPERTY node="Object19" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object19" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object31" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object31" property="set_shade = true" />
+        <USERPROPERTY node="Object31" property="set_static = true" />
+        <USERPROPERTY node="Object31" property="set_collision = true" />
+        <USERPROPERTY node="Object31" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object31" property="set_water = false" />
+        <USERPROPERTY node="Object31" property="set_cloth = false" />
+        <USERPROPERTY node="Object31" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object31" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa12" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa12" property="set_shade = true" />
+        <USERPROPERTY node="light_aa12" property="set_static = true" />
+        <USERPROPERTY node="light_aa12" property="set_collision = true" />
+        <USERPROPERTY node="light_aa12" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa12" property="set_water = false" />
+        <USERPROPERTY node="light_aa12" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa12" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa12" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object43" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object43" property="set_shade = true" />
+        <USERPROPERTY node="Object43" property="set_static = true" />
+        <USERPROPERTY node="Object43" property="set_collision = true" />
+        <USERPROPERTY node="Object43" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object43" property="set_water = false" />
+        <USERPROPERTY node="Object43" property="set_cloth = false" />
+        <USERPROPERTY node="Object43" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object43" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object60" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object60" property="set_shade = true" />
+        <USERPROPERTY node="Object60" property="set_static = true" />
+        <USERPROPERTY node="Object60" property="set_collision = true" />
+        <USERPROPERTY node="Object60" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object60" property="set_water = false" />
+        <USERPROPERTY node="Object60" property="set_cloth = false" />
+        <USERPROPERTY node="Object60" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object60" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa18" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa18" property="set_shade = true" />
+        <USERPROPERTY node="light_aa18" property="set_static = true" />
+        <USERPROPERTY node="light_aa18" property="set_collision = true" />
+        <USERPROPERTY node="light_aa18" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa18" property="set_water = false" />
+        <USERPROPERTY node="light_aa18" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa18" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa18" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object61" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object61" property="set_shade = true" />
+        <USERPROPERTY node="Object61" property="set_static = true" />
+        <USERPROPERTY node="Object61" property="set_collision = true" />
+        <USERPROPERTY node="Object61" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object61" property="set_water = false" />
+        <USERPROPERTY node="Object61" property="set_cloth = false" />
+        <USERPROPERTY node="Object61" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object61" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object08" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object08" property="set_shade = true" />
+        <USERPROPERTY node="Object08" property="set_static = true" />
+        <USERPROPERTY node="Object08" property="set_collision = true" />
+        <USERPROPERTY node="Object08" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object08" property="set_water = false" />
+        <USERPROPERTY node="Object08" property="set_cloth = false" />
+        <USERPROPERTY node="Object08" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object08" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa24" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa24" property="set_shade = true" />
+        <USERPROPERTY node="light_aa24" property="set_static = true" />
+        <USERPROPERTY node="light_aa24" property="set_collision = true" />
+        <USERPROPERTY node="light_aa24" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa24" property="set_water = false" />
+        <USERPROPERTY node="light_aa24" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa24" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa24" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object09" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object09" property="set_shade = true" />
+        <USERPROPERTY node="Object09" property="set_static = true" />
+        <USERPROPERTY node="Object09" property="set_collision = true" />
+        <USERPROPERTY node="Object09" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object09" property="set_water = false" />
+        <USERPROPERTY node="Object09" property="set_cloth = false" />
+        <USERPROPERTY node="Object09" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object09" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object62" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object62" property="set_shade = true" />
+        <USERPROPERTY node="Object62" property="set_static = true" />
+        <USERPROPERTY node="Object62" property="set_collision = true" />
+        <USERPROPERTY node="Object62" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object62" property="set_water = false" />
+        <USERPROPERTY node="Object62" property="set_cloth = false" />
+        <USERPROPERTY node="Object62" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object62" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa25" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa25" property="set_shade = true" />
+        <USERPROPERTY node="light_aa25" property="set_static = true" />
+        <USERPROPERTY node="light_aa25" property="set_collision = true" />
+        <USERPROPERTY node="light_aa25" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa25" property="set_water = false" />
+        <USERPROPERTY node="light_aa25" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa25" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa25" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object63" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object63" property="set_shade = true" />
+        <USERPROPERTY node="Object63" property="set_static = true" />
+        <USERPROPERTY node="Object63" property="set_collision = true" />
+        <USERPROPERTY node="Object63" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object63" property="set_water = false" />
+        <USERPROPERTY node="Object63" property="set_cloth = false" />
+        <USERPROPERTY node="Object63" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object63" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object64" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object64" property="set_shade = true" />
+        <USERPROPERTY node="Object64" property="set_static = true" />
+        <USERPROPERTY node="Object64" property="set_collision = true" />
+        <USERPROPERTY node="Object64" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object64" property="set_water = false" />
+        <USERPROPERTY node="Object64" property="set_cloth = false" />
+        <USERPROPERTY node="Object64" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object64" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Cylinder04" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Cylinder04" property="set_shade = true" />
+        <USERPROPERTY node="Cylinder04" property="set_static = true" />
+        <USERPROPERTY node="Cylinder04" property="set_collision = true" />
+        <USERPROPERTY node="Cylinder04" property="set_export_ignore = false" />
+        <USERPROPERTY node="Cylinder04" property="set_water = false" />
+        <USERPROPERTY node="Cylinder04" property="set_cloth = false" />
+        <USERPROPERTY node="Cylinder04" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Cylinder04" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa26" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa26" property="set_shade = true" />
+        <USERPROPERTY node="light_aa26" property="set_static = true" />
+        <USERPROPERTY node="light_aa26" property="set_collision = true" />
+        <USERPROPERTY node="light_aa26" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa26" property="set_water = false" />
+        <USERPROPERTY node="light_aa26" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa26" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa26" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object65" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object65" property="set_shade = true" />
+        <USERPROPERTY node="Object65" property="set_static = true" />
+        <USERPROPERTY node="Object65" property="set_collision = true" />
+        <USERPROPERTY node="Object65" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object65" property="set_water = false" />
+        <USERPROPERTY node="Object65" property="set_cloth = false" />
+        <USERPROPERTY node="Object65" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object65" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object66" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object66" property="set_shade = true" />
+        <USERPROPERTY node="Object66" property="set_static = true" />
+        <USERPROPERTY node="Object66" property="set_collision = true" />
+        <USERPROPERTY node="Object66" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object66" property="set_water = false" />
+        <USERPROPERTY node="Object66" property="set_cloth = false" />
+        <USERPROPERTY node="Object66" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object66" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa27" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa27" property="set_shade = true" />
+        <USERPROPERTY node="light_aa27" property="set_static = true" />
+        <USERPROPERTY node="light_aa27" property="set_collision = true" />
+        <USERPROPERTY node="light_aa27" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa27" property="set_water = false" />
+        <USERPROPERTY node="light_aa27" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa27" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa27" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object67" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object67" property="set_shade = true" />
+        <USERPROPERTY node="Object67" property="set_static = true" />
+        <USERPROPERTY node="Object67" property="set_collision = true" />
+        <USERPROPERTY node="Object67" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object67" property="set_water = false" />
+        <USERPROPERTY node="Object67" property="set_cloth = false" />
+        <USERPROPERTY node="Object67" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object67" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object68" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object68" property="set_shade = true" />
+        <USERPROPERTY node="Object68" property="set_static = true" />
+        <USERPROPERTY node="Object68" property="set_collision = true" />
+        <USERPROPERTY node="Object68" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object68" property="set_water = false" />
+        <USERPROPERTY node="Object68" property="set_cloth = false" />
+        <USERPROPERTY node="Object68" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object68" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa28" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa28" property="set_shade = true" />
+        <USERPROPERTY node="light_aa28" property="set_static = true" />
+        <USERPROPERTY node="light_aa28" property="set_collision = true" />
+        <USERPROPERTY node="light_aa28" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa28" property="set_water = false" />
+        <USERPROPERTY node="light_aa28" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa28" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa28" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object69" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object69" property="set_shade = true" />
+        <USERPROPERTY node="Object69" property="set_static = true" />
+        <USERPROPERTY node="Object69" property="set_collision = true" />
+        <USERPROPERTY node="Object69" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object69" property="set_water = false" />
+        <USERPROPERTY node="Object69" property="set_cloth = false" />
+        <USERPROPERTY node="Object69" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object69" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object70" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object70" property="set_shade = true" />
+        <USERPROPERTY node="Object70" property="set_static = true" />
+        <USERPROPERTY node="Object70" property="set_collision = true" />
+        <USERPROPERTY node="Object70" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object70" property="set_water = false" />
+        <USERPROPERTY node="Object70" property="set_cloth = false" />
+        <USERPROPERTY node="Object70" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object70" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa29" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa29" property="set_shade = true" />
+        <USERPROPERTY node="light_aa29" property="set_static = true" />
+        <USERPROPERTY node="light_aa29" property="set_collision = true" />
+        <USERPROPERTY node="light_aa29" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa29" property="set_water = false" />
+        <USERPROPERTY node="light_aa29" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa29" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa29" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object71" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object71" property="set_shade = true" />
+        <USERPROPERTY node="Object71" property="set_static = true" />
+        <USERPROPERTY node="Object71" property="set_collision = true" />
+        <USERPROPERTY node="Object71" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object71" property="set_water = false" />
+        <USERPROPERTY node="Object71" property="set_cloth = false" />
+        <USERPROPERTY node="Object71" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object71" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object72" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object72" property="set_shade = true" />
+        <USERPROPERTY node="Object72" property="set_static = true" />
+        <USERPROPERTY node="Object72" property="set_collision = true" />
+        <USERPROPERTY node="Object72" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object72" property="set_water = false" />
+        <USERPROPERTY node="Object72" property="set_cloth = false" />
+        <USERPROPERTY node="Object72" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object72" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa30" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa30" property="set_shade = true" />
+        <USERPROPERTY node="light_aa30" property="set_static = true" />
+        <USERPROPERTY node="light_aa30" property="set_collision = true" />
+        <USERPROPERTY node="light_aa30" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa30" property="set_water = false" />
+        <USERPROPERTY node="light_aa30" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa30" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa30" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object73" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object73" property="set_shade = true" />
+        <USERPROPERTY node="Object73" property="set_static = true" />
+        <USERPROPERTY node="Object73" property="set_collision = true" />
+        <USERPROPERTY node="Object73" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object73" property="set_water = false" />
+        <USERPROPERTY node="Object73" property="set_cloth = false" />
+        <USERPROPERTY node="Object73" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object73" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object74" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object74" property="set_shade = true" />
+        <USERPROPERTY node="Object74" property="set_static = true" />
+        <USERPROPERTY node="Object74" property="set_collision = true" />
+        <USERPROPERTY node="Object74" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object74" property="set_water = false" />
+        <USERPROPERTY node="Object74" property="set_cloth = false" />
+        <USERPROPERTY node="Object74" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object74" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa31" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa31" property="set_shade = true" />
+        <USERPROPERTY node="light_aa31" property="set_static = true" />
+        <USERPROPERTY node="light_aa31" property="set_collision = true" />
+        <USERPROPERTY node="light_aa31" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa31" property="set_water = false" />
+        <USERPROPERTY node="light_aa31" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa31" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa31" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object75" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object75" property="set_shade = true" />
+        <USERPROPERTY node="Object75" property="set_static = true" />
+        <USERPROPERTY node="Object75" property="set_collision = true" />
+        <USERPROPERTY node="Object75" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object75" property="set_water = false" />
+        <USERPROPERTY node="Object75" property="set_cloth = false" />
+        <USERPROPERTY node="Object75" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object75" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object76" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object76" property="set_shade = true" />
+        <USERPROPERTY node="Object76" property="set_static = true" />
+        <USERPROPERTY node="Object76" property="set_collision = true" />
+        <USERPROPERTY node="Object76" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object76" property="set_water = false" />
+        <USERPROPERTY node="Object76" property="set_cloth = false" />
+        <USERPROPERTY node="Object76" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object76" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Cylinder05" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Cylinder05" property="set_shade = true" />
+        <USERPROPERTY node="Cylinder05" property="set_static = true" />
+        <USERPROPERTY node="Cylinder05" property="set_collision = true" />
+        <USERPROPERTY node="Cylinder05" property="set_export_ignore = false" />
+        <USERPROPERTY node="Cylinder05" property="set_water = false" />
+        <USERPROPERTY node="Cylinder05" property="set_cloth = false" />
+        <USERPROPERTY node="Cylinder05" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Cylinder05" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa32" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa32" property="set_shade = true" />
+        <USERPROPERTY node="light_aa32" property="set_static = true" />
+        <USERPROPERTY node="light_aa32" property="set_collision = true" />
+        <USERPROPERTY node="light_aa32" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa32" property="set_water = false" />
+        <USERPROPERTY node="light_aa32" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa32" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa32" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object77" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object77" property="set_shade = true" />
+        <USERPROPERTY node="Object77" property="set_static = true" />
+        <USERPROPERTY node="Object77" property="set_collision = true" />
+        <USERPROPERTY node="Object77" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object77" property="set_water = false" />
+        <USERPROPERTY node="Object77" property="set_cloth = false" />
+        <USERPROPERTY node="Object77" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object77" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object78" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object78" property="set_shade = true" />
+        <USERPROPERTY node="Object78" property="set_static = true" />
+        <USERPROPERTY node="Object78" property="set_collision = true" />
+        <USERPROPERTY node="Object78" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object78" property="set_water = false" />
+        <USERPROPERTY node="Object78" property="set_cloth = false" />
+        <USERPROPERTY node="Object78" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object78" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa33" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa33" property="set_shade = true" />
+        <USERPROPERTY node="light_aa33" property="set_static = true" />
+        <USERPROPERTY node="light_aa33" property="set_collision = true" />
+        <USERPROPERTY node="light_aa33" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa33" property="set_water = false" />
+        <USERPROPERTY node="light_aa33" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa33" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa33" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object79" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object79" property="set_shade = true" />
+        <USERPROPERTY node="Object79" property="set_static = true" />
+        <USERPROPERTY node="Object79" property="set_collision = true" />
+        <USERPROPERTY node="Object79" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object79" property="set_water = false" />
+        <USERPROPERTY node="Object79" property="set_cloth = false" />
+        <USERPROPERTY node="Object79" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object79" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object80" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object80" property="set_shade = true" />
+        <USERPROPERTY node="Object80" property="set_static = true" />
+        <USERPROPERTY node="Object80" property="set_collision = true" />
+        <USERPROPERTY node="Object80" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object80" property="set_water = false" />
+        <USERPROPERTY node="Object80" property="set_cloth = false" />
+        <USERPROPERTY node="Object80" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object80" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa34" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa34" property="set_shade = true" />
+        <USERPROPERTY node="light_aa34" property="set_static = true" />
+        <USERPROPERTY node="light_aa34" property="set_collision = true" />
+        <USERPROPERTY node="light_aa34" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa34" property="set_water = false" />
+        <USERPROPERTY node="light_aa34" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa34" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa34" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object81" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object81" property="set_shade = true" />
+        <USERPROPERTY node="Object81" property="set_static = true" />
+        <USERPROPERTY node="Object81" property="set_collision = true" />
+        <USERPROPERTY node="Object81" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object81" property="set_water = false" />
+        <USERPROPERTY node="Object81" property="set_cloth = false" />
+        <USERPROPERTY node="Object81" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object81" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object82" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object82" property="set_shade = true" />
+        <USERPROPERTY node="Object82" property="set_static = true" />
+        <USERPROPERTY node="Object82" property="set_collision = true" />
+        <USERPROPERTY node="Object82" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object82" property="set_water = false" />
+        <USERPROPERTY node="Object82" property="set_cloth = false" />
+        <USERPROPERTY node="Object82" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object82" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa35" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa35" property="set_shade = true" />
+        <USERPROPERTY node="light_aa35" property="set_static = true" />
+        <USERPROPERTY node="light_aa35" property="set_collision = true" />
+        <USERPROPERTY node="light_aa35" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa35" property="set_water = false" />
+        <USERPROPERTY node="light_aa35" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa35" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa35" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object83" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object83" property="set_shade = true" />
+        <USERPROPERTY node="Object83" property="set_static = true" />
+        <USERPROPERTY node="Object83" property="set_collision = true" />
+        <USERPROPERTY node="Object83" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object83" property="set_water = false" />
+        <USERPROPERTY node="Object83" property="set_cloth = false" />
+        <USERPROPERTY node="Object83" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object83" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object84" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object84" property="set_shade = true" />
+        <USERPROPERTY node="Object84" property="set_static = true" />
+        <USERPROPERTY node="Object84" property="set_collision = true" />
+        <USERPROPERTY node="Object84" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object84" property="set_water = false" />
+        <USERPROPERTY node="Object84" property="set_cloth = false" />
+        <USERPROPERTY node="Object84" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object84" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa36" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa36" property="set_shade = true" />
+        <USERPROPERTY node="light_aa36" property="set_static = true" />
+        <USERPROPERTY node="light_aa36" property="set_collision = true" />
+        <USERPROPERTY node="light_aa36" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa36" property="set_water = false" />
+        <USERPROPERTY node="light_aa36" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa36" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa36" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object85" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object85" property="set_shade = true" />
+        <USERPROPERTY node="Object85" property="set_static = true" />
+        <USERPROPERTY node="Object85" property="set_collision = true" />
+        <USERPROPERTY node="Object85" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object85" property="set_water = false" />
+        <USERPROPERTY node="Object85" property="set_cloth = false" />
+        <USERPROPERTY node="Object85" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object85" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object86" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object86" property="set_shade = true" />
+        <USERPROPERTY node="Object86" property="set_static = true" />
+        <USERPROPERTY node="Object86" property="set_collision = true" />
+        <USERPROPERTY node="Object86" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object86" property="set_water = false" />
+        <USERPROPERTY node="Object86" property="set_cloth = false" />
+        <USERPROPERTY node="Object86" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object86" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa37" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa37" property="set_shade = true" />
+        <USERPROPERTY node="light_aa37" property="set_static = true" />
+        <USERPROPERTY node="light_aa37" property="set_collision = true" />
+        <USERPROPERTY node="light_aa37" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa37" property="set_water = false" />
+        <USERPROPERTY node="light_aa37" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa37" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa37" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object87" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object87" property="set_shade = true" />
+        <USERPROPERTY node="Object87" property="set_static = true" />
+        <USERPROPERTY node="Object87" property="set_collision = true" />
+        <USERPROPERTY node="Object87" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object87" property="set_water = false" />
+        <USERPROPERTY node="Object87" property="set_cloth = false" />
+        <USERPROPERTY node="Object87" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object87" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object88" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object88" property="set_shade = true" />
+        <USERPROPERTY node="Object88" property="set_static = true" />
+        <USERPROPERTY node="Object88" property="set_collision = true" />
+        <USERPROPERTY node="Object88" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object88" property="set_water = false" />
+        <USERPROPERTY node="Object88" property="set_cloth = false" />
+        <USERPROPERTY node="Object88" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object88" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Cylinder06" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Cylinder06" property="set_shade = true" />
+        <USERPROPERTY node="Cylinder06" property="set_static = true" />
+        <USERPROPERTY node="Cylinder06" property="set_collision = true" />
+        <USERPROPERTY node="Cylinder06" property="set_export_ignore = false" />
+        <USERPROPERTY node="Cylinder06" property="set_water = false" />
+        <USERPROPERTY node="Cylinder06" property="set_cloth = false" />
+        <USERPROPERTY node="Cylinder06" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Cylinder06" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa38" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa38" property="set_shade = true" />
+        <USERPROPERTY node="light_aa38" property="set_static = true" />
+        <USERPROPERTY node="light_aa38" property="set_collision = true" />
+        <USERPROPERTY node="light_aa38" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa38" property="set_water = false" />
+        <USERPROPERTY node="light_aa38" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa38" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa38" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object89" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object89" property="set_shade = true" />
+        <USERPROPERTY node="Object89" property="set_static = true" />
+        <USERPROPERTY node="Object89" property="set_collision = true" />
+        <USERPROPERTY node="Object89" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object89" property="set_water = false" />
+        <USERPROPERTY node="Object89" property="set_cloth = false" />
+        <USERPROPERTY node="Object89" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object89" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object90" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object90" property="set_shade = true" />
+        <USERPROPERTY node="Object90" property="set_static = true" />
+        <USERPROPERTY node="Object90" property="set_collision = true" />
+        <USERPROPERTY node="Object90" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object90" property="set_water = false" />
+        <USERPROPERTY node="Object90" property="set_cloth = false" />
+        <USERPROPERTY node="Object90" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object90" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa39" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa39" property="set_shade = true" />
+        <USERPROPERTY node="light_aa39" property="set_static = true" />
+        <USERPROPERTY node="light_aa39" property="set_collision = true" />
+        <USERPROPERTY node="light_aa39" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa39" property="set_water = false" />
+        <USERPROPERTY node="light_aa39" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa39" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa39" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object91" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object91" property="set_shade = true" />
+        <USERPROPERTY node="Object91" property="set_static = true" />
+        <USERPROPERTY node="Object91" property="set_collision = true" />
+        <USERPROPERTY node="Object91" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object91" property="set_water = false" />
+        <USERPROPERTY node="Object91" property="set_cloth = false" />
+        <USERPROPERTY node="Object91" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object91" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object92" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object92" property="set_shade = true" />
+        <USERPROPERTY node="Object92" property="set_static = true" />
+        <USERPROPERTY node="Object92" property="set_collision = true" />
+        <USERPROPERTY node="Object92" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object92" property="set_water = false" />
+        <USERPROPERTY node="Object92" property="set_cloth = false" />
+        <USERPROPERTY node="Object92" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object92" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa40" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa40" property="set_shade = true" />
+        <USERPROPERTY node="light_aa40" property="set_static = true" />
+        <USERPROPERTY node="light_aa40" property="set_collision = true" />
+        <USERPROPERTY node="light_aa40" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa40" property="set_water = false" />
+        <USERPROPERTY node="light_aa40" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa40" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa40" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object93" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object93" property="set_shade = true" />
+        <USERPROPERTY node="Object93" property="set_static = true" />
+        <USERPROPERTY node="Object93" property="set_collision = true" />
+        <USERPROPERTY node="Object93" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object93" property="set_water = false" />
+        <USERPROPERTY node="Object93" property="set_cloth = false" />
+        <USERPROPERTY node="Object93" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object93" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object94" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object94" property="set_shade = true" />
+        <USERPROPERTY node="Object94" property="set_static = true" />
+        <USERPROPERTY node="Object94" property="set_collision = true" />
+        <USERPROPERTY node="Object94" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object94" property="set_water = false" />
+        <USERPROPERTY node="Object94" property="set_cloth = false" />
+        <USERPROPERTY node="Object94" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object94" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa41" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa41" property="set_shade = true" />
+        <USERPROPERTY node="light_aa41" property="set_static = true" />
+        <USERPROPERTY node="light_aa41" property="set_collision = true" />
+        <USERPROPERTY node="light_aa41" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa41" property="set_water = false" />
+        <USERPROPERTY node="light_aa41" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa41" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa41" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object95" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object95" property="set_shade = true" />
+        <USERPROPERTY node="Object95" property="set_static = true" />
+        <USERPROPERTY node="Object95" property="set_collision = true" />
+        <USERPROPERTY node="Object95" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object95" property="set_water = false" />
+        <USERPROPERTY node="Object95" property="set_cloth = false" />
+        <USERPROPERTY node="Object95" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object95" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object96" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object96" property="set_shade = true" />
+        <USERPROPERTY node="Object96" property="set_static = true" />
+        <USERPROPERTY node="Object96" property="set_collision = true" />
+        <USERPROPERTY node="Object96" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object96" property="set_water = false" />
+        <USERPROPERTY node="Object96" property="set_cloth = false" />
+        <USERPROPERTY node="Object96" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object96" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa42" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa42" property="set_shade = true" />
+        <USERPROPERTY node="light_aa42" property="set_static = true" />
+        <USERPROPERTY node="light_aa42" property="set_collision = true" />
+        <USERPROPERTY node="light_aa42" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa42" property="set_water = false" />
+        <USERPROPERTY node="light_aa42" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa42" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa42" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object97" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object97" property="set_shade = true" />
+        <USERPROPERTY node="Object97" property="set_static = true" />
+        <USERPROPERTY node="Object97" property="set_collision = true" />
+        <USERPROPERTY node="Object97" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object97" property="set_water = false" />
+        <USERPROPERTY node="Object97" property="set_cloth = false" />
+        <USERPROPERTY node="Object97" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object97" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object98" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object98" property="set_shade = true" />
+        <USERPROPERTY node="Object98" property="set_static = true" />
+        <USERPROPERTY node="Object98" property="set_collision = true" />
+        <USERPROPERTY node="Object98" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object98" property="set_water = false" />
+        <USERPROPERTY node="Object98" property="set_cloth = false" />
+        <USERPROPERTY node="Object98" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object98" property="set_visible_at_night = false" />
+        <USERPROPERTY node="light_aa43" property="set_vertexcolor = false" />
+        <USERPROPERTY node="light_aa43" property="set_shade = true" />
+        <USERPROPERTY node="light_aa43" property="set_static = true" />
+        <USERPROPERTY node="light_aa43" property="set_collision = true" />
+        <USERPROPERTY node="light_aa43" property="set_export_ignore = false" />
+        <USERPROPERTY node="light_aa43" property="set_water = false" />
+        <USERPROPERTY node="light_aa43" property="set_cloth = false" />
+        <USERPROPERTY node="light_aa43" property="set_cloth_collision = false" />
+        <USERPROPERTY node="light_aa43" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object99" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object99" property="set_shade = true" />
+        <USERPROPERTY node="Object99" property="set_static = true" />
+        <USERPROPERTY node="Object99" property="set_collision = true" />
+        <USERPROPERTY node="Object99" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object99" property="set_water = false" />
+        <USERPROPERTY node="Object99" property="set_cloth = false" />
+        <USERPROPERTY node="Object99" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object99" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object100" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object100" property="set_shade = true" />
+        <USERPROPERTY node="Object100" property="set_static = true" />
+        <USERPROPERTY node="Object100" property="set_collision = true" />
+        <USERPROPERTY node="Object100" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object100" property="set_water = false" />
+        <USERPROPERTY node="Object100" property="set_cloth = false" />
+        <USERPROPERTY node="Object100" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object100" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object" property="set_shade = true" />
+        <USERPROPERTY node="Object" property="set_static = true" />
+        <USERPROPERTY node="Object" property="set_collision = true" />
+        <USERPROPERTY node="Object" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object" property="set_water = false" />
+        <USERPROPERTY node="Object" property="set_cloth = false" />
+        <USERPROPERTY node="Object" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Object101" property="set_vertexcolor = false" />
+        <USERPROPERTY node="Object101" property="set_shade = true" />
+        <USERPROPERTY node="Object101" property="set_static = true" />
+        <USERPROPERTY node="Object101" property="set_collision = true" />
+        <USERPROPERTY node="Object101" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object101" property="set_water = false" />
+        <USERPROPERTY node="Object101" property="set_cloth = false" />
+        <USERPROPERTY node="Object101" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object101" property="set_visible_at_night = false" />
+        <USERPROPERTY node="drum" property="set_vertexcolor = false" />
+        <USERPROPERTY node="drum" property="set_shade = true" />
+        <USERPROPERTY node="drum" property="set_static = true" />
+        <USERPROPERTY node="drum" property="set_collision = true" />
+        <USERPROPERTY node="drum" property="set_export_ignore = false" />
+        <USERPROPERTY node="drum" property="set_water = false" />
+        <USERPROPERTY node="drum" property="set_cloth = false" />
+        <USERPROPERTY node="drum" property="set_cloth_collision = false" />
+        <USERPROPERTY node="drum" property="set_visible_at_night = false" />
+        <USERPROPERTY node="Surface01" property="set_vertexcolor = true" />
+        <USERPROPERTY node="Surface01" property="set_shade = false" />
+        <USERPROPERTY node="Surface01" property="set_static = false" />
+        <USERPROPERTY node="Surface01" property="set_collision = false" />
+        <USERPROPERTY node="Surface01" property="set_export_ignore = false" />
+        <USERPROPERTY node="Surface01" property="set_water = false" />
+        <USERPROPERTY node="Surface01" property="set_cloth = false" />
+        <USERPROPERTY node="Surface01" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Surface01" property="set_visible_at_night = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_vertexcolor = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_export_ignore = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_water = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_cloth = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_cloth_collision = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_visible_at_night = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_static = true" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_shade = false" />
+        <USERPROPERTY node="ef_waterfall_bubble04" property="set_collision = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_vertexcolor = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_export_ignore = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_water = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_cloth = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_cloth_collision = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_visible_at_night = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_static = true" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_shade = false" />
+        <USERPROPERTY node="ef_wet_fog02" property="set_collision = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_vertexcolor = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_export_ignore = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_water = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_cloth = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_cloth_collision = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_visible_at_night = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_static = true" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_shade = false" />
+        <USERPROPERTY node="ef_waterfall_bubble202" property="set_collision = false" />
+        <USERPROPERTY node="Object10" property="set_vertexcolor = true" />
+        <USERPROPERTY node="Object10" property="set_shade = false" />
+        <USERPROPERTY node="Object10" property="set_static = false" />
+        <USERPROPERTY node="Object10" property="set_collision = false" />
+        <USERPROPERTY node="Object10" property="set_export_ignore = false" />
+        <USERPROPERTY node="Object10" property="set_water = false" />
+        <USERPROPERTY node="Object10" property="set_cloth = false" />
+        <USERPROPERTY node="Object10" property="set_cloth_collision = false" />
+        <USERPROPERTY node="Object10" property="set_visible_at_night = false" />
+        <USERPROPERTY node="login_water_p_01" property="set_water = true" />
+        <USERPROPERTY node="login_water_p_01" property="set_collision = false" />
+        <USERPROPERTY node="login_water_p_01" property="set_shade = false" />
+        <USERPROPERTY node="p_water" property="set_shade = false" />
+        <USERPROPERTY node="p_water" property="set_collision = false" />
+        <USERPROPERTY node="p_water" property="set_export_ignore = true" />
+    </USERPROPERTYLIST>
+    <COLLISION />
+</XML>

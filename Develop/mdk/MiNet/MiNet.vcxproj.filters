@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="socket_layer">
+      <UniqueIdentifier>{3aee72e2-f40f-4cfd-8b50-6251f625d539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="socket_layer\UDP">
+      <UniqueIdentifier>{602b1b86-667e-4ce1-8e66-094cf9350d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="socket_layer\TCP">
+      <UniqueIdentifier>{ae5c534a-b29b-4de0-9b86-cef843a5b07a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="command_layer">
+      <UniqueIdentifier>{bdadc4cd-2665-487c-aca7-ba3424c2284d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="command_layer\server">
+      <UniqueIdentifier>{8bef9f5b-2c30-41dc-94c9-763a7c74e21a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="command_layer\common">
+      <UniqueIdentifier>{26affd11-e65c-4e2b-a3a1-a725cde6110f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="command_layer\command">
+      <UniqueIdentifier>{71a4c5b4-bd47-40a9-871c-0008f03e4f84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="command_layer\client">
+      <UniqueIdentifier>{822a4245-aeb4-40f3-a559-a2c578b0cade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_helper">
+      <UniqueIdentifier>{e21812bb-e9db-458a-815f-7f28a3a90c3a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\MUDPCommandHandler.h">
+      <Filter>socket_layer\UDP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MUDPNetClient.h">
+      <Filter>socket_layer\UDP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MUDPNetServer.h">
+      <Filter>socket_layer\UDP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MUDPReactor.h">
+      <Filter>socket_layer\UDP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MUDPSocket.h">
+      <Filter>socket_layer\UDP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MAcceptor.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MAct.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MActor.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MConnector.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MDisconnector.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MLink.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MLinkMap.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MProactor.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MReceiver.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MSender.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MServerTcpSocket.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MServerTcpSocketPool.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MSocket.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MTcpListenSocket.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MTcpServer.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MTCPSocket.h">
+      <Filter>socket_layer\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCmdHandler_NetServer.h">
+      <Filter>command_layer\server</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MDelayTester.h">
+      <Filter>command_layer\server</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MNetServer.h">
+      <Filter>command_layer\server</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandBuilder.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MErrorTable.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MiNet.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MiNetCommon.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MiNetCommonDef.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MiNetHelper.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MiNetLib.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MiNetLogger.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MiNetPrerequisites.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MPacket.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MPacketBuilder.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MPacketCrypter.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MTrafficMonitor.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>command_layer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommand.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandBinder.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandCommunicator.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandDesc.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandHandler.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandHistory.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandManager.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandParameter.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandProfiler.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandStream.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCommandTable.h">
+      <Filter>command_layer\command</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MCmdHandler_NetClient.h">
+      <Filter>command_layer\client</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MNetClient.h">
+      <Filter>command_layer\client</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MMockLink.h">
+      <Filter>test_helper</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MMockNetClient.h">
+      <Filter>test_helper</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MMockNetServer.h">
+      <Filter>test_helper</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MSimpleCommandBinder.h">
+      <Filter>test_helper</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Constant.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\MUDPNetClient.cpp">
+      <Filter>socket_layer\UDP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MUDPNetServer.cpp">
+      <Filter>socket_layer\UDP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MUDPReactor.cpp">
+      <Filter>socket_layer\UDP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MUDPSocket.cpp">
+      <Filter>socket_layer\UDP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MAcceptor.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MAct.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MActor.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MConnector.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MDisconnector.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MLink.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MLinkMap.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MProactor.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MReceiver.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MSender.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MServerTcpSocket.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MServerTcpSocketPool.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MSocket.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MTcpListenSocket.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MTcpServer.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MTCPSocket.cpp">
+      <Filter>socket_layer\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCmdHandler_NetServer.cpp">
+      <Filter>command_layer\server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MDelayTester.cpp">
+      <Filter>command_layer\server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MNetServer.cpp">
+      <Filter>command_layer\server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandBuilder.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MiNet.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MiNetCommon.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MiNetHelper.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MiNetLogger.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MPacket.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MPacketBuilder.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MPacketCrypter.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MTrafficMonitor.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>command_layer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommand.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandBinder.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandCommunicator.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandDesc.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandHandler.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandHistory.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandManager.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandParameter.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandProfiler.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandStream.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCommandTable.cpp">
+      <Filter>command_layer\command</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MCmdHandler_NetClient.cpp">
+      <Filter>command_layer\client</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MNetClient.cpp">
+      <Filter>command_layer\client</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MMockLink.cpp">
+      <Filter>test_helper</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MMockNetClient.cpp">
+      <Filter>test_helper</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MMockNetServer.cpp">
+      <Filter>test_helper</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

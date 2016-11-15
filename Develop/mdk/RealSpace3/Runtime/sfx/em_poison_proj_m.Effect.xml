@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<REFFECT_SOURCE name="em_poison_proj_m">
+    <REMITTER starttime="0.000000">em_poison_proj_m00.Emitter.xml</REMITTER>
+    <REMITTER starttime="0.000000">em_poison_proj_m01.Emitter.xml</REMITTER>
+</REFFECT_SOURCE>

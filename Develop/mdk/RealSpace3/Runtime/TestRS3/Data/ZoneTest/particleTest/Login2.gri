@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GRASS numbering="1">
+    <BRUSH name="Grass01">
+        <PIECE filename="Rinden_grass_k01.tga" size="50" num="2" />
+    </BRUSH>
+</GRASS>

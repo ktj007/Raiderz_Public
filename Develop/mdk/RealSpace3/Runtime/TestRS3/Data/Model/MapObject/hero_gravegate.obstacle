@@ -1,0 +1,24 @@
+<obstacle version="0">
+    <mesh count="4">
+        <polygon count="3">
+            <vertex>-260.668365 -59.616489 -9.390224</vertex>
+            <vertex>-158.549225 -59.616486 -9.390227</vertex>
+            <vertex>-260.668365 59.616505 -9.390220</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>-158.549225 59.616505 -9.390224</vertex>
+            <vertex>-260.668365 59.616505 -9.390220</vertex>
+            <vertex>-158.549225 -59.616486 -9.390227</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>158.549377 -59.616489 -9.390224</vertex>
+            <vertex>260.668488 -59.616489 -9.390227</vertex>
+            <vertex>158.549408 59.616512 -9.390220</vertex>
+        </polygon>
+        <polygon count="3">
+            <vertex>260.668488 59.616512 -9.390224</vertex>
+            <vertex>158.549408 59.616512 -9.390220</vertex>
+            <vertex>260.668488 -59.616489 -9.390227</vertex>
+        </polygon>
+    </mesh>
+</obstacle>

@@ -1,0 +1,198 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ELU_EXPORT DIALOGEX 0, 0, 223, 251
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "RealSpace3 scene exporter"
+FONT 10, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,157,11,59,19
+    PUSHBUTTON      "Cancel",IDCANCEL,157,37,59,19
+    CONTROL         "Mesh Out",IDC_MESH_OUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,14,55,12
+    GROUPBOX        "Export Options",IDC_STATIC,5,2,143,94,BS_CENTER
+    CONTROL         "Key Animation",IDC_ANI_OUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,106,63,12
+    CONTROL         "Vertex Animation",IDC_VERTEX_ANI_OUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,118,89,12
+    CONTROL         "Optimize Key",IDC_OPTIMIZE_KEYS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,80,106,56,12
+    CONTROL         "Export Texture",IDC_EXPORT_TEXTURES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,74,152,66,12
+    GROUPBOX        "Texture Options",IDC_STATIC,6,138,211,106,BS_CENTER
+    LTEXT           "no Apha",IDC_STATIC,11,164,32,10
+    CONTROL         "DXT1",IDC_RADIO_PLAIN_DXT1,"Button",BS_AUTORADIOBUTTON,11,175,34,10
+    CONTROL         "DXT3",IDC_RADIO_PLAIN_DXT3,"Button",BS_AUTORADIOBUTTON,11,185,34,10
+    CONTROL         "DXT5",IDC_RADIO_PLAIN_DXT5,"Button",BS_AUTORADIOBUTTON,11,195,34,10
+    CONTROL         "No compress",IDC_RADIO_PLAIN_NOCOMPRESS,"Button",BS_AUTORADIOBUTTON,11,205,55,10
+    LTEXT           "Alpha",IDC_STATIC,67,164,32,10
+    CONTROL         "DXT1",IDC_RADIO_ALPHA_DXT1,"Button",BS_AUTORADIOBUTTON,67,175,39,10
+    CONTROL         "DXT3",IDC_RADIO_ALPHA_DXT3,"Button",BS_AUTORADIOBUTTON,67,185,39,10
+    CONTROL         "DXT5",IDC_RADIO_ALPHA_DXT5,"Button",BS_AUTORADIOBUTTON,67,195,39,10
+    CONTROL         "No compress",IDC_RADIO_ALPHA_NOCOMPRESS,"Button",BS_AUTORADIOBUTTON,67,205,55,10
+    EDITTEXT        IDC_EDIT_TEXTURE_EXPORT_FOLDER,11,232,183,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE,197,232,13,12
+    LTEXT           "Custom texture export folder",IDC_STATIC,11,219,107,12
+    CONTROL         "Use DDS",IDC_USE_DDS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,152,55,12
+    GROUPBOX        "Animation Options",IDC_STATIC,6,96,143,38,BS_CENTER
+    CONTROL         "Static Mesh",IDC_STATIC_MESH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,100,12
+    EDITTEXT        IDC_EDIT_POLYGON_PER_NODES,84,66,54,12,ES_AUTOHSCROLL
+    LTEXT           "Polygon per nodes",IDC_STATIC,18,66,61,12
+    CONTROL         "Attach Meshes",IDC_ATTACH_MESH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,68,14,62,12
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ELU_EXPORT, DIALOG
+    BEGIN
+        RIGHTMARGIN, 216
+        VERTGUIDE, 5
+        VERTGUIDE, 10
+        VERTGUIDE, 148
+        VERTGUIDE, 157
+        VERTGUIDE, 202
+        BOTTOMMARGIN, 246
+        HORZGUIDE, 20
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 영어(미국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,0,0,0
+ PRODUCTVERSION 3,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileVersion", "3.0.0.0"
+            VALUE "InternalName", "MCplug2"
+            VALUE "OriginalFilename", "MCplug2.dle"
+            VALUE "ProductName", "3D Studio MAX"
+            VALUE "ProductVersion", "3.0.0.0"
+            VALUE "Comments", "TECH: "
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_EXP                 "Horus Max Export-Plugin"
+    IDS_CATEGORY            "Horus Max Export-Plugin"
+    IDS_CLASS_NAME          "MCplug3"
+    IDS_PARAMS              "Parameters"
+    IDS_SPIN                "Spin"
+    IDS_EXTENSION1          "elu"
+    IDS_LONGDESC            "3DStudio MAX - Maiet Object Export-Plugin 3"
+    IDS_SHORTDESC           "Maiet Object Export-Plugin 3"
+    IDS_COPYRIGHT           "Copyright (c) 2001 by horus"
+    IDS_PROGRESS_MSG1       "Data Exporting...Mesh(1/2)"
+    IDS_VERSIONSTRING       "max elm Export-Plugin Version"
+    IDS_PROGRESS_MSG2       "Data Exporting...StaticMesh(2/2)"
+END
+
+#endif    // 영어(미국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

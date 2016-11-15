@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GRASS numbering="4">
+    <BRUSH name="Grass01">
+        <PIECE filename="teress_grass_k18b.tga" size="90" num="2" />
+        <PIECE filename="teress_grass_k18c.tga" size="90" num="2" />
+    </BRUSH>
+    <BRUSH name="Grass02">
+        <PIECE filename="ingen_grass_jj01.tga" size="100" num="2" />
+    </BRUSH>
+    <BRUSH name="Grass03">
+        <PIECE filename="teress_grass_k10.tga" size="90" num="2" />
+    </BRUSH>
+    <BRUSH name="Grass04">
+        <PIECE filename="teress_grass_k13b.tga" size="90" num="2" />
+    </BRUSH>
+</GRASS>

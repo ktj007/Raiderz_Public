@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+    <AddAnimation name="idle" filename="ghost_knight.elu.ani" motion_loop_type="lastframe" speed="1.000000" />
+    <AnimationTransitions />
+</XML>

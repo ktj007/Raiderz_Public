@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <ACTOR>
+            <COMMON name="sandstorm" />
+            <PROPERTY>
+                <FILENAME>sandstorm.elu</FILENAME>
+            </PROPERTY>
+            <SCENE>
+                <EFFECTINSTANCE>
+                    <COMMON>
+                        <POSITION>0.000000 0.000000 0.000000</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                    </COMMON>
+                    <CONTROLLERS>
+                        <ACTORNODECONSTRAINTCONTROLLER>
+                            <TARGET>Dummy01</TARGET>
+                        </ACTORNODECONSTRAINTCONTROLLER>
+                    </CONTROLLERS>
+                    <PROPERTY>
+                        <FILENAME>ef_article_sandStorm</FILENAME>
+                        <AUTOSTART />
+                    </PROPERTY>
+                </EFFECTINSTANCE>
+            </SCENE>
+        </ACTOR>
+    </SCENE>
+</ROOT>

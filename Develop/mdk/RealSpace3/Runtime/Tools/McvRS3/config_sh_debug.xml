@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XML>
+	<SHADERPATH>../../Shader/;../../Shader/components/</SHADERPATH>
+	<MODELPATH>../../../../../Game/Runtime/Data/Model/MapObject/</MODELPATH>
+	<TEXTUREPATH>../../../../../Game/Runtime/Data/Texture/SpeedTree/;../../../../../Game/Runtime/Data/Texture/IndoorMap/;../../../../../Game/Runtime/Data/Texture/Map/;../../../../../Game/Runtime/Data/Texture/Character/;../../../../../Game/Runtime/Data/Texture/SFX;../../../../../Game/Runtime/Data/Texture/Sky/;../../../../../Game/Runtime/Data/Texture/weapon</TEXTUREPATH>
+	<EFFECTPATH>../../../../../Game/Runtime/Data/SFX</EFFECTPATH>
+	<SOUNDPATH>../../../../../Game/Runtime/Data/Sound/Effect</SOUNDPATH>
+	<FARZ>10000</FARZ>
+</XML>

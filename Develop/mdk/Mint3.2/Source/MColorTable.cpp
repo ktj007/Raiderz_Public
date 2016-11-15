@@ -1,0 +1,18 @@
+#include "stdafx.h"
+#include "MColorTable.h"
+
+namespace mint3
+{
+
+
+MCOLOR MColorTable::TEXT[ 3] = { MCOLOR( 160, 160, 160), MCOLOR( 230, 230, 230), MCOLOR( 100, 100, 100) };
+MCOLOR MColorTable::TEXT_SELECTED = MCOLOR( 0, 0, 0);
+MCOLOR MColorTable::BORDER[ 3] = { MCOLOR( 160, 160, 160), MCOLOR( 230, 230, 230), MCOLOR( 100, 100, 100) };
+MCOLOR MColorTable::BKGRND = MCOLOR( 0, 0, 0);
+MCOLOR MColorTable::TITLEBAR[ 3] = { MCOLOR( 0xFF4499FF), MCOLOR( 0xFF77BBFF), MCOLOR( 0xFF808080) };
+MCOLOR MColorTable::TITLE[ 3] = { MCOLOR( 0, 0, 0), MCOLOR( 0, 0, 0), MCOLOR( 100, 100, 100) };
+MCOLOR MColorTable::FACE[ 3] = { MCOLOR( 0xFF4499FF), MCOLOR( 0xFF77BBFF), MCOLOR( 0xFF808080) };
+MCOLOR MColorTable::SELECTBAR[ 3] = { MCOLOR( 0xFF4499FF), MCOLOR( 0xFF77BBFF), MCOLOR( 0xFF808080) };
+
+
+} // namespace mint3

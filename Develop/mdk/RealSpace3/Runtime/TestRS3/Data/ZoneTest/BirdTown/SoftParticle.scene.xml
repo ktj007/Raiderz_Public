@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <PROPERTY />
+    <SCENE>
+        <RTERRAIN>
+            <COMMON>
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY version="1.2">
+                <MAP_WIDTH type="int">
+                    <int>256</int>
+                </MAP_WIDTH>
+                <MAP_HEIGHT type="int">
+                    <int>256</int>
+                </MAP_HEIGHT>
+                <MAP_SIZE type="vec3">
+                    <vec3>60000.000000 60000.000000 0.000000</vec3>
+                </MAP_SIZE>
+                <MAP_NAME>BirdTown_dis.dds</MAP_NAME>
+				<BASEMAP_NAME>BirdTown_baked.bmp</BASEMAP_NAME>
+                <LIGHTMAP index="0" number="1">BirdTown_light0.dds</LIGHTMAP>
+                <GRASS>BirdTown.zone_grass.grs</GRASS>
+                <LAYER type="array" size="1">
+                    <LAYERINFO index="0">
+                        <ALPHAMAP>BirdTown_mask0.dds</ALPHAMAP>
+                        <TILEMAP type="specular">teress_ground_f01.dds</TILEMAP>
+                        <TILEUV type="vec3">
+                            <vec3>500.000000 500.000000 1.000000</vec3>
+                        </TILEUV>
+                    </LAYERINFO>
+                </LAYER>
+            </PROPERTY>
+        </RTERRAIN>
+        <DIRLIGHT>
+            <COMMON name="TerrainLightMap0">
+                <POSITION>-1.000000 -1.000000 1.200000</POSITION>
+                <DIRECTION>0.539164 0.539164 -0.646997</DIRECTION>
+                <UP>0.457496 0.457496 0.762493</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <ENV />
+                <SHADOWLUMINOSITY>0.350</SHADOWLUMINOSITY>
+            </PROPERTY>
+        </DIRLIGHT>
+        <ACTOR>
+            <COMMON name="con_garden_watermill01_001">
+                <POSITION>3714.501709 3363.280762 950.047180</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>con_garden_watermill01.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="con_garden_watermill01_002">
+                <POSITION>6277.351074 6412.465820 950.047180</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>con_garden_watermill01.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="con_garden_watermill01_003">
+                <POSITION>3730.380371 3580.347412 950.047180</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>con_garden_watermill01.elu</FILENAME>
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+        <ACTOR>
+            <COMMON name="ingen_waterfall_001">
+                <POSITION>4823.464355 4573.691895 0.000000</POSITION>
+                <DIRECTION>0.981627 0.190809 0.000000</DIRECTION>
+                <UP>-0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <PROPERTY>
+                <FILENAME>ingen_waterfall.elu</FILENAME>
+                <ANI />
+            </PROPERTY>
+            <SCENE />
+        </ACTOR>
+    </SCENE>
+</ROOT>

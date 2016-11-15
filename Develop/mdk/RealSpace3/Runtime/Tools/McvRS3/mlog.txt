@@ -1,0 +1,9 @@
+﻿------------------------------------------------------------------------------
+-- Logging Start (04/23/15 00:56:27)
+------------------------------------------------------------------------------
+[i] 00:56:27 - WFog Enabled Device.
+[i] 00:56:27 - RDeviceD3D created.
+[i] 00:56:27 - Texture file load failed -> noisemono.jpg
+[i] 00:56:27 - RDeviceD3D::ResetDevice
+[i] 00:56:45 - m_rootSceneNode? ???? ??? ????? ??? ???. Clear? ???? ??????.
+[d] 00:56:45 - RResource : mesh C:\Users\Christina\Documents\3dsMax\export\ELU.elu not released ( ref count = 1 )

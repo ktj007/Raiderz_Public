@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <SCENE>
+        <EFFECT>
+            <COMMON name="ef_breath_stream_02">
+                <POSITION>0.000000 0.000000 0.000000</POSITION>
+                <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                <UP>0.000000 0.000000 1.000000</UP>
+                <SCALE>1.000000 1.000000 1.000000</SCALE>
+            </COMMON>
+            <SCENE>
+                <REMITTER>
+                    <COMMON name="ef_breath_stream_0200">
+                        <POSITION>0.000000 0.000000 0.000000</POSITION>
+                        <DIRECTION>0.000000 1.000000 0.000000</DIRECTION>
+                        <UP>0.000000 0.000000 1.000000</UP>
+                        <SCALE>1.000000 1.000000 1.000000</SCALE>
+                    </COMMON>
+                    <PROPERTY name="ef_breath_stream_0200" starttime="0.000000" type="SPHERE">
+                        <ATTRIBUTE>
+                            <MAXPARTICLE type="count">
+                                <int>50</int>
+                            </MAXPARTICLE>
+                            <LIFE type="sec">
+                                <float>5.000</float>
+                            </LIFE>
+                            <LOOPING type="bool">
+                                <int>1</int>
+                            </LOOPING>
+                            <SORTING type="bool">
+                                <int>0</int>
+                            </SORTING>
+                            <ROTATE type="bool">
+                                <int>0</int>
+                            </ROTATE>
+                            <MINROTATIONRADIAN type="float">
+                                <float>-3.000</float>
+                            </MINROTATIONRADIAN>
+                            <MAXROTATIONRADIAN type="float">
+                                <float>3.000</float>
+                            </MAXROTATIONRADIAN>
+                            <RANDCOLOR type="bool">
+                                <int>0</int>
+                            </RANDCOLOR>
+                            <RANDVEL type="bool">
+                                <int>0</int>
+                            </RANDVEL>
+                            <GATHER type="bool">
+                                <int>0</int>
+                            </GATHER>
+                            <EXPLOSION type="bool">
+                                <int>0</int>
+                            </EXPLOSION>
+                            <WITHME type="bool">
+                                <int>0</int>
+                            </WITHME>
+                            <FOLLOWPARENTROTATION type="bool">
+                                <int>0</int>
+                            </FOLLOWPARENTROTATION>
+                            <FIXAMOUNT type="bool">
+                                <int>0</int>
+                            </FIXAMOUNT>
+                            <DISTORTION type="bool">
+                                <int>1</int>
+                            </DISTORTION>
+                            <MINLIFE type="sec">
+                                <float>0.533</float>
+                            </MINLIFE>
+                            <MAXLIFE type="sec">
+                                <float>0.667</float>
+                            </MAXLIFE>
+                            <SCALE type="mul">
+                                <float>1.000</float>
+                            </SCALE>
+                            <BILLBOARDTYPE>BILLBOARD</BILLBOARDTYPE>
+                        </ATTRIBUTE>
+                        <EMITTERVAR type="array" size="4">
+                            <EMITTERVARIABLE index="0">
+                                <EVENTTIME type="alpha">
+                                    <float>0.000</float>
+                                </EVENTTIME>
+                                <AMOUNT type="int">
+                                    <int>55</int>
+                                </AMOUNT>
+                                <RANGE type="vec3">
+                                    <vec3>50.000000 50.000000 50.000000</vec3>
+                                </RANGE>
+                                <POSITION type="vec3">
+                                    <vec3>0.000000 0.000000 0.000000</vec3>
+                                </POSITION>
+                                <ANGLE type="degree">
+                                    <float>30.000</float>
+                                </ANGLE>
+                                <MINVELOCITY type="float">
+                                    <float>50.000</float>
+                                </MINVELOCITY>
+                                <MAXVELOCITY type="float">
+                                    <float>70.000</float>
+                                </MAXVELOCITY>
+                            </EMITTERVARIABLE>
+                            <EMITTERVARIABLE index="1">
+                                <EVENTTIME type="alpha">
+                                    <float>0.200</float>
+                                </EVENTTIME>
+                                <AMOUNT type="int">
+                                    <int>55</int>
+                                </AMOUNT>
+                                <RANGE type="vec3">
+                                    <vec3>50.000000 50.000000 50.000000</vec3>
+                                </RANGE>
+                                <POSITION type="vec3">
+                                    <vec3>0.000000 0.000000 0.000000</vec3>
+                                </POSITION>
+                                <ANGLE type="degree">
+                                    <float>30.000</float>
+                                </ANGLE>
+                                <MINVELOCITY type="float">
+                                    <float>0.000</float>
+                                </MINVELOCITY>
+                                <MAXVELOCITY type="float">
+                                    <float>0.000</float>
+                                </MAXVELOCITY>
+                            </EMITTERVARIABLE>
+                            <EMITTERVARIABLE index="2">
+                                <EVENTTIME type="alpha">
+                                    <float>0.233</float>
+                                </EVENTTIME>
+                                <AMOUNT type="int">
+                                    <int>0</int>
+                                </AMOUNT>
+                                <RANGE type="vec3">
+                                    <vec3>50.000000 50.000000 50.000000</vec3>
+                                </RANGE>
+                                <POSITION type="vec3">
+                                    <vec3>0.000000 0.000000 0.000000</vec3>
+                                </POSITION>
+                                <ANGLE type="degree">
+                                    <float>30.000</float>
+                                </ANGLE>
+                                <MINVELOCITY type="float">
+                                    <float>0.000</float>
+                                </MINVELOCITY>
+                                <MAXVELOCITY type="float">
+                                    <float>0.000</float>
+                                </MAXVELOCITY>
+                            </EMITTERVARIABLE>
+                            <EMITTERVARIABLE index="3">
+                                <EVENTTIME type="alpha">
+                                    <float>1.000</float>
+                                </EVENTTIME>
+                                <AMOUNT type="int">
+                                    <int>0</int>
+                                </AMOUNT>
+                                <RANGE type="vec3">
+                                    <vec3>50.000000 50.000000 50.000000</vec3>
+                                </RANGE>
+                                <POSITION type="vec3">
+                                    <vec3>0.000000 0.000000 0.000000</vec3>
+                                </POSITION>
+                                <ANGLE type="degree">
+                                    <float>30.000</float>
+                                </ANGLE>
+                                <MINVELOCITY type="float">
+                                    <float>0.000</float>
+                                </MINVELOCITY>
+                                <MAXVELOCITY type="float">
+                                    <float>0.000</float>
+                                </MAXVELOCITY>
+                            </EMITTERVARIABLE>
+                        </EMITTERVAR>
+                        <TEXTURE name="soul.dds">
+                            <SRCBLEND>SRCALPHA</SRCBLEND>
+                            <DSTBLEND>ONE</DSTBLEND>
+                            <ALPHAREF type="float">
+                                <float>128.000</float>
+                            </ALPHAREF>
+                            <TEXUV type="vec4">
+                                <vec4>0.489237 0.477495 0.998043 0.998043</vec4>
+                            </TEXUV>
+                            <TEXUVPIVOT type="vec2">
+                                <vec2>0.743640 0.737769 </vec2>
+                            </TEXUVPIVOT>
+                        </TEXTURE>
+                        <VECVAR type="array" size="3">
+                            <PARTICLEVARIABLE index="0">
+                                <EVENTTIME type="alpha">
+                                    <float>0.000</float>
+                                </EVENTTIME>
+                                <COLORRED type="alpha">
+                                    <float>1.000</float>
+                                </COLORRED>
+                                <COLORGREEN type="alpha">
+                                    <float>1.000</float>
+                                </COLORGREEN>
+                                <COLORBLUE type="alpha">
+                                    <float>0.000</float>
+                                </COLORBLUE>
+                                <COLORALPHA type="alpha">
+                                    <float>0.000</float>
+                                </COLORALPHA>
+                                <ADDSCALE type="add">
+                                    <float>0.000</float>
+                                </ADDSCALE>
+                                <MULSCALE type="mul">
+                                    <float>1.000</float>
+                                </MULSCALE>
+                                <INITSCALEX type="float">
+                                    <float>100.000</float>
+                                </INITSCALEX>
+                                <INITSCALEY type="float">
+                                    <float>100.000</float>
+                                </INITSCALEY>
+                                <MAXVEL type="vel">
+                                    <float>1000.000</float>
+                                </MAXVEL>
+                                <MINVEL type="vel">
+                                    <float>1000.000</float>
+                                </MINVEL>
+                                <VELOCITY type="vec3">
+                                    <vec3>0.000000 0.000000 1.000000</vec3>
+                                </VELOCITY>
+                                <GRATE type="grate">
+                                    <float>0.000</float>
+                                </GRATE>
+                                <SCALEX type="scale">
+                                    <float>50.000</float>
+                                </SCALEX>
+                                <SCALEY type="scale">
+                                    <float>50.000</float>
+                                </SCALEY>
+                                <NOISE type="noise">
+                                    <float>0.000</float>
+                                </NOISE>
+                            </PARTICLEVARIABLE>
+                            <PARTICLEVARIABLE index="1">
+                                <EVENTTIME type="alpha">
+                                    <float>0.444</float>
+                                </EVENTTIME>
+                                <COLORRED type="alpha">
+                                    <float>1.000</float>
+                                </COLORRED>
+                                <COLORGREEN type="alpha">
+                                    <float>0.502</float>
+                                </COLORGREEN>
+                                <COLORBLUE type="alpha">
+                                    <float>0.251</float>
+                                </COLORBLUE>
+                                <COLORALPHA type="alpha">
+                                    <float>1.000</float>
+                                </COLORALPHA>
+                                <ADDSCALE type="add">
+                                    <float>0.000</float>
+                                </ADDSCALE>
+                                <MULSCALE type="mul">
+                                    <float>1.000</float>
+                                </MULSCALE>
+                                <INITSCALEX type="float">
+                                    <float>0.000</float>
+                                </INITSCALEX>
+                                <INITSCALEY type="float">
+                                    <float>0.000</float>
+                                </INITSCALEY>
+                                <MAXVEL type="vel">
+                                    <float>100.000</float>
+                                </MAXVEL>
+                                <MINVEL type="vel">
+                                    <float>100.000</float>
+                                </MINVEL>
+                                <VELOCITY type="vec3">
+                                    <vec3>0.000000 0.000000 0.000000</vec3>
+                                </VELOCITY>
+                                <GRATE type="grate">
+                                    <float>-10.000</float>
+                                </GRATE>
+                                <SCALEX type="scale">
+                                    <float>65.000</float>
+                                </SCALEX>
+                                <SCALEY type="scale">
+                                    <float>65.000</float>
+                                </SCALEY>
+                                <NOISE type="noise">
+                                    <float>0.000</float>
+                                </NOISE>
+                            </PARTICLEVARIABLE>
+                            <PARTICLEVARIABLE index="2">
+                                <EVENTTIME type="alpha">
+                                    <float>1.000</float>
+                                </EVENTTIME>
+                                <COLORRED type="alpha">
+                                    <float>0.502</float>
+                                </COLORRED>
+                                <COLORGREEN type="alpha">
+                                    <float>0.000</float>
+                                </COLORGREEN>
+                                <COLORBLUE type="alpha">
+                                    <float>0.000</float>
+                                </COLORBLUE>
+                                <COLORALPHA type="alpha">
+                                    <float>0.000</float>
+                                </COLORALPHA>
+                                <ADDSCALE type="add">
+                                    <float>0.000</float>
+                                </ADDSCALE>
+                                <MULSCALE type="mul">
+                                    <float>1.000</float>
+                                </MULSCALE>
+                                <INITSCALEX type="float">
+                                    <float>100.000</float>
+                                </INITSCALEX>
+                                <INITSCALEY type="float">
+                                    <float>100.000</float>
+                                </INITSCALEY>
+                                <MAXVEL type="vel">
+                                    <float>0.000</float>
+                                </MAXVEL>
+                                <MINVEL type="vel">
+                                    <float>0.000</float>
+                                </MINVEL>
+                                <VELOCITY type="vec3">
+                                    <vec3>0.000000 0.000000 0.000000</vec3>
+                                </VELOCITY>
+                                <GRATE type="grate">
+                                    <float>-10.000</float>
+                                </GRATE>
+                                <SCALEX type="scale">
+                                    <float>80.000</float>
+                                </SCALEX>
+                                <SCALEY type="scale">
+                                    <float>80.000</float>
+                                </SCALEY>
+                                <NOISE type="noise">
+                                    <float>0.000</float>
+                                </NOISE>
+                            </PARTICLEVARIABLE>
+                        </VECVAR>
+                    </PROPERTY>
+                </REMITTER>
+            </SCENE>
+        </EFFECT>
+    </SCENE>
+</ROOT>

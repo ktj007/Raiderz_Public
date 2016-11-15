@@ -1,0 +1,628 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\EffectTool.rc2""  // Microsoft Visual C++에서 편집되지 않은 리소스\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소\r\n"
+    "#include ""afxprint.rc""       // 인쇄 미리 보기 리소스\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\EffectTool.ico"
+IDR_EffectToolTYPE      ICON                    "res\\EffectToolDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVEQ
+    SEPARATOR
+    BUTTON      ID_TB_WIREFRAME
+    BUTTON      ID_TB_AXIS
+    BUTTON      ID_TB_GRID
+    SEPARATOR
+    BUTTON      ID_TB_EMITTER
+    BUTTON      ID_VIEW_START
+    BUTTON      ID_VIEW_STOP
+    BUTTON      ID_VIEW_PAUSE
+    BUTTON      ID_VIEW_PATH
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "파일(&F)"
+    BEGIN
+        MENUITEM "새로 만들기\tCtrl+N(&N)",          ID_FILE_NEW
+        MENUITEM "열기...\tCtrl+O(&O)",           ID_FILE_OPEN
+        MENUITEM "저장\tCtrl+S(&S)",              ID_FILE_SAVEQ
+        MENUITEM "다른이름으로 저장",                   ID_FILE_SAVEAS
+        MENUITEM "메쉬이펙트파일열기",                   ID_FILE_OPEN_MESH
+        MENUITEM SEPARATOR
+        MENUITEM "elu파일열기(모델등)",                ID_FILE_OPEN_ELU
+        MENUITEM SEPARATOR
+        MENUITEM "끝내기(&X)",                     ID_APP_EXIT
+    END
+    POPUP "편집(&E)"
+    BEGIN
+        MENUITEM "실행 취소\tCtrl+Z(&U)",           ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "잘라내기\tCtrl+X(&T)",            ID_EDIT_CUT
+        MENUITEM "복사\tCtrl+C(&C)",              ID_EDIT_COPY
+        MENUITEM "붙여넣기\tCtrl+V(&P)",            ID_EDIT_PASTE
+    END
+    POPUP "보기(&V)"
+    BEGIN
+        MENUITEM "도구 모음(&T)",                   ID_VIEW_TOOLBAR
+        MENUITEM "상태 표시줄(&S)",                  ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "배경색 지정",                      ID_VIEW_BGCOLOR
+        MENUITEM "파티클생성 시작",                    ID_VIEW_START
+        MENUITEM "파티클생성 멈춤",                    ID_VIEW_STOP
+    END
+    POPUP "도움말(&H)"
+    BEGIN
+        MENUITEM "EffectTool 정보(&A)...",        ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 236
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "EffectTool 정보"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "EffectTool Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2006",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,16,WS_GROUP
+    LTEXT           "Rotation:\n - 돌지는 않는데 생성 되는 파티클들이 조금씩 돌아가 있는 건 어떻게\n   radian 값을 랜덤으로 주고 sum은 하지 않는다.\n   차이를 느낄려면 값을 크게\n - 돌지는 않는데 생성 되는 파티클들이 조금씩 돌아가 있지 않은건\n   min max radian 값을 같도록",IDC_STATIC,8,39,218,49
+END
+
+IDD_CONTROL_VIEW DIALOGEX 0, 0, 230, 480
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_ACCEPTFILES
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+END
+
+IDD_EFFECT DIALOGEX 0, 0, 210, 486
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_CAPTION | WS_SYSMENU
+CAPTION "Effect"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "EffectName",IDC_STATIC,19,14,38,8
+    EDITTEXT        IDC_EFFECT_NAME,70,12,87,12,ES_AUTOHSCROLL
+    LTEXT           "EmitterList",IDC_STATIC,19,28,34,8
+    LISTBOX         IDC_LIST_EMITTER2,19,40,113,120,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "추가",IDC_BUTTON_ADD,158,60,21,14
+    PUSHBUTTON      "삭제",IDC_BUTTON_DEL,158,84,21,14
+    PUSHBUTTON      "읽기",IDC_BUTTON_LOAD,158,107,21,14
+    PUSHBUTTON      "저장",IDC_BUTTON_SAVE,158,130,21,14
+    GROUPBOX        "Emitter",IDC_STATIC,145,38,47,121
+    CONTROL         "Mesh Looping",IDC_CHECK_MESHLOOPING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,199,59,10
+    CONTROL         "",IDC_SLIDER_SCALE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,25,239,142,15
+    LTEXT           "Scale",IDC_STATIC,25,219,18,8
+    GROUPBOX        "MeshEffect",IDC_STATIC,18,183,173,89
+END
+
+IDD_MATERIAL DIALOGEX 0, 0, 210, 446
+STYLE DS_SETFONT | WS_CHILD | WS_CAPTION
+CAPTION "Material"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_EDIT_FOLDERNAME,41,10,110,12,ES_AUTOHSCROLL
+    LTEXT           "Path",IDC_STATIC,20,12,16,8
+    LISTBOX         IDC_LIST_FILES,38,41,132,105,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "FileList",IDC_STATIC,19,28,22,8
+    CONTROL         "",IDC_PICTURE_TEXTURE,"Static",SS_BLACKFRAME,38,151,132,132
+    EDITTEXT        IDC_EDIT_TEXX,25,292,34,14,ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_EDIT_TEXY,70,292,34,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TEXU,114,292,34,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TEXV,158,292,34,14,ES_AUTOHSCROLL
+    CONTROL         "Add",IDC_RADIO_ONE,"Button",BS_AUTORADIOBUTTON,22,333,29,10
+    CONTROL         "Blend",IDC_RADIO_TWO,"Button",BS_AUTORADIOBUTTON,63,333,34,10
+    CONTROL         "Alphatest",IDC_RADIO_THREE,"Button",BS_AUTORADIOBUTTON,109,333,41,10
+    COMBOBOX        IDC_COMBO_SRCBLEND,22,363,76,92,CBS_DROPDOWN | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DESTBLEND,111,363,76,114,CBS_DROPDOWN | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Blend Type",IDC_STATIC,15,316,179,69
+    LTEXT           "SourceBlend",IDC_STATIC,22,348,42,8,WS_DISABLED
+    LTEXT           "DestinationBlend",IDC_STATIC,111,348,54,8,WS_DISABLED
+    PUSHBUTTON      "Update",IDC_BUTTON_FOLDER,131,25,38,14
+    LTEXT           "X",IDC_STATIC,17,295,8,8
+    LTEXT           "Y",IDC_STATIC,62,295,8,8
+    LTEXT           "U",IDC_STATIC,106,295,8,8
+    LTEXT           "W",IDC_STATIC,150,295,8,8
+    LTEXT           "이펙트가 붙을 본",IDC_STATIC,40,397,61,8
+    COMBOBOX        IDC_COMBO_DUMY,40,411,130,159,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_ALPHAREF,156,331,34,14,ES_AUTOHSCROLL
+END
+
+IDD_PARTICLE DIALOGEX 0, 0, 210, 457
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_CAPTION | WS_SYSMENU
+CAPTION "Particle"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_GRAPHICS,"Static",SS_BLACKFRAME,10,63,188,30
+    CONTROL         "",IDC_SLIDER_TIME,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,11,95,188,10
+    LTEXT           "State Track",IDC_STATIC,10,107,38,8
+    LISTBOX         IDC_LIST_TRACK,10,121,47,170,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "ADD",IDC_BUTTON_ADD,61,121,31,14
+    PUSHBUTTON      "Remove",IDC_BUTTON_REMOVE,61,140,31,14
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,61,158,31,14
+    LTEXT           "TimePosition",IDC_STATIC,102,121,40,8
+    EDITTEXT        IDC_EDIT_TIME,146,121,30,14,ES_AUTOHSCROLL
+    LTEXT           "Color(rgb)",IDC_STATIC,102,139,34,8
+    EDITTEXT        IDC_EDIT_COLOR,146,139,30,14,ES_AUTOHSCROLL
+    LTEXT           "Alpha..",IDC_STATIC,102,157,24,8
+    EDITTEXT        IDC_EDIT_COLORA,146,157,30,14,ES_AUTOHSCROLL
+    LTEXT           "Scale(*)",IDC_STATIC,102,174,27,8
+    EDITTEXT        IDC_EDIT_SCALE,146,174,30,14,ES_AUTOHSCROLL
+    LTEXT           "Scale(+)",IDC_STATIC,102,191,28,8
+    EDITTEXT        IDC_EDIT_SCALEA,146,191,30,14,ES_AUTOHSCROLL
+    LTEXT           "Velocity",IDC_STATIC,102,209,26,8
+    EDITTEXT        IDC_EDIT_MINVEL,146,209,30,14,ES_AUTOHSCROLL
+    LTEXT           "G-Rate",IDC_STATIC,102,312,24,8
+    EDITTEXT        IDC_EDIT_GRAVITY,146,312,30,14,ES_AUTOHSCROLL
+    LTEXT           "Scale",IDC_STATIC,102,343,18,8
+    EDITTEXT        IDC_EDIT_SCALE2,146,343,30,14,ES_AUTOHSCROLL
+    LTEXT           "~",IDC_STATIC,120,227,8,8
+    EDITTEXT        IDC_EDIT_MAXVEL,146,224,30,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SLIDER_MINVEL,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,102,242,100,11
+    CONTROL         "",IDC_SLIDER_MAXVEL,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,102,253,100,11
+    CONTROL         "",IDC_SLIDER_GRAVITY,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,102,326,100,11
+    CONTROL         "",IDC_SLIDER_SCALE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,102,357,100,11
+    LTEXT           "Velocity Vector",IDC_STATIC,102,270,48,8
+    EDITTEXT        IDC_EDIT_VELX,101,290,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_VELX,"msctls_updown32",UDS_ARROWKEYS,121,290,10,14
+    EDITTEXT        IDC_EDIT_VELY,133,290,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_VELY,"msctls_updown32",UDS_ARROWKEYS,153,290,11,14
+    EDITTEXT        IDC_EDIT_VELZ,167,290,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_VELZ,"msctls_updown32",UDS_ARROWKEYS,187,290,11,14
+    LTEXT           "X",IDC_STATIC,102,279,8,8
+    LTEXT           "Y",IDC_STATIC,136,279,8,8
+    LTEXT           "Z",IDC_STATIC,171,279,8,8
+    PUSHBUTTON      "P",IDC_BUTTON_P1,180,140,12,14
+    PUSHBUTTON      "P",IDC_BUTTON_P2,180,157,12,14
+    LTEXT           "Wind",IDC_STATIC,102,381,17,8
+    EDITTEXT        IDC_EDIT_WIND,125,378,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_WDIRX,102,405,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_WDIRX,"msctls_updown32",UDS_ARROWKEYS,122,405,11,14
+    EDITTEXT        IDC_EDIT_WDIRY,134,405,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_WDIRY,"msctls_updown32",UDS_ARROWKEYS,154,405,11,14
+    EDITTEXT        IDC_EDIT_WDIRZ,168,405,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_WDIRZ,"msctls_updown32",UDS_ARROWKEYS,188,405,11,14
+    LTEXT           "X",IDC_STATIC,102,394,8,8
+    LTEXT           "Y",IDC_STATIC,136,394,8,8
+    LTEXT           "Z",IDC_STATIC,172,394,8,8
+    EDITTEXT        IDC_EDIT_MINLIFE,33,15,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MAXLIFE,132,15,40,12,ES_AUTOHSCROLL
+    LTEXT           "~",IDC_STATIC,104,17,8,8
+    CONTROL         "",IDC_SLIDER_MINLIFE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,7,24,98,15
+    CONTROL         "",IDC_SLIDER_MAXLIFE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,105,24,98,15
+    GROUPBOX        "Life",IDC_STATIC,7,3,196,39
+    GROUPBOX        "Particle Time Track",IDC_STATIC,7,50,196,380
+    LTEXT           "(* 0.1f)",IDC_STATIC,169,381,26,8
+    LTEXT           "(* 0.1f)",IDC_STATIC,155,270,26,8
+END
+
+IDD_EMITTER DIALOGEX 0, 0, 210, 641
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_CAPTION | WS_SYSMENU
+CAPTION "Emitter"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Type",IDC_STATIC,31,19,17,8
+    COMBOBOX        IDC_COMBO_TYPE,83,17,94,114,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "MaxCount",IDC_STATIC,30,36,34,8
+    EDITTEXT        IDC_EDIT_MAXCOUNT,81,36,40,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SLIDER_MAXPARTICLE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,29,50,154,15
+    LTEXT           "Life(/sec)",IDC_STATIC,29,72,31,8
+    EDITTEXT        IDC_EDIT_EMITLIFE,81,72,40,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SLIDER_EMITLIFE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,29,86,154,15
+    CONTROL         "Loop",IDC_CHECK_LOOPING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,31,114,31,10
+    CONTROL         "Depth Sorting",IDC_CHECK_SORTING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,105,114,60,10
+    CONTROL         "World or Local",IDC_CHECK_WORLDAXIS,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,31,126,61,10
+    CONTROL         "Color Random",IDC_CHECK_COLOR_RAND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,31,139,61,10
+    CONTROL         "Velocity Random",IDC_CHECK_VEL_RAND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,105,139,69,10
+    CONTROL         "Gather",IDC_CHECK_GATHER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,31,152,38,10
+    CONTROL         "Explosion",IDC_CHECK_EXPLOSION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,105,152,46,10
+    GROUPBOX        "Rotation",IDC_STATIC,18,165,172,50
+    CONTROL         "Rotation",IDC_CHECK_ROTATION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,30,174,43,10
+    EDITTEXT        IDC_EDIT_MINRADIAN,35,186,40,12,ES_AUTOHSCROLL
+    LTEXT           "~",IDC_STATIC,100,188,8,8
+    EDITTEXT        IDC_EDIT_MAXRADIAN,133,186,40,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SLIDER_MINRADIAN,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,20,200,83,10
+    CONTROL         "",IDC_SLIDER_MAXRADIAN,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,105,200,83,10
+    GROUPBOX        "Particle Billboard Type",IDC_STATIC,18,222,172,34
+    CONTROL         "Billboard",IDC_RADIO_BILLBOARD_XYZ,"Button",BS_AUTORADIOBUTTON,28,238,38,10
+    CONTROL         "Vertical",IDC_RADIO_BILLBOARD_XY,"Button",BS_AUTORADIOBUTTON,68,238,36,10
+    CONTROL         "Horizion",IDC_RADIO_PLANE_XY,"Button",BS_AUTORADIOBUTTON,106,238,36,10
+    CONTROL         "Spread",IDC_RADIO_SPREAD,"Button",BS_AUTORADIOBUTTON,144,238,39,10
+    GROUPBOX        "Emitter Time Track(기본4개)",IDC_STATIC,18,264,172,223
+    CONTROL         "",IDC_SLIDER_EMITTER_TIME,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,28,278,154,10
+    PUSHBUTTON      "ADD",IDC_BUTTON_ADD,39,293,31,14
+    PUSHBUTTON      "Remove",IDC_BUTTON_REMOVE,88,293,31,14
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,137,293,31,14
+    LTEXT           "Time Track",IDC_STATIC,27,312,35,8
+    LISTBOX         IDC_LIST_EMITTER_TRACK,27,326,47,107,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "TimePosition",IDC_STATIC,83,316,40,8
+    EDITTEXT        IDC_EDIT_EMITTER_TIME,133,316,30,14,ES_AUTOHSCROLL
+    LTEXT           "Amount(/sec)",IDC_STATIC,82,332,44,8
+    EDITTEXT        IDC_EDIT_AMOUNT,133,332,40,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SLIDER_AMOUNT,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,81,346,102,11
+    LTEXT           "Position",IDC_STATIC,83,362,26,8
+    LTEXT           "X",IDC_STATIC,83,373,8,8
+    LTEXT           "Y",IDC_STATIC,117,373,8,8
+    LTEXT           "Z",IDC_STATIC,153,373,8,8
+    EDITTEXT        IDC_EDIT_POSX,83,385,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_POSX,"msctls_updown32",UDS_ARROWKEYS,103,385,11,14
+    EDITTEXT        IDC_EDIT_POSY,115,385,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_POSY,"msctls_updown32",UDS_ARROWKEYS,135,385,11,14
+    EDITTEXT        IDC_EDIT_POSZ,149,385,20,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_POSZ,"msctls_updown32",UDS_ARROWKEYS,169,385,11,14
+    LTEXT           "Emitter Range",IDC_STATIC,82,406,46,8
+    LTEXT           "X",IDC_STATIC,95,416,8,8
+    LTEXT           "Y",IDC_STATIC,129,416,8,8
+    LTEXT           "Z",IDC_STATIC,163,416,8,8
+    EDITTEXT        IDC_EDIT_DIRX,81,425,22,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_DIRX,"msctls_updown32",UDS_ARROWKEYS,103,425,11,14
+    EDITTEXT        IDC_EDIT_DIRY,115,425,22,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_DIRY,"msctls_updown32",UDS_ARROWKEYS,137,425,11,14
+    EDITTEXT        IDC_EDIT_DIRZ,149,425,22,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_DIRZ,"msctls_updown32",UDS_ARROWKEYS,171,425,11,14
+    LTEXT           "Angle",IDC_STATIC,28,448,19,8
+    EDITTEXT        IDC_EDIT_ANGLE,79,448,40,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SLIDER_ANGLE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,27,463,154,15
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "EffectTool.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "EffectTool.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "변환", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 229
+    END
+
+    IDD_CONTROL_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 473
+    END
+
+    IDD_EFFECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 479
+    END
+
+    IDD_MATERIAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 439
+    END
+
+    IDD_PARTICLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 450
+    END
+
+    IDD_EMITTER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 634
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "EffectTool\n\nEffectTool\n\n\nEffectTool.Document\nEffectTool.Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "EffectTool"
+    AFX_IDS_IDLEMESSAGE     "준비"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "새 문서를 만듭니다.\n새로 만들기"
+    ID_FILE_OPEN            "기존 문서를 엽니다.\n열기"
+    ID_FILE_CLOSE           "액티브 문서를 닫습니다.\n닫기"
+    ID_FILE_SAVE            "액티브 문서를 저장합니다.\n저장"
+    ID_FILE_PAGE_SETUP      "인쇄 옵션을 변경합니다.\n페이지 설정"
+    ID_FILE_PRINT_SETUP     "프린터 및 인쇄 옵션을 변경합니다.\n인쇄 설정"
+    ID_FILE_PRINT           "액티브 문서를 인쇄합니다.\n인쇄"
+    ID_FILE_PRINT_PREVIEW   "전체 페이지를 표시합니다.\n인쇄 미리 보기"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "프로그램 정보, 버전 번호, 저작권을 표시합니다.\n정보"
+    ID_APP_EXIT             "문서를 저장할지를 묻고 응용 프로그램을 끝냅니다.\n끝내기"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE2       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE3       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE4       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE5       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE6       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE7       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE8       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE9       "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE10      "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE11      "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE12      "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE13      "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE14      "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE15      "현재 문서를 엽니다."
+    ID_FILE_MRU_FILE16      "현재 문서를 엽니다."
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "다음 창으로 전환합니다.\n다음 창"
+    ID_PREV_PANE            "이전 창으로 전환합니다.\n이전 창"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "활성 창을 여러 개의 창으로 분할합니다.\n분할"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "선택 영역을 지웁니다.\n지우기"
+    ID_EDIT_CLEAR_ALL       "모든 것을 지웁니다.\n모두 지우기"
+    ID_EDIT_COPY            "선택 영역을 복사하여 클립보드에 넣습니다.\n복사"
+    ID_EDIT_CUT             "선택 영역을 잘라내어 클립보드에 넣습니다.\n잘라내기"
+    ID_EDIT_FIND            "지정한 텍스트를 찾습니다.\n찾기"
+    ID_EDIT_PASTE           "클립보드 내용을 삽입합니다.\n붙여넣기"
+    ID_EDIT_REPEAT          "마지막 작업을 반복합니다.\n반복"
+    ID_EDIT_REPLACE         "특정 텍스트를 다른 텍스트로 바꿉니다.\n바꾸기"
+    ID_EDIT_SELECT_ALL      "전체 문서를 선택합니다.\n모두 선택"
+    ID_EDIT_UNDO            "마지막 작업 실행을 취소합니다.\n실행 취소"
+    ID_EDIT_REDO            "이전에 실행 취소된 작업을 다시 실행합니다.\n다시 실행"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "도구 모음을 표시하거나 숨깁니다.\n도구 모음 설정/해제"
+    ID_VIEW_STATUS_BAR      "상태 표시줄을 표시하거나 숨깁니다.\n상태 표시줄 설정/해제"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "창 크기를 변경합니다."
+    AFX_IDS_SCMOVE          "창 위치를 변경합니다."
+    AFX_IDS_SCMINIMIZE      "창을 아이콘으로 축소합니다."
+    AFX_IDS_SCMAXIMIZE      "창을 전체 화면 크기로 확대합니다."
+    AFX_IDS_SCNEXTWINDOW    "다음 문서 창으로 전환합니다."
+    AFX_IDS_SCPREVWINDOW    "이전 문서 창으로 전환합니다."
+    AFX_IDS_SCCLOSE         "문서를 저장할 것인지 확인하고 활성 창을 닫습니다."
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "창을 보통 크기로 복원합니다."
+    AFX_IDS_SCTASKLIST      "작업 목록 활성화"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "인쇄 미리 보기 모드를 닫습니다.\n미리 보기 취소"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_START           "플레이"
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\EffectTool.rc2"  // Microsoft Visual C++에서 편집되지 않은 리소스
+#include "afxres.rc"         // 표준 구성 요소
+#include "afxprint.rc"       // 인쇄 미리 보기 리소스
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
