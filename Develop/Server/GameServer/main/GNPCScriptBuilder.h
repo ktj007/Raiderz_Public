@@ -23,6 +23,7 @@ static const char* pszLuaNPCFuncnames[]={
 	, "OnCombatBegin"
 	, "OnCombatEnd"
 	, "OnBPartRecover"
+	, "OnCraft"
 };
 
 #define LUA_CALLBACK_FUNCNAME_NPC_INIT				pszLuaNPCFuncnames[0]
@@ -44,7 +45,7 @@ static const char* pszLuaNPCFuncnames[]={
 #define LUA_CALLBACK_FUNCNAME_NPC_COMBAT_BEGIN		pszLuaNPCFuncnames[16]
 #define LUA_CALLBACK_FUNCNAME_NPC_COMBAT_END		pszLuaNPCFuncnames[17]
 #define LUA_CALLBACK_FUNCNAME_NPC_BPART_RECOVER		pszLuaNPCFuncnames[18]
-
+#define LUA_CALLBACK_FUNCNAME_NPC_CRAFT			pszLuaNPCFuncnames[19]
 
 
 class GNPCInfo;

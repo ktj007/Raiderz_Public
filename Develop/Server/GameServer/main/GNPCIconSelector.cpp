@@ -177,7 +177,7 @@ NPC_ICON_TYPE GNPCIconSelector::ClickIETypeToIconType_Quest( GEntityPlayer* pPla
 	switch (pIEInfo->m_nType)
 	{
 	case IT_QUEST_INTERACT_IMMORTAL:
-	// case IT_QUEST_INTERACT_MORTAL:	return NIT_QUEST_INTERACT;	
+//	case IT_QUEST_INTERACT_MORTAL:	return NIT_QUEST_INTERACT;	
 	case IT_QUEST_BEGIN:
 		{
 			if (vecFailConditionLeaf.empty())

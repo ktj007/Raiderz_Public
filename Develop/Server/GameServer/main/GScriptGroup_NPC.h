@@ -43,6 +43,7 @@ public:
 	bool OnCombatBegin(GGlueNPC* pNPC);
 	bool OnCombatEnd(GGlueNPC* pNPC);
 	bool OnBPartRecver(GGlueNPC* pNPC);
+	bool OnCraft(GGlueNPC* pNPC, GGluePlayer* pPlayer, int nRecipeID);
 
 private:
 	bool PreCheck();

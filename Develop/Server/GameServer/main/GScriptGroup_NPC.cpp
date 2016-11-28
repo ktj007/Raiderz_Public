@@ -357,3 +357,13 @@ bool GScriptGroup_NPC::OnBPartRecver( GGlueNPC* pNPC )
 	SEND_CALLBACK_MESSAGE_TO_VIEWER("OnBPartRecover");
 	return LuaCallback(pNPC, LUA_CALLBACK_FUNCNAME_NPC_BPART_RECOVER);
 }
+
+bool GScriptGroup_NPC::OnCraft(GGlueNPC* pNPC, GGluePlayer* pPlayer, int nRecipeID)
+{
+
+	if (!PreCheck())	return false;
+	VALID_RET(pNPC, false);
+
+	SEND_CALLBACK_MESSAGE_TO_VIEWER("OnCraft");
+	return LuaCallback(pNPC, LUA_CALLBACK_FUNCNAME_NPC_CRAFT, pPlayer, nRecipeID);
+}

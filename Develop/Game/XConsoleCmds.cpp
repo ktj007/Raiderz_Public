@@ -1199,7 +1199,7 @@ bool XConsoleCmds::ConsoleCmd_Move(const wchar_t* line, const int argc, wchar_t 
 		return true;
 	}
 
-	XPostGM_Move(nFieldID, pos_to);
+//	XPostGM_Move(nFieldID, pos_to);
 
 	return true;
 }
@@ -1256,7 +1256,7 @@ bool XConsoleCmds::ConsoleCmd_MoveToMarker(const wchar_t* line, const int argc, 
 		return true;
 	}
 
-	XPostGM_Move(nFieldID, Marker.vPoint);
+//	XPostGM_Move(nFieldID, Marker.vPoint);
 
 	return true;
 }
@@ -1292,7 +1292,7 @@ bool XConsoleCmds::ConsoleCmd_MoveToSensor(const wchar_t* line, const int argc, 
 		return true;
 	}
 
-	XPostGM_Move(nFieldID, pos);
+//	XPostGM_Move(nFieldID, pos);
 
 	return true;
 }

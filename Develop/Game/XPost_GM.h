@@ -26,7 +26,7 @@ inline void XPostGM_DespawnByID(int nNPCID, float fRange)
 // 임의 지역 이동 요청
 inline void XPostGM_Move(int nFieldID, vec3& pos)
 {
-	XPOSTCMD2(MC_GM_MOVE_REQ, MCommandParameterInt(nFieldID), MCommandParameterVector(pos));
+	//XPOSTCMD2(MC_GM_MOVE_REQ, MCommandParameterInt(nFieldID), MCommandParameterVector(pos), MCommandParameterSVector(dir));
 }
 
 // PC에게로 이동 요청

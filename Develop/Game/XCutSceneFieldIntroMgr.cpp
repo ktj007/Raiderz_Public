@@ -189,7 +189,7 @@ bool XCutSceneFieldIntroMgr::beginIntroCutScene()
 		//인트로 컷씬 플레이시 캐릭터를 원점으로 옮겨 다른 플레이어가 볼수 없도록 한다.
 		vecMyPlayerPos = gvar.Game.pMyPlayer->GetModuleEntity()->GetPosition();
 		vec3 vecMovePos(1.0f, 1.0f, 1.0f);
-		XPostGM_Move(gvar.World.GetFieldID(), vecMovePos);
+//		XPostGM_Move(gvar.World.GetFieldID(), vecMovePos);
 
 		m_nPreIntroCutSceneID = nIntroCutSceneID;
 		XPostCutscene_BeginReq(nIntroCutSceneID);
@@ -229,5 +229,5 @@ void XCutSceneFieldIntroMgr::RenderBlackScreen()
 
 void XCutSceneFieldIntroMgr::MoveMyPlayerPos()
 {
-	XPostGM_Move(gvar.World.GetFieldID(), vecMyPlayerPos);
+//	XPostGM_Move(gvar.World.GetFieldID(), vecMyPlayerPos);
 }

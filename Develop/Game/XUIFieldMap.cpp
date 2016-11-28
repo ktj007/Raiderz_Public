@@ -656,7 +656,7 @@ void XUIFieldMap::MoveMyPlayerForTest( const MPOINT ptPos )
 		pos_to.z = gg.currentgamestate->GetWorld()->GetGroundZ(pos_to) + 5.0f;
 	}
 
-	XPostGM_Move(m_nFieldID, pos_to);
+//	XPostGM_Move(m_nFieldID, pos_to);
 }
 
 void XUIFieldMap::SetMapImage( wchar_t * szBuff )

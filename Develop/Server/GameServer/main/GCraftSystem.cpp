@@ -29,6 +29,10 @@
 #include "GConst.h"
 #include "GDBTaskCraftData.h"
 #include "GDBTaskDataRecipe.h"
+#include "GScriptManager.h"
+#include "GScriptGroup_NPC.h"
+#include "GGlueNPC.h"
+#include "GEntityNPC.h"
 
 GCraftSystem::GCraftSystem()
 {
@@ -85,6 +89,12 @@ bool GCraftSystem::Make(GEntityPlayer* pPlayer, int nCraftID, int nRecipeID, int
 	GITEM_STACK_AMT_VEC vecRecpItemList;
 	if (false == Make_Check(pPlayer, pCraftInfo, pRecipeInfo, nCraftAmount, nPrice, vecRecpItemList)) return false;	
 	if (false == Make_Apply(pPlayer, pRecipeInfo->m_nProductItemID, nCraftAmount, nPrice, vecRecpItemList)) return false;
+
+	GEntityNPC* pNPC = pPlayer->GetInteraction().GetInteractingNPC();
+	if (pNPC)
+	{
+		GetScriptNPC()->OnCraft(pNPC->GetDelegator(), pPlayer->GetDelegator(), nRecipeID);
+	}
 
 	Make_Route(pPlayer, nRecipeID);	
 
