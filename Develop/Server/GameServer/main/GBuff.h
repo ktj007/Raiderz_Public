@@ -5,6 +5,7 @@
 #include "MTime.h"
 #include "GBuffObserver.h"
 #include "GBuffObserverMgr.h"
+#include "GBuffUser.h"
 
 class GEntitySync;
 class GTalentInfo;
@@ -32,7 +33,7 @@ class GBuff : public GBuffObserverMgr, public MTestMemPool<GBuff>
 		DESTROY_DISPELLED,
 	};
 public:
-	GBuff(GEntitySync* pOwner, GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo=NULL, MUID uidUser=MUID::Invalid());
+	GBuff(GEntitySync* pOwner, GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo=NULL, const GBuffUser& User=GBuffUser(), int nStack=1);
 	virtual ~GBuff();
 
 public:
@@ -56,13 +57,17 @@ public:
 	void Cancel();
 	// 버프 취소시킴, 스택도 전부 취소  (lazy하게 처리)
 	void CancelForced();
+	// force dispel - ignore stack count.
+	void DispelForced();
 	// 버프를 디스펠시킴 (lazy하게 처리)
 	void Dispel();
 
 	// 버프 아이디
 	int GetBuffID();
+	// inside GBuffUser, you can find pre-collected damage info for this buff. (damage will work even the user is offline/not exist)
+	const GBuffUser& GetUser() const;
 	// 사용자 UID 반환
-	MUID GetUserUID();
+	MUID GetUserUID() const;
 	// 사용된 탤런트정보 반환
 	GTalentInfo* GetUserTalentInfo();
 	// 버프만료 타입 반환
@@ -122,7 +127,7 @@ private:
 	bool CheckEvent(TALENT_CONDITION nCondition);
 	// 주기 효과
 	bool OnPeriod();
-	
+
 private:
 	// 걸린 버프의 정보
 	GBuffInfo*			m_pInfo;
@@ -145,7 +150,7 @@ private:
 	// 버프를 걸리게 만든 탤런트 포인터
 	GTalentInfo*		m_pTalentInfo;
 	// 버프를 걸리게 만든 액터 UID
-	MUID				m_uidUser;
+	GBuffUser			m_User;
 	// 버프 즉시효과 적용자
 	GBuffInstantApplier* m_pInstantApplyer;
 	// 버프 보정효과 적용자

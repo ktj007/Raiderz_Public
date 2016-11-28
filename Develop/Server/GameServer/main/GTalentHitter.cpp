@@ -7,7 +7,7 @@
 #include "GEffectTargetSelector.h"
 #include "GField.h"
 #include "GCollision.h"
-#include "CCommandTable.h"
+#include "CCommandTable_GM.h"
 #include "GCommand.h"
 #include "GRelationChecker.h"
 #include "GNPCStress.h"
@@ -282,7 +282,7 @@ void GTalentHitter_Projectile::DebugTraceProjectileHitCapsule( MCapsule &capProj
 			NEW_WSTR(L"TraceProjectileHitCapsule"), 
 			NEW_INT(uidOwner.Low), 
 			NEW_WSTR(buff), 
-			NEW_BLOB(&vecCapsules[0], sizeof(TD_CAPSULE), static_cast<int>(vecCapsules.size())));
+			NEW_BLOB(&vecCapsules[0], sizeof(TD_CAPSULE), static_cast<unsigned short>(vecCapsules.size())));
 		pTar->RouteToField(pNewCommand);
 	}
 }
@@ -370,7 +370,7 @@ GTalentHitterList::~GTalentHitterList()
 	Clear();
 }
 
-void GTalentHitterList::Update( float fDelta, GField* pField )
+bool GTalentHitterList::Update( float fDelta, GField* pField )
 {
 	PFI_BLOCK_THISFUNC(9007);
 
@@ -389,6 +389,8 @@ void GTalentHitterList::Update( float fDelta, GField* pField )
 			++itor;
 		}
 	}
+
+	return m_HitterList.empty();
 }
 
 void GTalentHitterList::Add( GTalentHitter* pNewHitter )
@@ -415,4 +417,9 @@ vector<GTalentHitter*> GTalentHitterList::Get( TARGEHITTER_TYPE nType )
 			vecRet.push_back(each);
 	}
 	return vecRet;
+}
+
+bool GTalentHitterList::IsEmpty() const
+{
+	return m_HitterList.empty();
 }

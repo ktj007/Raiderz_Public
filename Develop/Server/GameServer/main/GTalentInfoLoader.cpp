@@ -34,6 +34,7 @@ bool GTalentInfoLoader::LoadTalentExt( GTalentInfoMgr* pTalentInfoMgr, const wch
 
 	if(!xml.LoadFile(MLocale::ConvUTF16ToAnsi(szFileName).c_str())) 
 	{		
+		_VLOGGER->LogFailedLoad(szFileName);
 		return false;
 	}
 
@@ -68,6 +69,7 @@ bool GTalentInfoLoader::LoadTalent( GTalentInfoMgr* pTalentInfoMgr, const wchar_
 
 	if (!xml.LoadFile(MLocale::ConvUTF16ToAnsi(szFileName).c_str())) 
 	{
+		_VLOGGER->LogFailedLoad(szFileName);
 		return false;
 	}
 

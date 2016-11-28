@@ -252,7 +252,7 @@ public:
 	virtual const char*				GetClassName(void)	override { return "UID"; }
 	virtual int						GetSize()			override { return sizeof(MUID); }
 	virtual void*					GetPointerRaw()		override { return &m_Value; }
-	virtual void					GetString(char* szValue, int nBufferSize) override { sprintf_s(szValue, nBufferSize, "%I64u", m_Value); }
+	virtual void					GetString(char* szValue, int nBufferSize) override { sprintf_s(szValue, nBufferSize, "%I64u", m_Value.Value); }
 };
 
 /// MID 파라미터

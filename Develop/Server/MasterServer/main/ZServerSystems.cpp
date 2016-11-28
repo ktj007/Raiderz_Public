@@ -38,7 +38,6 @@ void ZServerSystems::Create()
 	gsys.pScriptManager		= pScriptManager;
 	gsys.pLootLogic			= pLootLogic;
 	gsys.pCharLogic			= pCharLogic;
-	gsys.pPMS				= pPMS;
 	gsys.pGuildLogic		= pGuildLogic;
 }
 

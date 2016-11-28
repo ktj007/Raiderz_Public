@@ -4,7 +4,7 @@
 
 
 /// 모션 관리자
-class XMotionMgr : public stdext::hash_map<tstring, XMotion*>
+class XMotionMgr : public std::unordered_map<tstring, XMotion*>
 {
 private:
 	void ParseMotion(MXmlElement* pElement, MXml* pXml);

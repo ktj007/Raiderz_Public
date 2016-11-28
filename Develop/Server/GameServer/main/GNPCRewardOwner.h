@@ -37,7 +37,7 @@ private:
 	virtual void OnEmptyHateTable() override;
 	
 private:
-	vector<int> SelectDeletableCandidateCID(GEntityPlayer* pPlayer);	
+	vector<CID> SelectDeletableCandidateCID(GEntityPlayer* pPlayer);
 
 private:
 	GEntityNPC*	m_pOwner;

@@ -47,7 +47,7 @@ MCommandResult GCmdHandler_App_Msg::OnMsgEnterChannel(MCommand* pCommand, MComma
 	CID cidResPlayer;
 	TD_CHAT_CHANNEL_INFO tdChannelInfo;
 
-	if (!pCommand->GetParameter(&cidResPlayer,		0, MPT_INT))			return CR_ERROR;
+	if (!pCommand->GetParameter(&cidResPlayer,		0, MPT_INT64))			return CR_ERROR;
 	if (!pCommand->GetParameter(&tdChannelInfo,	1, MPT_SINGLE_BLOB))	return CR_ERROR;
 
 	// 수신자 확인	
@@ -82,7 +82,7 @@ MCommandResult GCmdHandler_App_Msg::OnMsgLeaveChannel(MCommand* pCommand, MComma
 	CID cidResPlayer;
 	MUID uidChannel;
 
-	if (!pCommand->GetParameter(&cidResPlayer,	0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&cidResPlayer,	0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&uidChannel,	1, MPT_UID))	return CR_ERROR;
 
 	// 수신자 확인
@@ -116,7 +116,7 @@ MCommandResult GCmdHandler_App_Msg::OnMsgKick(MCommand* pCommand, MCommandHandle
 	CID cidResPlayer;
 	MUID uidChannel;
 
-	if (!pCommand->GetParameter(&cidResPlayer,	0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&cidResPlayer,	0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&uidChannel,	1, MPT_UID))	return CR_ERROR;
 
 	// 수신자 확인
@@ -150,7 +150,7 @@ MCommandResult GCmdHandler_App_Msg::OnMsgBan(MCommand* pCommand, MCommandHandler
 	CID cidResPlayer;
 	MUID uidChannel;
 
-	if (!pCommand->GetParameter(&cidResPlayer,	0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&cidResPlayer,	0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&uidChannel,	1, MPT_UID))	return CR_ERROR;
 
 	// 수신자 확인
@@ -185,7 +185,7 @@ MCommandResult GCmdHandler_App_Msg::OnMsgUnbanRes(MCommand* pCommand, MCommandHa
 	MUID uidChannel;
 	wstring strTargetPlayerName;
 
-	if (!pCommand->GetParameter(&cidResPlayer,			0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&cidResPlayer,			0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&uidChannel,			1, MPT_UID))	return CR_ERROR;
 	if (!pCommand->GetParameter(strTargetPlayerName,	2, MPT_WSTR))	return CR_ERROR;
 
@@ -272,10 +272,10 @@ MCommandResult GCmdHandler_App_Msg::OnMsgDeletedPlayerInfo(MCommand* pCommand, M
 {
 	// 커맨드 확인
 	MUID uidChannel;
-	int nCID;
+	CID nCID;
 
 	if (!pCommand->GetParameter(&uidChannel, 0, MPT_UID))	return CR_ERROR;
-	if (!pCommand->GetParameter(&nCID, 1, MPT_INT))			return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 1, MPT_INT64))		return CR_ERROR;
 
 
 	// 플레이어 채널 퇴장
@@ -289,9 +289,9 @@ MCommandResult GCmdHandler_App_Msg::OnMsgDeletedPlayerInfo(MCommand* pCommand, M
 MCommandResult GCmdHandler_App_Msg::OnMsgPlayerGameServerInfo(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	// 커맨드 확인
-	int nCID;
+	CID nCID;
 	int nGameServerID;
-	if (!pCommand->GetParameter(&nCID,			0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,			0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGameServerID,	1, MPT_INT))	return CR_ERROR;
 
 	// 현재 서버에 속해있는 플레이어라면, UID를 알아낸다.

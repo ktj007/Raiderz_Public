@@ -28,6 +28,7 @@ public:
 		RELATION_PARTY,			// 파티원들
 		RELATION_ALLIED_DEAD,	// 우호적이면서 죽어 있는자
 		RELATION_SELF,			// 자기자신
+		RELATION_CASTER_ENEMY,
 
 		RELATION_MAX
 	};
@@ -37,8 +38,9 @@ public:
 	float		m_fRadius;		///< 일정 범위만큼
 	RELATION	m_nRelation;	///< 자기와 어떤 관계에 있는 대상중
 	int			m_nLimit;		///< 몇명 만큼에게 효과를 준다.
+	float		m_fDelay;
 
 public:
 	CSEffectInfo();
-	CSEffectInfo(POINT nPoint, float fRadius, RELATION nRelation, int nLimit=INT_MAX);
+	CSEffectInfo(POINT nPoint, float fRadius, RELATION nRelation, int nLimit=INT_MAX, float fDelay=0.f);
 };

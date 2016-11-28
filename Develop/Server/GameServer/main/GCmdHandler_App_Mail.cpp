@@ -18,8 +18,8 @@ MCommandResult GCmdHandler_App_Mail::OnTranNewMailReq(MCommand* pCommand, MComma
 	CID nCID;
 	TD_MAIL_MAILBOX_MAIL_INFO* pInfo;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
-	if (!pCommand->GetSingleBlob(pInfo, 1))			return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
+	if (!pCommand->GetSingleBlob(pInfo, 1))				return CR_ERROR;
 
 	
 	// 수신자 확인

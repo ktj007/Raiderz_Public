@@ -15,7 +15,7 @@ LOOTING_RULE_DATA GPartyLootingRuleStorage::GetLootingRuleData()
 	return m_lootingRuleData;
 }
 
-int GPartyLootingRuleStorage::GetRoundRobinLastOrderCID()
+CID GPartyLootingRuleStorage::GetRoundRobinLastOrderCID()
 {
 	return m_nRoundRobinLastOrderCID;
 }
@@ -25,7 +25,7 @@ void GPartyLootingRuleStorage::SetLootingRuleData(const LOOTING_RULE_DATA& looti
 	m_lootingRuleData = lootingRuleData;
 }
 
-void GPartyLootingRuleStorage::SetRoundRobinLastOrderCID(int nLastOrderCID)
+void GPartyLootingRuleStorage::SetRoundRobinLastOrderCID(CID nLastOrderCID)
 {
 	m_nRoundRobinLastOrderCID = nLastOrderCID;
 }

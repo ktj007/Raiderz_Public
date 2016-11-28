@@ -18,11 +18,11 @@
 #include "GBuffPaletteChanger.h"
 #include "GBuffEquipmentChanger.h"
 
-GBuff::GBuff( GEntitySync* pOwner, GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo/*=NULL*/, MUID uidUser/*=MUID::Invalid()*/ )
+GBuff::GBuff( GEntitySync* pOwner, GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo/*=NULL*/, const GBuffUser& User/*=GBuffUser()*/, int nStack/*=1*/ )
 : m_pOwner(pOwner)
 , m_pInfo(pBuffInfo)
 , m_pTalentInfo(pTalentInfo)
-, m_uidUser(uidUser)
+, m_User(User)
 , m_bInifinity(false)
 , m_nDestroyType(DESTROY_NONE)
 , m_pInstantApplyer(NULL)
@@ -79,7 +79,10 @@ GBuff::GBuff( GEntitySync* pOwner, GBuffInfo* pBuffInfo, float fDurationTime, fl
 	if (IsStackable())
 	{
 		m_pStack = new GBuffStack(this);
-		m_pStack->Increase(fDurationTime);
+		while (nStack-- > 0)
+		{
+			m_pStack->Increase(fDurationTime, false);
+		}
 		m_pEffectTimingChecker->AddListener(TC_BUFF_STACKED, m_pModifierApplyer); // 중복 버프 처리를 위한 구독
 	}
 
@@ -148,18 +151,25 @@ bool GBuff::Update( float fDelta )
 	Update_Maintenance(fDelta);
 
 	// 주기적인 효과
-	if (Update_Period(fDelta))
-		return true; // 소유자가 죽음, 이미 this는 삭제되었으므로 완료처리는 하지 않음
+	if (!Update_Period(fDelta))
+		return false; // 소유자가 죽음, 이미 this는 삭제되었으므로 완료처리는 하지 않음
+
+	m_pEffectTimingChecker->Update(fDelta);
 
 	// 만료 처리
 	Update_Expired(fDelta);
 
-	return false;
+	return true;
 }
 
 void GBuff::CancelForced()
 {
 	m_nDestroyType = DESTROY_CANCELLED;
+}
+
+void GBuff::DispelForced()
+{
+	m_nDestroyType = DESTROY_DISPELLED;
 }
 
 void GBuff::Cancel()
@@ -185,7 +195,7 @@ void GBuff::Dispel()
 			return; // 스택이 남아있음
 	}
 
-	m_nDestroyType = DESTROY_DISPELLED;
+	DispelForced();
 }
 
 int GBuff::GetBuffID()
@@ -194,9 +204,14 @@ int GBuff::GetBuffID()
 	return m_pInfo->m_nID;
 }
 
-MUID GBuff::GetUserUID()
+const GBuffUser& GBuff::GetUser() const
 {
-	return m_uidUser;
+	return m_User;
+}
+
+MUID GBuff::GetUserUID() const
+{
+	return m_User.GetUserUID();
 }
 
 GTalentInfo* GBuff::GetUserTalentInfo()
@@ -271,7 +286,7 @@ bool GBuff::OnGain()
 {
 	VALID_RET(m_pOwner, false);
 	VALID_RET(m_pInfo, false);
-	
+
 	if (m_bGainEffectOccured)
 		return false; // 중복 적용됨
 
@@ -286,9 +301,9 @@ bool GBuff::OnGain()
 		ToEntityActor(m_pOwner)->OnGainBuff(m_pInfo->m_nID);
 	}
 	
-	__super::OnGain(m_uidUser, m_pOwner, m_pInfo);
+	__super::OnGain(m_User.GetUserUID(), m_pOwner, m_pInfo);
 		
-	return false;
+	return true;
 }
 
 bool GBuff::OnLost(bool bRoute)
@@ -296,7 +311,7 @@ bool GBuff::OnLost(bool bRoute)
 	VALID_RET(m_pOwner, false);
 	VALID_RET(m_pInfo, false);
 
-	__super::OnLost(m_uidUser, m_pOwner, m_pInfo, bRoute);
+	__super::OnLost(m_User.GetUserUID(), m_pOwner, m_pInfo, bRoute);
 
 	// 버프 제거 이벤트 호출
 	if (m_pOwner->IsActor())
@@ -304,14 +319,14 @@ bool GBuff::OnLost(bool bRoute)
 		ToEntityActor(m_pOwner)->OnLostBuff(m_pInfo->m_nID);
 	}
 			
-	return false;
+	return true;
 }
 
 void GBuff::OnDestry()
 {
 	switch (GetDestroyType())
 	{
-	case DESTROY_EXPIRED:	{	OnExpired(m_uidUser, m_pOwner, m_pInfo);	}break;
+	case DESTROY_EXPIRED:	{	OnExpired(m_User.GetUserUID(), m_pOwner, m_pInfo);	}break;
 	case DESTROY_CANCELLED:	{	OnCancelled();	}break;
 	case DESTROY_DISPELLED:	{	OnDispelled();	}break;
 	}
@@ -331,7 +346,7 @@ bool GBuff::OnPeriod()
 		__super::OnPeriod();
 	}
 
-	return false;
+	return true;
 }
 
 void GBuff::OnStacked( float fDurationTime, float fPeriodTime )
@@ -350,9 +365,9 @@ void GBuff::OnStacked( float fDurationTime, float fPeriodTime )
 
 void GBuff::OnDuplicated( float fDurationTime, float fPeriodTime, MUID uidUser )
 {
-	m_uidUser = uidUser;
+	m_User.SetUserUID(uidUser);
 	UpdateBuffTime(fDurationTime, fPeriodTime);
-	__super::OnDuplicated(m_uidUser, m_pOwner, m_pInfo);
+	__super::OnDuplicated(uidUser, m_pOwner, m_pInfo);
 }
 
 bool GBuff::CheckEvent(TALENT_CONDITION nCondition)
@@ -383,35 +398,34 @@ void GBuff::Update_Maintenance( float fDelta )
 bool GBuff::Update_Period( float fDelta )
 {
 	if (!HasPeriodEffect())
-		return false; // 주기 효과 없음
+		return true; // 주기 효과 없음
 
 	if (!m_rgrPeriod.IsReady(fDelta))
-		return false; // 틱 대기
+		return true; // 틱 대기
 
 	return OnPeriod();
 }
 
 void GBuff::Update_Expired( float fDelta )
 {
-	if (!IsInfinite())
+	if (IsInfinite())
+		return;
+
+	if (m_pStack)
 	{
-		if (m_pStack)
+		m_pStack->Update_Expired(fDelta);
+		if (m_pStack->IsExpired())
 		{
-			m_pStack->Update_Expired(fDelta);
-			if (m_pStack->IsExpired())
-			{
-				m_nDestroyType = DESTROY_EXPIRED;
-				return;
-			}
-		}
-
-
-		if (m_rgrExpire.IsReady(fDelta))
-		{
-			// 만료시간 지남
 			m_nDestroyType = DESTROY_EXPIRED;
 			return;
 		}
+	}
+
+	if (m_rgrExpire.IsReady(fDelta))
+	{
+		// 만료시간 지남
+		m_nDestroyType = DESTROY_EXPIRED;
+		return;
 	}
 }
 

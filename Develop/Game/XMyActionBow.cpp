@@ -75,7 +75,7 @@ void XMyActionBow::Enter(void* pParam)
 
 	XModulePost* pModulePost = m_pOwner->GetOwner()->GetModulePost();
 
-	pModulePost->PostMoveStop(m_pOwner->GetOwner()->GetPosition());
+	pModulePost->PostMoveStop(m_pOwner->GetOwner()->GetPosition(), m_pOwner->GetOwner()->GetDirection());
 
 	XPostAttackPrepare();
 	// 공격 준비 메세지 송신

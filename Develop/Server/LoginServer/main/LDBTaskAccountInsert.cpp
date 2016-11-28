@@ -38,7 +38,8 @@ void LDBTaskAccountInsert::OnExecute( mdb::MDatabase& rfDB )
 		return;
 	}
 
-	m_Result.m_GSN = rs.FieldW(L"ACCN_ID").AsInt64();
+	m_Result.m_GSN		= rs.FieldW(L"ACCN_SN").AsInt64();
+	m_Result.m_CONN_SN	= rs.FieldW(L"CONN_SN").AsInt64();
 
 	if (0 == m_Result.m_GSN)
 	{
@@ -60,7 +61,7 @@ void LDBTaskAccountInsert::Completer::Do()
 	if (0 < m_Result.m_GSN)
 	{
 		InitAccountInfo();
-		LCmdRouter_Player::PostAddPlayerReq(m_Data.m_uidPlayer, (int)m_Result.m_GSN, m_Data.m_strUSER_ID);
+		LCmdRouter_Player::PostAddPlayerReq(m_Data.m_uidPlayer, m_Result.m_GSN, m_Data.m_strUSER_ID);
 	}
 	else
 	{
@@ -81,7 +82,7 @@ void LDBTaskAccountInsert::Completer::InitAccountInfo()
 	// 계정 정보 설정
 	ACCOUNT_INFO AccInfo;
 
-	AccInfo.nAID	= (int)m_Result.m_GSN;
+	AccInfo.nAID	= m_Result.m_GSN;
 
 	_tcsncpy_s(AccInfo.szUserID, MLocale::ConvUTF16ToTCHAR(m_Data.m_strUSER_ID.c_str()).c_str(), m_Data.m_strUSER_ID.length());
 	AccInfo.szUserID[m_Data.m_strUSER_ID.length()] = 0;

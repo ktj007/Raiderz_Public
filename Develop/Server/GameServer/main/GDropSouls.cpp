@@ -29,7 +29,7 @@ bool GDropSouls::IsEmpty()
 	return m_vecDropSoul.empty();
 }
 
-bool GDropSouls::IsAuthorizedCID(int nCID)
+bool GDropSouls::IsAuthorizedCID(CID nCID)
 {
 	for each (GDropSoul* pDropSoul in m_vecDropSoul)
 	{
@@ -40,22 +40,22 @@ bool GDropSouls::IsAuthorizedCID(int nCID)
 }
 
 
-void GDropSouls::Drop(int nBeneficiaryCID, GLootInfo* pLootInfo )
+void GDropSouls::Drop(CID nBeneficiaryCID, GLootInfo* pLootInfo )
 {
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	vecBeneficiaryCID.push_back(nBeneficiaryCID);
 
 	Drop(vecBeneficiaryCID, pLootInfo);
 }
 
-void GDropSouls::Drop(const vector<int>& vecBeneficiaryCID, GLootInfo* pLootInfo)
+void GDropSouls::Drop(const vector<CID>& vecBeneficiaryCID, GLootInfo* pLootInfo)
 {
 	int nBeneficiarySize = static_cast<int>(vecBeneficiaryCID.size());
 	for each (LOOT_SOUL_INFO* pLootSoulInfo in pLootInfo->m_vecLootSouls)
 	{
 		if (NULL == pLootSoulInfo) continue;
 
-		int nPickedBeneficiaryCID = vecBeneficiaryCID[RandomNumber(0, nBeneficiarySize-1)];
+		CID nPickedBeneficiaryCID = vecBeneficiaryCID[RandomNumber(0, nBeneficiarySize-1)];
 		GEntityPlayer* pPickedBeneficiary = gmgr.pPlayerObjectManager->GetEntity(nPickedBeneficiaryCID);
 		if (NULL == pPickedBeneficiary) continue;
 
@@ -77,7 +77,7 @@ void GDropSouls::Drop(const vector<int>& vecBeneficiaryCID, GLootInfo* pLootInfo
 	}
 }
 
-int GDropSouls::GetQuantity(int nCID, SOUL_TYPE nSoulType)
+int GDropSouls::GetQuantity(CID nCID, SOUL_TYPE nSoulType)
 {
 	int nQuantity = 0;
 

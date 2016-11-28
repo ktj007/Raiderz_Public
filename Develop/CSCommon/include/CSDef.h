@@ -3,8 +3,8 @@
 #include <tchar.h>
 
 
-#define GAME_NAME_STR						_T("Hope")
-#define GAME_NAME_STR_LOWER					_T("hope")
+#define GAME_NAME_STR						_T("Raiderz")
+#define GAME_NAME_STR_LOWER					_T("raiderz")
 
 // 게임 로직 -----------------------------------------------------------------
 #define GAME_TARGET_NPC_CHECK_DISTANCE		300.0f		// NPC 탐색 거리
@@ -21,6 +21,8 @@
 #define NPC_SHOP_BUY_MOD_FACTION_EXCELLENT			0.95f
 #define NPC_SHOP_SELL_MOD_FACTION_GOOD				1.02f
 #define NPC_SHOP_SELL_MOD_FACTION_EXCELLENT			1.05f
+#define NPC_SHOP_REPAIR_MOD_FACTION_GOOD			0.98f
+#define NPC_SHOP_REPAIR_MOD_FACTION_EXCELLENT		0.95f
 
 // 크래프트에서 우호도에 따른 Make Modulate
 #define CRAFT_MAKE_MOD_FACTION_GOOD					0.98f
@@ -46,14 +48,14 @@
 #define SERVER_NAME_LEN		64							// 서버 이름 최대 길이
 
 #define WORLD_NAME_LEN		32							// 월드 이름 최대 길이
-#define IP_STRING_LEN		15							// IP 길이 "###.###.###.###"
+#define IP_STRING_LEN		64							// IP 길이 "###.###.###.###"
 
 
 #define ITEM_NAME_LEN		32							// 아이템 이름 길이
 #define SECTOR_SIZE			3000						// 필드 섹터 한변의 길이
 #define HUGE_SECTOR_SCALE	4							// 필드 거대 섹터의 일반 섹터 비율
 #define MAX_RACE_NUM		1							// 종족수
-#define MAX_LEVEL			90							// 최대 레벨은 60
+#define MAX_LEVEL			60							// 최대 레벨은 60
 #define MAX_TRADE_ITEM_SPACE		5					// 한번에 거래 가능한 아이템의 개수
 #define MAX_TALENT_ADDITION_SIZE	3					// 한 탤런트를 배웠을때 추가적으로 얻는 탤런트의 개수
 
@@ -66,18 +68,32 @@
 #define BASE_GUILDSTORAGE_SIZE			80				// 기본 길드 보관함 크기.
 #define MAX_GUILDSTORAGE_SIZE			160				// 확장했을때 최대로 커질 수 있는 길드 보관함 크기.
 
+#define MAX_SET_ITEM_COUNT			5
 
-#define MAX_CREATION_PLAYER_FACE_MALE		12			// 캐릭터 생성시 고를 수 있는 얼굴 수
-#define MAX_CREATION_PLAYER_HAIR_MALE		14			// 캐릭터 생성시 고를 수 있는 머리셋 수
-#define MAX_CREATION_PLAYER_VOICE_MALE		2			// 캐릭터 생성시 고를 수 있는 목소리 수
-#define MAX_CREATION_PLAYER_MAKEUP_MALE		20			// 캐릭터 생성시 고를 수 있는 화장 수
-#define MAX_CREATION_PLAYER_TATTO_MALE		20			// 캐릭터 생성시 고를 수 있는 문신 수
 
-#define MAX_CREATION_PLAYER_FACE_FEMALE		12			// 캐릭터 생성시 고를 수 있는 얼굴 수
-#define MAX_CREATION_PLAYER_HAIR_FEMALE		14			// 캐릭터 생성시 고를 수 있는 머리셋 수
-#define MAX_CREATION_PLAYER_VOICE_FEMALE	2			// 캐릭터 생성시 고를 수 있는 목소리 수
-#define MAX_CREATION_PLAYER_MAKEUP_FEMALE	20			// 캐릭터 생성시 고를 수 있는 화장 수
-#define MAX_CREATION_PLAYER_TATTO_FEMALE	20			// 캐릭터 생성시 고를 수 있는 문신 수
+#define MAX_CREATION_PLAYER_FACE_MALE				14			// 캐릭터 생성시 고를 수 있는 얼굴 수
+#define MAX_CREATION_PLAYER_HAIR_MALE				22			// 캐릭터 생성시 고를 수 있는 머리셋 수
+#define MAX_CREATION_PLAYER_HAIR_COLOR_MALE			30
+#define MAX_CREATION_PLAYER_SKIN_COLOR_MALE			32
+#define MAX_CREATION_PLAYER_EYE_COLOR_MALE			16
+#define MAX_CREATION_PLAYER_VOICE_MALE				3			// 캐릭터 생성시 고를 수 있는 목소리 수
+#define MAX_CREATION_PLAYER_MAKEUP_MALE				3			// 캐릭터 생성시 고를 수 있는 화장 수
+#define MAX_CREATION_PLAYER_TATTO_MALE				50			// 캐릭터 생성시 고를 수 있는 문신 수
+#define MAX_CREATION_PLAYER_TATTO_COLOR_MALE		16
+
+#define MAX_CREATION_PLAYER_FACE_FEMALE				14			// 캐릭터 생성시 고를 수 있는 얼굴 수
+#define MAX_CREATION_PLAYER_HAIR_FEMALE				22			// 캐릭터 생성시 고를 수 있는 머리셋 수
+#define MAX_CREATION_PLAYER_HAIR_COLOR_FEMALE		30
+#define MAX_CREATION_PLAYER_SKIN_COLOR_FEMALE		32
+#define MAX_CREATION_PLAYER_EYE_COLOR_FEMALE		16
+#define MAX_CREATION_PLAYER_VOICE_FEMALE			3			// 캐릭터 생성시 고를 수 있는 목소리 수
+#define MAX_CREATION_PLAYER_MAKEUP_FEMALE			3			// 캐릭터 생성시 고를 수 있는 화장 수
+#define MAX_CREATION_PLAYER_TATTO_FEMALE			50			// 캐릭터 생성시 고를 수 있는 문신 수
+#define MAX_CREATION_PLAYER_TATTO_COLOR_FEMALE		16
+
+#define MAX_CREATION_PLAYER_EQUIPMENT_COLOR			27
+#define MIN_CREATION_PLAYER_TATTOO_SCALE			50
+#define MAX_CREATION_PLAYER_TATTOO_SCALE			200
 
 #define CONSUME_TP_FOR_LEARN_TALENT			1			// 탤런트 배우기 위해 필요한 TP
 
@@ -105,7 +121,9 @@
 
 #define MAX_BREAKABLE_PARTS		4						// 한 NPC에 최대 브레이커블 파츠는 4개로 제한한다.
 
-#define MAX_PARTY_MEMBER_COUNT		5					///<< 최대 파티원 수
+#define MAX_PARTY_MEMBER_COUNT						5			///<< 최대 파티원 수
+#define PARTY_INVITEE_QUESTION_TIMEOUT				30.f		// sec
+#define PARTY_PUBLIC_PARTY_LIST_COUNT_PER_ONE_PAGE	13
 
 #define HUGE_NPC_RADIUS		(300.0f)
 
@@ -417,17 +435,22 @@ enum CSMsgType
 	MT_FIELD,			// 필드
 	MT_GLOBAL,			// 전체
 
+	MT_NOVICE,			// Beginners Chat
+	MT_LFP,				// Looking for Party Chat
+
 	MT_SP_SYSTEM,		// 스~빼셜한 시스템
 
 	MT_ADVICE,			// 조언 메시지
 
 	MT_SYSTEM,			// 시스템
+	MT_SYSTEM_MSG,		// MT_SYSTEM but only for chat window
 	MT_BATTLE,			// 전투 메세지	_by tripleJ 110504
 	MT_NOTICE,			// 공지
 
 	MT_WHISPER_BACK,	// 귓말 자신 메시지 반송
 
 	MT_SOCIAL,			// 소셜
+	MT_SYSTEM_SCREEN,	// MT_SYSTEM but only with pop-up
 };
 
 
@@ -531,6 +554,17 @@ enum AUTOPARTY_STATE
 	AUTOPARTY_LOOKUP	=3,		// 검색중
 };
 
+//////////////////////////////////////////////////////////////////////////
+/// Skill Set Book
+enum SKILL_SET_TYPE
+{
+	SST_COMMON = 0,		// talent is available for all sets (e.g. emotions)
+	SST_MAIN,			// 1st set for style-specified talents.
+	SST_BACKUP,			// 2nd set for style-specified talents.
+	SST_PVP,			// PvP skill set (was unimplemented)
+	SST_MAX,
+};
+
 
 
 /// 월드 정보
@@ -542,11 +576,13 @@ struct CSWorldInfo
 	int					nCurrentPlayerCount;
 	int					nMaxPlayerCount;
 	int					nType;
+	int					nOrderNum;
 
-	CSWorldInfo(): nID(0), nCurrentPlayerCount(0), nMaxPlayerCount(0), nType(0)
+	CSWorldInfo(): nID(0), nCurrentPlayerCount(0), nMaxPlayerCount(0), nType(0), nOrderNum(0)
 	{
 	}
 };
+
 
 //////////////////////////////////////////////////////////////////////////
 // 유틸리티 메크로

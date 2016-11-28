@@ -73,7 +73,7 @@ struct TDMG_PROXY_FIELD_UPDATE_INFO
 struct TD_MOVE_PLAYER_INFO
 {
 	uint32					nEnterKey;			// 플레이어 클라이언트 public IP
-	uint32					nPlayerAID;			// 플레이어 DB Index
+	AID						nPlayerAID;			// 플레이어 DB Index
 
 	TD_MOVE_PLAYER_INFO()
 	: nEnterKey(0)
@@ -84,7 +84,7 @@ struct TD_MOVE_PLAYER_INFO
 struct TD_PLAYER_GAME_DATA_CHARAINFO
 {
 	int8					nSex;						// SEX
-	int						nCID;
+	CID						nCID;
 	int						nLevel;
 	int						nXP;
 	int						nRemaindTP;
@@ -101,7 +101,9 @@ struct TD_PLAYER_GAME_DATA_CHARAINFO
 	short					nFeatureSkinColor;
 	uint8					nEyeColor;
 	uint8					nMakeUp;
+	uint8					nVoice;
 	uint8					nTattooType;
+	uint8					nTattooColor;
 	short					nTattooPosX;
 	short					nTattooPosY;
 	uint8					nTattooScale;
@@ -142,7 +144,9 @@ struct TD_PLAYER_GAME_DATA_CHARAINFO
 	, nFeatureSkinColor(0)
 	, nMakeUp(0)
 	, nEyeColor(0)
+	, nVoice(0)
 	, nTattooType(0)
+	, nTattooColor(0)
 	, nTattooPosX(0)
 	, nTattooPosY(0)
 	, nTattooScale(0)
@@ -203,12 +207,7 @@ struct TD_PLAYER_GAME_DATA_ITEM_INSTANCE
 	bool					bUseExpirationTime;
 	int						nExpirationTimeSec;
 	wchar_t					szExpiDt[MAX_DB_TIMESTAMP_STR];
-	//SoulHunterZ
-	int						nXP;
-	int						nNextAttuneXP;
-	uint8					nAttuneLevel;
 	int						nEnchants[ENCHANT_MAX_COUNT];	// 인챈트 목록 (첫번째는 활성화 인챈트)
-	
 
 	TD_PLAYER_GAME_DATA_ITEM_INSTANCE()
 	: nItemID(0)
@@ -227,9 +226,6 @@ struct TD_PLAYER_GAME_DATA_ITEM_INSTANCE
 	, nUsagePeriodSec(0)
 	, bUseExpirationTime(false)
 	, nExpirationTimeSec(0)
-	, nXP(0)
-	, nNextAttuneXP(0)
-	, nAttuneLevel(0)
 	{
 		szExpiDt[0] = L'\0';
 		for (int i=0; i<ENCHANT_MAX_COUNT; ++i)
@@ -391,7 +387,7 @@ struct TD_PARTY_INFO
 	{
 		MUID uidMember;
 		wchar_t szMemberName[PLAYER_NAME_LEN + 1];
-		int	 nMemberCID;
+		CID	 nMemberCID;
 	} members[MAX_PARTY_MEMBER_COUNT];
 };
 
@@ -440,11 +436,11 @@ struct TD_APP_SERVER_INFO
 // 길드
 struct TD_GUILD_ONLINE_MEMBER_INFO
 {
-	int		nCID;
+	CID		nCID;
 	int		nFieldID;
 	int		nChannelID;
 
-	TD_GUILD_ONLINE_MEMBER_INFO(int nCID, int nFieldID, int nChannelID)
+	TD_GUILD_ONLINE_MEMBER_INFO(CID nCID, int nFieldID, int nChannelID)
 	: nCID(nCID), nFieldID(nFieldID), nChannelID(nChannelID) {}
 };
 

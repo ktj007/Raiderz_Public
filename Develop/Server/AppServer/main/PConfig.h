@@ -5,11 +5,23 @@
 
 #include "SConfig.h"
 
+struct PDBConfig
+{
+	wstring	strServer;
+	wstring	strDatabaseName;
+	wstring	strUserName;
+	wstring	strPassword;
+};
+
 /// 인게임 설정값
 class PConfig : public SConfig
 {
 private:
 	static wstring GetPathString( const wchar_t* szFileName, const wchar_t* szKeyName );
+
+	static void InitAccountDB(const wchar_t* szFileName);
+	static void InitGameDB(const wchar_t* szFileName);
+	static void InitLogDB(const wchar_t* szFileName);
 
 public:
 	static void Init_INI();
@@ -36,15 +48,9 @@ public:
 	static int		m_nMasterServerPort;		///< 접속 포트
 
 	// db
-	static wstring	m_strGameDB_Server;				///< DB Server
-	static wstring	m_strGameDB_DatabaseName;		///< DB Name
-	static wstring	m_strGameDB_UserName;			///< DB Username
-	static wstring	m_strGameDB_Password;			///< DB Password
-
-	static wstring	m_strLogDB_Server;				///< DB Server
-	static wstring	m_strLogDB_DatabaseName;		///< DB Name
-	static wstring	m_strLogDB_UserName;			///< DB Username
-	static wstring	m_strLogDB_Password;			///< DB Password
+	static PDBConfig	m_AccountDBConfig;
+	static PDBConfig	m_GameDBConfig;
+	static PDBConfig	m_LogDBConfig;
 
 	// path
 	static wstring	m_strSystemPath;			///< 시스템 폴더

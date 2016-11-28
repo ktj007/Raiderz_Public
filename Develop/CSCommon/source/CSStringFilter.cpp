@@ -124,8 +124,7 @@ bool CSStringFilter::AddAbuseWord( const TCHAR* szAbuse )
 		return false;
 	
 	TCHAR buf[256+1] = {0, };
-	_sntprintf((TCHAR*)buf, sizeof(buf)-1, _T("%s"), strAbuse.c_str());
-	buf[sizeof(buf)-1] = 0;
+	_sntprintf((TCHAR*)buf, sizeof(buf)/sizeof(buf[0]), _T("%s"), strAbuse.c_str());
 	
 	// 단어의 모든 글자를 트리 형태로 구성한다.
 	if (m_pRoot == NULL)

@@ -14,9 +14,9 @@ TEST_FRIEND_FT(LootSystem, FLootSystem, RefreshItem);
 public:
 	TEST_VIRTUAL ~GLootModifyHandler() {}
 
-	TEST_VIRTUAL void HandleDropListModification(GEntityNPC* pNPC, set<int> setPreViewableCID);
-	TEST_VIRTUAL void HandleUnviewablePlayer(set<int> setPreViewableCID, set<int> setPostViewableCID, GEntityNPC* pNPC);
-	TEST_VIRTUAL void HandleViewablePlayer(set<int> setPreViewableCID, set<int> setPostViewableCID, GEntityNPC* pNPC);	
+	TEST_VIRTUAL void HandleDropListModification(GEntityNPC* pNPC, set<CID> setPreViewableCID);
+	TEST_VIRTUAL void HandleUnviewablePlayer(set<CID> setPreViewableCID, set<CID> setPostViewableCID, GEntityNPC* pNPC);
+	TEST_VIRTUAL void HandleViewablePlayer(set<CID> setPreViewableCID, set<CID> setPostViewableCID, GEntityNPC* pNPC);	
 	TEST_VIRTUAL void HandleEmptyNPC(GEntityNPC* pNPC);
 
 	void RouteInsertLootableNPC(GEntityNPC* pNPC);

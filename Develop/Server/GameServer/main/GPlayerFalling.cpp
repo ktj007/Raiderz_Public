@@ -16,11 +16,23 @@ GPlayerFalling::~GPlayerFalling(void)
 
 void GPlayerFalling::EndFalling(bool bIsFallenOnWater, float fFallingHeight)
 {
-	if (fFallingHeight <= 0) return;
-	if (m_pOwner->GetHP() <= 0) return;
+	if (false == _EndFalling(bIsFallenOnWater, fFallingHeight))
+	{
+		// route zero falling damage.
+		RouteFallingDamage(0);
+	}
+}
+
+bool GPlayerFalling::_EndFalling(bool bIsFallenOnWater, float fFallingHeight)
+{
+	if (true == m_pOwner->IsNowInvincibility()) return false;
+	if (true == m_pOwner->IsDead()) return false;
+
+	if (fFallingHeight <= 0) return false;
+	if (m_pOwner->GetHP() <= 0) return false;
 
 	int nFallingDamage = GCalculator::CalcFallingDamage(bIsFallenOnWater, fFallingHeight, m_pOwner->GetMaxHP());
-	if (nFallingDamage <= 0) return;
+	if (nFallingDamage <= 0) return false;
 
 	bool bIsDie = m_pOwner->doDamage(MUID::ZERO, DA_NONE, nFallingDamage);
 
@@ -33,12 +45,19 @@ void GPlayerFalling::EndFalling(bool bIsFallenOnWater, float fFallingHeight)
 		}
 	}
 
-	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_FALLING_DAMAGE, 2, NEW_USHORT(m_pOwner->GetUIID()), NEW_INT(nFallingDamage));	
-	m_pOwner->RouteToThisCell(pNewCommand);
+	RouteFallingDamage(nFallingDamage);
 
 
 	if (bIsDie)
 	{
 		m_pOwner->doDie();
 	}
+
+	return true;
+}
+
+void GPlayerFalling::RouteFallingDamage(int nFallingDamage)
+{
+	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_FALLING_DAMAGE, 2, NEW_USHORT(m_pOwner->GetUIID()), NEW_INT(nFallingDamage));
+	m_pOwner->RouteToThisCell(pNewCommand);
 }

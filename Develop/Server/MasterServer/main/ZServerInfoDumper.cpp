@@ -84,7 +84,7 @@ void ZServerInfoDumper::DumpPlayers()
 	{
 		ZPlayer* pPlayer = (*itor).second;
 
-		Log(L"AID = %d , UserID = %s , CID = %d , UID = (%u:%u) , Name = %s , FieldID = %d , PartyUID = (%u:%u) , State = %d , GameServerID = %d \n"
+		Log(L"AID = %I64d , UserID = %s , CID = %I64d , UID = (%u:%u) , Name = %s , FieldID = %d , PartyUID = (%u:%u) , State = %d , GameServerID = %d \n"
 			, pPlayer->GetAID()
 			, pPlayer->GetUserID().c_str()
 			, pPlayer->GetCID()

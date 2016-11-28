@@ -4,6 +4,7 @@
 #include "GQuestInfo.h"
 #include "GGlobal.h"
 #include "GExportDBStringTable.h"
+#include "MDBUtil.h"
 
 GQuestInfoSQLMaker::GQuestInfoSQLMaker( GQuestInfoMgr* pMgr ) : GSQLMaker(true, true), m_pMgr(pMgr)
 {
@@ -40,7 +41,7 @@ bool GQuestInfoSQLMaker::BuildSQL()
 							   WHEN MATCHED THEN UPDATE SET q.NAME = s.NAME \
 							   WHEN NOT MATCHED THEN INSERT(QUEST_ID, NAME, [TYPE]) VALUES (s.QUEST_ID, s.NAME, s.[TYPE]);\n\n"
 							   , pQuestInfo->nID
-							   , gmgr.pExportDBStringTable->GetString(pQuestInfo->strTitle).c_str()
+							   , mdb::MDBStringEscaper::Escape(gmgr.pExportDBStringTable->GetString(pQuestInfo->strTitle)).c_str()
 							   , nType);
 		
 		m_vSQL.push_back(szBuf);

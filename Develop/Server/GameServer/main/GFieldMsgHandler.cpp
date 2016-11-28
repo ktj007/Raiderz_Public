@@ -6,7 +6,10 @@
 #include "GAppServerFacade.h"
 #include "GCommandCenter.h"
 #include "GFieldMgr.h"
+
+#if (_MSC_VER >= 1900)
 #include <functional>
+#endif
 
 GFieldMsgHandler::GFieldMsgHandler()
 {
@@ -42,7 +45,7 @@ bool GFieldMsgHandler::OnResponse(const MCommand* pCmd)
 	MCommand* pNewCmd = m_msgHelper.MakeNewClientCommandFieldRes(m_strMsg, strSenderName);	
 	
 	// 필드 접속 수신자 추가
-	int nFieldID = m_msgHelper.GetReceiverID(pCmd);
+	int nFieldID = static_cast<int>(m_msgHelper.GetReceiverID(pCmd));
 
 	vector<GField*> vecField = gmgr.pFieldMgr->GetFieldList(nFieldID);	
 	for each(GField* pField in vecField)
@@ -50,7 +53,7 @@ bool GFieldMsgHandler::OnResponse(const MCommand* pCmd)
 		GEntityMgr::ENTITY_UID_MAP& mapEntity = pField->GetEntityMap();
 
 		for_each(mapEntity.begin(), mapEntity.end(), 
-			std::bind((void(MCommand::*)(const MUID&))&MCommand::AddReceiver, pNewCmd, std::bind(&GEntityMgr::ENTITY_UID_MAP::value_type::first, tr1::placeholders::_1)));
+			tr1::bind((void(MCommand::*)(const MUID&))&MCommand::AddReceiver, pNewCmd, tr1::bind(&GEntityMgr::ENTITY_UID_MAP::value_type::first, tr1::placeholders::_1)));
 	}
 
 	// 전달

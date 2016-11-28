@@ -102,10 +102,10 @@ void GItemMoverForDBTask::Route(GEntityPlayer* pPlayer, SH_ITEM_SLOT_TYPE nFromS
 {
 	MCommand* pNewCmd = MakeNewCommand(MC_ITEM_MOVE,		 
 		5,		
-		NEW_INT(nFromSlotType),
-		NEW_INT(nFromSlotID),
-		NEW_INT(nToSlotType),
-		NEW_INT(nToSlotID),
+		NEW_CHAR(nFromSlotType),
+		NEW_SHORT(nFromSlotID),
+		NEW_CHAR(nToSlotType),
+		NEW_SHORT(nToSlotID),
 		NEW_INT(nAmount));
 
 	pPlayer->RouteToMe(pNewCmd);

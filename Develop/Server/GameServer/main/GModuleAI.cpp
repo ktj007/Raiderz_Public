@@ -256,7 +256,9 @@ void GModuleAI::Reset()
 	m_pNPCAI->BehaviorReset();
 }
 
+#if (_MSC_VER < 1900)
 inline
+#endif
 GEntityNPC* GModuleAI::GetOwnerNPC() const
 { 
 	if (NULL == m_pOwner)	return NULL;

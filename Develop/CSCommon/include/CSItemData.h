@@ -32,26 +32,28 @@ const enum SH_ITEM_SLOT
 	ITEMSLOT_NONE = 255,		// 장착불가능한 아이템. 255값은 서버에서 상수로 사용함.
 	ITEMSLOT_ALL = ITEMSLOT_NONE,
 
+	ITEMSLOT_BEGIN = 0,
+
 	// DEFAULT =============================
-	ITEMSLOT_ARMOR_START = 0,
-	ITEMSLOT_HEAD = ITEMSLOT_ARMOR_START,	//모자.
+	ITEMSLOT_HEAD = ITEMSLOT_BEGIN,	//모자.
 	ITEMSLOT_FACE,	//선글라스등.
 	ITEMSLOT_HANDS,
 	ITEMSLOT_FEET,
 	ITEMSLOT_BODY,
 	ITEMSLOT_LEG,
-	ITEMSLOT_ARMOR_END,
+	ITEMSLOT_ARMOR_START = ITEMSLOT_HEAD,
+	ITEMSLOT_ARMOR_END = ITEMSLOT_LEG,
 	
-	ITEMSLOT_LFINGER = ITEMSLOT_ARMOR_END,
+	ITEMSLOT_LFINGER,
 	ITEMSLOT_RFINGER,
-	ITEMSLOT_NECK,
-	ITEMSLOT_CHARM,
+	ITEMSLOT_NECKLACE,
+	ITEMSLOT_EARRING,
 	ITEMSLOT_LWEAPON,
 	ITEMSLOT_RWEAPON,
 	ITEMSLOT_LWEAPON2,
 	ITEMSLOT_RWEAPON2,
-	ITEMSLOT_DEFAULT_BEGIN = ITEMSLOT_HEAD,
-	ITEMSLOT_DEFAULT_MAX = ITEMSLOT_RWEAPON2,
+	ITEMSLOT_DEFAULT_START = ITEMSLOT_HEAD,
+	ITEMSLOT_DEFAULT_END = ITEMSLOT_RWEAPON2,
 	// DEFAULT ============================^
 
 	// LOOK ================================
@@ -60,10 +62,22 @@ const enum SH_ITEM_SLOT
 	ITEMSLOT_LOOK_FEET,
 	ITEMSLOT_LOOK_BODY,
 	ITEMSLOT_LOOK_LEG,
-	ITEMSLOT_LOOK_BEGIN = ITEMSLOT_LOOK_HEAD,
-	ITEMSLOT_LOOK_MAX = ITEMSLOT_LOOK_LEG,
+	ITEMSLOT_LOOK_LWEAPON,
+	ITEMSLOT_LOOK_RWEAPON,
+	ITEMSLOT_LOOK_LWEAPON2,
+	ITEMSLOT_LOOK_RWEAPON2,
+	ITEMSLOT_LOOK_BACKPACK,
+	ITEMSLOT_LOOK_ACCESSORY,
+	ITEMSLOT_LOOK_TITLE,
+	ITEMSLOT_LOOK_FACE,
+	ITEMSLOT_LOOK_CHARM,
+	ITEMSLOT_LOOK_BELT,
+	ITEMSLOT_LOOK_START = ITEMSLOT_LOOK_HEAD,
+	ITEMSLOT_LOOK_END = ITEMSLOT_LOOK_BELT,
 	// LOOK ===============================^
 
+	// Inn Items: are not yet implemented
+	/*
 	ITEMSLOT_INN_CRAFTING,
 	ITEMSLOT_INN_BED,
 	ITEMSLOT_INN_STEWARD,
@@ -72,8 +86,19 @@ const enum SH_ITEM_SLOT
 	ITEMSLOT_INN_MURAL,
 	ITEMSLOT_INN_TABLE,
 	ITEMSLOT_INN_FUNITURE,
-	
-	ITEMSLOT_MAX
+	*/
+
+	ITEMSLOT_MAX,
+
+	// Unimplemented Slots = ITEMSLOT_NONE.
+	ITEMSLOT_INN_CRAFTING	= ITEMSLOT_NONE,
+	ITEMSLOT_INN_BED		= ITEMSLOT_NONE,
+	ITEMSLOT_INN_STEWARD	= ITEMSLOT_NONE,
+	ITEMSLOT_INN_CARPET		= ITEMSLOT_NONE,
+	ITEMSLOT_INN_FIREPLACE	= ITEMSLOT_NONE,
+	ITEMSLOT_INN_MURAL		= ITEMSLOT_NONE,
+	ITEMSLOT_INN_TABLE		= ITEMSLOT_NONE,
+	ITEMSLOT_INN_FUNITURE	= ITEMSLOT_NONE
 };
 
 const enum SH_ITEM_SWITCH_WEAPON
@@ -106,7 +131,20 @@ static const TCHAR* CSItemSlotStr[] =		// 임의로 정했음, xml에 이걸로 기술.
 	_T("look_feet"),
 	_T("look_body"),
 	_T("look_leg"),
+	_T("look_lweapon"),
+	_T("look_rweapon"),
+	_T("look_lweapon2"),
+	_T("look_rweapon2"),
+	_T("look_back"),
+	_T("look_acc"),
+	_T("look_title"),
+	_T("look_face_deco"),
 
+	_T("talisman"),
+	_T("belt"),
+
+	// Inn Items: are not yet implemented
+	/*
 	_T("inn_crafting"),
 	_T("inn_bed"),
 	_T("inn_steward"),
@@ -115,6 +153,7 @@ static const TCHAR* CSItemSlotStr[] =		// 임의로 정했음, xml에 이걸로 기술.
 	_T("inn_mural"),
 	_T("inn_table"),
 	_T("inn_funiture"),
+	*/
 
 	_T("none")
 };
@@ -158,11 +197,6 @@ const enum SH_ITEM_TYPE
 
 	ITEMTYPE_ENCHANTSTONE,		// 강화
 	ITEMTYPE_DYE,				// 염색
-
-	//SoulHunterZ
-	ITEMTYPE_ATTUNESTONE,
-
-	ITEMTYPE_COSTUME,
 
 	ITEMTYPE_MAX
 };
@@ -255,10 +289,15 @@ enum SH_FEATURE_ITEMSLOT
 	FEATURE_ITEMSLOT_RWEAPON,
 	FEATURE_ITEMSLOT_LWEAPON2,
 	FEATURE_ITEMSLOT_RWEAPON2,
+	FEATURE_ITEMSLOT_BACKPACK,
+	FEATURE_ITEMSLOT_ACCESSORY,
+	FEATURE_ITEMSLOT_TITLE,
+	FEATURE_ITEMSLOT_UNKNOWN1,	// TODO: unknown item slot in 2014.
 	FEATURE_ITEMSLOT_MAX,
 	FEATURE_ITEMSLOT_NONE = FEATURE_ITEMSLOT_MAX,
 };
 
+/*
 enum ENCHANT_COLOR
 {
 	ENCHANT_NONE = 0,
@@ -268,8 +307,6 @@ enum ENCHANT_COLOR
 	ENCHANT_GREEN,
 	ENCHANT_WHITE,
 	ENCHANT_YELLOW,
-	ENCHANT_S,
-	ENCHANT_N,
 };
 
 static const TCHAR* ENCHANT_COLOR_STR[] =		// 임의로 정했음, xml에 이걸로 기술.
@@ -281,8 +318,37 @@ static const TCHAR* ENCHANT_COLOR_STR[] =		// 임의로 정했음, xml에 이걸로 기술.
 	_T("G"),
 	_T("W"),
 	_T("Y"),
+};
+*/
+
+// Jewel Enchants (refer xitem.xml/ITEM/@EquipEnchantSlot)
+// format is: [X]/[S],[N...]
+// as you can see, first slot should always be Special Jewel. or use X value to disable special jewel.
+// therefore, the format X,N,N,N is valid. but N,N,N is invalid.
+enum ENCHANT_COLOR
+{
+	ENCHANT_NONE	= 0,		// None
+	ENCHANT_GOLD,				// Special Jewel (e.g. Shanith's Diamond, Warrior's Diamond of Vigor etc)
+	ENCHANT_WHITE,				// Normal Jewel (e.g. Pyroxene or Emerald etc)
+};
+
+static const TCHAR* ENCHANT_COLOR_STR[] =
+{
+	_T("X"),
 	_T("S"),
 	_T("N"),
+};
+
+enum SH_ITEM_ELEMENT_TYPE
+{
+	ITEMELEMENT_NONE	= 0,
+	ITEMELEMENT_HOLY,
+	ITEMELEMENT_UNHOLY,
+	ITEMELEMENT_FIRE,
+	ITEMELEMENT_ICE,
+	ITEMELEMENT_LIGHTNING,
+	ITEMELEMENT_POISON,
+	ITEMELEMENT_MAX,
 };
 
 
@@ -351,8 +417,9 @@ public:
 
 		int				m_nMinDamage;		///< 최소 데미지
 		int				m_nMaxDamage;		///< 최대 대미지
-		int				m_nAP;				///< 방어력	
-		int				m_nMagicAP;			///< Magic Armor
+		int				m_nMagicMinDamage;
+		int				m_nMagicMaxDamage;
+		int				m_nAP;				///< 방어력		
 
 		bool			m_bTradable;		///< 거래 가능 여부
 		bool			m_bSellable;		///< 판매 가능 여부
@@ -369,11 +436,6 @@ public:
 		SOUL_TYPE		m_nSoulType;		///< 영혼 종류
 		uint8			m_nSoulMaxQuantity;	///< 영혼 최대 흡수량
 		int				m_nSoulLinkedItem;	///< 영혼을 최대로 흡수했을때 변경되는 영혼석 ItemID
-
-		//SoulHunterZ
-		//int				m_nEXP;
-		//int				m_nNextLvlReqXP;
-		//uint8			m_nAttunementLevel;
 
 		tstring			m_strMeshName;		///< 아이템 메시 이름, 꼭 장비품이 아니더라도 바닥에 굴러다니거나 할때 필요? ...하진 않은가?
 		bool			m_bMeshNameBySex;	///< 성별로 다른 아이템 메시 이름인지 여부, ex) meshname= "01" 이면 female_01, male_01 로 각각 대체

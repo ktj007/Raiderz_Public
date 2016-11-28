@@ -393,7 +393,7 @@ bool XConsoleCmds::ConsoleCmd_Reload(const wchar_t* line, const int argc, wchar_
 		}
 		else if (!_wcsicmp(argv[1], L"s"))
 		{
-			XPostDebugString(L"re", -1, L"all");
+//			XPostDebugString(L"re", -1, L"all");
 		}
 		else if (!_wcsicmp(argv[1], L"lan"))
 		{
@@ -406,7 +406,7 @@ bool XConsoleCmds::ConsoleCmd_Reload(const wchar_t* line, const int argc, wchar_
 		{
 			ReloadInfo();
 			gg.omgr->ReloadObjectAll();
-			XPostDebugString(L"re", -1, L"all");
+//			XPostDebugString(L"re", -1, L"all");
 		}
 	}
 
@@ -1445,7 +1445,7 @@ bool XConsoleCmds::ConsoleCmd_DebugString(const wchar_t* line, const int argc, w
 		strText = argv[3];
 	}
 
-	XPostDebugString(argv[1], nParam, strText.c_str());
+//	XPostDebugString(argv[1], nParam, strText.c_str());
 
 	return true;
 }
@@ -1558,7 +1558,7 @@ bool XConsoleCmds::ConsoleCmd_ServerReload(const wchar_t* line, const int argc, 
 		strParam = argv[1];
 	}
 
-	XPostDebugString(argv[0], nParam, strParam.c_str());
+//	XPostDebugString(argv[0], nParam, strParam.c_str());
 
 	return true;
 }
@@ -1577,14 +1577,14 @@ bool XConsoleCmds::ConsoleCmd_ServerReport(const wchar_t* line, const int argc, 
 		strParam = argv[1];
 	}
 
-	XPostDebugString(argv[0], nParam, strParam.c_str());
+//	XPostDebugString(argv[0], nParam, strParam.c_str());
 
 	return true;
 }
 
 bool XConsoleCmds::ConsoleCmd_Repair(const wchar_t* line, const int argc, wchar_t **const argv)
 {
-	XPostDebugString(L"repair_all", 0, L"");
+//	XPostDebugString(L"repair_all", 0, L"");
 
 	return true;
 }
@@ -1939,7 +1939,7 @@ bool XConsoleCmds::ConsoleCmd_LogCRTInsert(const wchar_t* line, const int argc, 
 
 	if (2 != argc) return true;
 
-	XPostGM_LogCRTInsert(_wtoi(argv[1]));
+//	XPostGM_LogCRTInsert(_wtoi(argv[1]));
 
 	return true;
 }
@@ -1950,7 +1950,7 @@ bool XConsoleCmds::ConsoleCmd_LogCRTDelete(const wchar_t* line, const int argc, 
 
 	if (2 != argc) return true;
 
-	XPostGM_LogCRTDelete(_wtoi(argv[1]));
+//	XPostGM_LogCRTDelete(_wtoi(argv[1]));
 
 	return true;
 }
@@ -2372,7 +2372,7 @@ bool XConsoleCmds::ConsoleCmd_BanAccount(const wchar_t* line, const int argc, wc
 {
 	std::wstring playername = argv[1];
 
-	XPostGM_Ban(&playername);
+//	XPostGM_Ban(&playername);
 
 	return true;
 }

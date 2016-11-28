@@ -47,15 +47,15 @@ void GDropList::Clear()
 	m_nPartyUID = MUID::ZERO;
 }
 
-bool GDropList::DropByKill(int nBeneficiaryCID)
+bool GDropList::DropByKill(CID nBeneficiaryCID)
 {
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	vecBeneficiaryCID.push_back(nBeneficiaryCID);
 
 	return DropByKill(vecBeneficiaryCID, MUID::ZERO);
 }
 
-bool GDropList::DropByKill(const vector<int>& vecBeneficiaryCID, MUID nPartyUID)
+bool GDropList::DropByKill(const vector<CID>& vecBeneficiaryCID, MUID nPartyUID)
 {
 	if (vecBeneficiaryCID.empty()) return false;
 
@@ -84,7 +84,7 @@ bool GDropList::DropByKill(const vector<int>& vecBeneficiaryCID, MUID nPartyUID)
 	return true;
 }
 
-bool GDropList::DropByGather(int nGatherCID, int nLootID)
+bool GDropList::DropByGather(CID nGatherCID, int nLootID)
 {
 	if (DC_NONE != m_nDropCause) return false;
 	
@@ -101,17 +101,17 @@ bool GDropList::DropByGather(int nGatherCID, int nLootID)
 	return true;
 }
 
-bool GDropList::DropByInteract_Mortal(int nBeneficiaryCID,int nLootID)
+bool GDropList::DropByInteract_Mortal(CID nBeneficiaryCID,int nLootID)
 {
 	return DropByInteract(nBeneficiaryCID, nLootID, false);
 }
 
-bool GDropList::DropByInteract_Immortal(int nBeneficiaryCID,int nLootID)
+bool GDropList::DropByInteract_Immortal(CID nBeneficiaryCID,int nLootID)
 {
 	return DropByInteract(nBeneficiaryCID, nLootID, true);
 }
 
-bool GDropList::DropByInteract(int nBeneficiaryCID, int nLootID, bool bImmortal)
+bool GDropList::DropByInteract(CID nBeneficiaryCID, int nLootID, bool bImmortal)
 {
 	if (true == bImmortal)
 	{
@@ -148,7 +148,7 @@ bool GDropList::IsEmpty()
 	return true;
 }
 
-bool GDropList::IsAuthorizedCID( int nCID )
+bool GDropList::IsAuthorizedCID( CID nCID )
 {
 	if (true == m_pDropMoney->IsAuthorizedCID(nCID)) return true;
 	if (true == m_pDropItems->IsAuthorizedCID(nCID)) return true;
@@ -162,7 +162,7 @@ bool GDropList::IsAuthorizedCID( int nCID )
 	return false;
 }
 
-bool GDropList::IsViewableCID( int nCID )
+bool GDropList::IsViewableCID( CID nCID )
 {
 	if (true == m_pDropMoney->IsAuthorizedCID(nCID)) return true;
 	if (true == m_pDropItems->IsViewableCID(nCID)) return true;
@@ -196,7 +196,7 @@ bool GDropList::IsDropByInteract_Immortal()
 	return DC_INTERACT_IMMORTAL == m_nDropCause;
 }
 
-bool GDropList::IsBeneficiaryCID( int nCID )
+bool GDropList::IsBeneficiaryCID( CID nCID )
 {
 	if (m_setBeneficiaryCID.end() == m_setBeneficiaryCID.find(nCID)) return false;
 
@@ -204,12 +204,12 @@ bool GDropList::IsBeneficiaryCID( int nCID )
 }
 
 
-void GDropList::GetViewableCID(set<int>& outsetViewableCID)
+void GDropList::GetViewableCID(set<CID>& outsetViewableCID)
 {
 	m_pDropItems->GetViewableCID(outsetViewableCID);
 	m_pDropMoney->GetViewableCID(outsetViewableCID);
 
-	for each (int each in m_setBeneficiaryCID)
+	for each (CID each in m_setBeneficiaryCID)
 	{
 		if (m_pOwner->IsBPart() &&
 			IsBeneficiaryCID(each))
@@ -235,7 +235,7 @@ GDropSouls& GDropList::GetDropSouls()
 	return (*m_pDropSouls);
 }
 
-const set<int>& GDropList::GetBeneficiaryCID()
+const set<CID>& GDropList::GetBeneficiaryCID()
 {
 	return m_setBeneficiaryCID;
 }
@@ -245,12 +245,12 @@ void GDropList::SetDropCause(DROP_CAULE nDropCause)
 	m_nDropCause = nDropCause;
 }
 
-int GDropList::GetMasterCID()
+CID GDropList::GetMasterCID()
 {
 	return m_nMasterCID;
 }
 
-void GDropList::InsertBeneficiaryCID(int nCID)
+void GDropList::InsertBeneficiaryCID(CID nCID)
 {
 	m_setBeneficiaryCID.insert(nCID);
 }

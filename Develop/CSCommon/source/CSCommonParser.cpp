@@ -48,7 +48,10 @@ bool CSModifierParser::Parse_ActorModifier( MXmlElement* pElement, CSActorModifi
 	_Attribute(&outActorModifier.nSTAMax.fPer,		pElement, XML_ATTR_MOD_STA_MAX_AMP);
 
 	_Attribute(&outActorModifier.fMoveSpeed,		pElement, XML_ATTR_MOD_MOVE_SPEED);
-	_Attribute(&outActorModifier.fRideSpeed,		pElement, XML_ATTR_MOD_RIDE_SPEED);
+	_Attribute(&outActorModifier.fBattleMoveSpeed,	pElement, XML_ATTR_MOD_BATTLE_MOVE_SPEED);
+	_Attribute(&outActorModifier.fAttackSpeed,		pElement, XML_ATTR_MOD_ATTACK_SPEED);
+	_Attribute(&outActorModifier.fCastSpeed,		pElement, XML_ATTR_MOD_CAST_SPEED);
+
 	_Attribute(&outActorModifier.nHPRegen.nMod,		pElement, XML_ATTR_MOD_HP_REGEN);
 	_Attribute(&outActorModifier.nENRegen.nMod,		pElement, XML_ATTR_MOD_EN_REGEN);
 	_Attribute(&outActorModifier.nSTARegen.nMod,	pElement, XML_ATTR_MOD_STA_REGEN);
@@ -56,8 +59,7 @@ bool CSModifierParser::Parse_ActorModifier( MXmlElement* pElement, CSActorModifi
 	_Attribute(&outActorModifier.nENRegen.fPer,		pElement, XML_ATTR_MOD_EN_REGEN_AMP);
 	_Attribute(&outActorModifier.nSTARegen.fPer,	pElement, XML_ATTR_MOD_STA_REGEN_AMP);
 
-	_Attribute(&outActorModifier.fMeleeDamageAmp,	pElement, XML_ATTR_MOD_MELEE_ATK_AMP);
-	_Attribute(&outActorModifier.fRangeDamageAmp,	pElement, XML_ATTR_MOD_RANGE_ATK_AMP);
+	_Attribute(&outActorModifier.fPhysicDamageAmp,	pElement, XML_ATTR_MOD_PHYSIC_ATK_AMP);
 	_Attribute(&outActorModifier.fMagicDamageAmp,	pElement, XML_ATTR_MOD_MAGIC_ATK_AMP);
 
 	_Attribute(&outActorModifier.fDefenceAmp[DA_SLASH],		pElement, XML_ATTR_MOD_DEF_SLASH_AMP);
@@ -76,23 +78,25 @@ bool CSModifierParser::Parse_ActorModifier( MXmlElement* pElement, CSActorModifi
 	
 	_Attribute(&outActorModifier.nAP.fPer,			pElement, XML_ATTR_MOD_AP_RATE);
 
-	_Attribute(&outActorModifier.fMeleeDodgeAmp,	pElement, XML_ATTR_MOD_MELEE_DODGE_AMP);
-	_Attribute(&outActorModifier.fRangeDodgeAmp,	pElement, XML_ATTR_MOD_RANGE_DODGE_AMP);
-	_Attribute(&outActorModifier.fMagicDodgeAmp,	pElement, XML_ATTR_MOD_MAGIC_DODGE_AMP);
-	_Attribute(&outActorModifier.fMeleeHitRateAmp, 	pElement, XML_ATTR_MOD_MELEE_HIT_RATE_AMP);
-	_Attribute(&outActorModifier.fRangeHitRateAmp, 	pElement, XML_ATTR_MOD_RANGE_HIT_RATE_AMP);
-	_Attribute(&outActorModifier.fMagicHitRateAmp, 	pElement, XML_ATTR_MOD_MAGIC_HIT_RATE_AMP);
+	_Attribute(&outActorModifier.fPhysicDodgeAmp,		pElement, XML_ATTR_MOD_PHYSIC_DODGE_AMP);
+	_Attribute(&outActorModifier.fMagicDodgeAmp,		pElement, XML_ATTR_MOD_MAGIC_DODGE_AMP);
+	_Attribute(&outActorModifier.fPhysicHitRateAmp, 	pElement, XML_ATTR_MOD_PHYSIC_HIT_RATE_AMP);
+	_Attribute(&outActorModifier.fMagicHitRateAmp, 		pElement, XML_ATTR_MOD_MAGIC_HIT_RATE_AMP);
 
-	_Attribute(&outActorModifier.fCriticalAmp,		pElement, XML_ATTR_MOD_CRITICAL_AMP);
-	_Attribute(&outActorModifier.fCriticalMeleeAmp,	pElement, XML_ATTR_MOD_CRITICAL_MELEE_AMP);
-	_Attribute(&outActorModifier.fCriticalRangeAmp,	pElement, XML_ATTR_MOD_CRITICAL_RANGE_AMP);
-	_Attribute(&outActorModifier.fCriticalMagicAmp,	pElement, XML_ATTR_MOD_CRITICAL_MAGIC_AMP);
+	_Attribute(&outActorModifier.fCriticalAmp,			pElement, XML_ATTR_MOD_CRITICAL_AMP);
+	_Attribute(&outActorModifier.fCriticalPhysicAmp,	pElement, XML_ATTR_MOD_CRITICAL_PHYSIC_AMP);
+	_Attribute(&outActorModifier.fCriticalMagicAmp,		pElement, XML_ATTR_MOD_CRITICAL_MAGIC_AMP);
 
-	_Attribute(&outActorModifier.fCriticalMeleeAmpForMe,	pElement, XML_ATTR_MOD_CRITICAL_MELEE_AMP_FORME);
+	_Attribute(&outActorModifier.fCriticalPhysicAmpForMe,	pElement, XML_ATTR_MOD_CRITICAL_PHYSIC_AMP_FORME);
+	_Attribute(&outActorModifier.fCriticalMagicAmpForMe, pElement, XML_ATTR_MOD_CRITICAL_MAGIC_AMP_FORME);
 
-	_Attribute(&outActorModifier.fCriticalMeleeDamageAmp,	pElement, XML_ATTR_MOD_CRITICAL_MELEE_DAMAGE_AMP);
-	_Attribute(&outActorModifier.fCriticalRangeDamageAmp,	pElement, XML_ATTR_MOD_CRITICAL_RANGE_DAMAGE_AMP);
-	_Attribute(&outActorModifier.fCriticalMagicDamageAmp,	pElement, XML_ATTR_MOD_CRITICAL_MAGIC_DAMAGE_AMP);
+	_Attribute(&outActorModifier.fCriticalPhysicDamageAmp,		pElement, XML_ATTR_MOD_CRITICAL_PHYSIC_DAMAGE_AMP);
+	_Attribute(&outActorModifier.fCriticalPhysicDamageAmpForMe, pElement, XML_ATTR_MOD_CRITICAL_PHYSIC_DAMAGE_AMP_FORME);
+	_Attribute(&outActorModifier.fCriticalMagicDamageAmp,		pElement, XML_ATTR_MOD_CRITICAL_MAGIC_DAMAGE_AMP);
+	_Attribute(&outActorModifier.fCriticalMagicDamageAmpForMe,	pElement, XML_ATTR_MOD_CRITICAL_MAGIC_DAMAGE_AMP_FORME);
+
+	_Attribute(&outActorModifier.fHealAmp,		pElement, XML_ATTR_MOD_HEAL_AMP);
+	_Attribute(&outActorModifier.fHealAmpForMe, pElement, XML_ATTR_MOD_HEAL_AMP_FORME);
 
 	_Attribute(&outActorModifier.MotionFactorValue[MF_BEATEN].nMod,		pElement, NPC_XML_ATTR_BEATEN_MOD_VALUE);
 	_Attribute(&outActorModifier.MotionFactorValue[MF_KNOCKBACK].nMod,	pElement, NPC_XML_ATTR_KNOCKBACK_MOD_VALUE);
@@ -164,9 +168,86 @@ bool CSModifierParser::Parse_ActorModifier( MXmlElement* pElement, CSActorModifi
 		outActorModifier.nResistances[TRT_UR].fPer = fResistValue;
 	}
 
-	_Attribute(&outActorModifier.fModMeleePene, pElement, XML_ATTR_MOD_MELEE_PENE);
-	_Attribute(&outActorModifier.fModRangePene, pElement, XML_ATTR_MOD_RANGE_PENE);
-	_Attribute(&outActorModifier.fModMagicPene, pElement, XML_ATTR_MOD_MAGIC_PENE);
+	// Attribute Damage AP - constant
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_HOLY_AP))
+	{
+		outActorModifier.nHolyAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_UNHOLY_AP))
+	{
+		outActorModifier.nUnholyAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_FIRE_AP))
+	{
+		outActorModifier.nFireAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_COLD_AP))
+	{
+		outActorModifier.nColdAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_LIGHTNING_AP))
+	{
+		outActorModifier.nLightningAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_POISON_AP))
+	{
+		outActorModifier.nPoisonAP.nMod = nResistValue;
+	}
+
+	// Attribute Damage AP - percentage
+	if (_Attribute(&fResistValue, pElement, XML_ATTR_MOD_HOLY_AP_RATE))
+	{
+		outActorModifier.nHolyAP.fPer = fResistValue;
+	}
+	if (_Attribute(&fResistValue, pElement, XML_ATTR_MOD_UNHOLY_AP_RATE))
+	{
+		outActorModifier.nUnholyAP.fPer = fResistValue;
+	}
+	if (_Attribute(&fResistValue, pElement, XML_ATTR_MOD_FIRE_AP_RATE))
+	{
+		outActorModifier.nFireAP.fPer = fResistValue;
+	}
+	if (_Attribute(&fResistValue, pElement, XML_ATTR_MOD_COLD_AP_RATE))
+	{
+		outActorModifier.nColdAP.fPer = fResistValue;
+	}
+	if (_Attribute(&fResistValue, pElement, XML_ATTR_MOD_LIGHTNING_AP_RATE))
+	{
+		outActorModifier.nLightningAP.fPer = fResistValue;
+	}
+	if (_Attribute(&fResistValue, pElement, XML_ATTR_MOD_POISON_AP_RATE))
+	{
+		outActorModifier.nPoisonAP.fPer = fResistValue;
+	}
+
+	// Attribute Magic Damage AP - constant
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_HOLY_MAGIC_AP))
+	{
+		outActorModifier.nHolyMagicAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_UNHOLY_MAGIC_AP))
+	{
+		outActorModifier.nUnholyMagicAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_FIRE_MAGIC_AP))
+	{
+		outActorModifier.nFireMagicAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_COLD_MAGIC_AP))
+	{
+		outActorModifier.nColdMagicAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_LIGHTNING_MAGIC_AP))
+	{
+		outActorModifier.nLightningMagicAP.nMod = nResistValue;
+	}
+	if (_Attribute(&nResistValue, pElement, XML_ATTR_MOD_POISON_MAGIC_AP))
+	{
+		outActorModifier.nPoisonMagicAP.nMod = nResistValue;
+	}
+
+	_Attribute(&outActorModifier.fModPhysicPene, pElement, XML_ATTR_MOD_PHYSIC_PENE);
+	_Attribute(&outActorModifier.fModMagicPene,  pElement, XML_ATTR_MOD_MAGIC_PENE);
 
 
 	// Ã¤Áý
@@ -207,6 +288,16 @@ bool CSModifierParser::Parse_PlayerModifier( MXmlElement* pElement, CSPlayerModi
 	_Attribute(&outPlayerModifier.nCON.fPer,			pElement, XML_ATTR_MOD_CON_RATE);
 	_Attribute(&outPlayerModifier.nCHA.fPer,			pElement, XML_ATTR_MOD_CHA_RATE);
 	_Attribute(&outPlayerModifier.nINT.fPer,			pElement, XML_ATTR_MOD_INT_RATE);
+
+	_Attribute(&outPlayerModifier.fRideSpeed,			pElement, XML_ATTR_MOD_RIDE_SPEED);
+
+	_Attribute(&outPlayerModifier.fPVPDamage,			pElement, XML_ATTR_MOD_PVP_DAMAGE);
+	_Attribute(&outPlayerModifier.nPVPAP.nMod,			pElement, XML_ATTR_MOD_PVP_AP);
+
+	_Attribute(&outPlayerModifier.fEXPRate,				pElement, XML_ATTR_MOD_EXP_RATE);
+	_Attribute(&outPlayerModifier.fDropMoneyAmount,		pElement, XML_ATTR_MOD_DROP_MONEY_AMOUNT);
+	_Attribute(&outPlayerModifier.fDropItemRate,		pElement, XML_ATTR_MOD_DROP_ITEM_RATE);
+	_Attribute(&outPlayerModifier.fDropItemAmount,		pElement, XML_ATTR_MOD_DROP_ITEM_AMOUNT);
 
 	return true;
 }

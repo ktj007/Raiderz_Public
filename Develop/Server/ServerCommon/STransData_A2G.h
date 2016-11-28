@@ -15,7 +15,7 @@ struct TDAG_CHAT_CHANNEL_INFO
 struct TDAG_CHAT_CHANNEL_PLAYER_INFO
 {
 	MUID		uidChannel;
-	int			nCID;
+	CID			nCID;
 	int			nGameServer;
 };
 

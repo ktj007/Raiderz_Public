@@ -30,6 +30,7 @@ void GNPCShopShower::Route(GEntityPlayer* pPlayer, GNPCShopInfo* pNPCShopInfo)
 	FACTION_RELATION_TYPE nFRT = pPlayer->GetPlayerFactions().GetRelation(pNPCShopInfo->m_nFactionID);
 	float fBuyMod = CSNPCShopCalculator::CalcBuyMod(pNPCShopInfo->m_fBaseBuyMod, nFRT);
 	float fSellMod = CSNPCShopCalculator::CalcSellMod(pNPCShopInfo->m_fBaseSellMod, nFRT);
+	float fRepairMod = CSNPCShopCalculator::CalcRepairMod(1.f, nFRT);	// TODO: repair price mod
 
 	vector<int> vecBuyableUsableItemID;
 	vector<int> vecBuyableUnusableItemID;
@@ -37,13 +38,14 @@ void GNPCShopShower::Route(GEntityPlayer* pPlayer, GNPCShopInfo* pNPCShopInfo)
 	CategorizeShopItem(pPlayer, pNPCShopInfo, vecBuyableUsableItemID, vecBuyableUnusableItemID, vecUnbuyableItemID);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_NPCSHOP_SHOW, 
-		6, 
+		7, 
 		NEW_BLOB(vecBuyableUsableItemID),
 		NEW_BLOB(vecBuyableUnusableItemID),
 		NEW_BLOB(vecUnbuyableItemID),
 		NEW_FLOAT(fBuyMod),
 		NEW_FLOAT(fSellMod),
-		NEW_BOOL(pNPCShopInfo->m_bRepairable));
+		NEW_BOOL(pNPCShopInfo->m_bRepairable),
+		NEW_FLOAT(fRepairMod));
 
 	pPlayer->RouteToMe(pNewCmd);
 }

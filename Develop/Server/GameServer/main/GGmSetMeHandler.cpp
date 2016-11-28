@@ -33,9 +33,6 @@ bool GGmSetMeHandler::Handle(GEntityPlayer* pPlayer, wstring strType, wstring st
 
 	strType = GStrings::StringToLower(strType);
 
-	if(pPlayer->GetPlayerGrade() == PLAYER_GRADE_NORMAL)
-		return false;
-
 	if (IsRunForTest())
 	{
 		if (strType != L"grade")

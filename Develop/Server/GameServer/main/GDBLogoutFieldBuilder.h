@@ -14,6 +14,7 @@ public :
 	void	Build();
 
 	vec3&	GetPlayerPos();
+	vec3&	GetPlayerDir();
 	int		GetSharedFieldID();
 	MUID&	GetDyanmicFieldGroupUID();
 	int		GetDynamicFieldID();
@@ -25,6 +26,7 @@ private :
 	bool	IsEnteringToOtherField();
 	bool	SetField();
 	void	SetPlayerPos();
+	void	SetPlayerDir();
 	void	SetSharedFieldID();
 	void	SetDyanmicField();
 
@@ -43,6 +45,7 @@ private :
 	GField*					m_pField;
 
 	vec3					m_vPlayerPos;
+	vec3					m_vPlayerDir;
 	int						m_nSharedFieldID;
 	LOGOUT_DYANMICFIELD		m_Field;
 };

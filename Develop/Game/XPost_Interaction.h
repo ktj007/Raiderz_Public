@@ -13,7 +13,7 @@ inline void XPostInteraction_Interaction(const MUID& uidTarget, vec3 vTalkerPos,
 
 inline void XPostNPCInteraction_IE(const MUID& uidItem, int nID)
 {
-	XPOSTCMD2(MC_NPCINTERACTION_IELEMENT_REQ, MCommandParameterUID(uidItem), MCommandParameterInt(nID));
+	XPOSTCMD2(MC_NPCINTERACTION_SELECT_IELEMENT_REQ, MCommandParameterUID(uidItem), MCommandParameterInt(nID));
 }
 
 inline void XPostNPCInteraction_End()

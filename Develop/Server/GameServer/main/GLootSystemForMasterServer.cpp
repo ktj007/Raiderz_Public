@@ -14,9 +14,9 @@ GLootSystemForMasterServer::~GLootSystemForMasterServer(void)
 {
 }
 
-void GLootSystemForMasterServer::MasterLootNotify(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify)
+void GLootSystemForMasterServer::MasterLootNotify(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify)
 {
-	for each (int nBeneficiaryCID in vecBeneficiaryCID)
+	for each (CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL == pPlayer) continue;
@@ -29,9 +29,9 @@ void GLootSystemForMasterServer::MasterLootNotify(const vector<int>& vecBenefici
 	}
 }
 
-void GLootSystemForMasterServer::OtherGainItem(const vector<int>& vecBeneficiaryCID, const MUID& nGainerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem)
+void GLootSystemForMasterServer::OtherGainItem(const vector<CID>& vecBeneficiaryCID, const MUID& nGainerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem)
 {
-	for each (int nBeneficiaryCID in vecBeneficiaryCID)
+	for each (CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL == pPlayer) continue;
@@ -45,7 +45,7 @@ void GLootSystemForMasterServer::OtherGainItem(const vector<int>& vecBeneficiary
 	}
 }
 
-void GLootSystemForMasterServer::GettableItemAdd(int nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd)
+void GLootSystemForMasterServer::GettableItemAdd(CID nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd)
 {
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 	if (NULL == pPlayer) return;
@@ -57,9 +57,9 @@ void GLootSystemForMasterServer::GettableItemAdd(int nBeneficiaryCID, const vect
 	pPlayer->RouteToMe(pNewCmd);
 }
 
-void GLootSystemForMasterServer::RollResult(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult)
+void GLootSystemForMasterServer::RollResult(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult)
 {
-	for each (int nBeneficiaryCID in vecBeneficiaryCID)
+	for each (CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL == pPlayer) continue;

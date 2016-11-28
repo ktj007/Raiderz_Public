@@ -19,7 +19,7 @@ protected:
 	uint32		m_nEnterKey;
 
 	// account Á¤º¸
-	uint32		m_nAID;
+	AID			m_nAID;
 	wstring		m_strUserID;
 
 public:
@@ -32,7 +32,7 @@ public:
 	uint32	GetEnterKey()			{ return m_nEnterKey; }
 	uint32	GetReserveTime()		{ return m_nReserveTime; }
 
-	uint32	GetAID()				{ return m_nAID; }
+	AID	GetAID()					{ return m_nAID; }
 	wstring& GetUserID()				{ return m_strUserID; }
 	
 	virtual void OnTimeout() = 0;

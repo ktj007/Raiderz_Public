@@ -196,9 +196,9 @@ void GServer::SetDsnFactory()
 {
 	SDsnFactory::GetInstance().Set(
 		new SDefaultDsnFactory(
-		mdb::MDatabaseDesc()
-		, mdb::MDatabaseDesc(GConfig::m_strOdbcDriver, GConfig::m_strGameDB_Server, GConfig::m_strGameDB_DatabaseName, GConfig::m_strGameDB_UserName, GConfig::m_strGameDB_Password)
-		, mdb::MDatabaseDesc(GConfig::m_strOdbcDriver, GConfig::m_strLogDB_Server, GConfig::m_strLogDB_DatabaseName, GConfig::m_strLogDB_UserName, GConfig::m_strLogDB_Password)));
+		mdb::MDatabaseDesc(GConfig::m_strOdbcDriver, GConfig::m_AccountDBConfig.strServer, GConfig::m_AccountDBConfig.strDBName, GConfig::m_AccountDBConfig.strUserName, GConfig::m_AccountDBConfig.strPassword)
+		, mdb::MDatabaseDesc(GConfig::m_strOdbcDriver, GConfig::m_GameDBConfig.strServer, GConfig::m_GameDBConfig.strDBName, GConfig::m_GameDBConfig.strUserName, GConfig::m_GameDBConfig.strPassword)
+		, mdb::MDatabaseDesc(GConfig::m_strOdbcDriver, GConfig::m_LogDBConfig.strServer, GConfig::m_LogDBConfig.strDBName, GConfig::m_LogDBConfig.strUserName, GConfig::m_LogDBConfig.strPassword)));
 }
 
 bool GServer::InitDB()

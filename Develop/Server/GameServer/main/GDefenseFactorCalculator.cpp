@@ -36,8 +36,10 @@ DAMAGE_ATTRIB GDefenseFactorCalculator::GetItemDamageAttrib( WEAPON_TYPE nWeapon
 	case WEAPON_1H_BLUNT: return DA_BLUNT;
 	case WEAPON_1H_PIERCE: return DA_PIERCE;
 	case WEAPON_TWO_HANDED: return DA_SLASH;
+	case WEAPON_2H_BLUNT: return DA_BLUNT;
 	case WEAPON_STAFF: return DA_BLUNT;
 	case WEAPON_ARCHERY: return DA_SLASH;
+	case WEAPON_DUAL_PIERCE: return DA_PIERCE;
 	}
 
 	return DA_NONE;

@@ -63,7 +63,7 @@ void GDBTaskMailWrite::OnExecute(mdb::MDatabase& rfDB)
 	
 	// 공통 결과
 	m_Result.m_mailResult.m_nAID = rs.Field("RCVR_ACCN_ID").AsInt64();
-	m_Result.m_mailResult.m_nCID = rs.Field("RCVR_CHAR_ID").AsInt64();
+	m_Result.m_mailResult.m_nCID = rs.Field("RCVR_CHAR_SN").AsInt64();
 	m_Result.m_mailResult.m_nMailUID = rs.Field("MAIL_ID").AsInt64();
 
 
@@ -71,8 +71,8 @@ void GDBTaskMailWrite::OnExecute(mdb::MDatabase& rfDB)
 	int nCount = 0;
 	while(!rs.IsEOF() && nCount < MAX_MAIL_APPENDED_ITEM_COUNT)
 	{
-		m_Result.m_mailResult.m_nItemUID[nCount] = rs.Field("IUID").AsInt64();	
-		m_Result.m_mailResult.m_nNewItemUID[nCount] = rs.Field("NEW_IUID").AsInt64();			
+		m_Result.m_mailResult.m_nItemUID[nCount] = rs.Field("ITEM_SN").AsInt64();	
+		m_Result.m_mailResult.m_nNewItemUID[nCount] = rs.Field("NEW_ITEM_SN").AsInt64();			
 
 		nCount++;
 		rs.MoveNext();
@@ -136,7 +136,7 @@ mdb::MDB_THRTASK_RESULT GDBTaskMailWrite::_OnCompleted()
 
 
 	// AppServer 전달할 정보 설정
-	CID nCID = (CID)m_Result.m_mailResult.m_nCID;
+	CID nCID = m_Result.m_mailResult.m_nCID;
 
 	TD_MAIL_MAILBOX_MAIL_INFO info;
 	info.uidMail = m_Result.m_mailResult.m_nMailUID;

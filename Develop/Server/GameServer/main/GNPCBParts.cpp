@@ -216,7 +216,7 @@ void GNPCBParts::OnDie()
 
 	if (CSMotionFactorHelper::IsMovingMotionFactor(m_pOwner->GetCurrentMotionFactor()))
 	{
-		for (size_t i = 0; i < MAX_BREAKABLE_PARTS; i++)
+		for (uint8 i = 0; i < MAX_BREAKABLE_PARTS; i++)
 		{
 			if (IsBroken(i))
 				continue;

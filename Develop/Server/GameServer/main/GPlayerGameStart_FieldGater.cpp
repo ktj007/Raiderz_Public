@@ -43,11 +43,24 @@ bool GPlayerGameStart_FieldGater::Gate(GPlayerGameStart_State& PlayerGameStartSt
 
 bool GPlayerGameStart_FieldGater::FirstLogin()
 {
-	GFieldInfo* pFirstFieldInfo = gmgr.pFieldInfoMgr->Find(GConst::GetFirstEnterFieldID());
-	if (NULL == pFirstFieldInfo) return false;
+	static const int nFirstEnterFieldID = GConst::GetFirstEnterFieldID();
+	static const int nFirstEnterMarkerID = GConst::FIRST_ENTER_MARKER_ID;
 
-	const MARKER_INFO* pFirstMarker = pFirstFieldInfo->FindMarker(FIRST_ENTER_MARKER_ID);
-	if (NULL == pFirstMarker) return false;
+	const GFieldInfo* pFirstFieldInfo = gmgr.pFieldInfoMgr->Find(nFirstEnterFieldID);
+	if (NULL == pFirstFieldInfo)
+	{
+		mlog("GPlayerGameStart_FieldGater::FirstLogin() - first field info not found. (Field ID:%d, Tutorial:<%s>)\n",
+			nFirstEnterFieldID, GConst::TEST_ENABLE_TUTORIAL ? "Enabled" : "Disabled");
+		return false;
+	}
+
+	const MARKER_INFO* pFirstMarker = pFirstFieldInfo->FindMarker(nFirstEnterMarkerID);
+	if (NULL == pFirstMarker)
+	{
+		mlog("GPlayerGameStart_FieldGater::FirstLogin() - first marker info not found. (Field ID:%d, Marker ID:%d)\n",
+			nFirstEnterFieldID, nFirstEnterMarkerID);
+		return false;
+	}
 
 	return m_pOwner->GetPlayerField().GateToMarker(*pFirstMarker);
 }

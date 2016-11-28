@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SCommandCenter.h"
-#include "CCommandTable.h"
+#include "CCommandTable_GM.h"
 #include "SCommandLogger.h"
 
 SCommandCenter::SCommandCenter( MNetServer* netserver )
@@ -48,7 +48,7 @@ void SCommandCenter::SendCommand( MUID uidTarget, MCommand* pCommand )
 void SCommandCenter::IgnoreDebugCommandLog()
 {
 	m_pCommandLogger->IgnoreCommand(MC_DEBUG_STRING);
-	m_pCommandLogger->IgnoreCommand(MC_REQUEST_DEBUG_STRING);
+	m_pCommandLogger->IgnoreCommand(MC_DEBUG_STRING_REQ);
 }
 
 void SCommandCenter::LogCommand( MCommand* pCmd )

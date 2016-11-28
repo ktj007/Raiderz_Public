@@ -14,7 +14,7 @@ class GCharacterDBCache;
 class GPlayerDBCache : public MMemPool<GPlayerDBCache>
 {
 public :
-	GPlayerDBCache(const MUID& uidPlayer, const int nCID, GCharacterDBCache* pCacheChar = NULL);
+	GPlayerDBCache(const MUID& uidPlayer, const CID nCID, GCharacterDBCache* pCacheChar = NULL);
 	~GPlayerDBCache();
 
 	const MUID& GetUID() { return m_UID; }

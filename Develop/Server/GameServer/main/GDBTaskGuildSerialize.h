@@ -9,8 +9,8 @@
 
 struct GDBTASK_GUILD_MEMBER
 {
-	int64				nAID;
-	int64				nCID;
+	AID					nAID;
+	CID					nCID;
 	wstring				strCharName;
 	uint8				nLevel;
 	uint8				nGuildGrade;

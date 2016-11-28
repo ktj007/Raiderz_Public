@@ -49,12 +49,12 @@ void GDBCacheSystem::DeletePlayerCache( const MUID& uidPlayer )
 		return;
 
 	if (pcc->GetCharCc()->IsModified() || pcc->GetCharCc()->IsSyncing())
-		dlog("cache data must sync before delete character(%d)\n", pcc->GetCharCc()->GetCID());
+		dlog("cache data must sync before delete character(%I64d)\n", pcc->GetCharCc()->GetCID());
 	
 	for (GITEM_DBCACHE_MAP::iterator it = pcc->GetItemCcMgr().begin(); it != pcc->GetItemCcMgr().end(); ++it)
 	{
 		if (it->second->IsModified() || it->second->IsSyncing())
-			dlog("cache data must sync before delete item(CID:%d, IUID:%I64d)\n", pcc->GetCharCc()->GetCID(), it->second->GetIUID());
+			dlog("cache data must sync before delete item(CID:%I64d, IUID:%I64d)\n", pcc->GetCharCc()->GetCID(), it->second->GetIUID());
 
 		SAFE_DELETE(it->second);
 	}

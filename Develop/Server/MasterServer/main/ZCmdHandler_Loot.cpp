@@ -13,7 +13,7 @@ ZCmdHandler_Loot::ZCmdHandler_Loot(MCommandCommunicator* pCC) : MCommandHandler(
 
 MCommandResult ZCmdHandler_Loot::OnMasterLootNotifyReq(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	vector<TD_LOOT_MASTERLOOT_NOTIFY>	vecTDLootMasterLootNotify;
 
 	if (!pCommand->GetBlob(vecBeneficiaryCID,			0))	return CR_ERROR;
@@ -26,7 +26,7 @@ MCommandResult ZCmdHandler_Loot::OnMasterLootNotifyReq(MCommand* pCommand, MComm
 
 MCommandResult ZCmdHandler_Loot::OnOtherGainItemReq(MCommand* pCommand, MCommandHandler* pHandler)
 {	
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	MUID nPlayerUID;
 	vector<TD_LOOT_OTHERGAIN_ITEM> vecTDOtherGainItem;
 
@@ -41,10 +41,10 @@ MCommandResult ZCmdHandler_Loot::OnOtherGainItemReq(MCommand* pCommand, MCommand
 
 MCommandResult ZCmdHandler_Loot::OnGettableItemAddReq(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nBeneficiaryCID;
+	CID nBeneficiaryCID;
 	vector<TD_LOOT_GETTABLE_ITEM_ADD> vecTDGettableItemAdd;
 
-	if (!pCommand->GetParameter(&nBeneficiaryCID,	1, MPT_INT))return CR_ERROR;
+	if (!pCommand->GetParameter(&nBeneficiaryCID,	1, MPT_INT64))return CR_ERROR;
 	if (!pCommand->GetBlob(vecTDGettableItemAdd,	0))			return CR_ERROR;
 	
 	gsys.pLootLogic->GettableItemAddReq(nBeneficiaryCID, vecTDGettableItemAdd);
@@ -54,7 +54,7 @@ MCommandResult ZCmdHandler_Loot::OnGettableItemAddReq(MCommand* pCommand, MComma
 
 MCommandResult ZCmdHandler_Loot::OnRollResultReq(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	vector<TD_LOOT_ROLL_ITEM> vecTDRollItem;
 	vector<TD_LOOT_ROLL_RESULT> vecTDRollResult;
 

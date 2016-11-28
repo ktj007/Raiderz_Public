@@ -2,6 +2,10 @@
 #include "MTCPSocket.h"
 #include "MDebug.h"
 
+#if (_MSC_VER >= 1900)
+#include <WS2tcpip.h>
+#endif
+
 namespace minet {
 
 
@@ -621,7 +625,15 @@ bool MTCPSocket::Connect( const char* szRemoteIP, int nPort, const char* szMyNet
 	sockaddr_in ServerAddr;
 	ZeroMemory(&ServerAddr, sizeof(ServerAddr));
 
+#if (_MSC_VER >= 1900)
+	DWORD	dwAddr = INADDR_NONE;
+	IN_ADDR inAddr;
+
+	if (inet_pton(AF_INET, szRemoteIP, &inAddr))
+		dwAddr = inAddr.s_addr;
+#else
 	DWORD dwAddr = inet_addr(szRemoteIP);
+#endif
 	if (dwAddr != INADDR_NONE) 
 	{
 		memcpy(&(ServerAddr.sin_addr), &dwAddr, 4);
@@ -629,13 +641,28 @@ bool MTCPSocket::Connect( const char* szRemoteIP, int nPort, const char* szMyNet
 	else 
 	{		
 		// 연결할 host name을 입력한 경우
+#if (_MSC_VER >= 1900)
+		ADDRINFO* pAddrInfo;
+
+		ADDRINFO AddrHints = { 0 };
+		AddrHints.ai_family		= AF_INET;
+		AddrHints.ai_protocol	= IPPROTO_TCP;
+		AddrHints.ai_socktype	= SOCK_STREAM;
+		
+		if (getaddrinfo(szRemoteIP, NULL, &AddrHints, &pAddrInfo) != 0)
+#else
 		HOSTENT* pHost = gethostbyname(szRemoteIP);
 		if (pHost == NULL)	// error
+#endif
 		{	
 			minet_log("<TCPSOCKET_ERROR> Can't resolve hostname </TCPSOCKET_ERROR>");
 			return false;
 		}
+#if (_MSC_VER >= 1900)
+		ServerAddr.sin_addr = ((SOCKADDR_IN*)pAddrInfo->ai_addr)->sin_addr;
+#else
 		memcpy((char FAR *)&(ServerAddr.sin_addr), pHost->h_addr, pHost->h_length);
+#endif
 	}
 
 	ServerAddr.sin_family = AF_INET;
@@ -677,17 +704,40 @@ bool MTCPSocket::BindSocket( const char* szMyNetworkCardIP )
 		return false;
 	}
 
+#if (_MSC_VER >= 1900)
+	DWORD	dwAddr = INADDR_NONE;
+	IN_ADDR inAddr;
+
+	if (inet_pton(AF_INET, szMyNetworkCardIP, &inAddr))
+		dwAddr = inAddr.s_addr;
+#else
 	DWORD dwAddr = inet_addr(szMyNetworkCardIP);
+#endif
 	if (INADDR_NONE == dwAddr)
 	{
 		// 연결할 host name을 입력한 경우
+#if (_MSC_VER >= 1900)
+		ADDRINFO* pAddrInfo;
+
+		ADDRINFO AddrHints = { 0 };
+		AddrHints.ai_family		= AF_INET;
+		AddrHints.ai_protocol	= IPPROTO_TCP;
+		AddrHints.ai_socktype	= SOCK_STREAM;
+
+		if (getaddrinfo(szMyNetworkCardIP, NULL, &AddrHints, &pAddrInfo) != 0)
+#else
 		HOSTENT* pHost = gethostbyname(szMyNetworkCardIP);
 		if (pHost == NULL)	// error
+#endif
 		{
 			minet_log("minet> MTCPSocket::BindSocket(), Can't resolve hostname (Input=\"%s\")\n", szMyNetworkCardIP);
 			return false;
 		}
+#if (_MSC_VER >= 1900)
+		dwAddr = ((SOCKADDR_IN*)pAddrInfo->ai_addr)->sin_addr.s_addr;
+#else
 		memcpy((char FAR *)&(dwAddr), pHost->h_addr, pHost->h_length);
+#endif
 	}
 
 	sockaddr_in ClientAddr;
@@ -701,7 +751,13 @@ bool MTCPSocket::BindSocket( const char* szMyNetworkCardIP )
 		int nLastError = WSAGetLastError();
 		if(nLastError == WSAEADDRINUSE)
 		{
-			minet_log("minet> client socket address already in use (ip=\"%s\":port=%d) \n", inet_ntoa(ClientAddr.sin_addr), ntohs(ClientAddr.sin_port));
+			char szClientIP[64] = "";
+#if (_MSC_VER >= 1900)
+			inet_ntop(AF_INET, &ClientAddr.sin_addr, szClientIP, 64);
+#else
+			strcpy_s(szClientIP, inet_ntoa(ClientAddr.sin_addr));
+#endif
+			minet_log("minet> client socket address already in use (ip=\"%s\":port=%d) \n", szClientIP, ntohs(ClientAddr.sin_port));
 		}
 		minet_log("minet> client socket bind: (error=%d)\n", nLastError);
 		return false;

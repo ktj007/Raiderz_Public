@@ -88,6 +88,18 @@ GUARD_TYPE GuardEffector::GetGuardLevel( GEntityActor* pGuarder, GEntityActor* p
 	return GT_INVALID;
 }
 
+GUARD_TYPE GuardEffector::GetGuardLevel( GEntityActor* pGuarder, GEntityActor* pAttacker, GTalentInfo* pAttackTalentInfo, int nDamage )
+{
+	GUARD_TYPE nGuardType = GetGuardLevel(pGuarder, pAttacker, pAttackTalentInfo);
+
+	if (nGuardType == GT_PERFECT && CheckAbsoluteGuard(pGuarder, pAttacker, nDamage))
+	{
+		return GT_ABSOLUTE;
+	}
+
+	return nGuardType;
+}
+
 bool GuardEffector::IsTryGuard( GEntityActor* pGuarder )
 {
 	VALID_RET(pGuarder, false);
@@ -146,6 +158,29 @@ bool GuardEffector::CheckPerfectGuard(GEntityActor* pGuarder, GEntityActor* pAtt
 {
 	GPercentDice dice;
 	return dice.Dice(gsys.pCombatCalculator->CalcPerfectGuardRate(pAttacker, pGuarder));
+}
+
+bool GuardEffector::CheckAbsoluteGuard(GEntityActor* pGuarder, GEntityActor* pAttacker, int nDamage)
+{
+	if (nDamage <= 0) return true;
+
+	// todo: attribute damage.
+	float fRate = float(pGuarder->GetAP()) / float(nDamage) * 0.1f;
+
+	int nLevelDiff = pAttacker->GetLevel() - pGuarder->GetLevel();
+	if (nLevelDiff > 20)
+	{
+		// too much level distance, absolute guard disabled.
+		return false;
+	}
+	else if (nLevelDiff > 0)
+	{
+		// reduce rate due to level distance.
+		fRate *= 1.f - 0.05f * float(nLevelDiff);
+	}
+
+	GPercentDice dice;
+	return dice.Dice(fRate * 100.f);
 }
 
 int GuardEffector::CalcGuardedDamage(GEntityActor* pGuarder, GEntityActor* pAttacker, GUARD_TYPE nGuardType, int nDamage)

@@ -37,7 +37,7 @@ class GDuelMgr;
 class GFieldNPCSessionMgr;
 class GCombatMonitorPort;
 
-typedef tr1::unordered_map<int, GEntityPlayer*> MAP_PLYAERCID;
+typedef tr1::unordered_map<CID, GEntityPlayer*> MAP_PLYAERCID;
 
 /// 필드(맵)
 /// - GFIeld 이외의 다른 클래스에서 GEntityMgr, GWeatherMgr, GSectorMgr 클래스에 직접 접근은 할 수 없습니다.
@@ -75,7 +75,7 @@ public:
 	virtual bool		IsEnterable();
 	
 	GAME_WEATHER_TYPE	GetCurrentWeather();
-	GAME_TIME_TYPE		GetCurrentTime();
+	GAME_TIME_TYPE		(GetCurrentTime)();		// 2015-11-29: Visual C++ 2015 already defines another GetCurrentTime() macro so I've added brace here.
 	int					GetCurrentTimeDetail();
 
 	int					GetFatigueMod()	{ return m_nFatigueMod; }
@@ -86,7 +86,7 @@ public:
 	void				ReservedEnter(GEntityPlayer* pPlayer, vec3 vecDestPos, vec3 vecDestDir);
 	void				CancelPreservedEnter(GEntityPlayer* pPlayer);
 
-	void				RemovePlayerCID(int nCID);
+	void				RemovePlayerCID(CID nCID);
 
 	GSpawnManager*		GetSpawn() { return m_pSpawn; }
 	void				ChangeWeather(GAME_WEATHER_TYPE nWeatherType);
@@ -95,7 +95,7 @@ public:
 	// 엔티티 관련 함수 --------------------------------------
 	GEntity*		FindEntity(const MUID& uidEntity) const;
 	GEntityPlayer*	FindPlayer(const MUID& uidPlayer) const;
-	GEntityPlayer*	FindPlayerByCID(int nCID) const;
+	GEntityPlayer*	FindPlayerByCID(CID nCID) const;
 	GEntityNPC*		FindNPC(const MUID& uidNPC) const;
 	GEntityNPC*		FindNPC(const UIID nNPCUIID) const;
 	vector<GEntityNPC*>	FindNPCByID(int nNPCID) const;
@@ -175,6 +175,7 @@ public:
 	void		Despawn(int nNPCID, bool bSpawnEnable);
 	GEntityNPC* Despawn(unsigned long nSpawnID, bool bSpawnEnable);	
 	void		DespawnNow(int nNPCID, bool bSpawnEnable);
+	void		DespawnAll(bool bResetSpawnTime=false);
 	
 	GEntityNPC* GetSpawnNPC(unsigned long nSpawnID);
 	vec3 GetMarkerPos(int nMarkerID);

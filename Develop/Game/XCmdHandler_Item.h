@@ -18,6 +18,7 @@ protected:
 	DECL_CMD_HANDLER(OnAdd);
 	DECL_CMD_HANDLER(OnRemove);
 	DECL_CMD_HANDLER(OnChangeLookEquipItem);
+	DECL_CMD_HANDLER(OnChangeAndRemoveLookEquipItem);
 	DECL_CMD_HANDLER(OnChangeLookUnEquipItem);
 	DECL_CMD_HANDLER(OnSwitchingWeaponSet);
 	DECL_CMD_HANDLER(OnSwitchingWeaponSetBegin);

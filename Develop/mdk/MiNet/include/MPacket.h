@@ -21,8 +21,8 @@ class MPacketCrypter;
 struct MPacketHeader
 {
 	unsigned char	nMsg;
-	unsigned short	nSize;
 	unsigned short	nCheckSum;		// 체크섬. 마지막 4bit는 시리얼 번호 체크
+	unsigned int	nSize;
 
 	MPacketHeader() { nMsg=MSG_COMMAND; nSize=0; nCheckSum=0; }
 };

@@ -22,7 +22,7 @@ bool CStringResMgr::Init(const CLangNode& node, bool bIgnoteNonTranslationMark)
 	TCHAR szName[_MAX_PATH];
 
 	TCHAR szFilter[_MAX_PATH];
-	_stprintf_s(szFilter, _T("%s*.xml"), node.strPath);	
+	_stprintf_s(szFilter, _T("%s*.xml"), MLocale::ConvUTF16ToTCHAR(node.strPath.c_str()).c_str());
 
 	hFile = _tfindfirst( szFilter, &c_file );
 

@@ -206,7 +206,6 @@ void XBuffInfoMgr::ParseBuff(MXmlElement* pElement, MXml* pXml)
 	_Attribute(pNewInfo->m_szIcon,			pElement, BUFF_XML_ATTR_ICON);
 	_Attribute(&pNewInfo->m_nExtraActiveModelID, pElement, BUFF_XML_TAG_BUFF_EXTRA_ACTIVE_MODEL_ID);
 	_Attribute(pNewInfo->m_bShowHitReaction, pElement, BUFF_XML_TAG_BUFF_SHOW_HIT_REACTION);
-	_Attribute(pNewInfo->m_RideNPCID, pElement, BUFF_XML_TAG_BUFF_RIDENPCID );
 
 	CSMotionFactorParser::Parse(pElement, pNewInfo->m_MotionFactorGroup);
 

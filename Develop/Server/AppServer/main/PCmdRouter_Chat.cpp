@@ -134,7 +134,7 @@ minet::MCommand* PCmdRouter_Chat::MakeCmd_EnterChannel(CID cidPlayer, PChatChann
 
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MPC_MSG_ENTER_CHANNEL
 		, 2
-		, NEW_INT(cidPlayer)
+		, NEW_INT64(cidPlayer)
 		, NEW_SINGLE_BLOB(&tdCreatedChatChannelInfo, sizeof(tdCreatedChatChannelInfo))
 		);
 	return pNewCommand;
@@ -157,7 +157,7 @@ minet::MCommand* PCmdRouter_Chat::MakeCmd_LeaveChannel(CID cidPlayer, PChatChann
 
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MPC_MSG_LEAVE_CHANNEL
 		, 2
-		, NEW_INT(cidPlayer)
+		, NEW_INT64(cidPlayer)
 		, NEW_UID(uidChannel)
 		);
 	return pNewCommand;
@@ -176,7 +176,7 @@ minet::MCommand* PCmdRouter_Chat::MakeCmd_Kick(CID cidKickedPlayer, MUID uidChan
 {
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MPC_MSG_KICK
 		, 2
-		, NEW_INT(cidKickedPlayer)
+		, NEW_INT64(cidKickedPlayer)
 		, NEW_UID(uidChannel)
 		);
 	return pNewCommand;
@@ -194,7 +194,7 @@ minet::MCommand* PCmdRouter_Chat::MakeCmd_Ban(CID cidBanedPlayer, MUID uidChanne
 {
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MPC_MSG_BAN
 		, 2
-		, NEW_INT(cidBanedPlayer)
+		, NEW_INT64(cidBanedPlayer)
 		, NEW_UID(uidChannel)
 		);
 	return pNewCommand;
@@ -212,7 +212,7 @@ minet::MCommand* PCmdRouter_Chat::MakeCmd_UnbanRes(CID cidPlayer, MUID uidChanne
 {
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MPC_MSG_UNBAN_RES
 		, 3
-		, NEW_INT(cidPlayer)
+		, NEW_INT64(cidPlayer)
 		, NEW_UID(uidChannel)
 		, NEW_WSTR(strUnbanedPlayerName.c_str())
 		);
@@ -327,7 +327,7 @@ minet::MCommand* PCmdRouter_Chat::MakeCmd_DeletedChatPlayerInfo(MUID uidChannel,
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MPC_MSG_DELETED_PLAYER_INFO
 		, 2
 		, NEW_UID(uidChannel)
-		, NEW_INT(cidPlayer)
+		, NEW_INT64(cidPlayer)
 		);
 	return pNewCommand;
 }
@@ -335,7 +335,7 @@ minet::MCommand* PCmdRouter_Chat::MakeCmd_ChatPlayerGameServerInfo(CID cidPlayer
 {
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MPC_MSG_PLAYER_GAMESERVER_INFO
 		, 2
-		, NEW_INT(cidPlayer)
+		, NEW_INT64(cidPlayer)
 		, NEW_INT(nGameServerID)
 		);
 	return pNewCommand;

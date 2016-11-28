@@ -38,7 +38,7 @@ bool CSTalentInfo::IsNeedTarget() const
 
 bool CSTalentInfo::IsMagicDamage() const
 {
-	return (m_fWeaponApplyRate < 0.001f);
+	return (m_nCategory == TC_MAGIC);
 }
 
 void CSTalentInfo::Cooking()
@@ -83,30 +83,47 @@ void CSTalentInfo::Cooking()
 	}
 }
 
-bool CSTalentInfo::HasNextFocus()
+bool CSTalentInfo::HasNextFocus() const
 {
 	return m_nNextFocus != TFT_NONE;
 }
 
-bool CSTalentInfo::HasRequireFocus()
+bool CSTalentInfo::HasRequireFocus() const
 {
 	return m_nRequireFocus != TFT_NONE;
 }
 
-bool CSTalentInfo::HasDamage()
+bool CSTalentInfo::HasDamage() const
 {
-	return m_nMaxDamage > 0;
+	if (m_nMaxDamage > 0)
+		return true;
+
+	if (m_nUsableType == TUT_DAMAGE && m_WeaponApplyRate.fApplyRate > 0.f)
+		return true;
+
+	return false;
 }
 
-bool CSTalentInfo::HasHealEffect()
+bool CSTalentInfo::HasHealEffect() const
 {
-	return m_nMaxHeal > 0;
+	if (m_nMaxHeal > 0)
+		return true;
+
+	if (m_nUsableType == TUT_HEAL && m_WeaponApplyRate.fApplyRate > 0.f)
+		return true;
+
+	return false;
 }
 
-bool CSTalentInfo::HasMotionfactor()
+bool CSTalentInfo::HasMotionfactor() const
 {
 	if (m_MotionFactorGroup.IsModified())		return true;
 	return m_ActorModifier.IsMotionfactorModified();
+}
+
+bool CSTalentInfo::HasForceMF() const
+{
+	return m_nForceMF != MF_NONE;
 }
 
 CSTalentInfo::CSTalentInfo()
@@ -148,13 +165,13 @@ CSTalentInfo::CSTalentInfo()
 	m_nStyle = TS_NONE;
 	m_nExtraPassive = TEPT_NONE;
 	m_nExtraPassive2 = TEPT_NONE;
-	m_nExtraPassiveParam = 1;
-	m_nExtraPassiveParam2 = 1;
+	for (int i = 0; i < MAX_EXTRA_PASSIVE_PARAM_COUNT; i++)
+		m_nExtraPassiveParam[i] = m_nExtraPassiveParam2[i] = 1;
 	m_nExtraActive = TEAT_NONE;
 	m_nExtraActiveParam1 = 1;
 	m_nExtraActiveParam2 = 0;
 	m_nTiming = TC_USE_TALENT;
-	m_bIgnoreMesmerize = false;
+	m_nIgnoreMesmerize = TALENT_IGNORE_MESMERIZE_DISABLED;
 	m_bAvailableOnGuard = false;
 
 	m_nGuardDirection = GUARD_DIRECTION_FRONT;
@@ -194,7 +211,6 @@ CSTalentInfo::CSTalentInfo()
 	m_bUntrainable = true;
 
 	m_bCriticalEnable = false;
-	m_fWeaponApplyRate = 0.0f;
 	m_WeaponReference = WR_RIGHT;
 	m_fCriticalApplyRate = 1.0f;	
 	m_fExtraPhaseTime = 2.5f;
@@ -239,6 +255,30 @@ CSTalentInfo::CSTalentInfo()
 	m_nMovableType = MUT_NONE;
 
 	m_eTargetingType = TTT_STICKY;	
+
+	m_nDamageType = TDT_MAX;
+	m_nUsableType = TUT_NONE;
+	m_nPC_ShoveType = PST_INVALID;
+	m_nNPC_ShoveType = PST_INVALID;
+	m_nDamageSoundAttrib = DSA_INVALID;
+
+	m_nSkillIntensity = 0;
+	m_nComboTalentLine = 0;
+	m_fEffectRange = 0.f;
+	m_fHitBloodScale = 0.f;
+	m_fComboStartTime = 0;
+	m_fPC_ReturnAniStartTime = 0.f;
+	m_bUseIgnoreAllMFTime = false;
+	m_fIgnoreAllMFTimeStart = 0.f;
+	m_fIgnoreAllMFTimeEnd = 0.f;
+
+	m_bGuardKnockback = false;
+	m_bIgnoreMotionfactor = false;
+	m_bFreezeFrame = false;
+	m_bUseBloodEffect = false;
+	m_bShowLearnedTalent = false;
+	m_bShowEmoteMsg = false;
+	m_bArenaCooltimeResetable = true;
 }
 
 CSTalentInfo* CSTalentInfo::GetMode( int nMode )
@@ -302,6 +342,30 @@ bool CSTalentInfo::IsSelfRebirth() const
 	if (CSEffectInfo::RELATION_ALLIED_DEAD != m_EffectInfo.m_nRelation) return false;
 
 	return true;		
+}
+
+bool CSTalentInfo::IsComboRequired() const
+{
+	return !m_vecPrevComboTalentLine.empty();
+}
+
+bool CSTalentInfo::IsAbleToComboBy(int nByTalentLine) const
+{
+	if (!IsComboRequired())
+		return true;
+
+	for (size_t i = 0; i < m_vecPrevComboTalentLine.size(); i++)
+	{
+		if (m_vecPrevComboTalentLine[i] == nByTalentLine)
+			return true;
+	}
+
+	return false;
+}
+
+bool CSTalentInfo::IsReferredBy(int nByTalentLine) const
+{
+	return m_setReferredByLine.find(nByTalentLine) != m_setReferredByLine.end();
 }
 
 CSTalentHitInfo::CSTalentHitInfo() :

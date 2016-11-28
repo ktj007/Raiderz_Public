@@ -108,6 +108,7 @@ void GChallengerQuestMgr::Parse_Quest( Tier& tier, MXmlElement* pElement, MXml* 
 	{
 		if (each->nID == nID)
 		{
+			_VLOGGER->Log(_T(CQ_XML_ATTR_ID) IS_ALREADY_EXIST);
 			return;
 		}
 	}
@@ -223,7 +224,7 @@ void GChallengerQuestMgr::InitRandomSeed()
 	else
 	{
 		// 날짜 기반 랜덤시드
-		tm timeCurrent = GetCurrentTime();
+		tm timeCurrent = (GetCurrentTime)();
 		nSeed = timeCurrent.tm_year * timeCurrent.tm_mon * timeCurrent.tm_mday;
 	}
 
@@ -248,12 +249,12 @@ void GChallengerQuestMgr::Update( float fDelta )
 
 void GChallengerQuestMgr::SaveCurrentTime()
 {
-	m_timeLast = GetCurrentTime();
+	m_timeLast = (GetCurrentTime)();
 }
 
 bool GChallengerQuestMgr::CheckExpiredTime()
 {
-	tm timeCurrent = GetCurrentTime();
+	tm timeCurrent = (GetCurrentTime)();
 	if (m_timeLast.tm_mday == timeCurrent.tm_mday)
 		return false; // 같은 날
 
@@ -354,7 +355,7 @@ void GChallengerQuestMgr::OnChallengerQuestComplete( GEntityPlayer* pPlayer )
 }
 
 
-tm GChallengerQuestMgr::GetCurrentTime()
+tm (GChallengerQuestMgr::GetCurrentTime)()
 {
 	time_t rawtime;
 	struct tm * timeinfo;

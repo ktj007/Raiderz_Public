@@ -56,7 +56,7 @@ public:
 	void ClearField(void);
 
 	// Member
-	bool AddMember(MUID uidMember, wstring strMembersName, int nMemberCID);
+	bool AddMember(MUID uidMember, wstring strMembersName, CID nMemberCID);
 	void RemoveMember(MUID uidMember);
 	wstring FindName(MUID uidMember) const;
 	bool IsFull(void) const;
@@ -66,7 +66,7 @@ public:
 	int GetMemberCount(void) const;
 	bool SetLeader(MUID uidNewLeader);
 	MUID GetLeader(void) const;
-	int GetLeaderCID(void) const;
+	CID GetLeaderCID(void) const;
 	MUID FindCandidateForLeader(void) const;
 	MUID FindOfflineMember(wstring strMembersName) const;
 
@@ -79,13 +79,15 @@ public:
 
 	// Looting Rule
 	PARTY_SETTING GetPartySetting() const;
-	int GetRoundRobinLastOrderCID();
+	CID GetRoundRobinLastOrderCID();
 	LOOTING_RULE_DATA GetLootingRuleData() const;
 
 	void SetPartySetting(const PARTY_SETTING& partySetting);	
-	void SetRoundRobinLastOrderCID(int nLastOrderCID);
+	void SetRoundRobinLastOrderCID(CID nLastOrderCID);
 	void SetLootingRuleData(const LOOTING_RULE_DATA& lootingRuleData);
-	const wstring& GetName();
+	bool IsPublic() const;
+	void SetPublic(bool bPublic);
+	const wstring& GetName() const;
 	void SetName(wstring strName);
 
 	// Off-line Member
@@ -95,8 +97,8 @@ public:
 
 	void ChangeMemberUID(MUID uidOldMember, MUID uidNewMember);
 
-	MUID FindMemberUID(int nCID);
-	vector<int> CollectMemberCID();
+	MUID FindMemberUID(CID nCID);
+	vector<CID> CollectMemberCID();
 
 public:
 	MUID 									GetUID(void) const					{ return m_UID;	}	
@@ -107,6 +109,7 @@ private:
 	GPartyActiveFieldGroupStorage*			m_pActiveFieldGroupStorage;
 	GPartyMemberStorage*					m_pMemberStorage;
 	GPartyLootingRuleStorage*				m_pLootingRuleStorage;
+	bool									m_bPublicParty;
 	wstring									m_strName;
 	QuestID									m_nAutoPartyQuestID;
 };

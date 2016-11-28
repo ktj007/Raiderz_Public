@@ -13,11 +13,11 @@ using std::pair;
 class GDBT_TALENT
 {
 public :
-	GDBT_TALENT() : m_nAID(0), m_uidPlayer(0), m_nCID(0), m_nCharPtm(0), m_nDeltaCharPtm(0), m_nLevel(0), m_nMoney(0), m_nTalentID(0), m_nLowRankTalentID(0), m_nRemainTP(0), m_bOnPalette(false), m_nResetAllTalentCountOnPalette(0)
+	GDBT_TALENT() : m_nAID(0), m_uidPlayer(0), m_nCID(0), m_nCharPtm(0), m_nDeltaCharPtm(0), m_nLevel(0), m_nMoney(0), m_nTalentID(0), m_nLowRankTalentID(0), m_nRemainTP(0), m_nConsumeTP(0), m_bOnPalette(false), m_nResetAllTalentCountOnPalette(0)
 	, m_nSlotID(0), m_nIUID(0), m_nItemID(0) {}
-	GDBT_TALENT(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney, const int nTalentID, const int nLowRankTalentID, const short nRemainTP
+	GDBT_TALENT(const AID nAID, const MUID& uidPlayer, const CID nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney, const int nTalentID, const int nLowRankTalentID, const short nRemainTP, const short nConsumeTP
 		, const bool bOnPalette, const int nSlotID = 0, const int64 nIUID = 0, const int nItemID = 0)
-		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nMoney(nMoney), m_nTalentID(nTalentID), m_nLowRankTalentID(nLowRankTalentID), m_nRemainTP(nRemainTP)
+		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nMoney(nMoney), m_nTalentID(nTalentID), m_nLowRankTalentID(nLowRankTalentID), m_nRemainTP(nRemainTP), m_nConsumeTP(nConsumeTP)
 		, m_bOnPalette(bOnPalette), m_nResetAllTalentCountOnPalette(0), m_nSlotID(nSlotID), m_nIUID(nIUID), m_nItemID(nItemID) {}
 
 	typedef vector<pair<PALETTE_NUM, PALETTE_SLOT>> PALETTE_VEC;
@@ -36,6 +36,7 @@ public :
 		m_nTalentID						= data.m_nTalentID;
 		m_nLowRankTalentID				= data.m_nLowRankTalentID;
 		m_nRemainTP						= data.m_nRemainTP;
+		m_nConsumeTP					= data.m_nConsumeTP;
 		m_bOnPalette					= data.m_bOnPalette;
 		m_nResetAllTalentCountOnPalette	= data.m_nResetAllTalentCountOnPalette;
 		m_nSlotID						= data.m_nSlotID;
@@ -50,9 +51,9 @@ public :
 		m_nResetAllTalentCountOnPalette = nTalentCountOnPalette;
 	}
 
-	int64			m_nAID;
+	AID				m_nAID;
 	MUID			m_uidPlayer;
-	int64			m_nCID;
+	CID				m_nCID;
 	int				m_nCharPtm;
 	int				m_nDeltaCharPtm;
 	uint8			m_nLevel;
@@ -60,6 +61,7 @@ public :
 	int				m_nTalentID;
 	short			m_nLowRankTalentID;
 	short			m_nRemainTP;
+	short			m_nConsumeTP;
 	bool			m_bOnPalette;
 	PALETTE_VEC		m_vNumAndSlot;
 	int				m_nResetAllTalentCountOnPalette; // used to reset all talent.
@@ -76,7 +78,7 @@ public :
 		SetZeroTalentID();
 	}
 
-	GDBT_ITEM_LEARN_TALENT(const int64 nAID, const MUID uidPlayer, const int64 nCID, const uint8 nSlotType, const int16 nSlotID, const int nItemID
+	GDBT_ITEM_LEARN_TALENT(const AID nAID, const MUID uidPlayer, const CID nCID, const uint8 nSlotType, const int16 nSlotID, const int nItemID
 		, const IUID nIUID, const int16 nRemainTP, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney)
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nSlotType(nSlotType), m_nSlotID(nSlotID), m_nItemID(nItemID)
 		, m_nIUID(nIUID), m_nRemainTP(nRemainTP), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nMoney(nMoney)
@@ -128,9 +130,9 @@ public :
 		MAX_COUNT = 5, // 이 수치는 추후 확장이 필요하면 그때 수정을 하자.
 	};
 
-	int64	m_nAID;
+	AID		m_nAID;
 	MUID	m_uidPlayer;
-	int64	m_nCID;
+	CID		m_nCID;
 	uint8	m_nSlotType;
 	int16	m_nSlotID;
 	int		m_nItemID;

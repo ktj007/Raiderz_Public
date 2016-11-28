@@ -13,9 +13,12 @@ public:
 private:
 	void NotifyForParty();
 	void RouteGainBuff();
+	void RouteGainBuffWithStack();
 	void RouteLostBuff();
+	/*
 	void RouteStackIncrease();
 	void RouteStackDecrease();
+	*/
 
 private:
 	// 버프 얻을때 효과처리

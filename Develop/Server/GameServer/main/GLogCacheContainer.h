@@ -26,7 +26,6 @@ public :
 	GItemMergeAndSplitLogCache	m_ItemMergeAndSplitLogCacahe;
 	GNpcShopLogCache			m_NpcShopLogCache;
 	GXPLogCache					m_XPLogCache;
-
 	GItemDeleteLogCache			m_ItemDeleteLogCache;
 	GPartyLogCache				m_PartyLogcache;
 	GItemMoveLogCache			m_ItemMoveLogCache;

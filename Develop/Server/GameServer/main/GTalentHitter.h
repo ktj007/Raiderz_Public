@@ -160,9 +160,10 @@ public:
 	GTalentHitterList() {}
 	~GTalentHitterList();
 
-	void Update(float fDelta, GField* pField);
+	bool Update(float fDelta, GField* pField);
 	void Add(GTalentHitter* pNewHitter);
 	void Clear();
 	vector<GTalentHitter*>	 Get(TARGEHITTER_TYPE nType);
+	bool IsEmpty() const;
 };
 

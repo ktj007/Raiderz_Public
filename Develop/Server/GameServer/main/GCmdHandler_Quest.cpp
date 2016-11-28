@@ -18,6 +18,7 @@
 #include "GQuestCanceler.h"
 #include "GQObjInteractor.h"
 #include "CCommandResultTable.h"
+#include "GPlayerDoing.h"
 
 
 GCmdHandler_Quest::GCmdHandler_Quest(MCommandCommunicator* pCC) : MCommandHandler(pCC)
@@ -36,11 +37,18 @@ MCommandResult GCmdHandler_Quest::OnRequestQuestGive(MCommand* pCmd, MCommandHan
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(pCmd->GetSenderUID());
 	if (NULL == pPlayer) return CR_FALSE;
 
-	int nQuestID;	
-	if (pCmd->GetParameter(&nQuestID,	0, MPT_INT)==false) return CR_FALSE;
+	if (false == pPlayer->GetDoing().IsNowInteracting()) return CR_FALSE;
+
+	int nQuestID = pPlayer->GetInteraction().GetSelectedIElementInfo().GetSinlgeAct();
+
+	if (nQuestID == 0)
+	{
+		gsys.pInteractionSystem->GetNPCInteractor().End(pPlayer);
+		return CR_FALSE;
+	}
 
 	bool bChallengeQuest = gmgr.pQuestInfoMgr->IsChallengerQuestID(nQuestID);
-	INTERACTION_TYPE nIEType = (false == bChallengeQuest) ? IT_QUEST_BEGIN : IT_CHALLENGERQUEST;;
+	INTERACTION_TYPE nIEType = (false == bChallengeQuest) ? IT_QUEST_BEGIN : IT_CHALLENGERQUEST;
 
 	if (false == gsys.pInteractionSystem->GetNPCInteractor().CheckIProgress(pPlayer, nIEType))
 	{
@@ -62,12 +70,19 @@ MCommandResult GCmdHandler_Quest::OnRequestQuestReward(MCommand* pCmd, MCommandH
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(pCmd->GetSenderUID());
 	if (NULL == pPlayer) return CR_FALSE;
 
+	if (false == pPlayer->GetDoing().IsNowInteracting()) return CR_FALSE;
+
 	MUID uidNPC;
-	int nQuestID;
+	int nQuestID = pPlayer->GetInteraction().GetSelectedIElementInfo().GetSinlgeAct();
 	int nSelectedReward;
 	if (pCmd->GetParameter(&uidNPC,		0, MPT_UID)==false) return CR_FALSE;
-	if (pCmd->GetParameter(&nQuestID,	1, MPT_INT)==false) return CR_FALSE;
-	if (pCmd->GetParameter(&nSelectedReward,	2, MPT_INT)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&nSelectedReward,	1, MPT_INT)==false) return CR_FALSE;
+
+	if (nQuestID == 0)
+	{
+		gsys.pInteractionSystem->GetNPCInteractor().End(pPlayer);
+		return CR_FALSE;
+	}
 
 	GEntityNPC* pNPC = pPlayer->GetInteraction().GetInteractingNPC();
 	if (NULL == pNPC) return CR_FALSE;

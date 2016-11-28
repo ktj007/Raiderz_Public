@@ -2,10 +2,10 @@
 
 struct PARTY_MEMBER_INFO
 {	
-	PARTY_MEMBER_INFO(const wstring& strName, int nCID)
+	PARTY_MEMBER_INFO(const wstring& strName, CID nCID)
 	: m_strName(strName), m_nCID(nCID) {}
 
-	int		m_nCID;
+	CID		m_nCID;
 	wstring	m_strName;
 };
 

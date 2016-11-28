@@ -41,7 +41,7 @@ bool ZPlayerStateChanger::ChangeToSELECT_CHAR_Check(AID nAID)
 		pPlayer->GetState() != PS_READY_LOGIN_GAMESERVER &&	///< 게임서버로 첫 진입 중
 		pPlayer->GetState() != PS_MOVE_GAMESERVER)			///< 게임서버 이동 중
 	{
-		mlog("Error! ZPlayerStateChanger::ChangeToSELECT_CHAR( AID= %d ), Player State is INVALID! (State: %d)\n", nAID, pPlayer->GetState());
+		mlog("Error! ZPlayerStateChanger::ChangeToSELECT_CHAR( AID= %I64d ), Player State is INVALID! (State: %d)\n", nAID, pPlayer->GetState());
 		return false;
 	}
 
@@ -56,14 +56,14 @@ bool ZPlayerStateChanger::ChangeToREADY_LOGIN_GAMESERVER(AID nAID)
 	ZPlayer* pPlayer = gmgr.pPlayerManager->Find(nAID);
 	if (pPlayer == NULL)
 	{
-		mlog("Failed! ZPlayerStateChanger::ChangeToREADY_LOGIN_GAMESERVER(), Not Exist Player! ( AID= %d )\n", nAID);
+		mlog("Failed! ZPlayerStateChanger::ChangeToREADY_LOGIN_GAMESERVER(), Not Exist Player! ( AID= %I64d )\n", nAID);
 		return false;
 	}
 
 	// 상태 체크
 	if (pPlayer->GetState() != PS_SELECT_CHAR)
 	{
-		mlog("Failed! ZPlayerStateChanger::ChangeToREADY_LOGIN_GAMESERVER(), Player State is Not PS_SELECT_CHAR. ( AID= %d )\n", nAID);
+		mlog("Failed! ZPlayerStateChanger::ChangeToREADY_LOGIN_GAMESERVER(), Player State is Not PS_SELECT_CHAR. ( AID= %I64d )\n", nAID);
 		return false;
 	}
 
@@ -80,14 +80,14 @@ bool ZPlayerStateChanger::Cancel_READY_LOGIN_GAMESERVER(AID nAID)
 	ZPlayer* pPlayer = gmgr.pPlayerManager->Find(nAID);
 	if (pPlayer == NULL)
 	{
-		mlog("Failed! ZPlayerStateChanger::Cancel_READY_LOGIN_GAMESERVER(), Not Exist Player! ( AID= %d )\n", nAID);
+		mlog("Failed! ZPlayerStateChanger::Cancel_READY_LOGIN_GAMESERVER(), Not Exist Player! ( AID= %I64d )\n", nAID);
 		return false;
 	}
 
 	// 상태 체크
 	if (pPlayer->GetState() != PS_READY_LOGIN_GAMESERVER)
 	{
-		mlog("Failed! ZPlayerStateChanger::Cancel_READY_LOGIN_GAMESERVER(), Player State is Not PS_READY_LOGIN_GAMESERVER. ( AID= %d , State= %d )\n", nAID, pPlayer->GetState());
+		mlog("Failed! ZPlayerStateChanger::Cancel_READY_LOGIN_GAMESERVER(), Player State is Not PS_READY_LOGIN_GAMESERVER. ( AID= %I64d , State= %d )\n", nAID, pPlayer->GetState());
 		return false;
 	}
 
@@ -117,7 +117,7 @@ bool ZPlayerStateChanger::ChangeToIN_WORLD_Check(AID nAID)
 	ZPlayer* pPlayer = gmgr.pPlayerManager->Find(nAID);
 	if (NULL == pPlayer)
 	{
-		mlog("Failed! ZPlayerStateChanger::ChangeToIN_WORLD_Check(), Not Exist Player( AID= %d )\n", nAID);
+		mlog("Failed! ZPlayerStateChanger::ChangeToIN_WORLD_Check(), Not Exist Player( AID= %I64d )\n", nAID);
 		return false;
 	}
 

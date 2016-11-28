@@ -23,7 +23,7 @@ bool GWhisperMsgHandler::OnRequest(const MCommand* pCmd)
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(m_uidCommandSender);
 	VALID_RET(pPlayer != NULL, false);
 
-	int nCID = pPlayer->GetCID();
+	CID nCID = pPlayer->GetCID();
 	wstring strTargetName = m_msgHelper.GetReceiverName(pCmd);
 	if (strTargetName.empty() || PLAYER_NAME_LEN < strTargetName.size()) return false;
 	if (strTargetName == pPlayer->GetName()) return false;
@@ -36,7 +36,7 @@ bool GWhisperMsgHandler::OnRequest(const MCommand* pCmd)
 
 bool GWhisperMsgHandler::OnResponse(const MCommand* pCmd)
 {
-	int nCID = m_msgHelper.GetReceiverID(pCmd);
+	CID nCID = m_msgHelper.GetReceiverID(pCmd);
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nCID);
 	VALID_RET(pPlayer != NULL, false);
 

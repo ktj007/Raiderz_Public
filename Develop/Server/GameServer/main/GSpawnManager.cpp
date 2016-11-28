@@ -175,6 +175,14 @@ void GSpawnManager::Reset( SPAWN_ID nSpawnID )
 	return pSpawn->Reset();
 }
 
+void GSpawnManager::ResetSpawnTime( SPAWN_ID nSpawnID )
+{
+	GSpawn* pSpawn = Find(nSpawnID);
+	if (!pSpawn)	return;
+
+	return pSpawn->ResetSpawnTime();
+}
+
 GEntityNPC* GSpawnManager::GetNPCInstance(SPAWN_ID nSpawnID)
 {
 	GSpawn* pSpawn = Find(nSpawnID);
@@ -236,6 +244,9 @@ void GSpawnManager::Update(float fDelta)
 
 void GSpawnManager::Update_Spawn( float fDelta )
 {
+	VALID(m_pField);
+	if (!m_pField->ExistPlayer()) return;	// No Players: do not spawn any NPC and save server resources.
+
 	//for (SPAWN_MAP::iterator it = m_mapSpawns.begin();
 	//	it != m_mapSpawns.end();
 	//	++it)
@@ -264,6 +275,9 @@ void GSpawnManager::Update_Spawn( float fDelta )
 
 void GSpawnManager::Update_SpawnDelay( float fDelta )
 {
+	VALID(m_pField);
+	if (!m_pField->ExistPlayer()) return;
+
 	for (SPAWNDELAY_LIST::iterator it = m_listSpawnDelays.begin();
 		it != m_listSpawnDelays.end();)
 	{

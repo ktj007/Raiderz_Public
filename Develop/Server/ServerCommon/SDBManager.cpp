@@ -56,22 +56,6 @@ void SDBManager::ErrorLog(const wchar_t *pFormat, ...)
 	MLog3(temp);
 }
 
-std::wstring SDBManager::MCleanSQLStr(std::wstring str)
-{
-	std::wstring s = str;
-
-	std::replace( s.begin(), s.end(), '\x27', '_');
-	std::replace( s.begin(), s.end(), '"', '_');
-	std::replace( s.begin(), s.end(), '(', '_');
-	std::replace( s.begin(), s.end(), ')', '_');
-	std::replace( s.begin(), s.end(), '/', '_');
-	std::replace( s.begin(), s.end(), '\\', '_');
-	std::replace( s.begin(), s.end(), '=', '_');
-	std::replace( s.begin(), s.end(), '*', '_');
-	std::replace( s.begin(), s.end(), '%', '_');
-	return s;
-}
-
 bool SDBManager::Execute(const wchar_t* szSQL )
 {
 	bool isExecute = false;

@@ -36,7 +36,7 @@ void GDBTaskItemSplit::OnExecute( mdb::MDatabase& rfDB )
 		return;
 
 	if (1 == rs.GetFetchedCount())
-		m_data.m_ToSlot.m_nIUID = rs.FieldW(L"NEW_IUID").AsInt64();		
+		m_data.m_ToSlot.m_nIUID = rs.FieldW(L"ITEM_SN").AsInt64();		
 }
 
 void GDBTaskItemSplit::_OnPreCompleted()

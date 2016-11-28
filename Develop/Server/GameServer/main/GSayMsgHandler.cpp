@@ -25,7 +25,7 @@ bool GSayMsgHandler::OnRequest(const minet::MCommand* pCmd)
 
 	if (GConst::DEFAULT_GLOBAL_SAY)
 	{
-		int nCID = pPlayer->GetCID();
+		CID nCID = pPlayer->GetCID();
 		MCommand* pNewCmd = m_msgHelper.MakeNewServerCommandGlobalReq(m_strMsg, nCID);
 		gsys.pAppServerFacade->Route(pNewCmd);
 	}

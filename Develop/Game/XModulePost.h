@@ -77,7 +77,7 @@ public:
 	void Init(vec3& vPos, vec3& vDir);
 
 	void PostStop(vec3& vPos, vec3& vDir);
-	void PostMoveStop(vec3& vPos);
+	void PostMoveStop(vec3& vPos, vec3& vDir);
 	void PostPosSyncWhenFinishMovingMotionFactor(vec3& vPos);
 
 	void PostEquipItem(SH_ITEM_SLOT nItemSlot, MUID uidItem);

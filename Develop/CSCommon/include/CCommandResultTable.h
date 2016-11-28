@@ -45,26 +45,47 @@ enum CCommandResultTable
 	CR_FAIL_SYSTEM_OVER_DEPOSIT_MONEY			= 44,		// 입금 하기에 너무 큰 돈입니다.
 	CR_FAIL_SYSTEM_OVER_WITHDRAW_MONEY			= 45,		// 출금 하기에 너무 큰 돈입니다.
 
+	/*
+	<RESULT key="46" string="That player is currently using the Makeover Salon." />
+	*/
+
 
 	// COMMON
 	CR_FAIL_CONNECT								= 999,		// 서버와 연결이 끊어졌습니다.
 
 
 	// LOGIN
-	CR_FAIL_LOGIN_COMMAND_INVALID_VERSION		= 1001,		// 서버와 클라이언트가 버전이 다릅니다.
-	CR_FAIL_LOGIN								= 1002,		// 로그인에 실패했습니다.
-	CR_FAIL_MOVE_GAME_SERVER					= 1003,		// 서버 이동에 실패했습니다.
-	CR_SUCCESS_LOGIN_GAME_SERVER_RETRY			= 1004,		// (재시도 처리)
-	CR_FAIL_LOGIN_GAME_SERVER_NOT_FOUND			= 1005,		// 게임 접속에 실패했습니다. 서버를 찾을 수 없습니다.
-	CR_FAIL_LOGIN_POST_DB						= 1006,		// 로그인 DB 요청에 실패했습니다.
-	CR_FAIL_LOGIN_NOT_EXIST_USER				= 1007,		// 존재하지 않는 사용자입니다.
-	CR_FAIL_LOGIN_INVALID_CHAR_INFO				= 1008,		// 선택한 캐릭터 정보가 유효하지 않습니다.
-	CR_FAIL_LOGIN_SERVERS_ARE_STARTING			= 1009,		// 서버를 구동 중입니다. 잠시 후 다시 접속해 주시기 바랍니다.
-	CR_FAIL_DUPLICATED_PLAYER_LOGIN				= 1010,		// 다른 곳에서 중복으로 로그인하여 연결을 종료합니다.
-	CR_INFO_LOGIN_KICKING_DUPLICATED_PLAYER		= 1011,		// 중복으로 접속한 플레이어를 처리 중입니다. 잠시 기다리시면 자동 로그인 처리 됩니다. 몇 분 정도 걸릴 수 있습니다. 게임을 종료하시려면 아래 [닫기] 버튼을 클릭하시기 바랍니다.
-	CR_FAIL_LOGIN_WORLD_IS_FULL					= 1012,		// 월드가 포화 상태입니다. 잠시 후 다시 접속해 주시기 바랍니다.
-	CR_FAIL_LOGIN_INVALID_PLAYER_WORLD_INFO		= 1013,		// 플레이어의 월드 정보가 올바르지 않습니다. 다시 접속해 주시기 바랍니다.
-	CR_FAIL_LOGIN_NOT_STAND_ALONE_SERVER		= 1014,		// Stand-alone 서버가 아닙니다. 접속 인자를 확인해 주시기 바랍니다.
+	CR_FAIL_LOGIN_COMMAND_INVALID_VERSION					= 1001,		// 서버와 클라이언트가 버전이 다릅니다.
+	CR_FAIL_LOGIN											= 1002,		// 로그인에 실패했습니다.
+	CR_FAIL_MOVE_GAME_SERVER								= 1003,		// 서버 이동에 실패했습니다.
+	CR_SUCCESS_LOGIN_GAME_SERVER_RETRY						= 1004,		// (재시도 처리)
+	CR_FAIL_LOGIN_GAME_SERVER_NOT_FOUND						= 1005,		// 게임 접속에 실패했습니다. 서버를 찾을 수 없습니다.
+	CR_FAIL_LOGIN_POST_DB									= 1006,		// 로그인 DB 요청에 실패했습니다.
+	CR_FAIL_LOGIN_NOT_EXIST_USER							= 1007,		// 존재하지 않는 사용자입니다.
+	CR_FAIL_LOGIN_INVALID_CHAR_INFO							= 1008,		// 선택한 캐릭터 정보가 유효하지 않습니다.
+	CR_FAIL_LOGIN_SERVERS_ARE_STARTING						= 1009,		// 서버를 구동 중입니다. 잠시 후 다시 접속해 주시기 바랍니다.
+	CR_FAIL_DUPLICATED_PLAYER_LOGIN							= 1010,		// 다른 곳에서 중복으로 로그인하여 연결을 종료합니다.
+	CR_INFO_LOGIN_KICKING_DUPLICATED_PLAYER					= 1011,		// 중복으로 접속한 플레이어를 처리 중입니다. 잠시 기다리시면 자동 로그인 처리 됩니다. 몇 분 정도 걸릴 수 있습니다. 게임을 종료하시려면 아래 [닫기] 버튼을 클릭하시기 바랍니다.
+	CR_FAIL_LOGIN_WORLD_IS_FULL								= 1012,		// 월드가 포화 상태입니다. 잠시 후 다시 접속해 주시기 바랍니다.
+	CR_FAIL_LOGIN_INVALID_PLAYER_WORLD_INFO					= 1013,		// 플레이어의 월드 정보가 올바르지 않습니다. 다시 접속해 주시기 바랍니다.
+	CR_FAIL_LOGIN_NOT_STAND_ALONE_SERVER					= 1014,		// Stand-alone 서버가 아닙니다. 접속 인자를 확인해 주시기 바랍니다.
+	CR_FAIL_LOGIN_INVALID_ID_OR_PASSWORD					= 1015,
+	CR_FAIL_LOGIN_PROHIBITED_ACCOUNT						= 1016,
+	CR_FAIL_LOGIN_REGION_OFF_LIMIT							= 1017,
+	CR_FAIL_LOGIN_REQUIRE_TESTER_KEY						= 1018,
+	CR_FAIL_LOGIN_PROCESS_DUPLICATED_PLAYER_1ST_ATTEMPT		= 1019,
+	CR_FAIL_LOGIN_PROCESS_DUPLICATED_PLAYER_2ND_ATTEMPT		= 1020,
+	CR_FAIL_LOGIN_PROCESS_DUPLICATED_PLAYER_3RD_ATTEMPT		= 1021,
+	CR_FAIL_LOGIN_PROCESS_DUPLICATED_PLAYER					= 1022,
+	CR_FAIL_LOGIN_CHAR_LIST_ERROR							= 1023,
+
+	/*
+	<RESULT key="1024" string="The login server is busy. Please try again." />
+	<RESULT key="1025" string="Block players from logging in 5 minutes before shutting down game server." />
+	<RESULT key="1026" string="Invalid parameter." />
+	<RESULT key="1027" string="Invalid token." />
+	<RESULT key="1028" string="Too frequent login attempts." />
+	*/
 
 
 	// FIELD
@@ -104,6 +125,11 @@ enum CCommandResultTable
 	CR_FAIL_TRAINING_NEED_USEITEM				= 1410,		// 아이템 사용을 통해서만 배울 수 있습니다.
 	CR_FAIL_TRAINING_CONSUMETP_ZERO_NOT_UNTRAIN	= 1411,		// TP를 소모하지 않는 탤런트는 지울 수 없습니다.
 	CR_FAIL_TRAINING_NOT_UNTRAINABLE_TALENT		= 1412,		// 초기화할 수 없는 탤런트입니다.
+	CR_FAIL_TRAINING_NEED_EXTRAPASSIVE_HYBRID	= 1413,
+
+	/*
+	<RESULT key="1414" string="Only the newly created characters can learn the this style" />
+	*/
 	
 	
 	// TRADE
@@ -129,6 +155,7 @@ enum CCommandResultTable
 	CR_FAIL_NPCSHOP_CONDITION_CHECK_FAIL		= 1608,		// 거래 가능한 조건을 만족 시키지 못했습니다.
 	CR_FAIL_NPCSHOP_NOT_REPAIRER				= 1609,		// 수리 할 수 있는 상인이 아닙니다.
 	CR_FAIL_NPCSHOP_NOT_SELLABLE_ITEM			= 1610,		// 상인에게 팔 수 없는 아이템입니다.
+	CR_FAIL_NPCSHOP_NOT_REPAIRABLE_ITEM			= 1611,
 
 
 	// PARTY
@@ -167,6 +194,16 @@ enum CCommandResultTable
 	CR_FAIL_PARTY_NOT_INVITE_TO_PLAYER_IN_TRIALFIELD	= 1726,		// 도전 필드에 있는 플레이어는 초대할 수 없습니다.
 	CR_FAIL_PARTY_INVALID_SETTING						= 1727,		// 잘못된 파티 설정입니다.
 
+	CR_FAIL_PARTY_INVALID_INVITEE						= 1728,
+	CR_FAIL_PARTY_CANNOT_LEAVE_PARTY_WHILE_DUELING		= 1729,
+
+	/*
+	<RESULT key="1730" string="You cannot send a party request when the Battle Arena is in progress." />
+	<RESULT key="1731" string="You cannot leave your party during a Guild Battle." />
+	<RESULT key="1732" string="You cannot banish a party member during a Guild Battle." />
+	<RESULT key="1733" string="You cannot invite the enemy to your party in PvP areas." />
+	*/
+
 	CR_BOUNDARY_PARTY_END,
 
 
@@ -184,6 +221,10 @@ enum CCommandResultTable
 	CR_FAIL_LOOT_GATHER_NEED_GATHERTOOL			= 1814,		// 채집을 하려면 채집 도구가 필요합니다.			|system_male_9
 	CR_FAIL_LOOT_GATHER_NEED_TRAINING			= 1815,		// 채집을 하려면 탐험가 교본을 읽어야 합니다.		|system_male_10
 	CR_FAIL_LOOT_GATHER_NEED_HIGHER_TRAINING	= 1816,		// 상위 레벨의 탐험가 교본을 읽어야 합니다.			|system_male_10
+
+	/*
+	<RESULT key="1817" string="Failed to loot items since you have waited too long before looting the gathered items." />
+	*/
 		
 	
 	// MSG
@@ -205,6 +246,9 @@ enum CCommandResultTable
 	CR_FAIL_MSG_ABUSE_MSG						= 1914,		// 부적절한 단어가 포함되어 있습니다.
 	CR_FAIL_MSG_LIMIT_AUCTION_MSG_TIME			= 1915,		// 거래 채팅은 1분에 한번만 사용 가능합니다.
 
+	CR_FAIL_MSG_BANNED_FOR_A_MINUTE				= 1916,
+	CR_FAIL_MSG_LIMIT_FIELD_MSG_TIME			= 1917,
+
 	CR_BOUNDARY_MSG_END,
 
 
@@ -214,6 +258,11 @@ enum CCommandResultTable
 	CR_FAIL_ITEM_NOT_REMOVABLE					= 2003,		// 버릴 수 없는 아이템입니다.
 	CR_FAIL_ITEM_NOT_ADD_OVER_MAXSTACK			= 2004,		// 한번에 최대 스택 개수보다 많이 획득 할 수 없습니다.
 	CR_FAIL_ITEM_NEED_CONDITION					= 2005,		// 이 아이템은 아직 사용하지 못합니다.			|system_male_8
+	CR_FAIL_ITEM_SORT_INVENTORY					= 2006,
+
+	/*
+	<RESULT key="2008" string="This item is only available in battlefields." />
+	*/
 
 
 	// INTERACTION
@@ -235,6 +284,7 @@ enum CCommandResultTable
 	CR_FAIL_USE_TALENT_NONCOMBAT_ONLY			= 2211,		// 비전투 중에만 사용할 수 있는 탤런트입니다.
 	CR_FAIL_USE_TALENT_GM_ONLY					= 2212,		// 운영자만 사용할 수 있는 탤런트입니다.
 	CR_FAIL_USE_TALENT_NOTUSE_IN_THISFIELD		= 2213,		// 현재 필드에서 사용할 수 없는 탤런트입니다.
+	CR_FAIL_USE_TALENT_NEED_BUFF				= 2214,
 
 	// QUEST
 	CR_FAIL_QUEST_NOT_REPEATABLE_QUEST			= 2302,		// 반복 할 수 없는 퀘스트 입니다.
@@ -246,6 +296,7 @@ enum CCommandResultTable
 	CR_FAIL_QUEST_NOT_CANCELABLE_QUEST			= 2311,		// 취소할 수 없는 퀘스트입니다.
 	CR_FAIL_QUEST_NOT_HAVE_REWARD_NEED_ITEM		= 2312,		// 보상에 필요한 아이템이 없습니다.
 	CR_FAIL_QUEST_NOT_TAKABLE_SHARE_QUEST		= 2313,		// 공유된 퀘스트를 받을 수 없습니다.
+	CR_FAIL_QUEST_TOO_MANY_QUEST_ACCEPTED		= 2314,
 
 	//////////////////////////////////////////////////////////////////////////
 	// GUILD
@@ -273,6 +324,27 @@ enum CCommandResultTable
 	CR_FAIL_GUILD_CANNOT_MOVE_BINDITEM_TO_STORAGE	= 2420,	// 귀속된 아이템은 길드 보관함으로 이동할 수 없습니다.
 	CR_FAIL_GUILD_CANNOT_MOVE_PERIODITEM_TO_STORAGE	= 2421,	// 기간제 아이템은 길드 보관함으로 이동할 수 없습니다.
 	CR_FAIL_GUILD_MEMBER_MODIFY_STORAGE			= 2422,		// 다른 길드원이 길드 보관함을 변경 했습니다.
+
+	CR_FAIL_GUILD_INVITEE_IS_BUSY				= 2423,
+	CR_FAIL_GUILD_ONLY_GUILDMASTER_CAN_DISBAND_GUILD = 2424,
+	CR_FAIL_GUILD_CANNOT_PUT_TWO_UNIQUE_ITEM_INTO_GUILD_STORAGE = 2425,
+	CR_FAIL_GUILD_CANNOT_PUT_UNTRADABLE_ITEM	= 2426,
+
+	/*
+	<RESULT key="2427" string="You do not have the authority to proceed this command" />
+	<RESULT key="2428" string="You cannot promote yourself to guild leader." />
+	<RESULT key="2429" string="You cannot promote yourself to a higher rank." />
+	<RESULT key="2430" string="You cannot change your own rank." />
+	<RESULT key="2431" string="You cannot change to the same rank." />
+	<RESULT key="2432" string="You cannot change the rank of an equal or higher rank guild member." />
+	<RESULT key="2433" string="You have exceeded the length limit." />
+	<RESULT key="2434" string="You cannot remove yourself." />
+	<RESULT key="2435" string="You cannot remove an equal or higher rank guild member." />
+	<RESULT key="2436" string="You cannot invite that character name." />
+	<RESULT key="2437" string="The player has refused the guild invitation." />
+	<RESULT key="2438" string="You cannot leave your guild during a Guild Battle." />
+	<RESULT key="2439" string="You cannot remove a guild member during a Guild Battle." />
+	*/
 
 	CR_BOUNDARY_GUILD_END,
 	//////////////////////////////////////////////////////////////////////////
@@ -303,6 +375,10 @@ enum CCommandResultTable
 	CR_FAIL_BATTLEARENA_ALREADY_REGISTER		= 2702,		// 이미 등록된 참가 그룹입니다.
 	CR_FAIL_BATTLEARENA_NOT_REGISTER			= 2703,		// 등록이 되지 않은 참가 그룹입니다.
 	CR_FAIL_BATTLEARENA_ALREADY_PLAYING			= 2704,		// 대전이 진행 중인 참가 그룹은 참가를 취소할 수 없습니다.
+
+	/*
+	<RESULT key="2705" string="Access hours for Brune's Glory have ended." />
+	*/
 
 
 	// MAIL
@@ -345,6 +421,45 @@ enum CCommandResultTable
 	CR_FAIL_ENCHANT_REQ_WRONG_AGENT				= 2905,		// 강화실패: 알맞지 않은 강화제입니다.
 	CR_FAIL_ENCHANT_REQ_ITEM_BUSY				= 2906,		// 강화실패: 현재 다른 기능에서 사용 중인 아이템은 첨부할 수 없습니다.
 
+	/*
+	<RESULT key="2907" string="Enhancement failed: Cannot enhance this armor." />
+	<RESULT key="2908" string="Enchant failed: Enchantment grade low" />
+	<RESULT key="2909" string="Enchant failed" />
+	<RESULT key="2910" string="Enchant error: There is nothing to enchant." />
+	<RESULT key="2911" string="Enchant error: Non-enchantable" />
+	<RESULT key="2912" string="Enchant error: There is no enchanting material." />
+	<RESULT key="2913" string="Enchant error: This is not an enchanting material." />
+	<RESULT key="2914" string="Enchant error: Different level of enchanting material" />
+	<RESULT key="2915" string="Enchant error: There is no increasing material." />
+	<RESULT key="2916" string="Enchant error: There is no increasing material." />
+	<RESULT key="2917" string="Enchant error: This is not an increasing material." />
+	<RESULT key="2918" string="Enchant error: Different level of increasing material" />
+	<RESULT key="2919" string="Enchant error: There is no stabilizer." />
+	<RESULT key="2920" string="Enchant error: This is not a stabilizer." />
+	<RESULT key="2921" string="Enchant error: Different level of stabilizer" />
+	<RESULT key="2922" string="Enchant error: You do not have enough money for enchanting." />
+	<RESULT key="2923" string="Enchant error: Stopping the enchantment. (DB error)" />
+	<RESULT key="2924" string="Enchant error: There is nothing to calculate the enchantment rate for." />
+	<RESULT key="2925" string="Enchant error: The item to calculate the enchantment rate for is non-enchantable." />
+	<RESULT key="2926" string="Enchant error: There is no enchantment rate for the item." />
+	<RESULT key="2927" string="Enchant error: There is no enchantment rate for the increasing material." />
+	<RESULT key="2928" string="Enchant error: There is no enchantment rate for the stabilizer." />
+	<RESULT key="2929" string="Enchant Failed: Incorrect enchant stone." />
+	<RESULT key="2930" string="Enchantment error: You have no reducing agent for Enchantment fall" />
+	<RESULT key="2931" string="Enchantment error: It is not a reducing agent for Enchantment fall" />
+	<RESULT key="2932" string="Enchantment error: The level of reducing agent for Enchantment fall is different" />
+	<RESULT key="2941" string="Jewel removal has failed: The item is being used by another feature." />
+	<RESULT key="2942" string="Jewel removal has failed: The slot is empty." />
+	<RESULT key="2943" string="Jewel removal has failed: Item information of the slot to remove the jewel from is incorrect." />
+	<RESULT key="2944" string="Jewel removal has failed: DB request failure." />
+	<RESULT key="2945" string="Jewel removal has failed: The item is being used by another feature." />
+	<RESULT key="2946" string="Jewel removal has failed: The slot is empty." />
+	<RESULT key="2947" string="Jewel removal has failed: Item information of the slot to remove the jewel from is incorrect." />
+	<RESULT key="2948" string="Jewel removal has failed: DB request failure." />
+	<RESULT key="2950" string="Enhancement Error: Element Stone missing" />
+	<RESULT key="2951" string="Enhancement Error: Element Stone missing" />
+	*/
+
 
 	// ENTERING WORLD
 	CR_ENTER_WORLD_FIND_GAMESERVER				= 3001,		// 입장할 게임 서버를 찾습니다.
@@ -360,6 +475,115 @@ enum CCommandResultTable
 	CR_MOVE_TO_SELECT_CHAR_BUSY					= 3102,		// 다른 행동 중에 캐릭터 선택 화면으로 빠져나갈 수 없습니다.
 	CR_MOVE_TO_SELECT_CHAR_DONT_DURING_COMBAT	= 3103,		// 전투 중에 캐릭터 선택 화면으로 빠져나갈 수 없습니다.
 	CR_MOVE_TO_SELECT_CHAR_TIMEOUT				= 3104,		// 처리시간이 초과되어 요청이 취소되었습니다.
+	CR_MOVE_TO_SELECT_CHAR_IN_PROGRESS			= 3105,
+
+	/*
+	TODO:
+	<RESULT key="3302" string="Failed Item Registration ? Quantity" />
+	<RESULT key="3303" string="Failed Item Upload to Market ? DB Error" />
+	<RESULT key="3304" string="You've tried to upload an item from the inventory to the market but the item does not exist in the inventory." />
+	<RESULT key="3305" string="You've tried to upload an item from the inventory to the market but its quantity is incorrect." />
+	<RESULT key="3306" string="It is too cheap to upload to the market (impossible to calculate the Fee)." />
+	<RESULT key="3307" string="{ani=talk1}Use a variety of colors to show off your own unique style! How can I help you?" />
+	<RESULT key="3308" string="Failed Processing: Item purchase has failed." />
+	<RESULT key="3309" string="This item cannot be received. ? It was not uploaded by you." />
+	<RESULT key="3310" string="Item quantity has changed. Collect the money for the items sold before canceling this sale." />
+	<RESULT key="3311" string="There is not enough room in your inventory." />
+	<RESULT key="3312" string="The item was not received because the market was crowded. ? Error in DB" />
+	<RESULT key="3313" string="You are carrying too much money" />
+	<RESULT key="3314" string="Calculations cannot be done because the market is crowded." />
+	<RESULT key="3315" string="You attempted a calculation, but you are carrying too much money." />
+	<RESULT key="3316" string="Calculation DB Error" />
+	<RESULT key="3317" string="Calculate All DB Error" />
+	<RESULT key="3318" string="Cannot be calculated. ? It either does not belong to you or does not match the quantity." />
+	<RESULT key="3319" string="The purchase quantity does not match that of the market item." />
+	<RESULT key="3320" string="This item cannot be purchased. ? Either its price is out of scope or it expired." />
+	<RESULT key="3321" string="This item is no longer available." />
+	<RESULT key="3401" string="Timed items cannot be moved to the storage box." />
+	<RESULT key="3402" string="Only cash and costume items can be stored." />
+	<RESULT key="3501" string="You cannot ride a mount during combat." />
+	<RESULT key="3502" string="You cannot transform during a battle." />
+	<RESULT key="3601" string="Connection was ended by the Game Master." />
+	<RESULT key="3701" string="You can only have up to 50 recipes in your Journal." />
+	<RESULT key="3801" string="Invalid character name or user is logged off." />
+	<RESULT key="3802" string="Already added as a friend." />
+	<RESULT key="3803" string="That user is not registered as a friend." />
+	<RESULT key="3804" string="No more friends can be added." />
+	<RESULT key="3805" string="Friend function failed due to a database error." />
+	<RESULT key="3806" string="You cannot invite yourself as a friend." />
+	<RESULT key="3807" string="User not found." />
+	<RESULT key="3808" string="Your friend request has been turned down." />
+	<RESULT key="3809" string="You cannot delete yourself." />
+	<RESULT key="3901" string="Banned from connection." />
+	<RESULT key="3902" string="You are banned from trading." />
+	<RESULT key="3903" string="That user is banned from trade." />
+	<RESULT key="3904" string="You are banned from the Trade Market." />
+	<RESULT key="3905" string="You are banned from chatting." />
+	<RESULT key="4000" string="Cannot purchase item. Cash inventory is full." />
+	<RESULT key="4001" string="Not enough cash. Purchase cash?" />
+	<RESULT key="4002" string="The server is experiencing issues. Try again later." />
+	<RESULT key="4003" string="Item does not exist. Close the shop and try again." />
+	<RESULT key="4004" string="Cannot transfer item. Inventory is full." />
+	<RESULT key="4005" string="Cannot send gift. The user's cash inventory is full." />
+	<RESULT key="4007" string="User not found" />
+	<RESULT key="4008" string="User exists." />
+	<RESULT key="4009" string="Select a user to send the gift to." />
+	<RESULT key="4010" string="You cannot send a gift to yourself." />
+	<RESULT key="4101" string="No such box information." />
+	<RESULT key="4102" string="There is an error in the box rate information." />
+	<RESULT key="4103" string="No such prize information." />
+	<RESULT key="4104" string="Insufficient space in inventory." />
+	<RESULT key="4105" string="Database request failed." />
+	<RESULT key="4106" string="Disconnected from the database." />
+	<RESULT key="4107" string="Key is missing." />
+	<RESULT key="4108" string="You need a key." />
+	<RESULT key="4201" string="Failed to synchronize the character information with the database." />
+	<RESULT key="4202" string="Failed to synchronize the item information with the database." />
+	<RESULT key="4203" string="Database processing failed." />
+	<RESULT key="4301" string="Already registered at the arena." />
+	<RESULT key="4302" string="Unable to cancel, because no registration has been made at the arena." />
+	<RESULT key="4303" string="Your Brune's Glory confirmation has timed out." />
+	<RESULT key="4304" string="You have declined to enter Brune's Glory." />
+	<RESULT key="4305" string="Not enough players have gathered to start a game." />
+	<RESULT key="4306" string="Brune can't let you use that item in his arena." />
+	<RESULT key="4307" string="You cannot send Brune's Glory requests while in combat." />
+	<RESULT key="4308" string="You cannot send Brune's Glory requests while dead." />
+	<RESULT key="4401" string="Abnormal player status." />
+	<RESULT key="4501" string="Suicide is not allowed in PVP zone" />
+	<RESULT key="4309" string="Brune's Glory is not available right now. See the signup window for available times." />
+	<RESULT key="4310" string="There is no information about the 1v1 rankings." />
+	<RESULT key="4311" string="There is no information about the guild rankings." />
+	<RESULT key="4312" string="There is no list for the the Hall of Fame." />
+	<RESULT key="4313" string="There is no information about the Hall of Fame rankings." />
+	<RESULT key="4314" string="There is no information about the Hall of Fame ranking for this date." />
+	<RESULT key="4315" string="You are already using the Battle Arena." />
+	<RESULT key="4316" string="You are not in a guild" />
+	<RESULT key="4317" string="You are not in a party" />
+	<RESULT key="4318" string="Only the leader of the party can request guild war" />
+	<RESULT key="4319" string="Only 3 people can request guild war" />
+	<RESULT key="4320" string="Currently the party member is not logged in" />
+	<RESULT key="4321" string="You cannot check the information of the party member " />
+	<RESULT key="4322" string="You can only request when the party member is the same guild member" />
+	<RESULT key="4323" string="Only the leader of the party can cancel guild war" />
+	<RESULT key="4324" string="Someone in the guild member has logged out" />
+	<RESULT key="4325" string="You have exceeded the number of people who can participate in guild war" />
+	<RESULT key="4326" string="There is no guild list for the Hall of Fame of Battle Arena." />
+	<RESULT key="4327" string="There is no information about the guild's Hall of Fame ranking of Battle Arena" />
+	<RESULT key="4328" string="There is no information about the guild's Hall of Fame ranking of Battle Arena in this date" />
+	<RESULT key="4329" string="Someone in the party member is already using Battle Arena" />
+	<RESULT key="4502" string="You will be withdrawn from the party if you enter the PVP area" />
+	<RESULT key="4601" string="You do not have the license." />
+	<RESULT key="4602" string="You do not have enough Bellpesos." />
+	<RESULT key="4701" string="You cannot use the Makeover Salon now." />
+	<RESULT key="4702" string="You are not using the Makeover Salon now." />
+	<RESULT key="4703" string="You do not have enough Bellpesos." />
+	<RESULT key="4704" string="You do not have a Makeover Coupon." />
+	<RESULT key="4705" string="The selected look is not available to you." />
+	<RESULT key="4706" string="The selected tattoo is not available to you." />
+	<RESULT key="4707" string="Failed to apply the data correctly." />
+	<RESULT key="4708" string="You do not have enough funds." />
+	<RESULT key="9001" string="Undefined tier grade." />
+	*/
 
 
 	// CHANGE CHANNEL
@@ -382,6 +606,15 @@ enum CCommandResultTable
 	CR_FAIL_ITEMTALENTCANCEL_REQUEST			= 10002,	// D)요청에 의해 아이템 탤런트가 취소되었습니다.
 	CR_FAIL_TALENTCANCEL_COOLTIMESYNCH			= 10003,	// D)이동모팩중이라 탤런트가 취소되었습니다.
 	CR_FAIL_TALENTCANCEL_MOVE					= 10004,	// D)탤런트 진행 중에 이동하여 취소되었습니다.
+
+	/*
+	<RESULT key="20000" string="Failed" />
+	<RESULT key="20001" string="Succeeded" />
+	<RESULT key="20100" string="Wrong version of command" />
+	<RESULT key="20101" string="Log-in request was not accepted." />
+	<RESULT key="20102" string="World ID is incorrect" />
+	<RESULT key="20103" string="You're already logged on at the server." />
+	*/
 };
 
 

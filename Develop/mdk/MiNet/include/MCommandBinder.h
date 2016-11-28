@@ -162,7 +162,7 @@ public:
 
 
 	/// MHandlerFunctionTable 같은 파라미터 형을 가지는 핸들러 펑션들의 테이블을 관리한다
-	template<typename typename T_PFUNC>
+	template<typename T_PFUNC>
 	class MHandlerFunctionTable : public MHandlerFunctionTableBase {
 	protected:
 //		T_HANDLER_CLASS*	m_pInstance;			// 핸들러의 인스턴스

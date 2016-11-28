@@ -103,7 +103,7 @@ void GDBTaskQuestPvPRewardInven::OnExecute( mdb::MDatabase& rfDB )
 	for (; !rs.IsEOF(); rs.MoveNext())
 	{
 		SLOT_ID = rs.FieldW(L"SLOT_ID").AsShort();
-		IUID	= rs.FieldW(L"NEW_IUID").AsInt64();
+		IUID	= rs.FieldW(L"NEW_ITEM_SN").AsInt64();
 
 		m_Data.m_vecRewardItemIUID.push_back(pair<int16, int64>(SLOT_ID, IUID));	
 	}

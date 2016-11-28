@@ -42,8 +42,8 @@ void GGuildSystemForMasterServer::DestroySync( int nGID )
 
 	MCommand* pCmd = MakeNewCommand(MC_GUILD_DESTROY, 0, NULL);
 
-	vector<int> vecMemberCID = pGuild->CollectMemberCID();
-	for each (int nMemberCID in vecMemberCID)
+	vector<CID> vecMemberCID = pGuild->CollectMemberCID();
+	for each (CID nMemberCID in vecMemberCID)
 	{
 		GEntityPlayer* pMember = gmgr.pPlayerObjectManager->GetEntity(nMemberCID);
 		if (NULL == pMember) continue;
@@ -56,7 +56,7 @@ void GGuildSystemForMasterServer::DestroySync( int nGID )
 	gmgr.pGuildMgr->Delete(nGID);
 }
 
-void GGuildSystemForMasterServer::JoinSync(int nCID, AID nAID, int nGID, const wstring& strName, int nLevel, int nFieldID, int nChannelID)
+void GGuildSystemForMasterServer::JoinSync(CID nCID, AID nAID, int nGID, const wstring& strName, int nLevel, int nFieldID, int nChannelID)
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild)	return;
@@ -94,7 +94,7 @@ void GGuildSystemForMasterServer::JoinSync(int nCID, AID nAID, int nGID, const w
 	gsys.pGuildSystem->RouteToMember(pGuild, pNewCmd, nCID);
 }
 
-void GGuildSystemForMasterServer::LeaveSync( int nCID, int nGID )
+void GGuildSystemForMasterServer::LeaveSync( CID nCID, int nGID )
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -115,7 +115,7 @@ void GGuildSystemForMasterServer::LeaveSync( int nCID, int nGID )
 	pGuild->DeleteMember(nCID);
 }
 
-void GGuildSystemForMasterServer::KickSync( int nCID, int nGID )
+void GGuildSystemForMasterServer::KickSync( CID nCID, int nGID )
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -136,7 +136,7 @@ void GGuildSystemForMasterServer::KickSync( int nCID, int nGID )
 	pGuild->DeleteMember(nCID);
 }
 
-void GGuildSystemForMasterServer::OnLineSync( int nCID, int nGID, int nFieldID, int nChannelID)
+void GGuildSystemForMasterServer::OnLineSync( CID nCID, int nGID, int nFieldID, int nChannelID)
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -154,7 +154,7 @@ void GGuildSystemForMasterServer::OnLineSync( int nCID, int nGID, int nFieldID, 
 	gsys.pGuildSystem->RouteToMember(pGuild, pNewCmd);
 }
 
-void GGuildSystemForMasterServer::OffLineSync( int nCID, int nGID )
+void GGuildSystemForMasterServer::OffLineSync( CID nCID, int nGID )
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -170,7 +170,7 @@ void GGuildSystemForMasterServer::OffLineSync( int nCID, int nGID )
 	gsys.pGuildSystem->RouteToMember(pGuild, pNewCmd);
 }
 
-void GGuildSystemForMasterServer::MoveFieldSync( int nCID, int nGID, int nFieldID, int nChannelID )
+void GGuildSystemForMasterServer::MoveFieldSync( CID nCID, int nGID, int nFieldID, int nChannelID )
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -188,7 +188,7 @@ void GGuildSystemForMasterServer::MoveFieldSync( int nCID, int nGID, int nFieldI
 	gsys.pGuildSystem->RouteToMember(pGuild, pNewCmd);
 }
 
-void GGuildSystemForMasterServer::ChangeMasterSync( int nOldCID, int nNewCID, int nGID )
+void GGuildSystemForMasterServer::ChangeMasterSync( CID nOldCID, CID nNewCID, int nGID )
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild)	return;
@@ -207,7 +207,7 @@ void GGuildSystemForMasterServer::ChangeMasterSync( int nOldCID, int nNewCID, in
 	gsys.pGuildSystem->RouteToMember(pGuild, pNewCmd);
 }
 
-void GGuildSystemForMasterServer::DepositStorageMoneySync( int nCID, int nGID, int nDepositMoney, int nStorageMoney )
+void GGuildSystemForMasterServer::DepositStorageMoneySync( CID nCID, int nGID, int nDepositMoney, int nStorageMoney )
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -225,7 +225,7 @@ void GGuildSystemForMasterServer::DepositStorageMoneySync( int nCID, int nGID, i
 	gsys.pGuildSystem->RouteToStorageInteractionMember(pGuild, pNewCmd, nCID);
 }
 
-void GGuildSystemForMasterServer::WithdrawStorageMoneySync( int nCID, int nGID, int nWithdrawMoney, int nStorageMoney )
+void GGuildSystemForMasterServer::WithdrawStorageMoneySync( CID nCID, int nGID, int nWithdrawMoney, int nStorageMoney )
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -243,7 +243,7 @@ void GGuildSystemForMasterServer::WithdrawStorageMoneySync( int nCID, int nGID, 
 	gsys.pGuildSystem->RouteToStorageInteractionMember(pGuild, pNewCmd, nCID);
 }
 
-void GGuildSystemForMasterServer::MoveStorageItemSync(int nCID, int nGID, vector<TD_PLAYER_GAME_DATA_ITEM_INSTANCE>& vecTDItem)
+void GGuildSystemForMasterServer::MoveStorageItemSync(CID nCID, int nGID, vector<TD_PLAYER_GAME_DATA_ITEM_INSTANCE>& vecTDItem)
 {
 	GGuild* pGuild = gmgr.pGuildMgr->Get(nGID);
 	if (NULL == pGuild) return;
@@ -266,10 +266,6 @@ void GGuildSystemForMasterServer::MoveStorageItemSync(int nCID, int nGID, vector
 		tdItemForClient.m_nDurability = tdItem.nDurability;
 		tdItemForClient.m_bBind = tdItem.bBind;
 		tdItemForClient.m_nSoulQuantity = tdItem.nSoulQuantity;
-		//SoulHunterZ
-		tdItemForClient.m_nXP = tdItem.nXP;
-		tdItemForClient.m_nNextAttuneXP = tdItem.nNextAttuneXP;
-		tdItemForClient.m_nAttuneLevel = tdItem.nAttuneLevel;
 		vecTDItemForClient.push_back(tdItemForClient);
 	}
 

@@ -26,7 +26,7 @@ bool GPartyMsgHandler::OnRequest(const minet::MCommand* pCmd)
 	if (!pPlayer->HasParty())	return false;
 
 	// ¾Û¼­¹ö Àü´Þ
-	int nPlayerCID = pPlayer->GetCID();
+	CID nPlayerCID = pPlayer->GetCID();
 	MUID uidParty = pPlayer->GetPartyUID();
 	MCommand* pNewCmd = m_msgHelper.MakeNewServerCommandPartyReq(m_strMsg, nPlayerCID, uidParty);
 	gsys.pAppServerFacade->Route(pNewCmd);

@@ -143,7 +143,7 @@ float GPlayerRide::GetMoveSpeed() const
 		return m_pOwner->DefaultWalkSpeed(); 
 	}
 
-	return m_pMountBuff->m_ActorModifier.fRideSpeed;
+	return m_pMountBuff->m_ActorModifier.fMoveSpeed;
 }
 
 float GPlayerRide::RandomDismountHandler::CalcDismountRate( GEntityActor* pAttacker, GEntityActor* pVictim )

@@ -8,6 +8,7 @@
 #include "GTalent.h"
 #include "GGlobal.h"
 #include "GEntityActor.h"
+#include "GBuffInfo.h"
 
 ////////////////////////////////////////////////////////////////
 // CoolTime
@@ -104,6 +105,12 @@ void GActorCooltimeChecker::RouteEndTalentCooldown( GEntityActor* pOwner, int nD
 	pOwner->RouteToMe(pNewCommand);
 }
 
+void GActorCooltimeChecker::RouteTalentAdjustCoolTime( GEntityActor* pOwner, int nDelegateTalentID, int nAdjustTime )
+{
+	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_TALENT_ADJUST_COOLTIME, 2, NEW_INT(nDelegateTalentID), NEW_INT(nAdjustTime));
+	pOwner->RouteToMe(pNewCommand);
+}
+
 void GActorCooltimeChecker::GetTalentRemainCoolTime(vector<pair<int, float>>& outvecTalentRemainCoolTime)
 {
 	for each (pair<int, pair<float, float>> each in m_mapTalentID)
@@ -154,6 +161,70 @@ void GActorCooltimeChecker::OnEnterPhaseAct( GTalent* pTalent )
 	InsertTalentCooltime(pTalent->GetID(), pTalentInfo->m_fCoolTime);
 }
 
+void GActorCooltimeChecker::OnGainBuff( int nBuffID )
+{
+	GBuffInfo* pBuffInfo = gmgr.pBuffInfoMgr->Get(nBuffID);
+	VALID(pBuffInfo);
+
+	if (pBuffInfo->m_nActiveExtraAttrib == BUFAEA_ADJUST_COOLTIME)
+	{
+		for (const BUFF_ACTIVE_EXTRA_PARAM& param : pBuffInfo->m_vecActiveExtraParam1)
+		{
+			int nTalentID = param.nValue[0];
+			int nAdjustInterval = param.nValue[1];
+
+			if (nTalentID < 0)
+			{
+				// by talent line.
+				AdjustTalentCoolTime_ByTalentLine(-nTalentID, nAdjustInterval);
+			}
+			else
+			{
+				// by talent id.
+				AdjustTalentCoolTime_ByTalentID(nTalentID, nAdjustInterval);
+			}
+		}
+	}
+}
+
+void GActorCooltimeChecker::AdjustTalentCoolTime_ByTalentID( int nTalentID, int nAdjustInterval )
+{
+	MAP_COOLTIME::iterator iter = m_mapTalentID.find(nTalentID);
+	if (iter == m_mapTalentID.end()) return;
+
+	AdjustTalentCoolTime(nTalentID, iter->second.second, nAdjustInterval);
+}
+
+void GActorCooltimeChecker::AdjustTalentCoolTime_ByTalentLine( int nTalentLine, int nAdjustInterval )
+{
+	vector<int> vecTalentID = gmgr.pTalentInfoMgr->GetLineTalents(nTalentLine);
+	MAP_COOLTIME::iterator iter = m_mapTalentID.end();
+
+	for (int nTalentID : vecTalentID)
+	{
+		iter = m_mapTalentID.find(nTalentID);
+		if (iter != m_mapTalentID.end()) break;
+	}
+
+	if (iter == m_mapTalentID.end()) return;
+
+	AdjustTalentCoolTime(iter->first, iter->second.second, nAdjustInterval);
+}
+
+void GActorCooltimeChecker::AdjustTalentCoolTime( int nDelegateTalentID, float& fLimitTime, int nAdjustInterval )
+{
+	fLimitTime += float(nAdjustInterval);
+
+	if (fLimitTime > 0.f)
+	{
+		RouteTalentAdjustCoolTime(m_pOwner, nDelegateTalentID, nAdjustInterval);
+	}
+	else
+	{
+		fLimitTime = 0.f;
+	}
+}
+
 vector<string> GActorCooltimeChecker::GetDescription() const
 {
 	vector<string> ret;
@@ -186,25 +257,4 @@ vector<int> GActorCooltimeChecker::GetRelativeTalentsID(GTalentInfo* pTalentInfo
 	}
 
 	return ret;
-}
-
-void GActorCooltimeChecker::ClearTalentCooldown(int nTalent)
-{
-	for (MAP_COOLTIME::iterator itor = m_mapTalentID.begin(); itor != m_mapTalentID.end(); ++itor)
-	{
-		const int nTalentID		= (*itor).first;
-		float& fCurTime		= (*itor).second.first;
-		float& fLimitTime	= (*itor).second.second;
-
-		GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
-		DCHECK(pTalentInfo);
-		if (!pTalentInfo)
-			continue;
-
-		if(nTalentID == nTalent)
-		{
-			m_mapTalentID.erase(nTalentID);
-			RouteEndTalentCooldown(m_pOwner, nTalentID);
-		}
-	}
 }

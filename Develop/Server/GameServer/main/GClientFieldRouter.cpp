@@ -21,19 +21,27 @@ void GClientFieldRouter::PrepareChangeChannel(const GEntityPlayer* pTarget, int 
 	gsys.pCommandCenter->PostCommand(pNewCommand);
 }
 
-void GClientFieldRouter::ChangeField(MUID uidPlayer, GField* pField, vec3& vPos, vec3& vDir, int nIntroScene)
+void GClientFieldRouter::ChangeField(MUID uidPlayer, GField* pField, vec3& vPos, vec3& vDir, int nIntroScene, GAME_WEATHER_TYPE nInitWeather, GAME_TIME_TYPE nInitTime)
 {
 	VALID(NULL != pField);
 
 	MCommand* pNewCommand = MakeNewCommand(MC_FIELD_CHANGE_FIELD, uidPlayer, 
-		5,
+		7,
 		NEW_INT(pField->GetID()),
 		NEW_INT(GetChannelID(pField)),
 		NEW_VEC(vPos),
 		NEW_VEC(vDir),
-		NEW_INT(nIntroScene)
+		NEW_INT(nIntroScene),
+		NEW_UCHAR(nInitWeather),
+		NEW_UCHAR(nInitTime)
 		);
 	gsys.pCommandCenter->PostCommand(pNewCommand);
+}
+
+void GClientFieldRouter::ObjectLoading(MUID uidPlayer)
+{
+	MCommand* pNewCmd = MakeNewCommand(MC_FIELD_OBJECT_LOADING, uidPlayer, 0, NULL);
+	gsys.pCommandCenter->PostCommand(pNewCmd);
 }
 
 void GClientFieldRouter::StartGame(MUID uidPlayer)

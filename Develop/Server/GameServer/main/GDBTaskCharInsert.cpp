@@ -24,7 +24,7 @@ GDBTaskCharInsert::~GDBTaskCharInsert()
 }
 
 
-void GDBTaskCharInsert::Input(const int64 nAID)
+void GDBTaskCharInsert::Input(const AID nAID)
 {
 	m_Data.nAID = nAID;
 }
@@ -40,10 +40,10 @@ void GDBTaskCharInsert::OnExecute(mdb::MDatabase& rfDB)
 	if (0 == rs.GetFetchedCount())
 		return;
 
-	if (rs.FieldW(L"CHAR_ID").IsNull())
+	if (rs.FieldW(L"CHAR_SN").IsNull())
 		return;
 
-	int64 nNewCID = rs.FieldW(L"CHAR_ID").AsInt64();
+	CID nNewCID = rs.FieldW(L"CHAR_SN").AsInt64();
 	if (-1 == nNewCID)
 	{
 		m_Data.bIsCharNameDuplicated = true;

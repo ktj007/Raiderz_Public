@@ -1,8 +1,13 @@
 #include "stdafx.h"
 #include "MSphere.h"
 
+#if (_MSC_VER >= 1900)
+const MBox MBox::_INFINITY(-FLT_MAX, -FLT_MAX, -FLT_MAX, FLT_MAX, FLT_MAX, FLT_MAX);
+const MBox MBox::_INVALID(FLT_MAX, FLT_MAX, FLT_MAX, -FLT_MAX, -FLT_MAX, -FLT_MAX);
+#else
 const MBox MBox::INFINITY( -FLT_MAX, -FLT_MAX, -FLT_MAX, FLT_MAX, FLT_MAX, FLT_MAX );
 const MBox MBox::INVALID( FLT_MAX, FLT_MAX, FLT_MAX, -FLT_MAX, -FLT_MAX, -FLT_MAX );
+#endif
 
 /**
  이 .cpp 를 하나의 네임스페이스로 사용합니다.

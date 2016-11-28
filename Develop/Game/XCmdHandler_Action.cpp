@@ -47,7 +47,7 @@ XCmdHandler_Action::XCmdHandler_Action(MCommandCommunicator* pCC) : MCommandHand
 	SetCmdHandler(MC_ACTION_USE_TALENT,				OnUseTalent);
 
 	SetCmdHandler(MC_ACTION_ACT_TALENT_PROJECTILE,	OnActSpellProjectile);
-	SetCmdHandler(MC_ACTION_ACT_SPELL_MAGICAREA,	OnActSpellMagicArea);
+//	SetCmdHandler(MC_ACTION_ACT_SPELL_MAGICAREA,	OnActSpellMagicArea);
 	
 	SetCmdHandler(MC_ACTION_REQUEST_FAIL_TALENT,	OnRequestFailTalent);
 	SetCmdHandler(MC_ACTION_CANCEL_TALENT,			OnCancelTalent);
@@ -65,7 +65,8 @@ XCmdHandler_Action::XCmdHandler_Action(MCommandCommunicator* pCC) : MCommandHand
 	
 	SetCmdHandler(MC_ACTION_ATTACK_ARCHERY,	OnAttackArchery);
 	SetCmdHandler(MC_ACTION_ATTACK_ARCHERY_DETAIL,	OnAttackArcheryDetail);
-	SetCmdHandler(MC_ACTION_GUARD,			OnGuard);
+	SetCmdHandler(MC_ACTION_GUARD_ME,			OnGuardMe);
+	SetCmdHandler(MC_ACTION_GUARD_OTHER, OnGuardOther);
 	SetCmdHandler(MC_ACTION_GUARD_FAILED,	OnGuardFailed);
 	SetCmdHandler(MC_ACTION_GUARD_RELEASED,	OnGuardReleased);
 	SetCmdHandler(MC_ACTION_JUMP,			OnJump);
@@ -818,7 +819,7 @@ MCommandResult XCmdHandler_Action::OnStandUp(MCommand* pCommand, MCommandHandler
 }
 
 
-MCommandResult XCmdHandler_Action::OnGuard(MCommand* pCommand, MCommandHandler* pHandler)
+MCommandResult XCmdHandler_Action::OnGuardOther(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	if (gg.game == NULL) return CR_ERROR;
 
@@ -830,6 +831,26 @@ MCommandResult XCmdHandler_Action::OnGuard(MCommand* pCommand, MCommandHandler* 
 	if (pCommand->GetParameter(&vPos,			2, MPT_VEC)==false) return CR_ERROR;
 
 	XObject* pObject = gg.omgr->FindActor_UIID(nEntityUIID);
+	if (pObject == NULL || nEntityUIID == XGetMyUIID()) return CR_TRUE;
+
+	XModuleActorControl* pModuleActorControl = pObject->GetModuleActorControl();
+	if (pModuleActorControl)
+	{
+		vDir = svDir;
+		pModuleActorControl->OnGuard(vPos, vDir);
+	}
+
+	return CR_TRUE;
+}
+
+
+MCommandResult XCmdHandler_Action::OnGuardMe(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	if (gg.game == NULL) return CR_ERROR;
+	svec2 svDir;
+	vec3 vPos, vDir;
+
+	XObject* pObject = gg.omgr->FindActor_UIID(XGetMyUIID());
 	if (pObject == NULL) return CR_TRUE;
 
 	XModuleActorControl* pModuleActorControl = pObject->GetModuleActorControl();
@@ -1085,15 +1106,27 @@ MCommandResult XCmdHandler_Action::OnGuardDefensePartial(MCommand* pCommand, MCo
 	return CR_TRUE;
 }
 
-MCommandResult XCmdHandler_Action::OnEndTalentCooldown(MCommand* pCommand, MCommandHandler* pHandler)
+MCommandResult XCmdHandler_Action::OnAdjustTalentCooldown(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nDelegateTalentID	= 0;
+	int nDelegateTalentID, nCoolTime	= 0;
 
 	if (pCommand->GetParameter(&nDelegateTalentID,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nCoolTime, 0, MPT_INT) == false) return CR_ERROR;
 
-	gvar.MyInfo.Talent.CoolTime.Canceled( nDelegateTalentID);
+	gvar.MyInfo.Talent.CoolTime.SetRemained( nDelegateTalentID, gvar.MyInfo.Talent.CoolTime.GetRemainedTime(nDelegateTalentID) - nCoolTime);
 	return CR_TRUE;
 }
+
+MCommandResult XCmdHandler_Action::OnEndTalentCooldown(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	int nDelegateTalentID = 0;
+
+	if (pCommand->GetParameter(&nDelegateTalentID, 0, MPT_INT) == false) return CR_ERROR;
+
+	gvar.MyInfo.Talent.CoolTime.Canceled(nDelegateTalentID);
+	return CR_TRUE;
+}
+
 
 
 

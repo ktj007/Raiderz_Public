@@ -26,7 +26,7 @@ GDropItem::~GDropItem()
 {
 }
 
-void GDropItem::InsertAuthorizedCID( int nCID )
+void GDropItem::InsertAuthorizedCID( CID nCID )
 {
 	m_setAuthorizedCID.insert(nCID);
 }
@@ -71,11 +71,11 @@ void GDropItem::Unvisible()
 	m_bVisible = false;
 }
 
-void GDropItem::GetViewableCID(set<int>& outsetViewableCID) const
+void GDropItem::GetViewableCID(set<CID>& outsetViewableCID) const
 {	
 	if (false == m_bVisible) return;
 
-	for each (int nAuthorizedCID in m_setAuthorizedCID)
+	for each (CID nAuthorizedCID in m_setAuthorizedCID)
 	{
 		outsetViewableCID.insert(nAuthorizedCID);
 	}	
@@ -96,7 +96,7 @@ int GDropItem::GetID() const
 	return m_nItemID;
 }
 
-bool GDropItem::IsViewableCID(int nCID) const
+bool GDropItem::IsViewableCID(CID nCID) const
 {
 	if (false == m_bVisible) return false;
 	if (false == IsAuthorizedCID(nCID)) return false;
@@ -104,7 +104,7 @@ bool GDropItem::IsViewableCID(int nCID) const
 	return true;
 }
 
-bool GDropItem::IsAuthorizedCID( int nCID ) const
+bool GDropItem::IsAuthorizedCID( CID nCID ) const
 {
 	if (true == m_bFreeAuthority) return true;
 	if (m_setAuthorizedCID.end() == m_setAuthorizedCID.find(nCID)) return false;
@@ -136,10 +136,10 @@ TD_LOOT_MASTERLOOT_UI GDropItem::MakeTDMasterLootUI(GEntityNPC* pOwner) const
 {
 	TD_LOOT_MASTERLOOT_UI tdMasterLootUI = TD_LOOT_MASTERLOOT_UI(m_nDropItemUID, m_nItemID, m_nItemAmount);
 
-	const set<int>& setBeneficiaryCID = pOwner->GetNPCLoot().GetDropList().GetBeneficiaryCID();
+	const set<CID>& setBeneficiaryCID = pOwner->GetNPCLoot().GetDropList().GetBeneficiaryCID();
 
 	int i = 0;
-	for each (int nBeneficiaryCID in setBeneficiaryCID)
+	for each (CID nBeneficiaryCID in setBeneficiaryCID)
 	{
 		GEntityPlayer* pBeneficiary = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL != pBeneficiary)
@@ -180,7 +180,7 @@ DROP_ITEM_TYPE GDropItem::GetType() const
 	return m_nType;
 }
 
-void GDropItem::ChangeGettableItem(int nCID)
+void GDropItem::ChangeGettableItem(CID nCID)
 {
 	SetGettable();
 	m_setAuthorizedCID.clear();

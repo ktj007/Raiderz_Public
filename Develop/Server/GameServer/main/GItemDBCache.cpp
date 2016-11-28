@@ -7,7 +7,7 @@
 
 
 GItemDBCache::GItemDBCache( const MUID& uidPlayer, const IUID nIUID, const size_t nMaxModCount, const size_t nMaxModStackAmt, const size_t nMaxModDura )
-: GObjectDBCache(uidPlayer), m_nIUID(nIUID), m_cacheStackAmt(nMaxModStackAmt), m_cacheDura(nMaxModDura)
+: GObjectDBCache(uidPlayer), m_nIUID(nIUID), m_cacheStackAmt(static_cast<int16>(nMaxModStackAmt)), m_cacheDura(static_cast<uint8>(nMaxModDura))
 , m_nMaxModCount(nMaxModCount), m_nSlotType(0), m_nSlotID(0)
 {
 

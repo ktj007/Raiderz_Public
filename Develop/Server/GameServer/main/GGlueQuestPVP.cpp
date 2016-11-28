@@ -36,7 +36,7 @@ int GGlueQuestPVP::GetTeamCount(int nTeam)
 
 void GGlueQuestPVP::BeginEvent(int nEventID)
 {
-	if (IsInvalidOwner()) return;
+	if (IsInvalidOwner() || !GetOwner()->IsExistPlayerInField()) return;
 	if (m_bDisableBeginEvent) return;
 
 	GetOwner()->BeginEvent(nEventID);

@@ -23,15 +23,9 @@ int		PConfig::m_nMasterServer_NetworkCardID = 0;
 wstring	PConfig::m_strMasterServerIP = L"localhost";
 int		PConfig::m_nMasterServerPort = DEFAULT_MASTER_SERVER_PORT;
 
-wstring	PConfig::m_strGameDB_Server;
-wstring	PConfig::m_strGameDB_DatabaseName;
-wstring	PConfig::m_strGameDB_UserName;
-wstring	PConfig::m_strGameDB_Password;
-
-wstring	PConfig::m_strLogDB_Server;				///< DB Server
-wstring	PConfig::m_strLogDB_DatabaseName;		///< DB Name
-wstring	PConfig::m_strLogDB_UserName;			///< DB Username
-wstring	PConfig::m_strLogDB_Password;			///< DB Password
+PDBConfig	PConfig::m_AccountDBConfig;
+PDBConfig	PConfig::m_GameDBConfig;
+PDBConfig	PConfig::m_LogDBConfig;
 
 wstring	PConfig::m_strSystemPath;
 
@@ -44,6 +38,7 @@ int PConfig::m_nDumpDestServerPort = m_nDumpDestServerPort;
 #define CONFIG_TOKEN_APP_CONFIG				L"CONFIG"
 #define CONFIG_TOKEN_APP_INFO				L"SERVER_INFO"
 #define CONFIG_TOKEN_APP_NET				L"MASTER_SERVER"
+#define CONFIG_TOKEN_APP_ACCOUNTDB			L"ACCOUNTDB"
 #define CONFIG_TOKEN_APP_DB					L"DB"
 #define CONFIG_TOKEN_APP_LOGDB				L"LOGDB"
 #define CONFIG_TOKEN_APP_PATH				L"PATH"
@@ -80,16 +75,9 @@ void PConfig::Init_INI()
 	m_nMasterServerPort = GetPrivateProfileInt(CONFIG_TOKEN_APP_NET, L"PORT", DEFAULT_MASTER_SERVER_PORT, szFileName);	
 
 	// db
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"SERVER",	 L"SH_DB",		szValue, 64, szFileName);	m_strGameDB_Server			= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"DATABASE", L"RZ_GAMEDB",	szValue, 64, szFileName);	m_strGameDB_DatabaseName	= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"USERNAME", L"dev",		szValue, 64, szFileName);	m_strGameDB_UserName		= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"PASSWORD", L"dev",		szValue, 64, szFileName);	m_strGameDB_Password		= szValue;
-
-	// LOGDB
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"SERVER",	 L"SH_DB",		szValue, 64, szFileName);	m_strLogDB_Server		= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"DATABASE", L"RZ_LOGDB",	szValue, 64, szFileName);	m_strLogDB_DatabaseName = szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"USERNAME", L"dev",		szValue, 64, szFileName);	m_strLogDB_UserName		= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"PASSWORD", L"dev",		szValue, 64, szFileName);	m_strLogDB_Password		= szValue;
+	InitAccountDB(szFileName);
+	InitGameDB(szFileName);
+	InitLogDB(szFileName);
 
 	// path
 	m_strSystemPath	= GetPathString(szFileName, L"SYSTEM");
@@ -119,4 +107,34 @@ wstring PConfig::GetPathString( const wchar_t* szFileName, const wchar_t* szKeyN
 	}
 
 	return strRet;
+}
+
+void PConfig::InitAccountDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"SERVER",	 L"SH_DB",			szValue, 256, szFileName);	m_AccountDBConfig.strServer			= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"DATABASE", L"RZ_ACCOUNTDB",	szValue, 256, szFileName);	m_AccountDBConfig.strDatabaseName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"USERNAME", L"dev",			szValue, 256, szFileName);	m_AccountDBConfig.strUserName		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"PASSWORD", L"dev",			szValue, 256, szFileName);	m_AccountDBConfig.strPassword		= szValue;
+}
+
+void PConfig::InitGameDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"SERVER",	  L"SH_DB",		szValue, 256, szFileName);	m_GameDBConfig.strServer		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"DATABASE", L"RZ_GAMEDB",	szValue, 256, szFileName);	m_GameDBConfig.strDatabaseName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"USERNAME", L"dev",		szValue, 256, szFileName);	m_GameDBConfig.strUserName		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"PASSWORD", L"dev",		szValue, 256, szFileName);	m_GameDBConfig.strPassword		= szValue;
+}
+
+void PConfig::InitLogDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"SERVER",	 L"SH_DB",		szValue, 256, szFileName);	m_LogDBConfig.strServer			= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"DATABASE", L"RZ_LOGDB",	szValue, 256, szFileName);	m_LogDBConfig.strDatabaseName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"USERNAME", L"dev",		szValue, 256, szFileName);	m_LogDBConfig.strUserName		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"PASSWORD", L"dev",		szValue, 256, szFileName);	m_LogDBConfig.strPassword		= szValue;
 }

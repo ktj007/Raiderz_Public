@@ -88,7 +88,7 @@ void XCameraEffect::CreateCameraEffect( const wchar_t* szFileName )
 			wstring strAniName(szFileName);
 			int nPosExt = strAniName.rfind(L".elu.ani");
 			strAniName = strAniName.substr(0, nPosExt);
-			std::transform(strAniName.begin(), strAniName.end(), strAniName.begin(), std::tolower);
+			std::transform(strAniName.begin(), strAniName.end(), strAniName.begin(), ::tolower);
 
 			m_mapCameraAnimation.insert( CAM_ANI_CONTROL::value_type( strAniName, pCameraAnimation ) );
 			++m_nCameraControllerId;
@@ -119,7 +119,7 @@ bool XCameraEffect::PlayCameraEffect( const wchar_t* szAniName, float _fDuration
 	//if (global.camera->IsPrimaryCameraType(CAMERA_MAIN_BACKVIEW) == false) return false;
 
 	wstring strAniName(szAniName);
-	std::transform(strAniName.begin(), strAniName.end(), strAniName.begin(), std::tolower);
+	std::transform(strAniName.begin(), strAniName.end(), strAniName.begin(), ::tolower);
 
 	RCameraSceneNode * pCamera = global.camera->GetPrimaryCamera();
 	RCameraAnimationController * pCameraAnimation	= GetCameraEffect(szAniName);

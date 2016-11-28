@@ -27,7 +27,7 @@ void SCommonBodyCharGetLookList::GetCharSimpleInfo(mdb::MDBRecordSet& rs)
 		
 		SDBTASK_ACCOUNT_CAHR_FEATURE_LIST& Char = m_Data.CharList[m_Data.nCharCount];
 		
-		Char.nCID													= rs.Field("CHAR_ID").AsInt64();
+		Char.nCID													= rs.Field("CHAR_SN").AsInt64();
 		Char.strName												= rs.Field("NAME").AsWString();
 		Char.nLevel													= rs.Field("LEV").AsByte();
 		Char.Race													= static_cast<RACE>(rs.Field("RACE").AsByte());
@@ -39,7 +39,9 @@ void SCommonBodyCharGetLookList::GetCharSimpleInfo(mdb::MDBRecordSet& rs)
 		Char.nFeatureSkinColor										= static_cast<int8>(rs.Field("FEAT_SKIN_COLOR").AsInt());
 		Char.nEyeColor												= rs.Field("FEAT_EYE_COLOR").AsByte();
 		Char.nMakeUp												= rs.Field("MAKEUP").AsByte();
+		Char.nVoice													= rs.Field("VOICE").AsByte();
 		Char.nTattooType											= rs.Field("TATOO").AsByte();
+		Char.nTattooColor											= rs.Field("TATTOO_COLOR").AsByte();
 		Char.nTattooPosX											= rs.Field("TATOO_POS_X").AsShort();
 		Char.nTattooPosY											= rs.Field("TATOO_POS_Y").AsShort();
 		Char.nTattooScale											= rs.Field("TATOO_SCALE").AsByte();
@@ -56,19 +58,21 @@ bool SCommonBodyCharGetLookList::GetCharEquipmentInfo( mdb::MDBRecordSet& rs )
 	if (0 == rs.GetFetchedCount())
 		return true;
 
-	const static size_t nCIDHash			= rs.MakeHashValue("CHAR_ID");
+	const static size_t nCIDHash			= rs.MakeHashValue("CHAR_SN");
 	const static size_t nSlotTypeHash		= rs.MakeHashValue("SLOT_TYPE");
 	const static size_t nSlotIDhash			= rs.MakeHashValue("SLOT_ID");
 	const static size_t nItemIDHash			= rs.MakeHashValue("ITEM_ID");
 	const static size_t nColorHash			= rs.MakeHashValue("COLOR");
 	static const size_t nEnchItemID_1_Hash	= rs.MakeHashValueW(L"ENCH_ITEM_ID_1");	
 
+	map<CID, set<SH_FEATURE_ITEMSLOT>> mapProcessedFeatureSlots;
+
 	for (; !rs.IsEOF(); rs.MoveNext())
 	{
 		if (rs.FieldHash(nCIDHash).IsNull())
 			continue;
 
-		const int64 nCID		= rs.FieldHash(nCIDHash).AsInt64();
+		const CID nCID		= rs.FieldHash(nCIDHash).AsInt64();
 		const uint8 nSlottype	= (uint8)rs.FieldHash(nSlotTypeHash).AsInt();
 		const int16 nSlotID		= (int16)rs.FieldHash(nSlotIDhash).AsInt();
 		const int nItemID		= rs.FieldHash(nItemIDHash).AsInt();
@@ -93,13 +97,21 @@ bool SCommonBodyCharGetLookList::GetCharEquipmentInfo( mdb::MDBRecordSet& rs )
 		const SH_FEATURE_ITEMSLOT nFeatureSlotID = ConvertSlotIDToFeatureSlotID(nSlotID);
 		if (FEATURE_ITEMSLOT_MAX == nFeatureSlotID)
 		{
-			mlog3("Error! SCommonBodyCharGetLookList::GetCharEquipmentInfo(), Invalid FeatureSlot(CID: %I64d, SlotID: %d)!\n", (int64)nCID, nSlotID);
+			// mlog3("Error! SCommonBodyCharGetLookList::GetCharEquipmentInfo(), Invalid FeatureSlot(CID: %I64d, SlotID: %d)!\n", nCID, nSlotID);
 			continue;
 		}
+
+		set<SH_FEATURE_ITEMSLOT>& setProcessedFeatureSlotIDs = mapProcessedFeatureSlots[nCID];
+
+		if (!IsLookSlotID(nSlotID) &&
+			setProcessedFeatureSlotIDs.find(nFeatureSlotID) != setProcessedFeatureSlotIDs.end())
+			continue;
 
 		m_Data.CharList[nIndex].FeatureItem[nFeatureSlotID].nItemID			= nItemID;
 		m_Data.CharList[nIndex].FeatureItem[nFeatureSlotID].nItemDyedColor	= nColor;
 		m_Data.CharList[nIndex].FeatureItem[nFeatureSlotID].nDefEnchItemID	= nEnchItemID_1;		
+
+		setProcessedFeatureSlotIDs.insert(nFeatureSlotID);
 	}
 
 	return true;
@@ -110,25 +122,41 @@ SH_FEATURE_ITEMSLOT SCommonBodyCharGetLookList::ConvertSlotIDToFeatureSlotID( co
 	switch (nSlotID)
 	{
 	case ITEMSLOT_HEAD :
+	case ITEMSLOT_LOOK_HEAD:
 		return FEATURE_ITEMSLOT_HEAD;		
 	case ITEMSLOT_FACE :
+	case ITEMSLOT_LOOK_FACE:
 		return FEATURE_ITEMSLOT_FACE;
 	case ITEMSLOT_HANDS :
+	case ITEMSLOT_LOOK_HANDS:
 		return FEATURE_ITEMSLOT_HANDS;
 	case ITEMSLOT_FEET : 
+	case ITEMSLOT_LOOK_FEET:
 		return FEATURE_ITEMSLOT_FEET;
 	case ITEMSLOT_BODY :
+	case ITEMSLOT_LOOK_BODY:
 		return FEATURE_ITEMSLOT_BODY;
 	case ITEMSLOT_LEG :
+	case ITEMSLOT_LOOK_LEG:
 		return FEATURE_ITEMSLOT_LEG;
 	case ITEMSLOT_LWEAPON : 
+	case ITEMSLOT_LOOK_LWEAPON:
 		return FEATURE_ITEMSLOT_LWEAPON;
 	case ITEMSLOT_RWEAPON :
+	case ITEMSLOT_LOOK_RWEAPON:
 		return FEATURE_ITEMSLOT_RWEAPON;
 	case ITEMSLOT_LWEAPON2 :
+	case ITEMSLOT_LOOK_LWEAPON2:
 		return FEATURE_ITEMSLOT_LWEAPON2;
 	case ITEMSLOT_RWEAPON2 :
+	case ITEMSLOT_LOOK_RWEAPON2:
 		return FEATURE_ITEMSLOT_RWEAPON2;
+	case ITEMSLOT_LOOK_BACKPACK:
+		return FEATURE_ITEMSLOT_BACKPACK;
+	case ITEMSLOT_LOOK_ACCESSORY:
+		return FEATURE_ITEMSLOT_ACCESSORY;
+	case ITEMSLOT_LOOK_TITLE:
+		return FEATURE_ITEMSLOT_TITLE;
 	}
 
 	//ITEMSLOT_HEAD == FEATURE_ITEMSLOT_HEAD;
@@ -144,6 +172,11 @@ SH_FEATURE_ITEMSLOT SCommonBodyCharGetLookList::ConvertSlotIDToFeatureSlotID( co
 	//ITEMSLOT_RWEAPON2 == FEATURE_ITEMSLOT_RWEAPON2;
 
 	return FEATURE_ITEMSLOT_MAX;
+}
+
+bool SCommonBodyCharGetLookList::IsLookSlotID( const int16 nSlotID )
+{
+	return (nSlotID >= ITEMSLOT_LOOK_START && nSlotID <= ITEMSLOT_LOOK_END);
 }
 
 void SCommonBodyCharGetLookList::SetAccountCharInfo(int idx, TD_AccountCharInfo* pCharInfo)
@@ -167,19 +200,23 @@ void SCommonBodyCharGetLookList::SetAccountCharInfo(int idx, TD_AccountCharInfo*
 	pCharInfo->Feature.nEyeColor = dbInfo.nEyeColor;
 
 	pCharInfo->Feature.nMakeUp = dbInfo.nMakeUp;
+	pCharInfo->Feature.nVoice = dbInfo.nVoice;
 	pCharInfo->Tattoo.nTattooType = dbInfo.nTattooType;
 	pCharInfo->Tattoo.nTattooPosX = dbInfo.nTattooPosX;
 	pCharInfo->Tattoo.nTattooPosY = dbInfo.nTattooPosY;
 	pCharInfo->Tattoo.nTattooScale = dbInfo.nTattooScale;
+	pCharInfo->Tattoo.nTattooColor = dbInfo.nTattooColor;
 	pCharInfo->Feature.nWeaponSet = 0;
 	
 
 	// æ∆¿Ã≈€
 	for(int i = 0; i < FEATURE_ITEMSLOT_MAX; i++)
 	{
+		// TODO: Costume Item, Element Attributes
 		pCharInfo->Feature.nItemID[i] = dbInfo.FeatureItem[i].nItemID;
 		pCharInfo->Feature.nItemID_DyedColor[i] = dbInfo.FeatureItem[i].nItemDyedColor;
 		pCharInfo->Feature.nItemID_EnchantBuff[i] = dbInfo.FeatureItem[i].nDefEnchItemID;
+		pCharInfo->Feature.nItemID_Equipped[i] = dbInfo.FeatureItem[i].nItemID;
 	}
 
 	
@@ -200,7 +237,7 @@ void SCommonBodyCharGetLookList::SetAccountCharFieldInfo(int idx, SAccountCharFi
 
 	SDBTASK_ACCOUNT_CAHR_FEATURE_LIST& dbInfo = m_Data.CharList[idx];
 
-	pFieldInfo->nCID = (int)dbInfo.nCID;
+	pFieldInfo->nCID = dbInfo.nCID;
 
 	pFieldInfo->nExitedSharedFieldID = dbInfo.nSharedFieldID;
 	pFieldInfo->nExitedDynamicFieldID = dbInfo.nDynamicFieldID;		

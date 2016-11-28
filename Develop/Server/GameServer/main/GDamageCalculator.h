@@ -46,8 +46,9 @@ inline int GDamageCalculator::CalcDamage_Character_Weapon(WEAPON_TYPE nWeaponTyp
 	case WEAPON_1H_PIERCE: return GMath::TruncateToInt(nSTR * 0.2 + nDEX * 0.3);
 	case WEAPON_TWO_HANDED: return GMath::TruncateToInt(nSTR * 0.6);
 	case WEAPON_STAFF: return GMath::TruncateToInt(nSTR * 0.6);
-	case WEAPON_ARCHERY: return GMath::TruncateToInt(nSTR * 0.1 + nDEX* 0.4);
+	case WEAPON_ARCHERY: return GMath::TruncateToInt(nSTR * 0.1 + nDEX * 0.4);
 	case WEAPON_DUAL_WIELD: return GMath::TruncateToInt(nSTR * 0.5);
+	case WEAPON_DUAL_PIERCE: return GMath::TruncateToInt(nSTR * 0.1 + nDEX * 0.4);
 	}
 
 	return 0;

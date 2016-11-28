@@ -70,13 +70,27 @@ void GClientPartyRouter::InviteRespond(const GEntityPlayer* pTarget, CCommandRes
 	pTarget->RouteToMe(pNewCmd);
 }
 
-void GClientPartyRouter::InviteForMeQuestion(const GEntityPlayer* pTarget, MUID uidInvitee, const wchar_t* szInviteeName, bool isCombatInviter)
+void GClientPartyRouter::JoinRes(const GEntityPlayer* pTarget, CCommandResultTable nResult)
 {
-	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_INVITE_FOR_ME_QUESTION,
-										3,
+	_ASSERT(pTarget != NULL);
+
+	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_JOIN_RES,
+										1,
+										NEW_INT(nResult)
+										);
+
+	pTarget->RouteToMe(pNewCmd);
+}
+
+void GClientPartyRouter::JoinQuestion(const GEntityPlayer* pTarget, MUID uidInvitee, const wchar_t* szInviteeName, int nInviteeLevel, int nInviteeTalentStyle, int nInviteeFieldID)
+{
+	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_JOIN_QUESTION,
+										5,
 										NEW_UID(uidInvitee),
 										NEW_WSTR(szInviteeName),
-										NEW_BOOL(isCombatInviter)
+										NEW_INT(nInviteeLevel),
+										NEW_INT(nInviteeTalentStyle),
+										NEW_INT(nInviteeFieldID)
 										);
 
 	pTarget->RouteToMe(pNewCmd);
@@ -176,11 +190,12 @@ void GClientPartyRouter::RouteToAllMembers(const GParty* pTarget, MCommand* pCom
 	gsys.pCommandCenter->PostCommand(pCommand);
 }
 
-void GClientPartyRouter::ChangePartyNameRes(const GParty* pParty, wstring strName)
+void GClientPartyRouter::ChangePublicPartySettingRes(const GParty* pParty, bool bPublicParty, wstring strPartyName)
 {
-	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_CHANGE_NAME,
-										1,
-										NEW_WSTR(strName.c_str())
+	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_CHANGE_PUBLIC_PARTY_SETTING,
+										2,
+										NEW_BOOL(bPublicParty),
+										NEW_WSTR(strPartyName.c_str())
 										);
 	RouteToAllMembers(pParty, pNewCmd);
 }
@@ -216,4 +231,34 @@ void GClientPartyRouter::ChangePartyQuestIDRes(const GParty* pParty, int nQuestI
 		NEW_INT(nQuestID)
 		);
 	RouteToAllMembers(pParty, pNewCmd);
+}
+
+void GClientPartyRouter::ShowInfoRes(GEntityPlayer* pTarget, const TD_PARTY& tdParty, const vector<TD_PARTY_MEMBER>& vecMembers)
+{
+	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_SHOW_INFO,
+										2,
+										NEW_BLOB(&tdParty, sizeof(tdParty), 1),
+										NEW_BLOB(vecMembers)
+										);
+	pTarget->RouteToMe(pNewCmd);
+}
+
+void GClientPartyRouter::CreateSinglePartyRes(GEntityPlayer* pTarget, CCommandResultTable nResult)
+{
+	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_CREATE_SINGLE_PARTY_RES,
+										1,
+										NEW_INT(nResult)
+										);
+	pTarget->RouteToMe(pNewCmd);
+}
+
+void GClientPartyRouter::ShowMatchedPublicPartyListRes(GEntityPlayer* pTarget, CCommandResultTable nResult, const vector<TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM>& vecMatchedItem, int nFilteredCount)
+{
+	MCommand* pNewCmd = MakeNewCommand(MC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST,
+										3,
+										NEW_INT(nResult),
+										NEW_BLOB(vecMatchedItem),
+										NEW_INT(nFilteredCount)
+										);
+	pTarget->RouteToMe(pNewCmd);
 }

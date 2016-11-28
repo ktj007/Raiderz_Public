@@ -23,7 +23,7 @@ GStandAloneModePlayerRouter::~GStandAloneModePlayerRouter()
 	// do nothing
 }
 
-void GStandAloneModePlayerRouter::RouteDeletePlayer(int nAID, const MUID& uidPlayer)
+void GStandAloneModePlayerRouter::RouteDeletePlayer(AID nAID, const MUID& uidPlayer)
 {
 	// do nothing
 }
@@ -54,7 +54,7 @@ void GStandAloneModePlayerRouter::RoutePlayerState_InWorldReq(const GEntityPlaye
 	// 프록시 플레이어 정보 추가
 	TD_PROXY_PLAYER_INFO info;
 
-	info.nAID = (AID)(pEntityPlayer->GetAID());
+	info.nAID = pEntityPlayer->GetAID();
 	info.nCID = pEntityPlayer->GetCID();
 	info.UID = pEntityPlayer->GetUID();
 	wcsncpy_s(info.szName, pEntityPlayer->GetName(), _TRUNCATE);

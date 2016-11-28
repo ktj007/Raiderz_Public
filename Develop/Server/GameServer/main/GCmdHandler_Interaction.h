@@ -10,7 +10,8 @@ public:
 	GCmdHandler_Interaction(MCommandCommunicator* pCC);
 
 	DECL_CMD_HANDLER(OnInteraction);
-	DECL_CMD_HANDLER(OnNPCInteractionElement);
+	DECL_CMD_HANDLER(OnNPCInteractionSelectElement);
+	DECL_CMD_HANDLER(OnNPCInteractionRefreshElement);
 	DECL_CMD_HANDLER(OnNPCInteractionEnd);
 };
 

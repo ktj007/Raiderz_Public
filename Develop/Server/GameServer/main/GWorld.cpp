@@ -22,6 +22,7 @@
 #include "GChallengerQuestMgr.h"
 #include "GNPCMgr.h"
 #include "GServer.h"
+#include "GPlayerGuideBook.h"
 
 void GWorld::Update( float fDelta )
 {
@@ -44,7 +45,7 @@ void GWorld::Update( float fDelta )
 	gmgr.pEnvManager->Update(fDelta);
 	if (gmgr.pEnvManager->IsChangedTime())
 	{
-		gmgr.pFieldMgr->OnTimeChanged(gmgr.pEnvManager->GetOldTime(), gmgr.pEnvManager->GetCurrentTime());
+		gmgr.pFieldMgr->OnTimeChanged(gmgr.pEnvManager->GetOldTime(), (gmgr.pEnvManager->GetCurrentTime)());
 	}
 	if (gmgr.pEnvManager->IsChangedTimeHour())
 	{
@@ -68,13 +69,13 @@ void GWorld::SendMyInfo(MUID& uidPlayer)
 	GEntityPlayer* pEntityPlayer = pPlayer->GetEntity();
 	if (NULL == pEntityPlayer) return;
 
+	// MC_CHAR_MYINFO는 로그인때만 보내주고, 서버이동때는 보내지 않는다.
+	if (pEntityPlayer->IsMovedFromOtherGameServer())	return;
+
 	GTDMaker tdMaker;
 	// 내부에서 MC_QUEST_INFO 커맨드를 보내고 있어서, 서버이동 검사전에 선처리한다.
 	vector<TD_PLAYERQUEST> vecTDPlayerQuest;
 	tdMaker.MakeTD_PLAYERQUEST(pEntityPlayer, vecTDPlayerQuest);
-
-	// MC_CHAR_MYINFO는 로그인때만 보내주고, 서버이동때는 보내지 않는다.
-	if (pEntityPlayer->IsMovedFromOtherGameServer())	return;
 	
 
 	TD_MYINFO myinfo;
@@ -89,32 +90,40 @@ void GWorld::SendMyInfo(MUID& uidPlayer)
 	vector<TD_ITEM_SLOT_INFO> vecTDReservedDummySlotInfo;
 	tdMaker.MakeTD_ReservedDummySlot(pEntityPlayer, vecTDReservedDummySlotInfo);
 
+	// TODO: 2nd skill set.
 	SET_TALENTID setTalentID = pEntityPlayer->GetTalent().GetContainer();
-	vector<int> vecTalentID;
-	vecTalentID.insert(vecTalentID.end(), setTalentID.begin(), setTalentID.end());
+	// vector<int> vecTalentID;
+	// vecTalentID.insert(vecTalentID.end(), setTalentID.begin(), setTalentID.end());
+	vector<TD_TALENT> vecTalent;
+	for (SET_TALENTID::iterator itr = setTalentID.begin(); itr != setTalentID.end(); itr++)
+	{
+		TD_TALENT tdTalent = { *itr, SST_MAIN };
+		vecTalent.push_back(tdTalent);
+	}
 
 	vector<TD_PALETTE> vecTDPalette;
-	TD_PALETTE tdPalette;
-	gsys.pPaletteSystem->MakeTD_PALETTE(pEntityPlayer, tdPalette);
-	vecTDPalette.push_back(tdPalette);	
+	gsys.pPaletteSystem->MakeTD_PALETTE(pEntityPlayer, vecTDPalette);
 
 	vector<TD_FACTION> vecTDFaction;
 	tdMaker.MakeTD_Faction(pEntityPlayer, vecTDFaction);
 
 	vector<int> vecRecipe = SetToVector(pEntityPlayer->GetPlayerRecipe().GetContainer());
 
+	vector<int> vecGuideBook = SetToVector(pEntityPlayer->GetPlayerGuideBook().GetContainer());
+
 
 	MCommand* pNewCmd = MakeNewCommand(MC_CHAR_MYINFO,
-		9,
+		10,
 		NEW_SINGLE_BLOB(myinfo),
 		NEW_BLOB(vecTDInventory),
 		NEW_BLOB(vecTDEquipment),
 		NEW_BLOB(vecTDReservedDummySlotInfo),
-		NEW_BLOB(vecTalentID),		
+		NEW_BLOB(vecTalent),		
 		NEW_BLOB(vecTDPlayerQuest),
 		NEW_BLOB(vecTDPalette),
 		NEW_BLOB(vecTDFaction),
-		NEW_BLOB(vecRecipe));
+		NEW_BLOB(vecRecipe),
+		NEW_BLOB(vecGuideBook));
 
 	pEntityPlayer->RouteToMe(pNewCmd);
 }

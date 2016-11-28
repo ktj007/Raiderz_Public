@@ -3,7 +3,11 @@
 #include "RPreDefine.h"
 #include "RAnimationDef.h"
 #include "RResource.h"
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
 #include <hash_map>
+#endif
 #include "RFile.h"
 
 namespace rs3 {
@@ -58,7 +62,7 @@ protected:
 	int					m_nMaxFrame;
 	RBoundingBox*		m_pMaxAniBoundingBox;
 
-	stdext::hash_map<string,int>		m_nodeIndexMap;		///< 이름 -> index
+	std::unordered_map<string,int>		m_nodeIndexMap;		///< 이름 -> index
 
 };
 

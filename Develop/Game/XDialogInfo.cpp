@@ -9,7 +9,7 @@ const wchar_t* XDialogInfo::GetSayString()
 {
 	MUID uidMine = XGetMyUID();
 	MUID uidInteractionNPC = XGetInteractionInfo().InteractionTargetUID;
-	
+
 	mmcode::MControlCodeTransResult result = XMMCodeMgr::GetInstance().TransControlCodeAndReplaceChars(info.dialog_text->Get(m_nSayTextID), uidMine);
 	result.Proc(&uidInteractionNPC);
 	

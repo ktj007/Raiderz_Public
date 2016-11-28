@@ -40,7 +40,6 @@ GPlayerObject::GPlayerObject(const MUID& uid)
 , m_nState(POS_SELECT_CHAR)
 , m_nUIID(0)
 , m_isSetStatIndex(false)
-, m_pGameGuard(NULL)
 , m_bForceDisconnect(false)
 {
 	;
@@ -48,7 +47,6 @@ GPlayerObject::GPlayerObject(const MUID& uid)
 
 GPlayerObject::~GPlayerObject()
 {
-	SAFE_DELETE(m_pGameGuard);
 }
 
 void GPlayerObject::Create()
@@ -56,12 +54,6 @@ void GPlayerObject::Create()
 	_ASSERT(m_pMyEntity==NULL);
 	m_pMyEntity = new GEntityPlayer();
 	m_pMyEntity->Create(m_UID);
-
-	if (GConfig::m_bGGEnable)
-	{
-		m_pGameGuard = new GPlayerGameGuard(m_pMyEntity);
-	}
-	
 	m_bCreated = true;
 }
 
@@ -83,14 +75,14 @@ void GPlayerObject::Destroy()
 	PFI_E(5741);
 }
 
-void GPlayerObject::InitAccountInfo(const unsigned int nAID, const wstring& strUserID, const bool bNewAcc)
+void GPlayerObject::InitAccountInfo(const AID nAID, const wstring& strUserID, const bool bNewAcc)
 {
 	m_AccountInfo.nAID = nAID;
 	m_AccountInfo.bNewAcc = bNewAcc;
 	wcsncpy_s(m_AccountInfo.szUserID, strUserID.c_str(), strUserID.length());	
 }
 
-bool GPlayerObject::SerializeSelectCharacter( int nCID, bool bReload )
+bool GPlayerObject::SerializeSelectCharacter( CID nCID, bool bReload )
 {
 	_ASSERT(m_pMyEntity!=NULL);
 	_ASSERT(nCID > 0);
@@ -119,11 +111,6 @@ void GPlayerObject::AddStatIndex(const PmStatIndex* statIndex, int nPCCafeID)
 		m_nPCCafeID = nPCCafeID;
 		m_isSetStatIndex = true;
 	}
-}
-
-PmStatIndex* GPlayerObject::GetStatIndex()
-{
-	return &m_statIndex;
 }
 
 int GPlayerObject::GetPCCafeID()
@@ -336,11 +323,4 @@ SAccountCharFieldInfo* GPlayerObject::GetCharFieldInfo(size_t nIndex)
 
 void GPlayerObject::Update( float fDelta )
 {
-	if (m_pGameGuard)
-		m_pGameGuard->Update(fDelta);
-}
-
-GPlayerGameGuard* GPlayerObject::GetGameGuard()
-{
-	return m_pGameGuard;
 }

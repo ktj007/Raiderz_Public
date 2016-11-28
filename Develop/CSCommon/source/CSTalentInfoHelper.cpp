@@ -361,7 +361,7 @@ bool CSTalentInfoHelper::IsPlayerNormalTalentID( int nSKillID )
 
 bool CSTalentInfoHelper::IsImmediateTalent( CSTalentInfo* pTalentInfo )
 {
-	if ((pTalentInfo->m_nTalentType == TT_SKILL) && (pTalentInfo->m_fCastingTime <= 0))
+	if ((pTalentInfo->m_nTalentType == TT_SKILL || pTalentInfo->m_nTalentType == TT_MASTERY) && (pTalentInfo->m_fCastingTime <= 0))
 	{
 		if ((pTalentInfo->m_nSkillType != ST_NONE) && (pTalentInfo->m_nSkillType != ST_PASSIVE) && (pTalentInfo->m_nSkillType != ST_EXTRA_PASSIVE))
 		{

@@ -17,7 +17,7 @@
 //
 //}
 //
-//void GDBTaskConnLogInsert::Input( const int nAID )
+//void GDBTaskConnLogInsert::Input( const AID nAID )
 //{
 //	m_Data.nAID = nAID;
 //}

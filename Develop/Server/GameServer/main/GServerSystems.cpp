@@ -45,6 +45,7 @@
 #include "GGameGuard.h"
 #include "GConst.h"
 #include "GServerDumper.h"
+#include "GGuideBookSystem.h"
 
 
 
@@ -89,6 +90,7 @@ void GServerSystems::Create()
 	pCombatCalculator	= new GCombatCalculator();
 	pAttackDamageCalculator	= new GAttackDamageCalculator();
 	pTalentFactory		= new GTalentFactory();
+	pValidateLogger		= new GValidateLogger();
 	pSystem				= new GSystem();
 	pWorld				= new GWorld();
 	pFatigueSystem		= new GFatigueSystem();
@@ -108,6 +110,7 @@ void GServerSystems::Create()
 	pStorageSystem		= new GStorageSystem;
 	pGameGuard			= new GGameGuard;
 	pServerDumper		= new GServerDumper;
+	pGuideBookSystem	= new GGuideBookSystem;
 
 	gsys.pServer			= pServer;
 	gsys.pCommonSystem		= pCommonSystem;
@@ -144,12 +147,12 @@ void GServerSystems::Create()
 	gsys.pMsgCommandFacade	= pMsgCommandFacade;
 	gsys.pExpSystem			= pExpSystem;
 	gsys.pMoneySystem		= pMoneySystem;
-	gsys.pPMSSystem			= pPMSSystem;
 	gsys.pRebirthSystem		= pRebirthSystem;
 	gsys.pDBCacheSystem		= pDBCacheSystem;
 	gsys.pStorageSystem		= pStorageSystem;
 	gsys.pGameGuard			= pGameGuard;
 	gsys.pServerDumper		= pServerDumper;
+	gsys.pGuideBookSystem	= pGuideBookSystem;
 }
 
 void GServerSystems::Destroy()
@@ -194,6 +197,7 @@ void GServerSystems::Destroy()
 	SAFE_DELETE(pStorageSystem);			gsys.pStorageSystem = NULL;
 	SAFE_DELETE(pGameGuard);				gsys.pGameGuard = NULL;
 	SAFE_DELETE(pServerDumper);				gsys.pServerDumper = NULL;
+	SAFE_DELETE(pGuideBookSystem);			gsys.pGuideBookSystem = NULL;
 			
 	gsys.SetNull();
 }

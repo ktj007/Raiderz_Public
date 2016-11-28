@@ -38,7 +38,7 @@ void GGuildSystemForDBTask::GuildSerialize( GDBTaskGuildSerializeData& Data )
 	for (size_t i = 0; i < Data.vecGuildMember.size(); ++i)
 	{
 		pGuild->InsertMember(Data.vecGuildMember[i].nAID
-			, (int)Data.vecGuildMember[i].nCID
+			, Data.vecGuildMember[i].nCID
 			, Data.vecGuildMember[i].strCharName.c_str()
 			, Data.vecGuildMember[i].nLevel
 			, (GUILD_MEMBER_GRADE)Data.vecGuildMember[i].nGuildGrade);
@@ -82,7 +82,7 @@ void GGuildSystemForDBTask::Join( const MUID& uidJoinMember, const int nGID )
 	GEntityPlayer* pJoinMember = gmgr.pPlayerObjectManager->GetEntity(uidJoinMember);
 	if (NULL == pJoinMember) return;
 
-	gsys.pMasterServerFacade->GetGuildRouter()->Join(pJoinMember->GetCID(), (AID)pJoinMember->GetAID(), nGID, pJoinMember->GetName(), pJoinMember->GetLevel(), pJoinMember->GetFieldID(), GetChannelID(pJoinMember->GetField()));
+	gsys.pMasterServerFacade->GetGuildRouter()->Join(pJoinMember->GetCID(), pJoinMember->GetAID(), nGID, pJoinMember->GetName(), pJoinMember->GetLevel(), pJoinMember->GetFieldID(), GetChannelID(pJoinMember->GetField()));
 }
 
 void GGuildSystemForDBTask::Leave( const MUID& uidMember, const int nGID )
@@ -93,13 +93,13 @@ void GGuildSystemForDBTask::Leave( const MUID& uidMember, const int nGID )
 	gsys.pMasterServerFacade->GetGuildRouter()->Leave(pPlayer->GetCID(), nGID);
 }
 
-void GGuildSystemForDBTask::Kick(int nCID, const int nGID )
+void GGuildSystemForDBTask::Kick(const CID nCID, const int nGID )
 {
 	gsys.pMasterServerFacade->GetGuildRouter()->Kick(nCID, nGID);
 }
 
 
-void GGuildSystemForDBTask::ChangeMaster(const int nGID, const MUID& uidCurMaster, int nNewMasterCID)
+void GGuildSystemForDBTask::ChangeMaster(const int nGID, const MUID& uidCurMaster, const CID nNewMasterCID)
 {
 	GEntityPlayer* pCurMaster = gmgr.pPlayerObjectManager->GetEntity(uidCurMaster);
 	if (NULL == pCurMaster)	return;

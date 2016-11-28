@@ -146,6 +146,11 @@
 #include "CSItemHelper.h"
 #include "GPlayerStance.h"
 #include "GPlayerRide.h"
+#include "GPlayerGuideBook.h"
+#include "GPlayerBuffConverter.h"
+#include "GSetItemEffectManager.h"
+#include "GPlayerPosSynchor.h"
+#include "GGuideBookSystem.h"
 
 
 GPlayerCRTLogger GEntityPlayer::m_PlayerCRTLogger;
@@ -285,6 +290,9 @@ GEntityPlayer::GEntityPlayer()
 	m_pSit = new GPlayerSit();
 	m_pSpawnedNPC = new GPlayerSpawnedNPC(this);
 	m_pRide = new GPlayerRide(this);
+	m_pPlayerGuideBook = new GPlayerGuideBook(this);
+	m_pBuffConverter = new GPlayerBuffConverter(this);
+	m_pPlayerPosSynchor = new GPlayerPosSynchor(this);
 
 	_FillRegenVar();
 }
@@ -341,6 +349,9 @@ GEntityPlayer::~GEntityPlayer()
 	SAFE_DELETE(m_pSit);
 	SAFE_DELETE(m_pSpawnedNPC);
 	SAFE_DELETE(m_pRide);
+	SAFE_DELETE(m_pPlayerGuideBook);
+	SAFE_DELETE(m_pBuffConverter);
+	SAFE_DELETE(m_pPlayerPosSynchor);
 }
 
 bool GEntityPlayer::Create(MUID& uid)
@@ -423,6 +434,8 @@ void GEntityPlayer::OnEnter()
 	// 필드 진입에 치팅할만한 문제는 필드를 떠날때 확인한다.
 	OnSynchQuest();
 
+	gsys.pGuideBookSystem->AddGuideBook_OnFieldEntered(this, m_pField->GetID());
+
 	if (m_pField->IsSharedField())
 	{
 		GDBT_CHAR_ENTER_FILED data(GetAID()
@@ -434,7 +447,10 @@ void GEntityPlayer::OnEnter()
 			, m_pField->GetID()
 			, m_vPos.x
 			, m_vPos.y
-			, m_vPos.z);
+			, m_vPos.z
+			, m_vDir.x
+			, m_vDir.y
+			, m_vDir.z);
 		gsys.pDBManager->FieldEnter(data);
 	}		
 }
@@ -466,11 +482,15 @@ MCommand* GEntityPlayer::CreateFieldInCmd()
 		ptd_player_featureTattoo = &td_player_feature_Tattoo;
 	}
 
+	vector<int> vecBuffID;
+	GetBuffList(vecBuffID);
+
 	return MakeNewCommand(
 		MC_FIELD_IN_PLAYER,
-		2,
+		3,
 		NEW_SINGLE_BLOB(&td_player_info, sizeof(TD_UPDATE_CACHE_PLAYER)),
-		NEW_SINGLE_BLOB(ptd_player_featureTattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)));
+		NEW_SINGLE_BLOB(ptd_player_featureTattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)),
+		NEW_BLOB(vecBuffID));
 }
 
 MCommand* GEntityPlayer::CreateFieldOutCmd()
@@ -583,9 +603,13 @@ void GEntityPlayer::RouteInEntity( const vector<MUID>& vecPlayers )
 		ptd_player_feature_Tattoo = &td_player_feature_Tattoo;
 	}
 
-	MCommand* pNewCmd = MakeNewCommand(MC_FIELD_IN_PLAYER, 2, 
+	vector<int> vecBuffID;
+	GetBuffList(vecBuffID);
+
+	MCommand* pNewCmd = MakeNewCommand(MC_FIELD_IN_PLAYER, 3, 
 		NEW_SINGLE_BLOB(&td_player_info, sizeof(TD_UPDATE_CACHE_PLAYER)),
-		NEW_SINGLE_BLOB(ptd_player_feature_Tattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)));
+		NEW_SINGLE_BLOB(ptd_player_feature_Tattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)),
+		NEW_BLOB(vecBuffID));
 
 	pNewCmd->AddReceiver(vecPlayers);
 	gsys.pCommandCenter->PostCommand(pNewCmd);
@@ -626,6 +650,30 @@ void GEntityPlayer::OnUpdate(float fDelta)
 	m_pAFK->Update(fDelta);
 	m_pCheatCheck->Update(fDelta);
 	m_pCombatChecker->Update(fDelta);
+	m_pPlayerPosSynchor->Update(fDelta);
+
+	ProcessInviteeTimeout(fDelta);
+}
+
+void GEntityPlayer::ProcessInviteeTimeout(float fDelta)
+{
+	if (m_mapuidInvitee.empty())
+		return;
+
+	for (MAP_INVITEEUID::iterator iter = m_mapuidInvitee.begin(); iter != m_mapuidInvitee.end(); )
+	{
+		float& fLeftTime = iter->second;
+		fLeftTime -= fDelta;
+
+		if (fLeftTime <= 0.f)
+		{
+			iter = m_mapuidInvitee.erase(iter);
+		}
+		else
+		{
+			iter++;
+		}
+	}
 }
 
 void GEntityPlayer::ApplyAllPassiveTalents()
@@ -879,6 +927,21 @@ void GEntityPlayer::SetParty( MUID val )
 	m_uidParty = val;
 }
 
+void GEntityPlayer::AddPartyInviteeUID(MUID val)
+{
+	m_mapuidInvitee[val] = PARTY_INVITEE_QUESTION_TIMEOUT;
+}
+
+void GEntityPlayer::DeletePartyInviteeUID(MUID val)
+{
+	m_mapuidInvitee.erase(val);
+}
+
+bool GEntityPlayer::CheckPartyInviteeUID(MUID val) const
+{
+	return m_mapuidInvitee.find(val) != m_mapuidInvitee.end();
+}
+
 void GEntityPlayer::GameStart()
 {
 	if (GConfig::IsExpoMode())
@@ -996,7 +1059,7 @@ void GEntityPlayer::GetNeighborNPC(const float fRange, vector<GEntityNPC*>& vecO
 	m_pField->GetNeighborNPC(m_vPos, fRange, vecOutNeighborNPC);
 }
 
-int GEntityPlayer::GetCID() const
+CID GEntityPlayer::GetCID() const
 {
 //_ASSERT(NULL != m_pPlayerInfo);
 	if (NULL == m_pPlayerInfo) return 0;
@@ -1481,7 +1544,7 @@ void GEntityPlayer::SensorInteraction(vector<uint32>& vecSensorID)
 	if (MAX_INTERACTABLE_SENSOR_COUNT < vecSensorID.size())
 	{
 		// 중첩된 센서들에 대한 인터랙션 요청에서 센서의 개수가 한도를 초과했을 경우 처리하지 않습니다.
-		mlog3("There Are Many Overlapped Sensor! FieldID=%d, FirstSensorID=%d, CID=%d\n"
+		mlog3("There Are Many Overlapped Sensor! FieldID=%d, FirstSensorID=%d, CID=%I64d\n"
 			, m_pField->GetInfo()->m_nFieldID, vecSensorID[0], this->GetCID());
 		return;
 	}
@@ -1571,6 +1634,25 @@ void GEntityPlayer::OnHitEnemy( uint32 nCombatResultFalg, GEntityActor* pVictim,
 	{
 		// 크리티컬 타격인 경우
 		m_PassiveTalents.ApplyEffect(TC_CRITICAL_HIT_ENEMY, this, pVictim);
+
+		if (pTalentInfo->m_nDamageType == TDT_PHYSIC)
+		{
+			m_PassiveTalents.ApplyEffect(TC_PHYSIC_CRIHIT, this, pVictim);
+
+			float fPercent = RandomNumber(0.f, 100.f);
+			if (fPercent <= 30.f)
+			{
+				m_PassiveTalents.ApplyEffect(TC_PHYSIC_CRIHIT_30, this, pVictim);
+			}
+			if (fPercent <= 40.f)
+			{
+				m_PassiveTalents.ApplyEffect(TC_PHYSIC_CRIHIT_40, this, pVictim);
+			}
+			if (fPercent <= 50.f)
+			{
+				m_PassiveTalents.ApplyEffect(TC_PHYSIC_CRIHIT_50, this, pVictim);
+			}
+		}
 	}
 
 	m_PassiveTalents.ApplyEffect(TC_HIT_ENEMY, this, pVictim);	
@@ -1657,6 +1739,13 @@ void GEntityPlayer::OnMeleeHitEnemy( GEntityActor* pTarget, GTalentInfo* pTalent
 	m_PassiveTalents.ApplyEffect(TC_MELEE_HIT_ENEMY, this, pTarget);
 
 	__super::OnMeleeHitEnemy(pTarget, pTalentInfo);
+}
+
+void GEntityPlayer::OnTalentAvoid( GEntityActor* pOwner, GEntityActor* pAttacker, GTalentInfo* pTalentInfo )
+{
+	m_PassiveTalents.ApplyEffect(TC_TALENT_AVOID, this, NULL);
+
+	__super::OnTalentAvoid(pOwner, pAttacker, pTalentInfo);
 }
 
 
@@ -1998,7 +2087,7 @@ void GEntityPlayer::OnGateExecute( GField* pField, vec3 vPos, vec3 vDir )
 
 	// 메세지 전송
 	GClientFieldRouter router;
-	router.ChangeField(GetUID(), pField, vPos, vDir, nIntroScene);
+	router.ChangeField(GetUID(), pField, vPos, vDir, nIntroScene, pField->GetCurrentWeather(), (pField->GetCurrentTime)());
 }
 
 void GEntityPlayer::OnGateComplete( GField* pField, vec3 vPos, vec3 vDir )
@@ -2077,7 +2166,7 @@ void GEntityPlayer::RunDebugAction()
 			// 파티가 없다면, 혼자 파티를 만든다.
 			if (!HasParty())
 			{
-				gsys.pPartySystem->CreateSinglePartyReq(m_UID);
+				gsys.pPartySystem->CreateSinglePartyReq(m_UID, false, L"");
 			}
 		}
 	}
@@ -2137,26 +2226,23 @@ bool GEntityPlayer::IsBeginUnableAction()
 	return false;
 }
 
-DAMAGE_ATTRIB GEntityPlayer::GetDamageType( const GTalentInfo* pTalentInfo/*=NULL*/ )
+DAMAGE_ATTRIB GEntityPlayer::GetDamageType( DAMAGE_ATTRIB nTalentDamageAttrib/*=DA_NONE*/, WEAPON_REFRENCE nWeaponReference/*=WR_RIGHT*/ )
 {
-	DAMAGE_ATTRIB nDamageAttrib = __super::GetDamageType(pTalentInfo);
+	DAMAGE_ATTRIB nDamageAttrib = __super::GetDamageType(nTalentDamageAttrib, nWeaponReference);
 	if (nDamageAttrib != DA_NONE)
 		return nDamageAttrib;
 
 	const GItem* pItem = NULL;
-	if (pTalentInfo)
+	switch (nWeaponReference)
 	{
-		switch (pTalentInfo->m_WeaponReference)
-		{
-		case WR_LEFT:	{ pItem = m_pItemHolder->GetEquipment().GetLeftWeapon();  }break;
-		case WR_RIGHT:	{ pItem = m_pItemHolder->GetEquipment().GetRightWeapon(); }break;
-		// 양손일때는 오른쪽만 적용
-		case WR_BOTH:	{ pItem = m_pItemHolder->GetEquipment().GetRightWeapon(); }break;
-			default:		
-			{ 
-				_ASSERT(0); 
-				return DA_NONE;
-			}
+	case WR_LEFT:	{ pItem = m_pItemHolder->GetEquipment().GetLeftWeapon();  }break;
+	case WR_RIGHT:	{ pItem = m_pItemHolder->GetEquipment().GetRightWeapon(); }break;
+	// 양손일때는 오른쪽만 적용
+	case WR_BOTH:	{ pItem = m_pItemHolder->GetEquipment().GetRightWeapon(); }break;
+		default:		
+		{ 
+			_ASSERT(0); 
+			return DA_NONE;
 		}
 	}
 
@@ -2213,7 +2299,13 @@ bool GEntityPlayer::HasPassiveTalent( TALENT_EXTRA_PASSIVE_TYPE nType, int nExtr
 
 void GEntityPlayer::RouteGuard()
 {
-	MCommand* pNewCmd = MakeNewCommand(MC_ACTION_GUARD, 3, NEW_USHORT(m_nUIID), NEW_SVEC2(GetDir()), NEW_VEC(GetPos()));
+	// MCommand* pNewCmd = MakeNewCommand(MC_ACTION_GUARD, 3, NEW_USHORT(m_nUIID), NEW_SVEC2(GetDir()), NEW_VEC(GetPos()));
+	// RouteToThisCellExceptMe(pNewCmd);
+
+	MCommand* pNewCmd = MakeNewCommand(MC_ACTION_GUARD_ME, 0, NULL);
+	RouteToMe(pNewCmd);
+
+	pNewCmd = MakeNewCommand(MC_ACTION_GUARD_OTHER, 3, NEW_USHORT(m_nUIID), NEW_SVEC2(GetDir()), NEW_VEC(GetPos()));
 	RouteToThisCellExceptMe(pNewCmd);
 }
 
@@ -2250,6 +2342,16 @@ bool GEntityPlayer::doUseTalent( int nTalentID, TALENT_TARGET_INFO Target /*= TA
 }
 
 void GEntityPlayer::OnUseTalentFailed(int nTalentID, CCommandResultTable nFailCause)
+{
+	if (nFailCause == CR_FAIL_SYSTEM_INVALID_TALENT_ID)
+	{
+		dlog("%s - invalid talent (talentid: %d)\n", __FUNCTION__, nTalentID);
+	}
+
+	FailAndRouteSystemMsg(nFailCause);
+}
+
+void GEntityPlayer::OnActTalentFailed(int nTalentID, CCommandResultTable nFailCause)
 {
 	if (nFailCause == CR_FAIL_SYSTEM_INVALID_TALENT_ID)
 	{
@@ -2383,9 +2485,13 @@ MCommand* GEntityPlayer::MakeCmd_Whois( GEntitySync* pReqSync )
 		ptd_player_feature_Tattoo = &td_player_feature_Tattoo;
 	}
 
-	return MakeNewCommand(MC_FIELD_IN_PLAYER, 2, 
+	vector<int> vecBuffID;
+	GetBuffList(vecBuffID);
+
+	return MakeNewCommand(MC_FIELD_IN_PLAYER, 3, 
 		NEW_SINGLE_BLOB(&td_player_info, sizeof(TD_UPDATE_CACHE_PLAYER)),
-		NEW_SINGLE_BLOB(ptd_player_feature_Tattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)));
+		NEW_SINGLE_BLOB(ptd_player_feature_Tattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)),
+		NEW_BLOB(vecBuffID));
 }
 
 int GEntityPlayer::GetMaxHPProto() const 
@@ -2438,7 +2544,7 @@ bool GEntityPlayer::CheckAllowAuctionMsgTime(uint32 nNowTime)
 	}
 }
 
-int64 GEntityPlayer::GetAID() const
+AID GEntityPlayer::GetAID() const
 {
 	GPlayerObject* pPlayerObj = gmgr.pPlayerObjectManager->GetPlayer(GetUID());
 	if (NULL == pPlayerObj)
@@ -2508,4 +2614,15 @@ float GEntityPlayer::GetMoveSpeed()
 		return GetRide().GetMoveSpeed();
 
 	return GetWalkSpeed();
+}
+
+void GEntityPlayer::RegainSetItemEffect()
+{
+	vector<int> vecSetItemEffectBuffIDs;
+	gmgr.pSetItemEffectManager->CollectTriggeredBuffIDs(GetItemHolder()->GetEquipment(), vecSetItemEffectBuffIDs);
+
+	RemoveBuff(m_vecLastSetItemEffectBuffIDs);
+	LazyGainBuff(vecSetItemEffectBuffIDs);
+
+	m_vecLastSetItemEffectBuffIDs = vecSetItemEffectBuffIDs;
 }

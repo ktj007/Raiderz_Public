@@ -47,8 +47,8 @@ public:
 	bool WithdrawStorageMoney(GEntityPlayer* pPlayer, int nMoney);
 
 public:
-	void RouteToMember(GGuild* pGuild, MCommand* pCmd, int nExceptMemberCID=0);
-	void RouteToStorageInteractionMember(GGuild* pGuild, MCommand* pCmd, int nExceptMemberCID=0);
+	void RouteToMember(GGuild* pGuild, MCommand* pCmd, CID nExceptMemberCID=0);
+	void RouteToStorageInteractionMember(GGuild* pGuild, MCommand* pCmd, CID nExceptMemberCID=0);
 	void RouteGuildInfo(const MUID& uidPlayer, const int nGID);
 	void RouteReject(GEntityPlayer* pPlayer, const MUID& uidRejector);
 	void RouteJoinSector(GEntityPlayer* pPlayer, const wstring& strGuildName);	

@@ -31,12 +31,20 @@ GSharedField::GSharedField( const MUID& uid, GWeatherMgr* pWeatherMgr )
 : GField(uid, pWeatherMgr)
 , m_nChannelID(INVALID_CHANNELID)
 , m_pAutoPartyMgr(NULL)
+, m_prgDespawnAll(NULL)
 {
 	m_pAutoPartyMgr = new GAutoPartyMgr(this);
+
+	if (GConst::INACTIVE_SHAREDFIELD_NPC_CLEARTIME >= 0.0f)
+	{
+		m_prgDespawnAll = new MRegulator(GConst::INACTIVE_SHAREDFIELD_NPC_CLEARTIME);
+		m_prgDespawnAll->Stop();
+	}
 }
 GSharedField::~GSharedField()
 {
 	SAFE_DELETE(m_pAutoPartyMgr);
+	SAFE_DELETE(m_prgDespawnAll);
 }
 
 void GSharedField::RemoveEntity( GEntity* pEntity )
@@ -52,11 +60,29 @@ void GSharedField::RemoveEntity( GEntity* pEntity )
 	}
 }
 
+void GSharedField::OnEntityEntered( GEntity* pEntity )
+{
+	__super::OnEntityEntered(pEntity);
+
+	if (pEntity->IsPlayer())
+	{
+		if (m_prgDespawnAll)
+			m_prgDespawnAll->Stop();
+	}
+}
+
 void GSharedField::OnEntityLeaved( GEntity* pEntity )
 {
 	__super::OnEntityLeaved(pEntity);
 
 	GetAutoPartyMgr()->EraseSingle(pEntity->GetUID());
+
+	if (pEntity->IsPlayer() &&
+		!ExistPlayer())
+	{
+		if (m_prgDespawnAll)
+			m_prgDespawnAll->Start();
+	}
 }
 
 
@@ -125,5 +151,12 @@ void GSharedField::Update( float fDelta )
 	__super::Update(fDelta);
 
 	GetAutoPartyMgr()->Update(fDelta);
+
+	if (m_prgDespawnAll &&
+		m_prgDespawnAll->IsReady(fDelta))
+	{
+		DespawnAll(true);
+		m_prgDespawnAll->Stop();
+	}
 }
 

@@ -457,8 +457,11 @@ void GPickingZTable::LoadPickingZSize(wstring& strFilename)
 	string strText;
 	if ( _Contents(strText, pRootElement))
 	{
+		int nPartialArea = 0;
+
 		sscanf(strText.c_str(),"%d %d %d %d %d",
-			&m_bPartialArea, &m_rtPartialArea.left, &m_rtPartialArea.top, &m_rtPartialArea.right, &m_rtPartialArea.bottom);
+			&nPartialArea, &m_rtPartialArea.left, &m_rtPartialArea.top, &m_rtPartialArea.right, &m_rtPartialArea.bottom);
+		m_bPartialArea = !!nPartialArea;
 	}
 }
 
@@ -594,10 +597,10 @@ void GPickingZTable::RecordPickingData( vector<HEIGHT_TYPE> &vecPickData,
 	Cell* pNewCell = new Cell();
 	m_mapCells.insert(std::make_pair(nFlatPoint, pNewCell));
 
-	pNewCell->MakeHeightArray(vecPickData.size());
+	pNewCell->MakeHeightArray(static_cast<uint8>(vecPickData.size()));
 	for (size_t i=0; i<vecPickData.size(); ++i)
 	{
-		pNewCell->SetHeight(i, vecPickData[i]);
+		pNewCell->SetHeight(static_cast<uint8>(i), vecPickData[i]);
 	}
 }
 

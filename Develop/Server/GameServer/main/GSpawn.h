@@ -16,6 +16,8 @@ public:
 	void Init(GField* pField, const SPAWN_INFO* pSpawnInfo);
 	// 스폰정보 초기화
 	void Reset();
+	// set next respawn time to initial start time (not to respawn time).
+	void ResetSpawnTime();
 	// 매틱마다 호출 (반환값은 스폰 됐는지 여부)
 	bool Update(float fDelta);
 

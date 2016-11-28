@@ -4,9 +4,7 @@
 #include "CSCommonLib.h"
 
 // 레이더즈 커맨드 버전
-#define SH_COMMAND_VERSION				129
-// Rev. 128 - Added SoulHunterZ Item Attunement Commands
-// Rev. 129 - Added 4 more Soul Attunement Commands _PREPARE, _CANCEL, _CHECK_REQ, _CHECK_RESULT
+#define SH_COMMAND_VERSION				159
 
 // ----------------------------------------------------------------------
 // 커맨드 테이블 ID 할당
@@ -30,9 +28,10 @@ enum CCommandTable
 	MC_COMM_REQUEST_ACCOUNT_CHAR_LIST			= 1011,		///< (C->S) 캐릭터 리스트 요청
 	MC_COMM_RESPONSE_ACCOUNT_CHAR_LIST			= 1012,		///< (S->C) 캐릭터 리스트 응답
 	MC_COMM_MOVE_TO_GAME_SERVER					= 1013,		///< (S->C) 게임서버로 이동해라 (From LS To GS)
-	MC_COMM_DUPLICATED_PLAYER_LOGIN				= 1014,		///< (S->C) 다른 곳에서 중복으로 로그인
-	MC_COMM_START_MOVE_TO_LOGIN_SERVER_REQ		= 1015,		///< (C->S) 캐릭터 선택 화면으로 이동 시작 요청
-	MC_COMM_START_MOVE_TO_LOGIN_SERVER_RES		= 1016,		///< (S->C) 캐릭터 선택 화면으로 이동 시작 응답
+	MC_COMM_START_MOVE_TO_LOGIN_SERVER_REQ		= 1014,		///< (C->S) 캐릭터 선택 화면으로 이동 시작 요청
+	MC_COMM_START_MOVE_TO_LOGIN_SERVER_RES		= 1015,		///< (S->C) 캐릭터 선택 화면으로 이동 시작 응답
+	MC_COMM_NOTIFY_KICK							= 1016,
+	MC_COMM_NOTIFY_REASON_KICK					= 1017,
 
 // 캐릭터 관리 --------------------------------------------------------------------------------------
 	MC_CHAR_REQUEST_INSERT_CHAR		= 1020,		///< (C->S) 캐릭터 생성 요청
@@ -54,7 +53,7 @@ enum CCommandTable
 	MC_CHAR_REWARD_EXP,							///< (S->C) 경험치 획득
 	MC_CHAR_LEVEL_UP,							///< (S->C) 레벨업
 	MC_CHAR_UPDATE_SIMPLE_STATUS,				///< (S->C) 상태(HP, EN)가 변화했다. [최적화]
-	MC_CHAR_SAVE_SOULBINDING,					///< (S->C) 소울 바인딩 저장
+	// MC_CHAR_SAVE_SOULBINDING,				///< (S->C) 소울 바인딩 저장
 	MC_CHAR_SAVE_CHECKPOINT,					///< (S->C) 체크포인트 저장
 	MC_CHAR_UPDATE_MONEY,						///< (S->C) 실버 획득
 	MC_CHAR_ENEMY_INFO,							///< (S->C) 적들의 HP 정보
@@ -75,7 +74,7 @@ enum CCommandTable
 	MC_FIELD_IN_BUFFENTITY			= 1119,		///< (S->C) 마법진 생김 [최적화]
 	MC_FIELD_OUT_BUFFENTITY			= 1120,		///< (S->C) 마법진 없어짐 [최적화]
 	MC_FIELD_TRAP_TRIGGERED			= 1121,		///< (S->C) 트랩 밟아서 없어짐 [최적화]
-	MC_FIELD_SECTOR_ENTITY_INFO		= 1123,		///< (S->C) 주위 엔티티 정보
+	// MC_FIELD_SECTOR_ENTITY_INFO		= 1123,	///< (S->C) 주위 엔티티 정보
 	MC_FIELD_SET_TIME				= 1124,		///< (S->C) 게임 시간 설정 [최적화]
 	MC_FIELD_SET_WEATHER			= 1125,		///< (S->C) 게임 날씨 설정 [최적화]
 	MC_FIELD_SET_TIME_WEATHER		= 1126,		///< (S->C) 시간, 날씨 설정 [최적화]
@@ -84,6 +83,14 @@ enum CCommandTable
 	MC_FIELD_PLAYER_EXTRA_INFO_REQ	= 1129,		///< (C->S) 플레이어 추가 정보 주세요
 	MC_FIELD_IN_BPART				= 1130,		///< (S->C) BPART 들어옴
 	MC_FIELD_OUT_BPART				= 1131,		///< (S->C) BPART 나감
+	MC_FIELD_PLAYER_EXTRA_INFO		= 1132,
+	MC_FIELD_IN_PLAYER_SIMPLE		= 1133,
+	MC_FIELD_SECTOR_PLAYER_INFO		= 1134,
+	MC_FIELD_SECTOR_NPC_INFO		= 1135,
+	MC_FIELD_SECTOR_BPART_INFO		= 1136,
+	MC_FIELD_SECTOR_MAGIC_AREA_INFO	= 1137,
+	MC_FIELD_SECTOR_SENSOR_INFO		= 1138,
+
 
 // 커뮤니티 ///////////
 	MC_MSG_REQ						= 1200,		///< (C->S) 대화 발신
@@ -110,15 +117,17 @@ enum CCommandTable
 // 필드 이동(FIELD) ----------------------------------------------------------------------------------
 	MC_FIELD_PREPARING_TO_LOAD		= 1331,		///< (S->C) 로딩 준비해라
 	MC_FIELD_LOADING_COMPLETE		= 1332,		///< (C->S) 로딩 완료(아직 로딩 화면)
-	MC_FIELD_START_GAME				= 1333,		///< (S->C) 게임 시작(로딩화면에서 게임화면으로 전환)
-	MC_FIELD_CHANGE_FIELD			= 1334,		///< (S->C) 플레이어 필드 이동 (공유/인스턴스 공통)
-	MC_FIELD_PREPARE_CHANGE_CHANNEL_REQ	= 1335,		///< (C->S) 플레이어 채널 변경 준비 요청
-	MC_FIELD_PREPARE_CHANGE_CHANNEL_RES	= 1336,		///< (S->C) 플레이어 채널 변경 준비 응답
-	MC_FIELD_CANCEL_CHANGE_CHANNEL	= 1337,		///< (C->S) 플레이어 채널 변경 준비 요청
-	MC_FIELD_REQUEST_CHANGE_CHANNEL	= 1338,		///< (C->S) 플레이어 채널 변경 요청 (준비 패킷 후에 10초 뒤에 날려야 함)
-	MC_FIELD_REQUEST_CHANNEL_LIST	= 1339,		///< (C->S) 플레이어 채널 목록 요청
-	MC_FIELD_CHANNEL_LIST			= 1340,		///< (S->C) 플레이어 채널 목록
-	MC_FIELD_CANCEL_CHANGE_FIELD	= 1341,		///< (S->C) 필드 이동 취소
+	MC_FIELD_OBJECT_LOADING			= 1333,
+	MC_FIELD_OBJECT_LOADING_COMPLETE	= 1334,
+	MC_FIELD_START_GAME				= 1335,		///< (S->C) 게임 시작(로딩화면에서 게임화면으로 전환)
+	MC_FIELD_CHANGE_FIELD			= 1336,		///< (S->C) 플레이어 필드 이동 (공유/인스턴스 공통)
+	MC_FIELD_PREPARE_CHANGE_CHANNEL_REQ	= 1337,		///< (C->S) 플레이어 채널 변경 준비 요청
+	MC_FIELD_PREPARE_CHANGE_CHANNEL_RES	= 1338,		///< (S->C) 플레이어 채널 변경 준비 응답
+	MC_FIELD_CANCEL_CHANGE_CHANNEL	= 1339,		///< (C->S) 플레이어 채널 변경 준비 요청
+	MC_FIELD_REQUEST_CHANGE_CHANNEL	= 1340,		///< (C->S) 플레이어 채널 변경 요청 (준비 패킷 후에 10초 뒤에 날려야 함)
+	MC_FIELD_REQUEST_CHANNEL_LIST	= 1341,		///< (C->S) 플레이어 채널 목록 요청
+	MC_FIELD_CHANNEL_LIST			= 1342,		///< (S->C) 플레이어 채널 목록
+	MC_FIELD_CANCEL_CHANGE_FIELD	= 1343,		///< (S->C) 필드 이동 취소
 
 	MC_DYNAMIC_FIELD_ENTER_REQ		= 1350,		///< (C->S) 플레이어 다이나믹 필드 참가 (공유/인스턴스 공통)
 	MC_DYNAMIC_FIELD_LEAVE_REQ		= 1351,		///< (C->S) 플레이어 다이나믹 필드 나가기
@@ -156,10 +165,12 @@ enum CCommandTable
 	MC_ACTION_PREPARE_ATTACK		= 1432,		///< (S->C) 플레이어 공격 준비 [최적화]
 
 	MC_ACTION_GUARD_REQ				= 1433,		///< (C->S) 가드 시작 요청 [최적화]
-	MC_ACTION_GUARD					= 1434,		///< (S->C) 가드 시작 [최적화]
-	MC_ACTION_GUARD_FAILED			= 1435,		///< (S->C) 가드 실패
-	MC_ACTION_GUARD_RELEASED_REQ	= 1436,		///< (C->S) 가드 해제 요청 [최적화]
-	MC_ACTION_GUARD_RELEASED		= 1437,		///< (S->C) 가드 해제 [최적화]
+	// MC_ACTION_GUARD				= 1434,		///< (S->C) 가드 시작 [최적화]
+	MC_ACTION_GUARD_ME				= 1434,
+	MC_ACTION_GUARD_OTHER			= 1435,
+	MC_ACTION_GUARD_FAILED			= 1436,		///< (S->C) 가드 실패
+	MC_ACTION_GUARD_RELEASED_REQ	= 1437,		///< (C->S) 가드 해제 요청 [최적화]
+	MC_ACTION_GUARD_RELEASED		= 1438,		///< (S->C) 가드 해제 [최적화]
 
 
 	MC_ACTION_GUARD_DEFENSE			= 1440,		///< (S->C) 방어 성공 [최적화]
@@ -177,10 +188,12 @@ enum CCommandTable
 	MC_ACTION_END_TALENT_COOLDOWN	= 1451,		///< (S->C) 쿨다운 끝. 이제 탤런트 사용 가능하다. 파라메타는 탤런트 ID [최적화]
 	MC_ACTION_EXTRA_ACT_TALENT		= 1452,		///< (S->C) 탤런트 Extra Phase로 이동 [최적화]
 	MC_ACTION_REQUEST_FAIL_TALENT	= 1453,		///< (S->C) 탤런트 사용 요청 실패 [최적화]
+	MC_ACTION_ACT_TALENT_MISS_REQ	= 1454,
+	MC_ACTION_ACT_TALENT_MISS		= 1455,
 
-	MC_ACTION_ACT_TALENT_PROJECTILE	= 1454,		///< (S->C) 마법 사용2 (ACT_SPELL과 같은 용도이지만 파라메타로 TargetUIDList대신 목표의 위치를 사용한다.)
-	MC_ACTION_ACT_SPELL_MAGICAREA	= 1455,		///< (S->C) 마법 사용3 (ACT_SPELL과 같은 용도이지만 파라메타로 TargetUIDList대신 목표의 위치를 사용한다.) [최적화]
-	MC_ACTION_RECASTING_SPELL		= 1456,		///< (S->C) 마법 캐스팅 시작 (EN이 부족하여 캐스팅이 멈춘것을 푼다.) [최적화]
+	MC_ACTION_ACT_TALENT_PROJECTILE		= 1456,		///< (S->C) 마법 사용2 (ACT_SPELL과 같은 용도이지만 파라메타로 TargetUIDList대신 목표의 위치를 사용한다.)
+	// MC_ACTION_ACT_SPELL_MAGICAREA	= 1457,		///< (S->C) 마법 사용3 (ACT_SPELL과 같은 용도이지만 파라메타로 TargetUIDList대신 목표의 위치를 사용한다.) [최적화]
+	MC_ACTION_RECASTING_SPELL			= 1458,		///< (S->C) 마법 캐스팅 시작 (EN이 부족하여 캐스팅이 멈춘것을 푼다.) [최적화]
 	
 	MC_ACTION_TALENT_HIT				= 1460,		///< (S->C) 탤런트 맞음(데미지만 닳을 때 명령어 사용) [최적화]
 	MC_ACTION_TALENT_HIT_NO_MF			= 1461,		///< (S->C) 탤런트 맞음(보내줘야 될 값이 여러개일 경우) [최적화]
@@ -233,6 +246,8 @@ enum CCommandTable
 	MC_ACTION_AFK_REQ				= 1523,		///< (C->S) 자리비움 요청
 	MC_ACTION_END_COMBAT			= 1524,		///< (S->C) 전투 종료
 
+	MC_ACTION_TALENT_ADJUST_COOLTIME	= 1525,
+
 	// 트리거 커맨드(TRIGGER) -----------------------------------------------------------------------------
 	MC_TRIGGER_TOUCH_SENSOR_ENTER			= 1531,		///< (C->S) 터치 센서 지역으로 들어옴
 	MC_TRIGGER_TOUCH_SENSOR_LEAVE			= 1532,		///< (C->S) 터치 센서 지역으로 나감
@@ -263,6 +278,10 @@ enum CCommandTable
 	MC_NPC_CHANGE_COMBAT_TARGET		= 1617,		///< (S->C) 싸울 목표 액터가 변경됨
 	MC_NPC_SPEWUP					= 1618,		///< (S->C) NPC가 먹은후 뱉기
 	MC_NPC_SPEWUP_INTERRUPT			= 1619,		///< (S->C) NPC가 먹은후 공격을 받아 뱉기
+	MC_NPC_START_COMBAT				= 1620,
+	MC_NPC_END_COMBAT				= 1621,
+	MC_NPC_MARK_POS					= 1622,
+	MC_NPC_UNMARK_POS				= 1623,
 
 
 // 아이템(ITEM) ----------------------------------------------------------------------------------------
@@ -276,16 +295,18 @@ enum CCommandTable
 	MC_ITEM_UNEQUIP_REQ				= 1710,		///< (C->S) 아이템 장착 해제 요청
 	MC_ITEM_UNEQUIP					= 1711,		///< (S->C) 아이템 장착 해제
 
-	MC_ITEM_CHANGE_LOOK_EQUIP_ITEM	= 1712,		///< (S->C) 아이템 변경 정보 알림
-	MC_ITEM_CHANGE_LOOK_UNEQUIP_ITEM= 1713,		///< (S->C) 아이템 변경 정보 알림
+	MC_ITEM_CHANGE_LOOK				= 1712,		///< (S->C) 아이템 변경 정보 알림
+	MC_ITEM_REMOVE_LOOK				= 1713,		///< (S->C) 아이템 변경 정보 알림
+	MC_ITEM_CHANGE_AND_REMOVE_LOOK	= 1714,
 
-	MC_ITEM_USE_REQ					= 1714,		///< (C->S) 아이템 사용 요청
-	MC_ITEM_USE_FAIL				= 1715,		///< (S->C) 아이템 사용 실패
-	MC_ITEM_TALENT					= 1716,		///< (S->C) 아이템 탤런트 사용 허락
+	MC_ITEM_USE_REQ					= 1715,		///< (C->S) 아이템 사용 요청
+	MC_ITEM_USE_FAIL				= 1716,		///< (S->C) 아이템 사용 실패
+	// MC_ITEM_TALENT					= 1716,		///< (S->C) 아이템 탤런트 사용 허락
 	
-	MC_ITEM_ADD						= 1717,		///< (S->C) 아이템 획득
-	MC_ITEM_DROP_REQ				= 1718,		///< (C->S) 아이템 버림 요청
-	MC_ITEM_REMOVE					= 1719,		///< (S->C)	아이템 버림	
+	MC_ITEM_ADD						= 1718,		///< (S->C) 아이템 획득
+	MC_ITEM_DROP_REQ				= 1719,		///< (C->S) 아이템 버림 요청
+	MC_ITEM_REMOVE					= 1720,		///< (S->C)	아이템 버림	
+	MC_ITEM_REMOVE_WITH_CAUSE		= 1721,
 
 	MC_ITEM_UPDATE_DURABILITY		= 1722,		///< (S->C)	아이템 내구도 변경
 
@@ -294,8 +315,8 @@ enum CCommandTable
 	MC_ITEM_MOVE_REQ				= 1726,		///< (C->S) 아이템 이동(이동, 합치기, 쪼개기) 요청
 	MC_ITEM_MOVE					= 1727,		///< (S->C) 아이템 이동
 
-	MC_ITEM_SORT_INVEN_SLOT_REQ		= 1730,		///< (C->S) 아이템 인벤토리 위치 정렬 요청
-	MC_ITEM_SORT_INVEN_SLOT			= 1731,		///< (S->C) 아이템 인벤토리 위치 정렬
+	MC_ITEM_SORT_REQ				= 1728,		///< (C->S) 아이템 인벤토리 위치 정렬 요청
+	MC_ITEM_SORT					= 1729,		///< (S->C) 아이템 인벤토리 위치 정렬
 
 	MC_ITEM_DYE_PREPARE_REQ			= 1740,		///< (C->S)	아이템 염색 준비 요청
 	MC_ITEM_DYE_PREPARECANCEL_REQ	= 1741,		///< (S->C)	아이템 염색 준비 취소 요청
@@ -337,20 +358,33 @@ enum CCommandTable
 	MC_DIALOG_SELECT				= 1903,		///< (S->C) 다이얼로그 진행
 
 // 트레이닝(TRAINING)----------------------------------------------------------------------------------------
-	MC_TRAINING_TRAIN_REQ	= 2001,		///< (C->S)	탤런트 학습 요청
-	MC_TRAINING_TRAIN		= 2002,		///< (S->C)	탤런트 학습 응답	
-	MC_TRAINING_UNTRAIN_ALL	= 2003,		///< (S->C)	모든 탤런트 초기화
+	MC_TRAINING_TRAIN_REQ				= 2001,		///< (C->S)	탤런트 학습 요청
+	MC_TRAINING_TRAIN					= 2002,		///< (S->C)	탤런트 학습 응답	
+	MC_TRAINING_UNTRAIN_ALL				= 2003,		///< (S->C)	모든 탤런트 초기화
+	MC_TRAINING_TRAIN_LIMIT_INFO_REQ	= 2004,
+	MC_TRAINING_TRAIN_LIMIT_INFO		= 2005,
+
+// (SKILLSET)----------------------------------------------------------------------------------------
+	MC_SKILLSET_SWITCH_REQ			= 2010,
+	MC_SKILLSET_SWITCH				= 2011,
+	MC_SKILLSET_SWITCH_UI			= 2012,
+	MC_SKILLSET_SWITCH_PREPARE_REQ	= 2013,
+	MC_SKILLSET_SWITCH_PREPARE		= 2014,
 	
 // 버프(BUFF) -------------------------------------------------------------------------------------------
 	MC_BUFF_GAIN					= 2101,		///< (S->C)	버프 효과 얻음 [최적화]
 	MC_BUFF_LOST_REQ				= 2102,		///< (C->S)	버프 효과 잃음 요청 [최적화]
 	MC_BUFF_LOST					= 2103,		///< (S->C)	버프 효과 잃음 [최적화]
 	MC_BUFF_HEAL					= 2104,		///< (S->C)	버프 회복효과
+	MC_BUFF_RESTORE_EN				= 2105,
+	MC_BUFF_RESTORE_STA				= 2106,
 
-	MC_BUFF_INSTANT_EFFECT_GAIN		= 2105,		///< (S->C) 버프의 인스턴트 효과를 얻음 [최적화]
-	MC_TALENT_INSTANT_EFFECT_GAIN	= 2106,		///< (S->C)	탤런트의 인스턴트 효과를 얻음 [최적화]
-	MC_BUFF_STACK_INCREASE			= 2107,		///< (S->C) 버프 스택 추가
-	MC_BUFF_STACK_DECREASE			= 2108,		///< (S->C) 버프 스택 제거
+	MC_BUFF_INSTANT_EFFECT_GAIN		= 2107,		///< (S->C) 버프의 인스턴트 효과를 얻음 [최적화]
+	MC_TALENT_INSTANT_EFFECT_GAIN	= 2108,		///< (S->C)	탤런트의 인스턴트 효과를 얻음 [최적화]
+	MC_BUFF_STACK_INCREASE			= 2109,		///< (S->C) 버프 스택 추가
+	MC_BUFF_STACK_DECREASE			= 2110,		///< (S->C) 버프 스택 제거
+	MC_TALENT_USE_DISPOSABLE_TALENT	= 2111,
+	MC_BUFF_GAIN_WITH_STACK			= 2112,
 
 // 트레이드(TRADE) --------------------------------------------------------------------------------------
 	MC_TRADE_START_REQ				= 2201,		///< (C->S) 거래 시작 요청
@@ -374,31 +408,40 @@ enum CCommandTable
 	MC_TRADE_COMPLETE				= 2235,		///< (S->C) 거래 완료
 
 // 파티(PARTY) ------------------------------------------------------------------------------------------
-	MC_PARTY_INVITE_REQ					= 2253,		///< (C->S) 파티 초대
-	MC_PARTY_INVITE						= 2254,		///< (S->C) 파티 초대 응답
-	MC_PARTY_LEAVE_REQ					= 2255,		///< (C->S) 파티 떠남
-	MC_PARTY_KICK_REQ					= 2257,		///< (C->S) 파티 추방
-	MC_PARTY_INVITE_QUESTION			= 2261,		///< (S->C) 파티 초대 물음
-	MC_PARTY_INVITE_QUESTION_RESPOND	= 2262,		///< (C->S) 파티 초대 물음 응답
-	MC_PARTY_NOTIFY_JOIN				= 2263,		///< (S->C) 참가 알림
-	MC_PARTY_NOTIFY_LEAVE				= 2264,		///< (S->C) 떠남 알림
-	MC_PARTY_REFRESH_INFO_ALL			= 2265,		///< (S->C) 파티의 모든 정보
-	MC_PARTY_REFRESH_INFO				= 2266,		///< (S->C) 파티 Player 정보
-	MC_PARTY_INVITE_FOR_ME_REQ			= 2267,		///< (C->S) 파티장에게 가입 요청
-	MC_PARTY_INVITE_FOR_ME_QUESTION		= 2268,		///< (S->C) 파티장에게 가입 요청 물음
-	MC_PARTY_INVITE_FOR_ME_QUESTION_RESPOND	= 2269,	///< (C->S) 가입 요청 물음 응답
+	MC_PARTY_INVITE_REQ								= 2253,		///< (C->S) 파티 초대
+	MC_PARTY_INVITE									= 2254,		///< (S->C) 파티 초대 응답
+	MC_PARTY_LEAVE_REQ								= 2255,		///< (C->S) 파티 떠남
+	MC_PARTY_KICK_REQ								= 2257,		///< (C->S) 파티 추방
+	MC_PARTY_INVITE_QUESTION						= 2261,		///< (S->C) 파티 초대 물음
+	MC_PARTY_INVITE_QUESTION_RESPOND				= 2262,		///< (C->S) 파티 초대 물음 응답
+	MC_PARTY_NOTIFY_JOIN							= 2263,		///< (S->C) 참가 알림
+	MC_PARTY_NOTIFY_LEAVE							= 2264,		///< (S->C) 떠남 알림
+	MC_PARTY_REFRESH_INFO_ALL						= 2265,		///< (S->C) 파티의 모든 정보
+	MC_PARTY_REFRESH_INFO							= 2266,		///< (S->C) 파티 Player 정보
+	MC_PARTY_JOIN_REQ								= 2267,		///< (C->S) 파티장에게 가입 요청
+	MC_PARTY_JOIN_RES								= 2268,
+	MC_PARTY_JOIN_QUESTION							= 2269,		///< (S->C) 파티장에게 가입 요청 물음
+	MC_PARTY_JOIN_QUESTION_RESPOND					= 2270,		///< (C->S) 가입 요청 물음 응답
+	MC_PARTY_ACCEPT_CANCEL							= 2271,		///< (S->C)	가입 수락 응답 취소
 
-	MC_PARTY_ACCEPT_CANCEL				= 2270,		///< (S->C)	가입 수락 응답 취소
-
-	MC_PARTY_CHANGE_NAME_REQ			= 2273,		///< (C->S) 파티 이름 변경 요청
-	MC_PARTY_CHANGE_NAME				= 2274,		///< (S->C) 파티 이름 변경
-	MC_PARTY_CHANGE_LEADER_REQ			= 2275,		///< (C->S) 파티장 변경 요청
-	MC_PARTY_CHANGE_LEADER				= 2276,		///< (S->C) 파티장 변경
-	MC_PARTY_CHANGE_LOOTING_RULE_REQ	= 2277,		///< (C->S) 파티 루팅룰 변경 요청	[최적화]
-	MC_PARTY_CHANGE_LOOTING_RULE		= 2278,		///< (S->C) 파티 루팅룰 변경		[최적화]
-	MC_PARTY_CHANGE_QUESTID_REQ			= 2279,		///< (C->S) 파티 수행퀘스트 변경 요청
-	MC_PARTY_CHANGE_QUESTID				= 2280,		///< (S->C) 파티 수행퀘스트 변경
-	MC_PARTY_CHANGE_LEADER_NOTIFY		= 2281,		///< (S->C) 파티장 변경 알림
+	MC_PARTY_CHANGE_PUBLIC_PARTY_SETTING_REQ		= 2273,		///< (C->S) 파티 이름 변경 요청
+	MC_PARTY_CHANGE_PUBLIC_PARTY_SETTING			= 2274,		///< (S->C) 파티 이름 변경
+	MC_PARTY_CHANGE_LEADER_REQ						= 2275,		///< (C->S) 파티장 변경 요청
+	MC_PARTY_CHANGE_LEADER							= 2276,		///< (S->C) 파티장 변경
+	MC_PARTY_CHANGE_LOOTING_RULE_REQ				= 2277,		///< (C->S) 파티 루팅룰 변경 요청	[최적화]
+	MC_PARTY_CHANGE_LOOTING_RULE					= 2278,		///< (S->C) 파티 루팅룰 변경		[최적화]
+	MC_PARTY_CHANGE_QUESTID_REQ						= 2279,		///< (C->S) 파티 수행퀘스트 변경 요청
+	MC_PARTY_CHANGE_QUESTID							= 2280,		///< (S->C) 파티 수행퀘스트 변경
+	MC_PARTY_CHANGE_LEADER_NOTIFY					= 2281,		///< (S->C) 파티장 변경 알림
+	MC_PARTY_INVITE_BY_NAME_REQ						= 2282,
+	MC_PARTY_NOTIFY_NOT_ENOUGH_FIELD_TOKEN			= 2283,
+	MC_PARTY_REFRESH_MEMBER_POSITION				= 2284,
+	MC_PARTY_SHOW_INFO_REQ							= 2285,
+	MC_PARTY_SHOW_INFO								= 2286,
+	MC_PARTY_CREATE_SINGLE_PARTY_REQ				= 2287,
+	MC_PARTY_CREATE_SINGLE_PARTY_RES				= 2288,
+	MC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST_REQ	= 2301,
+	MC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST		= 2302,
 
 
 // 엔피씨 상점(NPC SHOP)
@@ -444,13 +487,15 @@ enum CCommandTable
 	MC_INTERACTION_INTERACTION_REQ	= 2501,		///< (C->S) 인터랙션 요청
 
 // 인터랙션(NPC INTERACTION) ----------------------------------------------------------------------------------------
-	MC_NPCINTERACTION_INTERACTION	= 2502,		///< (S->C) 인터랙션 응답
-	MC_NPCINTERACTION_IELEMENT_REQ	= 2503,		///< (C->S) 인터랙션 엘리먼트 요청
-	MC_NPCINTERACTION_END_REQ		= 2504,		///< (C->S) 인터랙션 종료 요청
-	MC_NPCINTERACTION_END			= 2505,		///< (S->C) 인터랙션 종료 응답
+	MC_NPCINTERACTION_SELECTABLE_IELEMENT				= 2502,		///< (S->C) 인터랙션 응답
+	MC_NPCINTERACTION_SELECT_IELEMENT_REQ				= 2503,		///< (C->S) 인터랙션 엘리먼트 요청
+	MC_NPCINTERACTION_REFRESH_SELECTABLE_IELEMENT_REQ	= 2504,
+	MC_NPCINTERACTION_REFRESH_SELECTABLE_IELEMENT		= 2505,
+	MC_NPCINTERACTION_END_REQ							= 2506,		///< (C->S) 인터랙션 종료 요청
+	MC_NPCINTERACTION_END								= 2507,		///< (S->C) 인터랙션 종료 응답
 
-	MC_NPCINTERACTION_ICON			= 2507,		///< (S->C) NPC 아이콘 응답
-	MC_NPCINTERACTION_LOOT_START	= 2508,		///< (S->C) 인터랙션으로 루팅 시작	
+	MC_NPCINTERACTION_ICON								= 2508,		///< (S->C) NPC 아이콘 응답
+	MC_NPCINTERACTION_LOOT_START						= 2509,		///< (S->C) 인터랙션으로 루팅 시작	
 	
 
 // 미니맵, 월드맵 ------------------------------------------------------------------------------------------
@@ -621,15 +666,6 @@ enum CCommandTable
 	MC_ENCHANT_PREPARE				= 3905,							///< (C->S) 강화 준비
 	MC_ENCHANT_CANCEL				= 3906,							///< (C->S) 강화 취소
 
-//SoulHunterZ - Item Soul Attunement
-	MC_SH_SA_REQ					= 3950,							///< (C->S)
-	MC_SH_SA_RESULT					= 3951,							///< (S->C)
-	MC_SH_SA_PREPARE				= 3952,
-	MC_SH_SA_CANCEL					= 3953,
-	MC_SH_SA_CHECK_REQ				= 3954,
-	MC_SH_SA_CHECK_RESULT			= 3955,
-	MC_SH_ITEM_XP					= 3956,							///< (S->C)
-
 // 자동파티
 	MC_AUTOPARTY_ENQUEUE_REQ		= 4000,							///< (C->S) 자동파티 참여 요청
 	MC_AUTOPARTY_INVITE				= 4001,							///< (S->C) 자동파티 결성 완료
@@ -674,108 +710,16 @@ enum CCommandTable
 	MC_CS_TRADEMARKET_GET_MYLIST	= 4309,							///< (C->S) 내 거래소 아이템 목록을 얻는다
 	MC_SC_TRADEMARKET_MYLIST		= 4310,							///< (S->C) 내 거래소 아이템 목록
 
-// 관리(GM) ------------------------------------------------------------------------------------------
-	MC_GM_REQUEST_SPAWN				= 9001,		///< (C->S) NPC 스폰 요청
-	MC_GM_REQUEST_DESPAWN			= 9002,		///< (C->S) NPC 디스폰 요청
-	MC_GM_MOVE_REQ					= 9003,		///< (C->S) GM 이동 요청
-	MC_GM_MOVE_TO_PLAYER_REQ		= 9004,		///< (C->S) 특정 PC에게로 이동 요청
-	MC_GM_MOVE_TO_MYSPOT_REQ		= 9005,		///< (C->S) 내 원 위치로 이동 요청(현재는 처음 스폰된 곳)
-	MC_GM_REBIRTH_REQ				= 9006,		///< (C->S) GM 부활 요청
-	MC_GM_GOD_REQ					= 9007,		///< (C->S) GM 무적 요청
-	MC_GM_CHANGE_WEATHER_REQ		= 9008,		///< (C->S) 날씨 변경 요청
-	MC_GM_CHANGE_TIME_REQ			= 9009,		///< (C->S) 시간 변경 요청
-	MC_GM_QUEST_GIVE_REQ			= 9010,		///< (C->S) 퀘스트 제공을 요청
-	MC_GM_ITEM_GIVE_REQ				= 9011,		///< (C->S) 아이템 제공 요청
-	MC_GM_GOD						= 9012,		///< (S->C) GM 무적 응답
-	MC_GM_AI_RUNNING_REQ			= 9013,		///< (C->S) AI 동작안하게 해주세요.
-	MC_GM_AI_USE_TALENT_REQ			= 9014,		///< (C->S) 해당 NPC에게 특정 탤런트 사용하라고 명령
-	MC_GM_AI_SET_MONITOR_TARGET		= 9015,		///< (C->S) 테스트 용도로 모니터링할 타겟 NPC 설정
-	MC_GM_GET_PLAYERUID_REQ			= 9016,		///< (C->S) 플레이어 ID로 UID 요청
-	MC_GM_GET_PLAYERUID				= 9017,		///< (S->C) 플레이어 ID로 UID 요청 응답
-	MC_GM_REPORT_TARGET_ENTITY		= 9020,		///< (C->S) NPC Report
-	MC_GM_KILL_ENTITY_REQ			= 9021,		///< (C->S) 엔터티 죽이기 요청
-	MC_GM_RANGE_KILL_NPC_REQ		= 9022,		///< (C->S) 범위로 NPC 죽이기 요청
-	MC_GM_SET_ME_REQ				= 9026,		///< (C->S) 내 정보 변경 요청
-	MC_GM_QUEST_RESET_REQ			= 9027,		///< (C->S) 수행한 퀘스트 초기화 요청
-	MC_GM_QUEST_RESET				= 9028,		///< (S->C) 수행한 퀘스트 초기화	
-	MC_GM_SET_ITEM_REQ				= 9029,		///< (C->S) 아이템 정보 변경 요청
-	MC_GM_NPC_AI_RUNNING_REQ		= 9030,		///< (C->S) 특정 NPC AI 토글 요청		
-	MC_GM_INSERT_BUFF_REQ			= 9035,		///< (C->S)	버프 추가 요청
-	MC_GM_DELETE_BUFF_REQ			= 9036,		///< (C->S)	버프 제거 요청
-	MC_GM_RESET_COOLTIME_REQ		= 9037,		///< (C->S)	버프 제거 요청
-	MC_GM_SHOW_ENEMY_UID_REQ		= 9038,		///< (C->S)	어그로를 가진 NPC UID 요청
-	MC_GM_SHOW_ENEMY_UID			= 9039,		///< (S->C)	어그로를 가진 NPC UID
-	MC_GM_MOVE_TO_NPC_REQ			= 9040,		///< (C->S) 특정 NPC에게로 이동 요청
-	MC_GM_BREAK_PART_REQ			= 9041,		///< (C->S) 특정 NPC의 특정 bpart 부시기
-	MC_GM_RANGE_BREAK_PART_REQ		= 9042,		///< (C->S) 주변 NPC의 모든 bpart 부시기
-	MC_GM_QUEST_COMPLETE_REQ		= 9043,		///< (C->S) 퀘스트 완료
-	MC_GM_QUEST_VAR_REQ				= 9044,		///< (C->S) quest_var 요청
-	MC_GM_QUEST_VAR					= 9045,		///< (C->S) quest_var
-	MC_GM_QUEST_FAIL_REQ			= 9046,		///< (C->S) 퀘스트 실패 요청
-	MC_GM_CLEAR_INVENTORY_REQ		= 9047,		///< (C->S) 인벤토리 아이템 모두 제거
-	MC_GM_QUEST_REWARD_REQ			= 9048,		///< (C->S) 퀘스트 보상받기
+// Guide Book
+	MC_SC_GUIDEBOOK_GAIN			= 4401,
 
-	MC_GM_LOG_CRT_INSERT_REQ		= 9050,		///< (C->S) FailCRT 로그 남기기 추가
-	MC_GM_LOG_CRT_DELETE_REQ		= 9051,		///< (C->S) FailCRT 로그 남기기 제거
-	MC_GM_LOG_CRT_LIST				= 9052,		///< (S->C) FailCRT 로그 남기는 목록
-	MC_GM_QUERY_MULTILOGIN_REQ		= 9053,		///< (C->S) 멀티로그인 질의 요청
-	MC_GM_QUERY_MULTILOGIN			= 9054,		///< (S->C) 멀티로그인 질의 응답
-
-
-	MC_GM_FACTION_INCREASE_REQ		= 9060,		///< (C->S) 팩션 증가
-	MC_GM_FACTION_DECREASE_REQ		= 9061,		///< (C->S) 팩션 감소
-	MC_GM_SERVER_DUMP_REQ			= 9062,		///< (C->S) 서버 덤프 요청
-	MC_GM_SERVER_DUMP_RESP			= 9063,		///< (C->S) 서버 덤프 응답
-	MC_GM_GHOST_REQ					= 9064,		///< (C->S) GM 고스트 요청
-	MC_GM_GHOST						= 9065,		///< (S->C) GM 고스트
-
-	MC_GM_SPAWN						= 9066,		///< (S->C) GM NPC 스폰 처리 결과
-	MC_GM_QUEST_RESET_ALL_REQ		= 9067,		///< (C->S) 수행한 퀘스트 및 가지고 있는 퀘스트 초기화 요청
-
-	MC_GM_ENABLE_ICHECK_REQ			= 9068,		///< (C->S) 인터랙션 체크 켜기
-	MC_GM_DISABLE_ICHECK_REQ		= 9069,		///< (C->S) 인터랙션 체크 끄기
-
-
-
-	MC_GM_SET_NPC_REQ				= 9071,		///< (C->S) NPC의 상태값 변경 요청
-
-	MC_GM_DYE_REQ					= 9072,		///< (C->S) 염색 요청
-
-	MC_GM_SUMMON_REQ				= 9073,		///< (S->C) 특정 PC를 소환
-
-	MC_GM_FACTION_RESET_REQ			= 9074,		///< (C->S) 팩션 초기화
-	MC_GM_REGEN_REQ					= 9075,		///< (C->S) 생명력/정신력/기력[자동회복] 토글 요청
-	MC_GM_DESPAWNBYID_REQ			= 9076,		///< (C->S) NPCID로 디스폰
-
-	MC_GM_CHANGE_SERVER_MODE_REQ	= 9077,		///< (C->S) 서버 모드 변경 요청
-	MC_GM_CHANGE_SERVER_MODE		= 9078,		///< (S->C) 서버 모드 변경
-
-	MC_GM_RESET_EXPO_CHARACTERS_REQ	= 9079,		///< (C->S) Expo 용 캐릭터 Reset
 
 // 보안(GameGuard) ------------------------------------------------------------------------------------------
-	MC_GG_AUTH_REQ					= 9080,		///< (S->C) 주기적 인증 요청
-	MC_GG_AUTH_RESPOND				= 9081,		///< (C->S) 주기적 인증 응답
-	MC_GG_AUTH_ENABLE				= 9082,		///< (C->S) 인증 켤지 끌지 여부
-
-// 테스트(TEST) -----------------------------------------------------------------------------------------
-	MC_DEBUG_STRING					= 9103,		///< (S->C) 디버그 스트링을 클라이언트로 보내준다.
-	MC_REQUEST_DEBUG_STRING			= 9104,		///< (C->S) 디버그 스트링을 서버로 보내준다.
-	MC_AI_DEBUG_MESSAGE				= 9105,		///< (S->C) AI 디버그 정보를 클라이언트로 보내준다.
-	MC_DEBUG_COMBATCALC				= 9106,		///< (S->C) 전투 공식 디버그 정보를 클라이언트로 보내준다.
-
-	MC_DEBUG_START_COMMAND_PROFILE	= 9107,		///< (C->S) 커맨드 프로파일링 시작
-	MC_DEBUG_DUMP_COMMAND_PROFILE	= 9108,		///< (C->S) 커맨드 프로파일 덤프
-	MC_DEBUG_END_COMMAND_PROFILE	= 9109,		///< (C->S) 커맨드 프로파일링 끝
-
-	MC_DEBUG_NPC_NETLOG				= 9110,		///< (S->C) 서버의 NPC 로깅 정보를 알려주기
-	
-	MC_DEBUG_ECHO_REQ				= 9111,		///< (C->S) 에코 요청
-	MC_DEBUG_ECHO					= 9112,		///< (S->C) 에코 응답
+	MC_GG_AUTH_REQ					= 7901,		///< (S->C) 주기적 인증 요청
+	MC_GG_AUTH_RESPOND				= 7902,		///< (C->S) 주기적 인증 응답
 
 // 공통(COMMON) -----------------------------------------------------------------------------------------
-	MC_TIME_SYNCH					= 9200,		///< (S->C) 서버 로컬 타임을 클라에게 동기화 시키기 [최적화]
-
-	MC_GM_BAN						= 11000,	/// (C->S) Ban Request
+	MC_TIME_SYNCH					= 7999,		///< (S->C) 서버 로컬 타임을 클라에게 동기화 시키기 [최적화]
 
 	
 };

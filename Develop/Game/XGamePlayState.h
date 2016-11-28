@@ -53,7 +53,7 @@ private:
 	virtual XBPartNonPlayer*	InBPartNPC(XNPCInfo* pNPCInfo, TD_UPDATE_CACHE_PBART* pBPartInfo, bool bAppearEffect = true, bool bLoadingAsync = true);
 	void						OutPlayer( XObject* pObject );
 public:
-	virtual XPlayer*			InPlayer(MUID& uid, TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo = NULL, bool bAppearEffect = true, bool bLoadingAsync = true);
+	virtual XPlayer*			InPlayer(MUID& uid, TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo = NULL, TD_PLAYER_BUFF_LIST* pBuffList = NULL, bool bAppearEffect = true, bool bLoadingAsync = true);
 	virtual void				OutPlayer(MUID uid);
 	virtual void				OutPlayer(UIID nPlayerUIID);
 

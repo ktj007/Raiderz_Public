@@ -4,6 +4,7 @@
 #include "MCommandTable.h"
 #include "CCommandTable.h"
 #include "CCommandTable_Login.h"
+#include "CCommandTable_GM.h"
 
 // 커맨드 선언 ////////////////////////////////////////////////////////////////
 // 커맨드 번호 30001 ~ 40000 까지 사용

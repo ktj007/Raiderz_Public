@@ -40,14 +40,14 @@ public:
 	int CalcLogPoint();
 	void PickUpLog(int nQuantity, vector<PLog*>& outvecLog);	
 
-	void InsertLog_Char(const wstring& strDate, int nCID, LOG_CHAR_TYPE nType, const wstring& strIP);
+	void InsertLog_Char(const wstring& strDate, CID nCID, LOG_CHAR_TYPE nType, const wstring& strIP);
 
-	void InsertLog_ItemAcquire(const wstring& strDate, int nCID, LOG_ITEM_ACQUIRE_TYPE nType, const int64& nIUID, int nQuantity, int nGold);
-	void InsertLog_ItemLost(const wstring& strDate, int nCID, LOG_ITEM_LOST_TYPE nType, const int64& nIUID, int nQuantity, int nGold);
-	void InsertLog_ItemTrade(const wstring& strDate,	int nCID1, const vector<TDL_LOG_ITEM>& vecTDItem1, int nGold1, 
-		int nCID2, const vector<TDL_LOG_ITEM>& vecTDItem2, int nGold2);
+	void InsertLog_ItemAcquire(const wstring& strDate, CID nCID, LOG_ITEM_ACQUIRE_TYPE nType, const int64& nIUID, int nQuantity, int nGold);
+	void InsertLog_ItemLost(const wstring& strDate, CID nCID, LOG_ITEM_LOST_TYPE nType, const int64& nIUID, int nQuantity, int nGold);
+	void InsertLog_ItemTrade(const wstring& strDate,	CID nCID1, const vector<TDL_LOG_ITEM>& vecTDItem1, int nGold1, 
+		CID nCID2, const vector<TDL_LOG_ITEM>& vecTDItem2, int nGold2);
 
-	void InsertLog_Quest(const wstring& strDate, int nCID, LOG_QUEST_TYPE nType, int nQID);
+	void InsertLog_Quest(const wstring& strDate, CID nCID, LOG_QUEST_TYPE nType, int nQID);
 
 };
 

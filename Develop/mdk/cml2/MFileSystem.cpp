@@ -402,7 +402,6 @@ bool MFile::Open( const char* szFileName, bool bAllowAccessUncompFile)
 #else
 		sprintf_s( _buff, "Cannot open file : %s\n", szFileName);
 #endif
-		OutputDebugStr( _buff);
 	}
 #endif
 

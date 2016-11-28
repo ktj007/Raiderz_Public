@@ -63,7 +63,7 @@ bool GPlayerFieldShared::GateRequest(int nReqFieldID, int nReqChannelID, vec3 ve
 	/// 알고 있는 필드인지 검사.
 	if (NULL == gmgr.pFieldInfoMgr->Find(nReqFieldID))
 	{
-		mlog("Error! GPlayerFieldShared::GateRequest(), Not Exist FieldInfo. (AID: %I64d , CID: %d , UID(%u:%u) , id: %d)\n"
+		mlog("Error! GPlayerFieldShared::GateRequest(), Not Exist FieldInfo. (AID: %I64d , CID: %I64d , UID(%u:%u) , id: %d)\n"
 			, m_pOwner->GetAID(), m_pOwner->GetCID(), m_pOwner->GetUID().High, m_pOwner->GetUID().Low, nReqFieldID);
 		return m_pOwner->FailAndRouteSystemMsg(CR_FAIL_SYSTEM_INVALID_FIELD_ID);
 	}

@@ -91,7 +91,7 @@ void GTalentHit::OnGainDamage( GEntityActor* pTarget )
 	m_setHitsegment.insert(m_nHitIndex);
 }
 
-void GTalentHit::OnExit( GTalent* pTalent )
+void GTalentHit::OnHitDone( GTalent* pTalent )
 {
 	GEntityActor* pOwner = pTalent->GetOwner();
 	VALID(pOwner);

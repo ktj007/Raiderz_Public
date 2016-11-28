@@ -12,7 +12,7 @@ class GCraftSystem : public MTestMemPool<GCraftSystem>
 private:
 	void Show_Route(GEntityPlayer* pPlayer, const GCraftInfo* pCraftInfo);
 	
-	bool Make_Check(GEntityPlayer* pPlayer, GCraftInfo* pCraftInfo, GRecipeInfo* pRecipeInfo, int& outnPrice, GITEM_STACK_AMT_VEC& outvecRecpItemList);
+	bool Make_Check(GEntityPlayer* pPlayer, GCraftInfo* pCraftInfo, GRecipeInfo* pRecipeInfo, int nCraftAmount, int& outnPrice, GITEM_STACK_AMT_VEC& outvecRecpItemList);
 	bool Make_Apply(GEntityPlayer* pPlayer, int nProductItemID, int nAmount, int nPrice, GITEM_STACK_AMT_VEC& vecRecpItemList);
 	void Make_Route(GEntityPlayer* pPlayer, int nRecipeID);
 
@@ -33,7 +33,7 @@ public:
 	bool MakeRecipeItemList(GEntityPlayer* pPlayer, GRecipeInfo* pRecpInfo, GITEM_STACK_AMT_VEC& vecRecp);
 	
 	bool Show(GEntityPlayer* pPlayer, int nCraftID);
-	bool Make(GEntityPlayer* pPlayer, int nCraftID, int nRecipeID);
+	bool Make(GEntityPlayer* pPlayer, int nCraftID, int nRecipeID, int nCraftAmount);
 
 	bool InsertRecipe(GEntityPlayer* pPlayer, int nRecipeID);
 	bool DeleteRecipe(GEntityPlayer* pPlayer, int nRecipeID);

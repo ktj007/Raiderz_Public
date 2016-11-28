@@ -44,7 +44,7 @@ void GDBTaskGuildMemberDelete::Completer::Do()
 	if (GDB_CODE::CD_L_GUILD_MEMBER_DELETE == m_Data.m_nCODE)
 		gsys.pGuildSystem->ForDBTask().Leave(m_Data.m_uidPlayer, (int)m_Data.m_nGID);		
 	else if (GDB_CODE::CD_L_GUILD_MEMBER_KICK_OFF == m_Data.m_nCODE)
-		gsys.pGuildSystem->ForDBTask().Kick((int)m_Data.m_nCID, (int)m_Data.m_nGID);
+		gsys.pGuildSystem->ForDBTask().Kick(m_Data.m_nCID, (int)m_Data.m_nGID);
 	else
 	{
 		_ASSERT(0 && "INVALIED DELETE MEMBER CODE");

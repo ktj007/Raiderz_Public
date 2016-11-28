@@ -203,7 +203,7 @@ bool GTalentEffector::GainDamageAndHeal(GEntityActor* pUser, GEntityActor* pTarg
 
 	// 상태보정 모션팩터 적용
 	float fStateMotionFactor = 1.0f;
-	nDamageAttrib = pUser->GetDamageType(pTalentInfo);
+	nDamageAttrib = pUser->GetDamageType(pTalentInfo->m_nDamageAttrib, pTalentInfo->m_WeaponReference);
 	infoHit.nDamageType = nDamageAttrib;
 
 	// 기존에 히트된 기록이 없거나 데미지 재계산이 필요한 경우
@@ -225,6 +225,8 @@ bool GTalentEffector::GainDamageAndHeal(GEntityActor* pUser, GEntityActor* pTarg
 		infoHit.nDamage = combat_result.nDamage;
 		infoHit.nHealAmount = combat_result.nHealAmount;
 		infoHit.nCombatResultFlags = combat_result.nResultFlags;
+		infoHit.bCriticalHit = !!CheckBitSet(infoHit.nCombatResultFlags, CTR_CRITICAL);
+		infoHit.bBackHit = combat_result.bBackHit;
 		infoHit.pTalentInfo			= pTalentInfo;		
 	}	
 	else
@@ -344,7 +346,7 @@ bool GTalentEffector::GainDamageAndHeal(GEntityActor* pUser, GEntityActor* pTarg
 		pTarget->doHeal(pUser->GetUID(), nHealAmount);
 
 		GTalentRouter router;
-		router.RouteTalentHeal(pUser, pTarget, pTalentInfo->m_nID, nHealAmount);
+		router.RouteTalentHeal(pUser, pTarget, pTalentInfo->m_nID, nHealAmount, infoHit.bCriticalHit);
 
 		OnHealed(pTarget, pTalentInfo, nHealAmount);
 	}
@@ -482,6 +484,7 @@ bool GTalentEffector::IsNeedEffect( GTalentInfo* pTalentInfo )
 {
 	VALID_RET(pTalentInfo, false);
 
+	if (CSTalentInfoHelper::IsNormalAttackTalent(pTalentInfo->m_nID)) return true;
 	if (pTalentInfo->HasDamage())			return true;
 	if (pTalentInfo->HasMotionfactor())		return true;
 	if (pTalentInfo->HasHealEffect())		return true;

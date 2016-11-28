@@ -19,7 +19,6 @@
 #include "GLootSystem.h"
 #include "GPlayerObjectManager.h"
 #include "GDropItemAuthorizer.h"
-#include "GConfig.h"
 
 
 GDropItems::GDropItems( GEntityNPC* pOwner )
@@ -48,7 +47,7 @@ const map<MUID, GDropItem*>& GDropItems::GetContainer()
 	return m_mapDropItem;
 }
 
-vector<TD_ITEM_DROP> GDropItems::MakeVisbleTDDropItem(int nCID)
+vector<TD_ITEM_DROP> GDropItems::MakeVisbleTDDropItem(CID nCID)
 {
 	vector<TD_ITEM_DROP> vecTDDropItem;
 
@@ -86,7 +85,7 @@ bool GDropItems::IsExist( const MUID& nDropItemUID )
 	return true;
 }
 
-bool GDropItems::IsAuthorizedCID(int nCID)
+bool GDropItems::IsAuthorizedCID(CID nCID)
 {
 	for each(const map<MUID, GDropItem*>::value_type& val in m_mapDropItem)
 	{
@@ -97,7 +96,7 @@ bool GDropItems::IsAuthorizedCID(int nCID)
 	return false;
 }
 
-bool GDropItems::IsViewableCID( int nCID )
+bool GDropItems::IsViewableCID( CID nCID )
 {
 	for each(const map<MUID, GDropItem*>::value_type& val in m_mapDropItem)
 	{
@@ -108,7 +107,7 @@ bool GDropItems::IsViewableCID( int nCID )
 	return false;
 }
 
-void GDropItems::GetViewableCID(set<int>& outsetViewableCID)
+void GDropItems::GetViewableCID(set<CID>& outsetViewableCID)
 {
 	for each(const map<MUID, GDropItem*>::value_type& val in m_mapDropItem)
 	{
@@ -129,7 +128,7 @@ GDropItem* GDropItems::GetDropItem(const MUID& nDropItemUID)
 	return pDropItem;
 }
 
-vector<GDropItem*> GDropItems::CollectDropItemByCID( int nCID )
+vector<GDropItem*> GDropItems::CollectDropItemByCID( CID nCID )
 {
 	vector<GDropItem*> vecDropItem;
 
@@ -143,7 +142,7 @@ vector<GDropItem*> GDropItems::CollectDropItemByCID( int nCID )
 	return vecDropItem;
 }
 
-vector<MUID> GDropItems::CollectDropItemUIDByCID( int nCID )
+vector<MUID> GDropItems::CollectDropItemUIDByCID( CID nCID )
 {
 	GVectorMUID vecDropItemUID;
 
@@ -171,15 +170,15 @@ int GDropItems::GetSumOfAmount()
 	return nSumOfAmount;
 }
 
-void GDropItems::DropByKill(GLootInfo* pLootInfo, int nBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData)
+void GDropItems::DropByKill(GLootInfo* pLootInfo, CID nBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData)
 {
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	vecBeneficiaryCID.push_back(nBeneficiaryCID);
 
 	DropByKill(pLootInfo, vecBeneficiaryCID, nPartyUID, lootingRuleData);
 }
 
-void GDropItems::DropByKill(GLootInfo* pLootInfo, const vector<int>& vecBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData)
+void GDropItems::DropByKill(GLootInfo* pLootInfo, const vector<CID>& vecBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData)
 {
 	if (true == vecBeneficiaryCID.empty()) return;
 
@@ -206,7 +205,7 @@ void GDropItems::DropByKill(GLootInfo* pLootInfo, const vector<int>& vecBenefici
 	}
 }
 
-void GDropItems::DropByInteract(int nBeneficiaryCID, GLootInfo* pLootInfo)
+void GDropItems::DropByInteract(CID nBeneficiaryCID, GLootInfo* pLootInfo)
 {
 	int nSumDropQuantity = 0;
 	for each(LOOT_ITEM_INFO* pLootItemInfo in pLootInfo->m_vecLootItems)
@@ -255,7 +254,7 @@ vector<GDropItem*> GDropItems::DropItem(LOOT_ITEM_INFO* pLootItemInfo, int nLimi
 }
 
 // 한번만 주사위를 던져 드랍하고, 루팅룰에 따라 권한 부여
-int GDropItems::DropNormalItem(const vector<int>& vecBeneficiaryCID, MUID nPartyUID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity)
+int GDropItems::DropNormalItem(const vector<CID>& vecBeneficiaryCID, MUID nPartyUID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity)
 {
 	if (nLimitDropQuantity <= nSumDropQuantity) return 0;
 
@@ -266,12 +265,12 @@ int GDropItems::DropNormalItem(const vector<int>& vecBeneficiaryCID, MUID nParty
 }
 
 // 퀘스트를 가진 멤버만큼 주사위를 던져 드랍하고 해당 멤버에게 권한 부여
-void GDropItems::DropQuestItem(const vector<int>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo)
+void GDropItems::DropQuestItem(const vector<CID>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo)
 {
 	if (true == vecBeneficiaryCID.empty()) return;
 	if (NULL == pLootItemInfo) return;
 
-	for each (int nBeneficiaryCID in vecBeneficiaryCID)
+	for each (CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		GEntityPlayer* pBeneficiary = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL == pBeneficiary) continue;
@@ -290,12 +289,12 @@ void GDropItems::DropQuestItem(const vector<int>& vecBeneficiaryCID, LOOT_ITEM_I
 }
 
 // 멤버만큼 주사위를 던져 드랍하고, 해당 멤버에게 권한 부여
-void GDropItems::DropQuestPVPItem(const vector<int>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo)
+void GDropItems::DropQuestPVPItem(const vector<CID>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo)
 {
 	if (true == vecBeneficiaryCID.empty()) return;
 	if (NULL == pLootItemInfo) return;
 
-	for each (int nBeneficiaryCID in vecBeneficiaryCID)
+	for each (CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		GEntityPlayer* pBeneficiary = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL == pBeneficiary) continue;
@@ -306,7 +305,7 @@ void GDropItems::DropQuestPVPItem(const vector<int>& vecBeneficiaryCID, LOOT_ITE
 }
 
 // 한번만 주사위를 던져 드랍하고, 인터랙션한 사람에게 권한 부여
-int GDropItems::DropInteractItem(int nBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity)
+int GDropItems::DropInteractItem(CID nBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity)
 {
 	if (nLimitDropQuantity <= nSumDropQuantity) return 0;
 
@@ -322,7 +321,7 @@ void GDropItems::MakeDropItem(LOOT_ITEM_INFO* pLootItemInfo, vector<GDropItem*>&
 	if (NULL == pItemData) return;
 
 	const float fRandRate = RandomNumber(0.0f, 100.0f);
-	if ((pLootItemInfo->m_fRate * GConfig::m_ItemDropRate) < fRandRate) return;
+	if (pLootItemInfo->m_fRate < fRandRate) return;
 	int nTotalQuantity = min(RandomNumber(pLootItemInfo->m_nMin, pLootItemInfo->m_nMax), nLimitQuantity);
 	if (0 >= nTotalQuantity) return;
 

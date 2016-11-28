@@ -15,9 +15,16 @@ struct TD_PROXY_PLAYER_INFO;
 
 class SCOMMON_API SProxyPlayerManager: public SProxyPlayerSpeaker, public MTestMemPool<SProxyPlayerManager>
 {
+private:
+	class name_comp {	// for name_map.
+	public:
+		bool operator() (const std::wstring& lhs, const std::wstring& rhs) const {
+			return (_wcsicmp(lhs.c_str(), rhs.c_str()) < 0);
+		}
+	};
 public:
 	typedef map<CID, SProxyPlayer*>		player_map;
-	typedef map<wstring, SProxyPlayer*>	name_map;	
+	typedef map<wstring, SProxyPlayer*, name_comp>	name_map;	
 
 public:
 	SProxyPlayerManager(minet::MCommandCommunicator* pCC);

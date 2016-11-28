@@ -7,10 +7,10 @@ class GItemMover : public MTestMemPool<GItemMover>
 {
 struct PLAYER_RELATE_ID
 {
-	int64 nFromAID;
-	int64 nFromCIDorGID;
-	int64 nToAID;
-	int64 nToCIDorGID;
+	AID		nFromAID;
+	int64	nFromCIDorGID;
+	AID		nToAID;
+	int64	nToCIDorGID;
 };
 
 public:

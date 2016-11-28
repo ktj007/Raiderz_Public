@@ -22,25 +22,25 @@ public:
 
 	void Clear();
 
-	bool DropByKill(int nBeneficiaryCID);
-	TEST_VIRTUAL bool DropByKill(const vector<int>& vecBeneficiaryCID, MUID nPartyUID);
-	bool DropByInteract_Mortal(int nBeneficiaryCID, int nLootID);
-	bool DropByInteract_Immortal(int nBeneficiaryCID,int nLootID);
-	TEST_VIRTUAL bool DropByGather(int nGatherCID, int nLootID);
+	bool DropByKill(CID nBeneficiaryCID);
+	TEST_VIRTUAL bool DropByKill(const vector<CID>& vecBeneficiaryCID, MUID nPartyUID);
+	bool DropByInteract_Mortal(CID nBeneficiaryCID, int nLootID);
+	bool DropByInteract_Immortal(CID nBeneficiaryCID,int nLootID);
+	TEST_VIRTUAL bool DropByGather(CID nGatherCID, int nLootID);
 
 public : // helper
 	bool IsEmpty();
-	bool IsAuthorizedCID(int nCID);
-	bool IsViewableCID(int nCID);
+	bool IsAuthorizedCID(CID nCID);
+	bool IsViewableCID(CID nCID);
 	bool IsDropByKill();
 	bool IsDropByGather();
 	bool IsDropByInteract_Mortal();
 	bool IsDropByInteract_Immortal();
-	bool IsBeneficiaryCID(int nCID);
+	bool IsBeneficiaryCID(CID nCID);
 
-	void GetViewableCID(set<int>& outsetViewableCID);
-	const set<int>& GetBeneficiaryCID();
-	int GetMasterCID();
+	void GetViewableCID(set<CID>& outsetViewableCID);
+	const set<CID>& GetBeneficiaryCID();
+	CID GetMasterCID();
 	MUID GetPartyUID();
 	
 	GDropItems& GetDropItems();
@@ -49,10 +49,10 @@ public : // helper
 
 	void SetDropCause(DROP_CAULE nDropCause);
 
-	void InsertBeneficiaryCID(int nCID);
+	void InsertBeneficiaryCID(CID nCID);
 
 private:
-	bool DropByInteract(int nBeneficiaryCID, int nLootID, bool bImmortal);
+	bool DropByInteract(CID nBeneficiaryCID, int nLootID, bool bImmortal);
 
 private:
 	GEntityNPC*				m_pOwner;
@@ -61,7 +61,7 @@ private:
 	GDropSouls*				m_pDropSouls;
 	DROP_CAULE				m_nDropCause;
 
-	set<int>				m_setBeneficiaryCID;
-	int						m_nMasterCID;
+	set<CID>				m_setBeneficiaryCID;
+	CID						m_nMasterCID;
 	MUID					m_nPartyUID;
 };

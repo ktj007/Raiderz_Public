@@ -10,7 +10,7 @@ ZCmdHandler_Char::ZCmdHandler_Char(MCommandCommunicator* pCC) : MCommandHandler(
 
 MCommandResult ZCmdHandler_Char::OnNPCDieRewardReq(MCommand* pCommand, MCommandHandler* pHandler)
 {	
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	int nAllBeneficiaryCount;
 	int nNPCID;
 

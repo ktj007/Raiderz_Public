@@ -5,6 +5,7 @@
 #include "MReferenceCounted.h"
 #include "CSTalentInfoEnum.h"
 #include "CSTalentInfo.h"
+#include "GBuffUser.h"
 
 // 디스펠 타입
 enum DISPEL_TYPE
@@ -33,6 +34,8 @@ class GEntityActor;
 class GBuff;
 class GField;
 
+struct BUFF_ACTIVE_EXTRA_PARAM;
+
 TEST_FORWARD_FT(Buff_Stack, FBuff, IsStackable);
 
 /// 버프 모듈
@@ -46,10 +49,18 @@ TEST_FRIEND_FT(Buff_Stack, FBuff, IsStackable);
 
 	struct LazyGainInfo
 	{
+		LazyGainInfo()
+			: pBuffInfo(NULL)
+			, fDurationTime(0.f)
+			, fPeriodTime(0.f)
+			, User(GBuffUser())
+			, nStack(1) {}
+
 		GBuffInfo* pBuffInfo;
 		float fDurationTime;
 		float fPeriodTime;
-		MUID uidUser;
+		GBuffUser User;
+		int nStack;
 	};
 public:
 	GModuleBuff(GEntity* pOwner=NULL);
@@ -62,11 +73,17 @@ public:
 	// 버프를 얻음 (저항 체크)
 	bool			GainBuffDetail( GBuffInfo* pBuffInfo, const CSBuffEnchantInfo& BuffInvokeInfo, GTalentInfo* pTalentInfo/*=NULL*/, GEntityActor* pUser, float fDuration, float fPeriod );
 	// 버프를 조건 없이 얻음
-	bool			GainBuffForced(GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo=NULL, MUID uidUser=MUID::Invalid());
+	bool			GainBuffForced(GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo=NULL, const GBuffUser& User=GBuffUser(), int nStack=1);
 	// 다음 틱에 버프를 얻음
-	void			LazyGainBuff( GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, MUID uidUser );
+	void			LazyGainBuff( GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, const GBuffUser& User=GBuffUser(), int nStack=1 );
 	// 특정 버프를 잃음
 	void			CancelBuff(int nBuffID);
+	// CancelBuff(), but by Buff Line.
+	void			CancelBuffByLine(int nBuffLine);
+	// Gain all buff in vector container, successfully gained buff count will returned as return value.
+	int				GainBuff(const vector<int>& vecBuffIDs);
+	// Cancel all buff in vector container
+	void			CancelBuff(const vector<int>& vecBuffIDs);
 	// 이로운 버프 갯수 반환
 	int				GetBuffQty();
 	// 해로운 버프 갯수 반환
@@ -75,10 +92,14 @@ public:
 	GBuff*			FindBuffBySlot(int BuffStackSlot);
 	// 해당 버프스택슬롯에 맞는 모든 버프 객체를 반환
 	GBuff*			FindBuffByID(int BuffID);
+	// Find by Buff Line
+	GBuff*			FindBuffByLine(int BuffLine);
 	// 모든 버프 아이디 리스트 반환
 	vector<int>		GetAllBuffs();
 	// 특정 버프가 걸려있는 여부를 반환
 	bool			IsGained(int nBuffID);
+	// IsGained(), but by Buff Line.
+	bool			IsGainedLine(int nBuffLine);
 	// 가장최근 마법류 디버프 해제
 	void			Dispel(int nLimitPower);
 	// 가장최근 독 디버프 해제
@@ -99,6 +120,11 @@ public:
 	void			DispelFocus();
 	// 대상자의 탈 것 버프 해제
 	void			DismountRideBuff();
+
+	// dispel caused by Active Extra DISPEL_BUFF Attrib.
+	void			ActiveExtraAttrib_DispelBuff(const vector<BUFF_ACTIVE_EXTRA_PARAM>& vecParam1, const vector<BUFF_ACTIVE_EXTRA_PARAM>& vecParam2);
+	// cancel all immobilization debuff - for immobilization release skill.
+	void			DispelImmobilization();
 	
 
 
@@ -112,6 +138,8 @@ public:
 	void			InsertBuffRemainTimes(const vector<REMAIN_BUFF_TIME>& vecBuffRemainTime);
 	// 현재 걸려있는 버프로 무적인지 여부
 	bool			IsNowInvincibility()					{ return m_bInvincibility; }
+	// Has avoid effect buff or not.
+	bool			IsNowAvoid()							{ return m_bAvoid; }
 	// 현재 걸려있는 버프로 모든 탤런트가 사용 불가능 여부 확인
 	bool			IsDisableAllTalent()					{ return m_bDisableAllTalent; }
 	// 현재 걸려있는 버프로 모든 탤런트가 사용 불가능 여부 확인
@@ -137,7 +165,7 @@ public:
 	bool			GainInvisibleToNPCBuff_Infinity();
 
 	// 다음틱에 모든 버프 삭제
-	void			LazyLostAll();
+	void			LazyLostAll(bool bForce=false);
 	// 무적 버프를 잃음
 	bool			LostInvincibleBuff();
 	// NPC에게 투명 버프를 잃음
@@ -156,7 +184,7 @@ public:
 	bool IsGained_ForTest( int nBuffID );
 private:	
 	// 모든 버프를 잃음 (외부로 노출되면 안됨, 크래쉬 위험)
-	void			LostAll(bool bRoute);
+	void			LostAll(bool bRoute, bool bForce=false);
 	// 주기적 틱 처리
 	virtual void	OnUpdate(float fDelta);	
 	// 개별적인 버프 얻음 효과 처리
@@ -203,6 +231,8 @@ private:
 	MRefMgr					m_RefMgr;
 	// 버프로 인해 무적인지 여부
 	bool					m_bInvincibility;
+	// has avoid buff or not
+	bool					m_bAvoid;
 	// 버프로 인해 탤런트 사용가능 여부
 	bool					m_bDisableTalent[TC_MAX];
 	bool					m_bDisableAllTalent;
@@ -228,5 +258,17 @@ private:
 	float					m_fSumTickTime;
 	// 다음 틱에 얻을 버프 목록
 	vector<LazyGainInfo>	m_vecLazyGainBuffs;
+
+public:
+	// Immunity to Mesmerize Debuff
+	void EnableMesmerizeImmunity(float fDuration);
+	void DisableMesmerizeImmunity();
+	bool IsNowImmuneToMesmerize() const { return m_bIgnoreMesmerize; }
+
+private:
+	void UpdateMesmerizeImmunity(float fDelta);
+
+	bool					m_bIgnoreMesmerize;
+	float					m_fIgnoreMesmerize_RemainTime;
 
 };

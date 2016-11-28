@@ -2,6 +2,7 @@
 #include "ZDBManager.h"
 #include "SAsyncDB.h"
 #include "ZDBTaskSQL.h"
+#include "MDBUtil.h"
 
 ZDBManager::ZDBManager() : m_pAccountDB(NULL), m_pGameDB(NULL), m_pLogDB(NULL)
 {
@@ -13,28 +14,37 @@ ZDBManager::~ZDBManager()
 
 bool ZDBManager::ServerStatusStart( const int nWorldID, const int nServerID, const wstring& strServerName, const wstring& strServerVersion, const wstring& strIP, const uint16 nPort, const int nMaxUser , const uint8 nType, const int nUpdateElapsedTimeSec, const int nAllowDelayTm )
 {
-	LGameDBTaskQuery* pTask = new LGameDBTaskQuery(SDBTID_SERVER_START);
+	LAccountDBTaskQuery* pTask = new LAccountDBTaskQuery(SDBTID_SERVER_START);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
-		, nWorldID, nServerID, MCleanSQLStr(strServerName).c_str(), MCleanSQLStr(strServerVersion).c_str(), MCleanSQLStr(strIP).c_str()
-		, nPort, nType, nMaxUser, nUpdateElapsedTimeSec, nAllowDelayTm );
+	strSQL.Format(L"{CALL RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
+		, nWorldID
+		, nServerID
+		, mdb::MDBStringEscaper::Escape(strServerName).c_str()
+		, mdb::MDBStringEscaper::Escape(strServerVersion).c_str()
+		, mdb::MDBStringEscaper::Escape(strIP).c_str()
+		, nPort
+		, nType
+		, nMaxUser
+		, nUpdateElapsedTimeSec
+		, nAllowDelayTm );
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-bool ZDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable )
+bool ZDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable, const unsigned long long nTaskCount, const int nCPUUsage, const int nMemoryUsage, const int nFieldCount, const int nFPS )
 {
-	LGameDBTaskQuery* pTask = new LGameDBTaskQuery(SDBTID_SERVER_UPDATE);
+	LAccountDBTaskQuery* pTask = new LAccountDBTaskQuery(SDBTID_SERVER_UPDATE);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL USP_RZ_SERVER_UPDATE (%d, %d, %d, %d)}", nWordID, nServerID, nCurUserCount, bIsServable);
+	strSQL.Format(L"{CALL RZ_SERVER_UPDATE (%d, %d, %d, %s, %I64d, %d, %d, %d, %d)}", 
+		nWordID, nServerID, nCurUserCount, mdb::MDBBoolUtil::ToWString(bIsServable), nTaskCount, nCPUUsage, nMemoryUsage, nFieldCount, nFPS);
 
 	pTask->PushSQL(strSQL);
 
@@ -198,7 +208,7 @@ void ZDBManager::ReleaseLogDB()
 	}
 }
 
-static const wchar_t g_szDB_WORLD_INSERT[] = L"{CALL dbo.USP_RZ_WORLD_INSERT(%d, '%s', '%s', %d, %d, %d, %d, %d)};";
+static const wchar_t g_szDB_WORLD_INSERT[] = L"{CALL RZ_WORLD_INSERT(%d, '%s', '%s', %d, %d, %s, %d, %d)};";
 bool ZDBManager::WorldInsert(const ZWorldContext& wc)
 {
 	LAccountDBTaskQuery* pTask = new LAccountDBTaskQuery(SDBTID_WORLD_INSERT);
@@ -207,11 +217,11 @@ bool ZDBManager::WorldInsert(const ZWorldContext& wc)
 
 	CString strSQL;
 	strSQL.Format(g_szDB_WORLD_INSERT, 	wc.nID,
-										MCleanSQLStr(wc.strName).c_str(),
-										MCleanSQLStr(wc.strIP).c_str(),
+										mdb::MDBStringEscaper::Escape(wc.strName).c_str(),
+										mdb::MDBStringEscaper::Escape(wc.strIP).c_str(),
 										wc.nType,
 										wc.nMaxPlayerCount,
-										wc.nServable, 
+										mdb::MDBBoolUtil::ToWString(!!wc.nServable),
 										wc.nState, 
 										wc.nMaxElapsedTime
 										);
@@ -220,7 +230,7 @@ bool ZDBManager::WorldInsert(const ZWorldContext& wc)
 	return Post(pTask);
 }
 
-static const wchar_t g_szDB_WORLD_UPDATE[] = L"{CALL dbo.USP_RZ_WORLD_UPDATE(%d, %d, %d)}";
+static const wchar_t g_szDB_WORLD_UPDATE[] = L"{CALL RZ_WORLD_UPDATE(%d, %d, %s)}";
 bool ZDBManager::WorldUpdate(int nWorldID, int nCurPlayerCount, bool isServable)
 {
 	LAccountDBTaskQuery* pTask = new LAccountDBTaskQuery(SDBTID_WORLD_UPDATE);
@@ -228,7 +238,7 @@ bool ZDBManager::WorldUpdate(int nWorldID, int nCurPlayerCount, bool isServable)
 
 
 	CString strSQL;
-	strSQL.Format(g_szDB_WORLD_UPDATE, nWorldID, nCurPlayerCount, isServable);
+	strSQL.Format(g_szDB_WORLD_UPDATE, nWorldID, nCurPlayerCount, mdb::MDBBoolUtil::ToWString(isServable));
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);

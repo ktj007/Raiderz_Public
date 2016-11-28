@@ -310,7 +310,7 @@ void GNPCInfoMgr::ParseNPC(MXmlElement* pElement, MXml* pXml, int nExpectedID)
 
 	int nGrade = 0;
 	_Attribute(&nGrade,									pElement, NPC_XML_ATTR_GRADE);
-	pNewNPCInfo->nGrade = static_cast<int8>(nGrade); 
+	pNewNPCInfo->nGrade = static_cast<int8>(nGrade);
 
 	string strValueType;
 	if (_Attribute(strValueType,									pElement, NPC_XML_ATTR_ALTITUDE))
@@ -348,6 +348,7 @@ void GNPCInfoMgr::ParseNPC(MXmlElement* pElement, MXml* pXml, int nExpectedID)
 		{
 			if (pNewNPCInfo->bValidation)
 			{
+				_VLOGGER->Log(_T(NPC_XML_ATTR_ITEM_LOOT) IS_NOT_IN_LOOT);
 			}
 		}		
 	}

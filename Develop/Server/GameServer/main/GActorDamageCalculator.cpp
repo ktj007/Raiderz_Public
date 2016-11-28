@@ -10,6 +10,8 @@
 #include "GAttackDamageCalculator.h"
 #include "GConst.h"
 #include "GNPCBParts.h"
+#include "GCriticalCalculator.h"
+#include "GBuff.h"
 
 GCombatTurnResult GActorDamageCalculator::CalcDamage( const Desc& desc, float* pfoutMotionFactor )
 {
@@ -19,7 +21,7 @@ GCombatTurnResult GActorDamageCalculator::CalcDamage( const Desc& desc, float* p
 	GDamageRangedInfo DamageInfo = desc.DamageInfo;
 	GHealRangedInfo HealInfo = desc.HealInfo; 
 	GRiposte& victimRiposte = pVictim->m_Riposte;
-	GCombatTurnResult ret(0, 0);
+	GCombatTurnResult ret(0, 0, false);
 
 	VALID_RET(pAttacker, ret);
 	VALID_RET(pVictim, ret);
@@ -60,6 +62,7 @@ GCombatTurnResult GActorDamageCalculator::CalcDamage( const Desc& desc, float* p
 	
 
 	// 회피 판정 --------------
+	/*
 	if (gsys.pCombatCalculator->CheckMiss(pAttacker, pVictim, pTalentInfo) == true)
 	{
 		SetBitSet(ret.nResultFlags, CTR_MISS);
@@ -79,6 +82,7 @@ GCombatTurnResult GActorDamageCalculator::CalcDamage( const Desc& desc, float* p
 		ret.nHealAmount = 0;
 		return ret;
 	}
+	*/
 
 	// 되받아치기 판정 --------
 	if (victimRiposte.HasRiposte(pTalentInfo->m_nCategory))
@@ -147,12 +151,24 @@ GCombatTurnResult GActorDamageCalculator::CalcDamage( const Desc& desc, float* p
 		bCritical = true;
 	}
 
+	bool bBackHit = false;
+	if (pTalentInfo->IsPhysicalAttack() && pVictim->IsBack(pAttacker->GetPos()))
+	{
+		bBackHit = true;
+	}
+
 	// 데미지 계산(공격 데미지, 디펜스 팩터, 저항에 의한 데미지 수정치) --------
-	ret.nDamage = gsys.pCombatCalculator->CalcDamage(pAttacker, pVictim, pTalentInfo, bCritical, fResistFactor, DamageInfo, pfoutMotionFactor);
+	ret.nDamage = gsys.pCombatCalculator->CalcDamage(pAttacker, pVictim, pTalentInfo, bCritical, fResistFactor, DamageInfo, bBackHit, pfoutMotionFactor);
 	ret.nHealAmount = gsys.pCombatCalculator->CalcHealAmount(pAttacker, pVictim, pTalentInfo, HealInfo);
 
+	if (pTalentInfo->m_nUsableType == TUT_HEAL)
+	{
+		ret.nHealAmount += ret.nDamage;
+		ret.nDamage = 0;
+	}
 
-	if (ret.nDamage == 0 && pTalentInfo->m_fWeaponApplyRate <= 0.0001f)
+
+	if (ret.nDamage == 0 && pTalentInfo->m_WeaponApplyRate.fApplyRate < 0.001f)
 	{
 		SetBitSet(ret.nResultFlags, CTR_ZERO_TALENT_DAMAGE);
 	}
@@ -163,6 +179,8 @@ GCombatTurnResult GActorDamageCalculator::CalcDamage( const Desc& desc, float* p
 		SetBitSet(ret.nResultFlags, CTR_DRAIN);
 	}
 
+	ret.bBackHit = bBackHit;
+
 	SetBitIfDead(ret, pVictim);
 
 	gsys.pTestSystem->RouteDamageDebug(pAttacker, pVictim, pTalentInfo, bCritical, DamageInfo, ret, fResistRatePercent);
@@ -171,10 +189,13 @@ GCombatTurnResult GActorDamageCalculator::CalcDamage( const Desc& desc, float* p
 
 }
 
-GCombatTurnResult GActorDamageCalculator::CalcBuffDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo )
+GCombatTurnResult GActorDamageCalculator::CalcBuffDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuff* pBuff )
 {
 	GCombatTurnResult ret(0, 0);
 	VALID_RET(pVictim, ret);
+
+	const GBuffInfo* pBuffInfo = pBuff->GetInfo();
+	VALID_RET(pBuffInfo, ret);
 
 	// TODO: 이로운 버프면 저항하지 않음
 
@@ -210,20 +231,61 @@ GCombatTurnResult GActorDamageCalculator::CalcBuffDamage(GEntityActor* pAttacker
 	float fResistFactor = GMath::PercentToFactor(fResistRatePercent);
 
 	// 아머에 의한 데미지 수정치
+	/*
 	GDefenseFactorCalculator defenseFactorCalc;
 	float fDefenseFactor = defenseFactorCalc.CalcDefenseFactor_ForBuff(pAttacker, pVictim, pBuffInfo);
 	GAttackDamageCalculator attackDadmageCalc;
-	float fTalentFactor1 = attackDadmageCalc.CalcTalentFactor1(pAttacker, pBuffInfo->m_nDamageAttrib, pBuffInfo->m_fWeaponApplyRate);
+	float fTalentFactor1 = attackDadmageCalc.CalcTalentFactor1(pAttacker, pBuffInfo->m_nDamageAttrib, pBuffInfo->m_WeaponApplyRate.fApplyRate);
 
-	float fSpellPower = pAttacker?pAttacker->GetSpellPower():1.0f;
+	float fSpellPower = pAttacker ? pAttacker->GetSpellPower() : 1.0f;
+	*/
+
+	const GBuffUser& User = pBuff->GetUser();
+
+	bool bCritical = User.CheckCritical();//gsys.pCombatCalculator->CheckBuffCritical(pAttacker, pVictim, pBuffInfo);
+	if (bCritical)
+	{
+		SetBitSet(ret.nResultFlags, CTR_CRITICAL);
+	}
 
 	// 데미지 계산(공격 데미지, 디펜스 팩터, 저항에 의한 데미지 수정치) --------
-	int nDamage = gsys.pAttackDamageCalculator->MakeDamageFromMinMaxDamage(GDamageRangedInfo(pBuffInfo->m_nMaxDamage, pBuffInfo->m_nMinDamage));
+	/*
+	float fDamage = gsys.pAttackDamageCalculator->CalcBuffAttackDamage(pAttacker, pVictim, pBuffInfo, bCritical, GDamageRangedInfo(pBuffInfo->m_nMaxDamage, pBuffInfo->m_nMinDamage));
 	int nHealAmount = int(GMath::RandomNumber(pBuffInfo->m_nMinHeal, pBuffInfo->m_nMaxHeal) * fSpellPower);
-	nHealAmount += int(pBuffInfo->m_fPercentageHeal * pVictim->GetMaxHP());
 
-	ret.nDamage = GMath::TruncateToInt(max(nDamage * fDefenseFactor * fResistFactor * fSpellPower * fTalentFactor1, 0));
+	ret.nDamage = GMath::TruncateToInt(max(fDamage * fDefenseFactor * fResistFactor * fSpellPower * fTalentFactor1, 0));
 	ret.nHealAmount = nHealAmount;
+
+	if (pBuffInfo->m_nUsableType == TUT_HEAL)
+	{
+		ret.nHealAmount += ret.nDamage;
+		ret.nDamage = 0;
+	}
+	*/
+	if (pBuffInfo->m_nUsableType == TUT_HEAL)
+	{
+		ret.nHealAmount = GMath::TruncateToInt(User.CalcHeal(bCritical) * fResistFactor);
+		ret.nDamage = GMath::TruncateToInt(GMath::RandomNumber(pBuffInfo->m_nMinDamage, pBuffInfo->m_nMaxDamage) * fResistFactor);
+	}
+	else
+	{
+		ret.nDamage = GMath::TruncateToInt(User.CalcDamage(bCritical) * fResistFactor);
+		ret.nHealAmount = GMath::TruncateToInt(GMath::RandomNumber(pBuffInfo->m_nMinHeal, pBuffInfo->m_nMaxHeal) * fResistFactor);
+	}
+
+	if (pBuffInfo->m_fDamagePercentHP > 0.f)
+		ret.nDamage += int((pBuffInfo->m_fDamagePercentHP / 100.f) * pVictim->GetMaxHP());
+
+	if (pBuffInfo->m_fRestorePercentHP > 0.f)
+		ret.nHealAmount += int((pBuffInfo->m_fRestorePercentHP / 100.f) * pVictim->GetMaxHP());
+
+	if (pBuffInfo->m_fRestorePercentEN > 0.f)
+		ret.nRestoreENAmount += int((pBuffInfo->m_fRestorePercentEN / 100.f) * pVictim->GetMaxEN());
+
+	if (ret.nDamage == 0 && pBuffInfo->m_WeaponApplyRate.fApplyRate < 0.001f)
+	{
+		SetBitSet(ret.nResultFlags, CTR_ZERO_TALENT_DAMAGE);
+	}
 
 	SetBitIfDead(ret, pVictim);
 

@@ -6,5 +6,5 @@ public:
 	ZCharLogic(void);
 	~ZCharLogic(void);
 
-	void NPCDieReward(const vector<int>& vecBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID);
+	void NPCDieReward(const vector<CID>& vecBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID);
 };

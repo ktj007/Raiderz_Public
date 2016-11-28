@@ -11,8 +11,16 @@ bool GBuffRequirement::ProcessRequirement( GEntityActor* pEntity, RequireBuff In
 	{
 		for each (int each in InfoRequirement.vecExcludeBuffID)
 		{
-			if (pEntity->HasBuff(each))
-				return false; 
+			if (each < 0)
+			{
+				if (pEntity->HasBuffLine(-each))
+					return false;
+			}
+			else
+			{
+				if (pEntity->HasBuff(each))
+					return false;
+			}
 		}
 
 		if (!InfoRequirement.bKeepExcludeBuff)
@@ -25,8 +33,16 @@ bool GBuffRequirement::ProcessRequirement( GEntityActor* pEntity, RequireBuff In
 	{
 		for each (int each in InfoRequirement.vecIncludeBuffID)
 		{
-			if (!pEntity->HasBuff(each))
-				return false; 
+			if (each < 0)
+			{
+				if (!pEntity->HasBuffLine(-each))
+					return false;
+			}
+			else
+			{
+				if (!pEntity->HasBuff(each))
+					return false;
+			}
 		}
 
 		if (!InfoRequirement.bKeepIncludeBuff)
@@ -44,6 +60,13 @@ void GBuffRequirement::LostBuffs( GEntityActor* pEntity, const vector<int>& vecB
 	GModuleBuff* pmBuff = pEntity->GetModuleBuff();
 	for each (int each in vecBuffs)
 	{
-		pmBuff->CancelBuff(each);
+		if (each < 0)
+		{
+			pmBuff->CancelBuffByLine(-each);
+		}
+		else
+		{
+			pmBuff->CancelBuff(each);
+		}
 	}
 }

@@ -23,8 +23,8 @@ void GPlayerPassiveTalent::GainEffect( GTalentInfo* pTalentInfo )
 	m_mapPassiveTalents.insert(MAP_TALENTS::value_type(nTalentLine, pTalentInfo));
 
 
-	GainEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive, pTalentInfo->m_nExtraPassiveParam);
-	GainEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive2, pTalentInfo->m_nExtraPassiveParam2);
+	GainEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive, pTalentInfo->m_nExtraPassiveParam[0]);
+	GainEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive2, pTalentInfo->m_nExtraPassiveParam2[0]);
 }
 
 void GPlayerPassiveTalent::LostEffect( GTalentInfo* pTalentInfo )
@@ -33,8 +33,8 @@ void GPlayerPassiveTalent::LostEffect( GTalentInfo* pTalentInfo )
 	if (!pTalentInfo->IsPassiveSkill())		
 		return;
 
-	LostEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive, pTalentInfo->m_nExtraPassiveParam);
-	LostEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive2, pTalentInfo->m_nExtraPassiveParam2);
+	LostEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive, pTalentInfo->m_nExtraPassiveParam[0]);
+	LostEffectImpl(pTalentInfo, pTalentInfo->m_nExtraPassive2, pTalentInfo->m_nExtraPassiveParam2[0]);
 }
 
 bool GPlayerPassiveTalent::HasEffect( TALENT_EXTRA_PASSIVE_TYPE nPassiveType ) const

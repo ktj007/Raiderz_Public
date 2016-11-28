@@ -5,6 +5,7 @@ class GTalentInfo;
 class GBuffInfo;
 class GItem;
 class GJob;
+enum CHAR_STANCE;
 
 class GActorObserverInterface
 {
@@ -92,6 +93,8 @@ public:
 	// 버프에 피격됐을때 이벤트
 	virtual void OnBuffHit(MUID uidUser, GBuffInfo* pBuffInfo) {}
 
+	// Before of Acting Phase
+	virtual void OnStartTalent( GTalentInfo* pTalentInfo ) {}
 	// 탤런트 사용이 시작될때 호출되는 이벤트
 	virtual void OnUseTalent( GEntityActor* pUser, GTalentInfo* pTalentInfo ) {}
 	// 탤런트 사용이 효과가 발동될때 호출되는 이벤트
@@ -138,10 +141,13 @@ public:
 	// 아이템 장착해제 (Player 전용)
 	virtual void OnItemUnequipped(GItem* pItem) {}
 	// 장비셋 변경 (Player 전용)
+	virtual void OnSwitchingWeaponSetBegin() {}
 	virtual void OnSwitchingWeaponSet(SH_ITEM_SWITCH_WEAPON val) {}
 
 	// 잡이 완료 되었을 떄 (NPC 전용)
 	virtual void OnJobFinished(const GJob* pJob) {}
+
+	virtual void OnChangeStance(CHAR_STANCE nStance) {}
 
 	// 이동, 공격등 적극적인 행동을 했을 때 (Player 전용)
 	virtual void OnDoSomething() {}

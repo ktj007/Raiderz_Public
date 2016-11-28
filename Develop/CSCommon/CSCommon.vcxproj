@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="DebugDLL|Win32">
       <Configuration>DebugDLL</Configuration>
@@ -78,102 +78,102 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_publish|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseW|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugW|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_ImportCML2W|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD_ImportCML2W|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMDW|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v110_xp</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMDW|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD_ImportCML2|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v110_xp</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_ImportCML2|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
@@ -250,7 +250,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+    <_ProjectFileVersion>14.0.23107.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'">
     <OutDir>Lib\</OutDir>
@@ -335,6 +335,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMDd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMDd.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -353,6 +354,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommond.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -371,6 +373,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommon.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -385,6 +388,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommon.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -403,6 +407,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMD_import.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMD_import.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -442,6 +447,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMDd.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -461,6 +467,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMD.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMD.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -479,6 +486,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMDd_import.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMDd_import.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -497,6 +505,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMDd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMDWd.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -535,6 +544,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMDd_import.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMDd_import.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -553,6 +563,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMD_import.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMD_import.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -571,6 +582,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crlMDW.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommonMDW.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -585,10 +597,11 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommond.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -596,17 +609,18 @@
     <ClCompile>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>include;../mdk/cml2;../crl/include;../mdk/MiNet/include;../../sdk/UnitTest++/v1.4/src;../../sdk/gtest/gtest-1.4.0/include;../../sdk/gtest/gmock-1.5.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../mdk/cml2;../crl/include;../mdk/MiNet/include;../../sdk/UnitTest++/v1.4/src;../../sdk/gtest/gtest-1.4.0/include;../../sdk/gtest/gmock-1.4.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommon.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
@@ -625,25 +639,79 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
+      <AdditionalDependencies>../crl/Lib/crl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>Lib/CSCommon.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CAppHelper.cpp" />
+    <ClCompile Include="source\CCommandTable.cpp" />
+    <ClCompile Include="source\CCommandTable_App.cpp" />
+    <ClCompile Include="source\CCommandTable_GM.cpp" />
+    <ClCompile Include="source\CCommandTable_Log.cpp" />
+    <ClCompile Include="source\CCommandTable_Login.cpp" />
+    <ClCompile Include="source\CCommandTable_Master.cpp" />
+    <ClCompile Include="source\CCommandTable_WorldLocator.cpp" />
+    <ClCompile Include="source\CLangInfo.cpp" />
+    <ClCompile Include="source\CSBaseValidator.cpp" />
     <ClCompile Include="source\CSBasicAttributeCalculator.cpp" />
-    <ClCompile Include="source\CSGuild.cpp" />
-    <ClCompile Include="source\CSInfo.cpp" />
-    <ClCompile Include="source\CSInfoMgr.cpp" />
-    <ClCompile Include="source\CSModifier.cpp" />
-    <ClCompile Include="source\CSStrings.cpp" />
-    <ClCompile Include="source\CSItemData.cpp" />
-    <ClCompile Include="source\CSItemHelper.cpp" />
-    <ClCompile Include="source\CSItemManager.cpp" />
+    <ClCompile Include="source\CSBuffInfo.cpp" />
+    <ClCompile Include="source\CSCharHelper.cpp" />
+    <ClCompile Include="source\CSChrInfo.cpp" />
     <ClCompile Include="source\CSCommonParser.cpp" />
+    <ClCompile Include="source\CSConditionInfo.cpp" />
+    <ClCompile Include="source\CSConditionsInfo.cpp" />
+    <ClCompile Include="source\CSConditionsInfoMgr.cpp" />
+    <ClCompile Include="source\CSEffectInfo.cpp" />
+    <ClCompile Include="source\CSEmblemInfo.cpp" />
+    <ClCompile Include="source\CSEmblemInfoMgr.cpp" />
+    <ClCompile Include="source\CSFactionCalculator.cpp" />
+    <ClCompile Include="source\CSFactionInfo.cpp" />
+    <ClCompile Include="source\CSFieldInfo.cpp" />
+    <ClCompile Include="source\CSFieldInfoHelper.cpp" />
+    <ClCompile Include="source\CSFormatString.cpp" />
+    <ClCompile Include="source\CSFormatStringParameter.cpp" />
+    <ClCompile Include="source\CSGameWordsFilter.cpp" />
+    <ClCompile Include="source\CSGoogleMockListener.cpp" />
+    <ClCompile Include="source\CSGuideBook.cpp" />
+    <ClCompile Include="source\CSGuideBookMgr.cpp" />
+    <ClCompile Include="source\CSGuild.cpp" />
+    <ClCompile Include="source\CSHelper.cpp" />
     <ClCompile Include="source\CSHitCapsuleIndexMgr.cpp" />
     <ClCompile Include="source\CSHitInfoLoader.cpp" />
     <ClCompile Include="source\CSHitInfoSaver.cpp" />
+    <ClCompile Include="source\CSInfo.cpp" />
+    <ClCompile Include="source\CSInfoMgr.cpp" />
+    <ClCompile Include="source\CSInnInfo.cpp" />
+    <ClCompile Include="source\CSInnInfoMgr.cpp" />
+    <ClCompile Include="source\CSItemData.cpp" />
+    <ClCompile Include="source\CSItemHelper.cpp" />
+    <ClCompile Include="source\CSItemManager.cpp" />
+    <ClCompile Include="source\CSLuaCallbackLogger.cpp" />
+    <ClCompile Include="source\CSMeshInfo.cpp" />
+    <ClCompile Include="source\CSMeshInfoLoader.cpp" />
+    <ClCompile Include="source\CSMeshInfoSaver.cpp" />
+    <ClCompile Include="source\CSModEffector.cpp" />
+    <ClCompile Include="source\CSModifier.cpp" />
     <ClCompile Include="source\CSMotionFactorHelper.cpp" />
     <ClCompile Include="source\CSMotionFactorInfo.cpp" />
+    <ClCompile Include="source\CSMsgCommandFacade.cpp" />
+    <ClCompile Include="source\CSMsgCommandHelper.cpp" />
+    <ClCompile Include="source\CSMsgHandler.cpp" />
+    <ClCompile Include="source\CSNameStringChecker.cpp" />
+    <ClCompile Include="source\CSNameWordFilter.cpp" />
+    <ClCompile Include="source\CSNPCInfoHelper.cpp" />
+    <ClCompile Include="source\CSNPCShopCalculator.cpp" />
+    <ClCompile Include="source\CSPartyMember.cpp" />
+    <ClCompile Include="source\CSQObjectiveInfo.cpp" />
+    <ClCompile Include="source\CSQuestInfo.cpp" />
+    <ClCompile Include="source\CSQuestInfoMgr.cpp" />
+    <ClCompile Include="source\CSRecipeInfo.cpp" />
+    <ClCompile Include="source\CSRecipeInfoMgr.cpp" />
+    <ClCompile Include="source\CSSetItemEffect.cpp" />
+    <ClCompile Include="source\CSSetItemEffectManager.cpp" />
+    <ClCompile Include="source\CSStringFilter.cpp" />
+    <ClCompile Include="source\CSStrings.cpp" />
     <ClCompile Include="source\CSTalentInfo.cpp" />
     <ClCompile Include="source\CSTalentInfoExtParser.cpp" />
     <ClCompile Include="source\CSTalentInfoHelper.cpp" />
@@ -652,49 +720,11 @@
     <ClCompile Include="source\CSTalentInfoParser.cpp" />
     <ClCompile Include="source\CSTalentPosInfoLoader.cpp" />
     <ClCompile Include="source\CSTalentPosInfoSaver.cpp" />
-    <ClCompile Include="source\CSModEffector.cpp" />
-    <ClCompile Include="source\CSFieldInfo.cpp" />
-    <ClCompile Include="source\CSFieldInfoHelper.cpp" />
-    <ClCompile Include="source\CSCharHelper.cpp" />
-    <ClCompile Include="source\CSChrInfo.cpp" />
-    <ClCompile Include="source\CSNPCInfoHelper.cpp" />
-    <ClCompile Include="source\CSQObjectiveInfo.cpp" />
-    <ClCompile Include="source\CSQuestInfo.cpp" />
-    <ClCompile Include="source\CSQuestInfoMgr.cpp" />
-    <ClCompile Include="source\CSEffectInfo.cpp" />
-    <ClCompile Include="source\CSBuffInfo.cpp" />
-    <ClCompile Include="source\CSFactionCalculator.cpp" />
-    <ClCompile Include="source\CSFactionInfo.cpp" />
-    <ClCompile Include="source\CSRecipeInfo.cpp" />
-    <ClCompile Include="source\CSRecipeInfoMgr.cpp" />
-    <ClCompile Include="source\CSMeshInfo.cpp" />
-    <ClCompile Include="source\CSMeshInfoLoader.cpp" />
-    <ClCompile Include="source\CSMeshInfoSaver.cpp" />
-    <ClCompile Include="source\CSPartyMember.cpp" />
-    <ClCompile Include="source\CSConditionInfo.cpp" />
-    <ClCompile Include="source\CSConditionsInfo.cpp" />
-    <ClCompile Include="source\CSConditionsInfoMgr.cpp" />
-    <ClCompile Include="source\CSNPCShopCalculator.cpp" />
-    <ClCompile Include="source\CSMsgCommandFacade.cpp" />
-    <ClCompile Include="source\CSMsgHandler.cpp" />
-    <ClCompile Include="source\CSInnInfo.cpp" />
-    <ClCompile Include="source\CSInnInfoMgr.cpp" />
-    <ClCompile Include="source\CSEmblemInfo.cpp" />
-    <ClCompile Include="source\CSEmblemInfoMgr.cpp" />
-    <ClCompile Include="source\CSGameWordsFilter.cpp" />
-    <ClCompile Include="source\CSNameStringChecker.cpp" />
-    <ClCompile Include="source\CSNameWordFilter.cpp" />
-    <ClCompile Include="source\CSStringFilter.cpp" />
-    <ClCompile Include="source\CCommandTable.cpp" />
-    <ClCompile Include="source\CCommandTable_App.cpp" />
-    <ClCompile Include="source\CCommandTable_Log.cpp" />
-    <ClCompile Include="source\CCommandTable_Login.cpp" />
-    <ClCompile Include="source\CCommandTable_Master.cpp" />
-    <ClCompile Include="source\CCommandTable_WorldLocator.cpp" />
-    <ClCompile Include="source\CAppHelper.cpp" />
-    <ClCompile Include="source\CSBaseValidator.cpp" />
-    <ClCompile Include="source\CSLuaCallbackLogger.cpp" />
+    <ClCompile Include="source\CStringNode.cpp" />
+    <ClCompile Include="source\CStringResMgr.cpp" />
     <ClCompile Include="source\CSValidateLogger.cpp" />
+    <ClCompile Include="source\FSContext.cpp" />
+    <ClCompile Include="source\FSFsm.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMDW|Win32'">Create</PrecompiledHeader>
@@ -714,37 +744,95 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="source\CLangInfo.cpp" />
-    <ClCompile Include="source\CStringNode.cpp" />
-    <ClCompile Include="source\CStringResMgr.cpp" />
-    <ClCompile Include="source\CSFormatString.cpp" />
-    <ClCompile Include="source\CSFormatStringParameter.cpp" />
-    <ClCompile Include="source\FSContext.cpp" />
-    <ClCompile Include="source\FSFsm.cpp" />
-    <ClCompile Include="source\CSHelper.cpp" />
-    <ClCompile Include="source\CSMsgCommandHelper.cpp" />
-    <ClCompile Include="source\CSGoogleMockListener.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\CAppHelper.h" />
+    <ClInclude Include="include\CCommandResultTable.h" />
+    <ClInclude Include="include\CCommandTable.h" />
+    <ClInclude Include="include\CCommandTable_App.h" />
+    <ClInclude Include="include\CCommandTable_GM.h" />
+    <ClInclude Include="include\CCommandTable_Log.h" />
+    <ClInclude Include="include\CCommandTable_Login.h" />
+    <ClInclude Include="include\CCommandTable_Master.h" />
+    <ClInclude Include="include\CCommandTable_WorldLocator.h" />
+    <ClInclude Include="include\CLangInfo.h" />
+    <ClInclude Include="include\CSBaseValidator.h" />
     <ClInclude Include="include\CSBasicAttributeCalculator.h" />
-    <ClInclude Include="include\CSGuild.h" />
-    <ClInclude Include="include\CSInfo.h" />
-    <ClInclude Include="include\CSInfoMgr.h" />
-    <ClInclude Include="include\CSModifier.h" />
-    <ClInclude Include="include\CSSoul.h" />
-    <ClInclude Include="include\CSStrings.h" />
-    <ClInclude Include="include\CSTriggerInfo.h" />
-    <ClInclude Include="include\CSItemData.h" />
-    <ClInclude Include="include\CSItemHelper.h" />
-    <ClInclude Include="include\CSItemManager.h" />
+    <ClInclude Include="include\CSBuffInfo.h" />
+    <ClInclude Include="include\CSBuffInfoDef.h" />
+    <ClInclude Include="include\CSCharHelper.h" />
+    <ClInclude Include="include\CSChrInfo.h" />
+    <ClInclude Include="include\CSCommonLib.h" />
     <ClInclude Include="include\CSCommonParser.h" />
+    <ClInclude Include="include\CSConditionInfo.h" />
+    <ClInclude Include="include\CSConditionsInfo.h" />
+    <ClInclude Include="include\CSConditionsInfoMgr.h" />
+    <ClInclude Include="include\CSConvertIDContainer.h" />
+    <ClInclude Include="include\CSDef.h" />
+    <ClInclude Include="include\CSDef_Dialog.h" />
+    <ClInclude Include="include\CSDef_Fatigue.h" />
+    <ClInclude Include="include\CSDef_Interaction.h" />
+    <ClInclude Include="include\CSDef_Loot.h" />
+    <ClInclude Include="include\CSDef_Party.h" />
+    <ClInclude Include="include\CSDef_Quest.h" />
+    <ClInclude Include="include\CSDef_QuestPVP.h" />
+    <ClInclude Include="include\CSDef_Rebirth.h" />
+    <ClInclude Include="include\CSEffectInfo.h" />
+    <ClInclude Include="include\CSEmblemInfo.h" />
+    <ClInclude Include="include\CSEmblemInfoMgr.h" />
+    <ClInclude Include="include\CSFactionCalculator.h" />
+    <ClInclude Include="include\CSFactionInfo.h" />
+    <ClInclude Include="include\CSFieldInfo.h" />
+    <ClInclude Include="include\CSFieldInfoHelper.h" />
+    <ClInclude Include="include\CSFormatString.h" />
+    <ClInclude Include="include\CSFormatStringParameter.h" />
+    <ClInclude Include="include\CSGameWordsFilter.h" />
+    <ClInclude Include="include\CSGoogleMockListener.h" />
+    <ClInclude Include="include\CSGuideBook.h" />
+    <ClInclude Include="include\CSGuideBookMgr.h" />
+    <ClInclude Include="include\CSGuild.h" />
+    <ClInclude Include="include\CSHelper.h" />
     <ClInclude Include="include\CSHitCapsuleIndexMgr.h" />
     <ClInclude Include="include\CSHitInfoLoader.h" />
     <ClInclude Include="include\CSHitInfoSaver.h" />
+    <ClInclude Include="include\CSIndexedIDMap.h" />
+    <ClInclude Include="include\CSInfo.h" />
+    <ClInclude Include="include\CSInfoMgr.h" />
+    <ClInclude Include="include\CSInnInfo.h" />
+    <ClInclude Include="include\CSInnInfoMgr.h" />
+    <ClInclude Include="include\CSItemData.h" />
+    <ClInclude Include="include\CSItemHelper.h" />
+    <ClInclude Include="include\CSItemManager.h" />
+    <ClInclude Include="include\CSLogListener.h" />
+    <ClInclude Include="include\CSLuaCallbackLogger.h" />
+    <ClInclude Include="include\CSMeshInfo.h" />
+    <ClInclude Include="include\CSMeshInfoLoader.h" />
+    <ClInclude Include="include\CSMeshInfoSaver.h" />
+    <ClInclude Include="include\CSModEffector.h" />
+    <ClInclude Include="include\CSModifier.h" />
     <ClInclude Include="include\CSMotionFactorHelper.h" />
     <ClInclude Include="include\CSMotionFactorInfo.h" />
+    <ClInclude Include="include\CSMsgCommandFacade.h" />
+    <ClInclude Include="include\CSMsgCommandHelper.h" />
+    <ClInclude Include="include\CSMsgHandler.h" />
+    <ClInclude Include="include\CSNameStringChecker.h" />
+    <ClInclude Include="include\CSNameWordFilter.h" />
+    <ClInclude Include="include\CSNet.h" />
+    <ClInclude Include="include\CSNPCInfoHelper.h" />
+    <ClInclude Include="include\CSNPCShopCalculator.h" />
     <ClInclude Include="include\CSPalette.h" />
+    <ClInclude Include="include\CSPartyMember.h" />
+    <ClInclude Include="include\CSQObjectiveInfo.h" />
+    <ClInclude Include="include\CSQuestInfo.h" />
+    <ClInclude Include="include\CSQuestInfoMgr.h" />
+    <ClInclude Include="include\CSRecipeInfo.h" />
+    <ClInclude Include="include\CSRecipeInfoMgr.h" />
+    <ClInclude Include="include\CSSetItemEffect.h" />
+    <ClInclude Include="include\CSSetItemEffectManager.h" />
     <ClInclude Include="include\CSSocialMotion.h" />
+    <ClInclude Include="include\CSSoul.h" />
+    <ClInclude Include="include\CSStringFilter.h" />
+    <ClInclude Include="include\CSStrings.h" />
     <ClInclude Include="include\CSTalentDef.h" />
     <ClInclude Include="include\CSTalentInfo.h" />
     <ClInclude Include="include\CSTalentInfoDef.h" />
@@ -757,87 +845,33 @@
     <ClInclude Include="include\CSTalentInfoParser.h" />
     <ClInclude Include="include\CSTalentPosInfoLoader.h" />
     <ClInclude Include="include\CSTalentPosInfoSaver.h" />
-    <ClInclude Include="include\CSModEffector.h" />
-    <ClInclude Include="include\CSFieldInfo.h" />
-    <ClInclude Include="include\CSFieldInfoHelper.h" />
-    <ClInclude Include="include\CSWorldInfo.h" />
-    <ClInclude Include="include\CSCharHelper.h" />
-    <ClInclude Include="include\CSChrInfo.h" />
-    <ClInclude Include="include\CSIndexedIDMap.h" />
-    <ClInclude Include="include\CSNPCInfoHelper.h" />
-    <ClInclude Include="include\CSQObjectiveInfo.h" />
-    <ClInclude Include="include\CSQuestInfo.h" />
-    <ClInclude Include="include\CSQuestInfoMgr.h" />
-    <ClInclude Include="include\CSEffectInfo.h" />
-    <ClInclude Include="include\CSBuffInfo.h" />
-    <ClInclude Include="include\CSBuffInfoDef.h" />
-    <ClInclude Include="include\CSFactionCalculator.h" />
-    <ClInclude Include="include\CSFactionInfo.h" />
-    <ClInclude Include="include\CSRecipeInfo.h" />
-    <ClInclude Include="include\CSRecipeInfoMgr.h" />
-    <ClInclude Include="include\CSMeshInfo.h" />
-    <ClInclude Include="include\CSMeshInfoLoader.h" />
-    <ClInclude Include="include\CSMeshInfoSaver.h" />
-    <ClInclude Include="include\CSPartyMember.h" />
-    <ClInclude Include="include\CSConditionInfo.h" />
-    <ClInclude Include="include\CSConditionsInfo.h" />
-    <ClInclude Include="include\CSConditionsInfoMgr.h" />
-    <ClInclude Include="include\CSNPCShopCalculator.h" />
-    <ClInclude Include="include\CSMsgCommandFacade.h" />
-    <ClInclude Include="include\CSMsgHandler.h" />
-    <ClInclude Include="include\CSDef.h" />
-    <ClInclude Include="include\CSDef_Dialog.h" />
-    <ClInclude Include="include\CSDef_Fatigue.h" />
-    <ClInclude Include="include\CSDef_Interaction.h" />
-    <ClInclude Include="include\CSDef_Loot.h" />
-    <ClInclude Include="include\CSDef_Party.h" />
-    <ClInclude Include="include\CSDef_Quest.h" />
-    <ClInclude Include="include\CSDef_QuestPVP.h" />
-    <ClInclude Include="include\CSDef_Rebirth.h" />
-    <ClInclude Include="include\CSInnInfo.h" />
-    <ClInclude Include="include\CSInnInfoMgr.h" />
-    <ClInclude Include="include\CSEmblemInfo.h" />
-    <ClInclude Include="include\CSEmblemInfoMgr.h" />
-    <ClInclude Include="include\CSGameWordsFilter.h" />
-    <ClInclude Include="include\CSNameStringChecker.h" />
-    <ClInclude Include="include\CSNameWordFilter.h" />
-    <ClInclude Include="include\CSStringFilter.h" />
-    <ClInclude Include="include\CTradeMarketConstant.h" />
-    <ClInclude Include="include\CTradeMarketDefine.h" />
-    <ClInclude Include="include\CCommandResultTable.h" />
-    <ClInclude Include="include\CCommandTable.h" />
-    <ClInclude Include="include\CCommandTable_App.h" />
-    <ClInclude Include="include\CCommandTable_Log.h" />
-    <ClInclude Include="include\CCommandTable_Login.h" />
-    <ClInclude Include="include\CCommandTable_Master.h" />
-    <ClInclude Include="include\CCommandTable_WorldLocator.h" />
-    <ClInclude Include="include\CSNet.h" />
-    <ClInclude Include="include\CTransData.h" />
-    <ClInclude Include="include\CTransData_Log.h" />
-    <ClInclude Include="include\CTransData_Login.h" />
-    <ClInclude Include="include\CAppHelper.h" />
-    <ClInclude Include="include\CSBaseValidator.h" />
-    <ClInclude Include="include\CSLogListener.h" />
-    <ClInclude Include="include\CSLuaCallbackLogger.h" />
-    <ClInclude Include="include\CSValidateLogger.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="include\CLangInfo.h" />
+    <ClInclude Include="include\CSTriggerInfo.h" />
     <ClInclude Include="include\CStringNode.h" />
     <ClInclude Include="include\CStringRes.h" />
     <ClInclude Include="include\CStringResMgr.h" />
-    <ClInclude Include="include\CSFormatString.h" />
-    <ClInclude Include="include\CSFormatStringParameter.h" />
+    <ClInclude Include="include\CSTypes.h" />
+    <ClInclude Include="include\CSValidateLogger.h" />
+    <ClInclude Include="include\CSWorldInfo.h" />
+    <ClInclude Include="include\CTradeMarketConstant.h" />
+    <ClInclude Include="include\CTradeMarketDefine.h" />
+    <ClInclude Include="include\CTransData.h" />
+    <ClInclude Include="include\CTransData_Log.h" />
+    <ClInclude Include="include\CTransData_Login.h" />
     <ClInclude Include="include\FSContext.h" />
     <ClInclude Include="include\FSFsm.h" />
-    <ClInclude Include="include\CSHelper.h" />
-    <ClInclude Include="include\CSMsgCommandHelper.h" />
-    <ClInclude Include="include\CSGoogleMockListener.h" />
-    <ClInclude Include="include\CSCommonLib.h" />
-    <ClInclude Include="include\CSTypes.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\crl\crl.vcxproj">
       <Project>{2d063418-4e8d-4689-8394-a80baa738631}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\cml2\cml2.vcxproj">
+      <Project>{8d451493-65c2-49c3-adae-acb17e6b0650}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\mdk\MiNet\MiNet.vcxproj">
+      <Project>{595010c3-5427-4453-9f44-5adb4edddb28}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

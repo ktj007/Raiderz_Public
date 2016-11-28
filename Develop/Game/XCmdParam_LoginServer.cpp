@@ -3,7 +3,7 @@
 
 bool XCmdParam__MC_COMM_RESPONSE_ACCOUNT_CHAR_LIST::Parse( MCommand* pCommand )
 {
-	if (GetBlobParameter<TD_AccountCharInfo>(pCommand, 0, &m_pTDAccountCharInfo, &m_nBlobCount) == false)
+	if (GetBlobParameter<TD_AccountCharInfo>(pCommand, 1, &m_pTDAccountCharInfo, &m_nBlobCount) == false)
 	{
 		return false;
 	}

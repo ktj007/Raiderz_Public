@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "MUDPSocket.h"
 
+#if (_MSC_VER >= 1900)
+#include <WS2tcpip.h>
+#endif
+
 #ifdef _DEBUG
 	#include "assert.h"
 #endif
@@ -98,16 +102,39 @@ bool MUDPSocketThread::MakeSockAddr(char* pszIP, int nPort, sockaddr_in* pSockAd
 	//	Set Dest IP and Port 
 	RemoteAddr.sin_family = AF_INET;
 	RemoteAddr.sin_port = htons(nPort);
+#if (_MSC_VER >= 1900)
+	DWORD	dwAddr = INADDR_NONE;
+	IN_ADDR inAddr;
+	if (inet_pton(AF_INET, pszIP, &inAddr))
+		dwAddr = inAddr.s_addr;
+#else
 	DWORD dwAddr = inet_addr(pszIP);
+#endif
 	if (dwAddr != INADDR_NONE) {
 		memcpy(&(RemoteAddr.sin_addr), &dwAddr, 4);
 	} else {		// 연결할 host name을 입력한 경우
+#if (_MSC_VER >= 1900)
+		ADDRINFO* pAddrInfo;
+
+		ADDRINFO AddrHints = { 0 };
+		AddrHints.ai_family		= AF_INET;
+		AddrHints.ai_protocol	= IPPROTO_UDP;
+		AddrHints.ai_socktype	= SOCK_DGRAM;
+
+		if (getaddrinfo(pszIP, NULL, &AddrHints, &pAddrInfo) != 0)
+#else
 		HOSTENT* pHost = gethostbyname(pszIP);
-		if (pHost == NULL) {	// error
+		if (pHost == NULL)
+#endif
+		{	// error
 			OutputDebugString("<SAFEUDP_ERROR> Can't resolve hostname </SAFEUDP_ERROR>\n");
 			return false;
 		}
+#if (_MSC_VER >= 1900)
+		RemoteAddr.sin_addr = ((SOCKADDR_IN*)pAddrInfo->ai_addr)->sin_addr;
+#else
 		memcpy((char FAR *)&(RemoteAddr.sin_addr), pHost->h_addr, pHost->h_length);
+#endif
 	}
 	memcpy(pSockAddr, &RemoteAddr, sizeof(sockaddr_in));
 	return true;

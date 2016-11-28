@@ -9,7 +9,7 @@ class PChattingLogic
 {
 public:
 	bool	CreateDefaultChannels(void);
-	void	CreateChannel_Private(int nPlayerCID, const std::wstring& strChannelName);
+	void	CreateChannel_Private(CID nPlayerCID, const std::wstring& strChannelName);
 
 	void	RunChatModule(minet::MCommand* pCmd, CHATTING_MODULE_TYPE eType, CID cidRequestPlayer, const std::wstring& strChannelName);
 	void	RunChatModule(minet::MCommand* pCmd, CHATTING_MODULE_TYPE eType, CID cidRequestPlayer, const MUID& uidChannel);

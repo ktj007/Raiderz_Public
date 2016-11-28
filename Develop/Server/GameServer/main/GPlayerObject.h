@@ -55,8 +55,6 @@ protected:
 	PmStatIndex			m_statIndex;
 	int					m_nPCCafeID;
 	bool				m_isSetStatIndex;
-	
-	GPlayerGameGuard*	m_pGameGuard;
 
 	// 서버이동 관련 변수들
 	MUID				m_uidMoveGameServerTask;
@@ -72,7 +70,7 @@ public:
 	virtual void Create();							///< GPlayerObjectManager에서 호출
 	virtual void Destroy();							///< GPlayerObjectManager에서 호출
 
-	void InitAccountInfo(const unsigned int nAID, const wstring& strUserID, const bool bNewAcc);
+	void InitAccountInfo(const AID nAID, const wstring& strUserID, const bool bNewAcc);
 	
 	void OnStartGame()				{ m_nState = POS_INWORLD; }
 	void OnBeginLogin()				{ m_nState = POS_DOING_LOGIN; }
@@ -85,7 +83,7 @@ public:
 
 	void Update(float fDelta);
 
-	bool SerializeSelectCharacter(int nCID, bool bReload = false);
+	bool SerializeSelectCharacter(CID nCID, bool bReload = false);
 
 	void AddStatIndex(const PmStatIndex* statIndex, int nPCCafeID);
 	PmStatIndex* GetStatIndex();

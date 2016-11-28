@@ -26,26 +26,26 @@ public:
 
 	void Clear();
 
-	void DropByKill(GLootInfo* pLootInfo, int nBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData);
-	void DropByKill(GLootInfo* pLootInfo, const vector<int>& vecBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData);	
-	void DropByInteract(int nBeneficiaryCID, GLootInfo* pLootInfo);
+	void DropByKill(GLootInfo* pLootInfo, CID nBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData);
+	void DropByKill(GLootInfo* pLootInfo, const vector<CID>& vecBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData);	
+	void DropByInteract(CID nBeneficiaryCID, GLootInfo* pLootInfo);
 
 	void Remove(const MUID& nDropItemUID);
 
 
 public: //helper
 	const map<MUID, GDropItem*>& GetContainer();
-	vector<TD_ITEM_DROP> MakeVisbleTDDropItem(int nCID);
+	vector<TD_ITEM_DROP> MakeVisbleTDDropItem(CID nCID);
 
 	bool IsEmpty();
 	bool IsExist(const MUID& nDropItemUID);
-	bool IsAuthorizedCID(int nCID);
-	bool IsViewableCID(int nCID);	
+	bool IsAuthorizedCID(CID nCID);
+	bool IsViewableCID(CID nCID);	
 
-	void GetViewableCID(set<int>& outsetViewableCID);	
+	void GetViewableCID(set<CID>& outsetViewableCID);	
 	GDropItem* GetDropItem(const MUID& nDropItemUID);
-	vector<GDropItem*>	CollectDropItemByCID(int nCID);
-	vector<MUID>		CollectDropItemUIDByCID(int nCID);
+	vector<GDropItem*>	CollectDropItemByCID(CID nCID);
+	vector<MUID>		CollectDropItemUIDByCID(CID nCID);
 	int GetSumOfAmount();	
 
 private:
@@ -53,10 +53,10 @@ private:
 
 	int CalculLimitDropQuantity(LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity);
 
-	int DropNormalItem(const vector<int>& vecBeneficiaryCID, MUID nPartyUID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity);	
-	void DropQuestItem(const vector<int>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo);
-	void DropQuestPVPItem(const vector<int>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo);
-	int DropInteractItem(int nBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity);
+	int DropNormalItem(const vector<CID>& vecBeneficiaryCID, MUID nPartyUID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity);	
+	void DropQuestItem(const vector<CID>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo);
+	void DropQuestPVPItem(const vector<CID>& vecBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo);
+	int DropInteractItem(CID nBeneficiaryCID, LOOT_ITEM_INFO* pLootItemInfo, int nLimitDropQuantity, int nSumDropQuantity);
 
 	vector<GDropItem*> DropItem(LOOT_ITEM_INFO* pLootItemInfo, int nLimitQuantity=INT_MAX);		
 	void MakeDropItem( LOOT_ITEM_INFO* pLootItemInfo, vector<GDropItem*>& outVecDropItem, int nLimitQuantity);	

@@ -3,7 +3,6 @@
 #include "GLootInfo.h"
 #include "GEntityPlayer.h"
 #include "GSTLUtil.h"
-#include "GConfig.h"
 
 GDropMoney::GDropMoney()
 : m_nMoney(0)
@@ -16,15 +15,15 @@ void GDropMoney::Clear()
 	m_setAuhorizedCID.clear();
 }
 
-void GDropMoney::Drop( int nBeneficiaryCID, GLootInfo* pLootInfo )
+void GDropMoney::Drop( CID nBeneficiaryCID, GLootInfo* pLootInfo )
 {
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	vecBeneficiaryCID.push_back(nBeneficiaryCID);
 
 	Drop(vecBeneficiaryCID, pLootInfo);
 }
 
-void GDropMoney::Drop(const vector<int>& vecBeneficiaryCID, GLootInfo* pLootInfo)
+void GDropMoney::Drop(const vector<CID>& vecBeneficiaryCID, GLootInfo* pLootInfo)
 {
 	if (true == vecBeneficiaryCID.empty()) return;
 
@@ -40,7 +39,7 @@ void GDropMoney::Drop(const vector<int>& vecBeneficiaryCID, GLootInfo* pLootInfo
 			break;
 		}
 
-		m_nMoney += nMoney * GConfig::m_GoldDropRate;
+		m_nMoney += nMoney;
 	}
 
 	if (0 != m_nMoney) 
@@ -49,9 +48,9 @@ void GDropMoney::Drop(const vector<int>& vecBeneficiaryCID, GLootInfo* pLootInfo
 	}	
 }
 
-bool GDropMoney::IsAuthorizedCID(int nCID)
+bool GDropMoney::IsAuthorizedCID(CID nCID)
 {
-	set<int>::iterator itor = m_setAuhorizedCID.find(nCID);
+	set<CID>::iterator itor = m_setAuhorizedCID.find(nCID);
 	if (m_setAuhorizedCID.end() == itor) return false;
 
 	return true;
@@ -67,17 +66,17 @@ int GDropMoney::GetQuantity()
 	return m_nMoney;
 }
 
-void GDropMoney::GetViewableCID(set<int>& outsetViewableCID)
+void GDropMoney::GetViewableCID(set<CID>& outsetViewableCID)
 {
-	for each (int nSetAuthorizedCID in m_setAuhorizedCID)
+	for each (CID nSetAuthorizedCID in m_setAuhorizedCID)
 	{
 		outsetViewableCID.insert(nSetAuthorizedCID);
 	}	
 }
 
-void GDropMoney::GetAuthorizedCID( set<int>& outsetAuthorizedCID )
+void GDropMoney::GetAuthorizedCID( set<CID>& outsetAuthorizedCID )
 {
-	for each (int nSetAuthorizedCID in m_setAuhorizedCID)
+	for each (CID nSetAuthorizedCID in m_setAuhorizedCID)
 	{
 		outsetAuthorizedCID.insert(nSetAuthorizedCID);
 	}	

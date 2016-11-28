@@ -29,6 +29,16 @@ void AddLoginCommandTable()
 													P(MPT_UID,	"AllocUID")
 													P(MPT_UCHAR,"ServerMode")
 
+	C(MC_COMM_REQUEST_LOGIN_ON_PWE,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Move Login Server On PWE")
+													P(MPT_WSTR,	"UserID")
+													P(MPT_WSTR,	"Password")
+													P(MPT_INT,	"CommandVersion")
+
+	C(MC_COMM_RESPONSE_LOGIN_ON_PWE,				MCDT_MACHINE2MACHINE, MCF_S2C, "Response Login On PWE")
+													P(MPT_INT,	"nResult")
+													P(MPT_UID,	"AllocUID")
+													P(MPT_UCHAR,"ServerMode")
+
 	C(MC_COMM_REQUEST_LOGIN_GAME_SERVER,			MCDT_MACHINE2MACHINE, MCF_C2S, "Request Login GameServer")
 													P(MPT_UID, "uidConnectionKey")
 													P(MPT_INT, "CommandVersion")

@@ -48,7 +48,7 @@ bool GFakeLoginLogic::InsertCharacter(MUID uidPlayer, TD_INSERT_CHARACTER_INFO* 
 
 	// 캐릭터 추가
 	ACCOUNT_INFO& accountInfo = pPlayer->GetAccountInfo();
-	AID nAID = (int)accountInfo.nAID;
+	AID nAID = accountInfo.nAID;
 
 	if (!ApplyInsertCharacter(uidPlayer, nAID, pInsertCharInfo))		return false;
 
@@ -85,7 +85,7 @@ bool GFakeLoginLogic::SelMyChar(MUID uidPlayer, int8 nCharIndex)
 	// ReservePlayerEnter --
 	TD_LOGIN_ACCOUNT_INFO tdLoginAccountInfo;
 	wcsncpy_s(tdLoginAccountInfo.szUserID, pPlayer->GetAccountInfo().szUserID, _TRUNCATE);
-	tdLoginAccountInfo.nAID = (int)pPlayer->GetAccountInfo().nAID; 
+	tdLoginAccountInfo.nAID = pPlayer->GetAccountInfo().nAID; 
 	tdLoginAccountInfo.nCID = pCharFieldInfo->nCID;
 	tdLoginAccountInfo.nEnterKey = 0;
 
@@ -184,7 +184,7 @@ bool GFakeLoginLogic::ApplyInsertCharacter(MUID uidPlayer, AID nAID, TD_INSERT_C
 		, nLevel, nXP, nMoney
 		, 0, pInsertCharInfo->nSex
 		, int(pInsertCharInfo->nHair), int(pInsertCharInfo->nFace), pInsertCharInfo->nHairColor, pInsertCharInfo->nSkinColor, pInsertCharInfo->nEyeColor, int(pInsertCharInfo->nVoice)
-		, pInsertCharInfo->nMakeUp, pInsertCharInfo->nTattooType, pInsertCharInfo->nTattooPosX, pInsertCharInfo->nTattooPosY, pInsertCharInfo->nTattooScale
+		, pInsertCharInfo->nMakeUp, pInsertCharInfo->nTattooType, pInsertCharInfo->nTattooColor, pInsertCharInfo->nTattooPosX, pInsertCharInfo->nTattooPosY, pInsertCharInfo->nTattooScale
 		, nHP, nEN, nSTA, PLAYER_DEFAULT_TP
 		, NORMAL_FATIGUE
 		, PLAYER_DEFAULT_SOULBINDINGID
@@ -210,7 +210,7 @@ bool GFakeLoginLogic::MoveToLoginServer(const MUID& uidPlayer)
 	if (pPlayer == NULL) return false;
 	
 	MUID uidConnectionKey = m_AcceptorUIDGenerator.Generate();
-	AID nAID = (AID)pPlayer->GetAccountInfo().nAID;
+	AID nAID = pPlayer->GetAccountInfo().nAID;
 	wstring strUserID = pPlayer->GetAccountInfo().szUserID;
 
 	GFakeLoginPlayerAcceptor_FromGameServerToLoginServer* pPlayerAcceptor = new GFakeLoginPlayerAcceptor_FromGameServerToLoginServer();

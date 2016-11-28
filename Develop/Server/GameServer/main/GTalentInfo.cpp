@@ -116,13 +116,32 @@ bool ImplHasAttack(int nBuffID)
 
 void GTalentInfo::InitHasAttack()
 {
+	if (CSTalentInfoHelper::IsNormalAttackTalent(m_nID))
+	{
+		m_bHasAttack = true;
+		return;
+	}
+
 	if (m_nMaxDamage > 0)
 	{
 		m_bHasAttack = true;
 		return;
 	}
 
+	// TODO: attribute damage.
+	if (m_WeaponApplyRate.fApplyRate > 0.f)
+	{
+		m_bHasAttack = true;
+		return;
+	}
+
 	if (HasMotionfactor())
+	{
+		m_bHasAttack = true;
+		return;
+	}
+
+	if (HasForceMF())
 	{
 		m_bHasAttack = true;
 		return;
@@ -441,7 +460,7 @@ void GTalentInfo::InitCheckHeal()
 	}
 }
 
-bool GTalentInfo::IsEffective(GEntityActor* pReqActor, GEntityActor* pTarActor)
+bool GTalentInfo::IsEffective(GEntityActor* pReqActor, GEntityActor* pTarActor, GEntityActor* pCasActor/*=NULL*/)
 {
 	VALID_RET(pReqActor, false);
 	VALID_RET(pTarActor, false);
@@ -478,6 +497,12 @@ bool GTalentInfo::IsEffective(GEntityActor* pReqActor, GEntityActor* pTarActor)
 	case CSEffectInfo::RELATION_SELF:
 		{
 			if (pReqActor == pTarActor) return true;
+		}
+		break;
+	case CSEffectInfo::RELATION_CASTER_ENEMY:
+		{
+			VALID_RET(pCasActor, false);
+			if (true == relationChecker.IsEnemy(pCasActor, pTarActor)) return true;
 		}
 		break;
 	}

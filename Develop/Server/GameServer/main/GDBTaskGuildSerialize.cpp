@@ -50,8 +50,8 @@ bool GDBTaskGuildSerialize::GetGuildMemberList( mdb::MDatabase& rfDB )
 	GDBTASK_GUILD_MEMBER gm;
 	for (; !rs.IsEOF(); rs.MoveNext())
 	{
-		gm.nAID			= rs.FieldW(L"ACCN_ID").AsInt64();
-		gm.nCID			= rs.FieldW(L"CHAR_ID").AsInt64();
+		gm.nAID			= rs.FieldW(L"ACCN_SN").AsInt64();
+		gm.nCID			= rs.FieldW(L"CHAR_SN").AsInt64();
 		gm.strCharName	= rs.FieldW(L"NAME").AsWString();
 		gm.nLevel		= rs.FieldW(L"LEV").AsByte();
 		gm.nGuildGrade	= rs.FieldW(L"GRADE").AsByte();

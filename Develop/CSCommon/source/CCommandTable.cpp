@@ -11,18 +11,23 @@ void AddCommonCommandTable()
 
 	C(MC_COMM_REQUEST_ACCOUNT_CHAR_LIST,	MCDT_MACHINE2MACHINE, MCF_C2S, "Request Account Char List")
 	C(MC_COMM_RESPONSE_ACCOUNT_CHAR_LIST,	MCDT_MACHINE2MACHINE, MCF_S2C, "Response Account Char List")
+											P(MPT_INT,	"Result")
 											P(MPT_BLOB,	"CharInfo")	// 캐릭터 정보
 
 	C(MC_COMM_MOVE_TO_GAME_SERVER,			MCDT_MACHINE2MACHINE, MCF_S2C, "Move to GameServer")
 											P(MPT_BLOB,	"LoginGameServerInfo")
-
-	C(MC_COMM_DUPLICATED_PLAYER_LOGIN,		MCDT_MACHINE2MACHINE, MCF_S2C, "Duplicated Player Login")
 
 	C(MC_COMM_START_MOVE_TO_LOGIN_SERVER_REQ,	MCDT_MACHINE2MACHINE, MCF_C2S, "Request Move To LoginServer")
 
 	C(MC_COMM_START_MOVE_TO_LOGIN_SERVER_RES,	MCDT_MACHINE2MACHINE, MCF_S2C, "Response Move To LoginServer")
 												P(MPT_INT,	"nResult")
 												P(MPT_UID,	"ConnectionKey")
+
+	C(MC_COMM_NOTIFY_KICK,					MCDT_MACHINE2MACHINE, MCF_S2C, "Notify Kick")
+											P(MPT_INT,	"nResult")
+
+	C(MC_COMM_NOTIFY_REASON_KICK,			MCDT_MACHINE2MACHINE, MCF_S2C, "Notify Reason Kick")
+											P(MPT_WSTR,	"wReason")
 
 	C(MC_CHAR_REQUEST_INSERT_CHAR,			MCDT_MACHINE2MACHINE, MCF_C2S, "Request Insert Character")
 											P(MPT_SINGLE_BLOB,	"TD_INSERT_CHARACTER_INFO")
@@ -56,6 +61,7 @@ void AddCommonCommandTable()
 											P(MPT_BLOB,	"MyPalette")
 											P(MPT_BLOB,	"MyFaction")
 											P(MPT_BLOB,	"MyRecipe")
+											P(MPT_BLOB, "MyGuideBook")
 
 	C(MC_CHAR_MYTIMEINFO,					MCDT_MACHINE2MACHINE, MCF_S2C, "My Time Info")
 											P(MPT_BLOB,	"MyBuffRemainTime")
@@ -74,10 +80,13 @@ void AddCommonCommandTable()
 
 
 	C(MC_CHAR_REBIRTH_NETPLAYER,			MCDT_MACHINE2MACHINE, MCF_S2C, "Rebirth")
-											P(MPT_UID,	"uidEntity")
+											P(MPT_UID,			"uidEntity")
+											P(MPT_VEC,			"MyPos")
+											P(MPT_SVEC2,		"MyDir")
 
 
 	C(MC_CHAR_REWARD_EXP,					MCDT_MACHINE2MACHINE, MCF_S2C, "Reward Exp")
+											P(MPT_INT,		"nRewardCause")
 											P(MPT_INT,		"RewardExp")
 											P(MPT_FLOAT,	"ExpPercent")
 											P(MPT_INT,		"PlayerExp")
@@ -88,7 +97,9 @@ void AddCommonCommandTable()
 											P(MPT_USHORT,	"NewHP")
 											P(MPT_USHORT,	"NewEN")
 											P(MPT_USHORT,	"NewSTA")
-											P(MPT_USHORT,	"NewTP")
+											P(MPT_USHORT,	"NewTP_first")
+											P(MPT_USHORT,	"NewTP_second")
+											P(MPT_USHORT,	"NewTP_PVP")
 											P(MPT_USHORT,	"NewStr")
 											P(MPT_USHORT,	"NewDex")
 											P(MPT_USHORT,	"NewInt")
@@ -98,13 +109,16 @@ void AddCommonCommandTable()
 	C(MC_CHAR_UPDATE_SIMPLE_STATUS,			MCDT_MACHINE2MACHINE, MCF_S2C, "Update Simple Status")
 											P(MPT_SINGLE_BLOB,		"SimpleStatus")
 
+	/*
 	C(MC_CHAR_SAVE_SOULBINDING,				MCDT_MACHINE2MACHINE, MCF_S2C, "SaveSoulBlinding")
 											P(MPT_INT,		"nFieldID")
+	*/
 
 	C(MC_CHAR_SAVE_CHECKPOINT,				MCDT_MACHINE2MACHINE, MCF_S2C, "SaveCheckPoint")
 											P(MPT_INT,		"nFieldID")
 
 	C(MC_CHAR_UPDATE_MONEY,					MCDT_MACHINE2MACHINE, MCF_S2C, "Update Money")
+											P(MPT_INT,		"nRewardCause")
 											P(MPT_INT,		"nMoney")
 	C(MC_CHAR_ENEMY_INFO,					MCDT_MACHINE2MACHINE, MCF_S2C, "Char.EmepyHPInfo")
 											P(MPT_BLOB,		"EmepyHPInfo")
@@ -208,6 +222,10 @@ void AddCommonCommandTable()
 
 	C(MC_FIELD_LOADING_COMPLETE,			MCDT_MACHINE2MACHINE, MCF_C2S, "Field Loading Complete")
 
+	C(MC_FIELD_OBJECT_LOADING,				MCDT_MACHINE2MACHINE, MCF_S2C, "Field Object Loading")
+
+	C(MC_FIELD_OBJECT_LOADING_COMPLETE,		MCDT_MACHINE2MACHINE, MCF_C2S, "Field Object Loading Complete")
+
 	C(MC_FIELD_START_GAME,					MCDT_MACHINE2MACHINE, MCF_S2C, "Start Game")
 
 	C(MC_FIELD_CHANGE_FIELD,				MCDT_MACHINE2MACHINE, MCF_S2C, "Change Field")
@@ -216,6 +234,8 @@ void AddCommonCommandTable()
 											P(MPT_VEC,	"MyPos")
 											P(MPT_VEC,	"MyDir")
 											P(MPT_INT,	"IntroCutsceneID")
+											P(MPT_UCHAR, "InitWeather")
+											P(MPT_UCHAR, "InitTime")
 
 	C(MC_FIELD_PREPARE_CHANGE_CHANNEL_REQ,	MCDT_MACHINE2MACHINE, MCF_C2S, "Request Prepare Change Channel")
 											P(MPT_INT,	"ChannelID")
@@ -239,6 +259,7 @@ void AddCommonCommandTable()
 	C(MC_FIELD_IN_PLAYER,					MCDT_MACHINE2MACHINE, MCF_S2C, "Player Come in")
 											P(MPT_SINGLE_BLOB,		"PlayerInfo")			// 플레이어 정보
 											P(MPT_SINGLE_BLOB,		"ExtraFeatureInfo")		// 외형 부가정보
+											P(MPT_BLOB,				"vector<int>")			// Buff IDs
 
 
 	C(MC_FIELD_OUT_PLAYER,					MCDT_MACHINE2MACHINE, MCF_S2C, "Player Go out")
@@ -254,6 +275,7 @@ void AddCommonCommandTable()
 	C(MC_FIELD_TRAP_TRIGGERED,				MCDT_MACHINE2MACHINE, MCF_S2C, "Trap Go out")
 											P(MPT_UID,		"uidMagicarea")	// Trap UID
 
+	/*
 	C(MC_FIELD_SECTOR_ENTITY_INFO,			MCDT_MACHINE2MACHINE, MCF_S2C, "Sector Entity Info")
 											P(MPT_BLOB,		"PlayerInfo")
 											P(MPT_BLOB,		"PlayerExtraInfo")
@@ -261,6 +283,7 @@ void AddCommonCommandTable()
 											P(MPT_BLOB,		"BPartInfo")
 											P(MPT_BLOB,		"BuffEntityInfo")
 											P(MPT_BLOB,		"UseableSensorInfo")
+	*/
 
 	C(MC_FIELD_SET_TIME,					MCDT_MACHINE2MACHINE, MCF_S2C, "Set Time")
 											P(MPT_CHAR,		"nGameTime")	// 시간대
@@ -275,11 +298,38 @@ void AddCommonCommandTable()
 											P(MPT_USHORT,	"ObjectUIID")
 
 	C(MC_FIELD_PLAYER_EXTRA_INFO_REQ,		MCDT_MACHINE2MACHINE, MCF_C2S, "Extra Player Info")
-											P(MPT_UID,		"uidPlayer")
+											P(MPT_BLOB,		"vector<uiidPlayer>")
 	C(MC_FIELD_IN_BPART,					MCDT_MACHINE2MACHINE, MCF_S2C, "BPart Come in")
 											P(MPT_SINGLE_BLOB,		"infoTD")	// NPC 정보
 	C(MC_FIELD_OUT_BPART,					MCDT_MACHINE2MACHINE, MCF_S2C, "BPart Go out")
 											P(MPT_USHORT,			"nNPCUIID")	// NPC UIID
+
+	C(MC_FIELD_PLAYER_EXTRA_INFO,			MCDT_MACHINE2MACHINE, MCF_S2C, "player extra info")
+											P(MPT_USHORT,			"playerUIID")
+											P(MPT_SINGLE_BLOB,		"TD_EXTRA_UPDATE_CACHE_PLAYER")
+											P(MPT_SINGLE_BLOB,		"TD_PLAYER_FEATURE_TATTOO")
+
+	C(MC_FIELD_IN_PLAYER_SIMPLE,			MCDT_MACHINE2MACHINE, MCF_S2C, "player simple info")
+											P(MPT_SINGLE_BLOB,		"TD_SIMPLE_UPDATE_CACHE_PLAYER")
+											P(MPT_BLOB,				"vector<int>")
+
+	C(MC_FIELD_SECTOR_PLAYER_INFO,			MCDT_MACHINE2MACHINE, MCF_S2C, "Sector Player Info")
+											P(MPT_BLOB,				"SimpleInfo")
+											P(MPT_BLOB,				"PlayerInfo")
+											P(MPT_BLOB,				"TattooInfo")
+											P(MPT_BLOB,				"BuffInfo")
+
+	C(MC_FIELD_SECTOR_NPC_INFO,				MCDT_MACHINE2MACHINE, MCF_S2C, "Sector NPC Info")
+											P(MPT_BLOB,				"NpcInfo")
+
+	C(MC_FIELD_SECTOR_BPART_INFO,			MCDT_MACHINE2MACHINE, MCF_S2C, "Sector BPart Info")
+											P(MPT_BLOB,				"BPartInfo")
+
+	C(MC_FIELD_SECTOR_MAGIC_AREA_INFO,		MCDT_MACHINE2MACHINE, MCF_S2C, "Sector Magic Area Info")
+											P(MPT_BLOB,				"MagicAreaInfo")
+
+	C(MC_FIELD_SECTOR_SENSOR_INFO,			MCDT_MACHINE2MACHINE, MCF_S2C, "Sector Sensor Info")
+											P(MPT_BLOB,				"SensorInfo")
 											
 	C(MC_DYNAMIC_FIELD_ENTER_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Request Enter To DynamicField")
 											P(MPT_INT,		"DynamicFieldKey")
@@ -315,7 +365,14 @@ void AddCommonCommandTable()
 											P(MPT_INT,		"nTalentID")
 
 	C(MC_ACTION_GUARD_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Guard")
+	/*
 	C(MC_ACTION_GUARD,						MCDT_MACHINE2MACHINE, MCF_S2C, "Guard")
+											P(MPT_USHORT,	"nEntityUIID")
+											P(MPT_SVEC2,	"Dir")
+											P(MPT_VEC,		"Pos")
+	*/
+	C(MC_ACTION_GUARD_ME,					MCDT_MACHINE2MACHINE, MCF_S2C, "Guard Me")
+	C(MC_ACTION_GUARD_OTHER,				MCDT_MACHINE2MACHINE, MCF_S2C, "Guard Other")
 											P(MPT_USHORT,	"nEntityUIID")
 											P(MPT_SVEC2,	"Dir")
 											P(MPT_VEC,		"Pos")
@@ -378,11 +435,13 @@ void AddCommonCommandTable()
 	C(MC_ACTION_JUMP_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Action")
 											P(MPT_VEC,		"Pos")
 											P(MPT_VEC,		"Dir")
+											P(MPT_USHORT,	"MoveFlag")
 
 	C(MC_ACTION_JUMP,						MCDT_MACHINE2MACHINE, MCF_S2C, "Player Action")
 											P(MPT_USHORT,	"nPlayerUIID")
 											P(MPT_VEC,		"Pos")
 											P(MPT_VEC,		"Dir")
+											P(MPT_USHORT,	"MoveFlag")
 
 	C(MC_ACTION_FALLING_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Action Falling")
 											P(MPT_VEC,		"Pos")
@@ -410,9 +469,11 @@ void AddCommonCommandTable()
 											P(MPT_SVEC2,	"Dir")
 	C(MC_ACTION_STOP_MOVE_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Stop Move")
 											P(MPT_VEC,		"Pos")
+											P(MPT_SVEC2,	"Dir")
 	C(MC_ACTION_STOP_MOVE,					MCDT_MACHINE2MACHINE|MCDT_FILTER_CROWDED, MCF_S2C, "Stop Move")
 											P(MPT_USHORT,	"nPlayerUIID")
 											P(MPT_VEC,		"Pos")
+											P(MPT_SVEC2,	"Dir")
 	C(MC_ACTION_ROTATE_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Rotate")
 											P(MPT_SVEC2,	"Dir")
 	C(MC_ACTION_ROTATE,						MCDT_MACHINE2MACHINE|MCDT_FILTER_CROWDED, MCF_S2C, "Rotate")
@@ -529,6 +590,17 @@ void AddCommonCommandTable()
 	C(MC_NPC_SPEWUP_INTERRUPT,				MCDT_MACHINE2MACHINE, MCF_S2C, "NPC.SpewupInterrupt")
 											P(MPT_UID,		"uidNPC")	
 
+	C(MC_NPC_START_COMBAT,					MCDT_MACHINE2MACHINE, MCF_S2C, "NPC.StartCombat")
+											P(MPT_USHORT,	"nNPCUIID")
+	C(MC_NPC_END_COMBAT,					MCDT_MACHINE2MACHINE, MCF_S2C, "NPC.EndCombat")
+											P(MPT_USHORT,	"nNPCUIID")
+
+	C(MC_NPC_MARK_POS,						MCDT_MACHINE2MACHINE, MCF_S2C, "NPC.MakrPos")
+											P(MPT_INT,		"nNPCID")
+											P(MPT_VEC,		"vecPos")
+	C(MC_NPC_UNMARK_POS,					MCDT_MACHINE2MACHINE, MCF_S2C, "NPC.UnmakrPos")
+											P(MPT_INT,		"nNPCID")
+
 	C(MC_TRIGGER_TOUCH_SENSOR_ENTER,		MCDT_MACHINE2MACHINE, MCF_C2S, "Trigger.TouchSensorEnter")
 											P(MPT_UINT,		"nSensorID")
 											P(MPT_VEC,		"vecPos")
@@ -594,6 +666,7 @@ void AddCommonCommandTable()
 	
 	C(MC_ITEM_USE_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request Use Item")
 											P(MPT_INT,		"nInvenSlotID")
+											P(MPT_WSTR,		"ChangeName")
 
 	C(MC_ITEM_USE_FAIL,						MCDT_MACHINE2MACHINE, MCF_S2C, "Use Item Fail")
 											P(MPT_INT,		"nInvenSlotID")											
@@ -601,25 +674,35 @@ void AddCommonCommandTable()
 											P(MPT_BLOB,		"vecParam1")
 											P(MPT_BLOB,		"vecParam2")
  
+	/*
 	C(MC_ITEM_TALENT,						MCDT_MACHINE2MACHINE, MCF_S2C, "Use Item")
 											P(MPT_INT,		"nAmount")
 											P(MPT_INT,		"nInvenSlotID")
+											*/
 
-	C(MC_ITEM_CHANGE_LOOK_EQUIP_ITEM,		MCDT_MACHINE2MACHINE, MCF_S2C, "Change Look Equip Item")
-											P(MPT_INT,		"nSlotTypeFrom")
-											P(MPT_INT,		"nSlotIDFrom")
-											P(MPT_CHAR,		"nSlotIDTo")
-
-											P(MPT_UID,		"uidPlayer")
+	C(MC_ITEM_CHANGE_LOOK,					MCDT_MACHINE2MACHINE, MCF_S2C, "Change Look")
+											P(MPT_USHORT,	"nPlayerUIID")
+											P(MPT_CHAR,		"nSlotID")
 											P(MPT_INT,		"nItemID")
 											P(MPT_INT,		"nItemColor")
-											P(MPT_INT,		"nEnchantBuff")
+											P(MPT_INT,		"nGemEnchantBuff")
+											P(MPT_CHAR,		"nItemEnchantGrade")
 											
-	C(MC_ITEM_CHANGE_LOOK_UNEQUIP_ITEM,		MCDT_MACHINE2MACHINE, MCF_S2C, "Change Look Unequip Item")
-											P(MPT_UID,		"uidPlayer")
+	C(MC_ITEM_REMOVE_LOOK,					MCDT_MACHINE2MACHINE, MCF_S2C, "Remove Look")
+											P(MPT_USHORT,	"nPlayerUIID")
 											P(MPT_CHAR,		"nItemSlot")
 
+	C(MC_ITEM_CHANGE_AND_REMOVE_LOOK,		MCDT_MACHINE2MACHINE, MCF_S2C, "Change And Remove Look")
+											P(MPT_USHORT,	"nPlayerUIID")
+											P(MPT_CHAR,		"nSlotIDFrom")
+											P(MPT_CHAR,		"nSlotIDTo")
+											P(MPT_INT,		"nItemID")
+											P(MPT_INT,		"nItemColor")
+											P(MPT_INT,		"nGemEnchantBuff")
+											P(MPT_CHAR,		"nItemEnchantGrade")
+
 	C(MC_ITEM_ADD,							MCDT_MACHINE2MACHINE, MCF_S2C, "Add Item")
+											P(MPT_INT,		"nRewardCause")
 											P(MPT_BLOB,		"InsertItem")
 											P(MPT_BLOB,		"IncreaseItem")
 
@@ -629,6 +712,11 @@ void AddCommonCommandTable()
 											P(MPT_INT,		"nDropQuantity")
 
 	C(MC_ITEM_REMOVE,						MCDT_MACHINE2MACHINE, MCF_S2C, "Remove Item")
+											P(MPT_BLOB,		"DeleteItem")
+											P(MPT_BLOB,		"DecreaseItem")
+
+	C(MC_ITEM_REMOVE_WITH_CAUSE,			MCDT_MACHINE2MACHINE, MCF_S2C, "Remove Item with cause")
+											P(MPT_INT,		"nRewardCause")
 											P(MPT_BLOB,		"DeleteItem")
 											P(MPT_BLOB,		"DecreaseItem")
 	
@@ -649,14 +737,20 @@ void AddCommonCommandTable()
 											P(MPT_INT,		"nAmount")
 
 	C(MC_ITEM_MOVE,							MCDT_MACHINE2MACHINE, MCF_S2C, "Move Item")
-											P(MPT_INT,		"nFromSlotType")
-											P(MPT_INT,		"nFromSlotID")
-											P(MPT_INT,		"nToSlotType")
-											P(MPT_INT,		"nToSlotID")
+											P(MPT_CHAR,		"nFromSlotType")
+											P(MPT_SHORT,	"nFromSlotID")
+											P(MPT_CHAR,		"nToSlotType")
+											P(MPT_SHORT,	"nToSlotID")
 											P(MPT_INT,		"nAmount")
 
-	C(MC_ITEM_SORT_INVEN_SLOT_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Sort Item Inventory SlotID Req")
-	C(MC_ITEM_SORT_INVEN_SLOT,				MCDT_MACHINE2MACHINE, MCF_S2C, "Sort Item Inventory SlotID Res")
+	C(MC_ITEM_SORT_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Sort Item Req")
+											P(MPT_INT,		"nSlotType")
+											P(MPT_BLOB,		"vecTDItemSort")
+
+	C(MC_ITEM_SORT,							MCDT_MACHINE2MACHINE, MCF_S2C, "Sort Item")
+											P(MPT_INT,		"nSlotType")
+											P(MPT_INT,		"nInvenIndex")
+											P(MPT_BLOB,		"vecItem")
 
 
 	C(MC_ITEM_DYE_PREPARE_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Dye Prepare Item")
@@ -690,12 +784,15 @@ void AddCommonCommandTable()
 											P(MPT_VEC,		"CharPos")
 
 	C(MC_ACTION_ACT_TALENT_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Act Spell")
+											P(MPT_INT,			"TalentID")
 											P(MPT_SVEC,			"Dir")	
 											P(MPT_UID,			"TargetUID")
 	C(MC_ACTION_ACT_TALENT_WITH_HITCAPSULE_REQ,	MCDT_MACHINE2MACHINE, MCF_C2S, "Request Act Spell With Hitcapsule")
+											P(MPT_INT,			"TalentID")
 											P(MPT_SVEC,			"Dir")	
 											P(MPT_SINGLE_BLOB,	"TargetInfo")
 	C(MC_ACTION_ACT_TALENT_WITH_GROUND_REQ,	MCDT_MACHINE2MACHINE, MCF_C2S, "Request Act Spell With GroundInfo")
+											P(MPT_INT,			"TalentID")
 											P(MPT_SVEC,			"Dir")	
 											P(MPT_VEC,			"GroundPos")
 
@@ -714,6 +811,14 @@ void AddCommonCommandTable()
 											P(MPT_USHORT,	"uidEntity")
 											P(MPT_INT,		"TalentID")
 											P(MPT_VECTOR,	"Pos")
+											P(MPT_SVEC,		"Dir")
+
+	C(MC_ACTION_ACT_TALENT_MISS_REQ,		MCDT_MACHINE2MACHINE|MCDT_FILTER_CROWDED, MCF_C2S, "Act Talent")
+											P(MPT_INT,		"TalentID")
+											P(MPT_SVEC,		"Dir")
+	C(MC_ACTION_ACT_TALENT_MISS,			MCDT_MACHINE2MACHINE|MCDT_FILTER_CROWDED, MCF_S2C, "Act Talent")
+											P(MPT_USHORT,	"uidEntity")
+											P(MPT_INT,		"TalentID")
 											P(MPT_SVEC,		"Dir")
 
 	C(MC_ACTION_REQUEST_FAIL_TALENT,		MCDT_MACHINE2MACHINE, MCF_S2C, "Talent Request Failed")
@@ -737,10 +842,12 @@ void AddCommonCommandTable()
 											P(MPT_CHAR,		"nCapsuleGroupIndex")	
 											P(MPT_CHAR,		"nCapsuleIndex")
 
+	/*
 	C(MC_ACTION_ACT_SPELL_MAGICAREA,		MCDT_MACHINE2MACHINE, MCF_S2C, "Act Spell(MagicArea)")
 											P(MPT_USHORT,	"nEntityUIID")
 											P(MPT_INT,		"TalentID")
 											P(MPT_VEC,		"TargetPos")
+	*/
 
 	C(MC_ACTION_RECASTING_SPELL,			MCDT_MACHINE2MACHINE, MCF_S2C, "ReCasting Spell")
 											P(MPT_USHORT,	"nEntityUIID")
@@ -780,6 +887,7 @@ void AddCommonCommandTable()
 											P(MPT_USHORT,	"nTargetUIID")
 											P(MPT_INT,		"nTalentID")
 											P(MPT_INT,		"nAmount")
+											P(MPT_BOOL,		"bCritical")
 
 	C(MC_ACTION_TALENT_DRAIN,				MCDT_MACHINE2MACHINE, MCF_S2C, "Drain")
 											P(MPT_INT,		"nTalentID")
@@ -802,7 +910,6 @@ void AddCommonCommandTable()
 
 	// 퀘스트(QUEST) -------------------------------------------------------------------------------
 	C(MC_QUEST_GIVE_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Give Quest")											
-											P(MPT_INT,		"nQuestID")
 	C(MC_QUEST_GIVE,						MCDT_MACHINE2MACHINE, MCF_S2C, "Response Give Quest")
 											P(MPT_INT,		"nQuestID")
 											P(MPT_UINT,		"nAccepTime")
@@ -820,7 +927,6 @@ void AddCommonCommandTable()
 											P(MPT_INT,		"nQuestID")
 	C(MC_QUEST_REWARD_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Reward")
 											P(MPT_UID,		"uidNPC")
-											P(MPT_INT,		"nQuestID")
 											P(MPT_INT,		"nSelectedReward")
 	C(MC_QUEST_REWARD,						MCDT_MACHINE2MACHINE, MCF_S2C, "Response Reward")
 											P(MPT_UID,		"uidNPC")
@@ -878,12 +984,34 @@ void AddCommonCommandTable()
 
 	// 트레이닝(TRAININIG) -------------------------------------------------------------------------------------------
 	C(MC_TRAINING_TRAIN_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Train")
+											P(MPT_INT,		"eSkillSetTpye")
 											P(MPT_INT,		"nTalentID")
 	C(MC_TRAINING_TRAIN,					MCDT_MACHINE2MACHINE, MCF_S2C, "Train")
+											P(MPT_INT,		"eSkillSetTpye")
 											P(MPT_INT,		"nTalentID")
 											P(MPT_BOOL,		"bConsumeTP")
 	C(MC_TRAINING_UNTRAIN_ALL,				MCDT_MACHINE2MACHINE, MCF_S2C, "Untrain All")
+											P(MPT_INT,		"eSkillSetTpye")
 											P(MPT_INT,		"nTotalTP")
+											P(MPT_BOOL,		"bForce")
+	C(MC_TRAINING_TRAIN_LIMIT_INFO_REQ,		MCDT_MACHINE2MACHINE, MCF_C2S, "Train Limit Info Req")
+											P(MPT_INT,		"eSkillSetTpye")
+	C(MC_TRAINING_TRAIN_LIMIT_INFO,			MCDT_MACHINE2MACHINE, MCF_S2C, "Train Limit Info")
+											P(MPT_INT,		"eSkillSetTpye")
+											P(MPT_BOOL,		"bTrainLimit")
+											P(MPT_INT,		"nTalentStyle")
+											P(MPT_INT64,	"nNoLimitCharacterCreateDate")
+											P(MPT_INT64,	"nLimitReleaseDate")
+
+	// (SKILLSET) -------------------------------------------------------------------------------------------
+	C(MC_SKILLSET_SWITCH_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "SkillSet Swtich Req")
+											P(MPT_INT,		"eSkillSetType")
+	C(MC_SKILLSET_SWITCH,					MCDT_MACHINE2MACHINE, MCF_S2C, "SkillSet Swtich")
+											P(MPT_INT,		"eSkillSetType")
+											P(MPT_INT,		"TP")
+	C(MC_SKILLSET_SWITCH_UI,				MCDT_MACHINE2MACHINE, MCF_S2C, "Show Create UI")
+	C(MC_SKILLSET_SWITCH_PREPARE_REQ,		MCDT_MACHINE2MACHINE, MCF_C2S, "SkillSet Switch Prepare Req")
+	C(MC_SKILLSET_SWITCH_PREPARE,			MCDT_MACHINE2MACHINE, MCF_S2C, "SkillSet Switch Prepare")
 
 
 	// 버프(BUFF) -------------------------------------------------------------------------------------------
@@ -891,6 +1019,12 @@ void AddCommonCommandTable()
 											P(MPT_USHORT,	"nTargetUIID")
 											P(MPT_INT,		"nBuffID")
 											P(MPT_FLOAT,	"fDurationTime")
+
+	C(MC_BUFF_GAIN_WITH_STACK,				MCDT_MACHINE2MACHINE, MCF_S2C, "Gain Buff (with stack)")
+											P(MPT_USHORT,	"nTargetUIID")
+											P(MPT_INT,		"nBuffID")
+											P(MPT_FLOAT,	"fDurationTime")
+											P(MPT_INT,		"nStack")
 				
 	C(MC_BUFF_LOST_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Lost Buff Req")
 											P(MPT_INT,		"nBuffID")
@@ -904,10 +1038,24 @@ void AddCommonCommandTable()
 											P(MPT_USHORT,	"nTargetUIID")
 											P(MPT_INT,		"nBuffID")
 											P(MPT_INT,		"nAmount")
+											P(MPT_BOOL,		"bCritical")
+
+	C(MC_BUFF_RESTORE_EN,					MCDT_MACHINE2MACHINE, MCF_S2C, "Gain Buff RestoreEffect - EN")
+											P(MPT_USHORT,	"nUserUIID")
+											P(MPT_USHORT,	"nTargetUIID")
+											P(MPT_INT,		"nBuffID")
+											P(MPT_INT,		"nAmount")
+
+	C(MC_BUFF_RESTORE_STA,					MCDT_MACHINE2MACHINE, MCF_S2C, "Gain Buff RestoreEffect - STA")
+											P(MPT_USHORT,	"nUserUIID")
+											P(MPT_USHORT,	"nTargetUIID")
+											P(MPT_INT,		"nBuffID")
+											P(MPT_INT,		"nAmount")
 
 	C(MC_BUFF_INSTANT_EFFECT_GAIN,			MCDT_MACHINE2MACHINE, MCF_S2C, "Gain Buff Instant Effect")
 											P(MPT_USHORT,	"nTargetUIID")
 											P(MPT_INT,		"nBuffID")
+											P(MPT_BOOL,		"bCritical")
 
 	C(MC_TALENT_INSTANT_EFFECT_GAIN,		MCDT_MACHINE2MACHINE, MCF_S2C, "Gain Talent Instant Effect")
 											P(MPT_USHORT,	"nTargetUIID")
@@ -921,6 +1069,13 @@ void AddCommonCommandTable()
 	C(MC_BUFF_STACK_DECREASE,				MCDT_MACHINE2MACHINE, MCF_S2C, "Buff Stack Decrease")
 											P(MPT_USHORT,	"nTargetUIID")
 											P(MPT_INT,		"nBuffID")
+
+	C(MC_TALENT_USE_DISPOSABLE_TALENT,		MCDT_MACHINE2MACHINE, MCF_S2C, "Use Disposable Talent")
+											P(MPT_INT,		"nTalentID")
+
+	C(MC_ACTION_TALENT_ADJUST_COOLTIME,		MCDT_MACHINE2MACHINE, MCF_S2C, "Adjust Talent Cooltime")
+											P(MPT_INT,		"nTalentID")
+											P(MPT_INT,		"nAdjustTime")
 
 	// 트레이드(TRADE) -------------------------------------------------------------------------------------------
 	C(MC_TRADE_START_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Trade Start")										
@@ -968,6 +1123,8 @@ void AddCommonCommandTable()
 	// 파티 ---------------
 	C(MC_PARTY_INVITE_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Party.RequestInvite")										
 											P(MPT_UID,		"uidTargetPlayer")
+	C(MC_PARTY_INVITE_BY_NAME_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Party.RequestInviteByName")
+											P(MPT_WSTR,		"TargetPlayerName")
 	C(MC_PARTY_INVITE,						MCDT_MACHINE2MACHINE, MCF_S2C, "Party.Invite")										
 											P(MPT_INT,		"RespondMsg")
 	C(MC_PARTY_LEAVE_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Party.Leave")										
@@ -996,23 +1153,30 @@ void AddCommonCommandTable()
 											P(MPT_WSTR,		"strName")
 	C(MC_PARTY_NOTIFY_LEAVE,				MCDT_MACHINE2MACHINE, MCF_S2C, "Party.Leave")										
 											P(MPT_UID,		"uidPlayer")
-	C(MC_PARTY_INVITE_FOR_ME_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Party.InviteForMe")										
+	C(MC_PARTY_JOIN_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Party.RequestJoin")										
 											P(MPT_UID,		"uidParty")
-	C(MC_PARTY_INVITE_FOR_ME_QUESTION,		MCDT_MACHINE2MACHINE, MCF_S2C, "Party.InviteForMe-Question")										
+	C(MC_PARTY_JOIN_RES,					MCDT_MACHINE2MACHINE, MCF_S2C, "Party.ResponseJoin")
+											P(MPT_INT,		"RespondMsg")
+	C(MC_PARTY_JOIN_QUESTION,				MCDT_MACHINE2MACHINE, MCF_S2C, "Party.AskJoin")
 											P(MPT_UID,		"uidPlayer")
 											P(MPT_WSTR,		"strPlayerName")
-											P(MPT_BOOL,		"bCombat")
-	C(MC_PARTY_INVITE_FOR_ME_QUESTION_RESPOND,	MCDT_MACHINE2MACHINE, MCF_C2S, "Party.InviteForMe-QuestionRespond")										
+											P(MPT_INT,		"nRequestPlayerLevel")
+											P(MPT_INT,		"nRequestPlayerTitleStyle")
+											P(MPT_INT,		"nRequestPlayerFieldID")
+	C(MC_PARTY_JOIN_QUESTION_RESPOND,		MCDT_MACHINE2MACHINE, MCF_C2S, "Party.AnswerJoin")
+											P(MPT_UID,		"uidJoinRequestPlayer")
 											P(MPT_INT,		"RespondMsg")
 
 	C(MC_PARTY_ACCEPT_CANCEL,				MCDT_MACHINE2MACHINE, MCF_S2C, "Party.AcceptCancel")
 											P(MPT_INT,		"nReason")
 
-	C(MC_PARTY_CHANGE_NAME_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Party.ChangeName Req.")
-											P(MPT_WSTR,		"strName")
+	C(MC_PARTY_CHANGE_PUBLIC_PARTY_SETTING_REQ, MCDT_MACHINE2MACHINE, MCF_C2S, "Party.ChangePublicPartySetting Req.")
+											P(MPT_BOOL,		"bPublic")
+											P(MPT_WSTR,		"strPartyName")
 
-	C(MC_PARTY_CHANGE_NAME,					MCDT_MACHINE2MACHINE, MCF_S2C, "Party.ChangeName")
-											P(MPT_WSTR,		"strName")
+	C(MC_PARTY_CHANGE_PUBLIC_PARTY_SETTING,		MCDT_MACHINE2MACHINE, MCF_S2C, "Party.ChangePublicPartySetting")
+											P(MPT_BOOL,		"bPublic")
+											P(MPT_WSTR,		"strPartyName")
 
 	C(MC_PARTY_CHANGE_LEADER_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Party.ChangeLeader Req.")
 											P(MPT_UID,		"uidMember")
@@ -1039,6 +1203,35 @@ void AddCommonCommandTable()
 	C(MC_PARTY_CHANGE_LEADER_NOTIFY,		MCDT_MACHINE2MACHINE, MCF_S2C, "Party.ChangeLeaderNotify")
 											P(MPT_UID,		"uidOldLeader")
 											P(MPT_UID,		"uidNewLeader")
+
+	C(MC_PARTY_REFRESH_MEMBER_POSITION,		MCDT_MACHINE2MACHINE, MCF_S2C, "Party.RefreshMemberPosition")
+											P(MPT_UID,		"uidMember")
+											P(MPT_VEC,		"vPosition")
+
+	C(MC_PARTY_SHOW_INFO_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Party.ShowInfo Req")
+											P(MPT_UID,		"uidParty")
+
+	C(MC_PARTY_SHOW_INFO,					MCDT_MACHINE2MACHINE, MCF_S2C, "Party.ShowInfo")
+											P(MPT_BLOB,		"PartyInfo")
+											P(MPT_BLOB,		"MemberInfos")
+
+	C(MC_PARTY_CREATE_SINGLE_PARTY_REQ,		MCDT_MACHINE2MACHINE, MCF_C2S, "Party.CreateSingleParty Req")
+											P(MPT_BOOL,		"bPublic")
+											P(MPT_WSTR,		"strPartyName")
+
+	C(MC_PARTY_CREATE_SINGLE_PARTY_RES,		MCDT_MACHINE2MACHINE, MCF_S2C, "Party.CreateSingleParty Res")
+											P(MPT_INT,		"RespondMsg")
+
+	C(MC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST_REQ, MCDT_MACHINE2MACHINE, MCF_C2S, "Party.MatchingShowPublicPartyList Req")
+											P(MPT_CHAR,		"nPage")
+											P(MPT_CHAR,		"nSearchLevelMin")
+											P(MPT_CHAR,		"nSearchLevelMax")
+											P(MPT_WSTR,		"strSearchString")
+
+	C(MC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST, MCDT_MACHINE2MACHINE | MCDT_NON_ENCRYPTED, MCF_S2C, "Party.MatchingShowPublicPartyList")
+											P(MPT_INT,		"result")
+											P(MPT_BLOB,		"vector<TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM>")
+											P(MPT_INT,		"nPartyCount")
 											
 // NPC TRADE ---------
 	C(MC_NPCSHOP_SHOW,						MCDT_MACHINE2MACHINE, MCF_S2C, "See Item")
@@ -1048,6 +1241,7 @@ void AddCommonCommandTable()
 											P(MPT_FLOAT,	"fBuyMod")
 											P(MPT_FLOAT,	"fSellMod")
 											P(MPT_BOOL,		"bRepairer")
+											P(MPT_FLOAT,	"fRepairPriceMod")
 
 	C(MC_NPCSHOP_BUY_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Buy")
 											P(MPT_INT,		"nItemID")
@@ -1139,14 +1333,21 @@ void AddCommonCommandTable()
 											P(MPT_VEC,		"dir")
 
 // NPC INTERACTION -------------
-	C(MC_NPCINTERACTION_INTERACTION,		MCDT_MACHINE2MACHINE, MCF_S2C, "Response NPC Interaction")
+	C(MC_NPCINTERACTION_SELECTABLE_IELEMENT, MCDT_MACHINE2MACHINE, MCF_S2C, "Selectable IElement")
 											P(MPT_UID,		"uidNPC")
 											P(MPT_WSTR,		"strOpeningText")
 											P(MPT_BLOB,		"InteractionElement")
 
-	C(MC_NPCINTERACTION_IELEMENT_REQ,		MCDT_MACHINE2MACHINE, MCF_C2S, "Request NPC IE")
+	C(MC_NPCINTERACTION_SELECT_IELEMENT_REQ, MCDT_MACHINE2MACHINE, MCF_C2S, "Select IElement")
 											P(MPT_UID,		"uidTarget")
 											P(MPT_INT,		"nIElementID")
+
+	C(MC_NPCINTERACTION_REFRESH_SELECTABLE_IELEMENT_REQ, MCDT_MACHINE2MACHINE, MCF_C2S, "Select IElement")
+
+	C(MC_NPCINTERACTION_REFRESH_SELECTABLE_IELEMENT, MCDT_MACHINE2MACHINE, MCF_S2C, "Refresh Selectable IElement")
+											P(MPT_UID,		"uidNPC")
+											P(MPT_WSTR,		"strOpeningText")
+											P(MPT_BLOB,		"InteractionElement")
 
 	C(MC_NPCINTERACTION_END_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "NPCInteraction End Req")
 	C(MC_NPCINTERACTION_END,				MCDT_MACHINE2MACHINE, MCF_S2C, "NPCInteraction End")
@@ -1177,6 +1378,7 @@ void AddCommonCommandTable()
 
 	C(MC_CRAFT_MAKE_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Make Req")
 											P(MPT_INT,		"nRecipeID")
+											P(MPT_INT,		"nCraftAmount")
 	C(MC_CRAFT_MAKE,						MCDT_MACHINE2MACHINE, MCF_S2C, "Make")
 											P(MPT_INT,		"nRecipeID")
 	C(MC_CRAFT_RECIPE_INSERT_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Recipe Insert Req")
@@ -1304,16 +1506,19 @@ void AddCommonCommandTable()
 	C(MC_DUEL_READY,						MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Ready")										
 											P(MPT_UID,		"uidFighter1")	
 											P(MPT_UID,		"uidFighter2")	
-	C(MC_DUEL_FIGHT,						MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Fight")										
+	C(MC_DUEL_FIGHT,						MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Fight")
+											P(MPT_USHORT,	"SessionId")
 											P(MPT_UID,		"uidFighter1")	
 											P(MPT_UID,		"uidFighter2")	
 	C(MC_DUEL_FINISHED,						MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Finished")										
 											P(MPT_UID,		"uidWinner")	
 											P(MPT_UID,		"uidLoser")	
+											P(MPT_BOOL,		"bShowMessage")
 	C(MC_DUEL_PARTY_READY,					MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Ready")										
 											P(MPT_BLOB,		"uidFighter1")	
 											P(MPT_BLOB,		"uidFighter2")	
 	C(MC_DUEL_PARTY_FIGHT,					MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Fight")										
+											P(MPT_USHORT,	"SessionId")
 											P(MPT_BLOB,		"uidFighters")	
 	C(MC_DUEL_PARTY_FINISHED,				MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Finished")										
 											P(MPT_INT,		"nWinnerTeam")	
@@ -1321,6 +1526,7 @@ void AddCommonCommandTable()
 											P(MPT_UID,		"uidLoseTeamLeader")
 											P(MPT_INT,		"nWinPlayerCount")
 											P(MPT_INT,		"nLosePlayerCount")											
+											P(MPT_BOOL,		"bShowMessage")
 	C(MC_DUEL_PARTY_CANCEL,					MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Cancel")										
 											P(MPT_BLOB,		"uidFighters")	
 	C(MC_DUEL_DEFEATED,						MCDT_MACHINE2MACHINE, MCF_S2C, "Duel.Defeated")										
@@ -1388,47 +1594,60 @@ void AddCommonCommandTable()
 
 // 팔레트 ---------------										
 	C(MC_PALETTE_SELECT_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Select Req")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 	C(MC_PALETTE_SELECT,					MCDT_MACHINE2MACHINE, MCF_S2C, "Select")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 	C(MC_PALETTE_SET_PRIMARY_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Set Primary Req")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 	C(MC_PALETTE_SET_PRIMARY,				MCDT_MACHINE2MACHINE, MCF_S2C, "Set Primary")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 	C(MC_PALETTE_SET_SECONDARY_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Set Secondary Req")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 	C(MC_PALETTE_SET_SECONDARY,				MCDT_MACHINE2MACHINE, MCF_S2C, "Set Secondary")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 
 	
 	C(MC_PALETTE_PUTUP_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Putup Req")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 											P(MPT_UCHAR,			"nSlot")
 											P(MPT_UCHAR,			"nType")
 											P(MPT_INT,				"nItemIDorTalentID")
 	C(MC_PALETTE_PUTUP,						MCDT_MACHINE2MACHINE, MCF_S2C, "Putup ")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 											P(MPT_UCHAR,			"nSlot")
 											P(MPT_UCHAR,			"nType")
 											P(MPT_INT,				"nItemIDorTalentID")
 	C(MC_PALETTE_PUTDOWN_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Putdown Req")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum")
 											P(MPT_UCHAR,			"nSlot")										
 	C(MC_PALETTE_PUTDOWN,					MCDT_MACHINE2MACHINE, MCF_S2C, "Putdown")
+											P(MPT_INT,			"eSkillSetTpye")
 											P(MPT_BLOB,			"nNum")
 											P(MPT_BLOB,			"nSlot")
 	C(MC_PALETTE_CHANGE_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Change Req")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum1")
 											P(MPT_UCHAR,			"nSlot1")
 											P(MPT_UCHAR,			"nNum2")
 											P(MPT_UCHAR,			"nSlot2")
 	C(MC_PALETTE_CHANGE,					MCDT_MACHINE2MACHINE, MCF_S2C, "Change")
+											P(MPT_INT,				"eSkillSetTpye")
 											P(MPT_UCHAR,			"nNum1")
 											P(MPT_UCHAR,			"nSlot1")
 											P(MPT_UCHAR,			"nNum2")
 											P(MPT_UCHAR,			"nSlot2")
 
 	C(MC_PALETTE_PUTDOWN_ALLTALENT,			MCDT_MACHINE2MACHINE, MCF_S2C, "PutDown AllTalent")
+											P(MPT_INT,				"eSkillSetTpye")
 
 // 소울 ---------------										
 	C(MC_SOUL_DRAIN_ME,						MCDT_MACHINE2MACHINE, MCF_S2C, "Drain Me")
@@ -1558,31 +1777,6 @@ void AddCommonCommandTable()
 	C(MC_ENCHANT_PREPARE,					MCDT_MACHINE2MACHINE, MCF_C2S, "Enchant Prepare")
 	C(MC_ENCHANT_CANCEL,					MCDT_MACHINE2MACHINE, MCF_C2S, "Enchant Cancel")
 
-	//SoulHunterZ - Item Attunement
-	C(MC_SH_SA_REQ,							MCDT_MACHINE2MACHINE, MCF_C2S, "Soul Attune Request")
-											P(MPT_INT,		"nTargetSlotType") //makes it easy for us to do further checking on the server.
-											P(MPT_INT,		"nTargetSlotID") //Only Equipped Items may be soul attuned.
-											/*P(MPT_INT,		"nAttuneItem1SlotID")
-											P(MPT_INT,		"nAttuneItem2SlotID")
-											P(MPT_INT,		"nAttuneItem3SlotID")
-											P(MPT_INT,		"nAttuneItem4SlotID")*/
-	C(MC_SH_SA_PREPARE,						MCDT_MACHINE2MACHINE, MCF_C2S, "Soul Attune Prepare")
-	C(MC_SH_SA_CANCEL,						MCDT_MACHINE2MACHINE, MCF_C2S, "Soul Attune Cancel")
-	C(MC_SH_SA_RESULT,						MCDT_MACHINE2MACHINE, MCF_S2C, "Soul Attune Result")
-											P(MPT_INT,		"nErrorCode")
-	C(MC_SH_SA_CHECK_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Soul Attune CHK Request")
-											P(MPT_INT,		"nTargetSlotType")
-											P(MPT_INT,		"nTargetSlotID")
-	C(MC_SH_SA_CHECK_RESULT,				MCDT_MACHINE2MACHINE, MCF_S2C, "Soul Attune CHK Request Result")
-											P(MPT_INT,		"nErrorCode")
-
-	C(MC_SH_ITEM_XP,						MCDT_MACHINE2MACHINE, MCF_S2C, "Item Reward XP")
-											P(MPT_INT,		"SlotID")
-											P(MPT_INT,		"ItemRewardExp")
-											P(MPT_INT,		"NextAttuneXP")
-											P(MPT_INT,		"ItemExp")
-											
-
 // 자동파티 ---------------
 	C(MC_AUTOPARTY_ENQUEUE_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "AutoParty Enqueue Request")
 											P(MPT_INT,		"nQuestID")
@@ -1668,233 +1862,15 @@ void AddCommonCommandTable()
 											P(MPT_BLOB,	"items")
 
 
-// GM ---------------
-	C(MC_GM_REQUEST_SPAWN,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Spawn NPC")
-											P(MPT_INT,		"nNPCID")
-											P(MPT_INT,		"nCount")
-											P(MPT_VEC,		"vSpawnPos")
+// Guide Book ---------------
+	C(MC_SC_GUIDEBOOK_GAIN,					MCDT_MACHINE2MACHINE, MCF_S2C, "GuideBook Gain")
+											P(MPT_INT, "nGuideBookID")
 
-	C(MC_GM_SPAWN,							MCDT_MACHINE2MACHINE, MCF_ANY, "Spawn NPC")
-											P(MPT_BLOB,		"vecNPCUID")
-	
-
-	C(MC_GM_REQUEST_DESPAWN,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Despawn NPC")
-											P(MPT_FLOAT,	"fRange")
-
-	C(MC_GM_MOVE_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Move")
-											P(MPT_INT,		"nFieldID")
-											P(MPT_VEC,		"Position")
-	C(MC_GM_MOVE_TO_PLAYER_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Move To Player")
-											P(MPT_WSTR,		"PlayerID")
-	C(MC_GM_MOVE_TO_MYSPOT_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request move to my spot")
-
-	C(MC_GM_REBIRTH_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Rebirth")
-											P(MPT_VEC,		"Position")
-
-
-	C(MC_GM_GOD_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM God Mode")
-	C(MC_GM_GOD,							MCDT_MACHINE2MACHINE, MCF_S2C, "GM God Mode")
-											P(MPT_BOOL,		"GOD")
-	C(MC_GM_GHOST_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Ghost Mode")
-	C(MC_GM_GHOST,							MCDT_MACHINE2MACHINE, MCF_S2C, "GM Ghost Mode")
-											P(MPT_BOOL,		"Enable")
-	C(MC_GM_AI_RUNNING_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request AI Running")
-	C(MC_GM_AI_USE_TALENT_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Command AI")
-											P(MPT_UID,		"uidNPC")
-											P(MPT_WSTR,		"Command")
-											P(MPT_WSTR,		"Param")
-
-	C(MC_GM_AI_SET_MONITOR_TARGET,			MCDT_MACHINE2MACHINE, MCF_C2S, "Request Set Monitor NPC")
-											P(MPT_USHORT,		"nNPCUIID")
-											
-	C(MC_GM_CHANGE_WEATHER_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Change Weather")
-											P(MPT_INT,		"nWeather")
-
-	C(MC_GM_CHANGE_TIME_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Change Time")
-											P(MPT_INT,		"nTime")
-
-	C(MC_GM_QUEST_GIVE_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Give Quest")
-											P(MPT_INT,		"nQue stID")
-
-	C(MC_GM_QUEST_FAIL_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Fail Quest")
-											P(MPT_INT,		"nQuestID")
-
-	C(MC_GM_ITEM_GIVE_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Give Item")
-											P(MPT_INT,		"nItemID")
-											P(MPT_INT,		"nQuantity")
-
-	C(MC_GM_CLEAR_INVENTORY_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Clear Inventory")
-
-	C(MC_GM_QUEST_REWARD_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Quest Reward")
-											P(MPT_INT,		"nQuestID")
-
-	C(MC_GM_GET_PLAYERUID_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Get PlayerUID")
-											P(MPT_WSTR,		"strPlayerID")
-	C(MC_GM_GET_PLAYERUID,					MCDT_MACHINE2MACHINE, MCF_S2C, "Response GM Get PlayerUID")
-											P(MPT_UID,		"uidPlayerUID")
-	C(MC_GM_REPORT_TARGET_ENTITY,			MCDT_MACHINE2MACHINE, MCF_C2S, "Report Target Entity")
-											P(MPT_UID,		"uidTarget")
-
-	C(MC_GM_KILL_ENTITY_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Kill Entity")
-											P(MPT_USHORT,	"nUIID")
-
-	C(MC_GM_RANGE_KILL_NPC_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Range Kill NPC")
-											P(MPT_FLOAT,		"fRange")										
-	C(MC_GM_SET_ME_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request Set MyInfo")
-											P(MPT_WSTR,		"Type")
-											P(MPT_WSTR,		"Value")
-
-	C(MC_GM_QUEST_RESET_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Reset DoneQuest")
-	C(MC_GM_QUEST_RESET,					MCDT_MACHINE2MACHINE, MCF_S2C, "Reset DoneQuest")
-
-	C(MC_GM_QUEST_RESET_ALL_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Request Reset AllQuest")
-
-	C(MC_GM_SET_ITEM_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Set ItemInfo")
-											P(MPT_WSTR,		"Type")
-											P(MPT_INT,		"nInvenSlotID")											
-											P(MPT_INT,		"Value")
-	C(MC_GM_NPC_AI_RUNNING_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request GM Toggle NPC AI")
-											P(MPT_UID,		"uidNPC")
-
-	C(MC_GM_INSERT_BUFF_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Insert Buff Req")
-											P(MPT_INT,		"nBuffID")
-											P(MPT_FLOAT,	"fDurationTime")
-											P(MPT_FLOAT,	"fPeriodTime")
-	C(MC_GM_DELETE_BUFF_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Delete Buff Req")										
-											P(MPT_INT,		"nBuffID")
-
-	C(MC_GM_RESET_COOLTIME_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Reset CoolTime")
-
-	C(MC_GM_SHOW_ENEMY_UID_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Show Enemy UID Req")
-
-	C(MC_GM_SHOW_ENEMY_UID,					MCDT_MACHINE2MACHINE, MCF_S2C, "Show Enemy UID")
-											P(MPT_BLOB,		"uid")
-
-	C(MC_GM_MOVE_TO_NPC_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Move To NPC Req")
-											P(MPT_INT,		"nNPCID")
-											P(MPT_INT,		"nFieldID")
-
-	C(MC_GM_BREAK_PART_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Break Part Req")
-											P(MPT_UID,		"uidNPC")
-											P(MPT_UCHAR,	"nBPartID")
-
-	C(MC_GM_RANGE_BREAK_PART_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Range Break Part Req")
-											P(MPT_FLOAT,	"fRange")
-											
-	C(MC_GM_QUEST_COMPLETE_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Quest Complete Req")
-											P(MPT_INT,		"nQuestID")
-
-	C(MC_GM_QUEST_VAR_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Quest Var Req")
-											P(MPT_INT,		"nQuestID")
-
-	C(MC_GM_QUEST_VAR,						MCDT_MACHINE2MACHINE, MCF_S2C, "Quest Var")
-											P(MPT_INT,		"nVar")
-
-	C(MC_GM_LOG_CRT_INSERT_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "FailCRT Log Insert Req")
-											P(MPT_INT,		"nCRT")
-
-	C(MC_GM_LOG_CRT_DELETE_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "FailCRT Log Delete Req")
-											P(MPT_INT,		"nCRT")
-
-	C(MC_GM_LOG_CRT_LIST,					MCDT_MACHINE2MACHINE, MCF_S2C, "FailCRT Log List")
-											P(MPT_BLOB,		"CRTList")
-
-	C(MC_GM_QUERY_MULTILOGIN_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "QueryMultiLogin Req")
-	C(MC_GM_QUERY_MULTILOGIN,				MCDT_MACHINE2MACHINE, MCF_S2C, "QueryMultiLogin")
-											P(MPT_BOOL,		"bMultiLogin")
-											
-
-	C(MC_GM_FACTION_INCREASE_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Faction Increase")
-											P(MPT_UCHAR,		"nFactionID")
-											P(MPT_USHORT,		"nQuantity")
-											
-	C(MC_GM_FACTION_DECREASE_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Faction Decrease")
-											P(MPT_UCHAR,		"nFactionID")
-											P(MPT_USHORT,		"nQuantity")
-
-	C(MC_GM_FACTION_RESET_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Faction Reset")											
-
-	C(MC_GM_SERVER_DUMP_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request Server Dump")
-											P(MPT_WSTR,		"Identifier")
-	C(MC_GM_SERVER_DUMP_RESP,				MCDT_MACHINE2MACHINE, MCF_S2C, "Response Server Dump")
-
-	C(MC_GM_ENABLE_ICHECK_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Interaction Check On")
-	C(MC_GM_DISABLE_ICHECK_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Interaction Check Off")
-
-	C(MC_GM_SET_NPC_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Request Set NPCInfo")
-											P(MPT_WSTR,		"Type")
-											P(MPT_WSTR,		"Value")
-
-	C(MC_GM_DYE_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request Dye")
-											P(MPT_INT,		"nSlotType")
-											P(MPT_INT,		"nSlotID")
-											P(MPT_INT,		"nColor")
-
-	C(MC_GM_SUMMON_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request Summon")
-											P(MPT_WSTR,		"PlayerID")
-	C(MC_GM_REGEN_REQ,						MCDT_MACHINE2MACHINE, MCF_C2S, "Request Regen")
-
-	C(MC_GM_DESPAWNBYID_REQ,				MCDT_MACHINE2MACHINE, MCF_C2S, "Request DespawnByID NPC")
-											P(MPT_INT,		"nNPCID")
-											P(MPT_FLOAT,	"fRange")
-											
-	C(MC_GM_CHANGE_SERVER_MODE_REQ,			MCDT_MACHINE2MACHINE, MCF_C2S, "Request Change Server Mode")
-											P(MPT_INT,		"nServerMode")
-
-	C(MC_GM_CHANGE_SERVER_MODE,				MCDT_MACHINE2MACHINE, MCF_S2C, "Change Server Mode")
-											P(MPT_INT,		"nServerMode")
-
-	C(MC_GM_RESET_EXPO_CHARACTERS_REQ,		MCDT_MACHINE2MACHINE, MCF_C2S, "Request Reset Expo Characters")
-
-	C(MC_GM_BAN,							MCDT_MACHINE2MACHINE, MCF_C2S, "Request Player Ban")
-											P(MPT_WSTR,		"PlayerName")
 
 	// 보안(GameGuard) ------------------------------------------------------------------------------------------
 	C(MC_GG_AUTH_REQ,						MCDT_MACHINE2MACHINE, MCF_S2C, "GameGuard Auth Req")
 											P(MPT_SINGLE_BLOB,		"Auth Info")
 	C(MC_GG_AUTH_RESPOND,					MCDT_MACHINE2MACHINE, MCF_C2S, "GameGuard Auth Respond")
-											P(MPT_SINGLE_BLOB,		"Auth Info")
-	C(MC_GG_AUTH_ENABLE,					MCDT_MACHINE2MACHINE, MCF_C2S, "GameGuard Auth Enable")
-											P(MPT_BOOL,		"bEnable")
-	
-
-	// TEST -------------
-	C(MC_DEBUG_STRING,						MCDT_MACHINE2MACHINE, MCF_S2C, "DebugString")
-											P(MPT_WSTR,		"Key")
-											P(MPT_INT,		"Param1")
-											P(MPT_WSTR,		"Text")
-											P(MPT_BLOB,		"AdditionData")
-
-	C(MC_REQUEST_DEBUG_STRING,				MCDT_MACHINE2MACHINE, MCF_C2S, "RequestDebugString")
-											P(MPT_WSTR,		"Key")
-											P(MPT_INT,		"Param1")
-											P(MPT_WSTR,		"Text")
-											P(MPT_BLOB,		"AdditionData")
-
-	C(MC_AI_DEBUG_MESSAGE,					MCDT_MACHINE2MACHINE, MCF_S2C, "AI Debug Message")
-											P(MPT_UID,		"uidNPC")
-											P(MPT_WSTR,		"Message")
-
-	C(MC_DEBUG_COMBATCALC,					MCDT_MACHINE2MACHINE, MCF_S2C, "Debug CombatCalc")
-											P(MPT_WSTR,		"Type")
-											P(MPT_WSTR,		"Message")
-
-	C(MC_DEBUG_NPC_NETLOG,					MCDT_MACHINE2MACHINE, MCF_S2C, "Debug NPC NetLog")
-											P(MPT_UID,		"uidNPC")
-											P(MPT_BLOB,		"LogData")
-
-	C(MC_DEBUG_ECHO_REQ,					MCDT_MACHINE2MACHINE, MCF_C2S, "Debug Echo Req")
-											P(MPT_INT,		"nRouteType")
-											P(MPT_INT,		"nDataSize")
-											P(MPT_BLOB,		"Data")
-
-	C(MC_DEBUG_ECHO,						MCDT_MACHINE2MACHINE, MCF_S2C, "Debug Echo")
-											P(MPT_UID,		"uidRequester")
-											P(MPT_BLOB,		"Data")
-
-	C(MC_DEBUG_START_COMMAND_PROFILE,		MCDT_MACHINE2MACHINE, MCF_C2S, "StartCommandProfile")
-	C(MC_DEBUG_END_COMMAND_PROFILE,			MCDT_MACHINE2MACHINE, MCF_C2S, "EndCommandProfile")
-	C(MC_DEBUG_DUMP_COMMAND_PROFILE,		MCDT_MACHINE2MACHINE, MCF_C2S, "DumpCommandProfile")
 
 	// COMMON --------------
 	C(MC_TIME_SYNCH,						MCDT_MACHINE2MACHINE, MCF_S2C, "Time Synch")

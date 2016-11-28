@@ -52,7 +52,7 @@ void GDBTaskMailGetContent::_Execute_GetAppendedItem(mdb::MDatabase& rfDB)
 	if (0 == rs.GetFetchedCount())
 		return;
 
-	static const size_t nHash_IUID			= rs.MakeHashValueW(L"IUID");
+	static const size_t nHash_IUID			= rs.MakeHashValueW(L"ITEM_SN");
 	static const size_t nHash_SlotID		= rs.MakeHashValueW(L"SLOT_ID");
 	static const size_t nHash_ItemID		= rs.MakeHashValueW(L"ITEM_ID");
 	static const size_t nHash_StackAmt		= rs.MakeHashValueW(L"STACK_AMT");
@@ -144,7 +144,7 @@ bool GDBTaskMailGetContent::Completer::SetMailRead(GEntityPlayer* pPlayer)
 	// DB 요청을 못하는 상황이면, 편지 내용 읽기 실패처리.
 	if (!mailBox.IsReaded(m_Data.m_uidMail.Value))
 	{
-		int64 nAID = pPlayer->GetAID();
+		AID nAID = pPlayer->GetAID();
 		CID nCID = pPlayer->GetCID();
 
 		if (!gsys.pDBManager->MailSetRead(m_Data.m_uidPlayer, nAID, nCID, m_Data.m_uidMail.Value))

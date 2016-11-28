@@ -38,12 +38,12 @@ class GFactionSystem;
 class GMsgCommandFacade;
 class GExpSystem;
 class GMoneySystem;
-class GPMSSystem;
 class GRebirthSystem;
 class GDBCacheSystem;
 class GStorageSystem;
 class GGameGuard;
 class GServerDumper;
+class GGuideBookSystem;
 
 #define __GLOBAL_CHANGE(Type, Value)	Type* Change(Type* a) { Type* pPrev = Value; Value = a; return pPrev; }
 
@@ -88,12 +88,12 @@ public:
 	GMsgCommandFacade*	pMsgCommandFacade;
 	GExpSystem*			pExpSystem;
 	GMoneySystem*		pMoneySystem;
-	GPMSSystem*			pPMSSystem;
 	GRebirthSystem*		pRebirthSystem;
 	GDBCacheSystem*		pDBCacheSystem;
 	GStorageSystem*		pStorageSystem;
 	GGameGuard*			pGameGuard;	
 	GServerDumper*		pServerDumper;
+	GGuideBookSystem*	pGuideBookSystem;
 		
 	GGlobalSystem()
 	{
@@ -139,12 +139,12 @@ public:
 		pFactionSystem = NULL;
 		pMsgCommandFacade = NULL;
 		pExpSystem = NULL;
-		pPMSSystem = NULL;
 		pMoneySystem = NULL;
 		pRebirthSystem = NULL;
 		pDBCacheSystem = NULL;
 		pGameGuard = NULL;
 		pServerDumper = NULL;
+		pGuideBookSystem = NULL;
 	}
 
 	__GLOBAL_CHANGE(GServer, pServer);
@@ -185,12 +185,12 @@ public:
 	__GLOBAL_CHANGE(GMsgCommandFacade, pMsgCommandFacade);
 	__GLOBAL_CHANGE(GExpSystem, pExpSystem);
 	__GLOBAL_CHANGE(GMoneySystem, pMoneySystem);
-	__GLOBAL_CHANGE(GPMSSystem, pPMSSystem);
 	__GLOBAL_CHANGE(GRebirthSystem, pRebirthSystem);
 	__GLOBAL_CHANGE(GDBCacheSystem, pDBCacheSystem);
 	__GLOBAL_CHANGE(GStorageSystem, pStorageSystem);
 	__GLOBAL_CHANGE(GGameGuard, pGameGuard);
 	__GLOBAL_CHANGE(GServerDumper, pServerDumper);
+	__GLOBAL_CHANGE(GGuideBookSystem, pGuideBookSystem);
 	
 };
 
@@ -232,6 +232,8 @@ class GVectorMUIDPool;
 class GQPEventInfoMgr;
 class GPresetInfoMgr;
 class GExportDBStringTable;
+class GSetItemEffectManager;
+class GGuideBookMgr;
 
 class GGlobalManager
 {
@@ -270,6 +272,8 @@ public:
 	GQPEventInfoMgr*		pQPEventInfoMgr;
 	GPresetInfoMgr*			pPresetInfoMgr;
 	GExportDBStringTable*	pExportDBStringTable;
+	GSetItemEffectManager*	pSetItemEffectManager;
+	GGuideBookMgr*			pGuideBookMgr;
 
 		
 	GGlobalManager()
@@ -315,6 +319,8 @@ public:
 		pQPEventInfoMgr = NULL;
 		pPresetInfoMgr = NULL;
 		pExportDBStringTable = NULL;
+		pSetItemEffectManager = NULL;
+		pGuideBookMgr = NULL;
 	}
 
 	__GLOBAL_CHANGE(GPlayerObjectManager, pPlayerObjectManager);
@@ -350,6 +356,8 @@ public:
 	__GLOBAL_CHANGE(GQPEventInfoMgr, pQPEventInfoMgr)
 	__GLOBAL_CHANGE(GPresetInfoMgr, pPresetInfoMgr)
 	__GLOBAL_CHANGE(GExportDBStringTable, pExportDBStringTable);
+	__GLOBAL_CHANGE(GSetItemEffectManager, pSetItemEffectManager);
+	__GLOBAL_CHANGE(GGuideBookMgr, pGuideBookMgr);
 };
 		
 

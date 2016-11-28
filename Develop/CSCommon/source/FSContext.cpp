@@ -94,26 +94,24 @@ void FSContext::CastingState(wchar_t token)
 {
 	switch(token)
 	{
-	case L'A':
-	case L'a':
-		if (HasJonsung())	m_strPostfix.push_back(L'A');
-		else m_strPostfix.push_back(L'a');
+	case L'을':
+	case L'를':
+		if (HasJonsung())	m_strPostfix.push_back(L'을');
+		else m_strPostfix.push_back(L'를');
 
 		m_strBracket.push_back(token);
 		Trans(&FSContext::CastEndState);
 		break;
-	case L'B':
-	case L'b':
-		if (HasJonsung())	m_strPostfix.push_back(L'B');
-		else m_strPostfix.push_back(L'b');
+	case L'가':
+		if (HasJonsung())	m_strPostfix.push_back(L'이');
+		else m_strPostfix.push_back(L'가');
 
 		m_strBracket.push_back(token);
 		Trans(&FSContext::CastEndState);
 		break;
-	case L'C':
-	case L'c':
-		if (HasJonsung())	m_strPostfix.push_back(L'C');
-		else m_strPostfix.push_back(L'c');
+	case L'는':
+		if (HasJonsung())	m_strPostfix.push_back(L'은');
+		else m_strPostfix.push_back(L'는');
 
 		m_strBracket.push_back(token);
 		Trans(&FSContext::CastEndState);

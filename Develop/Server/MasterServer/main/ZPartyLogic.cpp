@@ -13,6 +13,10 @@
 #include "CSDef_Party.h"
 #include "ZFixedPartyLogic.h"
 #include "ZConfig.h"
+#include "CTransData.h"
+#include "MLocale.h"
+#include "MStringUtil.h"
+#include "ZPlayer.h"
 
 ZPartyLogic::ZPartyLogic()
 {
@@ -99,6 +103,18 @@ void ZPartyLogic::InviteReq(MUID uidSender, MUID uidTargetPlayer, MUID uidReques
 	// 초대 수락 요청
 	MUID uidTarget = pTargetGameServer->GetUID();
 	m_pRouter->AcceptReq(uidTarget, uidTargetPlayer, uidRequestPlayer, pRequestPlayer->GetPlayerName());
+}
+
+void ZPartyLogic::InviteByNameReq(MUID uidSender, wstring strTargetPlayer, MUID uidRequestPlayer)
+{
+	ZPlayer* pTargetPlayer = gmgr.pPlayerManager->FindByName(strTargetPlayer);
+	if (pTargetPlayer == NULL)
+	{
+		m_pRouter->InviteRes(uidSender, uidRequestPlayer, MUID::ZERO, CR_FAIL_SYSTEM_INVALID_PC_UID);
+		return;
+	}
+
+	InviteReq(uidSender, pTargetPlayer->GetUID(), uidRequestPlayer);
 }
 
 void ZPartyLogic::AcceptRes(MUID uidSender, MUID uidRequestPlayer, MUID uidTargetPlayer, CCommandResultTable nResult)
@@ -391,13 +407,21 @@ void ZPartyLogic::KickReq(MUID uidSender, MUID uidParty, MUID uidRequestPlayer, 
 	RouteRemoveMemberSync(pParty);
 }
 
-void ZPartyLogic::JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPlayer)
+void ZPartyLogic::JoinReq(MUID uidSender, MUID uidParty, MUID uidRequestPlayer, int nReqPlayerLevel, int nReqPlayerTalentStyle)
 {
 	// 파티 확인
 	ZParty* pParty = gmgr.pPartyManager->Find(uidParty);
 	if (pParty == NULL)
 	{
-		m_pRouter->JoinInviteRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		m_pRouter->JoinRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		return;
+	}
+
+
+	// check public party setting
+	if (!pParty->IsPublic())
+	{
+		m_pRouter->JoinRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
 		return;
 	}
 
@@ -405,7 +429,7 @@ void ZPartyLogic::JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPl
 	// 풀파티 확인
 	if (pParty->IsFull())
 	{
-		m_pRouter->JoinInviteRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_FULL_PARTY);
+		m_pRouter->JoinRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_FULL_PARTY);
 		return;
 	}
 
@@ -413,7 +437,7 @@ void ZPartyLogic::JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPl
 	// 파티원 확인
 	if (pParty->IsExistMember(uidRequestPlayer))
 	{
-		m_pRouter->JoinInviteRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_ALEADY_HAS_PARTY);
+		m_pRouter->JoinRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_ALEADY_HAS_PARTY);
 		return;
 	}
 
@@ -423,7 +447,7 @@ void ZPartyLogic::JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPl
 	ZPlayer* pLeader = gmgr.pPlayerManager->FindByUID(uidLeader);
 	if (pLeader == NULL)
 	{
-		m_pRouter->JoinInviteRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		m_pRouter->JoinRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
 		return;
 	}
 
@@ -433,7 +457,7 @@ void ZPartyLogic::JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPl
 	ZGameServerObject* pGameServer = gmgr.pGameServerObjectManager->FindGameServer(nServerID);
 	if (pGameServer == NULL)
 	{
-		m_pRouter->JoinInviteRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		m_pRouter->JoinRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
 		return;
 	}
 
@@ -442,7 +466,7 @@ void ZPartyLogic::JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPl
 	ZPlayer* pRequestPlayer = gmgr.pPlayerManager->FindByUID(uidRequestPlayer);
 	if (pRequestPlayer == NULL)
 	{
-		m_pRouter->JoinInviteRes(uidSender, uidRequestPlayer, CR_FAIL_SYSTEM_INVALID_PC_UID);
+		m_pRouter->JoinRes(uidSender, uidRequestPlayer, CR_FAIL_SYSTEM_INVALID_PC_UID);
 		return;
 	}
 	
@@ -450,7 +474,7 @@ void ZPartyLogic::JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPl
 	// 가입 요청
 	MUID uidTarget = pGameServer->GetUID();
 	wstring strRequestPlayerName = pRequestPlayer->GetPlayerName();
-	m_pRouter->JoinAcceptReq(uidTarget, uidParty, uidLeader, uidRequestPlayer, strRequestPlayerName);
+	m_pRouter->JoinAcceptReq(uidTarget, uidParty, uidLeader, uidRequestPlayer, strRequestPlayerName, nReqPlayerLevel, nReqPlayerTalentStyle, pRequestPlayer->GetFieldID());
 }
 
 void ZPartyLogic::JoinAcceptRes(MUID uidSender, MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, CCommandResultTable nResult)
@@ -479,7 +503,7 @@ void ZPartyLogic::JoinAcceptRes(MUID uidSender, MUID uidParty, MUID uidLeader, M
 	if (pParty == NULL)
 	{
 		MUID uidTarget = pGameServer->GetUID();
-		m_pRouter->JoinInviteRes(uidTarget, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		m_pRouter->JoinRes(uidTarget, uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
 		m_pRouter->JoinAcceptCancel(uidSender, uidLeader, CR_FAIL_PARTY_INVALID_PARTY);
 		return;
 	}
@@ -489,7 +513,7 @@ void ZPartyLogic::JoinAcceptRes(MUID uidSender, MUID uidParty, MUID uidLeader, M
 	if (uidLeader != pParty->GetLeader())
 	{
 		MUID uidTarget = pGameServer->GetUID();
-		m_pRouter->JoinInviteRes(uidTarget, uidRequestPlayer, CR_FAIL_PARTY_NOT_PARTY_LEADER);
+		m_pRouter->JoinRes(uidTarget, uidRequestPlayer, CR_FAIL_PARTY_NOT_PARTY_LEADER);
 		m_pRouter->JoinAcceptCancel(uidSender, uidLeader, CR_FAIL_PARTY_NOT_PARTY_LEADER);
 		return;
 	}
@@ -499,7 +523,7 @@ void ZPartyLogic::JoinAcceptRes(MUID uidSender, MUID uidParty, MUID uidLeader, M
 	if (pParty->IsFull())
 	{
 		MUID uidTarget = pGameServer->GetUID();
-		m_pRouter->JoinInviteRes(uidTarget, uidRequestPlayer, CR_FAIL_PARTY_FULL_PARTY);
+		m_pRouter->JoinRes(uidTarget, uidRequestPlayer, CR_FAIL_PARTY_FULL_PARTY);
 		m_pRouter->JoinAcceptCancel(uidSender, uidLeader, CR_FAIL_PARTY_FULL_PARTY);
 		return;
 	}
@@ -509,7 +533,7 @@ void ZPartyLogic::JoinAcceptRes(MUID uidSender, MUID uidParty, MUID uidLeader, M
 	if (nResult != CR_SUCCESS)
 	{
 		MUID uidTarget = pGameServer->GetUID();
-		m_pRouter->JoinInviteRes(uidTarget, uidRequestPlayer, nResult);
+		m_pRouter->JoinRes(uidTarget, uidRequestPlayer, nResult);
 		return;
 	}
 
@@ -523,37 +547,11 @@ void ZPartyLogic::JoinAcceptRes(MUID uidSender, MUID uidParty, MUID uidLeader, M
 
 	// 수락 응답
 	MUID uidTarget = pGameServer->GetUID();
-	m_pRouter->JoinInviteRes(uidTarget, uidRequestPlayer, nResult);
+	m_pRouter->JoinRes(uidTarget, uidRequestPlayer, nResult);
 
 
 	// 파티 정보 동기화	
 	m_pRouter->AddMember(uidParty, uidRequestPlayer, pRequestPlayer->GetPlayerName(), pRequestPlayer->GetCID());
-}
-
-void ZPartyLogic::CreateSingleReq(MUID uidSender, MUID uidRequestPlayer)
-{
-	// 요청자 확인
-	ZPlayer* pRequestPlayer = gmgr.pPlayerManager->FindByUID(uidRequestPlayer);
-	if (pRequestPlayer == NULL)		return;
-
-
-	// 파티 확인
-	MUID uidParty = pRequestPlayer->GetPartyUID();
-	if (uidParty.IsValid())		return;
-
-
-	// 파티 생성
-	int nLeaderServerID = pRequestPlayer->GetGameServerID();
-	ZParty* pParty = gmgr.pPartyManager->AddParty(uidRequestPlayer, pRequestPlayer->GetPlayerName(), nLeaderServerID, pRequestPlayer->GetCID());
-	_ASSERT(pParty != NULL);
-
-	uidParty = pParty->GetUID();
-	pRequestPlayer->SetPartyUID(uidParty);
-	ZPlayerCommandRouter::RouteProxyPlayerUpdate(pRequestPlayer);
-
-
-	// 파티 정보 동기화	
-	m_pRouter->PartyAdd(uidParty, uidRequestPlayer, pRequestPlayer->GetPlayerName(), pRequestPlayer->GetCID());	
 }
 
 void ZPartyLogic::PartyInfoAllReq(MUID uidTargetServer)
@@ -901,6 +899,15 @@ void ZPartyLogic::DoOffline(MUID uidParty, MUID uidMember)
 	// 온라인 파티원이 없으면 파티 해제
 	if (pParty->IsEmpty())
 	{
+		// Invalidate ZPlayer party UIDs.
+		for (ZParty::member_iterator iter = pParty->BeginMember(); iter != pParty->EndMember(); iter++)
+		{
+			ZPlayer* pMember = gmgr.pPlayerManager->FindByUID(iter->second->GetUID());
+			if (pMember == NULL) continue;
+
+			pMember->SetPartyUID(MUID::Invalid());
+		}
+
 		// 고정파티는 전원 오프라인되어서 삭제되지 않는다.
 		gmgr.pPartyManager->RemoveParty(uidParty);
 		m_pRouter->PartyRemove(uidParty);
@@ -1083,7 +1090,7 @@ void ZPartyLogic::RouteRemoveMemberSync(const ZParty* pParty)
 	m_pRouter->PartySync(pParty);
 }
 
-void ZPartyLogic::ChangeNameReq( MUID uidSender, MUID uidParty, MUID uidLeader, wstring strName )
+void ZPartyLogic::ChangePublicPartySettingReq( MUID uidSender, MUID uidParty, MUID uidLeader, bool bPublicParty, wstring strPartyName )
 {
 	// 파티 찾기
 	ZParty* pParty = gmgr.pPartyManager->Find(uidParty);
@@ -1101,10 +1108,11 @@ void ZPartyLogic::ChangeNameReq( MUID uidSender, MUID uidParty, MUID uidLeader, 
 	}
 	
 	// 이름 변경
-	pParty->SetName(strName);
+	pParty->SetPublic(bPublicParty);
+	pParty->SetName(strPartyName);
 
 	// 통보
-	m_pRouter->ChangeNameRes(uidParty, strName);
+	m_pRouter->ChangePublicPartySettingRes(uidParty, bPublicParty, strPartyName);
 }
 
 void ZPartyLogic::ChangeLeaderReq( MUID uidSender, MUID uidParty, MUID uidLeader, MUID uidNewLeader )
@@ -1185,6 +1193,99 @@ void ZPartyLogic::ChangeQuestIDReq( MUID uidSender, MUID uidParty, MUID uidLeade
 
 	// 루팅룰 변경 통보
 	m_pRouter->ChangeQuestIDRes(uidParty, nQuestID);
+}
+
+void ZPartyLogic::ShowInfoReq(MUID uidSender, MUID uidRequestor, MUID uidParty)
+{
+	ZParty* pParty = gmgr.pPartyManager->Find(uidParty);
+	if (pParty == NULL)
+	{
+		m_pRouter->Fail(uidSender, uidRequestor, CR_FAIL_PARTY_INVALID_PARTY);
+		return;
+	}
+
+	m_pRouter->ShowInfoRes(uidSender, uidRequestor, pParty);
+}
+
+void ZPartyLogic::CreateSinglePartyReq(MUID uidSender, MUID uidRequestPlayer, bool bPublicParty, wstring strPartyName)
+{
+	// 요청자 확인
+	ZPlayer* pRequestPlayer = gmgr.pPlayerManager->FindByUID(uidRequestPlayer);
+	if (pRequestPlayer == NULL)		return;
+
+
+	// 파티 확인
+	MUID uidParty = pRequestPlayer->GetPartyUID();
+	if (uidParty.IsValid())
+	{
+		m_pRouter->CreateSinglePartyRes(uidSender, uidRequestPlayer, CR_FAIL_PARTY_ALEADY_HAS_PARTY);
+		return;
+	}
+
+
+	// 파티 생성
+	int nLeaderServerID = pRequestPlayer->GetGameServerID();
+	ZParty* pParty = gmgr.pPartyManager->AddParty(uidRequestPlayer, pRequestPlayer->GetPlayerName(), nLeaderServerID, pRequestPlayer->GetCID());
+	_ASSERT(pParty != NULL);
+
+	pParty->SetPublic(bPublicParty);
+	pParty->SetName(strPartyName);
+
+	uidParty = pParty->GetUID();
+	pRequestPlayer->SetPartyUID(uidParty);
+	ZPlayerCommandRouter::RouteProxyPlayerUpdate(pRequestPlayer);
+
+
+	// 파티 정보 동기화	
+	m_pRouter->PartyAdd(uidParty, uidRequestPlayer, pRequestPlayer->GetPlayerName(), pRequestPlayer->GetCID());
+}
+
+void ZPartyLogic::ShowMatchingPublicPartyListReq(MUID uidSender, MUID uidRequestor, char nPage, char nLevelMin, char nLevelMax, wstring strSearchText)
+{
+	if (nPage < 0) return;
+	if (nLevelMin < 0 || nLevelMax < 0) return;
+
+	int nStartIndex = nPage * PARTY_PUBLIC_PARTY_LIST_COUNT_PER_ONE_PAGE;
+	bool bAllLevels = nLevelMin == 0 && nLevelMax == 0;
+	strSearchText = cml2::ToLower(strSearchText);	// insensitive search
+
+	vector<TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM> vecFilteredParty;
+	int nTotalFilteredCount = 0;
+
+	ZPartyManager::ZPartyMap::const_reverse_iterator iterEnd = gmgr.pPartyManager->GetPartyMap().rend();
+	for (ZPartyManager::ZPartyMap::const_reverse_iterator iter = gmgr.pPartyManager->GetPartyMap().rbegin(); iter != iterEnd; iter++)
+	{
+		const MUID& uidParty = iter->first;
+		const ZParty* pParty = iter->second;
+
+		if (!pParty->IsPublic())
+			continue;
+
+		if (cml2::ToLower(MLocale::ConvTCHARToUTF16(pParty->GetName())).find(strSearchText) == string::npos)
+			continue;
+
+		ZPlayer* pLeader = gmgr.pPlayerManager->FindByUID(pParty->GetLeader());
+		if (!pLeader)
+			continue;
+
+		// TODO: implement Player Level filtering here! (nLevelMin and nLevelMax, or bAllLevels)
+
+		if (--nStartIndex < 0 && vecFilteredParty.size() < PARTY_PUBLIC_PARTY_LIST_COUNT_PER_ONE_PAGE)
+		{
+			vecFilteredParty.push_back(
+				TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM(
+					uidParty,
+					pParty->GetLeader(),
+					pParty->GetName(),
+					MLocale::ConvUTF16ToTCHAR(pLeader->GetPlayerName().c_str()).c_str(),
+					pParty->GetCount())
+				);
+		}
+
+		nTotalFilteredCount++;
+	}
+
+	m_pRouter->ShowMatchingPublicPartyListRes(uidSender, uidRequestor, CR_SUCCESS, vecFilteredParty, nTotalFilteredCount);
 }
 
 bool ZPartyLogic::FixedPartyLogOn(MUID uidParty, MUID uidMember, MUID uidOffline)

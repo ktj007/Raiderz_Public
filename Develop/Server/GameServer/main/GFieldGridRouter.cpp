@@ -27,25 +27,33 @@ void GFieldGridRouter::SendToMe(GEntityPlayer* pPlayer, const vector<GFieldGrid:
 	vector<TD_UPDATE_CACHE_PBART> vecEntityBPartInfoNode;
 	vector<TD_UPDATE_CACHE_PLAYER> vecPlayerInfoNode;
 	vector<TD_PLAYER_FEATURE_TATTOO> vecPlayerFeatureTattooNode;
+	vector<TD_SIMPLE_UPDATE_CACHE_PLAYER> vecPlayerSimpleInfoNode;
+	vector<TD_PLAYER_BUFF_LIST> vecPlayerBuffInfoNode;
 
 	GFieldGridEntityInfoMaker gridInfoMaker;
 	gridInfoMaker.MakeSensorInfos(pPlayer, vecMarkers);
 	gridInfoMaker.MakeBuffInfos(pPlayer, vecNewCells, vecBuffEntityNode);
 	gridInfoMaker.MakeNPCInfos(pPlayer, vecNewCells, vecNPCInfoNode, vecEntityBPartInfoNode);
-	gridInfoMaker.MakePlayerInfos(pPlayer, vecNewCells, vecPlayerInfoNode, vecPlayerFeatureTattooNode);
+	// gridInfoMaker.MakePlayerInfos(pPlayer, vecNewCells, vecPlayerInfoNode, vecPlayerFeatureTattooNode);
+	gridInfoMaker.MakePlayerInfos(pPlayer, vecNewCells, vecPlayerSimpleInfoNode, vecPlayerInfoNode, vecPlayerFeatureTattooNode, vecPlayerBuffInfoNode);
 
+	/*
 	if (vecPlayerInfoNode.empty() &&
 		vecNPCInfoNode.empty() &&
 		vecEntityBPartInfoNode.empty() &&
 		vecMarkers.empty() &&
 		vecBuffEntityNode.empty() &&
-		vecPlayerFeatureTattooNode.empty()
+		vecPlayerFeatureTattooNode.empty() &&
+		vecPlayerSimpleInfoNode.empty() &&
+		vecPlayerBuffInfoNode.empty()
 		)
 	{
 		return; // 보낼 정보가 없음
 	}
+	*/
 
 
+	/*
 	// 섹터 정보를 각각 50개단위로 나눠서 보낸다.
 	size_t nMaxSize = 0;
 	nMaxSize = max(nMaxSize, vecPlayerInfoNode.size());
@@ -73,6 +81,56 @@ void GFieldGridRouter::SendToMe(GEntityPlayer* pPlayer, const vector<GFieldGrid:
 			NewSplitParameter(vecMarkers, i, nDivideNumber));
 
 		pPlayer->RouteToMe(pNewCommand);
+	}
+	*/
+
+	const size_t nPlayerSize = vecPlayerSimpleInfoNode.size();
+
+	if (nPlayerSize > 0)
+	{
+		int nDivideNumber = 50;
+		int nSplitCount = nPlayerSize / nDivideNumber;
+		if (0 < nPlayerSize % nDivideNumber)
+		{
+			nSplitCount++;
+		}
+
+		for (int i = 0; i < nSplitCount; i++)
+		{
+			MCommand* pPlayerInfoCmd = MakeNewCommand(MC_FIELD_SECTOR_PLAYER_INFO,
+				4,
+				// NewSplitParameter(vecPlayerSimpleInfoNode, i, nDivideNumber),
+				NEW_BLOB(),
+				NewSplitParameter(vecPlayerInfoNode, i, nDivideNumber),
+				NewSplitParameter(vecPlayerFeatureTattooNode, i, nDivideNumber),
+				NewSplitParameter(vecPlayerBuffInfoNode, i, nDivideNumber));
+
+			pPlayer->RouteToMe(pPlayerInfoCmd);
+		}
+	}
+
+	if (!vecNPCInfoNode.empty())
+	{
+		MCommand* pNPCInfoCmd = MakeNewCommand(MC_FIELD_SECTOR_NPC_INFO, 1, NEW_BLOB(vecNPCInfoNode));
+		pPlayer->RouteToMe(pNPCInfoCmd);
+	}
+
+	if (!vecBuffEntityNode.empty())
+	{
+		MCommand* pMagicInfoCmd = MakeNewCommand(MC_FIELD_SECTOR_MAGIC_AREA_INFO, 1, NEW_BLOB(vecBuffEntityNode));
+		pPlayer->RouteToMe(pMagicInfoCmd);
+	}
+
+	if (!vecEntityBPartInfoNode.empty())
+	{
+		MCommand* pBPartInfoCmd = MakeNewCommand(MC_FIELD_SECTOR_BPART_INFO, 1, NEW_BLOB(vecEntityBPartInfoNode));
+		pPlayer->RouteToMe(pBPartInfoCmd);
+	}
+
+	if (!vecMarkers.empty())
+	{
+		MCommand* pSensorInfoCmd = MakeNewCommand(MC_FIELD_SECTOR_SENSOR_INFO, 1, NEW_BLOB(vecMarkers));
+		pPlayer->RouteToMe(pSensorInfoCmd);
 	}
 }
 

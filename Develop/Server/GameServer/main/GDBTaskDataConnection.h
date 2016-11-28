@@ -5,14 +5,14 @@
 class GDBT_CHAR_SELECT_LOG
 {
 public :
-	GDBT_CHAR_SELECT_LOG(int64 nAID, int64 nCID, int nCharPtm, int nMoney, int nFieldID)
+	GDBT_CHAR_SELECT_LOG(AID nAID, CID nCID, int nCharPtm, int nMoney, int nFieldID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nMoney(nMoney), m_nFieldID(nFieldID)
 	{
 
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nMoney;
 	int		m_nFieldID;
@@ -21,7 +21,7 @@ public :
 class GDBT_DISCONN_LOG
 {
 public :
-	GDBT_DISCONN_LOG(int64 nAID, int64 nCID, int nCharPtm, int nDeltaCharPtm, int nMoney, int nSumDeltaMoney, int nFieldID)
+	GDBT_DISCONN_LOG(AID nAID, CID nCID, int nCharPtm, int nDeltaCharPtm, int nMoney, int nSumDeltaMoney, int nFieldID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nMoney(nMoney), m_nSumDeltaMoney(nSumDeltaMoney), m_nFieldID(nFieldID)
 	{
 
@@ -53,8 +53,8 @@ public :
 		return true;
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	int		m_nMoney;

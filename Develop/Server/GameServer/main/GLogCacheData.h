@@ -5,7 +5,7 @@ class GLOG_DATA_ITEM
 {
 public :
 	GLOG_DATA_ITEM() { Reset(); }
-	GLOG_DATA_ITEM(int64 nAID, int64 nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int64 nIUID, int nItemID, int16 nStackAmt, int nModStackAmt, const wstring& strRegDate, int nNpcID)
+	GLOG_DATA_ITEM(AID nAID, CID nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int64 nIUID, int nItemID, int16 nStackAmt, int nModStackAmt, const wstring& strRegDate, int nNpcID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nCurMoney(nCurMoney), m_nIUID(nIUID), m_nItemID(nItemID), m_nCurStackAmt(nStackAmt), m_nDeltaStackAmt(nModStackAmt)
 		, m_strRegDate(strRegDate) 
 	{
@@ -32,8 +32,8 @@ public :
 		m_strNpcID			= L"NULL";
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -51,7 +51,7 @@ class GLOG_DATA_MONEY
 {
 public :
 	GLOG_DATA_MONEY() { Reset(); }
-	GLOG_DATA_MONEY(int64 nAID, int64 nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLev, int nCurMoney, int nDeltaMoney, const wstring strRegDate, int nNpcID)
+	GLOG_DATA_MONEY(AID nAID, CID nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLev, int nCurMoney, int nDeltaMoney, const wstring strRegDate, int nNpcID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLev(nLev), m_nCurMoney(nCurMoney), m_nDeltaMoney(nDeltaMoney), m_strRegDate(strRegDate)
 	{
 		if(0 < nNpcID)
@@ -74,8 +74,8 @@ public :
 		m_strNpcID		= L"NULL";
 	}
 	
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -90,7 +90,7 @@ class GLOG_DATA_CRAFT
 {
 public :
 	GLOG_DATA_CRAFT() { Reset(); }
-	GLOG_DATA_CRAFT(int64 nAID, int64 nCID, int nCode, int nCharPtm, int nDeltaCharPtm, int nLevel, int nCurMoney, int nDeltaMoney, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt, const wstring& strRegDate, int nRefNpcID, int64 nRefIUID)
+	GLOG_DATA_CRAFT(AID nAID, CID nCID, int nCode, int nCharPtm, int nDeltaCharPtm, int nLevel, int nCurMoney, int nDeltaMoney, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt, const wstring& strRegDate, int nRefNpcID, int64 nRefIUID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nCurMoney(nCurMoney), m_nDeltaMoney(nDeltaMoney), m_nIUID(nIUID), m_nItemID(nItemID), m_nCurStackAmt(nCurStackAmt), m_nDeltaStackAmt(nDeltaStackAmt)
 		, m_strRegDate(strRegDate)
 	{
@@ -126,8 +126,8 @@ public :
 		m_strRefIUID		= L"NULL";
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -147,7 +147,7 @@ class GLOG_DATA_CRAFT_ITEM
 {
 public :
 	GLOG_DATA_CRAFT_ITEM() { Reset(); }
-	GLOG_DATA_CRAFT_ITEM(int64 nAID, int64 nCID, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt, const wstring& strRegDate, int64 nRefIUID)
+	GLOG_DATA_CRAFT_ITEM(AID nAID, CID nCID, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt, const wstring& strRegDate, int64 nRefIUID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nIUID(nIUID), m_nItemID(nItemID), m_nCurStackAmt(nCurStackAmt), m_nDeltaStackAmt(nDeltaStackAmt)
 		, m_strRegDate(strRegDate), m_nRefIUID(nRefIUID)
 	{
@@ -170,8 +170,8 @@ public :
 		m_nRefIUID			= 0;
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	uint8	m_nLevel;
@@ -187,7 +187,7 @@ class GLOG_DATA_QUEST_ITEM
 {
 public :
 	GLOG_DATA_QUEST_ITEM() { Reset(); }
-	GLOG_DATA_QUEST_ITEM(int64 nAID, int64 nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int nDeltaMoney, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt
+	GLOG_DATA_QUEST_ITEM(AID nAID, CID nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int nDeltaMoney, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt
 		, const wstring& strRegDate, int64 nRefMailUID, int nQuestID, int nEventID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_strRegDate(strRegDate), m_nQuestID(nQuestID), m_nEventID(nEventID)
 	{
@@ -240,8 +240,8 @@ public :
 		m_nEventID			= 0;
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -262,7 +262,7 @@ class GLOG_DATA_ITEM_MERGE_AND_SPLIT
 {
 public :
 	GLOG_DATA_ITEM_MERGE_AND_SPLIT() { Reset(); }
-	GLOG_DATA_ITEM_MERGE_AND_SPLIT(int64 nAID, int64 nOwnerID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney, int64 nIUID, int nItemID, int16 nStackAmt, int nModStackAmt, int64 nRefAID, int64 nRefOwnerID, int64 nRefIUID, int16 nRefCurStackAmt)
+	GLOG_DATA_ITEM_MERGE_AND_SPLIT(AID nAID, CID nOwnerID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney, int64 nIUID, int nItemID, int16 nStackAmt, int nModStackAmt, AID nRefAID, CID nRefOwnerID, int64 nRefIUID, int16 nRefCurStackAmt)
 		: m_nAID(nAID), m_nOwnerID(nOwnerID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nMoney(nMoney), m_nIUID(nIUID), m_nItemID(nItemID), m_nCurStackAmt(nStackAmt), m_nDeltaStackAmt(nModStackAmt), m_nRefCurStackAmt(nRefCurStackAmt)
 		, m_nRefAID(nRefAID), m_nRefOwnerID(nRefOwnerID), m_nRefIUID(nRefIUID)		
 	{
@@ -288,8 +288,8 @@ public :
 		m_nRefCurStackAmt	= 0;
 	}
 
-	int64	m_nAID;
-	int64	m_nOwnerID;
+	AID		m_nAID;
+	CID		m_nOwnerID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -299,8 +299,8 @@ public :
 	int		m_nItemID;
 	int16	m_nCurStackAmt;
 	int16	m_nDeltaStackAmt;
-	int64	m_nRefAID;
-	int64	m_nRefOwnerID;
+	AID		m_nRefAID;
+	CID		m_nRefOwnerID;
 	int64	m_nRefIUID;
 	int16	m_nRefCurStackAmt;
 };
@@ -309,8 +309,8 @@ class GLOG_DATA_ITEM_MOVE
 {
 public :
 	GLOG_DATA_ITEM_MOVE() { Reset(); }
-	GLOG_DATA_ITEM_MOVE(int64 nAID, int64 nOwnerID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLev, int nCurMoney, int64 nIUID, int nItemID, int16 nCurStackAmt
-		, int64 nRefAID, int64 nRefOwnerID)
+	GLOG_DATA_ITEM_MOVE(AID nAID, CID nOwnerID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLev, int nCurMoney, int64 nIUID, int nItemID, int16 nCurStackAmt
+		, AID nRefAID, CID nRefOwnerID)
 		: m_nAID(nAID), m_nOwnerID(nOwnerID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLev(nLev), m_nCurMoney(nCurMoney)
 		, m_nIUID(nIUID), m_nItemID(nItemID), m_nCurStackAmt(nCurStackAmt), m_nRefAID(nRefAID), m_nRefOwnerID(nRefOwnerID) {}
 
@@ -330,8 +330,8 @@ public :
 		m_nRefOwnerID		= 0;
 	}
 
-	int64	m_nAID;
-	int64	m_nOwnerID;
+	AID		m_nAID;
+	CID		m_nOwnerID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -340,15 +340,15 @@ public :
 	int64	m_nIUID;
 	int		m_nItemID;
 	int16	m_nCurStackAmt;
-	int64	m_nRefAID;
-	int64	m_nRefOwnerID;
+	AID		m_nRefAID;
+	CID		m_nRefOwnerID;
 };
 
 class GLOG_DATA_NPC_SHOP
 {
 public :
 	GLOG_DATA_NPC_SHOP() { Reset(); }
-	GLOG_DATA_NPC_SHOP(int64 nAID, int64 nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int nDeltaMoney, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt, const wstring& strRegDate)
+	GLOG_DATA_NPC_SHOP(AID nAID, CID nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int nDeltaMoney, int64 nIUID, int nItemID, int16 nCurStackAmt, int16 nDeltaStackAmt, const wstring& strRegDate)
 		: m_nAID(nAID), m_nCID(nCID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_strRegDate(strRegDate)
 	{
 		m_strCurMoney.Format(L"%d", nCurMoney);
@@ -392,8 +392,8 @@ public :
 		m_strRegDate		= L"NULL";
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -411,7 +411,7 @@ class GLOG_DATA_XP
 {
 public :
 	GLOG_DATA_XP() { Reset(); }
-	GLOG_DATA_XP(int64 nAID, int64 nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurXP, int nDeltaXP, const wstring& strRegDate, int nNpcID)
+	GLOG_DATA_XP(AID nAID, CID nCID, int nCode, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurXP, int nDeltaXP, const wstring& strRegDate, int nNpcID)
 		: m_nAID(nAID), m_nCID(nCID), m_nCode(nCode), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nCurXP(nCurXP), m_nDeltaXP(nDeltaXP), m_strRegDate(strRegDate)
 	{
 		if (0 < nNpcID)
@@ -436,8 +436,8 @@ public :
 
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCode;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
@@ -452,7 +452,7 @@ class GLOG_DATA_ITEM_DELETE
 {
 public :
 	GLOG_DATA_ITEM_DELETE() { Reset(); }
-	GLOG_DATA_ITEM_DELETE(int64 nAID, int64 nCID, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int64 nIUID, int nItemID, int16 nDeltaStackAmt, uint8 nMaxDura, int nUsagePeriod, const wstring& strEffEndDate, const wstring& strRegDate)
+	GLOG_DATA_ITEM_DELETE(AID nAID, CID nCID, int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nCurMoney, int64 nIUID, int nItemID, int16 nDeltaStackAmt, uint8 nMaxDura, int nUsagePeriod, const wstring& strEffEndDate, const wstring& strRegDate)
 		: m_nAID(nAID), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nCurMoney(nCurMoney), m_nIUID(nIUID), m_nItemID(nItemID), m_nDeltaStackAmt(nDeltaStackAmt), m_nMaxDura(nMaxDura)
 		, m_strEffEndDate(strEffEndDate), m_strRegDate(strRegDate) 
 	{
@@ -480,8 +480,8 @@ public :
 		
 	}
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	uint8	m_nLevel;
@@ -499,7 +499,7 @@ class GLOG_DATA_PARTY
 {
 public :
 	GLOG_DATA_PARTY() { Reset(); }
-	GLOG_DATA_PARTY(const MUID& uidParty, int64 nAID, int64 nCID, int nCode, const wstring& strRegDate, uint8 nType)
+	GLOG_DATA_PARTY(const MUID& uidParty, AID nAID, CID nCID, int nCode, const wstring& strRegDate, uint8 nType)
 		: m_uidParty(uidParty), m_nAID(nAID), m_nCID(nCID), m_nCode(nCode), m_strRegDate(strRegDate), m_nType(nType)
 	{
 
@@ -516,8 +516,8 @@ public :
 	}
 
 	MUID	m_uidParty;
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCode;
 	wstring m_strRegDate;
 	uint8	m_nType;

@@ -15,13 +15,13 @@ public:
 	~GPartyLootingRuleStorage(void);
 
 	LOOTING_RULE_DATA GetLootingRuleData();
-	int GetRoundRobinLastOrderCID();
+	CID GetRoundRobinLastOrderCID();
 
 	void SetLootingRuleData(const LOOTING_RULE_DATA& lootingRuleData);
-	void SetRoundRobinLastOrderCID(int nLastOrderCID);
+	void SetRoundRobinLastOrderCID(CID nLastOrderCID);
 
 private:
 	LOOTING_RULE_DATA	m_lootingRuleData;
-	int					m_nRoundRobinLastOrderCID;
+	CID					m_nRoundRobinLastOrderCID;
 };
 

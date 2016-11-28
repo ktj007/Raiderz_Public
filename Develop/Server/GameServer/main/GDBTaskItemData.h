@@ -9,10 +9,10 @@ class GDBT_ITEM_DATA
 {
 public :
 	GDBT_ITEM_DATA() : m_nAID(0), m_uidPlayer(0), m_nTier(0), m_nModStackAmt(0), m_nAddExpiMin(-1), m_nMoney(0), m_nNpcID(0) {}
-	GDBT_ITEM_DATA(const int64 nAID, const MUID& uidPlayer, int nDeltaCharPtm, uint8 nLevel, int nMoney, const int16 nModStackAmt, int nAddExpiMin, const uint8 nTier, int nNpcID) 
+	GDBT_ITEM_DATA(const AID nAID, const MUID& uidPlayer, int nDeltaCharPtm, uint8 nLevel, int nMoney, const int16 nModStackAmt, int nAddExpiMin, const uint8 nTier, int nNpcID) 
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nMoney(nMoney), m_nTier(nTier), m_nModStackAmt(nModStackAmt), m_nAddExpiMin(nAddExpiMin), m_nNpcID(nNpcID) {}
 
-	int64		m_nAID;
+	AID			m_nAID;
 	MUID		m_uidPlayer;
 	int			m_nDeltaCharPtm;
 	uint8		m_nLevel;
@@ -28,14 +28,14 @@ class GDBT_ITEM_DEC_STACK_AMT_DATA
 {
 public :
 	GDBT_ITEM_DEC_STACK_AMT_DATA() : m_uidPlayer(0), m_nAID(0), m_nCID(0), m_nCharPtm(0), m_nDeltaCharPtm(0), m_nLevel(0), m_nMoney(0), m_nSlotType(0), m_nSlotID(0), m_nIUID(0), m_nItemID(0), m_nStackAmt(0), m_nModStackAmt(0), m_nTier(0), m_nNpcID(0) {}
-	GDBT_ITEM_DEC_STACK_AMT_DATA(const MUID& uidPlayer, const int64 nAID, const int64 nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney, const uint8 nSlotType, const int16 nSlotID, const IUID nIUID, const int nItemID
+	GDBT_ITEM_DEC_STACK_AMT_DATA(const MUID& uidPlayer, const AID nAID, const CID nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney, const uint8 nSlotType, const int16 nSlotID, const IUID nIUID, const int nItemID
 		, const int16 nStackAmt, const int16 nModStackAmt, const uint8 nTier, int nNpcID) 
 		: m_uidPlayer(uidPlayer), m_nAID(nAID), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nMoney(nMoney), m_nSlotType(nSlotType), m_nSlotID(nSlotID), m_nIUID(nIUID), m_nItemID(nItemID)
 		, m_nStackAmt(nStackAmt), m_nModStackAmt(nModStackAmt), m_nTier(nTier), m_nNpcID(nNpcID) {}
 
 	MUID	m_uidPlayer;
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	uint8	m_nLevel;
@@ -55,13 +55,13 @@ class GDBT_ITEM_DEC_DURA_DATA
 public :
 	GDBT_ITEM_DEC_DURA_DATA() : m_uidPlayer(0), m_nCID(0), m_nSlotType(0), m_nSlotID(0)
 		, m_nIUID(0), m_nDura(0), m_nModDura(0), m_nStackAmt(0) {}
-	GDBT_ITEM_DEC_DURA_DATA(const MUID& uidPlayer, const int64 nCID, const uint8 nSlotType, const int16 nSlotID
+	GDBT_ITEM_DEC_DURA_DATA(const MUID& uidPlayer, const CID nCID, const uint8 nSlotType, const int16 nSlotID
 		, const IUID nIUID, const uint8 nDura, const uint8 nModDura, const int16 nStackAmt) 
 		: m_uidPlayer(uidPlayer), m_nCID(nCID), m_nSlotType(nSlotType), m_nSlotID(nSlotID)
 		, m_nIUID(nIUID), m_nDura(nDura), m_nModDura(nModDura), m_nStackAmt(nStackAmt) {}
 
 	MUID	m_uidPlayer;
-	int64	m_nCID;
+	CID		m_nCID;
 	uint8	m_nSlotType;
 	int16	m_nSlotID;
 	IUID	m_nIUID;
@@ -80,7 +80,7 @@ public :
 		, m_nTargetDura(0), m_nTargetMaxDura(0)
 		, m_nTargetEnchSlotID(0), m_nTargetEnchItemID(0), m_bClaimed(false) {}
 
-	GDBT_ITEM_ENCH(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney
+	GDBT_ITEM_ENCH(const AID nAID, const MUID& uidPlayer, const CID nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney
 		, const int16 nEStoneItemSlotID, const int64 nEStoneIUID, const int nEStoneItemID
 		, const int16 nEAgentItemSlotID, const int64 nEAgentIUID, const int nEAgnetItemID, int16 nEAgentStackAmt, int16 nEAgentDeltaStackAmt
 		, const uint8 nTargetItemSlotType, const int16 nTargetItemSlotID, const int64 nTargetIUID, const int nTargetItemID
@@ -93,9 +93,9 @@ public :
 		, m_nTargetDura(nTargetDura), m_nTargetMaxDura(nTargetMaxDura)
 		, m_nTargetEnchSlotID(nTargetEnchSlotID), m_nTargetEnchItemID(nTargetEnchItemID), m_bClaimed(bClaimed) {}
 
-	int64	m_nAID;
+	AID		m_nAID;
 	MUID	m_uidPlayer;
-	int64	m_nCID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	uint8	m_nLevel;
@@ -123,13 +123,11 @@ public :
 	bool	m_bClaimed;
 };
 
-//SoulHunterZ - Item Attunement
-
 class GDBT_ITEM_DYE
 {
 public :
 	GDBT_ITEM_DYE() {}
-	GDBT_ITEM_DYE(const int64 nAID, const MUID& uidPlayer, const int nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney
+	GDBT_ITEM_DYE(const AID nAID, const MUID& uidPlayer, const CID nCID, const int nCharPtm, int nDeltaCharPtm, uint8 nLevel, int nMoney
 		, const int16 nDyeItemSlotID, const int64 nDyeIUID, const int nDyeItemID
 		, const uint8 nTargetItemSlotType, const int16 nTargetItemSlotID, const int64 nTargetIUID, const int nTargetItemID
 		, const int nColor)
@@ -141,9 +139,9 @@ public :
 
 	}
 
-	int64	m_nAID;
+	AID		m_nAID;
 	MUID	m_uidPlayer;
-	int64	m_nCID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	uint8	m_nLevel;

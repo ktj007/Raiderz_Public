@@ -30,7 +30,7 @@ XCmdHandler_LoginServer::XCmdHandler_LoginServer(MCommandCommunicator* pCC) : MC
 	SetCmdHandler(MC_CHAR_RESPONSE_INSERT_CHAR,			OnResponseInsertChar);
 	SetCmdHandler(MC_CHAR_RESPONSE_DELETE_CHAR,			OnResponseDeleteChar);
 
-	SetCmdHandler(MC_COMM_DUPLICATED_PLAYER_LOGIN,		OnDuplicatedPlayerLogin);
+//	SetCmdHandler(MC_COMM_DUPLICATED_PLAYER_LOGIN,		OnDuplicatedPlayerLogin);
 }
 
 MCommandResult XCmdHandler_LoginServer::_OnResponseLogin( XCmdParam__MC_COMM_RESPONSE_LOGIN& cmdParam )

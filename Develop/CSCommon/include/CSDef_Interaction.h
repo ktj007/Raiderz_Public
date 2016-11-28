@@ -2,6 +2,7 @@
 
 // NPC 아이콘 상태
 // 순서는 우선순위로 정렬된것 함부로 수정x
+/*
 enum NPC_ICON_TYPE
 {
 	NIT_NONE = 0,			
@@ -27,6 +28,38 @@ enum NPC_ICON_TYPE
 	NIT_QUEST_END,			// 퀘스트 종료
 	NIT_COMBAT,				// 전투 돌입	
 };
+*/
+enum NPC_ICON_TYPE
+{
+	NIT_NONE = 0,			
+	NIT_QUEST_NOT_BEGIN_ONLYICON,	// 퀘스트 취득 불가(인터랙션x)
+	NIT_QUEST_NOT_BEGIN,			// 퀘스트 취득 불가
+	NIT_ITEM_UNUSABLE,				// 아이템이 없어서 인터랙션 불가
+	NIT_ITEM_USABLE,				// 아이템사용해서 인터랙션
+	NIT_ONLYINTERACTION,			// 인터랙션만 가능(아이콘x)	
+	NIT_TRIGGER,					// 트리거
+	NIT_LOOT,						// 루팅
+	NIT_LOOT_GATHER,				// TODO: not sure this is correct... check required.
+	NIT_TALK,						// 대화
+	NIT_SKILL_SET,
+	NIT_SHOP,						// 상점
+	NIT_GUILD_CREATE,				// 길드 생성
+	NIT_CRAFT,						// 장인	
+	NIT_ENCHANT,
+	NIT_INN,
+	NIT_TRADE_MARKET,
+	NIT_HELLHOUND,
+	NIT_SKILL_SET_UNLOCKED,			// TODO: not sure... check required.
+	NIT_BEAUTY,
+	NIT_ELEMENT_ENCHANT,			// Element Gemstone Enchanting
+	NIT_QUEST_CONTINUE_ONLYICON,	// 퀘스트 수행중(인터랙션x)
+	NIT_QUEST_CONTINUE,				// 퀘스트 수행중
+	NIT_DAILY_QUEST_BEGIN,		
+	NIT_QUEST_BEGIN,				// 퀘스트 시작
+	NIT_DAILY_QUEST_END,
+	NIT_QUEST_END,					// 퀘스트 종료
+	NIT_MAX,
+};
 
 enum INTERACTION_TYPE
 {	
@@ -37,7 +70,9 @@ enum INTERACTION_TYPE
 	IT_STORAGE,	
 	IT_SOLDTRADE,	
 	IT_INN_SLEEP,	
+	IT_INN_SAVE,
 
+	IT_TRADE_MARKET,
 	IT_TRIGGER,
 	IT_GUILD_DESTROY,
 	IT_GUILD_CREATE,
@@ -46,7 +81,7 @@ enum INTERACTION_TYPE
 	IT_QUEST_INTERACT_MORTAL,
 	IT_QUEST_INTERACT_IMMORTAL,
 
-	IT_SOULBINDING,
+	// IT_SOULBINDING,
 	IT_CHALLENGERQUEST,
 
 	IT_GATHER_1,
@@ -63,10 +98,24 @@ enum INTERACTION_TYPE
 	IT_LOOT_IMMORTAL,	
 
 	IT_DIALOG,
+	IT_DIALOG_FOR_HELP,
 	IT_NPCSHOP,
 	IT_CRAFT,
 	IT_QUEST_BEGIN,
 	IT_QUEST_END,	
+
+	IT_ENCHANT,
+	IT_PC_TALENT,
+	IT_PC_TALENT_IMMORTAL,
+	IT_PC_BUFF,
+	IT_PC_BUFF_IMMORTAL,
+	IT_SCRIPT,
+	IT_SCRIPT_IMMORTAL,
+
+	IT_HELLHOUND,
+	IT_SKILL_SET,
+	IT_BEAUTY_SHOP,
+	IT_ELEMENT_ENCHANT,
 	
 	IT_MAX
 };

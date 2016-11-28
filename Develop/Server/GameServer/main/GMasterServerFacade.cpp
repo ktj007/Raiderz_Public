@@ -345,7 +345,7 @@ void GMasterServerFacade::UpdateProxyFieldInfo(MUID uidField, const TDMG_PROXY_F
 	pProxyField->SetPlayerCount(pTDProxyFieldUpdateInfo->nPlayerCount);
 }
 
-void GMasterServerFacade::AddProxyParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderCID)
+void GMasterServerFacade::AddProxyParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, CID nLeaderCID)
 {
 	m_pProxyPartyManager->AddParty(uidParty, uidLeader, strLeaderName, nLeaderCID);
 }
@@ -355,7 +355,7 @@ void GMasterServerFacade::RemoveProxyParty(MUID uidParty)
 	m_pProxyPartyManager->RemoveParty(uidParty);
 }
 
-void GMasterServerFacade::AddProxyPartyMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberCID)
+void GMasterServerFacade::AddProxyPartyMember(MUID uidParty, MUID uidMember, wstring strMemberName, CID nMemberCID)
 {
 	m_pProxyPartyManager->AddMember(uidParty, uidMember, strMemberName, nMemberCID);
 }
@@ -394,7 +394,7 @@ void GMasterServerFacade::RestoreProxyParty(TD_PARTY_INFO* pPartyInfo, int nCoun
 		int nLeaderIndex = rPartyInfo.nLeaderIndex;
 		MUID uidLeader = rPartyInfo.members[nLeaderIndex].uidMember;
 		wstring strLeaderName = rPartyInfo.members[nLeaderIndex].szMemberName;
-		int nLeaderCID = rPartyInfo.members[nLeaderIndex].nMemberCID;
+		CID nLeaderCID = rPartyInfo.members[nLeaderIndex].nMemberCID;
 		
 		m_pProxyPartyManager->AddParty(uidParty, uidLeader, strLeaderName, nLeaderCID);		
 
@@ -407,7 +407,7 @@ void GMasterServerFacade::RestoreProxyParty(TD_PARTY_INFO* pPartyInfo, int nCoun
 
 			MUID uidMember = rPartyInfo.members[i].uidMember;
 			wstring strMemberName = rPartyInfo.members[i].szMemberName;
-			int nMemberCID = rPartyInfo.members[i].nMemberCID;
+			CID nMemberCID = rPartyInfo.members[i].nMemberCID;
 			m_pProxyPartyManager->AddMember(uidParty, uidMember, strMemberName, nMemberCID);
 		}
 	}

@@ -35,7 +35,7 @@ class GDBT_QPER_TOINVEN
 {
 public:
 	GDBT_QPER_TOINVEN() {}
-	GDBT_QPER_TOINVEN(int64 nAID, MUID uidPlayer, int64 nCID, int nCharPtm, int nDeltaCharPtm, int nXP, int nDeltaXP, int nLevel, int nDeltaLevel, int nMoney, int nDeltaMoney, const vector<GDBT_QPER_ITEM>& vecItem, int nEventID, int nFieldID, vec3& vPos)
+	GDBT_QPER_TOINVEN(AID nAID, MUID uidPlayer, CID nCID, int nCharPtm, int nDeltaCharPtm, int nXP, int nDeltaXP, int nLevel, int nDeltaLevel, int nMoney, int nDeltaMoney, const vector<GDBT_QPER_ITEM>& vecItem, int nEventID, int nFieldID, vec3& vPos)
 	: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nXP(nXP), m_nDeltaXP(nDeltaXP), m_nLevel(nLevel), m_nDeltaLevel(nDeltaLevel), m_nMoney(nMoney), m_nDeltaMoney(nDeltaMoney), m_vecItem(vecItem)
 	, m_nEventID(nEventID), m_nFieldID(nFieldID), m_vPos(vPos) {}
 
@@ -65,9 +65,9 @@ public:
 		m_vecItem.swap(data.m_vecItem);
 	}
 
-	int64	m_nAID;
+	AID		m_nAID;
 	MUID	m_uidPlayer;
-	int64	m_nCID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	int		m_nXP;
@@ -89,7 +89,7 @@ class GDBT_QPER_TOMAIL
 {
 public:
 	GDBT_QPER_TOMAIL() {}
-	GDBT_QPER_TOMAIL(int64 nAID, MUID uidPlayer, int64 nCID, int nCharPtm, int nDeltaCharPtm, int nXP, int nDeltaXP, int nLevel, int nDeltaLevel, int nMoney, int nDeltaMoney
+	GDBT_QPER_TOMAIL(AID nAID, MUID uidPlayer, CID nCID, int nCharPtm, int nDeltaCharPtm, int nXP, int nDeltaXP, int nLevel, int nDeltaLevel, int nMoney, int nDeltaMoney
 		, wstring strSender, wstring strTitle, int nRemainDeleteSeconds, int nDefaultItemID, const vector<GDBT_QPER_ITEM>& vecItem
 		, int nEventID, int nFieldID, const vec3& vPos)
 	: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nXP(nXP), m_nDeltaXP(nDeltaXP), m_nLevel(nLevel), m_nDeltaLevel(nDeltaLevel), m_nMoney(nMoney), m_nDeltaMoney(nDeltaMoney), m_strSender(strSender), m_strTitle(strTitle), m_nRemainDeleteSeconds(nRemainDeleteSeconds), m_nDefaultItemID(nDefaultItemID), m_vecItem(vecItem),
@@ -124,9 +124,9 @@ public:
 		m_strSender.swap(data.m_strSender);
 	}
 
-	int64	m_nAID;
+	AID		m_nAID;
 	MUID	m_uidPlayer;
-	int64	m_nCID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	int		m_nXP;

@@ -14,11 +14,11 @@
 #include "GEntityPlayer.h"
 #include "GPlayerObjectManager.h"
 
-void GLootModifyHandler::HandleDropListModification(GEntityNPC* pNPC, set<int> setPreViewableCID)
+void GLootModifyHandler::HandleDropListModification(GEntityNPC* pNPC, set<CID> setPreViewableCID)
 {
 	VALID(pNPC);
 
-	set<int> setPostViewableCID;
+	set<CID> setPostViewableCID;
 	pNPC->GetNPCLoot().GetDropList().GetViewableCID(setPostViewableCID);
 
 	HandleUnviewablePlayer(setPreViewableCID, setPostViewableCID, pNPC);
@@ -27,13 +27,13 @@ void GLootModifyHandler::HandleDropListModification(GEntityNPC* pNPC, set<int> s
 	HandleEmptyNPC(pNPC);
 }
 
-void GLootModifyHandler::HandleUnviewablePlayer(set<int> setPreViewableCID, set<int> setPostViewableCID, GEntityNPC* pNPC)
+void GLootModifyHandler::HandleUnviewablePlayer(set<CID> setPreViewableCID, set<CID> setPostViewableCID, GEntityNPC* pNPC)
 {
-	for each (int nPreViewableCID in setPreViewableCID)
+	for each (CID nPreViewableCID in setPreViewableCID)
 	{
 		if (setPostViewableCID.end() == setPostViewableCID.find(nPreViewableCID))
 		{
-			int nUnviewableCID = nPreViewableCID;
+			CID nUnviewableCID = nPreViewableCID;
 
 			GEntityPlayer* pUnviewablePlayer = pNPC->GetField()->FindPlayerByCID(nUnviewableCID);
 			if (NULL == pUnviewablePlayer) continue;
@@ -52,8 +52,8 @@ void GLootModifyHandler::HandleUnviewablePlayer(set<int> setPreViewableCID, set<
 	{
 		if (true == pNPC->GetNPCLoot().GetDropList().IsEmpty())
 		{
-			set<int> setLootingPlayerCID = pNPC->GetNPCLoot().GetLootingPlayerCID();
-			for each (int nLootingPlayerCID in setLootingPlayerCID)
+			set<CID> setLootingPlayerCID = pNPC->GetNPCLoot().GetLootingPlayerCID();
+			for each (CID nLootingPlayerCID in setLootingPlayerCID)
 			{
 				GEntityPlayer* pLootingPlayer = pNPC->GetField()->FindPlayerByCID(nLootingPlayerCID);
 				if (NULL == pLootingPlayer) continue;
@@ -64,13 +64,13 @@ void GLootModifyHandler::HandleUnviewablePlayer(set<int> setPreViewableCID, set<
 	}
 }
 
-void GLootModifyHandler::HandleViewablePlayer( set<int> setPreViewableCID, set<int> setPostViewableCID, GEntityNPC* pNPC )
+void GLootModifyHandler::HandleViewablePlayer( set<CID> setPreViewableCID, set<CID> setPostViewableCID, GEntityNPC* pNPC )
 {
-	for each (int nPostVisibleCID in setPostViewableCID)
+	for each (CID nPostVisibleCID in setPostViewableCID)
 	{
 		if (setPreViewableCID.end() == setPreViewableCID.find(nPostVisibleCID))
 		{
-			int nViewableCID = nPostVisibleCID;
+			CID nViewableCID = nPostVisibleCID;
 
 			GEntityPlayer* pAuthorityGainPlayer = pNPC->GetField()->FindPlayerByCID(nViewableCID);
 			if (NULL == pAuthorityGainPlayer) continue;
@@ -105,9 +105,9 @@ void GLootModifyHandler::RouteInsertLootableNPC(GEntityNPC* pNPC)
 {
 	VALID(pNPC);
 
-	set<int> setVisibleCID;
+	set<CID> setVisibleCID;
 	pNPC->GetNPCLoot().GetDropList().GetViewableCID(setVisibleCID);
-	for each (int nViewableCID in setVisibleCID)
+	for each (CID nViewableCID in setVisibleCID)
 	{
 		GEntityPlayer* pViewablePlayer = gmgr.pPlayerObjectManager->GetEntity(nViewableCID);
 		if (NULL == pViewablePlayer) continue;
@@ -120,8 +120,8 @@ void GLootModifyHandler::RefreshItem( GEntityNPC* pNPC )
 {
 	VALID(pNPC);
 
-	set<int> setLootingPlayerCID = pNPC->GetNPCLoot().GetLootingPlayerCID();
-	for each (int nLootingPlayerCID in setLootingPlayerCID)
+	set<CID> setLootingPlayerCID = pNPC->GetNPCLoot().GetLootingPlayerCID();
+	for each (CID nLootingPlayerCID in setLootingPlayerCID)
 	{
 		GEntityPlayer* pLootingPlayer = pNPC->GetField()->FindPlayerByCID(nLootingPlayerCID);
 		if (NULL == pLootingPlayer) continue;

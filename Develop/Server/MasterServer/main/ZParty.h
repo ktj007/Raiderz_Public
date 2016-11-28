@@ -15,7 +15,7 @@ public:
 	typedef map_member::const_iterator	member_iterator;
 
 public:	
-	ZParty(MUID uidParyt, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, int nLeaderCID);
+	ZParty(MUID uidParyt, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, CID nLeaderCID);
 	virtual ~ZParty();
 
 	void SetAutoParty();
@@ -32,7 +32,7 @@ public:
 	MUID FindCandidateForLeaderOtherServer(void) const;
 
 	// Member
-	ZPartyMember* AddMember(MUID uidMember, wstring strMemberName, int nMemberServerID, int nMemberCID);
+	ZPartyMember* AddMember(MUID uidMember, wstring strMemberName, int nMemberServerID, CID nMemberCID);
 	void RemoveMember(MUID uidMember);
 	member_iterator BeginMember(void) const;
 	member_iterator EndMember(void) const;
@@ -56,6 +56,9 @@ public:
 	const PARTY_SETTING& GetPartySetting() const;
 	void SetPartySetting(const PARTY_SETTING& partySetting);
 
+	bool IsPublic() const;
+	const TCHAR* GetName() const;
+	void SetPublic(bool bPublic);
 	void SetName(wstring strName);
 	void SetLootingRule(LOOTING_RULE_DATA rule);
 	void SetAutoPartyQuestID(int nQuestID);

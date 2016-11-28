@@ -39,8 +39,6 @@
 #include "GConfig.h"
 #include "GCalculator.h"
 #include "GPlayerFieldDynamic.h"
-#include "PmRegionStat.h"
-#include "GPMSSystem.h"
 #include "GProxyFieldManager.h"
 #include "GAsyncTaskFactory.h"
 #include "CCommandResultTable.h"
@@ -77,6 +75,7 @@ GCmdHandler_Comm::GCmdHandler_Comm(MCommandCommunicator* pCC) : MCommandHandler(
 
 	// 다른 핸들러로 빼야함 - ingame
 	SetCmdHandler(MC_FIELD_LOADING_COMPLETE,		OnFieldLoadingComplete);
+	SetCmdHandler(MC_FIELD_OBJECT_LOADING_COMPLETE, OnFieldObjectLoadingComplete);
 
 	// 캐릭터 선택화면으로 이동
 	SetCmdHandler(MC_COMM_START_MOVE_TO_LOGIN_SERVER_REQ,	OnStartMoveToLoginServerReq);
@@ -365,12 +364,26 @@ MCommandResult GCmdHandler_Comm::OnRequestPlayerExtraInfo(MCommand* pCmd, MComma
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
 	if (NULL == pPlayer) return CR_FALSE;
 
-	MUID uidPlayer;
-	if (pCmd->GetParameter(&uidPlayer,		0, MPT_UID) == false) return CR_FALSE;
+	vector<UIID> vecTarUIIDs;
+	if (pCmd->GetBlob(vecTarUIIDs,		0) == false) return CR_FALSE;
 
-	GEntityPlayer* pTarPlayer = pPlayer->FindPlayer(uidPlayer);
-	if (pTarPlayer == NULL) return CR_FALSE;
+	for (UIID nTarUIID : vecTarUIIDs)
+	{
+		GEntityPlayer* pTarPlayer = gmgr.pPlayerObjectManager->GetEntity(nTarUIID);
+		if (pTarPlayer == NULL) continue;
 
+		TD_UPDATE_CACHE_PLAYER CacheInfo;
+		TD_PLAYER_FEATURE_TATTOO TattooInfo;
+
+		pTarPlayer->MakeTDCacheInfo(CacheInfo, TattooInfo);
+
+		MCommand* pNewCmd = MakeNewCommand(MC_FIELD_PLAYER_EXTRA_INFO,
+			3,
+			NEW_USHORT(nTarUIID),
+			NEW_SINGLE_BLOB(CacheInfo.ExtraInfo),
+			NEW_SINGLE_BLOB(TattooInfo));
+		pPlayer->RouteToMe(pNewCmd);
+	}
 
 	return CR_TRUE;
 }
@@ -422,8 +435,21 @@ MCommandResult GCmdHandler_Comm::OnFieldLoadingComplete(MCommand* pCommand, MCom
 	GPlayerObject* pPlayer = gmgr.pPlayerObjectManager->GetPlayer(uidPlayer);
 	if (pPlayer == NULL) return CR_FALSE;
 
+	// gmgr.pFieldMgr->GetFieldEnteringQueue()->Add(uidPlayer);
+	gmgr.pFieldMgr->GetFieldEnteringQueue()->OnPlayerFieldLoadingComplete(uidPlayer);
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Comm::OnFieldObjectLoadingComplete(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	MUID uidPlayer = pCommand->GetSenderUID();
+
+	GPlayerObject* pPlayer = gmgr.pPlayerObjectManager->GetPlayer(uidPlayer);
+	if (pPlayer == NULL) return CR_FALSE;
+
 	gmgr.pFieldMgr->GetFieldEnteringQueue()->Add(uidPlayer);
-	
+
 	return CR_TRUE;
 }
 
@@ -468,41 +494,10 @@ MCommandResult GCmdHandler_Comm::OnNetClear(MCommand* pCommand, MCommandHandler*
 
 MCommandResult GCmdHandler_Comm::OnGameGuardAuthRes(MCommand* pCmd, MCommandHandler* pHandler)
 {
-	GPlayerObject* pPlayer = gmgr.pPlayerObjectManager->GetPlayer(pCmd->GetSenderUID());
-	if (!pPlayer) 
-		return CR_FALSE;
-
-	MCommandParameter* pParam = pCmd->GetParameter(0);
-	if(pParam->GetType()!=MPT_SINGLE_BLOB) return CR_ERROR;
-
-	GG_AUTH_DATA* pggData = (GG_AUTH_DATA*)pParam->GetPointer();
-	GPlayerGameGuard* pGameGuard = pPlayer->GetGameGuard();
-	if (!pGameGuard)
-		return CR_FALSE;
-
-	pGameGuard->AuthAnswer(pggData);
-
 	return CR_TRUE;
 }
 
 MCommandResult GCmdHandler_Comm::OnGameGuardEnable(MCommand* pCmd, MCommandHandler* pHandler)
 {
-	bool bEnable = true;
-	if (pCmd->GetParameter(&bEnable,		0, MPT_BOOL) == false) return CR_FALSE;
-
-
-	// GM 이상만 사용할 수 있습니다.	
-	MUID uidPlayer = pCmd->GetSenderUID();
-	VALID_RET(uidPlayer.IsValid(), CR_FALSE);
-
-	GEntityPlayer* pEntityPlayer = gmgr.pPlayerObjectManager->GetEntity(uidPlayer);
-	VALID_RET(pEntityPlayer, CR_FALSE);
-	
-	if (!pEntityPlayer->IsGM()) return CR_FALSE;
-
-
-	mlog("GameGuard %s.\n", bEnable?"Enabled":"Disabled");
-	gsys.pGameGuard->Enable(bEnable);
-	
 	return CR_TRUE;
 }

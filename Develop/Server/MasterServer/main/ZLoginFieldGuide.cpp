@@ -8,6 +8,7 @@
 #include "ZFieldFinder.h"
 #include "ZSharedField.h"
 #include "ZSharedFieldMaster.h"
+#include "ZConst.h"
 
 
 ZLoginFieldGuide::ZLoginFieldGuide(CID nCID, PLAYER_FIELD_INFO& refPlayerFieldInfo)
@@ -60,10 +61,10 @@ bool ZLoginFieldGuide::SearchFirstLoginField(ZGameServerObject*& poutDestServer,
 	if (m_PlayerFieldInfo.nSharedFieldID > 0)
 		return false;
 
-	ZSharedFieldMaster* pFieldMaster = gmgr.pFieldManager->FindSharedFieldMaster(FIRST_ENTER_FIELD_ID);
+	ZSharedFieldMaster* pFieldMaster = gmgr.pFieldManager->FindSharedFieldMaster(ZConst::GetFirstEnterFieldID());
 	if (NULL == pFieldMaster)
 	{
-		mlog3("Error! ZLoginFieldGuide::SearchFirstLoginField(), FIRST_ENTER_FIELD_ID is Not Exist! (CID=%d)\n", m_nCID);
+		mlog3("Error! ZLoginFieldGuide::SearchFirstLoginField(), FIRST_ENTER_FIELD_ID is Not Exist! (CID=%I64d)\n", m_nCID);
 		return false;
 	}
 
@@ -94,7 +95,7 @@ bool ZLoginFieldGuide::SearchDynamicField(ZGameServerObject*& poutDestServer, ZF
 	poutDestServer = gmgr.pGameServerObjectManager->FindGameServer(poutDestField->GetGameServerID());
 	if (NULL == poutDestServer)
 	{
-		mlog3("Error! ZLoginFieldGuide::SearchDynamicField(), DestGameServer is NULL! (GameServerID=%d, CID=%d, FieldGroupUID=%I64u)\n"
+		mlog3("Error! ZLoginFieldGuide::SearchDynamicField(), DestGameServer is NULL! (GameServerID=%d, CID=%I64d, FieldGroupUID=%I64u)\n"
 			, poutDestField->GetGameServerID(), m_nCID, m_PlayerFieldInfo.uidDynamicFieldGroup.Value);
 		return false;
 	}
@@ -108,7 +109,7 @@ bool ZLoginFieldGuide::SearchSharedField(ZGameServerObject*& poutDestServer, ZFi
 	ZFieldInfo* pFieldInfo = gmgr.pFieldInfoManager->Find(m_PlayerFieldInfo.nSharedFieldID);
 	if (NULL == pFieldInfo)
 	{
-		mlog3("Error! ZLoginFieldGuide::SearchSharedField(), FieldInfo is NULL! (CID=%d, FieldID=%d)\n"
+		mlog3("Error! ZLoginFieldGuide::SearchSharedField(), FieldInfo is NULL! (CID=%I64d, FieldID=%d)\n"
 			, m_nCID, m_PlayerFieldInfo.nSharedFieldID);
 		return false;
 	}
@@ -131,7 +132,7 @@ bool ZLoginFieldGuide::SearchSharedField(ZGameServerObject*& poutDestServer, ZFi
 	poutDestServer = gmgr.pGameServerObjectManager->FindGameServer(poutDestField->GetGameServerID());
 	if (NULL == poutDestServer)
 	{
-		mlog3("Error! ZLoginFieldGuide::SearchSharedField(), DestGameServer is NULL! (CID=%d, FieldID=%d, ChannelID=%d)\n"
+		mlog3("Error! ZLoginFieldGuide::SearchSharedField(), DestGameServer is NULL! (GameServerID=%d, CID=%I64d, FieldID=%d, ChannelID=%d)\n"
 			, poutDestField->GetGameServerID(), m_nCID, poutDestField->GetID(), poutSharedField->GetChannelID());
 		return false;
 	}
@@ -143,7 +144,7 @@ bool ZLoginFieldGuide::SearchExceptionField(ZGameServerObject*& poutDestServer, 
 {
 	// 일단 시작 필드로 입장 시킨다.
 
-	ZSharedFieldMaster* pFieldMaster = gmgr.pFieldManager->FindSharedFieldMaster(FIRST_ENTER_FIELD_ID);
+	ZSharedFieldMaster* pFieldMaster = gmgr.pFieldManager->FindSharedFieldMaster(ZConst::GetFirstEnterFieldID());
 	if (NULL == pFieldMaster)
 		return false;
 

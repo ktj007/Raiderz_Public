@@ -1388,7 +1388,7 @@ void XModuleMyControl::StopRun()
 
 	m_nMovementFlags = 0;
 
-	m_pModulePost->PostMoveStop(GetOwner()->GetPosition());
+	m_pModulePost->PostMoveStop(GetOwner()->GetPosition(), GetOwner()->GetDirection());
 }
 
 void XModuleMyControl::SetPause( bool bPause)

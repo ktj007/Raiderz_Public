@@ -13,12 +13,12 @@ public:
 
 	void Clear();
 	bool IsEmpty();
-	bool IsAuthorizedCID(int nCID);
+	bool IsAuthorizedCID(CID nCID);
 
-	void Drop(int nBeneficiaryCID, GLootInfo* pLootInfo);
-	void Drop(const vector<int>& vecBeneficiaryCID, GLootInfo* pLootInfo);
+	void Drop(CID nBeneficiaryCID, GLootInfo* pLootInfo);
+	void Drop(const vector<CID>& vecBeneficiaryCID, GLootInfo* pLootInfo);
 
-	int GetQuantity(int nCID, SOUL_TYPE nSoulType);	
+	int GetQuantity(CID nCID, SOUL_TYPE nSoulType);	
 
 private:
 	GEntityNPC*			m_pOwner;

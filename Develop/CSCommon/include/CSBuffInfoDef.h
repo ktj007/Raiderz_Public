@@ -8,10 +8,13 @@
 #define BUFF_XML_ATTR_ID							"ID"
 #define BUFF_XML_ATTR_NAME							"Name"
 #define BUFF_XML_ATTR_TYPE							"Type"
+#define BUFF_XML_ATTR_DISPEL_TYPE					"DispelType"
 #define BUFF_XML_ATTR_STACK_TYPE					"StackType"
 #define BUFF_XML_ATTR_STACK_MAX_COUNT				"StackMaxCount"
 #define BUFF_XML_ATTR_DESCRIPTION					"Desc"
 #define BUFF_XML_ATTR_OVERRIDE						"override"
+
+#define BUFF_XML_ATTR_BUFF_LINE						"BuffLine"
 
 // 유지 관련
 #define BUFF_XML_ATTR_DURATION						"Duration"
@@ -50,7 +53,6 @@
 #define BUFF_XML_ATTR_MAX_DAMAGE					"MaxDamage"
 #define BUFF_XML_ATTR_MIN_HEAL						"MinHeal"
 #define BUFF_XML_ATTR_MAX_HEAL						"MaxHeal"
-#define BUFF_XML_ATTR_PERCENTAGE_HEAL				"PecentageHeal"
 #define BUFF_XML_ATTR_PASSIVE_EXTRA_ATTRIB			"PassiveExtraAttrib"
 #define BUFF_XML_ATTR_PASSIVE_EXTRA_ATTRIB_VALUE	"PassiveExtraAttribValue"
 #define BUFF_XML_ATTR_PASSIVE_EXTRA_ATTRIB2			"PassiveExtraAttrib2"
@@ -67,6 +69,14 @@
 #define BUFF_XML_ATTR_INCLUDE	"Include"
 #define BUFF_XML_ATTR_EXCLUDE	"Exclude"
 #define BUFF_XML_ATTR_WEAPON_APPLY_RATE	"WeaponApplyRate"
+
+#define BUFF_XML_ATTR_DAMAGE_PERCENT_HP			"DamagePercentHP"
+#define BUFF_XML_ATTR_RESTORE_PERCENT_HP		"RestorePercentHP"
+#define BUFF_XML_ATTR_RESTORE_PERCENT_EN		"RestorePercentEN"
+#define BUFF_XML_ATTR_INCLUDE_PASSIVE_TALENT	"IncludePassiveTalent"
+#define BUFF_XML_ATTR_RIDE_NPC_ID				"RideNPCID"
+
+#define BUFF_XML_ATTR_RELEASE_ON_DEAD			"ReleaseOnDead"
 
 
 // 효과내용2(보정치)
@@ -89,6 +99,7 @@
 
 #define BUFF_XML_ATTR_DAMAGE_ATTRIB					"DamageAttrib"
 #define BUFF_XML_ATTR_ACTIVE_EXTRA_ATTRIB			"ActiveExtraAttrib"
+#define BUFF_XML_ATTR_ACTIVE_EXTRA_PARAM			"ActiveExtraParam"
 #define BUFF_XML_ATTR_RIPOSTE_TYPE					"RiposteType"
 #define BUFF_XML_ATTR_RIPOSTE_RATE					"RiposteRate"
 #define BUFF_XML_ATTR_USE_TALENT					"UseTalent"

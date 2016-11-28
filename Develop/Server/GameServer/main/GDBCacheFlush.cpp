@@ -93,7 +93,7 @@ bool GDBCacheFlush::BuidDBCacheChar( GCharacterDBCache* cc )
 		return true;
 	}
 
-	const int64 nAID = pPlayer->GetAID();
+	const AID nAID = pPlayer->GetAID();
 	if (0 == nAID)
 	{
 		cc->SetZero();
@@ -107,10 +107,8 @@ bool GDBCacheFlush::BuidDBCacheChar( GCharacterDBCache* cc )
 	cc->BeginCacheSync();
 
 	CString strCharSyncSQL;
-	strCharSyncSQL.Format(L"{CALL dbo.USP_RZ_CHAR_SYNC (%d, %I64d, %I64d, %d, %d)}"
-		, GConfig::m_nMyWorldID
-		, pPlayer->GetAID()
-		, (int64)cc->GetCID()
+	strCharSyncSQL.Format(L"{CALL RZ_CHAR_SYNC (%I64d, %d, %d)}"
+		, cc->GetCID()
 		, pPlayer->GetPlayerInfo()->nXP
 		, pPlayer->GetPlayerInfo()->GetMoney());	
 
@@ -151,12 +149,20 @@ bool GDBCacheFlush::BuldDBCacheItem( GPlayerDBCache* pc )
 			return false;
 
 		strItemSyncSQL.ReleaseBuffer();
+		/*
 		strItemSyncSQL.Format(L"{CALL dbo.USP_RZ_ITEM_SYNC (%d, %I64d, %d, %d, %I64d, %d, %d)}"
 			, GConfig::m_nMyWorldID
-			, (int64)pPlayer->GetCID()
+			, pPlayer->GetCID()
 			, pItem->m_nSlotType
 			, pItem->m_nSlotID
 			, ic->GetIUID()
+			, pItem->GetAmount()
+			, pItem->m_nDurability);
+			*/
+		strItemSyncSQL.Format(L"{CALL RZ_ITEM_SYNC (%I64d, %d, '%d', '%d', '%d')}"
+			, pPlayer->GetCID()
+			, pItem->m_nSlotType
+			, pItem->m_nSlotID
 			, pItem->GetAmount()
 			, pItem->m_nDurability);
 

@@ -1,1 +1,5 @@
 #include "stdafx.h"
+#include "LPMSSystem.h"
+#include "PMServerInitLogger.h"
+#include "LPMSObject.h"
+#include "LConfig.h"

@@ -73,6 +73,7 @@ void GCutsceneInfoMgr::Parse_Cutscene(MXmlElement* pElement, MXml* pXml)
 
 	if (true ==IsExist(nID))
 	{
+		_VLOGGER->Log(_T(CUTSCENE_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}
 

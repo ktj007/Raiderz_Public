@@ -246,13 +246,6 @@ void XMovableDebugReporter_Server::Update()
 
 		if (!vectorUID.empty())
 		{
-			XPOSTCMD4(MC_REQUEST_DEBUG_STRING, 
-				MCommandParameterWideString(L"pos_sync"), 
-				MCommandParameterInt(0), 
-				MCommandParameterWideString(L""), 
-				MCommandParameterBlob(&(vectorUID[0]), sizeof(MUID), vectorUID.size()));
-
-
 			m_bRequestReceived = false;
 		}
 	}

@@ -3,6 +3,7 @@
 #include "CSCommonLib.h"
 
 struct TD_PARTY_MEMBER;
+enum TALENT_STYLE;
 
 class CSCOMMON_API CSPartyMember
 {
@@ -22,13 +23,16 @@ public:
 	bool IsSetted(void) const;
 
 private:
-	MUID	m_UID;	
-	uint32	m_nStatusFlag;
-	int		m_nHP;
-	int		m_nEN;
-	int		m_nSTA;
-	tstring	m_strName;
-	int		m_nLevel;
+	MUID			m_UID;	
+	uint32			m_nStatusFlag;
+	int				m_nHP;
+	int				m_nEN;
+	int				m_nSTA;
+	tstring			m_strName;
+	int				m_nLevel;
+	int				m_nFieldID;
+	int				m_nChannelID;
+	TALENT_STYLE	m_nTalentStyle;
 
 	vector<int> m_vecBuff;
 	

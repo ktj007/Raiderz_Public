@@ -7,6 +7,7 @@
 #include "MMatrix.h"
 #include <float.h>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -34,6 +35,13 @@ public:
 		for ( unsigned int i=0; i<points->size(); i++ )
 			Add( (*points)[i] );
 	}
+
+#if (_MSC_VER >= 1900)
+	MBox& operator= (const MBox& box) {
+		memcpy(m, box.m, sizeof(m));
+		return *this;
+	}
+#endif
 
 	void Initialize() {
 		vmin = MVector3(FLT_MAX,FLT_MAX,FLT_MAX);
@@ -289,8 +297,8 @@ public:
 
 		for ( int i = 0; i<3; ++i )
 		{
-			andBBox.m[0][i] = max(bbox.m[0][i],this->m[0][i]);
-			andBBox.m[1][i] = min(bbox.m[1][i],this->m[1][i]);
+			andBBox.m[0][i] = (std::max)(bbox.m[0][i],this->m[0][i]);
+			andBBox.m[1][i] = (std::min)(bbox.m[1][i],this->m[1][i]);
 		}
 
 		return andBBox;
@@ -319,8 +327,14 @@ public:
 		return false;
 	}
 
+#if (_MSC_VER >= 1900)
+	// Modern Visual C++ already defines INFINITY and causes name clash.
+	static const MBox _INFINITY;
+	static const MBox _INVALID;
+#else
 	static const MBox INFINITY;
 	static const MBox INVALID;
+#endif
 };
 
 inline MBox::MBox(const std::vector<MBox>* boxes)

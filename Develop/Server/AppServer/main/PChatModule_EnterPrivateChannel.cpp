@@ -20,7 +20,7 @@ void PChatModule_EnterPrivateChannel::OnRun(minet::MCommand* pCmd)
 
 	CID cidRequestPlayer;
 	wstring strChannelName;
-	VALID(pCmd->GetParameter(&cidRequestPlayer,		0, MPT_INT));
+	VALID(pCmd->GetParameter(&cidRequestPlayer,		0, MPT_INT64));
 	VALID(pCmd->GetParameter(strChannelName,		1, MPT_WSTR));
 
 	SProxyPlayer* pRequestPlayer = gsys.pServer->GetPlayerManager()->FindPlayer(cidRequestPlayer);

@@ -5,7 +5,7 @@ class XRecipeInfo;
 class XCraftableRecipeInfo
 {
 private:
-	vector<TD_CRAFT_RECIPE>	m_vecRecipe;
+	vector<int>	m_vecRecipe;
 	vector<XRecipeInfo*>	m_vecRecipeInfo;
 
 	float					m_fMakeMod;
@@ -20,7 +20,7 @@ public:
 	XRecipeInfo*			GetRecipeInfoByIndex(int nIndex);
 
 	float&					GetMakeMod()		{ return m_fMakeMod;	}
-	vector<TD_CRAFT_RECIPE>&	GetRecipeList()	{ return m_vecRecipe; }
+	vector<int>&	GetRecipeList()	{ return m_vecRecipe; }
 	vector<XRecipeInfo*>&	GetRecipeInfoList()	{ return m_vecRecipeInfo; }
 
 	int						GetRecipeCount()	{ return m_vecRecipeInfo.size();}

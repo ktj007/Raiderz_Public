@@ -15,6 +15,9 @@
 #include "GNPCLoot.h"
 #include "GBuffRequirement.h"
 #include "GTalentRouter.h"
+#include "GCombatCalculator.h"
+#include "GCriticalCalculator.h"
+#include "GBuffEntity.h"
 
 GBuffInstantApplier::GBuffInstantApplier( GBuff* pOwner )
 : m_pOwner(pOwner)
@@ -32,33 +35,50 @@ bool GBuffInstantApplier::OnEvent(TALENT_CONDITION nTiming)
 
 bool GBuffInstantApplier::ApplyEffects()
 {
-	if (!m_pOwner->GetOwner()->IsActor())
-		return false;
-
 	GBuffInfo* pBuffInfo = m_pOwner->GetInfo();
-	GEntityActor* pOwnerActor = ToEntityActor(m_pOwner->GetOwner());
 
+	GEntitySync* pOwnerEntity = m_pOwner->GetOwner();
+	GEntityActor* pOwnerActor = NULL;
+	MUID uidUser;
+
+	if (pOwnerEntity->IsActor())
+	{
+		pOwnerActor = ToEntityActor(pOwnerEntity);
+		uidUser = m_pOwner->GetUserUID();
+	}
+	else if (pOwnerEntity->IsBuffEntity())
+	{
+		pOwnerActor = static_cast<GBuffEntity*>(pOwnerEntity)->GetOwner();
+		uidUser = pOwnerActor->GetUID();
+	}
+
+	if (pOwnerActor == NULL)
+		return true;
+
+	// requirement buff has been processed in GModuleBuff::GainBuffForced().
+	/*
 	GBuffRequirement buff_requirement;
 	if (!buff_requirement.ProcessRequirement(pOwnerActor, pBuffInfo->m_RequireBuff))
-		return false; // 버프 필요조건 불충족
+		return true; // 버프 필요조건 불충족
+		*/
 		
 	MUID uidLastHitOrHittedEnemy = pOwnerActor->GetLastHitOrHittedEnemy();
 	GEntityActor* pLastHitOrHittedEnemy = pOwnerActor->FindActor(uidLastHitOrHittedEnemy);
 
 	GEffectTargetSelector m_EffecteeTargetSelector;
 	GEffectTargetSelector::Desc desc(pBuffInfo->m_EffectInfo);
-	desc.pSelf = pOwnerActor;
+	desc.pSelf = pOwnerEntity;
 	desc.pTarget = pLastHitOrHittedEnemy;
-	desc.pCaster = pOwnerActor->FindActor(m_pOwner->GetUserUID());
+	desc.pCaster = pOwnerActor->FindActor(uidUser);
 	vector<GEntityActor*> vecEffecteeTarget = 
 		m_EffecteeTargetSelector.Select(desc);
 
 	for each (GEntityActor* pEffecteeTarget in vecEffecteeTarget)
 	{
-		ApplySingleEffect(pEffecteeTarget, m_pOwner->GetUserUID());
+		ApplySingleEffect(pEffecteeTarget, uidUser);
 	}	
 
-	return pOwnerActor->IsDead();
+	return !pOwnerActor->IsDead();
 }
 
 void GBuffInstantApplier::ApplySingleEffect(GEntityActor* pEffecteeTarget, MUID uidUser)
@@ -68,7 +88,7 @@ void GBuffInstantApplier::ApplySingleEffect(GEntityActor* pEffecteeTarget, MUID 
 	GBuffInfo* pBuffInfo = m_pOwner->GetInfo();
 	VALID(pBuffInfo);
 
-	pEffecteeTarget->GetModuleBuff()->EnableActiveExtraAttrib(m_pOwner);
+	// pEffecteeTarget->GetModuleBuff()->EnableActiveExtraAttrib(m_pOwner);
 	GEntityActor* pUser = pEffecteeTarget->FindActor(uidUser);
 
 	
@@ -82,15 +102,25 @@ void GBuffInstantApplier::ApplySingleEffect(GEntityActor* pEffecteeTarget, MUID 
 	}
 	pEffecteeTarget->GetModuleBuff()->EnableActiveExtraAttrib(m_pOwner);
 
+	bool bCritical = pUser && pEffecteeTarget && m_pOwner->GetUser().CheckCritical();//gsys.pCombatCalculator->CheckBuffCritical(pUser, pEffecteeTarget, pBuffInfo);
+
 	if (!pBuffInfo->IsEnchant())
 	{
-		RouteGainInstantEffect(pEffecteeTarget, m_pOwner);
+		RouteGainInstantEffect(pEffecteeTarget, m_pOwner, bCritical);
 	}
 	
 	// Modifier 적용으로 HP가 회복되었으면, Hate 테이블에 적용
 	int nHealHPAmount = pEffecteeTarget->GetHP() - nBeforeHP;
 	if (nHealHPAmount > 0)
 	{
+		if (bCritical)
+		{
+			GCriticalCalculator criticalCalculator;
+			float fCriticalDamageFactor = criticalCalculator.CalcCriticalDamageFactor(pUser, pBuffInfo->m_nDamageAttrib, pBuffInfo->m_nDamageType, ST_NONE);
+
+			nHealHPAmount = int(nHealHPAmount * fCriticalDamageFactor);
+		}
+
 		BuffHealed(pEffecteeTarget, pBuffInfo, nHealHPAmount);
 	}
 
@@ -143,9 +173,12 @@ void GBuffInstantApplier::GainBuffDamageAndHeal(GEntityActor* pEffecteeTarget, G
 	VALID(pBuffInfo);
 
 	GActorDamageCalculator		m_DamageCalculator;
-	GCombatTurnResult combat_result = m_DamageCalculator.CalcBuffDamage(pUser, pEffecteeTarget, pBuffInfo);
+	GCombatTurnResult combat_result = m_DamageCalculator.CalcBuffDamage(pUser, pEffecteeTarget, pBuff);
 	int nDamage = combat_result.nDamage * m_pOwner->GetStackCount();
 	int nHealAmount = combat_result.nHealAmount * m_pOwner->GetStackCount();
+	int nRestoreENAmount = combat_result.nRestoreENAmount * m_pOwner->GetStackCount();
+	int nRestoreSTAAmount = combat_result.nRestoreSTAAmount * m_pOwner->GetStackCount();
+	bool bCriticalHit = !!CheckBitSet(combat_result.nResultFlags, CTR_CRITICAL);
 	DAMAGE_ATTRIB nDamageAttrib = pBuffInfo->m_nDamageAttrib;
 
 	if (!pEffecteeTarget->IsHittable(pBuffInfo)) 
@@ -180,14 +213,27 @@ void GBuffInstantApplier::GainBuffDamageAndHeal(GEntityActor* pEffecteeTarget, G
 		talentHitRouter.RouteBuffHit(pEffecteeTarget, pBuffInfo->m_nID, nDamage, mfApplyRet.nMotionFactor, mfApplyRet.nWeight, combat_result.nResultFlags);
 	}
 
+	GTalentRouter talentRouter;
+
 	if (nHealAmount > 0)
 	{
 		pEffecteeTarget->doHeal(pUser?pUser->GetUID():MUID::Invalid(), 
 								nHealAmount);
 		BuffHealed(pEffecteeTarget, pBuffInfo, nHealAmount);
 
-		GTalentRouter router;
-		router.RouteBuffHeal(pUser, pEffecteeTarget, pBuffInfo->m_nID, nHealAmount);
+		talentRouter.RouteBuffHeal(pUser, pEffecteeTarget, pBuffInfo->m_nID, nHealAmount, bCriticalHit);
+	}
+
+	if (nRestoreENAmount > 0)
+	{
+		pEffecteeTarget->SetEN(pEffecteeTarget->GetEN() + nRestoreENAmount);
+		talentRouter.RouteBuffRestoreEN(pUser, pEffecteeTarget, pBuffInfo->m_nID, nRestoreENAmount);
+	}
+
+	if (nRestoreSTAAmount > 0)
+	{
+		pEffecteeTarget->SetSTA(pEffecteeTarget->GetSTA() + nRestoreSTAAmount);
+		talentRouter.RouteBuffRestoreSTA(pUser, pEffecteeTarget, pBuffInfo->m_nID, nRestoreSTAAmount);
 	}
 
 	// 이동 처리 밀림
@@ -219,10 +265,11 @@ bool GBuffInstantApplier::IsNeedEffect()
 	if (pBuffInfo->HasDamage())			return true;
 	if (pBuffInfo->IsModified_MF())		return true;
 	if (pBuffInfo->HasHealEffect())			return true;
+	if (pBuffInfo->HasRestoreEffect())		return true;
 	return false;
 }
 
-void GBuffInstantApplier::RouteGainInstantEffect(GEntityActor* pActor, GBuff* pBuff)
+void GBuffInstantApplier::RouteGainInstantEffect(GEntityActor* pActor, GBuff* pBuff, bool bCriticalHit)
 {
 	VALID(pActor);
 	VALID(pBuff);
@@ -230,9 +277,10 @@ void GBuffInstantApplier::RouteGainInstantEffect(GEntityActor* pActor, GBuff* pB
 	VALID(pBuffInfo);		
 	if (!pBuffInfo->IsExistModValue())	return;
 
-	MCommand* pNewCommand = MakeNewCommand(MC_BUFF_INSTANT_EFFECT_GAIN, 2, 
+	MCommand* pNewCommand = MakeNewCommand(MC_BUFF_INSTANT_EFFECT_GAIN, 3, 
 		NEW_USHORT(pActor->GetUIID()), 
-		NEW_INT(pBuffInfo->m_nID));
+		NEW_INT(pBuffInfo->m_nID),
+		NEW_BOOL(bCriticalHit));
 
 	pActor->RouteToThisCell(pNewCommand);
 }

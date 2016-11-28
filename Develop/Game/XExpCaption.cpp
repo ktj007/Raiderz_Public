@@ -24,7 +24,7 @@ bool XExpCaption::OnUpdate( float fDelta, RMatrix& viewInverse )
 void XExpCaption::Setup( int nExp, vec3& pos )
 {
 	wchar_t szText[32] = L"";
-	swprintf_s(szText, L"+%d EXP", nExp); //SoulHunterZ
+	swprintf_s(szText, L"+%d Exp", nExp);
 	uint32 nColor = XCONST::CAPTION_EFFECT_COLOR_MY_EXP;
 
 	SetColor(nColor);

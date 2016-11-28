@@ -65,7 +65,7 @@ public:
 	bool				IsChangedTime();
 	bool				IsChangedTimeHour();
 	GAME_TIME_TYPE		GetOldTime()		{ return m_nOldTime; }
-	GAME_TIME_TYPE		GetCurrentTime()	{ return m_nCurrentTime; }	///< 게임시간대를 반환
+	GAME_TIME_TYPE		(GetCurrentTime)()	{ return m_nCurrentTime; }	///< 게임시간대를 반환     2015-11-29: added brace to prevent name-clash.
 	
 	int					GetCurrentTimeHour()	{ return m_nCurrentTimeHour; } ///< 정확한 게임시간을 반환 (0~24)
 };

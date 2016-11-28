@@ -260,19 +260,19 @@ XModuleActorControl* XNetPlayer::GetModuleActorControl()
 	return m_pModuleNetControl; 
 }
 
-void XNetPlayer::InPlayer( TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo, bool bAppearEffect/*=true*/, bool bLoadingAsync /*= true*/ )
+void XNetPlayer::InPlayer( TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo, TD_PLAYER_BUFF_LIST* pBuffList, bool bAppearEffect/*=true*/, bool bLoadingAsync /*= true*/ )
 {
-	m_nUIID = pPlayerInfo->nUIID;
+	m_nUIID = pPlayerInfo->SimpleInfo.nUIID;
 
 	// 외모 정보
 	m_bLoadingAsync = bLoadingAsync;
 
-	XPlayerInfoFeature feature(pPlayerInfo->Feature);
+	XPlayerInfoFeature feature(pPlayerInfo->ExtraInfo.Feature);
 	if ( pTattooInfo != NULL)
 		feature.SetTattooInfo( *pTattooInfo);
 
-	SetFeature(pPlayerInfo->szName, feature);
-	SetStance(CHAR_STANCE(pPlayerInfo->nStance));
+	SetFeature(pPlayerInfo->ExtraInfo.szName, feature);
+	SetStance(CHAR_STANCE(pPlayerInfo->SimpleInfo.nStance));
 
 
 	// 장비
@@ -281,13 +281,13 @@ void XNetPlayer::InPlayer( TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATUR
 	if(m_pModuleNetControl)
 	{
 		vec3 vPlayerDir;
-		vPlayerDir = pPlayerInfo->svDir;
-		m_pModuleNetControl->OnEnterGame(pPlayerInfo->vPos, vPlayerDir, this);
+		vPlayerDir = pPlayerInfo->SimpleInfo.svDir;
+		m_pModuleNetControl->OnEnterGame(pPlayerInfo->SimpleInfo.vPos, vPlayerDir, this);
 	}
 
 	if (m_pModuleMotion)
 	{
-		if (CheckBitSet(pPlayerInfo->nStatusFlag, UPS_DEAD))
+		if (CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_DEAD))
 		{
 			m_bDead = true;
 			DeadProcEnterField();
@@ -295,24 +295,24 @@ void XNetPlayer::InPlayer( TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATUR
 			if(m_pModuleMovable)
 				m_pModuleMovable->TriggerDie(true);
 		}
-		else if (CheckBitSet(pPlayerInfo->nStatusFlag, UPS_SWIMMING))
+		else if (CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_SWIMMING))
 		{
 			SetSwim(true);
 
 			if(m_pModuleMovable)
 				m_pModuleMovable->TriggerSwim(true);
 		}
-		else if (CheckBitSet(pPlayerInfo->nStatusFlag, UPS_LOOTING))
+		else if (CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_LOOTING))
 		{
 			m_pModuleMotion->ChangeMotion(MOTION_NAME_LOOTING_ITEM, MOTION_NAME_IDLE);
 		}
-		else if (CheckBitSet(pPlayerInfo->nStatusFlag, UPS_SITTING))
+		else if (CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_SITTING))
 		{
 			SetSitting(true);
 			m_pModuleNetControl->DoActionSitDown();
 			m_pModuleMotion->ChangeMotion(MOTION_NAME_SIT_IDLE);
 		}
-		else if(CheckBitSet(pPlayerInfo->nStatusFlag, UPS_CUTSCENING))
+		else if(CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_CUTSCENING))
 		{
 			SetCutScene(true);
 			m_pModuleMotion->ChangeMotion(MOTION_NAME_IDLE);
@@ -323,7 +323,7 @@ void XNetPlayer::InPlayer( TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATUR
 		}
 	}
 
-	if(CheckBitSet(pPlayerInfo->nStatusFlag, UPS_AFK))
+	if(CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_AFK))
 	{
 		SetAFK(true);
 		m_pModuleNetControl->DoActionSitDown();
@@ -333,24 +333,24 @@ void XNetPlayer::InPlayer( TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATUR
 		else			SetCharacterPane_Player();
 	}
 
-	if(CheckBitSet(pPlayerInfo->nStatusFlag, UPS_PARTYLEADER))
+	if(CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_PARTYLEADER))
 	{
 		SetPartyLeader(true);
 	}
 
 	// pvp 지역
-	if (CheckBitSet(pPlayerInfo->nStatusFlag, UPS_FIELDPVP_TEAM1))
+	if (CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_FIELDPVP_TEAM1))
 	{
 		m_pPlayerPVP->SetPvPAreaFaction(true, false);
 	}
-	else if (CheckBitSet(pPlayerInfo->nStatusFlag, UPS_FIELDPVP_TEAM2))
+	else if (CheckBitSet(pPlayerInfo->SimpleInfo.nStatusFlag, UPS_FIELDPVP_TEAM2))
 	{
 		m_pPlayerPVP->SetPvPAreaFaction(false, true);
 	}
 
 	if (m_pModuleCollision)
 	{
-		wstring strMeshName = XNaming::GetPlayerModelSimpleName(pPlayerInfo->Feature.nSex);
+		wstring strMeshName = XNaming::GetPlayerModelSimpleName(pPlayerInfo->ExtraInfo.Feature.nSex);
 		CSMeshInfo* pMeshInfo = info.mesh_info->GetInfo(strMeshName);
 		m_pModuleCollision->InitCol(pMeshInfo);
 	}
@@ -362,13 +362,13 @@ void XNetPlayer::InPlayer( TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATUR
 	}
 
 	// 버프
-	SetBuff(pPlayerInfo);
+	SetBuff(pBuffList);
 
 	// 모션 팩터
-	if(pPlayerInfo->nMF == MF_SWALLOWED)
+	if(pPlayerInfo->SimpleInfo.nMF == MF_SWALLOWED)
 	{
 		// 먹기라면...
-		m_pModuleNetControl->WaitSwallowedSynch(pPlayerInfo->nMFWeight);
+		m_pModuleNetControl->WaitSwallowedSynch(pPlayerInfo->SimpleInfo.nMFWeight);
 	}
 
 	if (m_pModuleEntity)
@@ -435,19 +435,22 @@ const wchar_t* XNetPlayer::GetRealNameInPvP()
 	return GetName();
 }
 
-void XNetPlayer::SetBuff( TD_UPDATE_CACHE_PLAYER* pPlayerInfo )
+void XNetPlayer::SetBuff( TD_PLAYER_BUFF_LIST* pBuffList )
 {
-	if(m_pModuleBuff)
+	if (pBuffList && pBuffList->IsValid())
 	{
-		// 게임 처음 진입시 버프 입력
-		for(int iBuff = 0; iBuff < MAX_OWN_BUFF_NUMBER; iBuff++)
+		if (m_pModuleBuff)
 		{
-			int nBuffID = pPlayerInfo->Buffs[iBuff];
-			if (nBuffID == 0) continue;
-
-			if (m_pModuleBuff->BuffExist(nBuffID) == false)
+			// 게임 처음 진입시 버프 입력
+			for (int iBuff = 0; iBuff < MAX_OWN_BUFF_NUMBER; iBuff++)
 			{
-				m_pModuleBuff->SetRemainBuffList(nBuffID, 0.0f);
+				int nBuffID = pBuffList->nBuffID[iBuff];
+				if (nBuffID == 0) continue;
+
+				if (m_pModuleBuff->BuffExist(nBuffID) == false)
+				{
+					m_pModuleBuff->SetRemainBuffList(nBuffID, 0.0f);
+				}
 			}
 		}
 	}

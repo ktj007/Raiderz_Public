@@ -37,7 +37,7 @@ public:
 	PChatChannel(const MUID& uid, CHATTING_CHANNEL_TYPE eType);
 	virtual ~PChatChannel();
 
-	bool					Init(int nOwnerCID, const std::wstring& strChannelName);
+	bool					Init(CID nOwnerCID, const std::wstring& strChannelName);
 	bool					Init(const MUID& uidParty);	
 	bool					Init_Field(int nFieldID);
 
@@ -79,7 +79,7 @@ private:
 
 	/// 사설 채팅 채널일 경우만 쓰입니다.
 	std::wstring				m_strChannelName;
-	int						m_cidOwner;
+	CID						m_cidOwner;
 
 	/// 파티 채팅 채널일 경우만 쓰입니다.
 	MUID					m_uidParty;

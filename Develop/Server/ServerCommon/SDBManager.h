@@ -37,7 +37,6 @@ public:
 
 	mdb::MDatabase* GetDatabase()	{ return &m_DB; }
 	static void LogCallback( const wstring& strLog );	
-	std::wstring MCleanSQLStr(std::wstring str);
 
 	void ErrorLog(const wchar_t *pFormat, ...);
 	void SetListener(CSLogListener* pListener);

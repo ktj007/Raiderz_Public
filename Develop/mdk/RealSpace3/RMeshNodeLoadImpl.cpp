@@ -898,6 +898,7 @@ bool RMeshNodeLoaderImpl_v20::LoadVertex( RMeshNode *pNode, RFile *pFile )
 
 bool RMeshNodeLoaderImpl_v20::LoadEtc(RMeshNode *pNode, RFile *pFile)
 {
+
 	int nPrimitiveType = 0;
 	RFILEREAD2(&nPrimitiveType, 4);
 
@@ -941,6 +942,12 @@ bool RMeshNodeLoaderImpl_v20::LoadEtc(RMeshNode *pNode, RFile *pFile)
 
 	pFile->Read((void*)pNode->m_boundingBox.vmin.v, sizeof(float)*3);
 	pFile->Read((void*)pNode->m_boundingBox.vmax.v, sizeof(float)*3);
+
+	if (pNode->m_boundingBox.vmin.x == FLT_MAX)
+	{
+		pNode->m_boundingBox.vmin = RVector(-0.1f, -0.1f, -0.1f);
+		pNode->m_boundingBox.vmax = RVector(0.1f, 0.1f, 0.1f);
+	}
 
 	return true;
 }

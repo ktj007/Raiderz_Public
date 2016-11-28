@@ -63,7 +63,7 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 캐릭터 / 오브젝트 / 이팩트
 	//
-	virtual XPlayer*			InPlayer(MUID& uid, TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo = NULL, bool bAppearEffect = true, bool bLoadingAsync = true)	{ return NULL; }
+	virtual XPlayer*			InPlayer(MUID& uid, TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo = NULL, TD_PLAYER_BUFF_LIST* pBuffList = NULL, bool bAppearEffect = true, bool bLoadingAsync = true)	{ return NULL; }
 	virtual void				OutPlayer(MUID uid)																					{}
 	virtual void				OutPlayer( UIID nPlayerUIID )																		{}
 

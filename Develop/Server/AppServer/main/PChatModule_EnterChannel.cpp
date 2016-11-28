@@ -28,7 +28,7 @@ void PChatModule_EnterChannel::OnRun(minet::MCommand* pCmd)
 
 	CID cidRequestPlayer;
 	wstring strChannelName;
-	VALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT));
+	VALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT64));
 	VALID(pCmd->GetParameter(strChannelName,	1, MPT_WSTR));
 	
 	VALID(0 < cidRequestPlayer);

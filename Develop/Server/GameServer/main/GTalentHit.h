@@ -22,8 +22,8 @@ public:
 public:
 	// 해당 탤런트로 피해를 입혔을 때
 	void			OnGainDamage(GEntityActor* pTarget);
-	// 탤런트가 종료될때 호출 (Finish or Canceled)
-	void			OnExit(GTalent* pTalent);
+	// will be called on hit process is just done
+	void			OnHitDone(GTalent* pTalent);
 private:
 	// 세그먼트 단위 판정처리
 	void UpdateHitSeg(GTalent* pTalent, int nHitColIndex, int nAddtiveDamage, float fCheckTime);

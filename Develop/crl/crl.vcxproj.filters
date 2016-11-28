@@ -2,22 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="core">
-      <UniqueIdentifier>{b9c84598-d31b-4a4c-b96a-916eded39387}</UniqueIdentifier>
+      <UniqueIdentifier>{15d9a459-7a6b-4af1-a80d-741734b134cc}</UniqueIdentifier>
     </Filter>
     <Filter Include="libraries">
-      <UniqueIdentifier>{796a3399-a6e9-4d22-9136-7e38e355c0cf}</UniqueIdentifier>
+      <UniqueIdentifier>{e3dc337e-81d7-44c3-b260-b6e47893e9f8}</UniqueIdentifier>
     </Filter>
     <Filter Include="libraries\options">
-      <UniqueIdentifier>{06e3b147-8e55-4f5b-9fcb-7e372b10703c}</UniqueIdentifier>
+      <UniqueIdentifier>{7988fef0-b7dc-434d-b7b9-bd46edced967}</UniqueIdentifier>
     </Filter>
     <Filter Include="libraries\math">
-      <UniqueIdentifier>{7ee54f0b-7f52-4d60-a556-ae13340677f2}</UniqueIdentifier>
+      <UniqueIdentifier>{11483b4e-f5c5-41ab-8a37-dc21de9958fd}</UniqueIdentifier>
     </Filter>
     <Filter Include="libraries\util">
-      <UniqueIdentifier>{9f2f3b9f-6c45-43bd-b990-06e69ae8b969}</UniqueIdentifier>
+      <UniqueIdentifier>{cefb0b0f-5700-470c-b825-337a4d8ca3dd}</UniqueIdentifier>
     </Filter>
     <Filter Include="libraries\string">
-      <UniqueIdentifier>{ea890d5c-0163-49b5-941d-6b3570172036}</UniqueIdentifier>
+      <UniqueIdentifier>{d1452623-7031-4a88-b7bc-d3d435776b01}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -39,7 +39,7 @@ void GDBTaskCraftInsert::OnExecute( mdb::MDatabase& rfDB )
 		return;
 
 	if(1 == rs.GetFetchedCount())
-		m_Result.nIUID = rs.FieldW(L"IUID").AsInt64();		
+		m_Result.nIUID = rs.FieldW(L"ITEM_SN").AsInt64();		
 }
 
 mdb::MDB_THRTASK_RESULT GDBTaskCraftInsert::_OnFailed()

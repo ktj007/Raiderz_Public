@@ -28,7 +28,8 @@ protected :
 	class _RESULT
 	{
 	public :
-		int64 m_GSN;
+		AID		m_GSN;
+		int64	m_CONN_SN;
 	};
 
 	class Completer

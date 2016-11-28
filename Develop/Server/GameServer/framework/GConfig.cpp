@@ -6,15 +6,9 @@
 #include "STypes.h"
 #include "MLocale.h"
 
-std::wstring GConfig::m_strGameDB_Server = L"";
-std::wstring GConfig::m_strGameDB_DatabaseName = L"";
-std::wstring GConfig::m_strGameDB_UserName = L"";
-std::wstring GConfig::m_strGameDB_Password = L"";
-
-std::wstring GConfig::m_strLogDB_Server = L"";
-std::wstring GConfig::m_strLogDB_DatabaseName = L"";
-std::wstring GConfig::m_strLogDB_UserName = L"";
-std::wstring GConfig::m_strLogDB_Password = L"";
+GDBConfig GConfig::m_AccountDBConfig;
+GDBConfig GConfig::m_GameDBConfig;
+GDBConfig GConfig::m_LogDBConfig;
 
 int GConfig::m_nMaxUser = DEFAULT_MAX_PLAYER;
 std::wstring GConfig::m_strServerName = DEFAULT_SERVER_NAME;
@@ -41,6 +35,7 @@ DWORD GConfig::m_dwPacketDelayTime = 0;
 bool GConfig::m_bDBTaskCount = false;
 bool GConfig::m_bNoDB = false;
 bool GConfig::m_bLogPoolCount = false;
+bool GConfig::m_bDBTraceAllTask = false;
 
 bool GConfig::m_bExportUpdateDB = false;
 bool GConfig::m_bExportWriteFile = false;
@@ -90,13 +85,11 @@ tstring	GConfig::m_strCommandProfiler_LogName_ForMasterServer = L"profile_master
 tstring	GConfig::m_strCommandProfiler_LogName_ForAppServer = L"profile_appsrv_command";
 bool GConfig::m_moveSectorWithoutCopySectorVector = false;
 
-int GConfig::m_KillXPRate = 1;
-int GConfig::m_QuestXPRate = 1;
-int GConfig::m_QuestGoldRate = 1;
-int GConfig::m_GoldDropRate = 1;
-float GConfig::m_ItemDropRate = 1.0f;
+// const
+bool GConfig::m_bImmediateDeleteChar = true;
 
 #define CONFIG_TOKEN_APP_DB					L"DB"
+#define CONFIG_TOKEN_APP_ACCOUNTDB			L"ACCOUNTDB"
 #define CONFIG_TAKEN_APP_LOGDB				L"LOGDB"
 #define CONFIG_TOKEN_APP_CONFIG				L"CONFIG"
 #define CONFIG_TOKEN_APP_DEBUG				L"DEBUG"
@@ -105,7 +98,7 @@ float GConfig::m_ItemDropRate = 1.0f;
 #define CONFIG_TOKEN_ADD_EXPORT				L"EXPORT"
 #define CONFIG_TOKEN_APP_GAMEGUARD			L"GAMEGUARD"
 #define CONFIG_TOKEN_APP_DEVELOP			L"DEVELOP"
-#define CONFIG_TOKEN_APP_RATES				L"RATES"
+#define CONFIG_TOKEN_APP_CONST				L"CONST"
 
 void GConfig::Init_INI()
 {
@@ -160,11 +153,8 @@ void GConfig::Init_INI()
 	m_nMasterServerPort = GetPrivateProfileInt(CONFIG_TOKEN_APP_NET,	L"MASTER_SERVER_PORT",	DEFAULT_MASTER_SERVER_PORT, szFileName);
 
 	// db
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_strGameDB_Server = szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"DATABASE",	L"SoulHuntDB",	szValue, 256, szFileName);	m_strGameDB_DatabaseName = szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"USERNAME",	L"dev",			szValue, 256, szFileName);	m_strGameDB_UserName = szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"PASSWORD",	L"dev",			szValue, 256, szFileName);	m_strGameDB_Password = szValue;
-
+	InitAccountDB(szFileName);
+	InitGameDB(szFileName);
 	InitLogDB(szFileName);
 
 	// debug
@@ -183,6 +173,7 @@ void GConfig::Init_INI()
 	m_bDBTaskCount = GetPrivateProfileBool(CONFIG_TOKEN_APP_DEBUG,	L"DBTASK_COUNT",	false,						szFileName);
 	m_bNoDB = GetPrivateProfileBool(CONFIG_TOKEN_APP_DEBUG,	L"NO_DB",	false,						szFileName);
 	m_bLogPoolCount = GetPrivateProfileBool(CONFIG_TOKEN_APP_DEBUG,	L"LOG_MEMPOOL_COUNT",	false,						szFileName);
+	m_bDBTraceAllTask = GetPrivateProfileBool(CONFIG_TOKEN_APP_DEBUG, L"DB_TRACE_ALL",	false,	szFileName);
 
 	m_bExportUpdateDB = GetPrivateProfileBool(CONFIG_TOKEN_ADD_EXPORT, L"UPDATE_DB", 0, szFileName);
 	m_bExportWriteFile = GetPrivateProfileBool(CONFIG_TOKEN_ADD_EXPORT, L"WRITE_FILE", 0, szFileName);
@@ -199,20 +190,14 @@ void GConfig::Init_INI()
 	// 개발
 	m_moveSectorWithoutCopySectorVector	= GetPrivateProfileBool(CONFIG_TOKEN_APP_DEVELOP, L"MOVESECTOR_WITHOUT_COPY_SECTORVECTOR", false,	szFileName);
 
-	//Rates
-	m_KillXPRate = GetPrivateProfileInt(CONFIG_TOKEN_APP_RATES, L"MonsterXPRate", 1, szFileName);
-	m_QuestXPRate = GetPrivateProfileInt(CONFIG_TOKEN_APP_RATES, L"QuestXPRate", 1, szFileName);
-	m_QuestGoldRate = GetPrivateProfileInt(CONFIG_TOKEN_APP_RATES, L"QuestGoldRate", 1, szFileName);
-	m_GoldDropRate = GetPrivateProfileInt(CONFIG_TOKEN_APP_RATES, L"GoldRate", 1, szFileName);
-	//char tempResult[5];
-	GetPrivateProfileString(CONFIG_TOKEN_APP_RATES, L"ItemDropRate", L"1.0", szValue, 5, szFileName);
-	m_ItemDropRate = atof((const char*)szValue);
-
 	// StandAlone의 경우 디폴트값을 바꿔 다시 읽습니다.
 	if (m_bStandAlone)
 	{
 		m_isCrashDumpAutoAgree = GetPrivateProfileBool(CONFIG_TOKEN_APP_DEBUG,	L"CRASH_DUMP_AUTO_AGREE",	false,	szFileName);
 	}
+
+	// const
+	m_bImmediateDeleteChar = GetPrivateProfileBool(CONFIG_TOKEN_APP_CONST, L"IMMEDIATE_DELETE_CHAR", true, szFileName);
 }
 
 
@@ -331,12 +316,32 @@ void GConfig::Init_Lua(const GConfig_Lua& lua)
 	}
 }
 
+void GConfig::InitAccountDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_AccountDBConfig.strServer		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"DATABASE",	L"AccountDB",	szValue, 256, szFileName);	m_AccountDBConfig.strDBName		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"USERNAME",	L"dev",			szValue, 256, szFileName);	m_AccountDBConfig.strUserName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"PASSWORD",	L"dev",			szValue, 256, szFileName);	m_AccountDBConfig.strPassword	= szValue;
+}
+
+void GConfig::InitGameDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_GameDBConfig.strServer	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"DATABASE",	L"SoulHuntDB",	szValue, 256, szFileName);	m_GameDBConfig.strDBName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"USERNAME",	L"dev",			szValue, 256, szFileName);	m_GameDBConfig.strUserName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"PASSWORD",	L"dev",			szValue, 256, szFileName);	m_GameDBConfig.strPassword	= szValue;
+}
+
 void GConfig::InitLogDB(const wchar_t* szFileName)
 {
 	wchar_t szValue[256];
 
-	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_strLogDB_Server		= szValue;
-	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"DATABASE",	L"LogDB",		szValue, 256, szFileName);	m_strLogDB_DatabaseName = szValue;
-	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"USERNAME",	L"dev",			szValue, 256, szFileName);	m_strLogDB_UserName		= szValue;
-	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"PASSWORD",	L"dev",			szValue, 256, szFileName);	m_strLogDB_Password		= szValue;
+	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_LogDBConfig.strServer		= szValue;
+	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"DATABASE",	L"LogDB",		szValue, 256, szFileName);	m_LogDBConfig.strDBName		= szValue;
+	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"USERNAME",	L"dev",			szValue, 256, szFileName);	m_LogDBConfig.strUserName	= szValue;
+	GetPrivateProfileString(CONFIG_TAKEN_APP_LOGDB, L"PASSWORD",	L"dev",			szValue, 256, szFileName);	m_LogDBConfig.strPassword	= szValue;
 }

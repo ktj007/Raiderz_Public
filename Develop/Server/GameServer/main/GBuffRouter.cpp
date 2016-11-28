@@ -45,6 +45,23 @@ void GBuffRouter::RouteGainBuff()
 	pOwnerActor->RouteToThisCell(pNewCommand);
 }
 
+void GBuffRouter::RouteGainBuffWithStack()
+{
+	GEntitySync* pOwnerActor = m_pOwner->GetOwner();
+	VALID(pOwnerActor);
+
+	if (!pOwnerActor->IsActor())
+		return;
+
+	MCommand* pNewCommand = MakeNewCommand(MC_BUFF_GAIN_WITH_STACK, 4,
+		NEW_USHORT(ToEntityActor(pOwnerActor)->GetUIID()),
+		NEW_INT(m_pOwner->GetBuffID()),
+		NEW_FLOAT(m_pOwner->GetDurationTime()),
+		NEW_INT(m_pOwner->GetStackCount()));
+
+	pOwnerActor->RouteToThisCell(pNewCommand);
+}
+
 void GBuffRouter::RouteLostBuff()
 {
 	GEntitySync* pOwnerActor = m_pOwner->GetOwner();
@@ -81,7 +98,15 @@ void GBuffRouter::OnGain(MUID uidUser, GEntitySync* pTarget, GBuffInfo* pBuffInf
 	if (bNotify)
 	{
 		NotifyForParty();
-		RouteGainBuff();
+
+		if (m_pOwner->GetStackCount() > 1)
+		{
+			RouteGainBuffWithStack();
+		}
+		else
+		{
+			RouteGainBuff();
+		}
 	}
 }
 

@@ -49,10 +49,27 @@ protected:
 	virtual void ParseTalentServer(CSTalentInfo* pTalentInfo, MXml* pXml, MXmlElement* pElement);
 	void ParseResist( GTalentResist& Resist, MXmlElement* pElement, const char* pszAttrResistMethod, const char* pszAttrResistType, const char* pszAttrResistDifficult );
 public:
+	void ParseApplyRate( MXmlElement* pElement, CSTalentWeaponApplyRate& outApplyRate );
+	void ParseDamageType( MXmlElement* pElement, TALENT_DAMAGE_TYPE& outnDamageType );
+	void ParseUsableType( MXmlElement* pElement, TALENT_USABLE_TYPE& outnUsableType );
+	void ParseFreezeFrame( MXmlElement* pElement, bool& outbFreezeFrame );
+private:
+	void _ParseShoveType( MXmlElement* pElement, PC_SHOVE_TYPE& eShoveType, const char* szAttrName );
+	void _ParsePCShoveType( MXmlElement* pElement, CSTalentInfo* pTalentInfo );
+	void _ParseNPCShoveType( MXmlElement* pElement, CSTalentInfo* pTalentInfo );
+	void _ParseDamageSoundAttrib( MXmlElement* pElement, CSTalentInfo* pTalentInfo );
+	void _ParseConvertID( MXmlElement* pElement, CSConvertIDContainer* pContainer, const char* szAttrName );
+	void _ParseConvertTalent( MXmlElement* pElement, CSTalentInfo* pTalentInfo );
+	void _ParseConvertBuff( MXmlElement* pElement, CSTalentInfo* pTalentInfo );
+public:
 	CSTalentInfoParser() {}
 	virtual ~CSTalentInfoParser() {}
 
+private:
+	TALENT_CONDITION _ParseEffectTiming(const string& strCondition);
+public:
 	void ParseEffectTiming(const string& strValue, TALENT_CONDITION& nValue);
+	void ParseMultiEffectTiming(const string& strValue, set<TALENT_CONDITION>& setValue);
 	void ParseTalentEffect(MXmlElement* pElement, CSEffectInfo& outEffect, const char* pszPrefix, const char* pszSuffix);
 
 	void ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElement* pElement, MXml* pXml);

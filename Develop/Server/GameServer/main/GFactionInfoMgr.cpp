@@ -51,6 +51,7 @@ void GFactionInfoMgr::ParseFaction(MXmlElement* pElement, MXml* pXml)
 
 	if (true ==IsExist(nID))
 	{
+		_VLOGGER->Log(_T(FACTION_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}
 

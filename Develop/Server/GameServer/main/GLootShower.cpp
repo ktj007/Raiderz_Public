@@ -56,13 +56,13 @@ bool GLootShower::Apply( GEntityPlayer* pPlayer, GEntityNPC* pNPC )
 	VALID_RET(pPlayer, false);
 	VALID_RET(pNPC, false);
 
-	set<int> setPreViewableCID;
+	set<CID> setPreViewableCID;
 	pNPC->GetNPCLoot().GetDropList().GetViewableCID(setPreViewableCID);
 
 	GLootMoneyDistributor moneyDistributor;
 	if (false == moneyDistributor.Distribute(pPlayer, pNPC)) return false;
 
-	set<int> setPostVisbleCID;
+	set<CID> setPostVisbleCID;
 	pNPC->GetNPCLoot().GetDropList().GetViewableCID(setPostVisbleCID);
 	gsys.pLootSystem->GetModifyHandler().HandleUnviewablePlayer(setPreViewableCID, setPostVisbleCID, pNPC);
 	gsys.pLootSystem->GetModifyHandler().HandleEmptyNPC(pNPC);
@@ -89,7 +89,7 @@ bool GLootMoneyDistributor::Distribute( GEntityPlayer* pPlayer, GEntityNPC* pNPC
 	VALID_RET(pPlayer, false);
 	VALID_RET(pNPC, false);
 
-	set<int> setMoneyAuthorizedCID;
+	set<CID> setMoneyAuthorizedCID;
 	pNPC->GetNPCLoot().GetDropList().GetDropMoney().GetAuthorizedCID(setMoneyAuthorizedCID);
 
 	int nDistributedMoney = CalcDistributedMoney(pNPC, setMoneyAuthorizedCID);
@@ -101,7 +101,7 @@ bool GLootMoneyDistributor::Distribute( GEntityPlayer* pPlayer, GEntityNPC* pNPC
 	return true;
 }
 
-int GLootMoneyDistributor::CalcDistributedMoney( GEntityNPC* pNPC, set<int> setMoneyAuthorizedCID )
+int GLootMoneyDistributor::CalcDistributedMoney( GEntityNPC* pNPC, set<CID> setMoneyAuthorizedCID )
 {
 	int nDropMoney = pNPC->GetNPCLoot().GetDropList().GetDropMoney().GetQuantity();
 	int nDistributedMoney = nDropMoney;
@@ -113,12 +113,12 @@ int GLootMoneyDistributor::CalcDistributedMoney( GEntityNPC* pNPC, set<int> setM
 	return nDistributedMoney;
 }
 
-bool GLootMoneyDistributor::DB(set<int> setMoneyAuthorizedCID, int nDistributedMoney, int nNpcID)
+bool GLootMoneyDistributor::DB(set<CID> setMoneyAuthorizedCID, int nDistributedMoney, int nNpcID)
 {
 	vector<GDBTASKDATA_LOOTINCREASEMONEY> vecDBTaskData;
 	vector<GDBCACHEDATA_CHARACTER> vecDBCacheData;
 
-	for each (int nCID in setMoneyAuthorizedCID)
+	for each (CID nCID in setMoneyAuthorizedCID)
 	{
 		GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nCID);
 		if (NULL == pPlayer) continue;

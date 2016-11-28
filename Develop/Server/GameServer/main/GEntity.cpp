@@ -234,5 +234,10 @@ bool GEntity::IsActivateUpdate() const
 
 void GEntity::SetFacingDir( const vec3& dir )
 {
+	if (dir.LengthSq() < 0.001f)
+	{
+		return;
+	}
+
 	m_vFacingDir = dir;
 }

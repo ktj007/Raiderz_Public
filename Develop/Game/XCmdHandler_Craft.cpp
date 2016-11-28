@@ -23,15 +23,15 @@ MCommandResult XCmdHandler_Craft::OnShow(MCommand* pCommand, MCommandHandler* pH
 {
 	gvar.MyInfo.CraftableRecipeInfo.Clear();
 
-	vector<TD_CRAFT_RECIPE>& vecRecipeID = gvar.MyInfo.CraftableRecipeInfo.GetRecipeList();
+	vector<int>& vecRecipeID = gvar.MyInfo.CraftableRecipeInfo.GetRecipeList();
 	float& fMakeMod =  gvar.MyInfo.CraftableRecipeInfo.GetMakeMod();
 	if (pCommand->GetBlob(vecRecipeID,	0)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&fMakeMod,	1, MPT_FLOAT)==false) return CR_ERROR;
-	
+
 	vector<XRecipeInfo*>& vecRecipeInfo = gvar.MyInfo.CraftableRecipeInfo.GetRecipeInfoList();
-	for each (TD_CRAFT_RECIPE tdCraftRecipe in vecRecipeID)
+	for each (int tdCraftRecipe in vecRecipeID)
 	{
-		XRecipeInfo* pRecipeInfo = info.recipe->Get(tdCraftRecipe.m_nRecipeID);
+		XRecipeInfo* pRecipeInfo = info.recipe->Get(tdCraftRecipe);
 		if (pRecipeInfo == NULL)
 		{
 			_ASSERT(0);

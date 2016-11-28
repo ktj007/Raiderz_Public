@@ -14,6 +14,9 @@ void SDBTaskTracer::PopTraceTaskID( SDBTASK_ID TaskID )
 
 bool SDBTaskTracer::IsTracingID( SDBTASK_ID TaskID )
 {
+	if (m_bTraceAll)
+		return true;
+
 	if (m_mapTraceID.end() == m_mapTraceID.find(TaskID))
 		return false;
 

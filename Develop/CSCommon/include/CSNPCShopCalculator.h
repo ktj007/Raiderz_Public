@@ -15,6 +15,7 @@ public:
 
 	static float CalcBuyMod(float fBaseBuyMod, FACTION_RELATION_TYPE nFRT);
 	static float CalcSellMod(float fBaseBuyMod, FACTION_RELATION_TYPE nFRT);
+	static float CalcRepairMod(float fBaseRepairMod, FACTION_RELATION_TYPE nFRT);
 
 private:
 	static int CalcRepairPricePerDurability(int nRepairGrade);

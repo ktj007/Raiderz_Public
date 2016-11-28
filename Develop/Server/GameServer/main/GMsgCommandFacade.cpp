@@ -22,6 +22,8 @@
 #include "GNoticeMsgHandler.h"
 #include "GAdviceMsgHandler.h"
 #include "GWhisperBackMsgHandler.h"
+#include "GNoviceMsgHandler.h"
+#include "GLFPMsgHandler.h"
 
 GMsgCommandFacade::GMsgCommandFacade()
 {
@@ -38,6 +40,8 @@ GMsgCommandFacade::GMsgCommandFacade()
 	SetHandler(MT_CHANNEL, new GChannelMsgHandler());
 	SetHandler(MT_FIELD, new GFieldMsgHandler());
 	SetHandler(MT_GLOBAL, new GGlobalMsgHandler());
+	SetHandler(MT_NOVICE, new GNoviceMsgHandler());
+	SetHandler(MT_LFP, new GLFPMsgHandler());
 	SetHandler(MT_SYSTEM, new GSystemMsgHandler());
 	SetHandler(MT_NOTICE, new GNoticeMsgHandler());	
 	SetHandler(MT_ADVICE, new GAdviceMsgHandler());

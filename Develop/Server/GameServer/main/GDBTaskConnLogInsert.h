@@ -17,7 +17,7 @@
 //		CONNLOG_INSERT = 0,
 //	};
 //
-//	void					Input(const int nAID);
+//	void					Input(const AID nAID);
 //
 //
 //	void					OnExecute(mdb::MDatabase& rfDB);

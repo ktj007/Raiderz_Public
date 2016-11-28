@@ -53,13 +53,13 @@ void XModulePost::PostStop( vec3& vPos, vec3& vDir )
 	XPOSTCMD2(MC_ACTION_STOP_REQ, MCommandParameterVector(vPos), MCommandParameterShortVector2(vDir));
 }
 
-void XModulePost::PostMoveStop( vec3& vPos )
+void XModulePost::PostMoveStop( vec3& vPos, vec3& vDir)
 {
 	m_PostChecker.SetLastPostedPosition(vPos);
 
 	__Report_Movable_Debug_PostMessage(L"MC_ACTION_STOP_MOVE_REQ", vPos);
 
-	XPOSTCMD1(MC_ACTION_STOP_MOVE_REQ, MCommandParameterVector(vPos));
+	XPOSTCMD2(MC_ACTION_STOP_MOVE_REQ, MCommandParameterVector(vPos), MCommandParameterShortVector2(vDir));
 }
 
 void XModulePost::PostPosSync( vec3& vPos )
@@ -116,7 +116,7 @@ void XModulePost::_UpdateMovementPost( float fDelta, vec3& pos, vec3& dir, bool 
 		break;
 	case XMovementPostChecker::RESULT_PostMoveStop:
 		{
-			PostMoveStop(pos);
+			PostMoveStop(pos, dir);
 		}
 		break;
 	case XMovementPostChecker::RESULT_PostPosSync:

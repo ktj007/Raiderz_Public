@@ -46,7 +46,7 @@ void PTradeMarketServiceConsumer::OnRecvCmd(minet::MCommand* const cmd)
 	}
 
 	CID playerCID = 0;
-	if (false == cmd->GetParameter(&playerCID, 0, MPT_INT))
+	if (false == cmd->GetParameter(&playerCID, 0, MPT_INT64))
 	{
 		mlog("PTradeMarketServiceConsumer::OnRecvCmd() - invalid playerCID, CID == 0\n");
 		return;

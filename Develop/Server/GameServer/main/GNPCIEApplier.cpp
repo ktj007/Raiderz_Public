@@ -53,7 +53,7 @@ bool GNPCIEApplier::Apply(GEntityPlayer* pPlayer, GNPCInteractionElementInfo* pI
 	case IT_CRAFT :			return Craft(pPlayer, nSingleAct);
 	case IT_INN_SLEEP :		return InnSleep(pPlayer, nSingleAct);
 
-	case IT_SOULBINDING:	return SoulBinding(pPlayer, nSingleAct);
+	// case IT_SOULBINDING:	return SoulBinding(pPlayer, nSingleAct);
 	case IT_CHALLENGERQUEST:return ChallengerQuest(pPlayer);
 
 	case IT_GATHER_1 :

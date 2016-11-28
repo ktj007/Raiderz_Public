@@ -6,7 +6,8 @@ class GEntityPlayer;
 /// 파티 매니져
 class GPartyManager : public MTestMemPool<GPartyManager>
 {
-	typedef tr1::unordered_map<uint64, GParty*>		PARTY_MAP;		// MUID, GParty*
+public:
+	typedef map<MUID, GParty*>	PARTY_MAP;
 public:
 	GPartyManager() {}
 	virtual ~GPartyManager();
@@ -18,6 +19,8 @@ public:
 
 	GParty* FindParty(MUID uidParty);
 	GParty* FindParty( GEntityPlayer* pReqPlayer );
+
+	const PARTY_MAP& GetPartyMap() const;
 private:	
 	PARTY_MAP		m_mapEntries;
 };

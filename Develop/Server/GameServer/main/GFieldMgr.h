@@ -1,7 +1,11 @@
 #ifndef _GFIELD_MGR_H
 #define _GFIELD_MGR_H
 
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
 #include <hash_map>
+#endif
 
 enum GAME_TIME_TYPE;
 enum DYNAMIC_FIELD_TYPE;
@@ -25,7 +29,11 @@ class GFieldMgr : public MTestMemPool<GFieldMgr>
 {
 	friend class GFieldFactory;
 public:	
-	typedef stdext::hash_map<uint64, GField*>	FIELD_BY_UID_MAP;
+#if (_MSC_VER >= 1900)
+	typedef std::unordered_map<uint64, GField*>	FIELD_BY_UID_MAP;
+#else
+	typedef std::unordered_map<uint64, GField*>	FIELD_BY_UID_MAP;
+#endif
 	typedef map<int, GSharedFieldMaster*>		SHARED_FIELD_MASTER_MAP;
 	typedef map<MUID, GDynamicFieldMaster*>		DYNAMIC_FIELD_GROUP_MAP;
 

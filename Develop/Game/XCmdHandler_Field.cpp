@@ -314,17 +314,18 @@ MCommandResult XCmdHandler_Field::OnInPlayer(MCommand* pCommand, MCommandHandler
 
 	TD_UPDATE_CACHE_PLAYER playerInfo;
 	TD_PLAYER_FEATURE_TATTOO playerFeatrueTattoo;
+	TD_PLAYER_BUFF_LIST playerFeatrueBuffList;
 	if (false == pCommand->GetSingleBlob(playerInfo, 0)) return CR_ERROR;
 	if (false == pCommand->GetSingleBlob(playerFeatrueTattoo, 1)) return CR_ERROR;
 
-	MUID uidPlayer = playerInfo.uid;
+	MUID uidPlayer = playerInfo.SimpleInfo.uid;
 	if (uidPlayer == XGetMyUID()) return CR_TRUE;	
 
-	gg.currentgamestate->InPlayer(uidPlayer, &playerInfo, playerFeatrueTattoo.IsValid() ? &playerFeatrueTattoo : NULL);
+	gg.currentgamestate->InPlayer(uidPlayer, &playerInfo, playerFeatrueTattoo.IsValid() ? &playerFeatrueTattoo : NULL, playerFeatrueBuffList.IsValid() ? &playerFeatrueBuffList : NULL);
 
 	if (global.net && global.net->GetNetClient())
 	{
-		UIID nPlayerUIID = playerInfo.nUIID;
+		UIID nPlayerUIID = playerInfo.SimpleInfo.nUIID;
 
 		XWhoIsRequester* pWhoIsRequester = global.net->GetNetClient()->GetWhoIsRequester();
 		pWhoIsRequester->Erase(nPlayerUIID);

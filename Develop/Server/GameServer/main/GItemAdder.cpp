@@ -236,7 +236,6 @@ bool GItemAdder::DB_Increase(GEntityPlayer* pPlayer, GItem* pItem, int nIncrease
 		, pItem->m_pItemData->m_nMaxDurability
 		, pItem->GetEnchantCount()
 		, pItem->m_pItemData->m_nTexColor
-		, pItem->m_nXP , pItem->m_nNextAttuneXP , pItem->m_nAttuneLvl
 		, pItem->m_bBind
 		, pItem->m_UsagePeriod.IsPeriod() || pItem->m_ExpirationPeriod.IsPeriod()
 		, 0
@@ -296,7 +295,7 @@ void GItemAdder::Route(GEntityPlayer* pPlayer, vector<ADD_ITEM>& vecAddItem)
 	{
 		if (itor->m_nStackModAmt == itor->m_nToStackAmt)
 		{
-			vecTDItemInsert.push_back(TD_ITEM_INSERT(itor->m_nItemID, itor->m_nSlotID, itor->m_nStackModAmt, itor->m_nDurability, itor->m_nColor, 0));
+			vecTDItemInsert.push_back(TD_ITEM_INSERT(itor->m_nItemID, itor->m_nSlotID, itor->m_nStackModAmt, itor->m_nDurability, itor->m_nColor, 0, NULL, 0, TD_ITEM_ATTRIBUTE()));
 		}
 		else
 		{
@@ -304,8 +303,9 @@ void GItemAdder::Route(GEntityPlayer* pPlayer, vector<ADD_ITEM>& vecAddItem)
 		}
 	}
 
-	MCommand* pNewCmd = MakeNewCommand(MC_ITEM_ADD, 
-		2,
+	MCommand* pNewCmd = MakeNewCommand(MC_ITEM_ADD,
+		3,
+		NEW_INT(0),	// TODO: reward cause
 		NEW_BLOB(vecTDItemInsert),
 		NEW_BLOB(vecTDItemIncrease));
 

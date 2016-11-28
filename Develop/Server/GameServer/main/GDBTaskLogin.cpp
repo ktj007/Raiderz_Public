@@ -46,7 +46,7 @@ void GDBTaskLogin::OnExecute(mdb::MDatabase& rfDB)
 		return;
 	}
 
-	m_Result.m_nGSN		= rs.FieldW(L"ACCN_ID").AsInt64();
+	m_Result.m_nGSN		= rs.FieldW(L"ACCN_SN").AsInt64();
 	m_Result.m_strPWD	= rs.FieldW(L"PWD").AsWString();
 	m_Result.m_bNEW_ACC = rs.FieldW(L"NEW_ACC").AsBool();
 }
@@ -91,7 +91,7 @@ void GDBTaskLogin::Completer::DebugCheckExistAccount()
 		, m_Data.m_strSITE_USER_ID
 		, m_Data.m_strPWD);
 
-	unsigned int nDbgAID;
+	AID nDbgAID;
 
 	gsys.pDBManager->AccInsert(nDbgAID, data);
 }
@@ -104,7 +104,7 @@ void GDBTaskLogin::Completer::InitAccountInfo()
 		pNewPlayer->OnEndLogin();
 
 		// 계정 정보 설정
-		pNewPlayer->InitAccountInfo((int)m_Result.m_nGSN, m_Data.m_strUSER_ID, m_Result.m_bNEW_ACC);
+		pNewPlayer->InitAccountInfo(m_Result.m_nGSN, m_Data.m_strUSER_ID, m_Result.m_bNEW_ACC);
 	}
 }
 

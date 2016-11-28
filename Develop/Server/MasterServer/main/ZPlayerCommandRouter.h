@@ -26,6 +26,9 @@ public:
 	// ÇÇ¸Á
 	static void SendPmangAddPlayerResponse(const MUID& uidLoginServer, const MUID& uidPlayer, int nResult);
 
+	// PWE
+	static void SendPWEAddPlayerResponse(const MUID& uidLoginServer, const MUID& uidPlayer, int nResult);
+
 private:
 	static void MakeProxyPlayerInfo(TD_PROXY_PLAYER_INFO* pInfo, const ZPlayer* pPlayer);
 };

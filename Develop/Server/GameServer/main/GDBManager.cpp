@@ -39,14 +39,18 @@
 #include "GDBTaskDataRecipe.h"
 #include "GDBTaskDataFaction.h"
 #include "GDBTaskDataEmblem.h"
-#include "GDBTaskDataEffRemainTime.h"
+// #include "GDBTaskDataEffRemainTime.h"
+#include "GDBTaskDataTalentCoolTime.h"
+#include "GDBTaskDataBuffRemainEffect.h"
 #include "GDBTaskDataParty.h"
 #include "GDBTaskDataConnection.h"
 #include "MLocale.h"
 #include "GConst.h"
 #include "GMailSystem.h"
 #include "GItemConvertPrefixedString.h"
-#include "GEffRemainTimeSqlBuilder.h"
+// #include "GEffRemainTimeSqlBuilder.h"
+#include "GTalentCoolTimeSqlBuilder.h"
+#include "GBuffRemainEffectSqlBuilder.h"
 #include "GDBTaskNPCKillLogBuilder.h"
 #include "GTimeCalculator.h"
 #include "GDB_CODE.h"
@@ -60,7 +64,12 @@
 #include "GDBCacheSystem.h"
 #include "GDBTaskTradeMarketData.h"
 #include "GDBTaskTradeMarketPutOn.h"
-#include "GDBTaskCharItemUpdateXP.h"
+#include "MDBUtil.h"
+#include "GDBTaskItemSort.h"
+#include "GDBTaskGuideBookInsert.h"
+
+#include <json.hpp>
+using namespace nlohmann;
 
 
 #ifdef _DEBUG
@@ -75,7 +84,7 @@
 // 아이템
 // 퀘스트
 
-GDBManager::GDBManager() : SDBManager(), m_pGameDB(NULL), m_pGameDBSelectChar(NULL), m_pLogDB(NULL), m_nGameDBQCount(0), m_nGameDBSelectCharQCount(0), m_nLogDBQCount(0)
+GDBManager::GDBManager() : SDBManager(), m_pAccountDB(NULL), m_pGameDB(NULL), m_pGameDBSelectChar(NULL), m_pLogDB(NULL), m_nAccountDBQCount(0), m_nGameDBQCount(0), m_nGameDBSelectCharQCount(0), m_nLogDBQCount(0)
 , m_pLogCaches(NULL)
 {
 }
@@ -89,11 +98,14 @@ GDBManager::~GDBManager()
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 계정 추가 - UserID, Name
-wchar_t g_szDB_ACC_INSERT[] = L"{CALL dbo.USP_RZ_ACCOUNT_INSERT (N'%s', N'%s', N'%s', N'%s')}";
-bool GDBManager::AccInsert(unsigned int& outAID, GDBT_ACC_INSERT& data)
+wchar_t g_szDB_ACC_INSERT[] = L"{CALL RZ_ACCOUNT_INSERT ('%s', '%s')}";
+bool GDBManager::AccInsert(AID& outAID, GDBT_ACC_INSERT& data)
 {
 	CString strSQL;
-	strSQL.Format(g_szDB_ACC_INSERT, MCleanSQLStr(data.m_strUSER_ID).c_str(), MCleanSQLStr(data.m_strSITE_CODE).c_str(), MCleanSQLStr(data.m_strSITE_USER_ID).c_str(), MCleanSQLStr(data.m_strPWD).c_str());
+	strSQL.Format(g_szDB_ACC_INSERT
+		, mdb::MDBStringEscaper::Escape(data.m_strUSER_ID).c_str()
+		, mdb::MDBStringEscaper::Escape(data.m_strPWD).c_str()
+		);
 
 	mdb::MDBRecordSet rs(&m_DB);
 
@@ -107,7 +119,7 @@ bool GDBManager::AccInsert(unsigned int& outAID, GDBT_ACC_INSERT& data)
 		return false;
 	}
 
-	outAID = (uint32)rs.FieldW(L"ACCN_ID").AsInt64();
+	outAID = rs.FieldW(L"ACCN_SN").AsInt64();
 
 	return true;
 }
@@ -115,7 +127,7 @@ bool GDBManager::AccInsert(unsigned int& outAID, GDBT_ACC_INSERT& data)
 // 계정 삭제 - AccountID
 wchar_t g_szDB_DELETE_ACCOUNT[] = L"{CALL spDeleteAccount (%u)}";
 
-bool GDBManager::AccDelete(const unsigned int nAID)
+bool GDBManager::AccDelete(const AID nAID)
 {
 	//CString strSQL;
 	//strSQL.Format(g_szDB_DELETE_ACCOUNT, nAID);
@@ -166,13 +178,14 @@ void GDBManager::DisconnLogInsert(const GDBT_DISCONN_LOG& data)
 // 캐릭터 관련 ----------------------------------------
 
 // 캐릭터 생성
-wchar_t g_szDB_CHAR_INSERT[] = L"{CALL dbo.USP_RZ_CHAR_INSERT (%d, %I64d, N'%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d)}";
+// wchar_t g_szDB_CHAR_INSERT[] = L"{CALL dbo.USP_RZ_CHAR_INSERT (%d, %I64d, N'%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d)}";
+wchar_t g_szDB_CHAR_INSERT[] = L"{CALL RZ_CHAR_INSERT (%I64d, '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', %d)}";
 bool GDBManager::CharInsert(const MUID& uidPlayer
-								 , const int nAID, const wchar_t* szName
+								 , const AID nAID, const wchar_t* szName
 								 , const uint8 nLevel, const int nXP, const int nMoney
 								 , const int nRace, const int nSex
-								 , const int nHair, const int nFace, const short nHairColor, const short nSkinColor, const uint8 nEyeColor, const int nVoice
-								 , const uint8 nMakeUp, const uint8 nTattooType, short nTattooPosX, short nTattooPosY, uint8 nTattooScale
+								 , const int nHair, const int nFace, const short nHairColor, const short nSkinColor, const int16 nEyeColor, const int nVoice
+								 , const int16 nMakeUp, const int16 nTattooType, const int16 nTattooColor, short nTattooPosX, short nTattooPosY, uint8 nTattooScale
 								 , const int nHP, const int nEN, const int nSTA
 								 , const int8 nTotalTP
 								 , const int nFatigue
@@ -189,12 +202,8 @@ bool GDBManager::CharInsert(const MUID& uidPlayer
 
 	CString strSQLInsertCharacter;
 	strSQLInsertCharacter.Format(g_szDB_CHAR_INSERT
-		, GConfig::m_nMyWorldID
-		, (int64)nAID
-		, MCleanSQLStr(szName).c_str()
-		, nLevel
-		, nXP
-		, nMoney
+		, nAID
+		, mdb::MDBStringEscaper::Escape(szName).c_str()
 		, nRace
 		, nSex
 		, nHair
@@ -206,18 +215,10 @@ bool GDBManager::CharInsert(const MUID& uidPlayer
 		, nTattooPosX
 		, nTattooPosY
 		, nTattooScale
+		, nTattooColor
 		, nMakeUp
-		, nTotalTP
-		, nHP
-		, nEN
-		, nSTA
-		, nFatigue
-		, nSoulBindingID
-		, nInnRoomID
-		, nPrimaryPalettedID
-		, nSecondaryPalettedID
+		, nVoice
 		, nTalentStyle
-		, nItemSet
 		, nItemColor);
 
 	pTask->Input(nAID);
@@ -226,12 +227,12 @@ bool GDBManager::CharInsert(const MUID& uidPlayer
 	return Post(pTask);
 }
 
-wchar_t g_szDB_CHAR_DELETE[] = L"{? = CALL dbo.USP_RZ_CHAR_DELETE (%d, %I64d, %I64d)}";
+wchar_t g_szDB_CHAR_DELETE[] = L"{CALL RZ_CHAR_DELETE (%I64d, %s)}";
 // 캐릭터 삭제
 bool GDBManager::CharDelete(const GDBT_CHAR_DELETE& data)
 {
 	CString strSQL;
-	strSQL.Format(g_szDB_CHAR_DELETE, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
+	strSQL.Format(g_szDB_CHAR_DELETE, data.m_nCID, mdb::MDBBoolUtil::ToWString(GConfig::m_bImmediateDeleteChar));
 
 	GDBTaskCharDelete* pTask = new GDBTaskCharDelete(data.m_uidPlayer);
 	if (NULL == pTask)
@@ -245,7 +246,7 @@ bool GDBManager::CharDelete(const GDBT_CHAR_DELETE& data)
 
 
 // 계정 로그인 정보 받아오기
-wchar_t g_szDB_LOGIN_GETINFO[] = L"{CALL dbo.USP_RZ_LOGIN_GET_INFO (N'%s', N'%s')}";
+wchar_t g_szDB_LOGIN_GETINFO[] = L"{CALL RZ_LOGIN_GET_INFO ('%s')}";
 bool GDBManager::LoginGetInfo(GDBT_ACC_LOGIN& data)
 {
 	GDBTaskLogin* pTask = new GDBTaskLogin(data.m_uidPlayer);
@@ -253,7 +254,7 @@ bool GDBManager::LoginGetInfo(GDBT_ACC_LOGIN& data)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_LOGIN_GETINFO, MCleanSQLStr(data.m_strSITE_CODE).c_str(), MCleanSQLStr(data.m_strSITE_USER_ID).c_str());
+	strSQL.Format(g_szDB_LOGIN_GETINFO, mdb::MDBStringEscaper::Escape(data.m_strSITE_USER_ID).c_str());
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -261,7 +262,8 @@ bool GDBManager::LoginGetInfo(GDBT_ACC_LOGIN& data)
 	return Post(pTask);
 }
 
-wchar_t g_szDB_ITEM_DELETE[] = L"{CALL dbo.USP_RZ_ITEM_DELETE (%d, %I64d, %d, %d, %I64d)}";
+// wchar_t g_szDB_ITEM_DELETE[] = L"{CALL dbo.USP_RZ_ITEM_DELETE (%d, %I64d, %d, %d, %I64d)}";
+wchar_t g_szDB_ITEM_DELETE[] = L"{CALL RZ_ITEM_DELETE (%I64d, %d, '%d')}";
 bool GDBManager::ItemDelete( const GDBT_ITEM_DATA& data )
 {
 	GDBTaskItemDelete* pTask = new GDBTaskItemDelete(data.m_uidPlayer);
@@ -275,9 +277,13 @@ bool GDBManager::ItemDelete( const GDBT_ITEM_DATA& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_DELETE
 		, GConfig::m_nMyWorldID
-		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nIUID);	
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nIUID);
+		*/
+	strSQL.Format(g_szDB_ITEM_DELETE,
+		data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -286,17 +292,19 @@ bool GDBManager::ItemDelete( const GDBT_ITEM_DATA& data )
 void GDBManager::ItemDeleteLog( const GDBT_ITEM_DATA& data )
 {
 	m_pLogCaches->m_ItemDeleteLogCache.PushBack(GLOG_DATA_ITEM_DELETE(data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nCharPtm, data.m_nDeltaCharPtm, data.m_nLevel, data.m_nMoney, data.m_Item.m_nIUID, data.m_Item.m_nItemID
-		, -data.m_nModStackAmt, data.m_Item.m_nMaxDura, 0, data.m_Item.m_strExpiDt, GTimeCalculator::GetTimeAsString(GTimeSec(0))), IsDirectPostItem(data.m_Item.m_nItemID));
+		, -data.m_nModStackAmt, data.m_Item.m_nMaxDura, 0, data.m_Item.m_strExpiDt /* TODO: expiration period in interval type. */, GTimeCalculator::GetTimeAsString(GTimeSec(0))), IsDirectPostItem(data.m_Item.m_nItemID));
 }
 
 // 캐릭터 아이템 장비하기
-wchar_t g_szDB_ITEM_EQUIP[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_EQUIPMENT (%d, %I64d, %d, %d, %I64d, %d, %d, %d, %d, %I64d, %d, %d, %d, %I64d, %d, %d)}";
+// wchar_t g_szDB_ITEM_EQUIP[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_EQUIPMENT (%d, %I64d, %d, %d, %I64d, %d, %d, %d, %d, %I64d, %d, %d, %d, %I64d, %d, %d)}";
+wchar_t g_szDB_ITEM_EQUIP[] = L"{CALL RZ_ITEM_EQUIP (%I64d, '%d', '%d', '%d', %s, '%d', '%d', '%d')}";
 bool GDBManager::ItemEquip(GDBT_ITEM_EQUIP& data)
 {
 	GDBTaskItemEquip* pTask = new GDBTaskItemEquip(data.uidPlayer);
 	if (NULL == pTask)
 		return false;
 
+	/*
 	uint8 nUneqSlotType1 = 0;
 	uint8 nUneqSlotType2 = 0;
 
@@ -304,14 +312,21 @@ bool GDBManager::ItemEquip(GDBT_ITEM_EQUIP& data)
 		nUneqSlotType1 = SLOTTYPE_INVENTORY;
 	if (data.unequip2.m_nSlotType > 0)
 		nUneqSlotType2 = SLOTTYPE_INVENTORY;
+		*/
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_EQUIP
 		, GConfig::m_nMyWorldID
 		, data.nCID
 		, data.equip.m_nSlotType, data.equip.m_nSlotID, data.equip.m_nIUID, data.equip.m_nDura, data.equip.m_bClaimed, data.equip.m_nToSlotID
 		, data.unequip1.m_nSlotID, data.unequip1.m_nIUID, data.unequip1.m_nDura, data.unequip1.m_nToSlotID
 		, data.unequip2.m_nSlotID, data.unequip2.m_nIUID, data.unequip2.m_nDura, data.unequip2.m_nToSlotID);
+		*/
+	strSQL.Format(g_szDB_ITEM_EQUIP
+		, data.nCID
+		, data.equip.m_nSlotID, data.equip.m_nToSlotID, data.equip.m_nDura, mdb::MDBBoolUtil::ToWString(data.equip.m_bClaimed)
+		, data.unequip2.m_nSlotID, data.unequip2.m_nToSlotID, data.unequip2.m_nDura);
 
 	if (!pTask->Input(data))
 	{
@@ -325,13 +340,15 @@ bool GDBManager::ItemEquip(GDBT_ITEM_EQUIP& data)
 }
 
 // 캐릭터 장비된 아이템 해제하기
-wchar_t g_szDB_ITEM_UNEQUIP[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_EQUIPMENT (%d, %I64d, %d, %d, %I64d, %d, %d, %d, %d, %I64d, %d, %d, %d, %I64d, %d, %d)}";
+// wchar_t g_szDB_ITEM_UNEQUIP[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_EQUIPMENT (%d, %I64d, %d, %d, %I64d, %d, %d, %d, %d, %I64d, %d, %d, %d, %I64d, %d, %d)}";
+wchar_t g_szDB_ITEM_UNEQUIP[] = L"{CALL RZ_ITEM_UNEQUIP (%I64d, '%d', '%d', '%d')}";
 bool GDBManager::ItemUnequip(GDBT_ITEM_UNEQUIP& data)
 {
 	GDBTaskItemUnequip* pTask = new GDBTaskItemUnequip(data.uidPlayer);
 	if (NULL == pTask)
 		return false;
 
+	/*
 	uint8 nUneqSlotType1 = 0;
 	uint8 nUneqSlotType2 = 0;
 
@@ -339,14 +356,20 @@ bool GDBManager::ItemUnequip(GDBT_ITEM_UNEQUIP& data)
 		nUneqSlotType1 = SLOTTYPE_INVENTORY;
 	if (data.unequip2.m_nSlotType > 0)
 		nUneqSlotType2 = SLOTTYPE_INVENTORY;
+		*/
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_EQUIP
 		, GConfig::m_nMyWorldID
 		, data.nCID
 		, 0, 0, (int64)0, 0, false, 0
 		, data.unequip1.m_nSlotID, data.unequip1.m_nIUID, data.unequip1.m_nDura, data.unequip1.m_nToSlotID
 		, data.unequip2.m_nSlotID, data.unequip2.m_nIUID, data.unequip2.m_nDura, data.unequip2.m_nToSlotID);
+		*/
+	strSQL.Format(g_szDB_ITEM_UNEQUIP
+		, data.nCID
+		, data.unequip1.m_nSlotID, data.unequip1.m_nToSlotID, data.unequip1.m_nDura);
 
 	if (!pTask->Input(data))
 	{
@@ -359,7 +382,8 @@ bool GDBManager::ItemUnequip(GDBT_ITEM_UNEQUIP& data)
 }
 
 // 아이템 내구도 변경 - IUID, nDurability
-wchar_t g_szDB_ITEM_UPDATE_DURABILITY[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_DURA (%d, %I64d, %d, %d, %I64d, %d)}";
+// wchar_t g_szDB_ITEM_UPDATE_DURABILITY[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_DURA (%d, %I64d, %d, %d, %I64d, %d)}";
+wchar_t g_szDB_ITEM_UPDATE_DURABILITY[] = L"{CALL RZ_ITEM_UPDATE_DURABILITY (%I64d, '%d')}";
 bool GDBManager::ItemDescDurability(GDBT_ITEM_DEC_DURA_DATA& data)
 {
 	GDBTaskItemDecDura* pTask = new GDBTaskItemDecDura(data.m_uidPlayer);
@@ -373,9 +397,13 @@ bool GDBManager::ItemDescDurability(GDBT_ITEM_DEC_DURA_DATA& data)
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_UPDATE_DURABILITY
 		, GConfig::m_nMyWorldID
 		, data.m_nCID, data.m_nSlotType, data.m_nSlotID, data.m_nIUID, data.m_nDura);
+		*/
+	strSQL.Format(g_szDB_ITEM_UPDATE_DURABILITY
+		, data.m_nIUID, data.m_nDura);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -425,7 +453,7 @@ bool GDBManager::ItemDye( const GDBT_ITEM_DYE& data )
 
 // 아이템 영혼량 변경 - IUID, nSoulQuantity
 wchar_t g_szDB_ITEM_UPDATE_SOUL_COUNT[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_SOUL_CNT (%d, %I64d, %d, %d, %I64d, %d)}";
-bool GDBManager::ItemUpdateSoulCnt(const int64 nCID, const uint8 nSlotType, const int16 nSlotID, const int64 nIUID, const uint8 nSoulCnt)
+bool GDBManager::ItemUpdateSoulCnt(const CID nCID, const uint8 nSlotType, const int16 nSlotID, const int64 nIUID, const uint8 nSoulCnt)
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(0, (SDBTASK_ID)0);
 	if (NULL == pTask)
@@ -476,8 +504,8 @@ bool GDBManager::CharAddXP( GDBT_CHAR_XP_DATA& data )
 	}
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_CHAR_UPDATE_XP (%d, %I64d, %I64d, %d, %d, %d)}"
-		, GConfig::m_nMyWorldID, data.m_nAID, (int64)data.m_nCID, data.m_nXP, data.m_nMoney, data.m_nCharPtm);
+	strSQL.Format(L"{CALL RZ_CHAR_UPDATE_EXP (%I64d, %d, %d)}"
+		, data.m_nCID, data.m_nXP, data.m_nMoney);
 	
 	pTask->PushSQL(strSQL);
 
@@ -491,30 +519,9 @@ void GDBManager::CharAddXPLog( GDBT_CHAR_XP_DATA& data )
 		, GTimeCalculator::GetTimeAsString(GTimeSec(0)), data.m_nNpcID));
 }
 
-bool GDBManager::ItemAddXP( GDBT_ITEM_XP_DATA& data )
-{
-	GDBTaskCharItemUpdateXP* pTask = new GDBTaskCharItemUpdateXP(data.m_uidPlayer);
-	if (NULL == pTask)
-		return false;
-
-	if (!pTask->Input(data))
-	{
-		SAFE_DELETE(pTask);
-		return false;
-	}
-
-	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_CHAR_UPDATE_ITEM_XP (%d, %I64d, %I64d, %I64d, %d, %d)}"
-		, GConfig::m_nMyWorldID, data.m_nAID, (int64)data.m_nCID, data.m_uidItem , data.m_nXP, data.m_nNextLvlXP);
-	
-	pTask->PushSQL(strSQL);
-
-	return Post(pTask);
-
-}
-
 // 캐릭터의 레벨 업데이트 - CID, XP, Level
-wchar_t g_szDB_CHAR_LEVEL_UP[] = L"{CALL dbo.USP_RZ_CHAR_LEVEL_UP (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %f, %f, %f)}";
+// wchar_t g_szDB_CHAR_LEVEL_UP[] = L"{CALL dbo.USP_RZ_CHAR_LEVEL_UP (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %f, %f, %f)}";
+wchar_t g_szDB_CHAR_LEVEL_UP[] = L"{CALL RZ_CHAR_LEVEL_UP (%I64d, %d, '%d', %d, '%d', %f, %f, %f)}";
 bool GDBManager::CharLevelUp( GDBT_CHAR_LEVEL_UP_DATA& data)
 {
 	GDBTaskCharLevelUp* pTask = new GDBTaskCharLevelUp(data.m_uidPlayer);
@@ -528,9 +535,14 @@ bool GDBManager::CharLevelUp( GDBT_CHAR_LEVEL_UP_DATA& data)
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_CHAR_LEVEL_UP
 		, GConfig::m_nMyWorldID
 		, data.m_nAID, data.m_nCID, data.m_nXP, data.m_nLevel, data.m_nMoney, data.m_nCharPtm, data.m_nRemainTP
+		, data.m_vPos.x, data.m_vPos.y, data.m_vPos.z);
+		*/
+	strSQL.Format(g_szDB_CHAR_LEVEL_UP
+		, data.m_nCID, data.m_nXP, data.m_nLevel, data.m_nMoney, data.m_nDeltaTP
 		, data.m_vPos.x, data.m_vPos.y, data.m_vPos.z);
 
 	pTask->PushSQL(strSQL);
@@ -578,7 +590,7 @@ void GDBManager::CharLevelUpLog( GDBT_CHAR_LEVEL_UP_DATA& data )
 	Post(pTask);
 }
 
-wchar_t g_szDB_INN_REGISTROOM[] = L"{CALL dbo.USP_RZ_INN_ROOM_REGIST (%d, %I64d, %I64d, %d, %d)}";
+wchar_t g_szDB_INN_REGISTROOM[] = L"{CALL RZ_INN_ROOM_REGIST (%I64d, %d)}";
 bool GDBManager::CharRegistInnRoom( const GDBT_CHAR_REGIST_INN_ROOM& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_INNROOMREIST);
@@ -586,29 +598,30 @@ bool GDBManager::CharRegistInnRoom( const GDBT_CHAR_REGIST_INN_ROOM& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_INN_REGISTROOM, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nRoomID, data.m_nCharPtm);
+	strSQL.Format(g_szDB_INN_REGISTROOM, data.m_nCID, data.m_nRoomID);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-wchar_t g_szDB_CHAR_UPDATE_TP[] = L"{CALL dbo.USP_RZ_CHAR_UPDATE_TP (%d, %I64d, %I64d, %d, %d)}";
-bool GDBManager::GM_CharUpdateTP(const int64 nAID, const int64 nCID, const int16 nRemainTP, const int16 nTotalTP, const int nCharPtm)
+wchar_t g_szDB_GM_CHAR_UPDATE_TP[] = L"{CALL RZ_GM_CHAR_UPDATE_TP (%I64d, '%d', '%d')}";
+bool GDBManager::GM_CharUpdateTP(const AID nAID, const CID nCID, const int16 nRemainTP, const int16 nTotalTP, const int nCharPtm)
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(0, SDBTID_CHAR_UPDATE_TP);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_CHAR_UPDATE_TP, GConfig::m_nMyWorldID, nAID, nCID, nRemainTP, nCharPtm);
+	strSQL.Format(g_szDB_GM_CHAR_UPDATE_TP, nCID, SST_MAIN /* TODO: 2nd skill set. */, nRemainTP);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_szDB_NPCShop_BuyInsert[] =L"{CALL dbo.USP_RZ_ITEM_BUY_INSERT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %d, %d, %d)}";
+// const wchar_t g_szDB_NPCShop_BuyInsert[] =L"{CALL dbo.USP_RZ_ITEM_BUY_INSERT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %d, %d, %d)}";
+const wchar_t g_szDB_NPCShop_BuyInsert[] = L"{CALL RZ_ITEM_INSERT (%I64d, %d, '%d', %d, '%d', '%d', '%d', %d, %s, %s, %s, %d, %d)}";
 bool GDBManager::NPCShop_BuyInsert( const GDBT_NPC_SHOP_TRADE_DATA& data )
 {
 	GDBTaskItemBuyInsert* pTask = new GDBTaskItemBuyInsert(data.m_uidPlayer);
@@ -622,17 +635,25 @@ bool GDBManager::NPCShop_BuyInsert( const GDBT_NPC_SHOP_TRADE_DATA& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_NPCShop_BuyInsert
 		, GConfig::m_nMyWorldID
 		, data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID, data.m_Item.m_nStackAmt
 		, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor, data.m_Item.m_bClaimed, data.m_Item.m_bPeriodItem
 		, data.m_Item.m_nUsagePeriod, data.m_Item.m_strExpiDt.c_str(), data.m_Item.m_nCharPtm, data.m_nXP, data.m_nMoney);
+		*/
+	strSQL.Format(g_szDB_NPCShop_BuyInsert
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID, data.m_Item.m_nStackAmt
+		, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor
+		, mdb::MDBBoolUtil::ToWString(data.m_Item.m_bClaimed), mdb::MDBBoolUtil::ToWString(data.m_Item.m_bPeriodItem)
+		, L"NULL" /* TODO: expiration period in interval type. */, data.m_nXP, -data.m_nModMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);	
 }
 
-const wchar_t g_szDB_NPCShop_BuyUpdate[] = L"{CALL dbo.USP_RZ_ITEM_BUY_UPDATE (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d, %d)}";
+// const wchar_t g_szDB_NPCShop_BuyUpdate[] = L"{CALL dbo.USP_RZ_ITEM_BUY_UPDATE (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d, %d)}";
+const wchar_t g_szDB_NPCShop_BuyUpdate[] = L"{CALL RZ_ITEM_UPDATE_STACK_AMOUNT (%I64d, %d, '%d', '%d', %d, %d)}";
 bool GDBManager::NPCShop_BuyUpdate( const GDBT_NPC_SHOP_TRADE_DATA& data)
 {
 	GDBTaskItemBuyUpdate* pTask = new GDBTaskItemBuyUpdate(data.m_uidPlayer);
@@ -646,10 +667,15 @@ bool GDBManager::NPCShop_BuyUpdate( const GDBT_NPC_SHOP_TRADE_DATA& data)
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_NPCShop_BuyUpdate
 		, GConfig::m_nMyWorldID
 		, data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nIUID, data.m_Item.m_nStackAmt
 		, data.m_Item.m_nCharPtm, data.m_nXP, data.m_nMoney);
+		*/
+	strSQL.Format(g_szDB_NPCShop_BuyUpdate
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_nModStackAmt
+		, data.m_nXP, -data.m_nModMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -663,7 +689,8 @@ void GDBManager::NPCShop_BuyLog( const GDBT_NPC_SHOP_TRADE_DATA& data )
 		, IsDirectPostItem(data.m_Item.m_nItemID));
 }
 
-const wchar_t g_szDB_NPCShop_SellPartUpdate[] = L"{CALL dbo.USP_RZ_ITEM_SELL_UPDATE (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d, %d)}";
+// const wchar_t g_szDB_NPCShop_SellPartUpdate[] = L"{CALL dbo.USP_RZ_ITEM_SELL_UPDATE (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d, %d)}";
+const wchar_t g_szDB_NPCShop_SellPartUpdate[] = L"{CALL RZ_ITEM_UPDATE_STACK_AMOUNT (%I64d, %d, '%d', '%d', %d, %d)}";
 bool GDBManager::NPCShop_SellPartUpdate( const GDBT_NPC_SHOP_TRADE_DATA& data)
 {
 	GDBTaskItemSellUpdate* pTask = new GDBTaskItemSellUpdate(data.m_uidPlayer);
@@ -677,16 +704,22 @@ bool GDBManager::NPCShop_SellPartUpdate( const GDBT_NPC_SHOP_TRADE_DATA& data)
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_NPCShop_SellPartUpdate
 		, GConfig::m_nMyWorldID
 		, data.m_nAID,  data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nIUID
 		, data.m_Item.m_nStackAmt, data.m_Item.m_nCharPtm, data.m_nXP, data.m_nMoney);
+		*/
+	strSQL.Format(g_szDB_NPCShop_SellPartUpdate
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, -data.m_nModStackAmt
+		, data.m_nXP, data.m_nModMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_szDB_NPCShop_SellPartDelete[] = L"{CALL dbo.USP_RZ_ITEM_SELL_DELETED (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d)}";
+// const wchar_t g_szDB_NPCShop_SellPartDelete[] = L"{CALL dbo.USP_RZ_ITEM_SELL_DELETED (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d)}";
+const wchar_t g_szDB_NPCShop_SellPartDelete[] = L"{CALL RZ_ITEM_DELETE (%I64d, %d, '%d', %d, %d)}";
 bool GDBManager::NPCShop_SellPartDelete( const GDBT_NPC_SHOP_TRADE_DATA& data )
 {
 	GDBTaskItemSellDelete* pTask = new GDBTaskItemSellDelete(data.m_uidPlayer);
@@ -700,16 +733,21 @@ bool GDBManager::NPCShop_SellPartDelete( const GDBT_NPC_SHOP_TRADE_DATA& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_NPCShop_SellPartDelete
 		, GConfig::m_nMyWorldID
 		, data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nIUID
 		, data.m_Item.m_nCharPtm, data.m_nXP, data.m_nMoney);
-
+		*/
+	strSQL.Format(g_szDB_NPCShop_SellPartDelete
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID
+		, data.m_nXP, data.m_nModMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
+/*
 bool GDBManager::MakeSellVeryCommonList(GITEM_STACK_AMT_VEC& vec, wstring& strString)
 {
 	GItemConvertPrefixedString cov;
@@ -726,19 +764,45 @@ bool GDBManager::MakeSellVeryCommonList(GITEM_STACK_AMT_VEC& vec, wstring& strSt
 
 	return true;
 }
+*/
 
-const wchar_t g_szDB_NPCShop_SellVeryCommon[] = L"{CALL dbo.USP_RZ_ITEM_SELL_VERY_COMMON (%d, %I64d, %I64d, '%s', %d, %d, %d, %d)}";
+wstring GDBManager::MakeSellVeryCommonList(GITEM_STACK_AMT_VEC& vec)
+{
+	json js_array = json::array();
+
+	for (const GITEM_STACK_AMT& item : vec)
+	{
+		json js_element = {
+			{ "SLOT_TYPE", item.nSlotType },
+			{ "SLOT_ID", item.nSlotID },
+			{ "ITEM_SN", item.nIUID }
+		};
+
+		js_array.push_back(js_element);
+	}
+
+	return MLocale::ConvAnsiToUTF16(js_array.dump().c_str());
+}
+
+// const wchar_t g_szDB_NPCShop_SellVeryCommon[] = L"{CALL dbo.USP_RZ_ITEM_SELL_VERY_COMMON (%d, %I64d, %I64d, '%s', %d, %d, %d, %d)}";
+const wchar_t g_szDB_NPCShop_SellVeryCommon[] = L"{CALL RZ_ITEM_SELL_VERY_COMMON (%I64d, '%s', %d, %d)}";
 bool GDBManager::NPCShop_SellVeryCommon( GDBT_SELL_ITEM_VERY_COMMON& data )
 {
+	if (0 == data.m_vVeryComm.size())
+		return true;
+
+	/*
 	wstring strString;
 	if (!MakeSellVeryCommonList(data.m_vVeryComm, strString))
 		return false;
+		*/
+	wstring strSellItemList = MakeSellVeryCommonList(data.m_vVeryComm);
 
 	GDBTaskItemSellVeryCommon* pTask = new GDBTaskItemSellVeryCommon(data.m_uidPlayer);
 	if (NULL == pTask)
 		return false;
 
-	const size_t nItemInstCnt = data.m_vVeryComm.size();
+	// const size_t nItemInstCnt = data.m_vVeryComm.size();
 
 	if (!pTask->Input(data))
 	{
@@ -747,9 +811,13 @@ bool GDBManager::NPCShop_SellVeryCommon( GDBT_SELL_ITEM_VERY_COMMON& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_NPCShop_SellVeryCommon
 		, GConfig::m_nMyWorldID
-		, data.m_nAID, data.m_nCID, MCleanSQLStr(strString).c_str(), nItemInstCnt, data.m_nCharPtm, data.m_nXP, data.m_nMoney);
+		, data.m_nAID, data.m_nCID, mdb::MDBStringEscaper::Escape(strString).c_str(), nItemInstCnt, data.m_nCharPtm, data.m_nXP, data.m_nMoney);
+		*/
+	strSQL.Format(g_szDB_NPCShop_SellVeryCommon
+		, data.m_nCID, mdb::MDBStringEscaper::Escape(strSellItemList).c_str(), data.m_nXP, data.m_nModMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -781,7 +849,8 @@ void GDBManager::NPCShop_SellVeryCommonLog( GDBT_SELL_ITEM_VERY_COMMON& data )
 	}
 }
 
-const wchar_t g_szDB_ITEM_REPAIR[] = L"{CALL dbo.USP_RZ_ITEM_REPAIR (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d)}";
+// const wchar_t g_szDB_ITEM_REPAIR[] = L"{CALL dbo.USP_RZ_ITEM_REPAIR (%d, %I64d, %I64d, %d, %d, %I64d, %d, %d, %d)}";
+const wchar_t g_szDB_ITEM_REPAIR[] = L"{CALL RZ_ITEM_REPAIR (%I64d, %I64d, %d, %d)}";
 bool GDBManager::NPCShop_Repair( GDBT_REPAIR_ITEM& data )
 {
 	GDBTaskItemRepair* pTask = new GDBTaskItemRepair(data.m_uidPlayer);
@@ -795,14 +864,19 @@ bool GDBManager::NPCShop_Repair( GDBT_REPAIR_ITEM& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_REPAIR
 		, GConfig::m_nMyWorldID
 		, data.m_Char.m_nAID, data.m_Char.m_nCID, data.m_nSlotType, data.m_nSlotID, data.m_nIUID, data.m_Char.m_nCharPtm, data.m_Char.m_nXP, data.m_Char.m_nMoney);
+		*/
+	strSQL.Format(g_szDB_ITEM_REPAIR
+		, data.m_Char.m_nCID, data.m_nIUID, data.m_Char.m_nXP, -data.m_Char.m_nModMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
+/*
 bool GDBManager::MakeRepairAllList(GDBT_ITEM_REPAIR_VEC& vec, wstring& strString)
 {
 	GItemConvertPrefixedString cov;
@@ -819,23 +893,46 @@ bool GDBManager::MakeRepairAllList(GDBT_ITEM_REPAIR_VEC& vec, wstring& strString
 
 	return true;
 }
+*/
+
+wstring GDBManager::MakeRepairAllList(GDBT_ITEM_REPAIR_VEC& vec)
+{
+	json js_array = json::array();
+
+	for (const GDBT_ITEM_REPAIR_ALL& item : vec)
+	{
+		json js_element = {
+			{ "SLOT_TYPE", item.m_nSlotType },
+			{ "SLOT_ID", item.m_nSlotID },
+			{ "ITEM_SN", item.m_nIUID }
+		};
+
+		js_array.push_back(js_element);
+	}
+
+	return MLocale::ConvAnsiToUTF16(js_array.dump().c_str());
+}
 
 
-const wchar_t g_szDB_ITEM_REPAIR_ALL[] = L"{CALL dbo.USP_RZ_ITEM_REPAIR_ALL (%d, %I64d, %I64d, '%s', %d, %d, %d, %d)}";
+// const wchar_t g_szDB_ITEM_REPAIR_ALL[] = L"{CALL dbo.USP_RZ_ITEM_REPAIR_ALL (%d, %I64d, %I64d, '%s', %d, %d, %d, %d)}";
+const wchar_t g_szDB_ITEM_REPAIR_ALL[] = L"{CALL RZ_ITEM_REPAIR_ALL (%I64d, '%s', %d, %d)}";
 bool GDBManager::NPCShop_RepairAll( GDBT_REPAIR_ALL_ITEM& data )
 {
 	if (0 == data.m_vRepair.size())
 		return true;
 
+	/*
 	wstring strString;
 	if (!MakeRepairAllList(data.m_vRepair, strString))
 		return false;
+		*/
+	wstring strRepairItemList = MakeRepairAllList(data.m_vRepair);
 
 	GDBTaskItemRepairAll* pTask = new GDBTaskItemRepairAll(data.m_uidPlayer);
 	if (NULL == pTask)
 		return false;
 
-	const size_t nItemCnt = data.m_vRepair.size();
+	// const size_t nItemCnt = data.m_vRepair.size();
 
 	if (!pTask->Input(data))
 	{
@@ -844,9 +941,13 @@ bool GDBManager::NPCShop_RepairAll( GDBT_REPAIR_ALL_ITEM& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_REPAIR_ALL
 		, GConfig::m_nMyWorldID
-		, data.m_Char.m_nAID, data.m_Char.m_nCID, MCleanSQLStr(strString).c_str(), nItemCnt, data.m_Char.m_nCharPtm, data.m_Char.m_nXP, data.m_Char.m_nMoney);
+		, data.m_Char.m_nAID, data.m_Char.m_nCID, mdb::MDBStringEscaper::Escape(strString).c_str(), nItemCnt, data.m_Char.m_nCharPtm, data.m_Char.m_nXP, data.m_Char.m_nMoney);
+		*/
+	strSQL.Format(g_szDB_ITEM_REPAIR_ALL
+		, data.m_Char.m_nCID, mdb::MDBStringEscaper::Escape(strRepairItemList).c_str(), data.m_Char.m_nXP, -data.m_Char.m_nModMoney);
 	pTask->PushSQL(strSQL);
 	return Post(pTask);
 }
@@ -859,7 +960,7 @@ void GDBManager::NPCShop_RepairLog( const GDBT_ITEM_REPAIR_CHAR& data )
 }
 
 // 탤런트 훈련 - nCID, nTalentID
-wchar_t g_szDB_TALENT_LEARN[] = L"{CALL dbo.USP_RZ_TALENT_LEARN (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d)}";
+wchar_t g_szDB_TALENT_LEARN[] = L"{CALL RZ_TALENT_LEARN (%I64d, '%d', %d, '%d', %d)}";
 bool GDBManager::Training_Train( GDBT_TALENT& data )
 {
 	// TODO : 탤런트 기획 픽스되면, 하위 랭크의 탤런트 ID는 저장하지 않도록 변경
@@ -869,7 +970,7 @@ bool GDBManager::Training_Train( GDBT_TALENT& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_TALENT_LEARN, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nCharPtm, data.m_nTalentID, data.m_nRemainTP, data.m_bOnPalette, data.m_nLowRankTalentID, data.m_vNumAndSlot.size());
+	strSQL.Format(g_szDB_TALENT_LEARN, data.m_nCID, int(SST_MAIN), data.m_nTalentID, data.m_nConsumeTP, data.m_nLowRankTalentID);	// TODO: 2nd skill set.
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -880,7 +981,7 @@ bool GDBManager::Training_Train( GDBT_TALENT& data )
 bool GDBManager::Training_TrainSync(GDBT_TALENT& data)
 {
 	CString strSQL;
-	strSQL.Format(g_szDB_TALENT_LEARN, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nCharPtm, data.m_nTalentID, data.m_nRemainTP, data.m_bOnPalette, data.m_nLowRankTalentID, data.m_vNumAndSlot.size());
+	strSQL.Format(g_szDB_TALENT_LEARN, data.m_nCID, int(SST_MAIN), data.m_nTalentID, data.m_nConsumeTP, data.m_nLowRankTalentID);	// TODO: 2nd skill set.
 
 	GDBTaskTalentLearn Task(data.m_uidPlayer);
 	Task.Input(data);
@@ -945,7 +1046,7 @@ void GDBManager::TalentResetLog(GDBT_TALENT& data)
 }
 
 
-const wchar_t g_szDB_CHAR_LOOT_MONEY[] = L"{CALL dbo.USP_RZ_CHAR_UPDATE_MONEY (%d, %I64d, %I64d, %d, %d, %d)}";
+const wchar_t g_szDB_CHAR_LOOT_MONEY[] = L"{CALL RZ_CHAR_UPDATE_MONEY (%I64d, %d, %d)}";
 bool GDBManager::LootIncreaseMoney(const GDBTASKDATA_LOOTINCREASEMONEY& taskData, const GDBCACHEDATA_CHARACTER& cacheData)
 {
 	GDBTaskCharIncMoney* pTask = new GDBTaskCharIncMoney(taskData.uidPlayer, SDBTID_CHARLOOTMONEY);
@@ -962,8 +1063,7 @@ bool GDBManager::LootIncreaseMoney(const GDBTASKDATA_LOOTINCREASEMONEY& taskData
 
 	CString strSQL;
 	strSQL.Format(g_szDB_CHAR_LOOT_MONEY
-		, GConfig::m_nMyWorldID
-		, taskData.nAID, taskData.nCID, taskData.nMoney, cacheData.nXP, taskData.nCharPlayTime); 
+		, taskData.nCID, cacheData.nXP, taskData.nMoney);
 
 	pTask->PushSQL(strSQL);
 
@@ -1039,8 +1139,8 @@ void GDBManager::UpdateDB_FromItemInfo()
 		CString strSQL;
 		strSQL.Format(L"{CALL spInsertItemData (%d, '%s', '%s', %d, %d, %d, %d)}",
 			pItemData->m_nID, 
-			MCleanSQLStr(pItemData->m_strName).c_str(), 
-			MCleanSQLStr(pItemData->m_strDesc).c_str(),
+			mdb::MDBStringEscaper::Escape(pItemData->m_strName).c_str(),
+			mdb::MDBStringEscaper::Escape(pItemData->m_strDesc).c_str(),
 			pItemData->m_nStackAmount,
 			pItemData->m_nMaxDurability,
 			pItemData->m_nBaseBuyingPrice,
@@ -1060,8 +1160,8 @@ void GDBManager::UpdateDB_FromItemInfo()
 
 		CString strSQL;
 		strSQL.Format(L"UPDATE Item SET Name='%s' , Description='%s' , StackAmount=%d , MaxDurability=%d, BuyPrice=%d, SellPrice=%d WHERE ItemID=%d",
-			MCleanSQLStr(pItemData->m_strName).c_str(), 
-			MCleanSQLStr(pItemData->m_strDesc).c_str(), 
+			mdb::MDBStringEscaper::Escape(pItemData->m_strName).c_str(),
+			mdb::MDBStringEscaper::Escape(pItemData->m_strDesc).c_str(),
 			pItemData->m_nStackAmount,
 			pItemData->m_nMaxDurability,
 			pItemData->m_nBaseBuyingPrice,
@@ -1099,7 +1199,7 @@ void GDBManager::DeleteItemInstanceForDebug(int nItemID)
 
 // 보관함 가져오기
 wchar_t g_szDB_STORAGE_GET[] = L"{CALL dbo.USP_RZ_STORAGE_GET_ITEM (%d, %I64d, %d)}";
-bool GDBManager::StorageSerialize(const MUID& uidPlayer, const int64 nCID)
+bool GDBManager::StorageSerialize(const MUID& uidPlayer, const CID nCID)
 {
 	GDBTaskStorageSerialize* pTask = new GDBTaskStorageSerialize(uidPlayer);
 	if (NULL == pTask)
@@ -1165,7 +1265,7 @@ bool GDBManager::GuildInsert(GDBT_GUILD& data)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_GUILD_INSERT, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nMoney, MCleanSQLStr(data.m_strName).c_str());
+	strSQL.Format(g_szDB_GUILD_INSERT, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nMoney, mdb::MDBStringEscaper::Escape(data.m_strName).c_str());
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -1317,7 +1417,7 @@ bool GDBManager::GuildUpdateStorageMoney( GDBT_GUILD_UPDATE_STORAGEMONEY& data )
 
 
 // 팔레트에 아이템이나 탤런트를 올린다.
-wchar_t g_szDB_PALETTE_SET[] = L"{CALL dbo.USP_RZ_PALETTE_SET (%d, %I64d, %I64d, %d, %d, %d)}";
+wchar_t g_szDB_PALETTE_SET[] = L"{CALL RZ_PALETTE_SET (%I64d, '%d', '%d', %d, %d)}";
 bool GDBManager::PalettePutUp( const GDBT_PALETTE_SET& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_PALETTEPUTUP);
@@ -1327,7 +1427,7 @@ bool GDBManager::PalettePutUp( const GDBT_PALETTE_SET& data )
 	uint8 nIndex = gsys.pPaletteSystem->NumAndSlotToIndex(data.m_Slot.m_nNum, data.m_Slot.m_nSlot);
 
 	CString strSQL;
-	strSQL.Format(g_szDB_PALETTE_SET, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, nIndex, data.m_Slot.m_nID, data.m_Slot.m_nIdType);
+	strSQL.Format(g_szDB_PALETTE_SET, data.m_nCID, int(SST_MAIN), nIndex, data.m_Slot.m_nID, int(data.m_Slot.m_nIdType));	// TODO: 2nd skill set
 
 	pTask->PushSQL(strSQL);
 	
@@ -1335,17 +1435,17 @@ bool GDBManager::PalettePutUp( const GDBT_PALETTE_SET& data )
 }
 
 // 팔레트에 올려진걸 내린다.
-wchar_t g_szDB_PALETTE_RESET[] = L"{CALL dbo.USP_RZ_PALETTE_RESET (%d, %I64d, %I64d, %d)}";
+wchar_t g_szDB_PALETTE_RESET[] = L"{CALL RZ_PALETTE_UNSET (%I64d, '%d', '%d')}";
 bool GDBManager::PalettePutDown( const GDBT_PALETTE_RESET& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_PALETTEDOWN);
 	if (NULL == pTask)
 		return false;
 
-	uint8 nIndex = gsys.pPaletteSystem->NumAndSlotToIndex(data.m_nNum, data.m_nSlot);
+	uint8 nIndex = gsys.pPaletteSystem->NumAndSlotToIndex(data.m_nNum, data.m_nSlot);	// TODO: 2nd skill set
 
 	CString strSQL;
-	strSQL.Format(g_szDB_PALETTE_RESET, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, nIndex);
+	strSQL.Format(g_szDB_PALETTE_RESET, data.m_nCID, int(SST_MAIN), nIndex);
 	
 	pTask->PushSQL(strSQL);
 
@@ -1353,7 +1453,7 @@ bool GDBManager::PalettePutDown( const GDBT_PALETTE_RESET& data )
 }
 
 // 팔레트에 올려진걸 서로 바꾼다.
-wchar_t g_szDB_PALETTE_CHANGE[] = L"{CALL dbo.USP_RZ_PALETTE_CHANGE (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d)}";
+wchar_t g_szDB_PALETTE_CHANGE[] = L"{CALL RZ_PALETTE_EXCHANGE (%I64d, '%d', '%d', '%d')}";
 bool GDBManager::PaletteChange( const GDBT_PALETTE_CHANGE& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_PALETTECHANGE);
@@ -1364,12 +1464,8 @@ bool GDBManager::PaletteChange( const GDBT_PALETTE_CHANGE& data )
 	uint8 nIndex2 = gsys.pPaletteSystem->NumAndSlotToIndex(data.m_ToSlot.m_nNum, data.m_ToSlot.m_nSlot);
 
 	CString strSQL;
-	strSQL.Format(g_szDB_PALETTE_CHANGE
-		, GConfig::m_nMyWorldID
-		, data.m_nAID
-		, data.m_nCID
-		, nIndex1, data.m_Slot.m_nID, data.m_Slot.m_nIdType
-		, nIndex2, data.m_ToSlot.m_nID, data.m_ToSlot.m_nIdType);
+	strSQL.Format(g_szDB_PALETTE_CHANGE, data.m_nCID, int(SST_MAIN), nIndex1, nIndex2);	// TODO: 2nd skill set
+
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -1380,6 +1476,9 @@ void GDBManager::Update()
 {
 	if (NULL != m_pLogCaches)
 		m_pLogCaches->Update();
+
+	if (NULL != m_pAccountDB)
+		m_pAccountDB->Update();
 	
 	if (NULL != m_pGameDB)
 		m_pGameDB->Update();
@@ -1394,8 +1493,12 @@ void GDBManager::Update()
 
 bool GDBManager::InitAsyncDB()
 {
+	_ASSERT(NULL == m_pAccountDB);
 	_ASSERT(NULL == m_pGameDB);
 	_ASSERT(NULL == m_pLogDB);
+
+	if (!InitAccountDB())
+		return false;
 
 	if (!InitGameDB())
 		return false;
@@ -1408,7 +1511,9 @@ bool GDBManager::InitAsyncDB()
 
 	InitLogCache();
 	RegistTraceTaskID();
+	SDBAsyncTask::GetTaskTracer().EnableTraceAll(GConfig::m_bDBTraceAllTask);
 
+	_ASSERT(NULL != m_pAccountDB);
 	_ASSERT(NULL != m_pGameDB);
 	_ASSERT(NULL != m_pLogDB);
 
@@ -1430,45 +1535,51 @@ void GDBManager::Release()
 	MLog1("COMPLETED DB RELEASE\n");
 }
 
-const wchar_t g_szDB_CHAR_GETINFO[]					= L"{CALL dbo.USP_RZ_CHAR_GET_INFO (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_ITEM[]				= L"{CALL dbo.USP_RZ_CHAR_GET_ITEM (%d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_TALENT[]				= L"{CALL dbo.USP_RZ_CHAR_GET_TALENT (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_PALETTE[]				= L"{CALL dbo.USP_RZ_CHAR_GET_PALETTE (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_EFFECT_REMAIND_TIME[]	= L"{CALL dbo.USP_RZ_CHAR_GET_EFF_REMAIN_TIME (%d, %I64d, %I64d, %d)}";
-const wchar_t g_szDB_CHAR_GET_QUEST[]				= L"{CALL dbo.USP_RZ_CHAR_GET_QUEST (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_QUEST_HISTORY[]		= L"{CALL dbo.USP_RZ_CHAR_GET_QUEST_HISTORY (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_FACTION[]				= L"{CALL dbo.USP_RZ_CHAR_GET_FACTION (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_CUTSCENE[]			= L"{CALL dbo.USP_RZ_CHAR_GET_CUTSECNE (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_RECIPE[]				= L"{CALL dbo.USP_RZ_CHAR_GET_RECIPE (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_CHAR_GET_EMBLEM[]				= L"{CALL dbo.USP_RZ_CHAR_GET_EMBLEM (%d, %I64d, %I64d)}";
-const wchar_t g_szDB_MAIL_GET_SUMMARY[]				= L"{CALL dbo.USP_RZ_MAIL_GET_SUMMARY (%d, %I64d, %I64d)}";
+const wchar_t g_szDB_CHAR_GETINFO[]					= L"{CALL RZ_CHAR_GET_INFO (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_ITEM[]				= L"{CALL RZ_CHAR_GET_ITEM (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_TALENT[]				= L"{CALL RZ_CHAR_GET_TALENT (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_PALETTE[]				= L"{CALL RZ_CHAR_GET_PALETTE (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_TALENT_COOLTIME[]		= L"{CALL RZ_TALENT_COOLTIME_GET (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_BUFF_REMAIN_EFFECT[]	= L"{CALL RZ_BUFF_REMAIN_EFFECT_GET (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_QUEST[]				= L"{CALL RZ_CHAR_GET_QUEST (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_QUEST_HISTORY[]		= L"{CALL RZ_CHAR_GET_QUEST_HISTORY (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_FACTION[]				= L"{CALL RZ_CHAR_GET_FACTION (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_CUTSCENE[]			= L"{CALL RZ_CHAR_GET_CUTSCENE (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_RECIPE[]				= L"{CALL RZ_CHAR_GET_RECIPE (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_EMBLEM[]				= L"{CALL RZ_CHAR_GET_EMBLEM (%I64d)}";
+const wchar_t g_szDB_CHAR_GET_GUIDEBOOK[]			= L"{CALL RZ_CHAR_GET_GUIDEBOOK (%I64d)}";
+const wchar_t g_szDB_MAIL_GET_SUMMARY[]				= L"{CALL RZ_MAIL_GET_SUMMARY (%I64d)}";
 bool GDBManager::CharSerialize(const GDBT_CHAR_SERIALIZE& data)
 {
 	CString strSQLCharGetInfo;
 	CString strSQLCharGetItem;
 	CString strSQLCharGetTalent;
 	CString strSQLCharGetPalette;
-	CString strSQLCharGetEffectRemainTime;
+	CString strSQLCharGetTalentCoolTime;
+	CString strSQLCharGetBuffRemainEffect;
 	CString strSQLCharGetQuest;
 	CString strSQLCharGetQuestHistory;
 	CString strSQLCharGetFaction;
 	CString strSQLCharGetCutscene;
 	CString strSQLCharGetRecipe;
 	CString strSQLCharGetEmblem;
+	CString strSQLCharGetGuideBook;
 	CString strSQLMailGetSummary;
 
-	strSQLCharGetInfo.Format(g_szDB_CHAR_GETINFO, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetItem.Format(g_szDB_CHAR_GET_ITEM, GConfig::m_nMyWorldID, data.m_nCID);
-	strSQLCharGetTalent.Format(g_szDB_CHAR_GET_TALENT, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetPalette.Format(g_szDB_CHAR_GET_PALETTE, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetEffectRemainTime.Format(g_szDB_CHAR_GET_EFFECT_REMAIND_TIME, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, 0);
-	strSQLCharGetQuest.Format(g_szDB_CHAR_GET_QUEST, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetQuestHistory.Format(g_szDB_CHAR_GET_QUEST_HISTORY, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetFaction.Format(g_szDB_CHAR_GET_FACTION, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetCutscene.Format(g_szDB_CHAR_GET_CUTSCENE, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetRecipe.Format(g_szDB_CHAR_GET_RECIPE, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLCharGetEmblem.Format(g_szDB_CHAR_GET_EMBLEM, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
-	strSQLMailGetSummary.Format(g_szDB_MAIL_GET_SUMMARY, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID);
+	strSQLCharGetInfo.Format(g_szDB_CHAR_GETINFO, data.m_nCID);
+	strSQLCharGetItem.Format(g_szDB_CHAR_GET_ITEM, data.m_nCID);
+	strSQLCharGetTalent.Format(g_szDB_CHAR_GET_TALENT, data.m_nCID);
+	strSQLCharGetPalette.Format(g_szDB_CHAR_GET_PALETTE, data.m_nCID);
+	strSQLCharGetTalentCoolTime.Format(g_szDB_CHAR_GET_TALENT_COOLTIME, data.m_nCID);
+	strSQLCharGetBuffRemainEffect.Format(g_szDB_CHAR_GET_BUFF_REMAIN_EFFECT, data.m_nCID);
+	strSQLCharGetQuest.Format(g_szDB_CHAR_GET_QUEST, data.m_nCID);
+	strSQLCharGetQuestHistory.Format(g_szDB_CHAR_GET_QUEST_HISTORY, data.m_nCID);
+	strSQLCharGetFaction.Format(g_szDB_CHAR_GET_FACTION, data.m_nCID);
+	strSQLCharGetCutscene.Format(g_szDB_CHAR_GET_CUTSCENE, data.m_nCID);
+	strSQLCharGetRecipe.Format(g_szDB_CHAR_GET_RECIPE, data.m_nCID);
+	strSQLCharGetEmblem.Format(g_szDB_CHAR_GET_EMBLEM, data.m_nCID);
+	strSQLCharGetGuideBook.Format(g_szDB_CHAR_GET_GUIDEBOOK, data.m_nCID);
+	strSQLMailGetSummary.Format(g_szDB_MAIL_GET_SUMMARY, data.m_nCID);
 
 	GDBTaskCharSerialize* pTask = new GDBTaskCharSerialize(data.m_uidPlayer);
 	if (NULL == pTask)
@@ -1480,22 +1591,24 @@ bool GDBManager::CharSerialize(const GDBT_CHAR_SERIALIZE& data)
 			.PushSQL(strSQLCharGetItem)
 			.PushSQL(strSQLCharGetTalent)
 			.PushSQL(strSQLCharGetPalette)
-			.PushSQL(strSQLCharGetEffectRemainTime)
+			.PushSQL(strSQLCharGetTalentCoolTime)
+			.PushSQL(strSQLCharGetBuffRemainEffect)
 			.PushSQL(strSQLCharGetQuest)
 			.PushSQL(strSQLCharGetQuestHistory)
 			.PushSQL(strSQLCharGetFaction)
 			.PushSQL(strSQLCharGetCutscene)
 			.PushSQL(strSQLCharGetRecipe)
 			.PushSQL(strSQLCharGetEmblem)
+			.PushSQL(strSQLCharGetGuideBook)
 			.PushSQL(strSQLMailGetSummary);
 
 	return Post(pTask);		
 }
 
 
-static const wchar_t g_szDB_CHAR_GET_SIMPLE_INFO[] = L"{CALL dbo.USP_RZ_CHAR_GET_SIMPLE_INFO (%d, %I64d)}";
-static const wchar_t g_szDB_CHAR_GET_EQUIPMENT_INFO[] = L"{CALL dbo.USP_RZ_CHAR_GET_EQUIPMENT_INFO (%d, %I64d)}";
-bool GDBManager::CharGetLookList(const MUID& uidPlayer, const int64 nAID)
+static const wchar_t g_szDB_CHAR_GET_SIMPLE_INFO[] = L"{CALL RZ_CHAR_GET_SIMPLE_INFO (%I64d)}";
+static const wchar_t g_szDB_CHAR_GET_EQUIPMENT_INFO[] = L"{CALL RZ_CHAR_GET_EQUIPMENT_INFO (%I64d)}";
+bool GDBManager::CharGetLookList(const MUID& uidPlayer, const AID nAID)
 {
 	GDBTaskCharGetLookList* pTask = new GDBTaskCharGetLookList(uidPlayer);
 	if (NULL == pTask)
@@ -1504,8 +1617,8 @@ bool GDBManager::CharGetLookList(const MUID& uidPlayer, const int64 nAID)
 	CString strSQLCharGetSimpleInfo;
 	CString strSQLCharGetEquipmentInfo;
 
-	strSQLCharGetSimpleInfo.Format(g_szDB_CHAR_GET_SIMPLE_INFO, GConfig::m_nMyWorldID, nAID);
-	strSQLCharGetEquipmentInfo.Format(g_szDB_CHAR_GET_EQUIPMENT_INFO, GConfig::m_nMyWorldID, nAID);	
+	strSQLCharGetSimpleInfo.Format(g_szDB_CHAR_GET_SIMPLE_INFO, nAID);
+	strSQLCharGetEquipmentInfo.Format(g_szDB_CHAR_GET_EQUIPMENT_INFO, nAID);	
 
 	pTask->PushSQL(strSQLCharGetSimpleInfo)
 		.PushSQL(strSQLCharGetEquipmentInfo);	
@@ -1514,6 +1627,7 @@ bool GDBManager::CharGetLookList(const MUID& uidPlayer, const int64 nAID)
 }
 
 
+/*
 bool GDBManager::PostEffRemainTimeInsert(const GDBT_EFF_REMAIN_TIME_INSERT& data, GEffRemainTimeSqlBuilder& efb)
 {
 	CString& strSQL = efb.BuildSQL(data.m_nAID, data.m_nCID);
@@ -1577,11 +1691,63 @@ bool GDBManager::EffRemainTimeInsert(const GDBT_EFF_REMAIN_TIME_INSERT& data)
 
 	return true;
 }
+*/
+
+bool GDBManager::PostTalentCoolTimeUpdateAll(const GDBT_TALENT_COOL_TIME_UPDATE_ALL& data, GTalentCoolTimeSqlBuilder& ctb)
+{
+	CString& strSQL = ctb.BuildSQL(data.m_nCID);
+
+	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_TALENT_COOL_TIME_UPDATE_ALL);
+	if (NULL == pTask)
+		return false;
+
+	pTask->PushSQL(strSQL);
+
+	return Post(pTask);
+}
+
+bool GDBManager::TalentCoolTimeUpdateAll(const GDBT_TALENT_COOL_TIME_UPDATE_ALL& data)
+{
+	GTalentCoolTimeSqlBuilder ctb;
+
+	for (const pair<int, float>& tt : data.m_vecTalentCoolTime)
+	{
+		ctb.Push(tt.first, tt.second);
+	}
+
+	return PostTalentCoolTimeUpdateAll(data, ctb);
+}
+
+bool GDBManager::PostBuffRemainEffectUpdateAll(const GDBT_BUFF_REMAIN_EFFECT_UPDATE_ALL& data, GBuffRemainEffectSqlBuilder& bfb)
+{
+	CString& strSQL = bfb.BuildSQL(data.m_nCID);
+
+	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_BUFF_REMAIN_EFFECT_UPDATE_ALL);
+	if (NULL == pTask)
+		return false;
+
+	pTask->PushSQL(strSQL);
+
+	return Post(pTask);
+}
+
+bool GDBManager::BuffRemainEffectUpdateAll(const GDBT_BUFF_REMAIN_EFFECT_UPDATE_ALL& data)
+{
+	GBuffRemainEffectSqlBuilder bfb;
+
+	for (const REMAIN_BUFF_TIME& bt : data.m_vecBuffRemainTime)
+	{
+		// TODO: implement and store bFixedDuration
+		bfb.Push(bt.nID, bt.nStackedCount, bt.fCriticalPercent, bt.fCriticalApplyRate, bt.nMinDamage, bt.nMaxDamage, bt.nMinHeal, bt.nMaxHeal, bt.nMinAttrDamage, bt.nMaxAttrDamage, bt.fRemainDurationSeconds, false);
+	}
+
+	return PostBuffRemainEffectUpdateAll(data, bfb);
+}
 
 
-wchar_t g_szDB_CHAR_LOGOUT[] = L"{CALL dbo.USP_RZ_CHAR_LOGOUT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %f, %f, %f, %d, %f, %f, %f, \
+wchar_t g_szDB_CHAR_LOGOUT[] = L"{CALL RZ_CHAR_LOGOUT (%I64d, %d, '%d', %d, %d, %d, %d, '%d', '%d', '%d', '%d', '%d', %f, %f, %f, %f, %f, %f, %d, %f, %f, %f, \
 							%I64d, %d, %d, %d, %I64d, %I64d, %I64d, %d, %d)}";
-bool GDBManager::Logout(int64 nAID, int64 nCID, GEntityPlayer* pPlayer, vector<REMAIN_BUFF_TIME>& vecBuffRemainTime, vector<pair<int, float>>& vecTalentCoolTime )
+bool GDBManager::Logout(AID nAID, CID nCID, GEntityPlayer* pPlayer, vector<REMAIN_BUFF_TIME>& vecBuffRemainTime, vector<pair<int, float>>& vecTalentCoolTime )
 {
 	_ASSERT(NULL != pPlayer);
 	
@@ -1592,8 +1758,16 @@ bool GDBManager::Logout(int64 nAID, int64 nCID, GEntityPlayer* pPlayer, vector<R
 	if (NULL == pPlayerInfo)
 		return false;
 
+	/*
 	GDBT_EFF_REMAIN_TIME_INSERT data(nAID, pPlayer->GetUID(), nCID, pPlayerInfo->nPlayTimeSec, vecBuffRemainTime, vecTalentCoolTime);
 	EffRemainTimeInsert(data);
+	*/
+
+	GDBT_TALENT_COOL_TIME_UPDATE_ALL talentCoolTimeData(nAID, pPlayer->GetUID(), nCID, pPlayerInfo->nPlayTimeSec, vecTalentCoolTime);
+	TalentCoolTimeUpdateAll(talentCoolTimeData);
+
+	GDBT_BUFF_REMAIN_EFFECT_UPDATE_ALL buffRemainEffectData(nAID, pPlayer->GetUID(), nCID, pPlayerInfo->nPlayTimeSec, vecBuffRemainTime);
+	BuffRemainEffectUpdateAll(buffRemainEffectData);
 
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(pPlayer->GetUID(), SDBTID_LOGOUT);
 	if (NULL == pTask)
@@ -1604,8 +1778,6 @@ bool GDBManager::Logout(int64 nAID, int64 nCID, GEntityPlayer* pPlayer, vector<R
 
 	CString strSQL_UCharLastStatus;
 	strSQL_UCharLastStatus.Format(g_szDB_CHAR_LOGOUT, 
-		GConfig::m_nMyWorldID,
-		nAID, 
 		nCID, 
 		pPlayer->GetPlayerInfo()->nXP, 
 		pPlayer->GetPlayerInfo()->nLevel,
@@ -1621,6 +1793,9 @@ bool GDBManager::Logout(int64 nAID, int64 nCID, GEntityPlayer* pPlayer, vector<R
 		LogoutField.GetPlayerPos().x,
 		LogoutField.GetPlayerPos().y,
 		LogoutField.GetPlayerPos().z,
+		LogoutField.GetPlayerDir().x,
+		LogoutField.GetPlayerDir().y,
+		LogoutField.GetPlayerDir().z,
 		LogoutField.GetSharedFieldID(),
 		LogoutField.GetEnterPos().x,
 		LogoutField.GetEnterPos().y,
@@ -1654,6 +1829,7 @@ int GDBManager::CalculateElapsedDeadTimeSec( GEntityPlayer* pPlayer )
 
 
 
+/*
 bool GDBManager::MakeQuestRemoveItemList(GITEM_STACK_AMT_VEC& vec, wstring& strString)
 {
 	wstring str;
@@ -1669,7 +1845,50 @@ bool GDBManager::MakeQuestRemoveItemList(GITEM_STACK_AMT_VEC& vec, wstring& strS
 
 	return true;
 }
+*/
 
+wstring GDBManager::MakeQuestRemoveItemList(const GITEM_STACK_AMT_VEC& vec)
+{
+	json js_array = json::array();
+	for (const GITEM_STACK_AMT& st : vec)
+	{
+		json js_element = {
+			{ "SLOT_TYPE", st.nSlotType },
+			{ "SLOT_ID", st.nSlotID },
+			{ "DEC_STACK_AMT", st.nModStackAmt }
+		};
+
+		js_array.push_back(js_element);
+	}
+
+	return MLocale::ConvAnsiToUTF16(js_array.dump().c_str());
+}
+
+wstring GDBManager::MakeQuestAddItemList(const vector<GDBT_QUEST_ADDITEM>& vec)
+{
+	json js_array = json::array();
+	for (const GDBT_QUEST_ADDITEM& ai : vec)
+	{
+		json js_element = {
+			{ "SLOT_TYPE", SLOTTYPE_INVENTORY },
+			{ "SLOT_ID", ai.m_nSlotID },
+			{ "ITEM_SN", ai.m_nIUID },
+			{ "ITEM_ID", ai.m_nItemID },
+			{ "INC_STACK_AMT", ai.m_nModStackAmt },
+			{ "MAX_DURA", ai.m_nMaxDura },
+			{ "COLOR", -1 },
+			{ "CLAIMED", ai.m_bClaimed },
+			{ "HAS_PERIOD", ai.m_bPeriod },
+			{ "EXPIRE_IN", nullptr }	// TODO: expiration period in interval type.
+		};
+
+		js_array.push_back(js_element);
+	}
+
+	return MLocale::ConvAnsiToUTF16(js_array.dump().c_str());;
+}
+
+/*
 const wchar_t g_szDB_QuestDone[] = L"{CALL dbo.USP_RZ_QUEST_DONE (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, '%s', '%s'\
 									, %d, %I64d, %d, %d, %d, %d, %d, %s\
 									, %d, %I64d, %d, %d, %d, %d, %d, %s\
@@ -1677,11 +1896,18 @@ const wchar_t g_szDB_QuestDone[] = L"{CALL dbo.USP_RZ_QUEST_DONE (%d, %I64d, %I6
 									, %d, %I64d, %d, %d, %d, %d, %d, %s\
 									, %d, %I64d, %d, %d, %d, %d, %d, %s\
 									, '%s', %d)}";
+									*/
+const wchar_t g_szDB_QuestDone[] = L"{CALL RZ_QUEST_DONE (%I64d, '%d', '%d', %d, %d, '%s', '%s')}";
 bool GDBManager::QuestDone( GDBT_QEUST_DONE& data )
 {
+	/*
 	wstring strString;
 	if (!MakeQuestRemoveItemList(data.m_vecRemoveItem, strString))
 		return false;
+		*/
+	
+	const wstring strAddItem = MakeQuestAddItemList(data.m_vecAddItem);
+	const wstring strRemoveItem = MakeQuestRemoveItemList(data.m_vecRemoveItem);
 
 	GDBTaskQuestDone* pTask = new GDBTaskQuestDone(data.m_QuestComm.m_uidPlayer);
 	if (NULL == pTask)
@@ -1689,6 +1915,7 @@ bool GDBManager::QuestDone( GDBT_QEUST_DONE& data )
 
 	const size_t nQItemCnt = data.m_vecAddItem.size() + data.m_vecRemoveItem.size();
 
+	/*
 	vector<GDBT_QUEST_ADDITEM> vecAddItem;		
 	for (size_t i=0; i < QREWARD_ITEM_COUNT; i++)
 	{
@@ -1701,6 +1928,7 @@ bool GDBManager::QuestDone( GDBT_QEUST_DONE& data )
 			vecAddItem.push_back(GDBT_QUEST_ADDITEM());
 		}
 	}
+	*/
 
 	if (!pTask->Input(data))
 	{
@@ -1709,16 +1937,21 @@ bool GDBManager::QuestDone( GDBT_QEUST_DONE& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_QuestDone
 		, GConfig::m_nMyWorldID
 		, data.m_QuestComm.m_nAID, data.m_QuestComm.m_nCID, data.m_QuestComm.m_nSlotID, data.m_QuestComm.m_nQuestID, data.m_QuestComm.m_nCharPtm
-		, data.m_QuestComm.m_nLevel, data.m_QuestComm.m_nXP, data.m_nMoney, MCleanSQLStr(data.m_QuestComm.m_strAcceptDt).c_str(), MCleanSQLStr(data.m_strExpiDt).c_str()
+		, data.m_QuestComm.m_nLevel, data.m_QuestComm.m_nXP, data.m_nMoney, data.m_QuestComm.m_strAcceptDt.c_str(), data.m_strExpiDt.c_str()
 		, vecAddItem[0].m_nSlotID, vecAddItem[0].m_nIUID, vecAddItem[0].m_nItemID, vecAddItem[0].m_nStackAmt, vecAddItem[0].m_nMaxDura, vecAddItem[0].m_bClaimed, vecAddItem[0].m_bPeriod ,  L"NULL"
 		, vecAddItem[1].m_nSlotID, vecAddItem[1].m_nIUID, vecAddItem[1].m_nItemID, vecAddItem[1].m_nStackAmt, vecAddItem[1].m_nMaxDura, vecAddItem[1].m_bClaimed, vecAddItem[1].m_bPeriod ,  L"NULL"
 		, vecAddItem[2].m_nSlotID, vecAddItem[2].m_nIUID, vecAddItem[2].m_nItemID, vecAddItem[2].m_nStackAmt, vecAddItem[2].m_nMaxDura, vecAddItem[2].m_bClaimed, vecAddItem[2].m_bPeriod ,  L"NULL"
 		, vecAddItem[3].m_nSlotID, vecAddItem[3].m_nIUID, vecAddItem[3].m_nItemID, vecAddItem[3].m_nStackAmt, vecAddItem[3].m_nMaxDura, vecAddItem[3].m_bClaimed, vecAddItem[3].m_bPeriod ,  L"NULL"
 		, vecAddItem[4].m_nSlotID, vecAddItem[4].m_nIUID, vecAddItem[4].m_nItemID, vecAddItem[4].m_nStackAmt, vecAddItem[4].m_nMaxDura, vecAddItem[4].m_bClaimed, vecAddItem[4].m_bPeriod ,  L"NULL"
-		, MCleanSQLStr(strString).c_str(), nQItemCnt);
+		, strString.c_str(), nQItemCnt);
+		*/
+	strSQL.Format(g_szDB_QuestDone
+		, data.m_QuestComm.m_nCID, data.m_QuestComm.m_nSlotID, data.m_QuestComm.m_nLevel, data.m_QuestComm.m_nXP, data.m_nMoney
+		, mdb::MDBStringEscaper::Escape(strAddItem).c_str(), mdb::MDBStringEscaper::Escape(strRemoveItem).c_str());
 
 	pTask->PushSQL(strSQL);
 
@@ -1734,7 +1967,7 @@ void GDBManager::QuestDoneLog( GDBT_QEUST_DONE& data )
 	CString strSQL;
 	strSQL.Format(L"{CALL dbo.USP_RZ_QUEST_DONE_LOG (%I64d, %d, %I64d, %d, %d, '%s')}"
 		, data.m_QuestComm.m_nAID, GConfig::m_nMyWorldID, data.m_QuestComm.m_nCID, data.m_QuestComm.m_nCharPtm
-		, data.m_QuestComm.m_nQuestID, MCleanSQLStr(data.m_QuestComm.m_strAcceptDt).c_str());
+		, data.m_QuestComm.m_nQuestID, mdb::MDBStringEscaper::Escape(data.m_QuestComm.m_strAcceptDt).c_str());
 
 	pTask->PushSQL(strSQL);
 
@@ -1745,7 +1978,7 @@ void GDBManager::QuestDoneLog( GDBT_QEUST_DONE& data )
 	if (0 < data.m_nDeltaLevel)
 	{
 		CharLevelUpLog(GDBT_CHAR_LEVEL_UP_DATA(data.m_QuestComm.m_nAID, data.m_QuestComm.m_uidPlayer, data.m_QuestComm.m_nCID, GDB_CODE::CD_L_QREWARD_XP_GAIN_LEVEL_UP
-			, strRegDate, data.m_QuestComm.m_nXP, data.m_nIncXP, data.m_QuestComm.m_nLevel, data.m_nMoney, 0, data.m_QuestComm.m_nCharPtm, data.m_QuestComm.m_nDeltaCharPtm, 0 /*NPC_ID*/
+			, strRegDate, data.m_QuestComm.m_nXP, data.m_nIncXP, data.m_QuestComm.m_nLevel, data.m_nMoney, 0, 0, data.m_QuestComm.m_nCharPtm, data.m_QuestComm.m_nDeltaCharPtm, 0 /*NPC_ID*/
 			, data.m_QuestComm.m_nFieldID, data.m_vPos));
 	}
 	else if (0 < data.m_nIncXP)
@@ -1791,6 +2024,7 @@ void GDBManager::QuestDoneLog( GDBT_QEUST_DONE& data )
 	}
 }
 
+/*
 const wchar_t g_szDB_QuestAccept[] = L"{CALL dbo.USP_RZ_QUEST_ACCEPT (%d, %I64d, %I64d, %d, %d, %d, %d, '%s', '%s'\
 											, %d, %I64d, %d, %d, %d, %d, %d, %s\
 											, %d, %I64d, %d, %d, %d, %d, %d, %s\
@@ -1798,11 +2032,18 @@ const wchar_t g_szDB_QuestAccept[] = L"{CALL dbo.USP_RZ_QUEST_ACCEPT (%d, %I64d,
 											, %d, %I64d, %d, %d, %d, %d, %d, %s\
 											, %d, %I64d, %d, %d, %d, %d, %d, %s\
 											, '%s', %d)}";
+											*/
+const wchar_t g_szDB_QuestAccept[] = L"{CALL RZ_QUEST_ACCEPT (%I64d, '%d', %d, %s, %s, '%s', '%s')}";
 bool GDBManager::QuestAccept( GDBT_QUEST_ACCEPT& data )
 {
+	/*
 	wstring strString;
 	if (!MakeQuestRemoveItemList(data.m_vecRemoveItem, strString))
 		return false;
+		*/
+
+	const wstring strAddItem = MakeQuestAddItemList(data.m_vecAddItem);
+	const wstring strRemoveItem = MakeQuestRemoveItemList(data.m_vecRemoveItem);
 
 	GDBTaskQuestAccept* pTask = new GDBTaskQuestAccept(data.m_QuestComm.m_uidPlayer);
 	if (NULL == pTask)
@@ -1810,6 +2051,7 @@ bool GDBManager::QuestAccept( GDBT_QUEST_ACCEPT& data )
 
 	const size_t nQItemCnt = data.m_vecAddItem.size() + data.m_vecRemoveItem.size();
 
+	/*
 	vector<GDBT_QUEST_ADDITEM> vecAddItem;	
 	for (size_t i=0; i < QBEGIN_ITEM_COUNT; i++)
 	{
@@ -1822,24 +2064,27 @@ bool GDBManager::QuestAccept( GDBT_QUEST_ACCEPT& data )
 			vecAddItem.push_back(GDBT_QUEST_ADDITEM());
 		}
 	}
+	*/
 
-	uint8 nType;
-	if (data.m_bChallange)
-		nType = 2;
-	else
-		nType = 1;
+	// const uint8 nType = data.m_bChallange ? 2 : 1 ;
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_QuestAccept
 		, GConfig::m_nMyWorldID
 		, data.m_QuestComm.m_nAID, data.m_QuestComm.m_nCID, data.m_QuestComm.m_nCharPtm, data.m_QuestComm.m_nSlotID, data.m_QuestComm.m_nQuestID, data.m_bComplete
-		, MCleanSQLStr(data.m_QuestComm.m_strAcceptDt).c_str(), MCleanSQLStr(data.m_strExpiDt).c_str()
+		, data.m_QuestComm.m_strAcceptDt.c_str(), data.m_strExpiDt.c_str()
 		, vecAddItem[0].m_nSlotID, vecAddItem[0].m_nIUID, vecAddItem[0].m_nItemID, vecAddItem[0].m_nStackAmt, vecAddItem[0].m_nMaxDura, vecAddItem[0].m_bClaimed, vecAddItem[0].m_bPeriod ,  L"NULL"
 		, vecAddItem[1].m_nSlotID, vecAddItem[1].m_nIUID, vecAddItem[1].m_nItemID, vecAddItem[1].m_nStackAmt, vecAddItem[1].m_nMaxDura, vecAddItem[1].m_bClaimed, vecAddItem[1].m_bPeriod ,  L"NULL"
 		, vecAddItem[2].m_nSlotID, vecAddItem[2].m_nIUID, vecAddItem[2].m_nItemID, vecAddItem[2].m_nStackAmt, vecAddItem[2].m_nMaxDura, vecAddItem[2].m_bClaimed, vecAddItem[2].m_bPeriod ,  L"NULL"
 		, vecAddItem[3].m_nSlotID, vecAddItem[3].m_nIUID, vecAddItem[3].m_nItemID, vecAddItem[3].m_nStackAmt, vecAddItem[3].m_nMaxDura, vecAddItem[3].m_bClaimed, vecAddItem[3].m_bPeriod ,  L"NULL"
 		, vecAddItem[4].m_nSlotID, vecAddItem[4].m_nIUID, vecAddItem[4].m_nItemID, vecAddItem[4].m_nStackAmt, vecAddItem[4].m_nMaxDura, vecAddItem[4].m_bClaimed, vecAddItem[4].m_bPeriod ,  L"NULL"
 		, strString.c_str(), nQItemCnt);
+		*/
+	strSQL.Format(g_szDB_QuestAccept
+		, data.m_QuestComm.m_nCID, data.m_QuestComm.m_nSlotID, data.m_QuestComm.m_nQuestID, mdb::MDBBoolUtil::ToWString(data.m_bComplete)
+		, L"NULL" // TODO: expiration period in interval type.
+		, mdb::MDBStringEscaper::Escape(strAddItem).c_str(), mdb::MDBStringEscaper::Escape(strRemoveItem).c_str());
 
 	if (!pTask->Input(data))
 		return false;
@@ -1881,7 +2126,8 @@ void GDBManager::QuestAcceptLog( GDBT_QUEST_ACCEPT& data )
 	}
 }
 
-const wchar_t g_szDB_QuestUpdateObject[] = L"{CALL dbo.USP_RZ_QUEST_UPDATE_OBJECT (%d, %I64d, %I64d, %d, %d, %d, %d, %d)}";
+// const wchar_t g_szDB_QuestUpdateObject[] = L"{CALL dbo.USP_RZ_QUEST_UPDATE_OBJECT (%d, %I64d, %I64d, %d, %d, %d, %d, %d)}";
+const wchar_t g_szDB_QuestUpdateObject[] = L"{CALL RZ_QUEST_UPDATE_OBJECTIVE (%I64d, '%d', %d, %d, %s)}";
 bool GDBManager::QuestUpdateObject( const GDBT_QUEST_OBJECT& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_QuestComm.m_uidPlayer, SDBTID_QUESTUPDATEOBJECT);
@@ -1890,9 +2136,13 @@ bool GDBManager::QuestUpdateObject( const GDBT_QUEST_OBJECT& data )
 
 	CString strSQL;
 
+	/*
 	strSQL.Format(g_szDB_QuestUpdateObject
 		, GConfig::m_nMyWorldID
 		, data.m_QuestComm.m_nAID, data.m_QuestComm.m_nCID, data.m_QuestComm.m_nSlotID, data.m_QuestComm.m_nQuestID, data.m_nObjID, data.m_nProgress, data.m_bComplete);
+		*/
+	strSQL.Format(g_szDB_QuestUpdateObject
+		, data.m_QuestComm.m_nCID, data.m_QuestComm.m_nSlotID, data.m_nObjID, data.m_nProgress, mdb::MDBBoolUtil::ToWString(data.m_bComplete));
 	
 	pTask->PushSQL(strSQL);
 
@@ -1934,6 +2184,7 @@ void GDBManager::UpdateDB_FromQeustInfo()
 	}	
 }
 
+/*
 bool GDBManager::MakeQuestGiveupList(GITEM_STACK_AMT_VEC& vec, wstring& strString)
 {
 	GItemConvertPrefixedString cov;
@@ -1949,6 +2200,7 @@ bool GDBManager::MakeQuestGiveupList(GITEM_STACK_AMT_VEC& vec, wstring& strStrin
 
 	return true;
 }
+*/
 
 
 void GDBManager::QuestGiveupLog( GDBT_QUEST_GIVEUP& data )
@@ -1959,7 +2211,7 @@ void GDBManager::QuestGiveupLog( GDBT_QUEST_GIVEUP& data )
 
 	CString strSQL;
 	strSQL.Format(L"{CALL dbo.USP_RZ_QUEST_GIVEUP_LOG (%I64d, %d, %I64d, %d, %d, '%s', %d)}"
-		, data.m_nAID, GConfig::m_nMyWorldID, data.m_nCID, data.m_nCharPtm, data.m_nQuestID, MCleanSQLStr(data.m_strAcceptDt).c_str(), data.m_nFieldID);
+		, data.m_nAID, GConfig::m_nMyWorldID, data.m_nCID, data.m_nCharPtm, data.m_nQuestID, mdb::MDBStringEscaper::Escape(data.m_strAcceptDt).c_str(), data.m_nFieldID);
 
 	pTask->PushSQL(strSQL);
 
@@ -1977,12 +2229,17 @@ void GDBManager::QuestGiveupLog( GDBT_QUEST_GIVEUP& data )
 }
 
 
-const wchar_t g_szDB_QuestGiveup[] = L"{CALL dbo.USP_RZ_QUEST_GIVEUP (%d, %I64d, %I64d, %d, %d, '%s', %d)}";
+// const wchar_t g_szDB_QuestGiveup[] = L"{CALL dbo.USP_RZ_QUEST_GIVEUP (%d, %I64d, %I64d, %d, %d, '%s', %d)}";
+const wchar_t g_szDB_QuestGiveup[] = L"{CALL RZ_QUEST_GIVEUP (%I64d, '%d', '%s')}";
 bool GDBManager::QuestGiveup( GDBT_QUEST_GIVEUP& data )
 {
+	/*
 	wstring strString;
 	if (!MakeQuestGiveupList(data.m_vecQItems, strString))
 		return false;
+		*/
+
+	const wstring strRemoveItem = MakeQuestRemoveItemList(data.m_vecQItems);
 	
 	GDBTaskQuestGiveup* pTask = new GDBTaskQuestGiveup(data.m_uidPlayer);
 	if (NULL == pTask)
@@ -1997,14 +2254,19 @@ bool GDBManager::QuestGiveup( GDBT_QUEST_GIVEUP& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_QuestGiveup
-		, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nSlotID, data.m_nQuestID, MCleanSQLStr(strString).c_str(), nQItemCnt);
+		, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nSlotID, data.m_nQuestID, strString.c_str(), nQItemCnt);
+		*/
+	strSQL.Format(g_szDB_QuestGiveup
+		, data.m_nCID, data.m_nSlotID, mdb::MDBStringEscaper::Escape(strRemoveItem).c_str());
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_szDB_QuestFail[] = L"{CALL dbo.USP_RZ_QUEST_FAIL (%d, %I64d, %I64d, %d, %d)}";
+// const wchar_t g_szDB_QuestFail[] = L"{CALL dbo.USP_RZ_QUEST_FAIL (%d, %I64d, %I64d, %d, %d)}";
+const wchar_t g_szDB_QuestFail[] = L"{CALL RZ_QUEST_FAIL (%I64d, '%d')}";
 bool GDBManager::QuestFail( const GDBT_QUEST_COMMON& data )
 {
 	GDBTaskQuestFail* pTask = new GDBTaskQuestFail(data.m_uidPlayer);
@@ -2012,7 +2274,8 @@ bool GDBManager::QuestFail( const GDBT_QUEST_COMMON& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_QuestFail, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nSlotID, data.m_nQuestID);
+	// strSQL.Format(g_szDB_QuestFail, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nSlotID, data.m_nQuestID);
+	strSQL.Format(g_szDB_QuestFail, data.m_nCID, data.m_nSlotID);
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -2028,7 +2291,7 @@ void GDBManager::QuestFailLog( const GDBT_QUEST_COMMON& data )
 
 	CString strSQL;
 	strSQL.Format(L"{CALL dbo.USP_RZ_QUEST_FAIL_LOG (%I64d, %d, %I64d, %d, %d, '%s', %d)}"
-		, data.m_nAID, GConfig::m_nMyWorldID, data.m_nCID, data.m_nCharPtm, data.m_nQuestID, MCleanSQLStr(data.m_strAcceptDt).c_str(), data.m_nFieldID);
+		, data.m_nAID, GConfig::m_nMyWorldID, data.m_nCID, data.m_nCharPtm, data.m_nQuestID, mdb::MDBStringEscaper::Escape(data.m_strAcceptDt).c_str(), data.m_nFieldID);
 
 	pTask->PushSQL(strSQL);
 
@@ -2036,7 +2299,8 @@ void GDBManager::QuestFailLog( const GDBT_QUEST_COMMON& data )
 }
 
 
-const wchar_t g_szDB_QuestUpdateVar[] = L"{CALL dbo.USP_RZ_QUEST_UPDATE_VAR (%d, %I64d, %I64d, %d, %d, %d)}";
+// const wchar_t g_szDB_QuestUpdateVar[] = L"{CALL dbo.USP_RZ_QUEST_UPDATE_VAR (%d, %I64d, %I64d, %d, %d, %d)}";
+const wchar_t g_szDB_QuestUpdateVar[] = L"{CALL RZ_QUEST_UPDATE_VAR (%I64d, '%d', %d)}";
 bool GDBManager::QuestUpdateVar( const GDBT_QUEST_VAR& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_QUESTUPDATEVAR);
@@ -2044,15 +2308,20 @@ bool GDBManager::QuestUpdateVar( const GDBT_QUEST_VAR& data )
 		return false;
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_QuestUpdateVar
 		, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nSlotID, data.m_nQuestID, data.m_nVar);
+		*/
+	strSQL.Format(g_szDB_QuestUpdateVar
+		, data.m_nCID, data.m_nSlotID, data.m_nVar);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_szDB_QuestComplete[] = L"{CALL dbo.USP_RZ_QUEST_COMPLETE (%d, %I64d, %I64d, %d, %d)}";
+// const wchar_t g_szDB_QuestComplete[] = L"{CALL dbo.USP_RZ_QUEST_COMPLETE (%d, %I64d, %I64d, %d, %d)}";
+const wchar_t g_szDB_QuestComplete[] = L"{CALL RZ_QUEST_COMPLETE (%I64d, '%d')}";
 bool GDBManager::QuestComplete( const GDBT_QUEST_COMMON& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_QUESTCOMPLETE);
@@ -2060,8 +2329,12 @@ bool GDBManager::QuestComplete( const GDBT_QUEST_COMMON& data )
 		return false;
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_QuestComplete
 		, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nSlotID, data.m_nQuestID);
+		*/
+	strSQL.Format(g_szDB_QuestComplete
+		, data.m_nCID, data.m_nSlotID);
 
 	pTask->PushSQL(strSQL);
 
@@ -2082,7 +2355,7 @@ void GDBManager::QuestCompleteLog( const GDBT_QUEST_COMMON& data )
 	CString strSQL;
 
 	strSQL.Format(L"{CALL dbo.USP_RZ_QUEST_COMPLETE_LOG (%I64d, %d, %I64d, %d, %d, '%s', %d)}"
-		, data.m_nAID, GConfig::m_nMyWorldID, data.m_nCID, data.m_nCharPtm, data.m_nQuestID, MCleanSQLStr(data.m_strAcceptDt).c_str(), data.m_nFieldID);
+		, data.m_nAID, GConfig::m_nMyWorldID, data.m_nCID, data.m_nCharPtm, data.m_nQuestID, mdb::MDBStringEscaper::Escape(data.m_strAcceptDt).c_str(), data.m_nFieldID);
 
 	pTask->PushSQL(strSQL);
 
@@ -2153,7 +2426,7 @@ void GDBManager::PostQPvPInvenRewardXPLog(GDBT_QPER_TOINVEN& data, const wstring
 	if (0 < data.m_nDeltaLevel)
 	{
 		CharLevelUpLog(GDBT_CHAR_LEVEL_UP_DATA(data.m_nAID, data.m_uidPlayer, data.m_nCID, GDB_CODE::CD_L_QPVP_REWARD_XP_GAIN_LEVEL_UP
-			, strRegDate, data.m_nXP, data.m_nDeltaXP, data.m_nLevel, data.m_nMoney, 0, data.m_nCharPtm, data.m_nDeltaCharPtm, 0 /*NPC_ID*/
+			, strRegDate, data.m_nXP, data.m_nDeltaXP, data.m_nLevel, data.m_nMoney, 0, 0, data.m_nCharPtm, data.m_nDeltaCharPtm, 0 /*NPC_ID*/
 			, data.m_nFieldID, data.m_vPos));
 	}
 	else if (0 < data.m_nDeltaXP)
@@ -2203,13 +2476,8 @@ void GDBManager::QuestPVPERewardInvenLog( GDBT_QPER_TOINVEN& data )
 	PostQPvPInvenRewardItemLog(data, strRegDate);	
 }
 
-bool GDBManager::QuestPVPERewardMail( GDBT_QPER_TOMAIL& data )
+void BuildQPvPRewardMailString(CString& strSQL, const GDBT_QPER_TOMAIL& data)
 {
-	GDBTaskQuestPvPRewardMail* pTask = new GDBTaskQuestPvPRewardMail(data.m_uidPlayer);
-	if (NULL == pTask)
-		return false;
-
-	CString strSQL;
 	GDBT_QPER_ITEM pitem[MAX_MAIL_APPENDED_ITEM_COUNT];
 
 	for (size_t i = 0; i < data.m_vecItem.size(); ++i)
@@ -2222,12 +2490,22 @@ bool GDBManager::QuestPVPERewardMail( GDBT_QPER_TOMAIL& data )
 				   , %d, %d, %d\
 				   , %d, %d, %d)}"
 				   , GConfig::m_nMyWorldID
-				   , data.m_nAID, data.m_nCID, L"", MCleanSQLStr(data.m_strTitle).c_str(), data.m_nRemainDeleteSeconds, data.m_nCharPtm, data.m_nMoney, data.m_nXP, data.m_nLevel
+				   , data.m_nAID, data.m_nCID, L"", mdb::MDBStringEscaper::Escape(data.m_strTitle).c_str(), data.m_nRemainDeleteSeconds, data.m_nCharPtm, data.m_nMoney, data.m_nXP, data.m_nLevel
 				   , pitem[0].m_nItemID, pitem[0].m_nStackAmt, pitem[0].m_nMaxDura
 				   , pitem[1].m_nItemID, pitem[1].m_nStackAmt, pitem[1].m_nMaxDura
 				   , pitem[2].m_nItemID, pitem[2].m_nStackAmt, pitem[2].m_nMaxDura
 				   , pitem[3].m_nItemID, pitem[3].m_nStackAmt, pitem[3].m_nMaxDura
 				   , pitem[4].m_nItemID, pitem[4].m_nStackAmt, pitem[4].m_nMaxDura);
+}
+
+bool GDBManager::QuestPVPERewardMail( GDBT_QPER_TOMAIL& data )
+{
+	GDBTaskQuestPvPRewardMail* pTask = new GDBTaskQuestPvPRewardMail(data.m_uidPlayer);
+	if (NULL == pTask)
+		return false;
+
+	CString strSQL;
+	BuildQPvPRewardMailString(strSQL, data);
 
 	if (!pTask->Input(data))
 	{
@@ -2262,7 +2540,7 @@ void GDBManager::PostQPvPMailRewardXPLog(GDBT_QPER_TOMAIL& data, const wstring& 
 	if (0 < data.m_nDeltaLevel)
 	{
 		CharLevelUpLog(GDBT_CHAR_LEVEL_UP_DATA(data.m_nAID, data.m_uidPlayer, data.m_nCID, GDB_CODE::CD_L_QPVP_REWARD_XP_GAIN_LEVEL_UP
-			, strRegDate, data.m_nXP, data.m_nDeltaXP, data.m_nLevel, data.m_nMoney, 0, data.m_nCharPtm, data.m_nDeltaCharPtm, 0 /*NPC_ID*/
+			, strRegDate, data.m_nXP, data.m_nDeltaXP, data.m_nLevel, data.m_nMoney, 0, 0, data.m_nCharPtm, data.m_nDeltaCharPtm, 0 /*NPC_ID*/
 			, data.m_nFieldID, data.m_vPos));
 	}
 	else if (0 < data.m_nDeltaXP)
@@ -2305,22 +2583,22 @@ void GDBManager::QuestPVPERewardMailLog(GDBT_QPER_TOMAIL& data)
 	PostQPvPMailRewardItemLog(data, strRegDate);	
 }
 
-const wchar_t g_szDB_CharUpdatePlayerGrade[] = L"{CALL dbo.USP_RZ_CHAR_UPDATE_PLAYER_GRADE (%d, %I64d, %I64d, %d)}";
-bool GDBManager::CharUpdatePlayerGrade( const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nPlayerGrade )
+const wchar_t g_szDB_GM_CharUpdatePlayerGrade[] = L"{CALL RZ_GM_CHAR_UPDATE_PLAYER_GRADE (%I64d, '%d')}";
+bool GDBManager::CharUpdatePlayerGrade( const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nPlayerGrade )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(uidPlayer, SDBTID_CHARUPDATEPLAYERGRADE);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_CharUpdatePlayerGrade, GConfig::m_nMyWorldID, nAID, nCID, nPlayerGrade);
+	strSQL.Format(g_szDB_GM_CharUpdatePlayerGrade, nCID, nPlayerGrade);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_szDB_Faction_Insert[] = L"{CALL dbo.USP_RZ_FACTION_INSERT (%d, %I64d, %I64d, %d, %d)}";
+const wchar_t g_szDB_Faction_Insert[] = L"{CALL RZ_FACTION_SET (%I64d, %d, %d)}";
 bool GDBManager::FactionInsert( const GDBT_DATA_FACTION& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_FACTIONINSERT);
@@ -2328,14 +2606,14 @@ bool GDBManager::FactionInsert( const GDBT_DATA_FACTION& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_Faction_Insert, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nFactID, data.m_nVal);
+	strSQL.Format(g_szDB_Faction_Insert, data.m_nCID, data.m_nFactID, data.m_nVal);
 	
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_szDB_Faction_Update[] = L"{CALL dbo.USP_RZ_FACTION_UPDATE (%d, %I64d, %I64d, %d, %d)}";
+const wchar_t g_szDB_Faction_Update[] = L"{CALL RZ_FACTION_SET (%I64d, %d, %d)}";
 bool GDBManager::FactionUpdate( const GDBT_DATA_FACTION& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_FACTIONUPDATE);
@@ -2343,7 +2621,7 @@ bool GDBManager::FactionUpdate( const GDBT_DATA_FACTION& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_Faction_Update, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nFactID, data.m_nVal);
+	strSQL.Format(g_szDB_Faction_Update, data.m_nCID, data.m_nFactID, data.m_nVal);
 
 	pTask->PushSQL(strSQL);
 
@@ -2366,7 +2644,7 @@ void GDBManager::CharUpdateMoneyLog(const GLOG_DATA_MONEY& data)
 	m_pLogCaches->m_MoneyLogCache.PushBack(data);	
 }
 
-const wchar_t g_szDB_CHAR_UPDATE_MONEY[] = L"{CALL dbo.USP_RZ_CHAR_UPDATE_MONEY (%d, %I64d, %I64d, %d, %d, %d)}";
+const wchar_t g_szDB_CHAR_UPDATE_MONEY[] = L"{CALL RZ_CHAR_UPDATE_EXP (%I64d, %d, %d)}";
 bool GDBManager::CharAddMoney( const GDBT_CHAR_MONEY_INC_DEC& data )
 {
 	_ASSERT(0 < data.m_nDeltaMoney);
@@ -2386,8 +2664,7 @@ bool GDBManager::CharAddMoney( const GDBT_CHAR_MONEY_INC_DEC& data )
 
 	CString strSQL;
 	strSQL.Format(g_szDB_CHAR_UPDATE_MONEY
-		, GConfig::m_nMyWorldID
-		, data.m_nAID, data.m_nCID, data.m_nMoney, data.m_nXP, data.m_nCharPtm); 
+		, data.m_nCID, data.m_nXP, data.m_nMoney); 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);	
@@ -2412,8 +2689,7 @@ bool GDBManager::CharMinusMoney( const GDBT_CHAR_MONEY_INC_DEC& data )
 
 	CString strSQL;
 	strSQL.Format(g_szDB_CHAR_UPDATE_MONEY
-		, GConfig::m_nMyWorldID
-		, data.m_nAID, data.m_nCID, data.m_nMoney, data.m_nXP, data.m_nCharPtm);
+		, data.m_nCID, data.m_nXP, data.m_nMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -2523,7 +2799,8 @@ void GDBManager::TradeLog( const GDBT_TRADE_DATA& data )
 	Post(pTask);
 }
 
-const wchar_t g_szDB_ItemInsert[] = L"{CALL dbo.USP_RZ_ITEM_INSERT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %d)}";
+// const wchar_t g_szDB_ItemInsert[] = L"{CALL dbo.USP_RZ_ITEM_INSERT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %d)}";
+const wchar_t g_szDB_ItemInsert[] = L"{CALL RZ_ITEM_INSERT (%I64d, %d, '%d', %d, '%d', '%d', '%d', %d, %s, %s, %s)}";
 bool GDBManager::ItemInsert( GDBT_ITEM_DATA& data )
 {
 	GDBTaskItemInsert* pTask = new GDBTaskItemInsert(data.m_uidPlayer);
@@ -2531,9 +2808,14 @@ bool GDBManager::ItemInsert( GDBT_ITEM_DATA& data )
 		return false;
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ItemInsert, GConfig::m_nMyWorldID, data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID, data.m_Item.m_nStackAmt
 		, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor, data.m_Item.m_bClaimed, data.m_Item.m_bPeriodItem, data.m_Item.m_nUsagePeriod
 		, data.m_Item.m_strExpiDt.c_str(), data.m_Item.m_nCharPtm);
+		*/
+	strSQL.Format(g_szDB_ItemInsert, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID, data.m_Item.m_nStackAmt
+		, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor, mdb::MDBBoolUtil::ToWString(data.m_Item.m_bClaimed), mdb::MDBBoolUtil::ToWString(data.m_Item.m_bPeriodItem)
+		, L"NULL" /* TODO: expiration period in interval type. */);
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -2600,7 +2882,7 @@ bool MakeCraftItemList(GITEM_STACK_AMT_VEC& vec, wstring& strString)
 	return true;
 }
 
-const wchar_t g_sz_DB_CraftInsert[] = L"{CALL dbo.USP_RZ_ITEM_CRAFT_INSERT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %d, '%s', %d, %d, %d)}";
+const wchar_t g_sz_DB_CraftInsert[] = L"{CALL RZ_ITEM_INSERT (%I64d, %d, '%d', %d, '%d', '%d', '%d', %d, %s, %s, %s, %d, %d)}";
 bool GDBManager::Craft_Insert( GDBT_CRAFT_DATA& data )
 {
 	wstring strString;
@@ -2620,15 +2902,17 @@ bool GDBManager::Craft_Insert( GDBT_CRAFT_DATA& data )
 	}
 
 	CString strSQL;
-	strSQL.Format(g_sz_DB_CraftInsert, GConfig::m_nMyWorldID, data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID, data.m_Item.m_nStackAmt
-		, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor, data.m_Item.m_bClaimed, data.m_Item.m_bPeriodItem, data.m_Item.m_nUsagePeriod
-		, data.m_Item.m_strExpiDt.c_str(), data.m_Item.m_nCharPtm, MCleanSQLStr(strString).c_str(), nItemInstCnt, data.m_nXP, data.m_nMoney);
+	strSQL.Format(g_sz_DB_CraftInsert
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID, data.m_Item.m_nStackAmt
+		, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor
+		, mdb::MDBBoolUtil::ToWString(data.m_Item.m_bClaimed), mdb::MDBBoolUtil::ToWString(data.m_Item.m_bPeriodItem)
+		, L"NULL" /* TODO: expiration period in interval type. */, data.m_nXP, -data.m_nModMoney);
 	pTask->PushSQL(strSQL);	
 
 	return Post(pTask);
 }
 
-const wchar_t g_sz_DB_CraftUpdate[] = L"{CALL dbo.USP_RZ_ITEM_CRAFT_UPDATE (%d, %I64d, %I64d, %d, %d, %d, %I64d, %d, %d, %d, %d, '%s', %d)}";
+const wchar_t g_sz_DB_CraftUpdate[] = L"{CALL RZ_ITEM_UPDATE_STACK_AMOUNT (%I64d, %d, '%d', '%d', %d, %d)}";
 bool GDBManager::Craft_Update( GDBT_CRAFT_DATA& data )
 {
 	wstring strString;
@@ -2649,9 +2933,8 @@ bool GDBManager::Craft_Update( GDBT_CRAFT_DATA& data )
 
 	CString strSQL;
 	strSQL.Format(g_sz_DB_CraftUpdate
-		, GConfig::m_nMyWorldID
-		, data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID, data.m_Item.m_nIUID
-		, data.m_nXP, data.m_nMoney, data.m_Item.m_nStackAmt, data.m_Item.m_nCharPtm, MCleanSQLStr(strString).c_str(), nItemInstCnt);
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_nModStackAmt
+		, data.m_nXP, -data.m_nModMoney);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -2671,7 +2954,7 @@ void GDBManager::CraftLog( GDBT_CRAFT_DATA& data, int64 nProdIUID )
 	}
 }
 
-const wchar_t g_sz_DB_RecpInsert[] = L"{CALL dbo.USP_RZ_RECP_INSERT (%d, %I64d, %I64d, %d)};";
+const wchar_t g_sz_DB_RecpInsert[] = L"{CALL RZ_RECIPE_INSERT (%I64d, %d)};";
 bool GDBManager::Craft_RecpInsert( const GDBT_RECIPE& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_CRAFT_RECPINSERT);
@@ -2679,14 +2962,14 @@ bool GDBManager::Craft_RecpInsert( const GDBT_RECIPE& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_sz_DB_RecpInsert, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nRecpID);
+	strSQL.Format(g_sz_DB_RecpInsert, data.m_nCID, data.m_nRecpID);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_sz_DB_RecpDelete[] = L"{CALL dbo.USP_RZ_RECP_DELETE (%d, %I64d, %I64d, %d)};";
+const wchar_t g_sz_DB_RecpDelete[] = L"{CALL RZ_RECIPE_DELETE (%I64d, %d)};";
 bool GDBManager::Craft_RecpDelete( const GDBT_RECIPE& data )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(data.m_uidPlayer, SDBTID_CRAFT_RECPDELETE);
@@ -2694,22 +2977,22 @@ bool GDBManager::Craft_RecpDelete( const GDBT_RECIPE& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_sz_DB_RecpDelete, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nRecpID);
+	strSQL.Format(g_sz_DB_RecpDelete, data.m_nCID, data.m_nRecpID);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-const wchar_t g_sz_DB_CutsceneSawnInsert[] = L"{CALL dbo.USP_RZ_CUTSCENE_INSERT (%d, %I64d, %I64d, %d)}";
-bool GDBManager::CutsceneSawnInsert( const int64 nAID, const MUID& uidPlayer, const int64 nCID, const int nCutsceneID )
+const wchar_t g_sz_DB_CutsceneSawnInsert[] = L"{CALL RZ_CUTSCENE_INSERT (%I64d, %d)}";
+bool GDBManager::CutsceneSawnInsert( const AID nAID, const MUID& uidPlayer, const CID nCID, const int nCutsceneID )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(uidPlayer, SDBTID_CUTSCENESAWNINSERT);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_sz_DB_CutsceneSawnInsert, GConfig::m_nMyWorldID, nAID, nCID, nCutsceneID);
+	strSQL.Format(g_sz_DB_CutsceneSawnInsert, nCID, nCutsceneID);
 
 	pTask->PushSQL(strSQL);
 
@@ -2754,9 +3037,9 @@ bool GDBManager::MailCheckReceiver(const GEntityPlayer* pPlayer, const GDBT_MAIL
 
 	strSQLMailCheckReceiver.Format(g_szDB_MAIL_CHECK_RCVR,
 									GConfig::m_nMyWorldID,
-									(int64)pPlayer->GetCID(),
+									pPlayer->GetCID(),
 									(int64)pPlayer->GetPlayerGrade(),
-									MCleanSQLStr(data.m_strReceiverName).c_str(),									
+									mdb::MDBStringEscaper::Escape(data.m_strReceiverName).c_str(),									
 									gsys.pMailSystem->GetMailType(pPlayer),
 									MAX_MAILBOX_MAIL_COUNT
 									);
@@ -2790,17 +3073,17 @@ bool GDBManager::MailWrite(const MUID& uidPlayer, const GDBT_MAIL_WRITE& data)
 							GConfig::m_nMyWorldID,
 							data.m_nSenderAID,
 							data.m_nSenderCID,
-							MCleanSQLStr(data.m_strSenderName).c_str(),
+							mdb::MDBStringEscaper::Escape(data.m_strSenderName).c_str(),
 							data.m_nSenderCharacterPlaySeconds,
 							data.m_nMoney,
 							data.m_nDeltaMoney,
 
-							MCleanSQLStr(data.m_strReceiverName).c_str(),
+							mdb::MDBStringEscaper::Escape(data.m_strReceiverName).c_str(),
 		
 							data.m_nMailType,
-							MCleanSQLStr(data.m_strTitle).c_str(),
+							mdb::MDBStringEscaper::Escape(data.m_strTitle).c_str(),
 							data.m_hasText,
-							MCleanSQLStr(data.m_strText).c_str(),
+							mdb::MDBStringEscaper::Escape(data.m_strText).c_str(),
 							data.m_nRemainDeleteSeconds,
 							data.m_nDefaultItemID,
 			
@@ -2903,7 +3186,7 @@ bool GDBManager::MailGetContent(const MUID& uidPlayer, int64 nMUID, bool bHasTex
 }
 
 const wchar_t g_szDB_MAIL_SET_READ[] = L"{CALL dbo.USP_RZ_MAIL_SET_READ (%d, %I64d, %I64d, %I64d)}";
-bool GDBManager::MailSetRead(const MUID& uidPlayer, int64 nAID, int64 nCID, int64 nMUID)
+bool GDBManager::MailSetRead(const MUID& uidPlayer, AID nAID, CID nCID, int64 nMUID)
 {
 	CString strSQLMailSetRead;
 	strSQLMailSetRead.Format(g_szDB_MAIL_SET_READ, GConfig::m_nMyWorldID, nAID, nCID, nMUID);
@@ -3087,7 +3370,8 @@ bool GDBManager::MakeStackAmtList( GITEM_STACK_AMT_VEC& vecItems, const wstring&
 	return true;
 }
 
-const wchar_t g_szDB_ItemLootInsert[] = L"{CALL dbo.USP_RZ_ITEM_LOOT_INSERT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s)}";
+// const wchar_t g_szDB_ItemLootInsert[] = L"{CALL dbo.USP_RZ_ITEM_LOOT_INSERT (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s)}";
+const wchar_t g_szDB_ItemLootInsert[] = L"{CALL RZ_ITEM_INSERT (%I64d, %d, '%d', %d, '%d', '%d', '%d', %d, %s, %s, %s)}";
 bool GDBManager::ItemLootInsert(const GDBT_ITEM_DATA& data)
 {
 	if (-1 == data.m_Item.m_nSlotID) return false;
@@ -3097,11 +3381,18 @@ bool GDBManager::ItemLootInsert(const GDBT_ITEM_DATA& data)
 		return false;
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ItemLootInsert
 		, GConfig::m_nMyWorldID
 		, data.m_nAID, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID
 		, data.m_Item.m_nStackAmt, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor
 		, data.m_Item.m_bClaimed, data.m_Item.m_nCharPtm, data.m_Item.m_bPeriodItem, data.m_Item.m_nUsagePeriod, data.m_Item.m_strExpiDt.c_str());
+		*/
+	strSQL.Format(g_szDB_ItemLootInsert
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nItemID
+		, data.m_Item.m_nStackAmt, data.m_Item.m_nDura, data.m_Item.m_nMaxDura, data.m_Item.m_nColor
+		, mdb::MDBBoolUtil::ToWString(data.m_Item.m_bClaimed), mdb::MDBBoolUtil::ToWString(data.m_Item.m_bPeriodItem)
+		, L"NULL" /* TODO: expiration period in interval type. */);
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -3109,7 +3400,8 @@ bool GDBManager::ItemLootInsert(const GDBT_ITEM_DATA& data)
 	return Post(pTask);
 }
 
-const wchar_t g_szDB_ItemLootUpdate[] = L"{CALL dbo.USP_RZ_ITEM_LOOT_UPDATE (%d, %I64d, %d, %d, %I64d, %d)}";
+// const wchar_t g_szDB_ItemLootUpdate[] = L"{CALL dbo.USP_RZ_ITEM_LOOT_UPDATE (%d, %I64d, %d, %d, %I64d, %d)}";
+const wchar_t g_szDB_ItemLootUpdate[] = L"{CALL RZ_ITEM_UPDATE_STACK_AMOUNT (%I64d, %d, '%d', '%d')}";
 bool GDBManager::ItemLootUpdate(const GDBT_ITEM_DATA& data)
 {
 	if (-1 == data.m_Item.m_nSlotID) return false;
@@ -3125,9 +3417,13 @@ bool GDBManager::ItemLootUpdate(const GDBT_ITEM_DATA& data)
 	}
 	
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ItemLootUpdate
 		, GConfig::m_nMyWorldID
 		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nIUID, data.m_Item.m_nStackAmt);
+		*/
+	strSQL.Format(g_szDB_ItemLootUpdate
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_nModStackAmt);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -3142,6 +3438,15 @@ void GDBManager::ItemLootLog( const GDBT_ITEM_DATA& data )
 		, data.m_nMoney, data.m_Item.m_nIUID, data.m_Item.m_nItemID, data.m_Item.m_nStackAmt, data.m_nModStackAmt, strRegDate, data.m_nNpcID);
 
 	m_pLogCaches->m_ItemLootLogCache.PushBack(log_data, IsDirectPostItem(data.m_Item.m_nItemID));
+}
+
+void GDBManager::ReleaseAccountDB()
+{
+	if (NULL != m_pAccountDB)
+	{
+		m_pAccountDB->Release();
+		SAFE_DELETE(m_pAccountDB);
+	}
 }
 
 void GDBManager::ReleaseGameDB()
@@ -3169,6 +3474,29 @@ void GDBManager::ReleaseLogDB()
 		m_pLogDB->Release();
 		SAFE_DELETE(m_pLogDB);
 	}
+}
+
+bool GDBManager::InitAccountDB()
+{
+	if (NULL != m_pAccountDB)
+		return false;
+	
+	m_pAccountDB = new SAsyncDB;
+	if (NULL == m_pAccountDB)
+		return false;
+
+	mdb::MDatabaseDesc DBDesc = SDsnFactory::GetInstance().Get()->GetAccountDSN();
+
+	const mdb::MDB_AYSNC_RESULT AsyncDBRes = m_pAccountDB->Init(SDBT_DBTYPE_ACCOUNTDB, DBDesc);		
+	if (mdb::MDBAR_SUCCESS != AsyncDBRes)
+	{
+		mlog3 ("Create Async AccountDB failed(errno %d).\n", AsyncDBRes);
+		return false;
+	}
+
+	mlog ("Create Async AccountDB success.\n");
+
+	return true;
 }
 
 bool GDBManager::InitGameDB()
@@ -3255,7 +3583,7 @@ bool GDBManager::Post( GDBAsyncTask* pTask )
 
 	const SDBT_DBTYPE dbType = pTask->GetDBType();
 
-	if (SDBT_DBTYPE_GAMEDB != dbType && SDBT_DBTYPE_LOGDB != dbType && SDBT_DBTYPE_GAMEDB_SELECT_CHAR != dbType)
+	if (SDBT_DBTYPE_ACCOUNTDB != dbType && SDBT_DBTYPE_GAMEDB != dbType && SDBT_DBTYPE_LOGDB != dbType && SDBT_DBTYPE_GAMEDB_SELECT_CHAR != dbType)
 	{
 		SAFE_DELETE(pTask);
 		return false;
@@ -3267,7 +3595,12 @@ bool GDBManager::Post( GDBAsyncTask* pTask )
 	{
 		SAsyncDB* pAsyncDB = NULL;
 
-		if (SDBT_DBTYPE_GAMEDB == pTask->GetDBType())
+		if (SDBT_DBTYPE_ACCOUNTDB == pTask->GetDBType())
+		{
+			pAsyncDB = m_pAccountDB;
+			m_nAccountDBQCount++;
+		}
+		else if (SDBT_DBTYPE_GAMEDB == pTask->GetDBType())
 		{
 			pAsyncDB = m_pGameDB;			
 			m_nGameDBQCount++;
@@ -3315,9 +3648,12 @@ bool GDBManager::Post( GDBAsyncTask* pTask )
 	
 }
 
+/*
 const wchar_t g_szDB_Item_Swap_Slot[] = L"{CALL dbo.USP_RZ_ITEM_SWAP_SLOT (%d,\
 										 %I64d, %I64d, %d, %d, %I64d, %d, %d,\
 										 %I64d, %I64d, %d, %d, %I64d, %d, %d, %d)}";
+										 */
+const wchar_t g_szDB_Item_Swap_Slot[] = L"{CALL RZ_ITEM_MOVE (%I64d, %d, '%d', %I64d, %d, '%d', '%d', '%d')}";
 bool GDBManager::ItemMove(GDBT_ITEM_MOVE& data)
 {
 	GDBTaskItemSwapSlot* pTask = new GDBTaskItemSwapSlot(data.m_uidPlayer);
@@ -3334,10 +3670,16 @@ bool GDBManager::ItemMove(GDBT_ITEM_MOVE& data)
 	int nToItemCacheModAmt = gsys.pDBCacheSystem->GetItemCacheModAmt(data.m_uidPlayer, data.m_ToSlot.m_nSlotType, data.m_ToSlot.m_nSlotID, data.m_ToSlot.m_nIUID);
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_Item_Swap_Slot, GConfig::m_nMyWorldID,
 		data.m_FromSlot.m_nAID, data.m_FromSlot.m_nCIDorGID, data.m_FromSlot.m_nSlotType, data.m_FromSlot.m_nSlotID, data.m_FromSlot.m_nIUID, data.m_FromSlot.m_nStackAmt - nFromItemCacheModAmt, data.m_FromSlot.m_nStackAmt,
 		data.m_ToSlot.m_nAID, data.m_ToSlot.m_nCIDorGID, data.m_ToSlot.m_nSlotType, data.m_ToSlot.m_nSlotID, data.m_ToSlot.m_nIUID, data.m_ToSlot.m_nStackAmt - nToItemCacheModAmt, data.m_ToSlot.m_nStackAmt,
 		data.m_nCharPtm);
+		*/
+	strSQL.Format(g_szDB_Item_Swap_Slot
+		, data.m_FromSlot.m_nCIDorGID, data.m_FromSlot.m_nSlotType, data.m_FromSlot.m_nSlotID
+		, data.m_ToSlot.m_nCIDorGID, data.m_ToSlot.m_nSlotType, data.m_ToSlot.m_nSlotID
+		, nFromItemCacheModAmt, nToItemCacheModAmt);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -3382,9 +3724,14 @@ bool GDBManager::ItemSplit(GDBT_ITEM_MERGE_AND_SPLIT& data)
 	return Post(pTask);
 }
 
+/*
 const wchar_t g_szDB_Item_Merge[] = L"{CALL dbo.USP_RZ_ITEM_MERGE (%d, \
 									 %I64d, %d, %d, %I64d, %d, %d, \
 									 %I64d, %d, %d, %I64d, %d, %d)}";
+									 */
+const wchar_t g_szDB_Item_Merge[] = L"{CALL RZ_ITEM_MERGE (\
+									 %I64d, %d, '%d', \
+									 %I64d, %d, '%d', '%d')}";
 bool GDBManager::ItemMerge(const GDBT_ITEM_MERGE_AND_SPLIT& data)						   
 {
 	GDBTaskItemMerge* pTask = new GDBTaskItemMerge(data.m_uidPlayer);
@@ -3401,9 +3748,14 @@ bool GDBManager::ItemMerge(const GDBT_ITEM_MERGE_AND_SPLIT& data)
 	int nToItemCacheModAmt = gsys.pDBCacheSystem->GetItemCacheModAmt(data.m_uidPlayer, data.m_ToSlot.m_nSlotType, data.m_ToSlot.m_nSlotID, data.m_ToSlot.m_nIUID);
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_Item_Merge, GConfig::m_nMyWorldID,
 		data.m_FromSlot.m_nCIDorGID, data.m_FromSlot.m_nSlotType, data.m_FromSlot.m_nSlotID, data.m_FromSlot.m_nIUID, data.m_FromSlot.m_nStackAmt + data.m_nMergeAndSplitAmt - nFromItemCacheModAmt, data.m_FromSlot.m_nStackAmt,
 		data.m_ToSlot.m_nCIDorGID, data.m_ToSlot.m_nSlotType, data.m_ToSlot.m_nSlotID, data.m_ToSlot.m_nIUID, data.m_ToSlot.m_nStackAmt - data.m_nMergeAndSplitAmt - nToItemCacheModAmt, data.m_ToSlot.m_nStackAmt);
+		*/
+	strSQL.Format(g_szDB_Item_Merge, 
+		data.m_FromSlot.m_nCIDorGID, data.m_FromSlot.m_nSlotType, data.m_FromSlot.m_nSlotID, 
+		data.m_ToSlot.m_nCIDorGID, data.m_ToSlot.m_nSlotType, data.m_ToSlot.m_nSlotID, data.m_nMergeAndSplitAmt);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
@@ -3504,7 +3856,8 @@ bool GDBManager::EmblemDelete( const GDBT_EMBLEM& data )
 	return Post(pTask);
 }
 
-wchar_t g_szDB_ITEM_INC_STACK_AMOUNT[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_STACK_AMT (%d, %I64d, %d, %d, %I64d, %d)}";
+// wchar_t g_szDB_ITEM_INC_STACK_AMOUNT[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_STACK_AMT (%d, %I64d, %d, %d, %I64d, %d)}";
+wchar_t g_szDB_ITEM_INC_STACK_AMOUNT[] = L"{CALL RZ_ITEM_UPDATE_STACK_AMOUNT (%I64d, %d, '%d', '%d')}";
 bool GDBManager::ItemIncStackAmt( GDBT_ITEM_DATA& data )
 {
 	GDBTaskItemIncStackAmt* pTask = new GDBTaskItemIncStackAmt(data.m_uidPlayer);
@@ -3518,16 +3871,21 @@ bool GDBManager::ItemIncStackAmt( GDBT_ITEM_DATA& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_INC_STACK_AMOUNT
 		, GConfig::m_nMyWorldID
 		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_Item.m_nIUID, data.m_Item.m_nStackAmt);
+		*/
+	strSQL.Format(g_szDB_ITEM_INC_STACK_AMOUNT
+		, data.m_Item.m_nCID, data.m_Item.m_nSlotType, data.m_Item.m_nSlotID, data.m_nModStackAmt);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-wchar_t g_szDB_ITEM_DEC_STACK_AMOUNT[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_STACK_AMT (%d, %I64d, %d, %d, %I64d, %d)}";
+// wchar_t g_szDB_ITEM_DEC_STACK_AMOUNT[] = L"{CALL dbo.USP_RZ_ITEM_UPDATE_STACK_AMT (%d, %I64d, %d, %d, %I64d, %d)}";
+wchar_t g_szDB_ITEM_DEC_STACK_AMOUNT[] = L"{CALL RZ_ITEM_UPDATE_STACK_AMOUNT (%I64d, %d, '%d', '%d')}";
 bool GDBManager::ItemDecStackAmt( GDBT_ITEM_DEC_STACK_AMT_DATA& data )
 {
 	GDBTaskItemDecStackAmt* pTask = new GDBTaskItemDecStackAmt(data.m_uidPlayer);
@@ -3541,9 +3899,13 @@ bool GDBManager::ItemDecStackAmt( GDBT_ITEM_DEC_STACK_AMT_DATA& data )
 	}
 
 	CString strSQL;
+	/*
 	strSQL.Format(g_szDB_ITEM_DEC_STACK_AMOUNT
 		, GConfig::m_nMyWorldID
 		, data.m_nCID, data.m_nSlotType, data.m_nSlotID, data.m_nIUID, data.m_nStackAmt);
+		*/
+	strSQL.Format(g_szDB_ITEM_DEC_STACK_AMOUNT
+		, data.m_nCID, data.m_nSlotType, data.m_nSlotID, -data.m_nModStackAmt);
 
 	pTask->PushSQL(strSQL);
 
@@ -3559,28 +3921,37 @@ void GDBManager::ItemDecStackAmtLog( GDBT_ITEM_DEC_STACK_AMT_DATA& data )
 
 bool GDBManager::ServerStatusStart( const int nWorldID, const int nServerID, const wstring& strServerName, const wstring& strServerVersion, const wstring& strIP, const uint16 nPort, const int nMaxUser , const uint8 nType, const int nUpdateElapsedTimeSec, const int nAllowDelayTm )
 {
-	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(0, SDBTID_SERVER_START);
+	GAccountDBTaskQuery* pTask = new GAccountDBTaskQuery(0, SDBTID_SERVER_START);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
-		, nWorldID, nServerID, MCleanSQLStr(strServerName).c_str(), MCleanSQLStr(strServerVersion).c_str(), MCleanSQLStr(strIP).c_str()
-		, nPort, nType, nMaxUser, nUpdateElapsedTimeSec, nAllowDelayTm );
+	strSQL.Format(L"{CALL RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
+		, nWorldID
+		, nServerID
+		, mdb::MDBStringEscaper::Escape(strServerName).c_str()
+		, mdb::MDBStringEscaper::Escape(strServerVersion).c_str()
+		, mdb::MDBStringEscaper::Escape(strIP).c_str()
+		, nPort
+		, nType
+		, nMaxUser
+		, nUpdateElapsedTimeSec
+		, nAllowDelayTm );
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-bool GDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable )
+bool GDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable, const unsigned long long nTaskCount, const int nCPUUsage, const int nMemoryUsage, const int nFieldCount, const int nFPS )
 {
-	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(0, SDBTID_SERVER_UPDATE);
+	GAccountDBTaskQuery* pTask = new GAccountDBTaskQuery(0, SDBTID_SERVER_UPDATE);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_SERVER_UPDATE (%d, %d, %d, %d)}", nWordID, nServerID, nCurUserCount, bIsServable);
+	strSQL.Format(L"{CALL RZ_SERVER_UPDATE (%d, %d, %d, %s, %I64d, %d, %d, %d, %d)}", 
+		nWordID, nServerID, nCurUserCount, mdb::MDBBoolUtil::ToWString(bIsServable), nTaskCount, nCPUUsage, nMemoryUsage, nFieldCount, nFPS);
 
 	pTask->PushSQL(strSQL);
 
@@ -3594,9 +3965,9 @@ void GDBManager::FieldEnter( const GDBT_CHAR_ENTER_FILED& data )
 		return;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_CHAR_ENTER_FIELD (%d, %I64d, %I64d, %d, %d, %d, %d, %d, %f, %f, %f)}"
-		, GConfig::m_nMyWorldID, data.m_nAID, data.m_nCID, data.m_nXP, data.m_nLevel, data.m_nMoney, data.m_nCharPtm
-		, data.m_nSharedFieldID, data.m_fPosX, data.m_fPosY, data.m_fPosZ);
+	strSQL.Format(L"{CALL RZ_CHAR_ENTER_FIELD (%I64d, %d, '%d', %d, %d, %d, %f, %f, %f, %f, %f, %f)}"
+		, data.m_nCID, data.m_nXP, data.m_nLevel, data.m_nMoney, data.m_nCharPtm
+		, data.m_nSharedFieldID, data.m_fPosX, data.m_fPosY, data.m_fPosZ, data.m_fDirX, data.m_fDirY, data.m_fDirZ);
 
 	pTask->PushSQL(strSQL);
 
@@ -3659,7 +4030,73 @@ bool GDBManager::ItemEnchant( const GDBT_ITEM_ENCH& data )
 	return Post(pTask);
 }
 
-void GDBManager::GM_QUEST_HISTORY_RESET_ALL( const int64 nAID, const int64 nCID )
+bool GDBManager::MakeItemSortList( const GDBT_ITEM_SORT& data, wstring& stroutFromSlot, wstring& stroutToSlot, wstring& stroutMergeSlot )
+{
+	// Sort Slot
+	const vector<GDBT_ITEM_SORT_SLOT>& vecSortSlot = data.m_vecSortSlot;
+
+	json js_from_array = json::array();
+	json js_to_array = json::array();
+
+	for (const GDBT_ITEM_SORT_SLOT& slot : vecSortSlot)
+	{
+		js_from_array.push_back(slot.m_nFromSlotID);
+		js_to_array.push_back(slot.m_nToSlotID);
+	}
+
+	// Merge Slot
+	const vector<GDBT_ITEM_MERGE_ALL_SLOT>& vecMergeSlot = data.m_vecMergeSlot;
+
+	json js_merge_array = json::array();
+
+	for (const GDBT_ITEM_MERGE_ALL_SLOT& merge : vecMergeSlot)
+	{
+		json js = {
+			{ "FROM_SLOT_ID", merge.m_Slot.m_nFromSlotID },
+			{ "TO_SLOT_ID", merge.m_Slot.m_nToSlotID },
+			{ "STACK_AMOUNT", merge.m_nStackAmount }
+		};
+
+		js_merge_array.push_back(js);
+	}
+
+	stroutFromSlot = MLocale::ConvAnsiToUTF16(js_from_array.dump().c_str());
+	stroutToSlot = MLocale::ConvAnsiToUTF16(js_to_array.dump().c_str());
+	stroutMergeSlot = MLocale::ConvAnsiToUTF16(js_merge_array.dump().c_str());
+
+	return true;
+}
+
+void GDBManager::ItemSortLog( const GDBT_ITEM_SORT& data )
+{
+	// TODO: item sort log
+}
+
+bool GDBManager::ItemSort( const GDBT_ITEM_SORT& data )
+{
+	GDBTaskItemSort* pTask = new GDBTaskItemSort(data.m_uidPlayer);
+	if (NULL == pTask)
+		return false;
+
+	wstring strFromSlot, strToSlot, strMergeSlot;
+	if (!MakeItemSortList(data, strFromSlot, strToSlot, strMergeSlot))
+		return false;
+
+	pTask->Input(data);
+
+	CString strSQL;
+	strSQL.Format(L"{CALL RZ_ITEM_SORT (%I64d, %d, '%s', '%s', '%s')}",
+		data.m_nCID,
+		data.m_nSlotType,
+		mdb::MDBStringEscaper::Escape(strFromSlot).c_str(),
+		mdb::MDBStringEscaper::Escape(strToSlot).c_str(),
+		mdb::MDBStringEscaper::Escape(strMergeSlot).c_str());
+	pTask->PushSQL(strSQL);
+
+	return Post(pTask);
+}
+
+void GDBManager::GM_QUEST_HISTORY_RESET_ALL( const AID nAID, const CID nCID )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(0, SDBTID_DEVELOP);
 	if (NULL == pTask)
@@ -3674,7 +4111,7 @@ void GDBManager::GM_QUEST_HISTORY_RESET_ALL( const int64 nAID, const int64 nCID 
 	Post(pTask);
 }
 
-void GDBManager::GM_QUEST_RESET_ALL( const int64 nAID, const int64 nCID )
+void GDBManager::GM_QUEST_RESET_ALL( const AID nAID, const CID nCID )
 {
 	GGameDBTaskQuery* pTask = new GGameDBTaskQuery(0, SDBTID_DEVELOP);
 	if (NULL == pTask)
@@ -3857,13 +4294,13 @@ bool GDBManager::ResetExpoCharacters()
 bool GDBManager::ResetExpoPublicBoothCharacter( CID nCID )
 {
 	CString strSQL_Reset;
-	strSQL_Reset.Format(L"{CALL dbo.USP_RZ_EXPO_PUB_RESET_ME (%d)}", nCID);	///< Expo 캐릭터 데이터 날리기
+	strSQL_Reset.Format(L"{CALL dbo.USP_RZ_EXPO_PUB_RESET_ME (%I64d)}", nCID);	///< Expo 캐릭터 데이터 날리기
 
 	if (!Execute(strSQL_Reset))
 		return false;
 
 	CString strSQL_SetData;
-	strSQL_SetData.Format(L"{CALL dbo.USP_RZ_EXPO_PUB_SET_ME_DATA (%d)}", nCID);	///< Expo 캐릭터 데이터 셋팅
+	strSQL_SetData.Format(L"{CALL dbo.USP_RZ_EXPO_PUB_SET_ME_DATA (%I64d)}", nCID);	///< Expo 캐릭터 데이터 셋팅
 
 	if (!Execute(strSQL_SetData))
 		return false;
@@ -3884,7 +4321,21 @@ bool GDBManager::TradeMarketPutOn(const GDBT_TRADEMARKET_PUT_ON& data)
 	}
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.교성씨가만들어줄따끈따끈한마켓에물건올리기 (%d, %d, %d, %d, %d)}", data.playerCID, data.slotFromInventory, data.price, data.quantity, data.expiryDate);
+	strSQL.Format(L"{CALL dbo.교성씨가만들어줄따끈따끈한마켓에물건올리기 (%I64d, %d, %d, %d, %d)}", data.playerCID, data.slotFromInventory, data.price, data.quantity, data.expiryDate);
+	pTask->PushSQL(strSQL);
+
+	return Post(pTask);
+}
+
+bool GDBManager::GuideBookInsert(const GDBT_GUIDEBOOK_INSERT_DATA& data)
+{
+	GDBTaskGuideBookInsert* pTask = new GDBTaskGuideBookInsert(data.m_uidPlayer);
+	VALID_RET(pTask, false);
+
+	pTask->Input(data);
+
+	CString strSQL;
+	strSQL.Format(L"{CALL RZ_GUIDEBOOK_INSERT (%I64d, %d)}", data.m_nCID, data.m_nGuideBookID);
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);

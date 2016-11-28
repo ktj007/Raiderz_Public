@@ -359,6 +359,7 @@ bool RShaderFX::LoadShaderFile()
 	//////////////////////////////////////////////////////////////////////////
 	// 파일에서 읽는 것이면 읽어서 m_strShaderString 을 채움
 	MFile file;
+	file.SetAllowAccessUncompFile(true);
 	if( OpenShaderFile( file ) == false )
 		return false;
 

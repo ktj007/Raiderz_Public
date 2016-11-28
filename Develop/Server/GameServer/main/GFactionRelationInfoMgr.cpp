@@ -61,6 +61,8 @@ void GFactionRelationInfoMgr::ParseFactionRelation(MXmlElement* pElement, MXml* 
 
 	if (true ==IsExist(nID1, nID2))
 	{
+		_VLOGGER->Log(_T(FACTIONREL_XML_ATTR_ID1) IS_ALREADY_EXIST);
+		_VLOGGER->Log(_T(FACTIONREL_XML_ATTR_ID2) IS_ALREADY_EXIST);
 		return;
 	}
 

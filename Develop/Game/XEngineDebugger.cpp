@@ -47,15 +47,6 @@ XEngineDebugger::XEngineDebugger()
 	// Debug Context 추가
 	//
 	//////////////////////////////////////////////////////////////////////////
-
-	AddDebugContext<XEngineDebugContextRagDoll>(L"r", L"RagDoll 개발");
-	AddDebugContext<XEngineDebugContextCamera>(L"c", L"Camera 계속 떨리는거 디버깅");
-	AddDebugContext<XEngineDebugContextStun>(L"s", L"스턴시에 이팩트 계속 붙어있던거 디버깅");
-	AddDebugContext<XEngineDebugContextDynamicActorNode>(L"d", L"다이나믹 액터노드 디버깅");
-	AddDebugContext<XEngineDebugContextBuffEffect>(L"b", L"버프 이펙트 디버깅");
-	AddDebugContext<XEngineDebugContextSwallowed>(L"sw", L"먹기 싱크 디버깅");
-	AddDebugContext<XEngineDebugContextHit>(L"hit", L"히트 관련 디버깅");
-	AddDebugContext<XEngineDebugContextTalent>(L"talent", L"탤런트 관련 디버깅");
 }
 
 XEngineDebugger::~XEngineDebugger()

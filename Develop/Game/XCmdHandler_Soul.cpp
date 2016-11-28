@@ -19,7 +19,7 @@ MCommandResult XCmdHandler_Soul::OnDrainMe(MCommand* pCommand, MCommandHandler* 
 	if (pCommand->GetParameter(&nCharmItemEquipSlotID,	1, MPT_CHAR)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&nSoulQuantity,	2, MPT_UCHAR)==false) return CR_ERROR;	
 
-	XItem* pItem = gvar.MyInfo.EquipmentSlot.GetItem(ITEMSLOT_CHARM);
+	XItem* pItem = gvar.MyInfo.EquipmentSlot.GetItem(ITEMSLOT_LOOK_CHARM);
 	if (NULL == pItem) return CR_ERROR;
 	pItem->m_nSoulCount += nSoulQuantity;
 

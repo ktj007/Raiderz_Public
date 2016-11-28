@@ -31,6 +31,7 @@ void LServerSystems::Destroy()
 	SAFE_DELETE(pServer);
 	SAFE_DELETE(pSystem);
 	SAFE_DELETE(pDBManager);
+	SAFE_DELETE(pPMS);
 
 	gsys.SetNull();
 }

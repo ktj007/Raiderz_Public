@@ -7,7 +7,7 @@
 #include "GParty.h"
 #include "GPartySystem.h"
 
-void GDropItemAuthorizer::AuthorizeNormalItem(vector<GDropItem*>& outvecDropItem, const vector<int>& vecBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData)
+void GDropItemAuthorizer::AuthorizeNormalItem(vector<GDropItem*>& outvecDropItem, const vector<CID>& vecBeneficiaryCID, MUID nPartyUID, const LOOTING_RULE_DATA& lootingRuleData)
 {
 	for each (GDropItem* pDropItem in outvecDropItem)
 	{
@@ -25,7 +25,7 @@ void GDropItemAuthorizer::AuthorizeNormalItem(vector<GDropItem*>& outvecDropItem
 				break;
 			case LRC_ROUND_ROBIN:
 				{
-					int nCurrentOrderCID = GetRoundRobinCurrentOdrer(vecBeneficiaryCID, nPartyUID);
+					CID nCurrentOrderCID = GetRoundRobinCurrentOdrer(vecBeneficiaryCID, nPartyUID);
 					SetRoundRobinLastOrder(nPartyUID, nCurrentOrderCID);
 
 					Authorize(pDropItem, nCurrentOrderCID, DIT_GETTABLE);
@@ -63,7 +63,7 @@ void GDropItemAuthorizer::AuthorizeNormalItem(vector<GDropItem*>& outvecDropItem
 	}
 }
 
-void GDropItemAuthorizer::AuthorizeQuestItem(vector<GDropItem*>& outvecDropItem, int nCID)
+void GDropItemAuthorizer::AuthorizeQuestItem(vector<GDropItem*>& outvecDropItem, CID nCID)
 {
 	for each (GDropItem* pDropItem in outvecDropItem)
 	{
@@ -71,7 +71,7 @@ void GDropItemAuthorizer::AuthorizeQuestItem(vector<GDropItem*>& outvecDropItem,
 	}
 }
 
-void GDropItemAuthorizer::AuthorizeQuestPVPItem(vector<GDropItem*>& outvecDropItem, int nCID)
+void GDropItemAuthorizer::AuthorizeQuestPVPItem(vector<GDropItem*>& outvecDropItem, CID nCID)
 {
 	for each (GDropItem* pDropItem in outvecDropItem)
 	{
@@ -79,7 +79,7 @@ void GDropItemAuthorizer::AuthorizeQuestPVPItem(vector<GDropItem*>& outvecDropIt
 	}
 }
 
-void GDropItemAuthorizer::AuthorizeInteractItem(vector<GDropItem*>& outvecDropItem, int nCID )
+void GDropItemAuthorizer::AuthorizeInteractItem(vector<GDropItem*>& outvecDropItem, CID nCID )
 {
 	for each (GDropItem* pDropItem in outvecDropItem)
 	{
@@ -87,25 +87,25 @@ void GDropItemAuthorizer::AuthorizeInteractItem(vector<GDropItem*>& outvecDropIt
 	}
 }
 
-void GDropItemAuthorizer::Authorize(GDropItem* pDropItem, const vector<int>& vecBeneficiaryCID, DROP_ITEM_TYPE nDIT)
+void GDropItemAuthorizer::Authorize(GDropItem* pDropItem, const vector<CID>& vecBeneficiaryCID, DROP_ITEM_TYPE nDIT)
 {
-	for each (int nBeneficiaryCID in vecBeneficiaryCID)
+	for each (CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		Authorize(pDropItem, nBeneficiaryCID, nDIT);
 	}
 }
 
-void GDropItemAuthorizer::Authorize(GDropItem* pDropItem, int nCurrentOrderCID, DROP_ITEM_TYPE nDIT)
+void GDropItemAuthorizer::Authorize(GDropItem* pDropItem, CID nCurrentOrderCID, DROP_ITEM_TYPE nDIT)
 {
 	pDropItem->InsertAuthorizedCID(nCurrentOrderCID);
 	pDropItem->SetType(nDIT);
 }
 
-int GDropItemAuthorizer::GetRoundRobinCurrentOdrer(const vector<int>& vecBeneficiaryCID, MUID nPartyUID)
+CID GDropItemAuthorizer::GetRoundRobinCurrentOdrer(const vector<CID>& vecBeneficiaryCID, MUID nPartyUID)
 {
 	if (true == vecBeneficiaryCID.empty()) return 0;
 
-	int nLastOrderCID = 0;
+	CID nLastOrderCID = 0;
 	GParty* pParty = gsys.pPartySystem->FindParty(nPartyUID);
 	if (NULL != pParty)
 	{
@@ -113,11 +113,11 @@ int GDropItemAuthorizer::GetRoundRobinCurrentOdrer(const vector<int>& vecBenefic
 	}
 
 	int nSize = vecBeneficiaryCID.size();
-	int nCurrentOrder = vecBeneficiaryCID.front();
+	CID nCurrentOrder = vecBeneficiaryCID.front();
 
 	for (int i = 0; i < nSize; i++)
 	{
-		int nCID = vecBeneficiaryCID[i];
+		CID nCID = vecBeneficiaryCID[i];
 
 		if (nLastOrderCID == nCID)
 		{
@@ -132,7 +132,7 @@ int GDropItemAuthorizer::GetRoundRobinCurrentOdrer(const vector<int>& vecBenefic
 	return nCurrentOrder;
 }
 
-void GDropItemAuthorizer::SetRoundRobinLastOrder(MUID nPartyUID, int nLastOrderCID)
+void GDropItemAuthorizer::SetRoundRobinLastOrder(MUID nPartyUID, CID nLastOrderCID)
 {
 	GParty* pParty = gsys.pPartySystem->FindParty(nPartyUID);
 	if (NULL != pParty)

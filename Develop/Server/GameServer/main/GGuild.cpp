@@ -21,7 +21,7 @@ GGuild::~GGuild()
 	SAFE_DELETE_MAP(m_mapMember);
 }
 
-void GGuild::InsertMember(int64 nAID, int nCID, const wchar_t* szName, int nLevel, GUILD_MEMBER_GRADE nGrade)
+void GGuild::InsertMember(AID nAID, CID nCID, const wchar_t* szName, int nLevel, GUILD_MEMBER_GRADE nGrade)
 {
 	if (NULL == szName) return;
 	_ASSERT(NULL == GetMember(nCID));
@@ -42,7 +42,7 @@ void GGuild::InsertMember(int64 nAID, int nCID, const wchar_t* szName, int nLeve
 	}
 }
 
-void GGuild::DeleteMember(int nCID)
+void GGuild::DeleteMember(CID nCID)
 {
 	MAP_GUILD_MEMBER::iterator itor = m_mapMember.find(nCID);
 	if (m_mapMember.end() == itor) return;
@@ -58,7 +58,7 @@ void GGuild::DeleteMember(int nCID)
 	}
 }
 
-void GGuild::ChangeGuildMaster(int nOldMasterCID, int nNewMasterCID)
+void GGuild::ChangeGuildMaster(CID nOldMasterCID, CID nNewMasterCID)
 {
 	GGuildMember* pOldMasterMember = GetMember(nOldMasterCID);
 	if (NULL == pOldMasterMember) return;
@@ -72,7 +72,7 @@ void GGuild::ChangeGuildMaster(int nOldMasterCID, int nNewMasterCID)
 	m_strMasterName = pNewMasterMember->GetName();
 }
 
-GGuildMember* GGuild::GetMember(int nCID)
+GGuildMember* GGuild::GetMember(CID nCID)
 {
 	MAP_GUILD_MEMBER::iterator itor = m_mapMember.find(nCID);
 	if (m_mapMember.end() == itor) return NULL;
@@ -96,7 +96,7 @@ GGuildMember* GGuild::GetMember(const wchar_t* szName)
 	return NULL;
 }
 
-bool GGuild::IsExist(int nCID)
+bool GGuild::IsExist(CID nCID)
 {
 	if (NULL == GetMember(nCID)) return false;
 
@@ -109,12 +109,12 @@ bool GGuild::IsExist(const wchar_t* szName)
 
 	return true;
 }
-bool GGuild::IsGuildMaster(int nCID)
+bool GGuild::IsGuildMaster(CID nCID)
 {
 	return m_nMasterCID == nCID;
 }
 
-bool GGuild::IsOnlineMember(int nCID)
+bool GGuild::IsOnlineMember(CID nCID)
 {
 	GGuildMember* pMember = GetMember(nCID);
 	if (NULL == pMember) return false;
@@ -122,9 +122,9 @@ bool GGuild::IsOnlineMember(int nCID)
 	return pMember->IsOnline();
 }
 
-vector<int> GGuild::CollectMemberCID()
+vector<CID> GGuild::CollectMemberCID()
 {
-	vector<int> vecMemberCID;
+	vector<CID> vecMemberCID;
 
 	for each (const MAP_GUILD_MEMBER::value_type& data in m_mapMember)
 	{

@@ -276,6 +276,7 @@ void GValidateLogger::ValidateItemAddRemoveAmount(int nAmount, const wchar_t* sz
 {
 	if (MAX_ITEM_ADDREMOVE_AMOUNT <= nAmount)
 	{
+		_VLOGGER->Log(PERCENT_S IS_TOO_BIG, szName);
 	}
 }
 

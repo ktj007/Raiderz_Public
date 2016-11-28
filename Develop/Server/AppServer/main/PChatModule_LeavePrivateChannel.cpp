@@ -21,7 +21,7 @@ void PChatModule_LeavePrivateChannel::OnRun(minet::MCommand* pCmd)
 
 	CID cidRequestPlayer;
 	MUID uidChannel;
-	VALID(pCmd->GetParameter(&cidRequestPlayer,		0, MPT_INT));
+	VALID(pCmd->GetParameter(&cidRequestPlayer,		0, MPT_INT64));
 	VALID(pCmd->GetParameter(&uidChannel,			1, MPT_UID));
 
 	SProxyPlayer* pLeavePlayer = gsys.pServer->GetPlayerManager()->FindPlayer(cidRequestPlayer);

@@ -13,6 +13,8 @@
 #include "GCombatCalculator.h"
 #include "GTalentHitRouter.h"
 #include "GBuffRequirement.h"
+#include "GPlayerTalent.h"
+#include "GPlayerBuffConverter.h"
 
 #define ABSOLUTE_STACK_POWER 9999
 
@@ -24,6 +26,8 @@ GModuleBuff::GModuleBuff(GEntity* pOwner)
 	DisablePassiveExtraAttrib();
 	DisableActiveExtraAttrib();	
 
+	DisableMesmerizeImmunity();
+
 	static const float TICK_TIME = 0.1f;
 	m_rgrTick.SetTickTime(TICK_TIME);
 	m_rgrTick.Start();
@@ -31,7 +35,7 @@ GModuleBuff::GModuleBuff(GEntity* pOwner)
 
 GModuleBuff::~GModuleBuff(void)
 {
-	LostAll(false);
+	LostAll(false, true);
 }
 
 void GModuleBuff::RefreshPassiveExtraAttrib()
@@ -61,6 +65,11 @@ void GModuleBuff::EnablePassiveExtraAttrib(GBuff* pBuff)
 		m_bInvincibility = true;
 	}
 
+	if (pBuffInfo->IsAvoid())
+	{
+		m_bAvoid = true;
+	}
+
 	if (pBuffInfo->IsInvisibilityToNPC())
 	{
 		m_bInvisibilityToNPC = true;
@@ -76,7 +85,7 @@ void GModuleBuff::EnablePassiveExtraAttrib(GBuff* pBuff)
 		m_bDisableAllTalent = true;
 	}
 
-	if (pBuffInfo->IsMesmerize())
+	if (pBuffInfo->IsMesmerize() && !IsNowImmuneToMesmerize())
 	{
 		m_bMesmerize = true;
 	}
@@ -123,6 +132,7 @@ void GModuleBuff::ApplyPassiveExtraAttrib(GBuff* pBuff)
 void GModuleBuff::DisablePassiveExtraAttrib()
 {
 	m_bInvincibility = false;
+	m_bAvoid = false;
 	m_bInvisibility = false;
 	m_bInvisibilityToNPC = false;
 	m_bDisableAllTalent = false;
@@ -201,6 +211,8 @@ void GModuleBuff::OnUpdate(float fDelta)
 
 	GModule::OnUpdate(fDelta);
 
+	// Moved into GBuffReleaser::OnDie().
+	/*
 	if (GetOwner()->IsDead())
 	{
 		if (HasBuff())
@@ -211,11 +223,14 @@ void GModuleBuff::OnUpdate(float fDelta)
 
 		return;	// 소유자가 죽음
 	}
+	*/
 
 	m_fSumTickTime += fDelta;
 
 	if (!m_rgrTick.IsReady(fDelta))
 		return; // 틱 시간이 되지 않음
+
+	UpdateMesmerizeImmunity(fDelta);
 	
 	UpdateLazyGainBuffs();	
 	BuffUpdate(m_vecBuff, m_fSumTickTime);
@@ -225,15 +240,34 @@ void GModuleBuff::OnUpdate(float fDelta)
 	m_fSumTickTime = 0.0f;
 }
 
+void GModuleBuff::UpdateMesmerizeImmunity(float fDelta)
+{
+	if (!m_bIgnoreMesmerize)
+		return;
+
+	m_fIgnoreMesmerize_RemainTime -= fDelta;
+
+	if (m_fIgnoreMesmerize_RemainTime <= 0.f)
+	{
+		DisableMesmerizeImmunity();
+	}
+}
+
 void GModuleBuff::UpdateLazyGainBuffs()
 {
+	if (!m_pOwner->IsInField())
+		return;	// must be in field to gain buffs.
+
+	if (m_vecLazyGainBuffs.empty())
+		return;	// nothing to process.
+
 	// Gain 이벤트에서 LazyBuff를 또 얻을 수 있음 (재귀 순회 문제)
 	vector<LazyGainInfo> vecOldLazyGainBuff = m_vecLazyGainBuffs;
 	m_vecLazyGainBuffs.clear();
 
 	for each (const LazyGainInfo& each in vecOldLazyGainBuff)
 	{
-		GainBuffForced(each.pBuffInfo, each.fDurationTime, each.fPeriodTime, NULL, each.uidUser);
+		GainBuffForced(each.pBuffInfo, each.fDurationTime, each.fPeriodTime, NULL, each.User, each.nStack);
 	}
 }
 
@@ -259,6 +293,20 @@ GBuff* GModuleBuff::FindBuffByID( int BuffID )
 	for each (GBuff* pBuff in m_vecBuff)
 	{
 		if (BuffID == pBuff->GetBuffID())
+		{
+			return pBuff;
+		}
+	}
+	return NULL;
+}
+
+GBuff* GModuleBuff::FindBuffByLine(int BuffLine)
+{
+	for each (GBuff* pBuff in m_vecBuff)
+	{
+		GBuffInfo* pBuffInfo = pBuff->GetInfo();
+
+		if (pBuffInfo && pBuffInfo->IsEqualLine(BuffLine))
 		{
 			return pBuff;
 		}
@@ -322,6 +370,30 @@ bool GModuleBuff::IsGained( int nBuffID )
 	return false;
 }
 
+bool GModuleBuff::IsGainedLine( int nBuffLine )
+{
+	for each (GBuff* pBuff in m_vecBuff)
+	{
+		if (!pBuff)
+			continue;
+
+		GBuffInfo* pBuffInfo = pBuff->GetInfo();
+		if (!pBuffInfo)
+			continue;
+
+		if (pBuffInfo->IsEnchant())
+			continue;
+
+		if (pBuff->IsGone())
+			continue;
+
+		if (pBuffInfo->IsEqualLine(nBuffLine))
+			return true;
+	}
+
+	return false;
+}
+
 bool GModuleBuff::IsStackable(int nBuffID)
 {
 	GBuff* pGainedBuff = FindBuffByID(nBuffID);
@@ -362,7 +434,7 @@ bool GModuleBuff::GainEffect( GBuff* pBuff )
 	if (GetOwner()->IsDead())
 		return false;	// 소유자가 죽음 (죽은 상태에서 버프가 걸릴 가능성)
 	
-	if (pBuff->Start())
+	if (!pBuff->Start())
 		return false; // 소유자가 죽음 (버프 얻는 효과에서 죽을 가능성)
 	m_vecBuff.push_back(pBuff);	
 	RefreshPassiveExtraAttrib();
@@ -411,6 +483,19 @@ void GModuleBuff::CancelBuff( int nBuffID )
 	m_rgrTick.SetElapsedTime(m_rgrTick.GetTickTime());
 }
 
+void GModuleBuff::CancelBuffByLine( int nBuffLine )
+{
+	for (GBuff* pBuff : m_vecBuff)
+	{
+		if (pBuff->GetInfo() && pBuff->GetInfo()->IsEqualLine(nBuffLine))
+		{
+			pBuff->Cancel();
+		}
+	}
+
+	m_rgrTick.SetElapsedTime(m_rgrTick.GetTickTime());
+}
+
 bool GModuleBuff::GainBuff( GBuffInfo* pBuffInfo, const CSBuffEnchantInfo& BuffInvokeInfo, GTalentInfo* pTalentInfo/*=NULL*/, GEntityActor* pUser )
 {
 	VALID_RET(pBuffInfo, false);
@@ -423,13 +508,37 @@ bool GModuleBuff::GainBuffDetail( GBuffInfo* pBuffInfo, const CSBuffEnchantInfo&
 	if (ProcessGainResist(BuffInvokeInfo, pUser, pTalentInfo))
 		return false;
 
-	return GainBuffForced(pBuffInfo, fDuration, fPeriod, pTalentInfo, pUser?pUser->GetUID():MUID::Invalid());
+	GEntityActor* pOwner = NULL;
+
+	if (m_pOwner->IsActor())
+		pOwner = ToEntityActor(m_pOwner);
+
+	return GainBuffForced(pBuffInfo, fDuration, fPeriod, pTalentInfo, GBuffUser(pUser, pOwner, pBuffInfo));
 }
 
-bool GModuleBuff::GainBuffForced( GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo/*=NULL*/, MUID uidUser/*=MUID::Invalid()*/ )
+bool GModuleBuff::GainBuffForced( GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, GTalentInfo* pTalentInfo/*=NULL*/, const GBuffUser& User/*=GBuffUser()*/, int nStack/*=1*/ )
 {
 	RVALID_RET(fDurationTime >= BUFF_DURATION_INFINITY, false);
 	RVALID_RET(fPeriodTime >= 0.0f, false);
+	RVALID_RET(nStack > 0, false);
+
+	if (m_pOwner->IsPlayer())
+	{
+		GEntityPlayer* pPlayer = ToEntityPlayer(m_pOwner);
+
+		if (pBuffInfo->m_nIncludePassiveTalent != INVALID_TALENT_ID)
+		{
+			if (!pPlayer->GetTalent().IsTrainedTalent(pBuffInfo->m_nIncludePassiveTalent))
+				return false;
+		}
+
+		int nToBuffID = pPlayer->GetBuffConverter().Convert(pBuffInfo->m_nID);
+		if (pBuffInfo->m_nID != nToBuffID)
+		{
+			GBuffInfo* pToBuffInfo = gmgr.pBuffInfoMgr->Get(nToBuffID);
+			return pToBuffInfo ? GainBuffForced(pToBuffInfo, pToBuffInfo->m_fDuration, pToBuffInfo->m_fPeriod, pTalentInfo, User, nStack) : false;
+		}
+	}
 
 	// 버프 필요조건 처리
 	GBuffRequirement buff_requirement;
@@ -448,6 +557,13 @@ bool GModuleBuff::GainBuffForced( GBuffInfo* pBuffInfo, float fDurationTime, flo
 		return false;
 	}
 
+	switch (pBuffInfo->m_nActiveExtraAttrib)
+	{
+	case BUFAEA_DISPEL_BUFF:
+		ActiveExtraAttrib_DispelBuff(pBuffInfo->m_vecActiveExtraParam1, pBuffInfo->m_vecActiveExtraParam2);
+		break;
+	}
+
 	const int nBuffID = pBuffInfo->m_nID;
 	const int nStackSlot = pBuffInfo->m_nStackSlot;
 	const int nStackPower = pBuffInfo->m_nStackPower;
@@ -456,7 +572,10 @@ bool GModuleBuff::GainBuffForced( GBuffInfo* pBuffInfo, float fDurationTime, flo
 	if (IsStackable(nBuffID))
 	{
 		GBuff* pBuff = FindBuffByID(nBuffID);
-		pBuff->OnStacked(fDurationTime, fPeriodTime);
+		while (nStack-- > 0)
+		{
+			pBuff->OnStacked(fDurationTime, fPeriodTime);
+		}
 		return true;
 	}
 
@@ -468,7 +587,7 @@ bool GModuleBuff::GainBuffForced( GBuffInfo* pBuffInfo, float fDurationTime, flo
 	{
 		// 중복되서 걸린 경우
 		GBuff* pBuff = FindBuffByID(nBuffID);
-		pBuff->OnDuplicated(fDurationTime, fPeriodTime, uidUser); 
+		pBuff->OnDuplicated(fDurationTime, fPeriodTime, User.GetUserUID()); 
 		return true;
 	}
 
@@ -483,7 +602,7 @@ bool GModuleBuff::GainBuffForced( GBuffInfo* pBuffInfo, float fDurationTime, flo
 	}
 	
 	// 버프 효과를 얻음
-	GBuff* pBuff = new GBuff(static_cast<GEntitySync*>(m_pOwner), pBuffInfo, fDurationTime, fPeriodTime, pTalentInfo, uidUser);	
+	GBuff* pBuff = new GBuff(static_cast<GEntitySync*>(m_pOwner), pBuffInfo, fDurationTime, fPeriodTime, pTalentInfo, User, nStack);	
 	VALID_RET(pBuff, false);
 	
 	if (!GainEffect(pBuff))
@@ -495,15 +614,40 @@ bool GModuleBuff::GainBuffForced( GBuffInfo* pBuffInfo, float fDurationTime, flo
 	return true;
 }
 
-void GModuleBuff::LazyGainBuff( GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, MUID uidUser )
+void GModuleBuff::LazyGainBuff( GBuffInfo* pBuffInfo, float fDurationTime, float fPeriodTime, const GBuffUser& User/*=GBuffUser()*/, int nStack/*=1*/ )
 {
 	LazyGainInfo info;
 	info.pBuffInfo = pBuffInfo;
 	info.fDurationTime = fDurationTime;
 	info.fPeriodTime = fPeriodTime;
-	info.uidUser = uidUser;
+	info.User = User;
+	info.nStack = nStack;
 
 	m_vecLazyGainBuffs.push_back(info);
+}
+
+int GModuleBuff::GainBuff(const vector<int>& vecBuffIDs)
+{
+	int nGained = 0;
+
+	for (int nBuffID : vecBuffIDs)
+	{
+		GBuffInfo* pBuffInfo = gmgr.pBuffInfoMgr->Get(nBuffID);
+		if (!pBuffInfo) continue;
+
+		if (GainBuffForced(pBuffInfo, pBuffInfo->m_fDuration, pBuffInfo->m_fPeriod))
+			nGained++;
+	}
+
+	return nGained;
+}
+
+void GModuleBuff::CancelBuff(const vector<int>& vecBuffIDs)
+{
+	for (int nBuffID : vecBuffIDs)
+	{
+		CancelBuff(nBuffID);
+	}
 }
 
 void GModuleBuff::LostBuffStack(int nBuffStackSlot)
@@ -520,30 +664,36 @@ void GModuleBuff::LostBuffStack(int nBuffStackSlot)
 	}
 }
 
-void GModuleBuff::LazyLostAll()
+void GModuleBuff::LazyLostAll(bool bForce)
 {
 	for (vector<GBuff*>::iterator iter = m_vecBuff.begin();		iter != m_vecBuff.end();		++iter)
 	{
 		GBuff* pBuff = (*iter);
 
-		if (pBuff->IsEchant())
-			continue; // 강화 버프는 잃지 않음
+		if (!bForce)
+		{
+			if (pBuff->IsEchant())
+				continue; // 강화 버프는 잃지 않음
+		}
 
 		pBuff->Cancel();
 	}
 
 }
 
-void GModuleBuff::LostAll(bool bRoute)
+void GModuleBuff::LostAll(bool bRoute, bool bForce)
 {
 	for (vector<GBuff*>::iterator iter = m_vecBuff.begin();	iter != m_vecBuff.end();)
 	{
 		GBuff* pBuff = (*iter);
 
-		if (pBuff->IsEchant())
+		if (!bForce)
 		{
-			++iter;
-			continue; // 강화 버프는 잃지 않음
+			if (pBuff->IsEchant())
+			{
+				++iter;
+				continue; // 강화 버프는 잃지 않음
+			}
 		}
 
 		iter = m_vecBuff.erase(iter);
@@ -608,6 +758,58 @@ void GModuleBuff::DismountRideBuff()
 		{
 			RemoveSingleBuff(each->GetBuffID());
 		}
+	}
+}
+
+void GModuleBuff::ActiveExtraAttrib_DispelBuff(const vector<BUFF_ACTIVE_EXTRA_PARAM>& vecParam1, const vector<BUFF_ACTIVE_EXTRA_PARAM>& vecParam2)
+{
+	if (vecParam1.empty() || vecParam2.empty())
+	{
+		_ASSERT(0);
+		return;
+	}
+
+	const int nLimitPower = vecParam2[0].nValue[0];
+
+	for (vector<GBuff*>::iterator it = m_vecBuff.begin(); it != m_vecBuff.end(); it++)
+	{
+		GBuff* pBuff = *it;
+		const GBuffInfo* pBuffInfo = pBuff->GetInfo();
+
+		if (!pBuffInfo) continue;
+		if (!pBuffInfo->IsCancelable()) continue;
+
+		for (size_t i = 0; i < vecParam1.size(); i++)
+		{
+			const BUFF_DISPEL_TYPE dispelType = static_cast<BUFF_DISPEL_TYPE>(vecParam1[i].nValue[0]);
+
+			if (pBuffInfo->IsDispel(dispelType) && pBuff->GetBuffStackPower() <= nLimitPower)
+			{
+				pBuff->Dispel();
+				break;
+			}
+		}
+	}
+}
+
+void GModuleBuff::DispelImmobilization()
+{
+	for (vector<GBuff*>::iterator it = m_vecBuff.begin(); it != m_vecBuff.end(); it++)
+	{
+		GBuff* pBuff = *it;
+		const GBuffInfo* pBuffInfo = pBuff->GetInfo();
+
+		if (!pBuffInfo) continue;
+		if (!pBuffInfo->IsCancelable()) continue;
+
+		if (!IsDispelTypeBuff(DISPEL_MESMERIZE, pBuff->GetBuffStackSlot()) &&
+			!pBuffInfo->IsDispel(BDT_ROOT) &&
+			!pBuffInfo->IsDispel(BDT_SLEEP) &&
+			!pBuffInfo->IsDispel(BDT_WEB) &&
+			!pBuffInfo->IsDispel(BDT_FEAR))
+			continue;
+
+		pBuff->DispelForced();
 	}
 }
 
@@ -703,7 +905,7 @@ void GModuleBuff::CheckDuplicatedRemainBuff(GEntity* pOwner, vector<REMAIN_BUFF_
 	{
 		if (it->nID == nBuffID)
 		{
-			dlog(L"Duplicated remain BuffID(%d, CID:%d).\n"
+			dlog(L"Duplicated remain BuffID(%d, CID:%I64d).\n"
 			, nBuffID
 			, pPlayer->GetPlayerInfo()->nCID);			
 
@@ -741,10 +943,12 @@ void GModuleBuff::GetBuffRemainTimes(vector<REMAIN_BUFF_TIME>& outvecBuffRemainT
 		}
 
 		REMAIN_BUFF_TIME remainBuffTime;
-		
+
 		remainBuffTime.nID = pBuff->GetBuffID();
 		remainBuffTime.fRemainDurationSeconds = pBuff->GetRemainTime();
 		remainBuffTime.fRemainNextPeriodSeconds = pBuff->GetRemainNextPeriodTime();
+		remainBuffTime.nStackedCount = pBuff->GetStackCount();
+		pBuff->GetUser().ExtractInto(remainBuffTime);
 
 		outvecBuffRemainTime.push_back(remainBuffTime);
 	}	
@@ -756,11 +960,14 @@ void GModuleBuff::InsertBuffRemainTimes(const vector<REMAIN_BUFF_TIME>& vecBuffR
 	{
 		int nBuffID = it->nID;
 		float fRemainTime = it->fRemainDurationSeconds;
+		int nStack = it->nStackedCount;
+		GBuffUser User(*it);
 
 		GBuffInfo* pBuffInfo = gmgr.pBuffInfoMgr->Get(nBuffID);
 		if (pBuffInfo == NULL)	continue;
 
-		GainBuffForced(pBuffInfo, fRemainTime, pBuffInfo->m_fPeriod);	}
+		LazyGainBuff(pBuffInfo, fRemainTime, pBuffInfo->m_fPeriod, User, nStack);
+	}
 }
 
 bool GModuleBuff::GainInvincibleBuff_Rebirth()
@@ -825,7 +1032,7 @@ void GModuleBuff::BuffUpdate( vector<GBuff*>& vecBuff, float fDelta )
 		GBuff* pBuff = *it;
 		pBuff->PreUpdate(fDelta);
 
-		if (pBuff->Update(fDelta))
+		if (!pBuff->Update(fDelta))
 			return; // 소유자가 죽었음
 		
 		if (pBuff->IsGone())
@@ -955,5 +1162,22 @@ bool GModuleBuff::ProcessGainResist( const CSBuffEnchantInfo &BuffInvokeInfo, GE
 	}
 
 	return false;
+}
+
+void GModuleBuff::EnableMesmerizeImmunity(float fDuration)
+{
+	if (fDuration <= 0.f)
+		return;
+
+	if (m_fIgnoreMesmerize_RemainTime < fDuration)
+		m_fIgnoreMesmerize_RemainTime = fDuration;
+
+	m_bIgnoreMesmerize = true;
+}
+
+void GModuleBuff::DisableMesmerizeImmunity()
+{
+	m_fIgnoreMesmerize_RemainTime = 0.f;
+	m_bIgnoreMesmerize = false;
 }
 

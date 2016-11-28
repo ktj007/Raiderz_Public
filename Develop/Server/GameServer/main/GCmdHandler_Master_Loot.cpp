@@ -17,7 +17,7 @@ GCmdHandler_Master_Loot::GCmdHandler_Master_Loot(MCommandCommunicator* pCC) : MC
 MCommandResult GCmdHandler_Master_Loot::OnMasterLootNotify(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	// 커맨드 확인
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	vector<TD_LOOT_MASTERLOOT_NOTIFY> vecTDLootMasterLootNotify;
 
 	if (!pCommand->GetBlob(vecBeneficiaryCID,			0))				return CR_ERROR;
@@ -31,7 +31,7 @@ MCommandResult GCmdHandler_Master_Loot::OnMasterLootNotify(MCommand* pCommand, M
 MCommandResult GCmdHandler_Master_Loot::OnOtherGainItem(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	// 커맨드 확인
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	MUID nGainerUID;
 	vector<TD_LOOT_OTHERGAIN_ITEM> vecTDOtherGainItem;
 
@@ -47,10 +47,10 @@ MCommandResult GCmdHandler_Master_Loot::OnOtherGainItem(MCommand* pCommand, MCom
 MCommandResult GCmdHandler_Master_Loot::OnGettableItemAdd(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	// 커맨드 확인
-	int nBeneficiaryCID;	
+	CID nBeneficiaryCID;	
 	vector<TD_LOOT_GETTABLE_ITEM_ADD> vecTDGettableItemAdd;
 
-	if (!pCommand->GetParameter(&nBeneficiaryCID,	0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nBeneficiaryCID,	0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetBlob(vecTDGettableItemAdd,	1))				return CR_ERROR;
 
 	gsys.pLootSystem->ForMasterServer().GettableItemAdd(nBeneficiaryCID, vecTDGettableItemAdd);

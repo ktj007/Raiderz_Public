@@ -196,6 +196,7 @@ bool GDialogSystem::ApplyInteractionElement(GEntityPlayer* pPlayer, int nDialogI
 	case IT_QUEST_END :		return gsys.pQuestSystem->GetUIShower().ShowRewardUI(pPlayer, IElementInfo.GetSinlgeAct());
 	case IT_CRAFT :			return gsys.pCraftSystem->Show(pPlayer, IElementInfo.GetSinlgeAct());
 	case IT_INN_SLEEP :		return gsys.pInnsystem->BeginSleep(pPlayer);
+		/*
 	case IT_SOULBINDING :	
 		{
 			bool bResult = gsys.pPlayerSystem->SaveSoulBinding(pPlayer, IElementInfo.GetSinlgeAct());
@@ -203,6 +204,7 @@ bool GDialogSystem::ApplyInteractionElement(GEntityPlayer* pPlayer, int nDialogI
 
 			return bResult;
 		}			
+		*/
 	default :
 		{
 			gsys.pInteractionSystem->GetNPCInteractor().End(pPlayer);	

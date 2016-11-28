@@ -28,8 +28,8 @@ public :
 protected :
 	GDBT_CHAR_MONEY_INC_DEC m_Data;
 
-	int64				m_nAID;
-	int64				m_nCID;
+	AID					m_nAID;
+	CID					m_nCID;
 	int					m_nCharPtm;
 	int					m_nDeltaCharPtm;
 	int					m_nXP;

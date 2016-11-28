@@ -47,5 +47,5 @@ void GDBTaskGuildMasterChange::_OnPreCompleted()
 void GDBTaskGuildMasterChange::Completer::Do()
 {
 	gsys.pDBManager->GuildMemberLog(m_Data.m_NewMaster);
-	gsys.pGuildSystem->ForDBTask().ChangeMaster((int)m_Data.m_NewMaster.m_nGID, m_Data.m_uidPreMaster, (int)m_Data.m_NewMaster.m_nCID);
+	gsys.pGuildSystem->ForDBTask().ChangeMaster((int)m_Data.m_NewMaster.m_nGID, m_Data.m_uidPreMaster, m_Data.m_NewMaster.m_nCID);
 }

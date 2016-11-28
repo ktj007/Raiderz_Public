@@ -24,6 +24,7 @@ void GDBLogoutFieldBuilder::Build()
 		 return;
 	
 	SetPlayerPos();
+	SetPlayerDir();
 	SetSharedFieldID();
 	SetDyanmicField();	
 }
@@ -81,6 +82,17 @@ void GDBLogoutFieldBuilder::SetPlayerPos()
 	m_vPlayerPos = m_pPlayer->GetPos();
 }
 
+void GDBLogoutFieldBuilder::SetPlayerDir()
+{
+	if (IsEnteringToOtherField())
+	{
+		m_vPlayerDir = m_pPlayer->GetPlayerField().GetFieldEntry().GetReservedWarpDir();
+		return;
+	}
+
+	m_vPlayerDir = m_pPlayer->GetDir();
+}
+
 void GDBLogoutFieldBuilder::SetSharedFieldID()
 {
 	m_nSharedFieldID = m_pField->GetID();
@@ -110,4 +122,9 @@ void GDBLogoutFieldBuilder::SetDyanmicField()
 vec3& GDBLogoutFieldBuilder::GetPlayerPos()
 {
 	return m_vPlayerPos;
+}
+
+vec3& GDBLogoutFieldBuilder::GetPlayerDir()
+{
+	return m_vPlayerDir;
 }

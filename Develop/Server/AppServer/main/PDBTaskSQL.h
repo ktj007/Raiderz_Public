@@ -6,6 +6,18 @@
 #include "MMemPool.h"
 
 
+class PAccountDBTaskQuery : public SDBAsyncTask, public MMemPool<PAccountDBTaskQuery>
+{
+public :
+	PAccountDBTaskQuery(const SDBTASK_ID TaskID);
+	~PAccountDBTaskQuery() {}
+
+	void OnExecute(mdb::MDatabase& rfDB) override;
+
+	mdb::MDB_THRTASK_RESULT	OnCompleted() override;
+};
+
+
 class PGameDBTaskQuery : public SDBAsyncTask, public MMemPool<PGameDBTaskQuery>
 {
 public :

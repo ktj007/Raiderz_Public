@@ -88,8 +88,12 @@ namespace mdb
 
 	bool MDBFieldValueTypeString::AsBool()
 	{
+#if MDB_USE_PSQLODBC
+		return m_strVal != "0";
+#else
 		_ASSERT("지원하지 않는 형변환입니다.");
 		return false;
+#endif
 	}
 
 

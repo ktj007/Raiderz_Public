@@ -140,8 +140,7 @@ bool CSItemManager::ParseItem(MXmlElement* pElement, CSItemData* pItemData, MXml
 			pItemData->m_nItemSlot = ITEMSLOT_RWEAPON;
 			pItemData->m_bLeftWeaponEquipable = true;
 		}
-
-		if (strSlot == _T("finger"))
+		else if (strSlot == _T("finger"))
 		{
 			pItemData->m_nItemSlot = ITEMSLOT_RFINGER;
 		}
@@ -218,11 +217,12 @@ bool CSItemManager::ParseItem(MXmlElement* pElement, CSItemData* pItemData, MXml
 	_Attribute(pItemData->m_bRepairable, pElement, ITEM_XML_ATTR_REPAIRABLE);
 	_Attribute(pItemData->m_nStackAmount, pElement, ITEM_XML_ATTR_STACK_AMOUNT);
 	_Attribute(pItemData->m_nMaxDurability, pElement, ITEM_XML_ATTR_MAX_DURABILITY);
-	_Attribute(pItemData->m_nAP, pElement, "PhysAP");
-	_Attribute(pItemData->m_nMagicAP, pElement, "MagicAP");
 	_Attribute(pItemData->m_nMinDamage, pElement, "min_damage");
 	_Attribute(pItemData->m_fSpellPower, pElement, "spell_power");
 	_Attribute(pItemData->m_nMaxDamage, pElement, "max_damage");
+	_Attribute(pItemData->m_nMagicMinDamage, pElement, "magic_min_damage");
+	_Attribute(pItemData->m_nMagicMaxDamage, pElement, "magic_max_damage");
+	_Attribute(pItemData->m_nAP, pElement, "AP");
 	_Attribute(pItemData->m_fCraftOptionRate, pElement, ITEM_XML_ATTR_CRAFT_OPTION_RATE);
 	
 	tstring strArmorType;

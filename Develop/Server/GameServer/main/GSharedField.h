@@ -4,6 +4,7 @@
 #include "MMemPool.h"
 
 class GAutoPartyMgr;
+class MRegulator;
 
 //////////////////////////////////////////////////////////////////////////
 // 
@@ -53,6 +54,8 @@ private:
 	// 엔티티가 제거될때 호출
 	virtual void RemoveEntity(GEntity* pEntity) override;
 
+	// When Entity entered in.
+	virtual void OnEntityEntered(GEntity* pEntity);
 	// 엔티티가 떠날때
 	virtual void OnEntityLeaved(GEntity* pEntity);
 	
@@ -60,6 +63,8 @@ private:
 	// 채널 아이디
 	CHANNELID m_nChannelID;
 	GAutoPartyMgr*	m_pAutoPartyMgr;
+
+	MRegulator*		m_prgDespawnAll;
 };
 
 class GSharedFieldMLeaf : public GSharedField, public MMemPool<GSharedFieldMLeaf>

@@ -43,7 +43,11 @@
 
 XCmdHandler_Global::XCmdHandler_Global(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 {
-	SetCmdHandler(MC_FIELD_SECTOR_ENTITY_INFO,		OnSectorEntityInfo);
+	SetCmdHandler(MC_FIELD_SECTOR_NPC_INFO,		OnSectorNpcEntityInfo);
+	SetCmdHandler(MC_FIELD_SECTOR_BPART_INFO, OnSectorBpartEntityInfo);
+	SetCmdHandler(MC_FIELD_SECTOR_MAGIC_AREA_INFO, OnSectorMagicAreaEntityInfo);
+	SetCmdHandler(MC_FIELD_SECTOR_SENSOR_INFO, OnSectorSensorEntityInfo);
+	SetCmdHandler(MC_FIELD_SECTOR_PLAYER_INFO, OnSectorEntityInfo);
 	SetCmdHandler(MC_TRIGGER_UPDATE_USABLE_SENSOR,	OnUpdateUsableSensor);
 	SetCmdHandler(MC_TRIGGER_SENSOR_DESTINATION_SEL_REQ,	OnSensorDestinationSelection);
 	SetCmdHandler(MC_TRIGGER_SENSOR_ERROR_MSG,				OnSensorErrorMsg);
@@ -64,7 +68,7 @@ XCmdHandler_Global::XCmdHandler_Global(MCommandCommunicator* pCC) : MCommandHand
 	SetCmdHandler(MC_DEBUG_STRING,				OnTestDebug);
 	SetCmdHandler(MC_AI_DEBUG_MESSAGE,			OnAIDebugMessage);
 	SetCmdHandler(MC_DEBUG_COMBATCALC,			OnDebugCombatcalc);
-	SetCmdHandler(MC_DEBUG_NPC_NETLOG,			OnDebugNPCNetLog);
+	//SetCmdHandler(MC_DEBUG_NPC_NETLOG,			OnDebugNPCNetLog);
 
 	SetCmdHandler(MC_GG_AUTH_REQ,				OnGameGuardAuthReq);
 }
@@ -76,64 +80,87 @@ MCommandResult XCmdHandler_Global::OnSectorEntityInfo(MCommand* pCommand, MComma
 
 	// player
 	vector<TD_UPDATE_CACHE_PLAYER> vecPlayerInfo;
-	if (pCommand->GetBlob(vecPlayerInfo,		0)==false) return CR_ERROR;
+	if (pCommand->GetBlob(vecPlayerInfo,	1)==false) return CR_ERROR;
 	vector<TD_PLAYER_FEATURE_TATTOO> vecPlayerFeatureTattoo;
-	if (pCommand->GetBlob(vecPlayerFeatureTattoo,	1)==false) return CR_ERROR;
+	if (pCommand->GetBlob(vecPlayerFeatureTattoo, 2) == false) return CR_ERROR;
+	vector<TD_PLAYER_BUFF_LIST> vecPlayerBuffInfo;
+	if (pCommand->GetBlob(vecPlayerBuffInfo, 3) == false) return CR_ERROR;
 	
 	int nSize = vecPlayerInfo.size();
-	for (int i=0; i < nSize; i++)
+	for (int i = 0; i < nSize; i++)
 	{
 		TD_PLAYER_FEATURE_TATTOO* _tattoo = NULL;
-		for ( vector<TD_PLAYER_FEATURE_TATTOO>::iterator itr = vecPlayerFeatureTattoo.begin();  itr != vecPlayerFeatureTattoo.end();  itr++)
+		for (vector<TD_PLAYER_FEATURE_TATTOO>::iterator itr = vecPlayerFeatureTattoo.begin(); itr != vecPlayerFeatureTattoo.end(); itr++)
 		{
-			if ( vecPlayerInfo[i].nUIID == (*itr).nUIID)
+			if (vecPlayerInfo[i].SimpleInfo.nUIID == (*itr).nUIID)
 			{
 				_tattoo = &(*itr);
 				break;
 			}
+			TD_PLAYER_BUFF_LIST* _buff = NULL;
+			for (vector<TD_PLAYER_BUFF_LIST>::iterator itr = vecPlayerBuffInfo.begin(); itr != vecPlayerBuffInfo.end(); itr++)
+			{
+				if (vecPlayerInfo[i].SimpleInfo.nUIID == (*itr).nUIID)
+				{
+					_buff = &(*itr);
+					break;
+				}
+			}
+			gg.currentgamestate->InPlayer(vecPlayerInfo[i].SimpleInfo.uid, &vecPlayerInfo[i], _tattoo, _buff, false);
 		}
-		gg.currentgamestate->InPlayer(vecPlayerInfo[i].uid, &vecPlayerInfo[i], _tattoo, false);
 	}
+	return CR_TRUE;
+}
 
-	//----------------------------------------------------------------------------------------------------
-	// npc
-	MCommandParameter* pParam = pCommand->GetParameter(2);
-	if(pParam->GetType() != MPT_BLOB) return CR_ERROR;
+
+MCommandResult XCmdHandler_Global::OnSectorNpcEntityInfo(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	if (gg.game == NULL) return CR_ERROR;
+	MCommandParameter* pParam = pCommand->GetParameter(0);
+	if (pParam->GetType() != MPT_BLOB) return CR_ERROR;
 
 	TD_UPDATE_CACHE_NPC* pNpcNode = (TD_UPDATE_CACHE_NPC*)pParam->GetPointer();
 	int nNpcCount = pParam->GetBlobCount();
 
 	gg.currentgamestate->InNPCs(pNpcNode, nNpcCount);
+	return CR_TRUE;
+}
 
-	//----------------------------------------------------------------------------------------------------
-	// bpart
-	pParam = pCommand->GetParameter(3);
-	if(pParam->GetType() != MPT_BLOB) return CR_ERROR;
+MCommandResult XCmdHandler_Global::OnSectorBpartEntityInfo(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	if (gg.game == NULL) return CR_ERROR;	
+	MCommandParameter* pParam = pCommand->GetParameter(0);
+	if (pParam->GetType() != MPT_BLOB) return CR_ERROR;
 
 	TD_UPDATE_CACHE_PBART* pBPartNode = (TD_UPDATE_CACHE_PBART*)pParam->GetPointer();
 	int nBPartCount = pParam->GetBlobCount();
-	
-	gg.currentgamestate->InBPartNPCs(pBPartNode, nBPartCount);
 
-	//----------------------------------------------------------------------------------------------------
-	// MagicArea
-	pParam = pCommand->GetParameter(4);
-	if(pParam->GetType() != MPT_BLOB) return CR_ERROR;
+	gg.currentgamestate->InBPartNPCs(pBPartNode, nBPartCount);
+	return CR_TRUE;
+}
+
+MCommandResult XCmdHandler_Global::OnSectorMagicAreaEntityInfo(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	if (gg.game == NULL) return CR_ERROR;
+	MCommandParameter* pParam = pCommand->GetParameter(0);
+	if (pParam->GetType() != MPT_BLOB) return CR_ERROR;
 
 	TD_UPDATE_CACHE_BUFFENTITY* pMagicAreaNode = (TD_UPDATE_CACHE_BUFFENTITY*)pParam->GetPointer();
 	int nMagicAreaCount = pParam->GetBlobCount();
 
 	gg.currentgamestate->InMagicAreas(pMagicAreaNode, nMagicAreaCount);
+	return CR_TRUE;
+}
 
-	//----------------------------------------------------------------------------------------------------
-	// usable markers
+MCommandResult XCmdHandler_Global::OnSectorSensorEntityInfo(MCommand* pCommand, MCommandHandler* pHandler)
+{
 
+	if (gg.game == NULL) return CR_ERROR;
 	vector<TD_TRIGGER_SENSOR_INFO> vecSensors;
-	if (false == pCommand->GetBlob(vecSensors, 5)) return CR_ERROR;
+	if (false == pCommand->GetBlob(vecSensors, 0)) return CR_ERROR;
 
 	XSensorManager* pSensorManager = gg.currentgamestate->GetSensorManager();
 	pSensorManager->Init(gg.currentgamestate->GetWorld()->GetInfo(), vecSensors);
-
 	return CR_TRUE;
 }
 
@@ -289,7 +316,7 @@ MCommandResult XCmdHandler_Global::OnDialogStart(MCommand* pCommand, MCommandHan
 
 	int& nSayTextID = gvar.Game.DialogInfo.GetSayTextID();
 	vector<TD_DIALOG_SELECT_NODE>& vecTDDialogSelectNode = gvar.Game.DialogInfo.GetList();	
-	if (pCommand->GetParameter(&nSayTextID, 0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSayTextID,	0, MPT_INT)==false) return CR_ERROR;
 	if (pCommand->GetBlob(vecTDDialogSelectNode, 1)==false) return CR_ERROR;
 
 	if (global.script)
@@ -436,13 +463,6 @@ MCommandResult XCmdHandler_Global::OnAIDebugMessage(MCommand* pCommand, MCommand
 
 MCommandResult XCmdHandler_Global::OnGMGetUID(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	MUID uidPlayer;
-	if (pCommand->GetParameter(&uidPlayer,		0, MPT_UID)==false)	return CR_ERROR;
-
-	wchar_t text[1024]=L"";
-	swprintf_s(text, L"요청하신 플레이어의 UID는 %I64u", uidPlayer);
-	global.ui->OutputToConsole(text);
-
 	return CR_TRUE;
 }
 

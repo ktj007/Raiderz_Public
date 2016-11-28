@@ -28,7 +28,7 @@ bool GAnnounceMsgHandler::OnRequest(const MCommand* pCmd)
 	if (!pPlayer->IsGM())	return false;
 
 
-	int nCID = pPlayer->GetCID();
+	CID nCID = pPlayer->GetCID();
 	MCommand* pNewCmd = m_msgHelper.MakeNewServerCommandAnnounceReq(m_strMsg, nCID);	
 	gsys.pAppServerFacade->Route(pNewCmd);	
 	

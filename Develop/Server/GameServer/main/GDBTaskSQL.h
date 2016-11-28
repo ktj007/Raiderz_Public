@@ -13,6 +13,16 @@
 */
 
 
+class GAccountDBTaskQuery : public GDBAsyncTask, public MMemPool<GAccountDBTaskQuery>
+{
+public :
+	GAccountDBTaskQuery(const MUID& uidReqPlayer, const SDBTASK_ID nTaskID);
+	virtual ~GAccountDBTaskQuery();
+
+	void					OnExecute(mdb::MDatabase& rfDB) override;
+	mdb::MDB_THRTASK_RESULT	_OnCompleted() override;	
+};
+
 class GGameDBTaskQuery : public GDBAsyncTask, public MMemPool<GGameDBTaskQuery>
 {
 public :

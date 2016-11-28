@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MDBFieldValueTypeWString.h"
 #include "MLocale.h"
+#include "MDatabaseDefine.h"
 
 namespace mdb
 {
@@ -86,8 +87,12 @@ namespace mdb
 
 	bool MDBFieldValueTypeWString::AsBool()
 	{
+#if MDB_USE_PSQLODBC
+		return m_wstrVal != L"0";
+#else
 		_ASSERT("지원하지 않는 형변환입니다.");
 		return false;
+#endif
 	}
 
 

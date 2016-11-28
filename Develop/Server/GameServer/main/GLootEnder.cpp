@@ -37,8 +37,8 @@ bool GLootEnder::End(GEntityNPC* pNPC)
 {
 	VALID_RET(pNPC, false);
 
-	set<int> setLootingPlayerCID = pNPC->GetNPCLoot().GetLootingPlayerCID();
-	for each (int nLootingPlayerCID in setLootingPlayerCID)
+	set<CID> setLootingPlayerCID = pNPC->GetNPCLoot().GetLootingPlayerCID();
+	for each (CID nLootingPlayerCID in setLootingPlayerCID)
 	{
 		GEntityPlayer* pLootingPlayer = gmgr.pPlayerObjectManager->GetEntity(nLootingPlayerCID);
 		if (NULL == pLootingPlayer) continue;
@@ -59,7 +59,7 @@ void GLootEnder::RemoveGarbageDropItem(GEntityPlayer* pPlayer, GEntityNPC* pNPC)
 	if (pNPC->GetNPCLoot().GetDropList().IsDropByInteract_Mortal() || 
 		pNPC->GetNPCLoot().GetDropList().IsDropByInteract_Immortal())
 	{
-		set<int> setPreViewableCID;
+		set<CID> setPreViewableCID;
 		pNPC->GetNPCLoot().GetDropList().GetDropItems().Clear();
 
 		if (!pPlayer->GetPlayerLoot().IsILootRegulatorActive())

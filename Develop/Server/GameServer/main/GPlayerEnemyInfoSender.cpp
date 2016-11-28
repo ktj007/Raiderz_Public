@@ -216,7 +216,23 @@ TD_ENEMY_INFO GPlayerEnemyInfoSender::MakeTD( GEntityActor* pEachActor )
 	tdEnemyInfo.nMaxHP = pEachActor->GetMaxHP();
 	tdEnemyInfo.nHPPercent = pEachActor->GetHPPercent();
 	tdEnemyInfo.nLevel = (uint8)pEachActor->GetLevel();
+	tdEnemyInfo.nState = MakeTDState(pEachActor);
 	return tdEnemyInfo;
+}
+
+uint8 GPlayerEnemyInfoSender::MakeTDState( GEntityActor* pActor )
+{
+	// TODO: more investigate this value...
+
+	if (pActor->IsNPC())
+	{
+		GEntityNPC* pEntityNPC = static_cast<GEntityNPC*>(pActor);
+
+		if (pEntityNPC->IsNowCombat() && !pEntityNPC->IsEnemy(m_pOwner->GetUID()))
+			return 2;
+	}
+
+	return 0;
 }
 
 void GPlayerEnemyInfoSender::OnHit( GEntityActor* pOwner, GEntityActor* pAttacker, GTalentInfo* pTalentInfo )

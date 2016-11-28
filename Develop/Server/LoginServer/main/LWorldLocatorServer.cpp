@@ -68,14 +68,15 @@ IMPL_WL_CMD_HANDLER(LWorldLocatorServer, OnWorldInfoRequest)
 	vector<TD_WORLD_INFO> vecWorldInfo;
 	for each(const CSWorldInfo& info in pThis->m_vecWorldInfo)
 	{
-		TD_WORLD_INFO tdInfo;
+		TD_WORLD_INFO tdInfo = { 0 };
 		
 		tdInfo.nID = info.nID;
-		wcsncpy_s(tdInfo.strName, info.strName.c_str(), _TRUNCATE);
-		wcsncpy_s(tdInfo.strIP, info.strIP.c_str(), _TRUNCATE);
+		_tcsncpy_s(tdInfo.strName, info.strName.c_str(), _TRUNCATE);
+		_tcsncpy_s(tdInfo.strIP, info.strIP.c_str(), _TRUNCATE);
 		tdInfo.nCurrentPlayerCount = info.nCurrentPlayerCount;
 		tdInfo.nMaxPlayerCount = info.nMaxPlayerCount;
 		tdInfo.nType = info.nType;
+		tdInfo.nOrderNum = info.nOrderNum;
 
 		vecWorldInfo.push_back(tdInfo);
 	}

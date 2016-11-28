@@ -77,7 +77,7 @@ bool GPlayerFieldDynamic::GateRequest(DYNAMIC_FIELD_TYPE eType, int nFieldGroupI
 	/// 알고 있는 필드 그룹인지 검사.
 	if (NULL == gmgr.pFieldInfoMgr->FindFieldGroup(nFieldGroupID))
 	{
-		mlog("Error! GPlayerFieldDynamic::GateRequest(), Not Exist FieldGroupInfo. (AID: %I64d , CID: %d , UID(%u:%u) , id: %d)\n"
+		mlog("Error! GPlayerFieldDynamic::GateRequest(), Not Exist FieldGroupInfo. (AID: %I64d , CID: %I64d , UID(%u:%u) , id: %d)\n"
 			, m_pOwner->GetAID(), m_pOwner->GetCID(), m_pOwner->GetUID().High, m_pOwner->GetUID().Low, nFieldGroupID);
 		return m_pOwner->FailAndRouteSystemMsg(CR_FAIL_SYSTEM_INVALID_FIELD_ID);
 	}

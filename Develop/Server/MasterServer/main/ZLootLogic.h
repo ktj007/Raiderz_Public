@@ -16,8 +16,8 @@ public:
 	ZLootLogic(void);
 	~ZLootLogic(void);
 
-	void MasterLootNotifyReq(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify);	
-	void OtherGainitemReq(const vector<int>& vecBeneficiaryCID, MUID nGainnerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem);
-	void GettableItemAddReq(int nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd);
-	void RollResultReq(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult);
+	void MasterLootNotifyReq(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify);	
+	void OtherGainitemReq(const vector<CID>& vecBeneficiaryCID, MUID nGainnerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem);
+	void GettableItemAddReq(CID nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd);
+	void RollResultReq(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult);
 };

@@ -102,7 +102,6 @@ enum CHAR_DOING
 	CD_ENCHANTING,					///< 강화
 	CD_DYEING,						///< 염색
 	CD_CUTSCENING,					///< 컷씬
-	CD_ATTUNEMENT,					///< SoulHunterZ
 };
 
 enum ALTITUDE_TYPE
@@ -227,7 +226,7 @@ private:
 public:
 	bool	m_bGhost;					///< 다른 플레이어에게 안보일지 여부
 
-	int				nCID;				///< CID, DB에서 사용
+	CID				nCID;				///< CID, DB에서 사용
 	GPlayerGrade	nPlayerGrade;		///< 플레이어 등급
 	
 	RACE	nRace;				///< 종족
@@ -238,7 +237,9 @@ public:
 	short	nFeatureSkinColor;	///< 피부색
 	uint8	nEyeColor;			///< 눈색
 	uint8	nMakeUp;			///< 화장
+	uint8	nVoice;
 	uint8	nTattooType;			///< 문신
+	uint8	nTattooColor;
 	short	nTattooPosX;			///< 문신 좌표 x
 	short	nTattooPosY;			///< 문신 좌표 y
 	uint8	nTattooScale;		///< 문신 크기
@@ -438,7 +439,7 @@ public:
 	int				nCHA;				///< NPC는 스탯중 CHA만 가진다.
 
 	int				nMaxLevel;			///< NPC는 스폰될 때 nLevel(Min)~nMaxLevel 사이의 레벨에서 랜덤으로 만들어진다. 
-	int8			nGrade;				///< used for Damage shit
+	int8			nGrade;				///< 등급
 	bool			bHuge;
 	float			fRunSpeed;			///< 달리기 속도
 	float			fFleeSpeedAmp;		///< 도망치는 속도 보정치

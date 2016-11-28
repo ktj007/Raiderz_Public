@@ -843,5 +843,5 @@ void XNetDebuger::PostAIMonitorLockTarget( UIID uiidTarget )
 	if (gvar.MyInfo.ChrInfo.nPlayerGrade <= PLAYER_GRADE_GM) return;
 	if (!gvar.Network.bLoginToGameServer) return;
 
-	XPostDebugString(L"aimon", (int)uiidTarget, L"");
+//	XPostDebugString(L"aimon", (int)uiidTarget, L"");
 }

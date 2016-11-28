@@ -20,6 +20,7 @@ public:
 
 	// 가드가 성공했는지 여부, 가드를 할 수 있고 성공했다면 true를 반환
 	GUARD_TYPE GetGuardLevel( GEntityActor* pGuarder, GEntityActor* pAttacker, GTalentInfo* pAttackTalentInfo );
+	GUARD_TYPE GetGuardLevel( GEntityActor* pGuarder, GEntityActor* pAttacker, GTalentInfo* pAttackTalentInfo, int nDamage );
 	
 	// 방어성공 효과 적용
 	void ApplyEffect_Guard( GEntityActor* pGuarder, GEntityActor* pAttacker, GTalentInfo* pAttackTalentInfo, GUARD_TYPE nGuardType, uint16 nCheckTime, int nDamage);
@@ -41,6 +42,8 @@ public:
 private:
 	// 완전 방어가 가능한지 여부
 	bool CheckPerfectGuard(GEntityActor* pGuarder, GEntityActor* pAttacker);
+
+	bool CheckAbsoluteGuard(GEntityActor* pGuarder, GEntityActor* pAttacker, int nDamage);
 
 	// 방어 성공 패킷
 	void RouteGuardDefense(GEntityActor* pGuarder, GUARD_TYPE nType, UIID nAttackerUIID, int nTalentID, uint32 nHitTime, int nGuardedDamage);

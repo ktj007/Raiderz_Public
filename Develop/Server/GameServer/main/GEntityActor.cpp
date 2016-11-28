@@ -84,6 +84,7 @@ GEntityActor::GEntityActor()
 , m_isMoving(false)
 , m_isJumping(false)
 , m_bRegen(true)
+, m_pLastUsedTalentInfo(NULL)
 {
 	m_nType |= ET_ACTOR;
 	m_nTypeID = ETID_ACTOR;
@@ -130,7 +131,7 @@ void GEntityActor::Destroy()
 	if (!m_pModuleBuff)
 		return;
 
-	m_pModuleBuff->LostAll(false);
+	m_pModuleBuff->LostAll(false, true);
 
 	__super::Destroy();
 }
@@ -220,6 +221,9 @@ void GEntityActor::ReleaseMotionFactor(bool bStateToNormal)
 inline
 bool GEntityActor::IsBeginUnableAction()
 {
+	if (IsDead())
+		return true;
+
 	if (m_pModuleBuff->IsMesmerize())	return true;
 	return false;
 }
@@ -348,8 +352,9 @@ GMFApplyReturnValue GEntityActor::ApplyMotionFactor(const GMFApplyArgs args)
 		for (int i=0; i<MF_PRIORITY_SIZE; i++)
 		{
 			// 슈퍼 아머중이면 비튼 모션팩터 무시
-			if (pmCombat->IsNowSuperarmorTime() && 
-				MF_STATE(i) == MF_BEATEN)
+			if (pmCombat->IsNowIgnoreAllMFTime() || 
+				(pmCombat->IsNowSuperarmorTime() && 
+				MF_STATE(i) == MF_BEATEN))
 			{
 				vecAdditionIgnoreMF.push_back(i);
 			}
@@ -454,6 +459,12 @@ bool GEntityActor::doUseTalent(GTalentInfo* pTalentInfo, TALENT_TARGET_INFO Targ
 {
 	VALID_RET(pTalentInfo, false);
 
+	int nNewTalentID = ConvertTalentID(pTalentInfo);
+	if (nNewTalentID != 0 && pTalentInfo->m_nID != nNewTalentID)
+	{
+		return doUseTalent(nNewTalentID, Target, bCheckEnabled, bGainStress);
+	}
+
 	m_nTalentStartTime = gsys.pSystem->GetNowTime();
 
 	doGuardReleased();
@@ -465,8 +476,9 @@ bool GEntityActor::doUseTalent(GTalentInfo* pTalentInfo, TALENT_TARGET_INFO Targ
 	}
 
 	if (IsBeginUnableAction() &&
-		!pTalentInfo->m_bIgnoreMesmerize) // 무시 탤런트면 예외
+		!pTalentInfo->IsIgnoreMesmerize()) // 무시 탤런트면 예외
 	{
+		 OnUseTalentFailed(pTalentInfo->m_nID, CR_FAIL_USE_TALENT_DISABLED);
 		return false; // 행동 불가 상태
 	}
 
@@ -481,6 +493,38 @@ bool GEntityActor::doUseTalent(GTalentInfo* pTalentInfo, TALENT_TARGET_INFO Targ
 	}
 	
 	return true;
+}
+
+int GEntityActor::ConvertTalentID(GTalentInfo* pTalentInfo)
+{
+	VALID_RET(pTalentInfo, 0);
+
+	int nFromTalentID = pTalentInfo->m_nID;
+
+	// ConvertTalent
+	if (IsPlayer())
+	{
+		GEntityPlayer* pPlayer = ToEntityPlayer(this);
+		SET_TALENTID setTalentID = pPlayer->GetTalent().GetTopRankTalentID();
+
+		for (int nTalentID : setTalentID)
+		{
+			int nToTalentID = pTalentInfo->m_ConvertTalent.Convert(nTalentID);
+			if (nToTalentID != nTalentID) return nToTalentID;
+		}
+	}
+
+	// ConvertBuff
+	vector<int> vecBuffID;
+	GetBuffList(vecBuffID);
+
+	for (int nBuffID : vecBuffID)
+	{
+		int nToTalentID = pTalentInfo->m_ConvertBuff.Convert(nBuffID);
+		if (nToTalentID != nBuffID) return nToTalentID;
+	}
+
+	return nFromTalentID;
 }
 
 void GEntityActor::doCancelTalent(bool bPostCommand)
@@ -703,18 +747,19 @@ bool GEntityActor::IsGuardableDirection(GEntityActor* pAttacker)
 
 	vec3 attack_dir = pAttacker->GetPos() - this->GetPos();
 	attack_dir.Normalize();
-	float dot = this->GetFacingDir().DotProduct(attack_dir);
+	float dot = this->GetDir().DotProduct(attack_dir);
 
 	// 방어 가능한 방향인지 체크
 	if (nDirection == GUARD_DIRECTION_FRONT)
 	{
-		if (dot >= 0) 
+		if (dot >= 0.5f)	// 60도
+		{
 			return true;
+		}
 	}
-	if (nDirection == GUARD_DIRECTION_BACK)
+	else if (nDirection == GUARD_DIRECTION_FRONT)
 	{
-		if (dot <= 0) 
-			return true;
+		if (dot <= 0) return true;
 	}
 
 	return false;
@@ -844,11 +889,12 @@ bool GEntityActor::doGuard( int nGuardTalentID )
 		return false;
 
 	// 가드할 때 스테미너 소모 안하도록 수정 (사장님 요청사항)
-	//GUseCostMgr costMgr;
-	//if (!costMgr.Pay_TalentCost(this, pGuardTalentInfo))
-	//{
-	//	return false;	// 비용 지불 실패
-	//}
+	// 2015-12-14: MAIET is again activated to pay stamina cost on guarding, so uncommented here.
+	GUseCostMgr costMgr;
+	if (!costMgr.Pay_TalentCost(this, pGuardTalentInfo))
+	{
+		return false;	// 비용 지불 실패
+	}
 
 	m_GuardInfo.bGuarding = true;
 	m_GuardInfo.nGuardingTalentID = nGuardTalentID;
@@ -875,7 +921,7 @@ void GEntityActor::Warp(vec3 vPos)
 	Warp(vPos, GetDir(), true);
 }
 
-bool GEntityActor::RemoveBuff(int nBuffID)
+bool GEntityActor::RemoveBuff( int nBuffID )
 {
 	if (!GetModuleBuff()->IsGained(nBuffID))
 		return false;
@@ -885,6 +931,19 @@ bool GEntityActor::RemoveBuff(int nBuffID)
 	return true;
 }
 
+int GEntityActor::RemoveBuff( const vector<int>& vecBuffIDs )
+{
+	int nRemoved = 0;
+
+	for (int nBuffID : vecBuffIDs)
+	{
+		if (RemoveBuff(nBuffID))
+			nRemoved++;
+	}
+
+	return nRemoved;
+}
+
 bool GEntityActor::GainBuff( int nBuffID, GTalentInfo* pTalentInfo/*=NULL*/, GEntityActor* pUser )
 {
 	GBuffInfo* pBuffInfo = gmgr.pBuffInfoMgr->Get(nBuffID);
@@ -892,6 +951,19 @@ bool GEntityActor::GainBuff( int nBuffID, GTalentInfo* pTalentInfo/*=NULL*/, GEn
 		return false; // 유효하지 않은 버프
 
 	return GainBuffDetail(nBuffID, pBuffInfo->m_fDuration, pBuffInfo->m_fPeriod, pTalentInfo, pUser);
+}
+
+int GEntityActor::GainBuff( const vector<int>& vecBuffIDs )
+{
+	int nGained = 0;
+
+	for (int nBuffID : vecBuffIDs)
+	{
+		if (GainBuff(nBuffID))
+			nGained++;
+	}
+
+	return nGained;
 }
 
 bool GEntityActor::GainBuffDetail( int nBuffID, float fDuration, float fPeriod, GTalentInfo* pTalentInfo/*=NULL*/, GEntityActor* pUser )
@@ -911,6 +983,23 @@ bool GEntityActor::GainBuffDetail( int nBuffID, float fDuration, float fPeriod, 
 	BuffInvokeInfo.EffectInfo.m_nPoint = CSEffectInfo::POINT_SELF;
 
 	return GetModuleBuff()->GainBuffDetail(pBuffInfo, BuffInvokeInfo, pTalentInfo, pUser, fDuration, fPeriod);
+}
+
+void GEntityActor::LazyGainBuff( int nBuffID, const GBuffUser& User )
+{
+	GBuffInfo* pBuffInfo = gmgr.pBuffInfoMgr->Get(nBuffID);
+	if (!pBuffInfo)
+		return;
+
+	GetModuleBuff()->LazyGainBuff(pBuffInfo, pBuffInfo->m_fDuration, pBuffInfo->m_fPeriod, User);
+}
+
+void GEntityActor::LazyGainBuff( const vector<int>& vecBuffIDs )
+{
+	for (int nBuffID : vecBuffIDs)
+	{
+		LazyGainBuff(nBuffID);
+	}
 }
 
 void GEntityActor::GetBuffList( vector<int>& vBuffList ) const
@@ -969,7 +1058,11 @@ void GEntityActor::RouteRebirth()
 		NEW_SINGLE_BLOB(&td_simple_status, sizeof(TD_UPDATE_SIMPLE_STATUS)));
 	RouteToMe(pNewMyCmd);	
 
-	MCommand* pNewCommand = MakeNewCommand(MC_CHAR_REBIRTH_NETPLAYER, 1, NEW_UID(GetUID()));
+	MCommand* pNewCommand = MakeNewCommand(MC_CHAR_REBIRTH_NETPLAYER,
+		3,
+		NEW_UID(GetUID()),
+		NEW_VEC(GetPos()),
+		NEW_SVEC2(GetDir()));
 	RouteToThisCellExceptMe(pNewCommand);
 }
 
@@ -1046,7 +1139,7 @@ void GEntityActor::doTryHit(GEntityActor* pAttacker, GTalentInfo* pTalentInfo, i
 	case GuardEffector::GUARD_SUCCESS:
 		{
 			// 일반 방어처리
-			GUARD_TYPE nGuardType = guard_effector.GetGuardLevel(this, pAttacker, pTalentInfo);
+			GUARD_TYPE nGuardType = guard_effector.GetGuardLevel(this, pAttacker, pTalentInfo, nDamage);
 			if (nGuardType == GT_INVALID)
 				break;	// 2차 방어검사에서 방어 실패로 처리됨
 
@@ -1080,7 +1173,7 @@ void GEntityActor::doTryHit(GEntityActor* pAttacker, GTalentInfo* pTalentInfo, i
 
 	GHitInfo infoHit;
 	infoHit.bHitProcessed		= false;
-	infoHit.nDamageType			= GetDamageType(pTalentInfo);
+	infoHit.nDamageType			= GetDamageType(pTalentInfo->m_nDamageAttrib, pTalentInfo->m_WeaponReference);
 	infoHit.nDamage				= nDamage;
 	infoHit.nHealAmount			= nHealAmount;
 	infoHit.nCheckTime			= nCheckTime;
@@ -1088,7 +1181,7 @@ void GEntityActor::doTryHit(GEntityActor* pAttacker, GTalentInfo* pTalentInfo, i
 	infoHit.nCapsuleIndex		= nCapsuleIndex;
 	infoHit.bTryGuard			= guard_effector.IsTryGuard(this);
 	infoHit.bCriticalHit		= CheckBitSet(combat_result.nResultFlags,CTR_CRITICAL) != 0;
-	infoHit.bBackHit			= IsBack(pAttacker->GetPos());
+	infoHit.bBackHit			= combat_result.bBackHit;//IsBack(pAttacker->GetPos());
 	infoHit.nTalentID			= pTalentInfo->m_nID;
 
 	infoHit.pTalentInfo			= pTalentInfo;
@@ -1124,7 +1217,8 @@ void GEntityActor::doTryHit(GEntityActor* pAttacker, GTalentInfo* pTalentInfo, i
 																pTalentInfo, 
 																false, 
 																1.0f, 
-																GDamageRangedInfo(pTalentInfo->m_nMaxDamage, pTalentInfo->m_nMinDamage)) * fRiposteRate);
+																GDamageRangedInfo(pTalentInfo->m_nMaxDamage, pTalentInfo->m_nMinDamage),
+																false ) * fRiposteRate);
 
 		nDamage = max(nDamage, 1); // 최소 1의 피해는 줌
 
@@ -1439,6 +1533,14 @@ bool GEntityActor::HasBuff( int nBuffID )
 	return pmBuff->IsGained(nBuffID);
 }
 
+bool GEntityActor::HasBuffLine( int nBuffLine )
+{
+	GModuleBuff* pmBuff = GetModuleBuff();
+	VALID_RET(pmBuff, false);
+
+	return pmBuff->IsGainedLine(nBuffLine);
+}
+
 bool GEntityActor::HasBuff_ForTest( int nBuffID )
 {
 	GModuleBuff* pmBuff = GetModuleBuff();
@@ -1596,7 +1698,9 @@ bool GEntityActor::IsNowInvincibility()
 bool GEntityActor::IsNowAvoidTime()
 {
 	VALID_RET(m_pModuleCombat, false);
+	VALID_RET(m_pModuleBuff, false);
 	if (m_pModuleCombat->IsNowAvoidTime())		return true;
+	if (m_pModuleBuff->IsNowAvoid())			return true;
 
 	return false;
 }
@@ -1624,7 +1728,7 @@ bool GEntityActor::IsDisableTalent( GTalentInfo* pTalentInfo )
 {
 	VALID_RET(pTalentInfo, false);
 	VALID_RET(m_pModuleBuff, false);
-	if (pTalentInfo->m_bIgnoreMesmerize)				return false;
+	if (pTalentInfo->IsIgnoreMesmerize())				return false;
 	if (m_pModuleBuff->IsDisableAllTalent())		return true;
 	if (m_pModuleBuff->IsDisableTalent(pTalentInfo->m_nCategory))	return true;
 	if (m_pModuleBuff->IsMesmerize())				return true;
@@ -1717,7 +1821,7 @@ bool GEntityActor::HandleImmune( GEntityActor* pAttacker, GTalentInfo* pTalentIn
 	}
 
 	// 특정 피해에 대한 면역처리
-	if (m_ImmuneHandler.IsDamageTypeImmune(pAttacker->GetDamageType(pTalentInfo)))
+	if (m_ImmuneHandler.IsDamageTypeImmune(pAttacker->GetDamageType(pTalentInfo->m_nDamageAttrib, pTalentInfo->m_WeaponReference)))
 	{
 		OnImmuned(pTalentInfo, pAttacker);
 		return true;
@@ -1760,14 +1864,11 @@ bool GEntityActor::HandleImmune( GEntityActor* pAttacker, GBuffInfo* pBuffInfo )
 	return false;
 }
 
-DAMAGE_ATTRIB GEntityActor::GetDamageType( const GTalentInfo* pTalentInfo )
+DAMAGE_ATTRIB GEntityActor::GetDamageType( DAMAGE_ATTRIB nTalentDamageAttrib, WEAPON_REFRENCE nWeaponReference )
 {
-	if (pTalentInfo)
-	{
-		// 탤런트에 피해정보가 있다면 반환
-		if (pTalentInfo->m_nDamageAttrib != DA_NONE)
-			return pTalentInfo->m_nDamageAttrib;
-	}
+	// 탤런트에 피해정보가 있다면 반환
+	if (nTalentDamageAttrib != DA_NONE)
+		return nTalentDamageAttrib;
 
 	return DA_NONE;
 }
@@ -1919,6 +2020,16 @@ void GEntityActor::OnAvoid( GTalentInfo* pTalentInfo, GEntityActor* pAttacker )
 }
 
 
+
+void GEntityActor::OnUseTalent( GEntityActor* pUser, GTalentInfo* pTalentInfo )
+{
+	__super::OnUseTalent(pUser, pTalentInfo);
+
+	if (pTalentInfo->IsIgnoreMesmerize() && pTalentInfo->m_nIgnoreMesmerize > 0)
+	{
+		pUser->GetModuleBuff()->EnableMesmerizeImmunity(pTalentInfo->m_nIgnoreMesmerize / 1000.f);
+	}
+}
 
 void GEntityActor::OnActTalent( GEntityActor* pUser, GTalentInfo* pTalentInfo )
 {

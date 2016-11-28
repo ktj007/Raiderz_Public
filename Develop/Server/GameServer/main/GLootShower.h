@@ -20,8 +20,8 @@ public:
 	bool Distribute(GEntityPlayer* pPlayer, GEntityNPC* pNPC);
 
 private:
-	int CalcDistributedMoney(GEntityNPC* pNPC, set<int> setMoneyAuthorizedCID);
-	bool DB(set<int> setMoneyAuthorizedCID, int nDistributedMoney, int nNpcID);
+	int CalcDistributedMoney(GEntityNPC* pNPC, set<CID> setMoneyAuthorizedCID);
+	bool DB(set<CID> setMoneyAuthorizedCID, int nDistributedMoney, int nNpcID);
 	void Server(GEntityNPC* pNPC);
 };
 

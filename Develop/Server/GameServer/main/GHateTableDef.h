@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 typedef long	HatePoint;
 typedef map<MUID, HatePoint>						HatePointMap;
 typedef map<HatePoint, MUID, greater<HatePoint>>	HateReverseMap;

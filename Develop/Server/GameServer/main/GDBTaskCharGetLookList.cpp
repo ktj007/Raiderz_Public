@@ -6,6 +6,7 @@
 #include "GFieldMgr.h"
 #include "SCmdRouter_Login.h"
 #include "GCommandCenter.h"
+#include "CCommandResultTable.h"
 
 
 GDBTaskCharGetLookList::GDBTaskCharGetLookList(const MUID& uidReqPlayer) 
@@ -105,5 +106,5 @@ void GDBTaskCharGetLookList::Completer::Do()
 
 	// 캐릭터 목록 응답
 	SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
-	cmdRouter.ResponseAccountCharList(uidPlayer, vecAccountCharInfo);
+	cmdRouter.ResponseAccountCharList(uidPlayer, CR_SUCCESS, vecAccountCharInfo);
 }

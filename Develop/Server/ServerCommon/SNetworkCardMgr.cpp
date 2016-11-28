@@ -2,6 +2,10 @@
 #include "SNetworkCardMgr.h"
 #include "MLocale.h"
 
+#if (_MSC_VER >= 1900)
+#include <WS2tcpip.h>
+#endif
+
 SNetworkCardMgr* SNetworkCardMgr::GetInstance()
 {
 	static SNetworkCardMgr NetworkCardMgr;
@@ -28,6 +32,28 @@ bool SNetworkCardMgr::Init()
 	char name[64] = {0,};
 	gethostname(name, sizeof(name));
 
+#if (_MSC_VER >= 1900)
+	ADDRINFO* pAddrInfo;
+
+	ADDRINFO AddrHints = { 0 };
+	AddrHints.ai_family		= AF_INET;
+	AddrHints.ai_protocol	= IPPROTO_TCP;
+	AddrHints.ai_socktype	= SOCK_STREAM;
+
+	if (getaddrinfo(name, NULL, &AddrHints, &pAddrInfo) != 0)
+		return false;
+
+	for (ADDRINFO* i = pAddrInfo; i; i = i->ai_next)
+	{
+		IN_ADDR iaddr = ((SOCKADDR_IN*)pAddrInfo->ai_addr)->sin_addr;
+		char	szIP[64];
+
+		if (!inet_ntop(AF_INET, &iaddr, szIP, 64))
+			continue;
+
+		m_listNetCardInfo_Unreg.push_back(SNetworkCardInfo(MLocale::ConvAnsiToTCHAR(szIP).c_str()));
+	}
+#else
 	hostent* pHostEnt = gethostbyname(name);
 	if (NULL	== pHostEnt->h_addr) return false;
 	if (AF_INET	!= pHostEnt->h_addrtype) return false;
@@ -41,6 +67,7 @@ bool SNetworkCardMgr::Init()
 
 		m_listNetCardInfo_Unreg.push_back(SNetworkCardInfo(strAddr.c_str()));
 	}
+#endif
 
 	return true;
 }

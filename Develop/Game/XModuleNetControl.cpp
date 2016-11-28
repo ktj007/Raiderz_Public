@@ -961,14 +961,14 @@ void XModuleNetControl::DoActionSitRise()
 	m_pOwner->Event(msg);
 }
 
-void XModuleNetControl::OnReInPlayer(TD_UPDATE_CACHE_PLAYER* pPlayerInfo)
+void XModuleNetControl::OnReInPlayer(TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_BUFF_LIST* pBuffList)
 {
 	vec3 vDir;
-	vDir = pPlayerInfo->svDir;
+	vDir = pPlayerInfo->SimpleInfo.svDir;
 
-	OnReInField(pPlayerInfo->vPos, vDir);
+	OnReInField(pPlayerInfo->SimpleInfo.vPos, vDir);
 
-	GetOwner()->SetBuff(pPlayerInfo);
+	GetOwner()->SetBuff(pBuffList);
 }
 
 void XModuleNetControl::OnGuardKnockBack(vec3& vDir)

@@ -38,7 +38,7 @@ private:
 	void GetActors(GField& field, const vec3& vCenterPoint, float fRadius, vector<GEntityActor*> &outvecEffectTarget) const;
 
 	// 관계로 목표를 걸러냄
-	void FilterRelation(GEntitySync* pSelf, CSEffectInfo::RELATION nRelation, vector<GEntityActor*> &outvecEffectTarget) const;
+	void FilterRelation(GEntitySync* pSelf, CSEffectInfo::RELATION nRelation, vector<GEntityActor*> &outvecEffectTarget, GEntitySync* pCaster=NULL) const;
 
 	// 제한인원으로 목표를 걸러냄
 	void FilterLimit(vec3 vCenterPoint, int nLimit, vector<GEntityActor*> &outvecEffectTarget) const;

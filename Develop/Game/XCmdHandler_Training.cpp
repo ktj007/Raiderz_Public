@@ -19,8 +19,8 @@ MCommandResult XCmdHandler_Training::OnTrain(MCommand* pCommand, MCommandHandler
 	int nTalentID;
 	bool bConsumeTP;
 
-	if (pCommand->GetParameter(&nTalentID,	0, MPT_INT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&bConsumeTP, 1, MPT_BOOL)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nTalentID,	1, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&bConsumeTP, 2, MPT_BOOL)==false) return CR_ERROR;
 
 	XTalentInfo* pTalentInfo = info.talent->Get(nTalentID);
 	_ASSERT(NULL != pTalentInfo && "pTalentInfo is NULL");
@@ -61,7 +61,7 @@ MCommandResult XCmdHandler_Training::OnTrain(MCommand* pCommand, MCommandHandler
 MCommandResult XCmdHandler_Training::OnUntrainAll(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	int nTotalTP;
-	if (pCommand->GetParameter(&nTotalTP,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nTotalTP,	1, MPT_INT)==false) return CR_ERROR;
 
 	gvar.MyInfo.Talent.UntrainAll();
 	// 운영자 명령어로 획득한 TP를 제거한 순수한 TP로 세팅

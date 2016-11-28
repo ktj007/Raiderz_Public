@@ -29,7 +29,7 @@ public:
 	bool Post(SDBAsyncTask* pTask);
 
 	virtual bool ServerStatusStart(const int nWorldID, const int nServerID, const wstring& strServerName, const wstring& strServerVersion, const wstring& strIP, const uint16 nPort, const int nMaxUser , const uint8 nType, const int nUpdateElapsedTimeSec, const int nAllowDelayTm);
-	virtual bool ServerStatusUpdate(const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable);
+	virtual bool ServerStatusUpdate(const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable, const unsigned long long nTaskCount, const int nCPUUsage, const int nMemoryUsage, const int nFieldCount, const int nFPS);
 
 	virtual bool WorldInsert(const ZWorldContext& wc);
 	virtual bool WorldUpdate(int nWorldID, int nCurPlayerCount, bool isServable);

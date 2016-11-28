@@ -34,14 +34,16 @@ enum TALENT_STYLE;
 #pragma pack(push, old)
 #pragma pack(1)
 
+
 struct TD_INSERT_CHARACTER_INFO
 {
 	TCHAR szName[PLAYER_NAME_LEN+1];// 캐릭터 이름
-	int8 nSex, nHair, nFace, nVoice;// 성별, 머리, 얼굴, 목소리
-	short nHairColor, nSkinColor;	// 머리색, 피부색
-	uint8 nEyeColor, nMakeUp, nTattooType;	// 눈색, 화장, 문신
-	short nTattooPosX, nTattooPosY;	// 문신 좌표
+	int16 nSex, nHair, nFace, nVoice;// 성별, 머리, 얼굴, 목소리
+	int16 nHairColor, nSkinColor;	// 머리색, 피부색
+	int16 nEyeColor, nMakeUp, nTattooType;	// 눈색, 화장, 문신
+	int16 nTattooPosX, nTattooPosY;	// 문신 좌표
 	uint8 nTattooScale;				// 문신 크기
+	int16 nTattooColor;
 	TALENT_STYLE nTalentStyle;	// 탤런트 스타일
 	int8 nEquipmentIndex;		// 기본 장비 세트
 	int8 nEquipmentColorIndex;	// 기본 장비 세트 색상	
@@ -60,6 +62,7 @@ struct TD_INSERT_CHARACTER_INFO
 	, nTattooPosX(0)
 	, nTattooPosY(0)
 	, nTattooScale(0)
+	, nTattooColor(0)
 	, nTalentStyle(TS_NONE)
 	, nEquipmentIndex(0)
 	, nEquipmentColorIndex(0)	
@@ -68,20 +71,47 @@ struct TD_INSERT_CHARACTER_INFO
 	}
 };
 
+struct TD_ITEM_ATTRIBUTE
+{
+	TD_ITEM_ATTRIBUTE() : nEnchantGrade(0), nElementType(ITEMELEMENT_NONE) {}
+
+	TD_ITEM_ATTRIBUTE(int nEnchantGrade, SH_ITEM_ELEMENT_TYPE nElementType)
+		: nEnchantGrade(nEnchantGrade)
+		, nElementType(nElementType)
+	{}
+
+	int						nEnchantGrade;		// attribute enchant level: 0 ~ 6.
+	SH_ITEM_ELEMENT_TYPE	nElementType;		// element type: None, Fire, Ice, Lightning, Poison, Holy, Darkness
+};
+
 struct TD_PLAYER_FEATURE
 {
 	SEX		nSex;
-	int8	nHair;
-	int8	nFace;
-	short	nHairColor;
-	short	nSkinColor;
-	uint8	nEyeColor;
-	uint8	nMakeUp;	
+	int16	nHair;
+	int16	nFace;
+	int16	nHairColor;
+	int16	nSkinColor;
+	int16	nEyeColor;
+	int16	nMakeUp;	
+	int16	nVoice;
 	int8	nWeaponSet;
 
+	// nItemID determines character look. e.g. equipped item ID, or costume item ID
 	int		nItemID[FEATURE_ITEMSLOT_MAX];
+
 	int		nItemID_DyedColor[FEATURE_ITEMSLOT_MAX];
 	int		nItemID_EnchantBuff[FEATURE_ITEMSLOT_MAX];
+
+	/* TODO: Unknown Item Values: need to figure out what these are... (all values were almost zero) */
+	int		nItemID_Unknown1[FEATURE_ITEMSLOT_MAX];
+	int		nItemID_Unknown2[FEATURE_ITEMSLOT_MAX];
+	int		nItemID_Unknown3[FEATURE_ITEMSLOT_MAX];
+
+	int		nItemID_Equipped[FEATURE_ITEMSLOT_MAX];		// actual equipped items
+	int		nItemID_EnchantGrade[FEATURE_ITEMSLOT_MAX];
+
+	TD_ITEM_ATTRIBUTE ItemAttribute[FEATURE_ITEMSLOT_MAX];
+
 	TCHAR	szGuildName[GUILD_NAME_LEN+1];
 
 	TD_PLAYER_FEATURE()
@@ -94,11 +124,20 @@ struct TD_PLAYER_FEATURE
 		, nMakeUp(0)		
 		, nWeaponSet(0)
 	{		
-		memset(nItemID, 0, sizeof(nItemID));
 		memset(nItemID_DyedColor, 0, sizeof(nItemID_DyedColor));
+		memset(nItemID_EnchantGrade, 0, sizeof(nItemID_EnchantGrade));
+
+		memset(nItemID_Unknown1, 0, sizeof(nItemID_Unknown1));
+		memset(nItemID_Unknown2, 0, sizeof(nItemID_Unknown2));
+		memset(nItemID_Unknown3, 0, sizeof(nItemID_Unknown3));
+
+		memset(ItemAttribute, 0, sizeof(ItemAttribute));
 
 		for (int i=0; i<FEATURE_ITEMSLOT_MAX; ++i)
+		{
+			nItemID[i] = nItemID_Equipped[i] = -1;
 			nItemID_EnchantBuff[i] = ENCHANT_UNUSED_SLOT;
+		}
 
 		szGuildName[0] = _T('\0');
 	}
@@ -108,12 +147,13 @@ struct TD_PLAYER_FEATURE
 struct TD_PLAYER_FEATURE_TATTOO
 {	
 	UIID	nUIID;
-	uint8	nTattooType;
-	short	nTattooPosX;
-	short	nTattooPosY;
+	int16	nTattooType;
+	int16	nTattooColor;
+	int16	nTattooPosX;
+	int16	nTattooPosY;
 	uint8	nTattooScale;
 
-	TD_PLAYER_FEATURE_TATTOO() : nUIID(0), nTattooType(0), nTattooPosX(0), nTattooPosY(0), nTattooScale(0) {	}
+	TD_PLAYER_FEATURE_TATTOO() : nUIID(0), nTattooType(0), nTattooColor(0), nTattooPosX(0), nTattooPosY(0), nTattooScale(0) {	}
 	bool IsValid()
 	{
 		return (0 != nUIID);
@@ -125,6 +165,7 @@ struct TD_AccountCharInfo
 {	
 	TCHAR						szName[PLAYER_NAME_LEN + 1];
 	int8						nLevel;
+	int							nUnknown1;	// TODO: Added on 2014, but don't know how it's used.
 	int							nFieldID;
 	TD_PLAYER_FEATURE			Feature;
 	TD_PLAYER_FEATURE_TATTOO		Tattoo;
@@ -135,13 +176,15 @@ struct TD_MYINFO
 
 {
 	int8	nSex;
-	int8	nFeatureHair;
-	int8	nFeatureFace;
+	int16	nFeatureHair;
+	int16	nFeatureFace;
 	int16	nFeatureHairColor;
 	int16	nFeatureSkinColor;
-	uint8	nEyeColor;
-	uint8	nMakeUp;
-	uint8	nTattooType;
+	int16	nEyeColor;
+	int16	nMakeUp;
+	int16	nVoice;
+	int16	nTattooType;
+	int16	nTattooColor;
 	short	nTattooPosX;
 	short	nTattooPosY;
 	uint8	nTattooScale;
@@ -154,6 +197,7 @@ struct TD_MYINFO
 	short	nCurEN;
 	short	nCurSTA;
 	int		nMoney;	
+	int		nUnknown1;	// TODO: unknown
 	uint8	nWeaponSet;
 	TCHAR	szName[PLAYER_NAME_LEN + 1];
 	TCHAR	szSurname[PLAYER_NAME_LEN + 1];
@@ -163,11 +207,31 @@ struct TD_MYINFO
 	uint8	nINT;
 	uint8	nCHA;
 	uint8	nCON;
-	int		nRemainTP;
-	int		nFatigueType;
-	int8	nPlayerGrade;	///< 플레이어 등급	
-	int		nSoulbindingFieldID;
-	int		nCheckPointFieldID;
+	int				nFatigueType;
+	int				nRemainTP;
+	int				nRemainTP_Backup;
+	int				nTotalTP;
+	SKILL_SET_TYPE	eSkillSet;
+	int				nCheckPointFieldID;
+	int8			nPlayerGrade;	///< 플레이어 등급	
+
+	int		nUnknown2;
+
+	struct
+	{
+		int		nWins;
+		int		nLoses;
+		int		nScore;
+	} BattleArena_Score;
+
+	struct
+	{
+		int		_1;		// 00 00 00 00
+		char	_2[16];	// 00 A0 8A 6C A9 90 57 63 00 00 00 00 00 00 00 00
+		int		_3;		// 0A 00 00 00
+		int		_4;		// E8 03 00 00
+		char	_5[16];	// 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+	} Unknown3;
 
 	/// 메인 UI 의 우편 위젯에 마우스를 올렸을 때 보여줄 정보
 	bool	bExistUnreadMail;
@@ -180,27 +244,39 @@ struct TD_MYINFO
 		nFeatureHairColor = 0;
 		nFeatureSkinColor = 0;
 		nMakeUp = 0;
+		nVoice = 0;
 		nTattooType = 0;
+		nTattooColor = 0;
 		nTattooPosX = 0;
 		nTattooPosY = 0;
 		nTattooScale = 0;
 		nWeaponSet = 0;
 		nSex = 0;
 		nFatigueType = 0;
-		szName[0] = _T('\0');
-		szSurname[0] = _T('\0');
+		memset(szName, 0, sizeof(szName));
+		memset(szSurname, 0, sizeof(szSurname));
 		nPlayerGrade = 0;
-		nSoulbindingFieldID = 0;
+		eSkillSet = SST_COMMON;
 		nCheckPointFieldID = 0;
 		bExistUnreadMail = false;
 		bIsFullMailbox = false;
 		nMoney = 0;
+		nRemainTP = 0;
+		nRemainTP_Backup = 0;
+		nTotalTP = 0;
+
+		memset(&BattleArena_Score, 0, sizeof(BattleArena_Score));
+
+		nUnknown1 = 0;
+		nUnknown2 = 0;
+		memset(&Unknown3, 0, sizeof(Unknown3));
 	}
 };
 
 struct TD_TALENT
 {
-	int nID;
+	int					nID;
+	SKILL_SET_TYPE		eSkillSet;
 };
 
 struct TD_TRADE_ITEM_PUTUP_REQ
@@ -230,9 +306,6 @@ struct TD_TRADE_ITEM_PUTUP
 	int	m_nAmount;
 	int	m_nDurability;
 	int	m_nColor;
-	//SoulHunterZ
-	//int m_nEXP;
-	//int m_nAttuneLvl;
 };
 
 struct TD_TRADE_ITEM_PUTDOWN
@@ -425,14 +498,16 @@ struct TD_ITEM
 	, m_nDyedColor(0)
 	, m_bBind(false)
 	, m_nSoulQuantity(0)
-	, m_nXP(0)
-	, m_nNextAttuneXP(0)
-	, m_nAttuneLevel(0)
 	{
 		for (int i=0; i<ENCHANT_MAX_COUNT; ++i)
 		{
 			m_nEnchants[i] = ENCHANT_UNUSED_SLOT; 
 		}
+
+		m_Attribute.nElementType	= ITEMELEMENT_NONE;
+		m_Attribute.nEnchantGrade	= 0;
+
+		nUnknown1 = nUnknown2[0] = nUnknown2[1] = 0;
 	}
 
 	bool operator==(const TD_ITEM& other) const
@@ -444,9 +519,8 @@ struct TD_ITEM
 		if (m_nDyedColor != other.m_nDyedColor) return false;
 		if (m_bBind != other.m_bBind) return false;
 		if (m_nSoulQuantity != other.m_nSoulQuantity) return false;
-		if (m_nXP != other.m_nXP) return false;
-		if (m_nNextAttuneXP != other.m_nNextAttuneXP) return false;
-		if (m_nAttuneLevel != other.m_nAttuneLevel) return false;
+		if (m_Attribute.nElementType != other.m_Attribute.nElementType) return false;
+		if (m_Attribute.nEnchantGrade != other.m_Attribute.nEnchantGrade) return false;
 
 		for (int i=0; i<ENCHANT_MAX_COUNT; ++i)
 		{
@@ -457,18 +531,17 @@ struct TD_ITEM
 		return true;
 	}
 
-	int				m_nItemID;	
-	int				m_nSlotID;
-	int				m_nQuantity;				// 수량 (겹치는 아이템 대비)
-	int				m_nDurability;
-	int				m_nDyedColor;				// 염색된 색
-	bool			m_bBind;					// 귀속 되었는지
-	uint8			m_nSoulQuantity;			// 소울 흡수량
-	//SoulHunterZ
-	int				m_nXP;
-	int				m_nNextAttuneXP;
-	uint8			m_nAttuneLevel;
-	int				m_nEnchants[ENCHANT_MAX_COUNT];		// 인챈 목록 (첫번째는 활성화 인챈트)
+	int					m_nItemID;	
+	int					m_nSlotID;
+	int					m_nQuantity;				// 수량 (겹치는 아이템 대비)
+	int					m_nDurability;
+	int					m_nDyedColor;				// 염색된 색
+	bool				m_bBind;					// 귀속 되었는지
+	int					nUnknown1; // TODO: Unknown
+	uint8				m_nSoulQuantity;			// 소울 흡수량
+	int					m_nEnchants[ENCHANT_MAX_COUNT];		// 인챈 목록 (첫번째는 활성화 인챈트)
+	TD_ITEM_ATTRIBUTE	m_Attribute;
+	int					nUnknown2[2];	
 };
 
 struct TD_ITEM_DROP
@@ -514,23 +587,51 @@ struct TD_ITEM_INSERT
 	, m_nDurability(0)			// 내구도
 	, m_nColor(0)				// 색깔
 	, m_nSoulAmount(0)			// 소울 수량
-	{}
+	, m_nEnchantGrade(0)		// Beycium Enchantment Grade
+	{
+		// Jewel Enchantments
+		for (int i = 0; i < ENCHANT_MAX_COUNT; i++)
+			m_nEnchants[i] = 0;
 
-	TD_ITEM_INSERT(int nID, int nSlotID, int nAmount, int nDurability, int nColor, int nSoulAmount)
+		memset(unknown, 0, sizeof(unknown));
+	}
+
+	TD_ITEM_INSERT(
+		int nID, 
+		int nSlotID, 
+		int nAmount, 
+		int nDurability, 
+		int nColor, 
+		int nSoulAmount, 
+		const int* nEnchants, 
+		int nEnchantGrade, 
+		const TD_ITEM_ATTRIBUTE& Attribute)
 	: m_nID(nID)
 	, m_nSlotID(nSlotID)
 	, m_nAmount(nAmount)
 	, m_nDurability(nDurability)
 	, m_nColor(nColor)
 	, m_nSoulAmount(nSoulAmount)
-	{}
+	, m_nEnchantGrade(nEnchantGrade)
+	{
+		for (int i = 0; i < ENCHANT_MAX_COUNT; i++)
+			m_nEnchants[i] = nEnchants ? nEnchants[i] : 0;
 
-	int		m_nID;	
-	int		m_nSlotID;
-	int		m_nAmount;
-	int		m_nDurability;
-	int		m_nColor;
-	int		m_nSoulAmount;
+		m_Attribute = Attribute;
+
+		memset(unknown, 0, sizeof(unknown));
+	}
+
+	int					m_nID;	
+	int					m_nSlotID;
+	int					m_nAmount;
+	int					m_nDurability;
+	int					m_nColor;
+	int					m_nSoulAmount;
+	int					m_nEnchants[ENCHANT_MAX_COUNT];
+	int					m_nEnchantGrade;
+	TD_ITEM_ATTRIBUTE	m_Attribute;
+	int					unknown[2];	// TODO: unknown
 };
 
 struct TD_ITEM_INCREASE
@@ -590,12 +691,14 @@ struct TD_ITEM_INVENTORY_SORT
 	: m_nFromSlotID(0), m_nToSlotID(0)
 	{}
 
-	TD_ITEM_INVENTORY_SORT(int16 nFromSlotID, int16 nToSlotID)
-	: m_nFromSlotID(nFromSlotID), m_nToSlotID(nToSlotID)
+	TD_ITEM_INVENTORY_SORT(int nFromSlotID, int nToSlotID, int nItemType)
+	: m_nFromSlotID(nFromSlotID), m_nToSlotID(nToSlotID), m_nItemType(nItemType)
 	{}
 
-	int16 m_nFromSlotID;
-	int16 m_nToSlotID;
+	int		m_nFromSlotID;
+	int		m_nToSlotID;
+	int		m_nItemType;
+	int		m_nUnknown;	// TODO: unknown
 };
 
 struct TD_UPDATE_DURABILITY
@@ -619,33 +722,23 @@ struct TD_UPDATE_DURABILITY
 	int				m_nDurability;				// 내구도
 };
 
-struct TD_CRAFT_RECIPE
-{
-	TD_CRAFT_RECIPE(int nRecipeID, bool bMakable)
-	: m_nRecipeID(nRecipeID)
-	, m_bMakable(bMakable)
-	{
-	}
-
-	int		m_nRecipeID;
-	bool	m_bMakable;
-};
-
 struct TD_PARTY_SETTING
 {	
 	TD_PARTY_SETTING()
 	: m_nLRC(LRC_FREE_FOR_ALL)
 	, m_nLRR(LRR_FREE_FOR_ALL)
 	, m_nLRRF(LRRF_RARE_OR_HIGHER)
+	, m_bPublicParty(false)
 	, m_nAutoPartyQuestID(INVALID_ID)
 	{
-		m_szName[0] = _T('\0');
+		memset(m_szName, 0, sizeof(m_szName));
 	}
 
 	void Export(PARTY_SETTING& PartySetting) const
 	{
 		PartySetting.m_uidLeader = m_uidLeader;
 		
+		PartySetting.m_bPublicParty = m_bPublicParty;
 		_tcsncpy_s(PartySetting.m_szName, m_szName, _TRUNCATE);
 
 		PartySetting.m_lootingRuleData.m_nLRC = (LOOTING_RULE_COMMON)m_nLRC;
@@ -658,6 +751,7 @@ struct TD_PARTY_SETTING
 	{
 		m_uidLeader = PartySetting.m_uidLeader;
 		
+		m_bPublicParty = PartySetting.m_bPublicParty;
 		_tcsncpy_s(m_szName, PartySetting.m_szName, _TRUNCATE);
 
 		m_nLRC = PartySetting.m_lootingRuleData.m_nLRC;
@@ -670,6 +764,7 @@ struct TD_PARTY_SETTING
 	int8			m_nLRC;				// 일반 전리품 루팅룰
 	int8			m_nLRR;				// 고급 전리품 루팅룰
 	int8			m_nLRRF;			// 고급 전리품 루팅룰 적용 대상
+	bool			m_bPublicParty;
 	TCHAR			m_szName[PARTY_NAME_LEN+1];
 	int				m_nAutoPartyQuestID;
 };
@@ -701,8 +796,11 @@ struct TD_PARTY_MEMBER
 	, nEN(0)
 	, nSTA(0)
 	, nLevel(0)
+	, nFieldID(0)
+	, nChannelID(0)
+	, nTalentStyle(TS_NONE)
 	{
-		szName[0] = _T('\0');
+		memset(szName, 0, sizeof(szName));
 	}
 
 	MUID			m_uidPlayer;
@@ -712,6 +810,41 @@ struct TD_PARTY_MEMBER
 	int8			nEN;
 	int8			nSTA;
 	int8			nLevel;
+	int32			nFieldID;
+	int16			nChannelID;
+	uint8			nTalentStyle;
+};
+
+struct TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM
+{
+	TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM()
+		: m_uidParty(MUID::ZERO)
+		, m_uidLeader(MUID::ZERO)
+		, m_nMemberCount(0)
+	{
+		memset(m_szPartyName, 0, sizeof(m_szPartyName));
+		memset(m_szLeaderName, 0, sizeof(m_szLeaderName));
+	}
+
+	TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM(
+		const MUID& uidParty,
+		const MUID& uidLeader,
+		const TCHAR* szPartyName,
+		const TCHAR* szLeaderName,
+		const int8 nMemberCount)
+		: m_uidParty(uidParty)
+		, m_uidLeader(uidLeader)
+		, m_nMemberCount(nMemberCount)
+	{
+		_tcsncpy_s(m_szPartyName, szPartyName, _TRUNCATE);
+		_tcsncpy_s(m_szLeaderName, szLeaderName, _TRUNCATE);
+	}
+
+	MUID		m_uidParty;
+	MUID		m_uidLeader;
+	TCHAR		m_szPartyName[PARTY_NAME_LEN / 2 + 1];	// half-truncated party name.
+	TCHAR		m_szLeaderName[PLAYER_NAME_LEN + 1];
+	int8		m_nMemberCount;
 };
 
 enum UPDATE_PC_STATUS
@@ -719,17 +852,18 @@ enum UPDATE_PC_STATUS
 	UPS_NONE					=0,
 	UPS_DEAD					=1,
 	UPS_OFFLINE					=2,
-	UPS_SWIMMING				=3,	///< 수영중
-	UPS_LOOTING					=4,	///< 루팅중
-	UPS_FIELDPVP_TEAM1			=5,	///< 필드PVP 팩션1 팀
-	UPS_FIELDPVP_TEAM2			=6,	///< 필드PVP 팩션1 팀
-	UPS_SITTING					=7,	///< 앉아 있는중
-	UPS_CUTSCENING				=8,	///< 컷신중
-	UPS_AFK						=9,	///< 자리비움
-	UPS_PARTYLEADER				=10,///< 파티장
+	UPS_SWIMMING				=4,	///< 수영중
+	UPS_LOOTING					=5,	///< 루팅중
+	UPS_FIELDPVP_TEAM1			=6,	///< 필드PVP 팩션1 팀
+	UPS_FIELDPVP_TEAM2			=7,	///< 필드PVP 팩션1 팀
+	UPS_SITTING					=8,	///< 앉아 있는중
+	UPS_CUTSCENING				=9,	///< 컷신중
+	UPS_AFK						=10,///< 자리비움
+	UPS_PARTYLEADER				=11,///< 파티장
 	// 최대 15까지
 };
 
+/*
 struct TD_UPDATE_CACHE_PLAYER
 {
 	MUID		uid;
@@ -756,7 +890,77 @@ struct TD_UPDATE_CACHE_PLAYER
 		, nMF(MF_NONE)
 		, nMFWeight(0)
 	{
+		memset(Buffs, 0, sizeof(Buffs));
+		memset(szName, 0, sizeof(szName));
+	}
+};
+*/
 
+struct TD_SIMPLE_UPDATE_CACHE_PLAYER
+{
+	MUID			uid;
+	UIID			nUIID;
+	vec3			vPos;
+	svec2			svDir;
+	CHAR_STANCE		nStance;
+	uint16			nStatusFlag;
+	uint16			nMFWeight;
+	MF_STATE		nMF;
+
+	// TODO: unknown (may contain brune info here...)
+	uint8			nUnknown[18];
+
+	TD_SIMPLE_UPDATE_CACHE_PLAYER()
+		: uid(MUID::Invalid())
+		, nUIID(0)
+		, vPos(vec3::ZERO)
+		, svDir(0.0f, 1.0f)
+		, nStance(CS_NORMAL)
+		, nStatusFlag(0)
+		, nMF(MF_NONE)
+		, nMFWeight(0)
+	{
+		memset(nUnknown, 0, sizeof(nUnknown));
+	}
+};
+
+struct TD_EXTRA_UPDATE_CACHE_PLAYER
+{
+	TCHAR				szName[PLAYER_NAME_LEN+1];
+	TD_PLAYER_FEATURE	Feature;
+
+	TD_EXTRA_UPDATE_CACHE_PLAYER()
+	{
+		memset(szName, 0, sizeof(szName));
+	}
+};
+
+struct TD_UPDATE_CACHE_PLAYER
+{
+	TD_SIMPLE_UPDATE_CACHE_PLAYER	SimpleInfo;
+	TD_EXTRA_UPDATE_CACHE_PLAYER	ExtraInfo;
+
+	TD_UPDATE_CACHE_PLAYER() {}
+	TD_UPDATE_CACHE_PLAYER(
+		const TD_SIMPLE_UPDATE_CACHE_PLAYER& SimpleInfo,
+		const TD_EXTRA_UPDATE_CACHE_PLAYER& ExtraInfo
+		) : SimpleInfo(SimpleInfo), ExtraInfo(ExtraInfo) {}
+};
+
+struct TD_PLAYER_BUFF_LIST
+{
+	UIID	nUIID;
+	int		nBuffID[MAX_OWN_BUFF_NUMBER];
+
+	TD_PLAYER_BUFF_LIST()
+		: nUIID(UIID_INVALID)
+	{
+		memset(nBuffID, 0, sizeof(nBuffID));
+	}
+
+	bool IsValid()
+	{
+		return (0 != nUIID);
 	}
 };
 
@@ -814,10 +1018,11 @@ struct TD_UPDATE_CACHE_NPC
 		, svDir(0.0f, 0.0f)
 		, nLevel(0)
 		, nStatusFlag(0)
+		, vTarPos(0.0f, 0.0f, 0.0f)
 		, nSpeed(0)
 		, nTalentID(INVALID_TALENT_ID)
 	{
-
+		memset(Buffs, 0, sizeof(Buffs));
 	}
 };
 
@@ -859,6 +1064,7 @@ struct TD_UPDATE_CACHE_BUFFENTITY
 	int		nBuffID;
 	vec3	vPos;
 	float	fReaminTime;
+	MUID	UserUID;
 
 	TD_UPDATE_CACHE_BUFFENTITY()
 		: nBuffID(INVALID_BUFF_ID)
@@ -982,6 +1188,7 @@ struct TD_PLAYERQUEST
 	int32	nLimitTime;					// 퀘스트 제한 시간
 	TD_PLAYERQOBJECTIVE playerQObjectives[MAX_PLAYERQOBJECTIVE];	// 퀘스트 목적 수행 상태	
 	bool	bChallengerQuest;			// 도전자퀘스트인지 여부 (원본 정보는 서버만 알고 있음)
+	bool	bDailyQuest;
 	vec3	vRewardPos;					// 보상 받는 위치 (원본 정보는 서버만 알고 있음)
 };
 
@@ -1019,7 +1226,7 @@ struct TD_TALENT_TARGET_DETAIL
 	MUID uidTarget;
 	int8 nCapsuleGroupIndex;
 	int8 nCapsuleIndex;
-	vec3 vTargetTerrain;
+	// vec3 vTargetTerrain;
 
 	TD_TALENT_TARGET_DETAIL()
 		: uidTarget(MUID::Invalid()), nCapsuleGroupIndex(-1), nCapsuleIndex(-1)
@@ -1029,8 +1236,18 @@ struct TD_TALENT_TARGET_DETAIL
 
 struct TD_INTERACTION_ELEMENT
 {	
-	int nIElementID;	
-	TCHAR szIEText[MAX_STRINGID_LEN];
+	int					nIElementID;	
+	INTERACTION_TYPE	nIActType;
+	QUEST_STATE_TYPE	nQuestState;
+	TCHAR				szIEText[MAX_STRINGID_LEN];
+
+	TD_INTERACTION_ELEMENT()
+		: nIElementID(INVALID_ID)
+		, nIActType(IT_NONE)
+		, nQuestState(QST_NOEXIST)
+	{
+		memset(szIEText, 0, sizeof(szIEText));
+	}
 };
 
 struct TD_QREWARD
@@ -1053,12 +1270,14 @@ struct TD_ENEMY_INFO
 	int		nMaxHP;		// 최대 hp
 	uint8	nHPPercent;	// hp(퍼센트)
 	uint8	nLevel;		// npc level
+	uint8	nState;
 
 	TD_ENEMY_INFO()
 	:nUIID(UIID_INVALID)
 	, nMaxHP(0)
 	, nHPPercent(0)
 	, nLevel(0)
+	, nState(0)
 	{}
 };
 
@@ -1147,6 +1366,7 @@ struct TD_PALETTE
 	: nSelectedNum(PALETTENUM_1)
 	, nPrimaryNum(PALETTENUM_MAX)
 	, nSecondaryNum(PALETTENUM_MAX)
+	, eSkillSet(SST_MAIN)
 	{
 		memset(paletteItems, 0, sizeof(paletteItems));
 	}
@@ -1166,6 +1386,8 @@ struct TD_PALETTE
 	PALETTE_NUM nSelectedNum;
 	PALETTE_NUM nPrimaryNum;
 	PALETTE_NUM nSecondaryNum;	
+
+	SKILL_SET_TYPE eSkillSet;
 };
 
 // 탤런트 쿨타임
@@ -1195,13 +1417,13 @@ struct TD_BUFF_REMAIN_TIME
 // 팩션
 struct TD_FACTION
 {
-	TD_FACTION(uint8 nID, uint16 nQuantity)
+	TD_FACTION(uint32 nID, uint16 nQuantity)
 	: nID(nID)
 	, nQuantity(nQuantity)
 	{}
 
-	uint8	nID;
-	uint16	nQuantity;	
+	uint32	nID;
+	uint16	nQuantity;
 };
 
 
@@ -1209,12 +1431,13 @@ struct TD_FACTION
 struct TD_NPC_ICON
 {
 	TD_NPC_ICON()
-	: m_nUIID(UIID_INVALID), m_nIcon(NIT_NONE) {}
-	TD_NPC_ICON(UIID nNPCUIID, NPC_ICON_TYPE nIcon)
-	: m_nUIID(nNPCUIID), m_nIcon(nIcon) {}
+	: m_nUIID(UIID_INVALID), m_nIcon(NIT_NONE), m_nNPCID(0) {}
+	TD_NPC_ICON(UIID nNPCUIID, NPC_ICON_TYPE nIcon, int nNPCID)
+	: m_nUIID(nNPCUIID), m_nIcon(nIcon), m_nNPCID(nNPCID) {}
 
 	UIID			m_nUIID;
 	NPC_ICON_TYPE	m_nIcon;
+	int				m_nNPCID;
 };
 
 struct TD_ESSENTIAL_NPC_ICON
@@ -1245,7 +1468,9 @@ struct TD_LOGIN_GAME_SERVER_INFO
 	TD_LOGIN_GAME_SERVER_INFO()
 	: nPort(0)
 	, uidConnectionKey(MUID::ZERO)
-	{}
+	{
+		memset(strHostName, 0, sizeof(strHostName));
+	}
 };
 
 enum TD_SENSOR_GATE_TYPE
@@ -1420,11 +1645,12 @@ struct TD_MAIL_NEW_NOTIFICATION_INFO
 struct TD_WORLD_INFO
 {
 	int			nID;
-	wchar_t		strName[WORLD_NAME_LEN + 1];
-	wchar_t 	strIP[IP_STRING_LEN + 1];
+	TCHAR		strName[WORLD_NAME_LEN + 1];
+	TCHAR 		strIP[IP_STRING_LEN + 1];
 	int			nCurrentPlayerCount;
 	int			nMaxPlayerCount;
 	int			nType;	
+	int			nOrderNum;
 };	
 
 

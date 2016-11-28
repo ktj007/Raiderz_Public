@@ -37,8 +37,8 @@ struct TD_LOGIN_FIELD_INFO
 struct TD_LOGIN_ACCOUNT_INFO
 {
 	uint32				nEnterKey;							// Client IP Address
-	uint32				nAID;								// User DB index
-	int32				nCID;
+	AID					nAID;								// User DB index
+	CID					nCID;
 	wchar_t				szUserID[ACCOUNT_NAME_LEN + 1];
 
 	TD_LOGIN_ACCOUNT_INFO()
@@ -52,7 +52,7 @@ struct TD_LOGIN_ACCOUNT_INFO
 struct TD_PROXY_PLAYER_INFO
 {
 	AID		nAID;								// User DB index
-	int		nCID;
+	CID		nCID;
 	MUID	UID;
 	wchar_t	szName[ACCOUNT_NAME_LEN + 1];
 	int		nGameServerID;

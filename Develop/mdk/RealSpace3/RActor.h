@@ -10,7 +10,11 @@
 #include "RLODContext.h"
 #include "MemPool.h"
 #include "RMaterialDecal.h"
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
 #include <hash_map>
+#endif
 
 namespace rs3 {
 
@@ -191,7 +195,11 @@ protected:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 액터노드
 	//
-	stdext::hash_map<string,RActorNode*>		m_actorNodeMap;					///< RActorNode 이름순 정렬
+#if (_MSC_VER >= 1900)
+	std::unordered_map<string, RActorNode*>		m_actorNodeMap;
+#else
+	std::unordered_map<string,RActorNode*>		m_actorNodeMap;					///< RActorNode 이름순 정렬
+#endif
 	vector<RActorNode*>			m_actorNodes;					///< RActorNode 계층관계순 정렬
 	vector<RActorNode*>			m_sortedRenderableActorNode;	///< physique - phsyique_alpha - non_physique - non_phsyique_alpha
 	vector<RActorNode*>			m_animationReferencedNodes;		///< 애니메이션에 참조되는 노드 셋을 담고있다

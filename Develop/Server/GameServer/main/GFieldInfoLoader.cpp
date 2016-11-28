@@ -295,6 +295,7 @@ void GFieldInfoLoader::ParseSpawn(MXmlElement* pElement, MXml* pXml, GFieldInfo*
 	if (pFieldinfo->m_bValidation)
 	{
 		// rate합이 1000 미만이면서, 디폴트가 없으면 오류.
+		_VLOGGER->ValidateSumTotal(MAX_SPAWN_RATE - nTotalPickValue, MAX_SPAWN_RATE, _T(FIELD_XML_TAG_SPAWN), _T(FIELD_XML_ATTR_RATE));
 	}
 
 
@@ -476,6 +477,8 @@ void GFieldInfoLoader::ParsePvparea( MXmlElement* pElement, MXml* pXml, GFieldIn
 	
 	if (pFieldInfo->m_bValidation)
 	{
+		_VLOGGER->ValidateBiggerOrEqualThan((float)infoPVP.rcArea.left, (float)infoPVP.rcArea.right, _T(FIELD_XML_ATTR_LEFT), _T(FIELD_XML_ATTR_RIGHT));
+		_VLOGGER->ValidateBiggerOrEqualThan((float)infoPVP.rcArea.top, (float)infoPVP.rcArea.bottom, _T(FIELD_XML_ATTR_TOP), _T(FIELD_XML_ATTR_BOTTOM));
 	}
 
 	pFieldInfo->m_PvPAreas.push_back(infoPVP);
@@ -563,6 +566,7 @@ bool GFieldInfoLoader::LoadFieldGroupInfo(GFieldInfoMgr::FIELD_GROUP_MAP* pField
 						{
 							if (bValidation)
 							{
+								_VLOGGER->ValidateTrue(pStartFieldInfo->m_bDynamic, _T(FIELD_XML_ATTR_START_FIELD));
 							}
 							continue;
 						}
@@ -575,6 +579,7 @@ bool GFieldInfoLoader::LoadFieldGroupInfo(GFieldInfoMgr::FIELD_GROUP_MAP* pField
 						{
 							if (bValidation)
 							{
+								_VLOGGER->Log(_T(FIELD_XML_ATTR_START_MARKER) IS_NOT_IN_PERCENT_D_FILEEXT_FIELD, nStartFieldID);
 							}
 							continue;
 						}
@@ -604,6 +609,7 @@ bool GFieldInfoLoader::LoadFieldGroupInfo(GFieldInfoMgr::FIELD_GROUP_MAP* pField
 							{
 								if (bValidation)
 								{
+									_VLOGGER->Log(_T(FIELD_XML_ATTR_START_FIELD) IS_NOT_IN_FIELDLIST);
 								}
 								continue;
 							}

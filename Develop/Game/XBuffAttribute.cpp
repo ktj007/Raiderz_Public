@@ -54,7 +54,7 @@ bool XBuffAttribute::IsUsableTalent( XTalentInfo* pTalentInfo)
 	// 슬립이나 루팅상태에서도 탤런트 사용 가능
 	if(IsMesmerizable())
 	{
-		if (pTalentInfo->m_bIgnoreMesmerize)
+		if (pTalentInfo->IsIgnoreMesmerize())
 			return true;
 
 		return false;
@@ -63,22 +63,22 @@ bool XBuffAttribute::IsUsableTalent( XTalentInfo* pTalentInfo)
 	switch ( pTalentInfo->m_nCategory)
 	{
 	case TC_COMMON :
-		if ( IsDisabledTalent()  &&  pTalentInfo->m_bIgnoreMesmerize == false)
+		if ( IsDisabledTalent()  &&  pTalentInfo->IsIgnoreMesmerize() == false)
 			return false;
 		break;
 
 	case TC_MELEE :
-		if ( IsDisabledMelee()  &&  pTalentInfo->m_bIgnoreMesmerize == false)
+		if ( IsDisabledMelee()  &&  pTalentInfo->IsIgnoreMesmerize() == false)
 			return false;
 		break;
 
 	case TC_RANGE :
-		if ( IsDisabledRange()  &&  pTalentInfo->m_bIgnoreMesmerize == false)
+		if ( IsDisabledRange()  &&  pTalentInfo->IsIgnoreMesmerize() == false)
 			return false;
 		break;
 
 	case TC_MAGIC :
-		if ( IsDisabledMagic()  &&  pTalentInfo->m_bIgnoreMesmerize == false)
+		if ( IsDisabledMagic()  &&  pTalentInfo->IsIgnoreMesmerize() == false)
 			return false;
 		break;
 	}

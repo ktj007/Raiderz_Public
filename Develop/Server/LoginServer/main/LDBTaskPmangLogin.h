@@ -33,9 +33,11 @@ private :
 		wstring			strUserID;
 		PmUserData		pmangUserData;
 
-		int64			nDBAID;
+		AID				nDBAID;
 		wstring			strDBPassword;		
 		bool			bNewAcc;
+		wstring			strStatus;
+		int64			nCONN_SN;
 	};
 
 	class Completer

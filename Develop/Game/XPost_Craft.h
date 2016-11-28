@@ -7,7 +7,7 @@
 
 inline void XPostCraft_MakeReq(int nRecipeID)
 {
-	XPOSTCMD1(MC_CRAFT_MAKE_REQ, MCommandParameterInt(nRecipeID));
+	XPOSTCMD2(MC_CRAFT_MAKE_REQ, MCommandParameterInt(nRecipeID), MCommandParameterInt(1));
 }
 
 inline void XPostCraft_RecipeInsert(int nRecipeID)

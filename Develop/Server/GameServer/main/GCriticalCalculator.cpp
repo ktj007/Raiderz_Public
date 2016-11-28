@@ -1,44 +1,60 @@
 #include "stdafx.h"
 #include "GCriticalCalculator.h"
+#include "GConst.h"
 
 // GCriticalCalculator
 //////////////////////////////////
-float GCriticalCalculator::CalcActorCriticalPercent( const GEntityActor* pActor, const GTalentInfo* pTalentInfo )
+float GCriticalCalculator::CalcActorCriticalPercent( const GEntityActor* pActor, TALENT_DAMAGE_TYPE nDamageType, TALENT_SKILL_TYPE nSkillType )
 {
 	float fCriticalPercent = 0.0f;
 	if (pActor->GetTypeID() == ETID_PLAYER)
 	{
 		const GEntityPlayer* pPlayer = static_cast<const GEntityPlayer*>(pActor);
-		fCriticalPercent = _CalcPlayerCriticalPercent(pTalentInfo->m_nCategory, pPlayer->GetPlayerInfo());
+		fCriticalPercent = _CalcPlayerCriticalPercent(nDamageType, pPlayer);
 	}
 	else if (pActor->GetTypeID() == ETID_NPC)
 	{
 		const GEntityNPC* pNPC = static_cast<const GEntityNPC*>(pActor);
-		fCriticalPercent = _CalcNPCCriticalPercent(pTalentInfo->m_nSkillType, pNPC->GetNPCInfo());
+		fCriticalPercent = _CalcNPCCriticalPercent(nSkillType, pNPC->GetNPCInfo());
 	}
 
 	return fCriticalPercent;
 }
 
-float GCriticalCalculator::_CalcPlayerCriticalPercent( TALENT_CATEGORY nTalentCategory, PLAYER_INFO* pPlayerInfo )
+float GCriticalCalculator::_CalcPlayerCriticalPercent( TALENT_DAMAGE_TYPE nDamageType, const GEntityPlayer* pPlayer )
 {
-	float fCriticalPercent = 0.0f;
-
+	// float fCriticalPercent = 0.0f;
+	/*
 	switch (nTalentCategory)
 	{
 	case TC_COMMON:
 	case TC_MELEE:
-		fCriticalPercent = (pPlayerInfo->nDEX/2) * 0.08f;
+		fCriticalPercent = (pPlayer->GetDEX()/2) * 0.08f;
 		break;
 	case TC_RANGE:
-		fCriticalPercent = (pPlayerInfo->nDEX/2) * 0.08f;
+		fCriticalPercent = (pPlayer->GetDEX()/2) * 0.08f;
 		break;
 	case TC_MAGIC:
-		fCriticalPercent = (pPlayerInfo->nINT/2) * 0.05f;
+		fCriticalPercent = (pPlayer->GetINT()/2) * 0.05f;
 		break;
 	}
+	*/
+	/*
+	switch (nDamageType)
+	{
+	case TDT_PHYSIC:
+		fCriticalPercent = (pPlayer->GetDEX()/2) * 0.08f;
+		break;
+	case TDT_MAGIC:
+		fCriticalPercent = (pPlayer->GetINT()/2) * 0.05f;
+		break;
+	}
+	*/
 
-	return fCriticalPercent;
+	// TODO: implement correct critical percent formula
+
+	VALID_RET(pPlayer->GetLevel() > 0, 0.f);
+	return pPlayer->GetDEX() * (0.1f + (0.2f / pPlayer->GetLevel()));
 }
 
 float GCriticalCalculator::_CalcNPCCriticalPercent( TALENT_SKILL_TYPE nSkillType, GNPCInfo* pNPCInfo )
@@ -63,20 +79,17 @@ float GCriticalCalculator::_CalcNPCCriticalPercent( TALENT_SKILL_TYPE nSkillType
 	return fCriticalPercent;
 }
 
-float GCriticalCalculator::CalcTalentPercent( GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo )
+float GCriticalCalculator::CalcTalentPercent( GEntityActor* pAttacker, GEntityActor* pVictim, TALENT_DAMAGE_TYPE nDamageType, float fCriticalApplyRate /*= 1.f*/ )
 {
 	float fCriticalAmp = 0.0f;
 
-	switch (pTalentInfo->m_nCategory)
+	switch (nDamageType)
 	{
-	case TC_MELEE:
-		fCriticalAmp = pAttacker->GetChrStatus()->ActorModifier.fCriticalMeleeAmp + pVictim->GetChrStatus()->ActorModifier.fCriticalMeleeAmpForMe;
+	case TDT_PHYSIC:
+		fCriticalAmp = pAttacker->GetChrStatus()->ActorModifier.fCriticalPhysicAmp + pVictim->GetChrStatus()->ActorModifier.fCriticalPhysicAmpForMe;
 		break;
-	case TC_RANGE:
-		fCriticalAmp = pAttacker->GetChrStatus()->ActorModifier.fCriticalRangeAmp;
-		break;
-	case TC_MAGIC:
-		fCriticalAmp = pAttacker->GetChrStatus()->ActorModifier.fCriticalMagicAmp;
+	case TDT_MAGIC:
+		fCriticalAmp = pAttacker->GetChrStatus()->ActorModifier.fCriticalMagicAmp + pVictim->GetChrStatus()->ActorModifier.fCriticalMagicAmpForMe;
 		break;
 	default:
 		fCriticalAmp = 0.0f;
@@ -84,10 +97,10 @@ float GCriticalCalculator::CalcTalentPercent( GEntityActor* pAttacker, GEntityAc
 
 	fCriticalAmp += pAttacker->GetChrStatus()->ActorModifier.fCriticalAmp;
 
-	return fCriticalAmp * pTalentInfo->m_fCriticalApplyRate * 100.0f;
+	return fCriticalAmp * fCriticalApplyRate * 0.1f;
 }
 
-float GCriticalCalculator::CalcBuffDamagePercent( GEntityActor* pActor, const GTalentInfo* pTalentInfo )
+float GCriticalCalculator::CalcBuffDamagePercent( GEntityActor* pActor, TALENT_DAMAGE_TYPE nDamageType, TALENT_SKILL_TYPE nSkillType )
 {
 	const CHR_STATUS* pChrStatus = pActor->GetChrStatus();
 
@@ -96,18 +109,14 @@ float GCriticalCalculator::CalcBuffDamagePercent( GEntityActor* pActor, const GT
 	{
 		const GEntityPlayer* pPlayer = static_cast<const GEntityPlayer*>(pActor);
 
-		switch (pTalentInfo->m_nCategory)
+		switch (nDamageType)
 		{
-		case TC_COMMON:
-		case TC_MELEE:
+		case TDT_PHYSIC:
+		default:
 			{
-				fDamagePercent = pChrStatus->ActorModifier.fCriticalMeleeDamageAmp;
+				fDamagePercent = pChrStatus->ActorModifier.fCriticalPhysicDamageAmp;
 			} break;
-		case TC_RANGE:
-			{
-				fDamagePercent = pChrStatus->ActorModifier.fCriticalRangeDamageAmp;
-			} break;
-		case TC_MAGIC:
+		case TDT_MAGIC:
 			{
 				fDamagePercent = pChrStatus->ActorModifier.fCriticalMagicDamageAmp;
 			} break;
@@ -117,15 +126,12 @@ float GCriticalCalculator::CalcBuffDamagePercent( GEntityActor* pActor, const GT
 	{
 		const GEntityNPC* pNPC = static_cast<const GEntityNPC*>(pActor);
 		GNPCInfo* pNPCInfo = pNPC->GetNPCInfo();
-		switch (pTalentInfo->m_nSkillType)
+		switch (nSkillType)
 		{
 		case ST_MELEE:		
-			{
-				fDamagePercent = pChrStatus->ActorModifier.fCriticalMeleeDamageAmp;
-			} break;
 		case ST_ARCHERY:
 			{
-				fDamagePercent = pChrStatus->ActorModifier.fCriticalRangeDamageAmp;
+				fDamagePercent = pChrStatus->ActorModifier.fCriticalPhysicDamageAmp;
 			} break;
 		case ST_MAGIC:
 		case ST_EXTRA_ACTIVE:
@@ -140,7 +146,7 @@ float GCriticalCalculator::CalcBuffDamagePercent( GEntityActor* pActor, const GT
 	return fDamagePercent;
 }
 
-float GCriticalCalculator::CalcCriticalPercent( GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo )
+float GCriticalCalculator::CalcCriticalPercent( GEntityActor* pAttacker, GEntityActor* pVictim, DAMAGE_ATTRIB nDamageAttrib, TALENT_DAMAGE_TYPE nDamageType, TALENT_SKILL_TYPE nSkillType, float fCriticalApplyRate /*= 1.f*/ )
 {
 	DCHECK(pAttacker);
 
@@ -155,18 +161,26 @@ float GCriticalCalculator::CalcCriticalPercent( GEntityActor* pAttacker, GEntity
 	float fVictimMod = GMath::Round4Combat(1 - (fVictimMODGrade * fVictimMODGrade), 2);
 
 	// 캐릭터 치명타율
-	float fAttackerCriticalPercent = CalcActorCriticalPercent(pAttacker, pTalentInfo);
+	float fAttackerCriticalPercent = CalcActorCriticalPercent(pAttacker, nDamageType, nSkillType);
 
 	// 데미지 속성 크리율
 	float fDamageAttribPercent = 0.0f;
 	if (pAttacker->GetTypeID() == ETID_PLAYER) 
 	{
 		GEntityPlayer* pAttackerPlayer = ToEntityPlayer(pAttacker);
-		fDamageAttribPercent = CalcDamageAttribPercent(pAttackerPlayer, pTalentInfo->m_nDamageAttrib);
+		fDamageAttribPercent = CalcDamageAttribPercent(pAttackerPlayer, nDamageAttrib);
 	}
 
 	// 버프&아이템 치명율 수정치의 합
-	float fBuffPercent = CalcTalentPercent(pAttacker, pVictim, pTalentInfo);
+	float fBuffPercent = CalcTalentPercent(pAttacker, pVictim, nDamageType, fCriticalApplyRate);
+
+#if 1 || 1
+	printf("nLevelFactor: %d\n", nLevelFactor);
+	printf("fVictimMod: %f\n", fVictimMod);
+	printf("fAttackerCriPerc: %f\n", fAttackerCriticalPercent);
+	printf("fDamageAttrPerc: %f\n", fDamageAttribPercent);
+	printf("fBuffPerc: %f\n", fBuffPercent);
+#endif
 
 	float fFinalPercent = max((5-nLevelFactor) * 0.6f + 
 		fVictimMod + 
@@ -176,11 +190,9 @@ float GCriticalCalculator::CalcCriticalPercent( GEntityActor* pAttacker, GEntity
 	return min(fFinalPercent, 100.0f);
 }
 
-float GCriticalCalculator::CalcCriticalDamageFactor( GEntityActor* pAttacker, const GTalentInfo* pTalentInfo )
+float GCriticalCalculator::CalcCriticalDamageFactor( GEntityActor* pAttacker, DAMAGE_ATTRIB nDamageAttrib, TALENT_DAMAGE_TYPE nDamageType, TALENT_SKILL_TYPE nSkillType )
 {
-	const DAMAGE_ATTRIB nDamageAttrib = pTalentInfo->m_nDamageAttrib;
-
-	float fDamagePercent = 150.0f;
+	float fDamagePercent = 100.f * GConst::TALENT_CRITICAL_DAMAGE_APPLY_RATE;//150.0f;
 
 	if (pAttacker->IsPlayer()) 
 	{
@@ -194,7 +206,7 @@ float GCriticalCalculator::CalcCriticalDamageFactor( GEntityActor* pAttacker, co
 	}
 
 	// 패시브, 버프
-	float fBuffDamagePercent = CalcBuffDamagePercent(pAttacker, pTalentInfo);
+	float fBuffDamagePercent = CalcBuffDamagePercent(pAttacker, nDamageType, nSkillType);
 
 	return (GMath::PercentToFactor(fDamagePercent + fBuffDamagePercent));
 }

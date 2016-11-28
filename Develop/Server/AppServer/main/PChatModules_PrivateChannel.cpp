@@ -46,7 +46,7 @@ void PChatModule_Kick::OnRun(minet::MCommand* pCmd)
 	CID cidRequestPlayer;
 	MUID uidChannel;
 	wstring strTargetPlayerName;
-	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT));
+	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT64));
 	RVALID(pCmd->GetParameter(&uidChannel,			1, MPT_UID));
 	RVALID(pCmd->GetParameter(strTargetPlayerName,	2, MPT_WSTR));
 	
@@ -91,7 +91,7 @@ void PChatModule_Ban::OnRun(minet::MCommand* pCmd)
 	CID cidRequestPlayer;
 	MUID uidChatChannel;
 	wstring strTargetPlayerName;
-	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT));
+	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT64));
 	RVALID(pCmd->GetParameter(&uidChatChannel,		1, MPT_UID));
 	RVALID(pCmd->GetParameter(strTargetPlayerName,	2, MPT_WSTR));
 
@@ -135,7 +135,7 @@ void PChatModule_Unban::OnRun(minet::MCommand* pCmd)
 	CID cidRequestPlayer;
 	MUID uidChatChannel;
 	wstring strTargetPlayerName;
-	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT));
+	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT64));
 	RVALID(pCmd->GetParameter(&uidChatChannel,		1, MPT_UID));
 	RVALID(pCmd->GetParameter(strTargetPlayerName,	2, MPT_WSTR));
 
@@ -177,7 +177,7 @@ void PChatModule_ChangeHost::OnRun(minet::MCommand* pCmd)
 	CID cidRequestPlayer;
 	MUID uidChatChannel;
 	wstring strTargetPlayerName;
-	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT));
+	RVALID(pCmd->GetParameter(&cidRequestPlayer,	0, MPT_INT64));
 	RVALID(pCmd->GetParameter(&uidChatChannel,		1, MPT_UID));
 	RVALID(pCmd->GetParameter(strTargetPlayerName,	2, MPT_WSTR));
 

@@ -21,14 +21,17 @@ public:
 	/// Login Command : LS, GS -> C
 	void ResponseLogin(const MUID& uidTargetPlayer, const int nResult, int nServerMode=SERVER_MODE_NORMAL);
 	void ResponsePmangLogin(const MUID& uidTargetPlayer, const int nResult, int nServerMode=SERVER_MODE_NORMAL);
+	void ResponsePWELogin(const MUID& uidTargetPlayer, const int nResult, int nServerMode=SERVER_MODE_NORMAL);
 
-	void ResponseAccountCharList(const MUID& uidTargetPlayer, const vector<TD_AccountCharInfo>& vecAccountCharInfo);
+	void ResponseAccountCharList(const MUID& uidTargetPlayer, const int nResult, const vector<TD_AccountCharInfo>& vecAccountCharInfo);
 	void ResponseInsertChar(const MUID& uidTargetPlayer, const int nResult);
 	void ResponseDeleteChar(const MUID& uidTargetPlayer, const int nResult, int nCharIndex);
 	void ResponseSelMyChar(const MUID& uidTargetPlayer, const int nResult);
 
 	void MoveToGameServer(const MUID& uidTargetPlayer, const TD_LOGIN_GAME_SERVER_INFO* pLoginGameServerInfo);
-	void DuplicatedPlayerLogin(const MUID& uidTargetPlayer);
+
+	void NotifyKick(const MUID& uidTargetPlayer, const int nReason);
+	void NotifyKick(const MUID& uidTargetPlayer, const wchar_t* wszReason);
 
 	/// Gate Command : LS, GS -> C
 	void PreparingToLoad(const MUID& uidTargetPlayer, int nReqFieldID);

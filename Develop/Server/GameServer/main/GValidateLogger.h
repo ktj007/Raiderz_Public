@@ -65,11 +65,11 @@ public:
 	void ValidateItemMaxStackAmount(int nID, int nAmount, const wchar_t* szName);
 };
 
-#define _VLOGGER						
-#define _VLL(_Log)						
-#define _VLI(_File)						
-#define _VLE(_Tag)						
-#define _VLA(_AttrName, _AttrValue)		
-#define _VLP							
+#define _VLOGGER						gsys.pValidateLogger
+#define _VLL(_Log)						_VLOGGER->Log(_Log)
+#define _VLI(_File)						_VLOGGER->Init(_File)
+#define _VLE(_Tag)						GValidateLogger::ELEMENT vle(_Tag)
+#define _VLA(_AttrName, _AttrValue)		vle.Insert(GValidateLogger::ELEMENT::ATTRIBUTE(_AttrName, _AttrValue))
+#define _VLP							GValidateLogger::PUSHANDPOPELEMENT vlp(vle)
 
 #endif//_G_VALIDATE_LOGGER_H_

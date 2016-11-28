@@ -49,7 +49,6 @@ GItemSystem::GItemSystem()
 	m_pSorter = new GItemSorter;
 	m_pEnchant = new GItemEnchant;
 	m_pDyer = new GItemDyer;
-//	m_pAttune = new GItemSoulAttunement;
 
 	m_pMoverForDBTask = new GItemMoverForDBTask;	
 	m_pEquiperForDBTask = new GItemEquiperForDBTask;

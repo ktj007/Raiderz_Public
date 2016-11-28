@@ -31,5 +31,6 @@ void PServerStatusUpdater::Start(const std::wstring& strServerVersion)
 
 void PServerStatusUpdater::OnUpdate(const float fDelta)
 {
-	m_prefDBManager->ServerStatusUpdate(PConfig::m_nMyWorldID, PConfig::m_nMyServerID, 0/*No Player Session*/, gsys.pServer->GetServableChecker().IsServable());
+	m_prefDBManager->ServerStatusUpdate(PConfig::m_nMyWorldID, PConfig::m_nMyServerID, 0/*No Player Session*/, gsys.pServer->GetServableChecker().IsServable(), 
+		0, 0, 0, 0, 0);	// 2015-11-19: Pass zeros for task count, CPU usage, memory usage, field count and FPS.
 }

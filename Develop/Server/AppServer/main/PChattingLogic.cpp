@@ -57,7 +57,7 @@ bool PChattingLogic::CreateDefaultChannels(void)
 	return true;
 }
 
-void PChattingLogic::CreateChannel_Private(int nPlayerCID, const std::wstring& strChannelName)
+void PChattingLogic::CreateChannel_Private(CID nPlayerCID, const std::wstring& strChannelName)
 {
 	VALID(0 != nPlayerCID);
 	VALID(0 != strChannelName.size());

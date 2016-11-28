@@ -45,7 +45,7 @@ bool GTrainingSystem::Train(GEntityPlayer *pReqPlayer, int nTalentID)
 	if (CONSUME_TP_FOR_LEARN_TALENT > pReqPlayer->GetTalent().GetTP()) return pReqPlayer->FailAndRouteSystemMsg(CR_FAIL_TRAINING_NOT_ENOUGH_TP);
 
 	if (!Train_Check(pReqPlayer, nTalentID))	return false;
-	if (!Train_DB(pReqPlayer, nTalentID))		return false;
+	if (!Train_DB(pReqPlayer, nTalentID, CONSUME_TP_FOR_LEARN_TALENT))		return false;
 	
 	return true;
 }
@@ -70,10 +70,13 @@ bool GTrainingSystem::Train_Check(GEntityPlayer* pReqPlayer, int nTalentID)
 	if (pTalentInfo->m_nTNeedStyleTP > pReqPlayer->GetTalent().GetTrainedStyleTP(pTalentInfo->m_nStyle)) return pReqPlayer->FailAndRouteSystemMsg(CR_FAIL_TRAINING_NEED_STYPE_TP);
 	if (true == pReqPlayer->GetTalent().IsTrainedTalent(pTalentInfo)) return pReqPlayer->FailAndRouteSystemMsg(CR_FAIL_TRAINING_ALREADY_LEARNED);
 
+	if (pTalentInfo->m_nTalentType == TT_MASTERY) return pReqPlayer->FailAndRouteSystemMsg(CR_FAIL_TRAINING_CONDITION_CHECK_FAIL);
+	if (false == pReqPlayer->GetTalent().IsStyleTalentLearnable(pTalentInfo->m_nStyle)) return pReqPlayer->FailAndRouteSystemMsg(CR_FAIL_TRAINING_NEED_EXTRAPASSIVE_HYBRID);
+
 	return true;
 }
 
-bool GTrainingSystem::Train_DB( GEntityPlayer* pReqPlayer, int nTalentID, bool bAsync/*=true*/ )
+bool GTrainingSystem::Train_DB( GEntityPlayer* pReqPlayer, int nTalentID, int nConsumeTP, bool bAsync/*=true*/ )
 {
 	GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
 	if (NULL == pTalentInfo)	return false;
@@ -102,7 +105,8 @@ bool GTrainingSystem::Train_DB( GEntityPlayer* pReqPlayer, int nTalentID, bool b
 		, pReqPlayer->GetMoney()
 		, pTalentInfo->m_nID
 		, nLowRankTalentID
-		, pReqPlayer->GetTalent().GetTP() - CONSUME_TP_FOR_LEARN_TALENT
+		, pReqPlayer->GetTalent().GetTP() - nConsumeTP
+		, nConsumeTP
 		, bInPalette);
 
 	data.SetPalette(vecNumAndSlot);
@@ -143,11 +147,25 @@ bool GTrainingSystem::TrainForDBTask(GDBT_TALENT& data)
 	pPlayer->GetNPCIconSender().SendByPlayerConditionChange(CT_TALENT);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_TRAINING_TRAIN,
-		2, 
+		3, 
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 		NEW_INT(data.m_nTalentID),
 		NEW_BOOL(true));
 
 	pPlayer->RouteToMe(pNewCmd);
+
+	if (pTalentInfo->m_nTalentType != TT_MASTERY)
+		return TrainMastery(pPlayer, pTalentInfo->m_nStyle);
+
+	return true;
+}
+
+bool GTrainingSystem::TrainForDBTaskFail_NotEnoughTP(GDBT_TALENT& data)
+{
+	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(data.m_uidPlayer);
+	if (NULL == pPlayer) return false;
+
+	pPlayer->FailAndRouteSystemMsg(CR_FAIL_TRAINING_NOT_ENOUGH_TP);
 
 	return true;
 }
@@ -212,7 +230,8 @@ bool GTrainingSystem::TrainByItemForDBTask(GDBT_ITEM_LEARN_TALENT& data)
 		pPlayer->GetTalent().Insert(pTInfo, false);		
 
 		MCommand* pNewCmd = MakeNewCommand(MC_TRAINING_TRAIN,
-			2, 
+			3, 
+			NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 			NEW_INT(pTInfo->m_nID),
 			NEW_BOOL(false));
 
@@ -243,6 +262,7 @@ bool GTrainingSystem::UntrainAll(GEntityPlayer* pReqPlayer, GItem* pItem)
 		, 0
 		, 0
 		, pReqPlayer->GetPlayerInfo()->nLevel
+		, 0
 		, false
 		, pItem->m_nSlotID
 		, pItem->m_nIUID
@@ -269,8 +289,10 @@ void GTrainingSystem::UntrainAllForDBTask(GDBT_TALENT& data)
 	pPlayer->GetNPCIconSender().SendByPlayerConditionChange(CT_TALENT);	
 
 	MCommand* pNewCmd = MakeNewCommand(MC_TRAINING_UNTRAIN_ALL, 
-		1,
-		NEW_INT(pPlayer->GetPlayerInfo()->nLevel));
+		3,
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
+		NEW_INT(pPlayer->GetPlayerInfo()->nLevel),
+		NEW_BOOL(false));
 
 	pPlayer->RouteToMe(pNewCmd);
 }
@@ -281,12 +303,23 @@ bool GTrainingSystem::ForceTrain(GEntityPlayer* pReqPlayer, int nTalentID)
 	if (NULL == pTalentInfo) return pReqPlayer->FailAndRouteSystemMsg(CR_FAIL_SYSTEM_INVALID_TALENT_ID);
 	if (true == pReqPlayer->GetTalent().IsTrainedTalent(pTalentInfo)) return pReqPlayer->FailAndRouteSystemMsg(CR_FAIL_TRAINING_ALREADY_LEARNED);	
 
-	if (1 > pReqPlayer->GetTalent().GetTP())
-	{
-		gsys.pPlayerSystem->AddTP(pReqPlayer, 1);
-	}
+	if (false == Train_DB(pReqPlayer, nTalentID, 0, false)) return false;
 
-	if (false == Train_DB(pReqPlayer, nTalentID, false)) return false;
+	return true;
+}
+
+bool GTrainingSystem::TrainMastery(GEntityPlayer* pReqPlayer, TALENT_STYLE nTalentStyle)
+{
+	if (NULL == pReqPlayer) return false;
+
+	vector<int> vecMasteryTalentID;
+	pReqPlayer->GetTalent().CheckAvailableMasteryTalent(nTalentStyle, vecMasteryTalentID);
+
+	for (int nTalentID : vecMasteryTalentID)
+	{
+		if (false == Train_DB(pReqPlayer, nTalentID, 0))
+			return false;
+	}
 
 	return true;
 }

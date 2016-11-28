@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GCommandLogger.h"
-#include "CCommandTable.h"
+#include "CCommandTable_GM.h"
 #include "GGlobal.h"
 #include "GServer.h"
 #include "GConst.h"
@@ -33,7 +33,7 @@ void GCommandLogger::Log(MCommand* pCmd)
 		wstring strParam;
 		pCmd->GetParameter(strParam, i, MPT_WSTR);		
 		MUID uid = pCmd->GetSenderUID();
-		swprintf_s(msg, L"%s %s(%s)", msg, MLocale::ConvAnsiToUCS2(pCmd->GetParameter(i)->GetClassName()).c_str(), strParam);
+		swprintf_s(msg, L"%s %s(%s)", msg, MLocale::ConvAnsiToUCS2(pCmd->GetParameter(i)->GetClassName()).c_str(), strParam.c_str());
 	}
 
 	if (uidReceiver != uidSender)
@@ -72,7 +72,7 @@ GCommandLogger::GCommandLogger(ICommandLogListener* pListener)
 void GCommandLogger::IgnoreDebugCommand()
 {
 	IgnoreCommand(MC_DEBUG_STRING);
-	IgnoreCommand(MC_REQUEST_DEBUG_STRING);
+	IgnoreCommand(MC_DEBUG_STRING_REQ);
 }
 
 GCommandLogger::~GCommandLogger()

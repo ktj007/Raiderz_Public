@@ -17,8 +17,8 @@ public:
 	void UnpackToEntityPlayer(GEntityPlayer* pPlayer);
 
 	bool IsPacked() 							{ return m_bPacked; }
-	uint32 GetAID() 							{ return m_PlayerInfoData.nPlayerAID; }
-	int32	GetCID()							{ return m_CharaInfoData.nCID; }
+	AID GetAID() 							{ return m_PlayerInfoData.nPlayerAID; }
+	CID	GetCID()							{ return m_CharaInfoData.nCID; }
 	wstring GetUserID()							{ return m_CharaInfoData.szName; }
 
 	uint32	GetEnterKey()						{ return m_PlayerInfoData.nEnterKey; }

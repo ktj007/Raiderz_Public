@@ -8,7 +8,7 @@
 #include "GItemHolder.h"
 #include "GDB_CODE.h"
 
-void GDBT_ITEM::Build(const int64 nCID, GItem* pItem )
+void GDBT_ITEM::Build(const CID nCID, GItem* pItem )
 {
 	m_nCID			= nCID;
 	m_nSlotType		= pItem->m_nSlotType;
@@ -25,17 +25,13 @@ void GDBT_ITEM::Build(const int64 nCID, GItem* pItem )
 	m_nCharPtm		= pItem->m_UsagePeriod.GetUsageStartCharPlayTimeSec();
 	m_bPeriodItem	= pItem->m_UsagePeriod.IsPeriod() || pItem->m_ExpirationPeriod.IsPeriod();
 	m_nUsagePeriod	= pItem->m_UsagePeriod.GetPeriodSec();
-	m_nEXP			= pItem->m_nXP;
-	m_nNextAttuneXP = pItem->m_nNextAttuneXP;
-	m_nAttuneLvl	= pItem->m_nAttuneLvl;
 
 	pItem->GetExpiDtForDB(m_strExpiDt);
 }
 
-void GDBT_ITEM::Set( const int64 nCID, const uint8 nSlotType, const int16 nSlotID, const int nItemID, const int16 nStackAmt, const int nCharPtm 
+void GDBT_ITEM::Set( const CID nCID, const uint8 nSlotType, const int16 nSlotID, const int nItemID, const int16 nStackAmt, const int nCharPtm 
 					, const IUID nIUID, const uint8 nSoulCnt /*= 0*/, const uint8 nDura /*= 0*/, const uint8 nMaxDura /*= 0*/
-					, const uint8 nEnchCnt /*= 0 */, const int nColor /*= 0*/, const int nEXP /*=0*/, const int nNextAttuneXP /*=0*/, const int nAttuneLvl /*=0*/ 
-					, const bool bClaimed /*= false*/, const bool bPeriodItem /*= false*/
+					, const uint8 nEnchCnt /*= 0 */, const int nColor /*= 0*/, const bool bClaimed /*= false*/, const bool bPeriodItem /*= false*/
 					, const int nUsagePeriod /*= 0 */, const wstring& strExpiDt /*= L"NULL"*/ )
 {
 	m_nCID			= nCID;
@@ -54,9 +50,6 @@ void GDBT_ITEM::Set( const int64 nCID, const uint8 nSlotType, const int16 nSlotI
 	m_bPeriodItem	= bPeriodItem;
 	m_nUsagePeriod	= nUsagePeriod;
 	m_strExpiDt		= strExpiDt;
-	m_nEXP			= nEXP;
-	m_nNextAttuneXP = nNextAttuneXP;
-	m_nAttuneLvl	= nAttuneLvl;
 }
 
 bool GDBT_ITEMINSTANCEQ::GetFromDB(mdb::MDBRecordSet& rs )
@@ -66,17 +59,16 @@ bool GDBT_ITEMINSTANCEQ::GetFromDB(mdb::MDBRecordSet& rs )
 		return true;
 	}
 
-	static const size_t nIUIDHash			= rs.MakeHashValueW(L"IUID");
+	static const size_t nIUIDHash			= rs.MakeHashValueW(L"ITEM_SN");
 	static const size_t nItemIDHash			= rs.MakeHashValueW(L"ITEM_ID");
 	static const size_t nSlotTypeHash		= rs.MakeHashValueW(L"SLOT_TYPE");
 	static const size_t nSlotIDHash			= rs.MakeHashValueW(L"SLOT_ID");
 	static const size_t nStackAmtHash		= rs.MakeHashValueW(L"STACK_AMT");
 	static const size_t nDuraHash			= rs.MakeHashValueW(L"DURA");
+	static const size_t nMaxDuraHash		= rs.MakeHashValueW(L"MAX_DURA");
 	static const size_t nClaimedHash		= rs.MakeHashValueW(L"CLAIMED");
 	static const size_t nSoulCntHash		= rs.MakeHashValueW(L"SOUL_COUNT");
 	static const size_t nColorHash			= rs.MakeHashValueW(L"COLOR");
-	static const size_t nEXP				= rs.MakeHashValueW(L"CUR_XP");
-	static const size_t nNextAttuneXP		= rs.MakeHashValueW(L"NEXT_ATTUNE_XP");
 	static const size_t nCharPtm			= rs.MakeHashValueW(L"CHAR_PTM");
 	static const size_t bPeriodItem			= rs.MakeHashValueW(L"PERIOD");
 	static const size_t nUsagePeriod		= rs.MakeHashValueW(L"USAGE_PERIOD");
@@ -88,6 +80,7 @@ bool GDBT_ITEMINSTANCEQ::GetFromDB(mdb::MDBRecordSet& rs )
 	static const size_t nEnchItemID_4		= rs.MakeHashValueW(L"ENCH_ITEM_ID_4");
 	static const size_t nEnchItemID_5		= rs.MakeHashValueW(L"ENCH_ITEM_ID_5");
 	static const size_t nEnchItemID_6		= rs.MakeHashValueW(L"ENCH_ITEM_ID_6");
+
 
 	for (; !rs.IsEOF(); rs.MoveNext())
 	{
@@ -105,8 +98,7 @@ bool GDBT_ITEMINSTANCEQ::GetFromDB(mdb::MDBRecordSet& rs )
 		ii.nItemID				= rs.FieldHash(nItemIDHash).AsInt();		
 		ii.nStackAmt			= rs.FieldHash(nStackAmtHash).AsByte();
 		ii.nDura				= rs.FieldHash(nDuraHash).AsByte();
-		ii.nEXP					= rs.FieldHash(nEXP).AsInt();
-		ii.nNextAttuneXP		= rs.FieldHash(nNextAttuneXP).AsInt();
+		ii.nMaxDura				= rs.FieldHash(nMaxDuraHash).AsByte();
 		ii.bClaimed				= rs.FieldHash(nClaimedHash).AsBool();
 		ii.nSoulCnt				= rs.FieldHash(nSoulCntHash).AsByte();
 		ii.nCharPtm				= rs.FieldHash(nCharPtm).AsInt();
@@ -202,8 +194,6 @@ bool GDBT_ITEMINSTANCEQ::SetToServer(GEntityPlayer* pPlayer)
 		pItem->m_nEnchants[3]	= (*it).nEnchItemID_4;
 		pItem->m_nEnchants[4]	= (*it).nEnchItemID_5;
 		pItem->m_nEnchants[5]	= (*it).nEnchItemID_6;
-		pItem->m_nXP			= (*it).nEXP;
-		pItem->m_nNextAttuneXP	= (*it).nNextAttuneXP;
 
 		pItem->m_UsagePeriod.Set((*it).bUseUsagePeriod
 			, (*it).bStartCalculatingUsagePeriod
@@ -217,6 +207,8 @@ bool GDBT_ITEMINSTANCEQ::SetToServer(GEntityPlayer* pPlayer)
 
 		pItemHolder->PushItem(nSlotType, nSlotID, pItem);
 	}
+
+	pPlayer->RegainSetItemEffect();
 
 	return true;
 }

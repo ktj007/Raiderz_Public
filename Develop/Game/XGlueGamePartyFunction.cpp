@@ -68,11 +68,6 @@ void XGlueGamePartyFunction::PartyDemand()
 	//XPostPartyRequestInviteForMe();
 }
 
-void XGlueGamePartyFunction::PartyDemandAnswer(bool bAccept)
-{
-	XPostPartyRequestInviteForMeQuestionRespond(bAccept);
-}
-
 __int64 XGlueGamePartyFunction::GetPartyLeaderUID()
 {
 	return gvar.MyInfo.Party.GetLeader().Value;

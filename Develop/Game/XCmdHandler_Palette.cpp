@@ -17,7 +17,7 @@ XCmdHandler_Palette::XCmdHandler_Palette(MCommandCommunicator* pCC) : MCommandHa
 MCommandResult XCmdHandler_Palette::OnSelect(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	PALETTE_NUM nNum;
-	if (pCommand->GetParameter(&nNum,	0, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nNum,	1, MPT_UCHAR)==false) return CR_ERROR;
 
 	global.ui->PaletteUIRefresh();
 
@@ -27,7 +27,7 @@ MCommandResult XCmdHandler_Palette::OnSelect(MCommand* pCommand, MCommandHandler
 MCommandResult XCmdHandler_Palette::OnSetPrimary(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	PALETTE_NUM nNum;
-	if (pCommand->GetParameter(&nNum,	0, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nNum,	1, MPT_UCHAR)==false) return CR_ERROR;
 
 	return CR_TRUE;
 }
@@ -35,7 +35,7 @@ MCommandResult XCmdHandler_Palette::OnSetPrimary(MCommand* pCommand, MCommandHan
 MCommandResult XCmdHandler_Palette::OnSetSecondary(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	PALETTE_NUM nNum;
-	if (pCommand->GetParameter(&nNum,	0, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nNum,	1, MPT_UCHAR)==false) return CR_ERROR;
 
 	return CR_TRUE;
 }
@@ -46,10 +46,10 @@ MCommandResult XCmdHandler_Palette::OnPutUp(MCommand* pCommand, MCommandHandler*
 	PALETTE_SLOT nSlot;
 	PALETTE_ITEM_TYPE nType;
 	int nItemIDorTalentID;
-	if (pCommand->GetParameter(&nNum,	0, MPT_UCHAR)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nSlot,	1, MPT_UCHAR)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nType,	2, MPT_UCHAR)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nItemIDorTalentID,	3, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nNum,	1, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSlot,	2, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nType,	3, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nItemIDorTalentID,	4, MPT_INT)==false) return CR_ERROR;
 		
 	XPaletteItem item;
 	
@@ -73,8 +73,8 @@ MCommandResult XCmdHandler_Palette::OnPutDown(MCommand* pCommand, MCommandHandle
 {
 	vector<PALETTE_NUM> vecNum;
 	vector<PALETTE_SLOT> vecSlot;
-	if (pCommand->GetBlob(vecNum,	0)==false) return CR_ERROR;
-	if (pCommand->GetBlob(vecSlot,	1)==false) return CR_ERROR;
+	if (pCommand->GetBlob(vecNum,	1)==false) return CR_ERROR;
+	if (pCommand->GetBlob(vecSlot,	2)==false) return CR_ERROR;
 
 	size_t nSize = vecNum.size();
 	
@@ -100,10 +100,10 @@ MCommandResult XCmdHandler_Palette::OnChange(MCommand* pCommand, MCommandHandler
 	PALETTE_SLOT nSlot1;
 	PALETTE_NUM nNum2;
 	PALETTE_SLOT nSlot2;
-	if (pCommand->GetParameter(&nNum1,	0, MPT_UCHAR)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nSlot1,	1, MPT_UCHAR)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nNum2,	2, MPT_UCHAR)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nSlot2,	3, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nNum1,	1, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSlot1,	2, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nNum2,	3, MPT_UCHAR)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSlot2,	4, MPT_UCHAR)==false) return CR_ERROR;
 
 	int nPalleteIndex1 = CSItemHelper::GetPalleteIndex(nNum1, nSlot1);
 	int nPalleteIndex2 = CSItemHelper::GetPalleteIndex(nNum2, nSlot2);

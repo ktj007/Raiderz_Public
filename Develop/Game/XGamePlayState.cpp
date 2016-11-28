@@ -164,7 +164,7 @@ void StandAloneTest_AddMyItems()
 		global.ui->InventoryUIRefresh();
 }
 
-XPlayer* XGamePlayState::InPlayer( MUID& uid, TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo, bool bAppearEffect /*= true*/, bool bLoadingAsync /*= true*/ )
+XPlayer* XGamePlayState::InPlayer( MUID& uid, TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo, TD_PLAYER_BUFF_LIST* pBuffList, bool bAppearEffect /*= true*/, bool bLoadingAsync /*= true*/ )
 {
 	if (m_pObjectManager->Find(uid) != NULL) 
 	{
@@ -174,22 +174,22 @@ XPlayer* XGamePlayState::InPlayer( MUID& uid, TD_UPDATE_CACHE_PLAYER* pPlayerInf
 			XModuleNetControl* pModuleNetControl = pThisPlayer->GetModuleNetControl();
 			if (pModuleNetControl)
 			{
-				pModuleNetControl->OnReInPlayer(pPlayerInfo);
+				pModuleNetControl->OnReInPlayer(pPlayerInfo, pBuffList);
 			}
 		}
 		return pThisPlayer;
 	}
 
-	XNetPlayer* pPlayer = AsNetPlayer(CreateObject(XOBJ_NET_PLAYER, uid, pPlayerInfo->nUIID));
+	XNetPlayer* pPlayer = AsNetPlayer(CreateObject(XOBJ_NET_PLAYER, uid, pPlayerInfo->SimpleInfo.nUIID));
 	if (pPlayer)
 	{
-		if(bLoadingAsync == false && CheckModelLoadingAsync(pPlayerInfo->Feature.nSex) == true)
+		if(bLoadingAsync == false && CheckModelLoadingAsync(pPlayerInfo->ExtraInfo.Feature.nSex) == true)
 		{
 			bLoadingAsync = true;
 			bAppearEffect = true;
 		}
 
-		pPlayer->InPlayer(pPlayerInfo, pTattooInfo, bAppearEffect, bLoadingAsync);
+		pPlayer->InPlayer(pPlayerInfo, pTattooInfo, pBuffList,  bAppearEffect, bLoadingAsync);
 
 		if (m_pBattleArena->IsInBattleArena())
 		{
@@ -474,6 +474,7 @@ void XGamePlayState::OnWorldLoadingComplete()
 	global.ui->OnWorldLoadingComplete();
 
 	XPostField_LoadingComplete();
+	XPostField_ObjectLoadingComplete();
 
 
 	XPlayer* pMyPlayer = static_cast<XPlayer*>(gg.omgr->Find(XGetMyUID()));

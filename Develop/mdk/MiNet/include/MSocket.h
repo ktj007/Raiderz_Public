@@ -21,6 +21,9 @@ public:
 	void CloseSocket();
 
 	SOCKET GetSocket() const { return m_hSocket; }
+
+	// 2015-12-02: Get Remote Address as String.
+	std::string GetRemoteIP() const;
 };
 
 } // namespace minet {

@@ -16,13 +16,13 @@ class GDBT_ITEM
 {
 public :
 	GDBT_ITEM() : m_nCID(0), m_nSlotType(0), m_nSlotID(-1), m_nIUID(0), m_nItemID(0), m_nStackAmt(0)
-		, m_nSoulCnt(0), m_nDura(0), m_nMaxDura(0), m_nEnchCnt(0), m_nColor(0), m_nEXP(0), m_nNextAttuneXP(0), m_nAttuneLvl(0), m_bClaimed(false)
+		, m_nSoulCnt(0), m_nDura(0), m_nMaxDura(0), m_nEnchCnt(0), m_nColor(0), m_bClaimed(false)
 		, m_nCharPtm(0), m_bPeriodItem(false), m_nUsagePeriod(0), m_strExpiDt(L"NULL") {}
 
 	void Build(const int64 nCID, GItem* pItem);
 	void Set(const int64 nCID, const uint8 nSlotType, const int16 nSlotID, const int nItemID, const int16 nStackAmt, const int nCharPtm
 		, const IUID nIUID = 0, const uint8 nSoulCnt = 0, const uint8 nDura = 0, const uint8 nMaxDura = 0, const uint8 nEnchCnt = 0
-		, const int nColor = 0, const int nEXP = 0, const int nNextAttuneXP = 0, const int nAttuneLvl = 0, const bool bClaimed = false, const bool bPeriodItem = false, const int nUsagePeriod = 0
+		, const int nColor = 0, const bool bClaimed = false, const bool bPeriodItem = false, const int nUsagePeriod = 0
 		, const wstring& strExpiDt = L"NULL");
 
 	int64		m_nCID;
@@ -36,10 +36,6 @@ public :
 	uint8		m_nMaxDura;
 	uint8		m_nEnchCnt;
 	int			m_nColor;
-	//SoulHunterZ
-	int			m_nEXP;
-	int			m_nNextAttuneXP;
-	int			m_nAttuneLvl;
 	bool		m_bClaimed;
 	int			m_nCharPtm;
 	bool		m_bPeriodItem;
@@ -152,10 +148,6 @@ public:
 	int			nEnchItemID_4;
 	int			nEnchItemID_5;
 	int			nEnchItemID_6;
-	//SoulHunterZ
-	int			nEXP;
-	int			nNextAttuneXP;
-	int			nAttuneLvl;
 };
 
 class GDBT_ITEMINSTANCEQ : public deque<GDBT_ITEMINSTANCE>

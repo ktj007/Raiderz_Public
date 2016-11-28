@@ -91,13 +91,13 @@ MCommandResult LCmdHandler_Master_MoveServer::OnReadyEnterLoginServerReq(MComman
 	if (!pCommand->GetParameter(&uidRequestGameServer,	0, MPT_UID))	return CR_ERROR;
 	if (!pCommand->GetParameter(&uidRequester,			1, MPT_UID))	return CR_ERROR;
 	if (!pCommand->GetParameter(&uidConnectionKey,		2, MPT_UID))	return CR_ERROR;
-	if (!pCommand->GetParameter(&nAID,					3, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nAID,					3, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(strUserID,				4, MPT_WSTR))	return CR_ERROR;
 	
 	if (gmgr.pPlayerAcceptManager->FindAcceptor(uidConnectionKey))
 	{
 		LCmdRouter_MoveServer::RouteReadyEnterLoginServerRes(uidRequestGameServer, uidRequester, CR_FAIL, uidConnectionKey);
-		mlog("Failed! LCmdHandler_Master_MoveServer::OnReadyEnterLoginServerReq(), Already Exist Acceptor! (AID : %d)\n", nAID);
+		mlog("Failed! LCmdHandler_Master_MoveServer::OnReadyEnterLoginServerReq(), Already Exist Acceptor! (AID : %I64d)\n", nAID);
 		return CR_TRUE;
 	}
 

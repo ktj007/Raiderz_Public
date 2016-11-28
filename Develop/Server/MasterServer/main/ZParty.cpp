@@ -3,7 +3,7 @@
 #include "ZPartyMember.h"
 #include "CSDef_Loot.h"
 
-ZParty::ZParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, int nLeaderCID)
+ZParty::ZParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, CID nLeaderCID)
 : m_uidParty(uidParty)
 , m_isSyncReady(false)
 {
@@ -25,7 +25,7 @@ ZParty::~ZParty()
 	m_mapMembers.clear();
 }
 
-ZPartyMember* ZParty::AddMember(MUID uidMember, wstring strMemberName, int nMemberServerID, int nMemberCID)
+ZPartyMember* ZParty::AddMember(MUID uidMember, wstring strMemberName, int nMemberServerID, CID nMemberCID)
 {	
 	if (IsExistMember(uidMember))		return NULL;
 
@@ -333,6 +333,21 @@ const PARTY_SETTING& ZParty::GetPartySetting() const
 void ZParty::SetPartySetting(const PARTY_SETTING& partySetting)
 {
 	m_partySetting = partySetting;
+}
+
+bool ZParty::IsPublic() const
+{
+	return m_partySetting.m_bPublicParty;
+}
+
+const TCHAR* ZParty::GetName() const
+{
+	return m_partySetting.m_szName;
+}
+
+void ZParty::SetPublic( bool bPublic )
+{
+	m_partySetting.m_bPublicParty = bPublic;
 }
 
 void ZParty::SetName( wstring strName )

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="DebugDLL|Win32">
       <Configuration>DebugDLL</Configuration>
@@ -34,7 +34,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
@@ -42,7 +42,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v110_xp</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
@@ -50,25 +50,25 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
@@ -97,7 +97,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+    <_ProjectFileVersion>14.0.23107.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>Lib\</OutDir>
@@ -127,10 +127,10 @@
     <ClCompile>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../cml2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;MDB_USE_PSQLODBC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Lib>
@@ -225,21 +225,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MAsyncDatabase.cpp" />
-    <ClCompile Include="MDBThread.cpp" />
-    <ClCompile Include="MDBThreadPool.cpp" />
-    <ClCompile Include="MDBThreadTask.cpp" />
-    <ClCompile Include="MDBThreadTaskQ.cpp" />
-    <ClCompile Include="MDBThreadTaskResultQ.cpp" />
     <ClCompile Include="MDatabase.cpp" />
     <ClCompile Include="MDatabaseDesc.cpp" />
-    <ClCompile Include="MSQLSTMT.cpp" />
-    <ClCompile Include="MDBProfileCountPerTime.cpp" />
-    <ClCompile Include="MDBProfiler.cpp" />
-    <ClCompile Include="MDBProfileTimeElapse.cpp" />
-    <ClCompile Include="MDBFieldValueTypeFactory.cpp" />
+    <ClCompile Include="MDatabaseInfo.cpp" />
+    <ClCompile Include="MDatabaseQuery.cpp" />
     <ClCompile Include="MDBFieldValueType.cpp" />
     <ClCompile Include="MDBFieldValueTypeBool.cpp" />
     <ClCompile Include="MDBFieldValueTypeByte.cpp" />
+    <ClCompile Include="MDBFieldValueTypeFactory.cpp" />
     <ClCompile Include="MDBFieldValueTypeFloat.cpp" />
     <ClCompile Include="MDBFieldValueTypeInt64.cpp" />
     <ClCompile Include="MDBFieldValueTypeLong.cpp" />
@@ -248,9 +241,17 @@
     <ClCompile Include="MDBFieldValueTypeString.cpp" />
     <ClCompile Include="MDBFieldValueTypeTimestamp.cpp" />
     <ClCompile Include="MDBFieldValueTypeWString.cpp" />
-    <ClCompile Include="MDatabaseQuery.cpp" />
+    <ClCompile Include="MDBProfileCountPerTime.cpp" />
+    <ClCompile Include="MDBProfiler.cpp" />
+    <ClCompile Include="MDBProfileTimeElapse.cpp" />
     <ClCompile Include="MDBRecordSet.cpp" />
-    <ClCompile Include="MDatabaseInfo.cpp" />
+    <ClCompile Include="MDBThread.cpp" />
+    <ClCompile Include="MDBThreadPool.cpp" />
+    <ClCompile Include="MDBThreadTask.cpp" />
+    <ClCompile Include="MDBThreadTaskQ.cpp" />
+    <ClCompile Include="MDBThreadTaskResultQ.cpp" />
+    <ClCompile Include="MDBUtil.cpp" />
+    <ClCompile Include="MSQLSTMT.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'">Create</PrecompiledHeader>
@@ -261,28 +262,21 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MADBLib.h" />
     <ClInclude Include="MAsyncDatabase.h" />
-    <ClInclude Include="MDBCriticalSection.h" />
-    <ClInclude Include="MDBThread.h" />
-    <ClInclude Include="MDBThreadPool.h" />
-    <ClInclude Include="MDBThreadTask.h" />
-    <ClInclude Include="MDBThreadTaskQ.h" />
-    <ClInclude Include="MDBThreadTaskResultQ.h" />
     <ClInclude Include="MDatabase.h" />
+    <ClInclude Include="MDatabaseConst.h" />
     <ClInclude Include="MDatabaseDefine.h" />
     <ClInclude Include="MDatabaseDesc.h" />
-    <ClInclude Include="MSQLSTMT.h" />
-    <ClInclude Include="MDBProfileConst.h" />
-    <ClInclude Include="MDBProfileCountPerTime.h" />
-    <ClInclude Include="MDBProfileDefine.h" />
-    <ClInclude Include="MDBProfiler.h" />
-    <ClInclude Include="MDBProfileTimeElapse.h" />
-    <ClInclude Include="MDBFieldValueTypeFactory.h" />
-    <ClInclude Include="MDBFieldValueTypeHeaderList.h" />
+    <ClInclude Include="MDatabaseInfo.h" />
+    <ClInclude Include="MDatabaseQuery.h" />
+    <ClInclude Include="MDBCriticalSection.h" />
     <ClInclude Include="MDBFieldValueType.h" />
     <ClInclude Include="MDBFieldValueTypeBool.h" />
     <ClInclude Include="MDBFieldValueTypeByte.h" />
+    <ClInclude Include="MDBFieldValueTypeFactory.h" />
     <ClInclude Include="MDBFieldValueTypeFloat.h" />
+    <ClInclude Include="MDBFieldValueTypeHeaderList.h" />
     <ClInclude Include="MDBFieldValueTypeInt64.h" />
     <ClInclude Include="MDBFieldValueTypeLong.h" />
     <ClInclude Include="MDBFieldValueTypeNull.h" />
@@ -290,11 +284,19 @@
     <ClInclude Include="MDBFieldValueTypeString.h" />
     <ClInclude Include="MDBFieldValueTypeTimestamp.h" />
     <ClInclude Include="MDBFieldValueTypeWString.h" />
-    <ClInclude Include="MDatabaseQuery.h" />
+    <ClInclude Include="MDBProfileConst.h" />
+    <ClInclude Include="MDBProfileCountPerTime.h" />
+    <ClInclude Include="MDBProfileDefine.h" />
+    <ClInclude Include="MDBProfiler.h" />
+    <ClInclude Include="MDBProfileTimeElapse.h" />
     <ClInclude Include="MDBRecordSet.h" />
-    <ClInclude Include="MDatabaseInfo.h" />
-    <ClInclude Include="MADBLib.h" />
-    <ClInclude Include="MDatabaseConst.h" />
+    <ClInclude Include="MDBThread.h" />
+    <ClInclude Include="MDBThreadPool.h" />
+    <ClInclude Include="MDBThreadTask.h" />
+    <ClInclude Include="MDBThreadTaskQ.h" />
+    <ClInclude Include="MDBThreadTaskResultQ.h" />
+    <ClInclude Include="MDBUtil.h" />
+    <ClInclude Include="MSQLSTMT.h" />
     <ClInclude Include="ODBC_C_API_HEADER.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

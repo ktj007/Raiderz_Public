@@ -6,6 +6,12 @@
 #include "GGlobal.h"
 #include "GItemHolder.h"
 #include "GEquipmentSlot.h"
+#include "GPlayerBuffConverter.h"
+
+struct GTalentEnumInfo
+{
+	vector<GTalentInfo*> vecTalentInfo[TS_MAX];
+};
 
 GPlayerTalent::GPlayerTalent(GEntityPlayer* pOwner)
 : m_pOwner(pOwner)
@@ -44,7 +50,7 @@ void GPlayerTalent::Insert(GTalentInfo* pTalentInfo, bool bConsumeTP)
 	}
 
 	m_setTalentID.insert(pTalentInfo->m_nID);
-	
+
 	GModEffector ModEffector;
 	ModEffector.AddActorModifier(m_pOwner->GetChrStatus()->ActorModifier, pTalentInfo->m_ActorModifier);
 	ModEffector.AddPlayerModifier(m_pOwner->GetPlayerModifier(), pTalentInfo->m_PlayerModifier);
@@ -66,6 +72,27 @@ void GPlayerTalent::Insert(GTalentInfo* pTalentInfo, bool bConsumeTP)
 		m_GatherTalentRank.Insert(pTalentInfo->m_nRank);
 	}
 
+	// add internal talent id
+	pTalentInfo->m_ConvertTalent.EnumConvToIDs_Into(m_setInternalTalentID);
+	pTalentInfo->m_ConvertBuff.EnumConvToIDs_Into(m_setInternalTalentID);
+
+	// check this talent line is most high rank for this player, and if it was, register into top rank talent map.
+	MAP_TOPRANK_TALENT::iterator iter = m_mapTopRankTalent.find(pTalentInfo->m_nTalentLine);
+	if (iter == m_mapTopRankTalent.end() || iter->second->m_nRank < pTalentInfo->m_nRank)
+	{
+		m_mapTopRankTalent[pTalentInfo->m_nTalentLine] = pTalentInfo;
+	}
+
+	// register into buff convertion list.
+	if (TEPT_CONVERT_BUFF == pTalentInfo->m_nExtraPassive)
+	{
+		m_pOwner->GetBuffConverter().Add(pTalentInfo->m_nExtraPassiveParam[0], pTalentInfo->m_nExtraPassiveParam[1], pTalentInfo->m_nRank);
+	}
+	if (TEPT_CONVERT_BUFF == pTalentInfo->m_nExtraPassive2)
+	{
+		m_pOwner->GetBuffConverter().Add(pTalentInfo->m_nExtraPassiveParam2[0], pTalentInfo->m_nExtraPassiveParam2[1], pTalentInfo->m_nRank);
+	}
+
 	m_pOwner->TrimStats();
 }
 
@@ -75,15 +102,19 @@ void GPlayerTalent::DeleteAll()
 
 	for each (int nTalentID in tempSetTalentID)
 	{
-		Delete(nTalentID);
+		Delete(nTalentID, false);
 	}
+
+	m_setInternalTalentID.clear();
 
 	SetTP(m_pOwner->GetLevel());
 
 	m_pOwner->GetItemHolder()->GetEquipment().EraseModifierByUntrainAll();
+
+	m_pOwner->GetBuffConverter().Clear();
 }
 
-void GPlayerTalent::Delete(int nTalentID)
+void GPlayerTalent::Delete(int nTalentID, bool bRefreshInternalTalent)
 {
 	GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
 	if (NULL == pTalentInfo) return;
@@ -107,6 +138,51 @@ void GPlayerTalent::Delete(int nTalentID)
 	if (TT_GATHER == pTalentInfo->m_nTalentType)
 	{
 		m_GatherTalentRank.Delete(pTalentInfo->m_nRank);
+	}
+
+	// update internal talent id set
+	if (bRefreshInternalTalent)
+	{
+		RefreshInternalTalentID();
+	}
+
+	// delete from top rank talent map
+	MAP_TOPRANK_TALENT::iterator iter = m_mapTopRankTalent.find(pTalentInfo->m_nTalentLine);
+	if (iter != m_mapTopRankTalent.end() && iter->second->m_nRank == pTalentInfo->m_nRank)
+	{
+		GTalentInfo* pLRTalentInfo = gmgr.pTalentInfoMgr->GetLowRankTalent(nTalentID);
+		if (pLRTalentInfo && IsTrainedTalent(pLRTalentInfo))
+		{
+			m_mapTopRankTalent[pTalentInfo->m_nTalentLine] = pLRTalentInfo;
+		}
+		else
+		{
+			m_mapTopRankTalent.erase(iter);
+		}
+	}
+
+	// delete from buff convertion list.
+	if (TEPT_CONVERT_BUFF == pTalentInfo->m_nExtraPassive)
+	{
+		m_pOwner->GetBuffConverter().Delete(pTalentInfo->m_nExtraPassiveParam[0], pTalentInfo->m_nRank);
+	}
+	if (TEPT_CONVERT_BUFF == pTalentInfo->m_nExtraPassive2)
+	{
+		m_pOwner->GetBuffConverter().Delete(pTalentInfo->m_nExtraPassiveParam2[0], pTalentInfo->m_nRank);
+	}
+}
+
+void GPlayerTalent::RefreshInternalTalentID()
+{
+	m_setInternalTalentID.clear();
+
+	for (int nTalentID : m_setTalentID)
+	{
+		GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
+		if (!pTalentInfo) continue;
+
+		pTalentInfo->m_ConvertTalent.EnumConvToIDs_Into(m_setInternalTalentID);
+		pTalentInfo->m_ConvertBuff.EnumConvToIDs_Into(m_setInternalTalentID);
 	}
 }
 
@@ -134,6 +210,7 @@ int GPlayerTalent::GetTrainedStyleTP(TALENT_STYLE nStyle)
 	{
 		GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
 		if (NULL == pTalentInfo) continue;
+		if (TT_MASTERY == pTalentInfo->m_nTalentType) continue;
 		if (nStyle != pTalentInfo->m_nStyle) continue;
 		if (true == pTalentInfo->m_bByLicense) continue;
 
@@ -157,6 +234,7 @@ bool GPlayerTalent::IsTrainedTalent(GTalentInfo* pTalentInfo)
 
 	if (false == pTalentInfo->m_bNeedTraining) return true;
 	if (m_setTalentID.end() != m_setTalentID.find(pTalentInfo->m_nID)) return true;
+	if (m_setInternalTalentID.end() != m_setInternalTalentID.find(pTalentInfo->m_nID)) return true;
 
 	return false;
 }
@@ -231,6 +309,8 @@ bool GPlayerTalent::IsTPConsumeTalent(int nTalentID)
 	GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
 	if (pTalentInfo == NULL) return false;
 
+	if (pTalentInfo->m_nTalentType == TT_MASTERY)
+		return false;
 	if (pTalentInfo->m_nStyle == TS_LICENSE)
 		return false;
 	if (gmgr.pTalentInfoMgr->IsFocusTalent(nTalentID))
@@ -266,6 +346,126 @@ bool GPlayerTalent::GGatherTalentRank::HasGatherTalent(int nRank)
 
 	if (nLearnedMaxRank >= nRank)
 		return true;
+
+	return false;
+}
+
+TALENT_STYLE GPlayerTalent::GetMainTalentStyle()
+{
+	TALENT_STYLE nMyStyle = TS_NONE;
+	int nMostSpentTP = 0;
+
+	for (TALENT_STYLE nTrainStyle : TALENT_TRAINABLE_STYLE)
+	{
+		int nSpentTP = GetTrainedStyleTP(nTrainStyle);
+
+		if (nMostSpentTP < nSpentTP)
+		{
+			nMyStyle = nTrainStyle;
+			nMostSpentTP = nSpentTP;
+		}
+	}
+
+	return nMyStyle;
+}
+
+bool GPlayerTalent::IsStyleTalentLearnable(TALENT_STYLE nLearnStyle)
+{
+	if (nLearnStyle == TS_LICENSE) return true;
+	if (!IsTrainableTalentStyle(nLearnStyle)) return false;
+
+	GTalentEnumInfo talentEnumInfo;
+	EnumTalents(talentEnumInfo, true);
+
+	if (HasHybridPassive(talentEnumInfo))
+		return true;
+
+	TALENT_STYLE nMyStyle = GetMainTalentStyle();//GetTalentStyle(talentEnumInfo);
+
+	if (nMyStyle != TS_NONE && nMyStyle != nLearnStyle)
+		return false;
+
+	return true;
+}
+
+void GPlayerTalent::CheckAvailableMasteryTalent(TALENT_STYLE nStyle, vector<int>& outvecTalentID)
+{
+	int nTrainedStyleTP = GetTrainedStyleTP(nStyle);
+
+	vector<int> vecStyleTalentID;
+	gmgr.pTalentInfoMgr->GetStyleTalentID(nStyle, vecStyleTalentID);
+
+	for (int nTalentID : vecStyleTalentID)
+	{
+		GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
+		if (!pTalentInfo) continue;
+		if (pTalentInfo->m_nTalentType != TT_MASTERY) continue;
+		if (pTalentInfo->m_nTNeedStyleTP > nTrainedStyleTP) continue;
+		if (IsTrainedTalent(pTalentInfo)) continue;
+
+		outvecTalentID.push_back(nTalentID);
+	}
+}
+
+SET_TALENTID GPlayerTalent::GetTopRankTalentID()
+{
+	SET_TALENTID ret;
+	for (MAP_TOPRANK_TALENT::iterator iter = m_mapTopRankTalent.begin(); iter != m_mapTopRankTalent.end(); iter++)
+	{
+		ret.insert(iter->second->m_nID);
+	}
+
+	return ret;
+}
+
+void GPlayerTalent::EnumTalents(GTalentEnumInfo& out, bool bIncludeMasteryTalent)
+{
+	for (const int& nTalentID : m_setTalentID)
+	{
+		GTalentInfo* pTalentInfo = gmgr.pTalentInfoMgr->Find(nTalentID);
+		if (!pTalentInfo) continue;
+
+		TALENT_STYLE nStyle = pTalentInfo->m_nStyle;
+		if (!bIncludeMasteryTalent && pTalentInfo->m_nTalentType == TT_MASTERY) continue;
+
+		out.vecTalentInfo[nStyle].push_back(pTalentInfo);
+	}
+}
+
+/*
+TALENT_STYLE GPlayerTalent::GetTalentStyle(GTalentEnumInfo& talentEnumInfo)
+{
+	for (TALENT_STYLE nStyle : TALENT_TRAINABLE_STYLE)
+	{
+		if (!talentEnumInfo.vecTalentInfo[nStyle].empty())
+			return nStyle;
+	}
+
+	return TS_NONE;
+}
+*/
+
+bool GPlayerTalent::IsTrainableTalentStyle(TALENT_STYLE nStyle)
+{
+	for (TALENT_STYLE nTrainableStyle : TALENT_TRAINABLE_STYLE)
+	{
+		if (nTrainableStyle == nStyle)
+			return true;
+	}
+
+	return false;
+}
+
+bool GPlayerTalent::HasHybridPassive(GTalentEnumInfo& talentEnumInfo)
+{
+	for (const vector<GTalentInfo*>& vecTalentInfo : talentEnumInfo.vecTalentInfo)
+	{
+		for (GTalentInfo* pTalentInfo : vecTalentInfo)
+		{
+			if (pTalentInfo->m_nExtraPassive == TEPT_HYBIRD)
+				return true;
+		}
+	}
 
 	return false;
 }

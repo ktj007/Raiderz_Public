@@ -92,6 +92,7 @@ bool PServer::InitRequisites()
 	if (CreateNetwork() == false)
 	{
 		mlog3("Failed! CreateNetwork.\n");
+//		SetServerInitResult(SERVERINIT_FAILED_NETWORK_INIT);
 		return false;
 	}
 
@@ -99,6 +100,7 @@ bool PServer::InitRequisites()
 	{
 		_ASSERT(0);
 		mlog3("Failed! InitDB\n");
+		//SetServerInitResult(SERVERINIT_FAILED_DB_CONNECT);
 		return false;
 	}
 
@@ -180,14 +182,16 @@ bool PServer::InitDB()
 {
 	SDsnFactory::GetInstance().Set(
 		new SDefaultDsnFactory(
-		mdb::MDatabaseDesc()
-		, mdb::MDatabaseDesc(PConfig::m_strOdbcDriver, PConfig::m_strGameDB_Server, PConfig::m_strGameDB_DatabaseName, PConfig::m_strGameDB_UserName, PConfig::m_strGameDB_Password)
-		, mdb::MDatabaseDesc(PConfig::m_strOdbcDriver, PConfig::m_strLogDB_Server, PConfig::m_strLogDB_DatabaseName, PConfig::m_strLogDB_UserName, PConfig::m_strLogDB_Password)));
+		mdb::MDatabaseDesc(PConfig::m_strOdbcDriver, PConfig::m_AccountDBConfig.strServer, PConfig::m_AccountDBConfig.strDatabaseName, PConfig::m_AccountDBConfig.strUserName, PConfig::m_AccountDBConfig.strPassword)
+		, mdb::MDatabaseDesc(PConfig::m_strOdbcDriver, PConfig::m_GameDBConfig.strServer, PConfig::m_GameDBConfig.strDatabaseName, PConfig::m_GameDBConfig.strUserName, PConfig::m_GameDBConfig.strPassword)
+		, mdb::MDatabaseDesc(PConfig::m_strOdbcDriver, PConfig::m_LogDBConfig.strServer, PConfig::m_LogDBConfig.strDatabaseName, PConfig::m_LogDBConfig.strUserName, PConfig::m_LogDBConfig.strPassword)));
 
+
+	mdb::MDatabaseDesc dbAccountDesc = SDsnFactory::GetInstance().Get()->GetAccountDSN();
 	mdb::MDatabaseDesc dbGameDesc = SDsnFactory::GetInstance().Get()->GetGameDSN();
 	mdb::MDatabaseDesc dbLogDesc = SDsnFactory::GetInstance().Get()->GetLogDSN();
 
-	if (gsys.pDBManager->Init(dbGameDesc, dbLogDesc))
+	if (gsys.pDBManager->Init(dbAccountDesc, dbGameDesc, dbLogDesc))
 	{
 		mlog("DBMS connected\n");
 	}
@@ -206,6 +210,7 @@ bool PServer::InitInfo()
 	if (!LoadInfoFiles())
 	{
 		mlog3("Failed! Load Info Files.\n");
+//		SetServerInitResult(SERVERINIT_FAILED_DATAFILE_LOAD);
 		return false;
 	}
 

@@ -26,7 +26,6 @@ static const unsigned char LZMA_PROPS[] = { 0x5D, 0x00, 0x00, 0x01, 0x00 };
 // MFileHeader
 struct MFileHeader
 {
-	unsigned char			padding[64];
 	unsigned long			nFileSize;
 	unsigned long			nSectorPos;
 	unsigned long			nSectorSize;

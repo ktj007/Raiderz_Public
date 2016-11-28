@@ -20,6 +20,11 @@ int				ZConst::DEBUG_CONSOLE_GAMETICK_TICK = 60;
 bool			ZConst::INCLUDE_DEV_FIELD_LIST = false;
 bool			ZConst::INSERT_WORLD_INFO = false;
 
+int				ZConst::FIRST_ENTER_FIELD_ID		= 109;
+int				ZConst::FIRST_TUTORIAL_FIELD_ID		= 1090000;
+
+bool			ZConst::TEST_ENABLE_TUTORIAL		= true;
+
 #define GET_LUA_VAR(RETTYPE, NAME, VAR)		if (WLUA->IsExistGlobal(NAME)) VAR = WLUA->GetVar<RETTYPE>(NAME)
 
 void ZConst::Init()
@@ -36,6 +41,9 @@ void ZConst::Init()
 
 	GET_LUA_VAR(bool,			"INSERT_WORLD_INFO",						INSERT_WORLD_INFO);
 
+	GET_LUA_VAR(int,			"FIRST_ENTER_FIELD_ID",						FIRST_ENTER_FIELD_ID);
+	GET_LUA_VAR(int,			"FIRST_TUTORIAL_FIELD_ID",					FIRST_TUTORIAL_FIELD_ID);
+
 	/// 디버그용 ------------------------------------------------------------------
 
 	GET_LUA_VAR(bool,			"SHOW_LUA_ERROR_LOG",						SHOW_LUA_ERROR_LOG);
@@ -43,4 +51,18 @@ void ZConst::Init()
 
 	GET_LUA_VAR(bool,			"DEBUG_CONSOLE_SHOW_GAMETICK",				DEBUG_CONSOLE_SHOW_GAMETICK);
 	GET_LUA_VAR(int,			"DEBUG_CONSOLE_GAMETICK_TICK",				DEBUG_CONSOLE_GAMETICK_TICK);
+
+	GET_LUA_VAR(bool,			"TEST_ENABLE_TUTORIAL",						TEST_ENABLE_TUTORIAL);
+}
+
+int ZConst::GetFirstEnterFieldID()
+{
+	if (ZConst::TEST_ENABLE_TUTORIAL)
+	{
+		return ZConst::FIRST_TUTORIAL_FIELD_ID;
+	}
+	else
+	{
+		return ZConst::FIRST_ENTER_FIELD_ID;
+	}
 }

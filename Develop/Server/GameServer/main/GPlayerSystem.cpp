@@ -149,11 +149,13 @@ void GPlayerSystem::SaveSoulBinding_Route(GEntityPlayer* pEntityPlayer, int nFie
 {
 	if (NULL == pEntityPlayer) return;
 
+	/*
 	MCommand* pNewCmd = MakeNewCommand(MC_CHAR_SAVE_SOULBINDING, 
 		1, 
 		NEW_INT(nFieldID));
 
 	pEntityPlayer->RouteToMe(pNewCmd);
+	*/
 }
 
 const MARKER_INFO* GPlayerSystem::GetSoulBindingMarker(SBID nSoulBindingID)

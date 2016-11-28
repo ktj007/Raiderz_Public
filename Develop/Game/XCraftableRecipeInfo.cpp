@@ -56,12 +56,10 @@ MWLua::table XCraftableRecipeInfo::GetMaterialInfoTableByIndex(int nIndex)
 		return t;
 	}
 
-	return GetMaterialInfoTable(m_vecRecipe[nIndex].m_nRecipeID);
+	return GetMaterialInfoTable(m_vecRecipe[nIndex]);
 }
 
 bool XCraftableRecipeInfo::IsCraftableItem( int nIndex )
 {
-	if (nIndex < 0 || (int)m_vecRecipe.size() <= nIndex) return false;
-
-	return m_vecRecipe[nIndex].m_bMakable;
+	return true;
 }

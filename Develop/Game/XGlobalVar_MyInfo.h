@@ -173,7 +173,7 @@ public:
 		const TD_MYINFO& TDMyInfo, 
 		const vector<TD_ITEM>& vecTDInventory, 
 		const vector<TD_ITEM>& vecTDEquipment,
-		const vector<int>& vecTalent, 
+		const vector<TD_TALENT>& vecTalent, 
 		const vector<TD_PLAYERQUEST>& vecTDPlayerQuest,
 		const TD_PALETTE& TDPalette, 
 		const vector<TD_FACTION>& vecTDFaction, 

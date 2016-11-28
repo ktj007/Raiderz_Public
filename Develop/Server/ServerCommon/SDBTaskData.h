@@ -20,7 +20,7 @@ struct SDBTASK_ACCOUNT_CAHR_FEATURE_LIST
 {
 	SDBTASK_ACCOUNT_CAHR_FEATURE_LIST() : nCID(0) {}
 
-	int64						nCID;
+	CID							nCID;
 	RACE						Race;
 	SEX							Sex;
 	int8						nLevel;
@@ -31,7 +31,9 @@ struct SDBTASK_ACCOUNT_CAHR_FEATURE_LIST
 	int16						nFeatureSkinColor;
 	uint8						nEyeColor;
 	uint8						nMakeUp;
+	uint8						nVoice;
 	uint8						nTattooType;
+	uint8						nTattooColor;
 	short						nTattooPosX;
 	short						nTattooPosY;
 	uint8						nTattooScale;

@@ -8,8 +8,6 @@
 #include "GActorCooltimeChecker.h"
 #include "GServerPlayerRouter.h"
 #include "GMasterServerFacade.h"
-#include "PmRegionStat.h"
-#include "GPMSSystem.h"
 #include "GDBCacheFlush.h"
 #include "GDBCacheSystem.h"
 #include "GConst.h"
@@ -186,7 +184,7 @@ bool GAsyncTask_Logout::OnDestroyPlayer()
 	{
 		// 마스터 서버에 접속 종료 알림	
 		GServerPlayerRouter* pServerRouter = gsys.pMasterServerFacade->GetPlayerRouter();			
-		pServerRouter->RouteDeletePlayer((int)m_pPlayerObject->GetAccountInfo().nAID, m_pPlayerObject->GetUID());
+		pServerRouter->RouteDeletePlayer(m_pPlayerObject->GetAccountInfo().nAID, m_pPlayerObject->GetUID());
 
 		// 접속종료시간 기록
 		gsys.pDBManager->DisconnLogInsert(

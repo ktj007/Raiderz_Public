@@ -5,6 +5,10 @@
 #include <imagehlp.h>
 #include <tlhelp32.h>
 
+#if (_MSC_VER >= 1900)
+#include <VersionHelpers.h>
+#endif
+
 /*
 using namespace std;
 
@@ -423,12 +427,16 @@ void LoadModuleSymbols(DWORD dwProcessId, HANDLE hProcess)
 	BOOL (WINAPI *lpfModule32First)(HANDLE,LPMODULEENTRY32);
 	BOOL (WINAPI *lpfModule32Next)(HANDLE,LPMODULEENTRY32);
 
+#if (_MSC_VER >= 1900)
+	osver.dwPlatformId = IsWindowsXPOrGreater() ? VER_PLATFORM_WIN32_NT : VER_PLATFORM_WIN32_WINDOWS;
+#else
 	osver.dwOSVersionInfoSize = sizeof(osver);
 	if (!GetVersionEx(&osver))
 	{
 //		::MessageBox(NULL,"GetVersionEx failed","error",MB_OK);
 		return;
 	}
+#endif
     
 	if (osver.dwPlatformId == VER_PLATFORM_WIN32_NT)
 	{

@@ -3,7 +3,7 @@
 #include "SDef.h"
 #include "CSDef_Party.h"
 
-GProxyParty::GProxyParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderCID)
+GProxyParty::GProxyParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, CID nLeaderCID)
 : m_uidParty(uidParty)
 , m_uidLeader(uidLeader)
 {
@@ -15,7 +15,7 @@ GProxyParty::~GProxyParty()
 	// do nothing
 }
 
-void GProxyParty::AddMember(MUID uidMember, wstring strMemberName, int nMemberCID)
+void GProxyParty::AddMember(MUID uidMember, wstring strMemberName, CID nMemberCID)
 {
 	m_mapMembers.insert(make_pair(uidMember, PARTY_MEMBER_INFO(strMemberName, nMemberCID)));
 }
@@ -67,7 +67,7 @@ wstring GProxyParty::GetName(MUID uidMember) const
 	return it->second.m_strName;
 }
 
-int GProxyParty::GetCID( MUID uidMember ) const
+CID GProxyParty::GetCID( MUID uidMember ) const
 {
 	partymember_iterator it = FindMember(uidMember);
 	if (it == EndMember())		return 0;
@@ -98,7 +98,7 @@ MUID GProxyParty::Find(wstring strName) const
 	return MUID::Invalid();
 }
 
-MUID GProxyParty::Find( int nCID ) const
+MUID GProxyParty::Find( CID nCID ) const
 {
 	for each(map_partymember::value_type pairMember in m_mapMembers)
 	{
@@ -142,7 +142,7 @@ GProxyPartyManager::~GProxyPartyManager()
 	Clear();
 }
 
-GProxyParty* GProxyPartyManager::AddParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderCID)
+GProxyParty* GProxyPartyManager::AddParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, CID nLeaderCID)
 {
 	GProxyPartyMap::iterator it = m_PartyMap.find(uidParty);
 	if (it != m_PartyMap.end())
@@ -166,7 +166,7 @@ void GProxyPartyManager::RemoveParty(MUID uidParty)
 	m_PartyMap.erase(it);
 }
 
-void GProxyPartyManager::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberCID)
+void GProxyPartyManager::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, CID nMemberCID)
 {
 	GProxyPartyMap::iterator it = m_PartyMap.find(uidParty);
 	if (it == m_PartyMap.end())		return;

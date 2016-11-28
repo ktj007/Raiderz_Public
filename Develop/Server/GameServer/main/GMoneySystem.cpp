@@ -73,7 +73,8 @@ void GMoneySystem::DecreaseForDBTask(GEntityPlayer* pPlayer, int nMoney)
 void GMoneySystem::RouteUpdateMoney( GEntityPlayer* pPlayer)
 {
 	MCommand* pNewCmd = MakeNewCommand(MC_CHAR_UPDATE_MONEY, 
-		1, 
+		2, 
+		NEW_INT(0),	// TODO: reward cause.
 		NEW_INT(pPlayer->GetPlayerInfo()->GetMoney()));
 
 	pPlayer->RouteToMe(pNewCmd);

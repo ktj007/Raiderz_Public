@@ -58,7 +58,7 @@ void GGuildSystem::Serialize( GEntityPlayer* pPlayer )
 	}
 }
 
-void GGuildSystem::RouteToMember(GGuild* pGuild, MCommand* pCmd, int nExceptMemberCID)
+void GGuildSystem::RouteToMember(GGuild* pGuild, MCommand* pCmd, CID nExceptMemberCID)
 {
 	if (NULL == pGuild) return;
 	if (NULL == pCmd) return;
@@ -67,7 +67,7 @@ void GGuildSystem::RouteToMember(GGuild* pGuild, MCommand* pCmd, int nExceptMemb
 
 	for each (const MAP_GUILD_MEMBER::value_type& data in mapGuildMember)
 	{
-		int nCID = data.first;
+		CID nCID = data.first;
 		GGuildMember* pMember = data.second;
 
 		if (nExceptMemberCID == nCID) continue;
@@ -81,7 +81,7 @@ void GGuildSystem::RouteToMember(GGuild* pGuild, MCommand* pCmd, int nExceptMemb
 	SAFE_DELETE(pCmd);
 }
 
-void GGuildSystem::RouteToStorageInteractionMember(GGuild* pGuild, MCommand* pCmd, int nExceptMemberCID)
+void GGuildSystem::RouteToStorageInteractionMember(GGuild* pGuild, MCommand* pCmd, CID nExceptMemberCID)
 {
 	if (NULL == pGuild) return;
 	if (NULL == pCmd) return;
@@ -90,7 +90,7 @@ void GGuildSystem::RouteToStorageInteractionMember(GGuild* pGuild, MCommand* pCm
 
 	for each (const MAP_GUILD_MEMBER::value_type& data in mapGuildMember)
 	{
-		int nCID = data.first;
+		CID nCID = data.first;
 		GGuildMember* pMember = data.second;
 
 		if (nExceptMemberCID == nCID) continue;
@@ -112,7 +112,7 @@ bool GGuildSystem::Create(GEntityPlayer* pPlayer, const wchar_t* szGuildName)
 	if (NULL == pPlayer) return false;
 	if (NULL == szGuildName) return false;
 
-	int nCID = pPlayer->GetCID();
+	CID nCID = pPlayer->GetCID();
 	int nGID = pPlayer->GetGID();
 
 	if (true == gmgr.pGuildMgr->IsExist(nGID)) return pPlayer->FailAndRouteAdviceMsg(CR_FAIL_GUILD_ALREADY_JOIN);
@@ -369,7 +369,7 @@ void GGuildSystem::MakeTD_GUILDAndTD_GUILD_MEMBER(int nGID, vector<TD_GUILD>& ou
 	MAP_GUILD_MEMBER mapMember = pGuild->GetContainer();
 	for each (const MAP_GUILD_MEMBER::value_type& data in mapMember)
 	{
-		int nCID = data.first;
+		CID nCID = data.first;
 		GGuildMember* pMember = data.second;
 
 		TD_GUILD_MEMBER tdGuildMember;		

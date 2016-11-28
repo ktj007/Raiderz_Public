@@ -9,6 +9,7 @@ public:
 	static void PostDeletePlayer(AID nAID, const MUID& uidPlayer);
 
 	static void PostPmangAddPlayerReq(const MUID& uidPlayer, AID nAID, wstring strUserID, const PmUserData* pUserData);
+	static void PostPWEAddPlayerReq(const MUID& uidPlayer, AID nAID, const wstring& strUserID);
 
 	static void PostPlayerState_SELECT_CHAR(AID nAID, const MUID& uidPlayer);
 };

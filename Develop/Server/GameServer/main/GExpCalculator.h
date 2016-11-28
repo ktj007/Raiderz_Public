@@ -23,8 +23,8 @@ public:
 	static float CalcFatigueFactor(short nFatigueQuantity);
 	
 	static float CalcExpPercent(int nExp, int nCurrentLevel);
-	static int CalcNewLevel(int nCurrentLevel, int nCurrentExp, const int nMaxLevel = 90);
-	static int CalcNewExp(int nCurrentLevel, int nCurrentExp, const int nMaxLevel = 90);
+	static int CalcNewLevel(int nCurrentLevel, int nCurrentExp, const int nMaxLevel = CBT2_LIMIT_MAX_LEVEL);
+	static int CalcNewExp(int nCurrentLevel, int nCurrentExp, const int nMaxLevel = CBT2_LIMIT_MAX_LEVEL);
 
 	static int GetLevelUpRequiredXP(int nCurrentLevel);
 };

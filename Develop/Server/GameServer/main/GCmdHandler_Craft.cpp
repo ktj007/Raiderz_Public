@@ -23,11 +23,13 @@ MCommandResult GCmdHandler_Craft::OnRequestMake(MCommand* pCmd, MCommandHandler*
 	if (NULL == pPlayer) return CR_FALSE;
 
 	int nRecipeID;
+	int nCraftAmount;
 	if (pCmd->GetParameter(&nRecipeID, 0, MPT_INT)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&nCraftAmount, 1, MPT_INT)==false) return CR_FALSE;
 
 	if (false == gsys.pInteractionSystem->GetNPCInteractor().CheckIProgress(pPlayer, IT_CRAFT)) return CR_FALSE;
 
-	gsys.pCraftSystem->Make(pPlayer, pPlayer->GetInteraction().GetSelectedIElementInfo().GetSinlgeAct(), nRecipeID);
+	gsys.pCraftSystem->Make(pPlayer, pPlayer->GetInteraction().GetSelectedIElementInfo().GetSinlgeAct(), nRecipeID, nCraftAmount);
 
 	return CR_TRUE;
 }

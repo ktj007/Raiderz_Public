@@ -25,7 +25,7 @@ bool PGuildMsgHandler::OnRequest(const minet::MCommand* pCmd)
 	if (pPlayer == NULL)	return true;
 
 	// 채널 확인
-	int nGuildID = m_msgHelper.GetReceiverID(pCmd);
+	int nGuildID = static_cast<int>(m_msgHelper.GetReceiverID(pCmd));
 	// TODO: 길드채널 추가할 것 - praptor, 2010.01.11
 
 	// 메시지 통보

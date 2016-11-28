@@ -128,6 +128,7 @@ void GBuffEntity::MakeTDCacheInfo(TD_UPDATE_CACHE_BUFFENTITY& out)
 	out.vPos = GetPos();
 	out.fReaminTime = m_pModuleBuff->GetBuffRemainTime(m_nIncludeBuffID);
 	out.nBuffID = m_nIncludeBuffID;
+	out.UserUID = m_uidOwner;
 }
 
 void GBuffEntity::RouteInEntity( const vector<MUID>& vecPlayers )

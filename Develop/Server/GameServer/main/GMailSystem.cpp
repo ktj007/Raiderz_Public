@@ -136,7 +136,7 @@ void GMailSystem::GetDBMailList(GEntityPlayer* pPlayer, bool bOpenMaibox/*=false
 	GDBT_MAIL_GET_MAILBOX_LIST dbParam(
 		pPlayer->GetUID(),
 		pPlayer->GetAID(),
-		(int64)pPlayer->GetCID(),
+		pPlayer->GetCID(),
 		refMailbox.GetDBMailUID().GetCursor(),
 		refMailbox.GetDBMailUID().GetBottom(),
 		refMailbox.GetRemainSize());
@@ -398,7 +398,7 @@ void GMailSystem::DeleteMail(GEntityPlayer* pPlayer, MUID uidMail)
 
 	GDBT_MAIL_DELETE dbParam;
 	dbParam.m_nAID = pPlayer->GetAID();
-	dbParam.m_nCID = (int64)pPlayer->GetCID();
+	dbParam.m_nCID = pPlayer->GetCID();
 	dbParam.m_nCharPtm = pPlayer->GetPlayerInfo()->nPlayTimeSec;
 	dbParam.m_nMailUID = uidMail.Value;
 	gsys.pDBManager->MailDelete(pPlayer->GetUID(), dbParam);

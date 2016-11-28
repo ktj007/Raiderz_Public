@@ -18,7 +18,7 @@ public:
 	void DeletePlayer(AID nAID);
 
 	bool OnSelectChar(AID nAID, MUID uidPlayer);
-	bool OnInWorld(MUID uidRequestGameServer, AID nAID, int nCID, MUID uidPlayer, const std::wstring& strPlayerName, int nGID);
+	bool OnInWorld(MUID uidRequestGameServer, AID nAID, CID nCID, MUID uidPlayer, const std::wstring& strPlayerName, int nGID);
 	void LeaveGameServer(AID nAID);
 	
 	// Field 관련 로직

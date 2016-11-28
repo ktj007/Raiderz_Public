@@ -115,7 +115,7 @@ bool GTradeExchanger::DB(GEntityPlayer* pPlayer1, const vector<GTradeItem*> &vec
 		return false;
 	}
 
-	if (!gsys.pDBManager->Trade(vTradeChar, (vecP1GiveItem.size() * 2) + (vecP2GiveItem.size() * 2)))
+	if (!gsys.pDBManager->Trade(vTradeChar, static_cast<uint8>((vecP1GiveItem.size() * 2) + (vecP2GiveItem.size() * 2))))
 	{
 		// 실패 시, SlotID 예약취소
 		CancelReservedSlotID(pPlayer1, vTradeChar[1], MAX_TRADE_ITEM_SPACE);

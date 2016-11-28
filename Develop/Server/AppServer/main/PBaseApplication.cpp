@@ -6,6 +6,7 @@
 #include "PConfig.h"
 #include "MStatisticsProfiler.h"
 #include "PPMSSystem.h"
+#include "PMServerInitLogger.h"
 #include "PMSCodes.h"
 #include "MFileSystem.h"
 #include "MLocale.h"

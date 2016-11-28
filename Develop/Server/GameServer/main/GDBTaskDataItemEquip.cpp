@@ -9,7 +9,7 @@ GDBT_ITEM_EQUIP::GDBT_ITEM_EQUIP()
 
 }
 
-GDBT_ITEM_EQUIP::GDBT_ITEM_EQUIP( MUID uidPlayer, int64 nCID, GDBT_EQUIP_ITEM_SLOT& equip, GDBT_UNEQUIP_ITEM_SLOT& unequip1, GDBT_UNEQUIP_ITEM_SLOT& unequip2 )
+GDBT_ITEM_EQUIP::GDBT_ITEM_EQUIP( MUID uidPlayer, CID nCID, GDBT_EQUIP_ITEM_SLOT& equip, GDBT_UNEQUIP_ITEM_SLOT& unequip1, GDBT_UNEQUIP_ITEM_SLOT& unequip2 )
 : uidPlayer(uidPlayer), nCID(nCID), equip(equip), unequip1(unequip1), unequip2(unequip2)
 {
 
@@ -21,7 +21,7 @@ GDBT_ITEM_UNEQUIP::GDBT_ITEM_UNEQUIP()
 
 }
 
-GDBT_ITEM_UNEQUIP::GDBT_ITEM_UNEQUIP( MUID uidPlayer, int64 nCID, GDBT_UNEQUIP_ITEM_SLOT& unequip1, GDBT_UNEQUIP_ITEM_SLOT& unequip2)
+GDBT_ITEM_UNEQUIP::GDBT_ITEM_UNEQUIP( MUID uidPlayer, CID nCID, GDBT_UNEQUIP_ITEM_SLOT& unequip1, GDBT_UNEQUIP_ITEM_SLOT& unequip2)
 : uidPlayer(uidPlayer), nCID(nCID), unequip1(unequip1), unequip2(unequip2)
 {
 

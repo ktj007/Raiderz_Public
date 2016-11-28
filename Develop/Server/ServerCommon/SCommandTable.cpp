@@ -12,7 +12,7 @@ void AddServerCommonCommandTable()
 											P(MPT_SINGLE_BLOB, "tdProxyPlayerInfo")								
 
 	C(MSC_PROXY_PLAYER_REMOVE,				MCDT_MACHINE2MACHINE, MCF_S2C, "Remove Proxy Player")
-											P(MPT_INT, "nCID")
+											P(MPT_INT64, "nCID")
 
 	C(MSC_PROXY_PLAYER_UPDATE,				MCDT_MACHINE2MACHINE, MCF_S2C, "Update Proxy Player")
 											P(MPT_SINGLE_BLOB, "tdProxyPlayerInfo")

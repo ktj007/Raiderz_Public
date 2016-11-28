@@ -8,7 +8,7 @@
 
 struct GDBTASKDATA_LOOTINCREASEMONEY
 {
-	int64	nAID;
+	AID		nAID;
 	MUID	uidPlayer;	
 	int		nModMoney;
 	int		nMoney;	
@@ -17,11 +17,11 @@ struct GDBTASKDATA_LOOTINCREASEMONEY
 	uint8	nLevel;
 	int		nXP;
 
-	int64	nCID;
+	CID		nCID;
 
 	int		nNpcID;
 
-	GDBTASKDATA_LOOTINCREASEMONEY(int64 nAID, MUID	uidPlayer, int nModMoney, int nMoney, int nCharPlayTime, int nDeltaCharPtm, uint8 nLevel, int nXP, int64 nCID, int nNpcID)
+	GDBTASKDATA_LOOTINCREASEMONEY(AID nAID, MUID	uidPlayer, int nModMoney, int nMoney, int nCharPlayTime, int nDeltaCharPtm, uint8 nLevel, int nXP, CID nCID, int nNpcID)
 	: nAID(nAID), uidPlayer(uidPlayer), nModMoney(nModMoney), nMoney(nMoney), nCharPlayTime(nCharPlayTime), nDeltaCharPtm(nDeltaCharPtm), nLevel(nLevel), nXP(nXP), nCID(nCID), nNpcID(nNpcID)
 	{
 
@@ -51,13 +51,13 @@ struct GDBTASKDATA_LOOTINCREASEMONEY
 struct GDBT_MAIL_GET_MAILBOX_LIST
 {
 	MUID	m_uidPlayer;
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int64	m_nTopMUID;			///< 가져올 편지들 중 시작 편지의 MUID (가져올 편지에 포함됨)
 	int64	m_nBottomMUID;		///< 가져올 편지들의 최소 MUID 바운더리 (가져올 편지에 포함되지 않음)
 	int		m_nReqMailCount;	///< 얻어올 메일 개수
 
-	GDBT_MAIL_GET_MAILBOX_LIST(MUID	uidPlayer, int64 nAID, int64 nCID, int64 nTopMUID, int64 nBottomMUID, int nReqMailCount)
+	GDBT_MAIL_GET_MAILBOX_LIST(MUID	uidPlayer, AID nAID, CID nCID, int64 nTopMUID, int64 nBottomMUID, int nReqMailCount)
 	: m_uidPlayer(uidPlayer), m_nAID(nAID), m_nCID(nCID)
 	, m_nTopMUID(nTopMUID), m_nBottomMUID(nBottomMUID), m_nReqMailCount(nReqMailCount)
 	{
@@ -136,8 +136,8 @@ struct GDBT_MAIL_APPENDED_ITEM
 
 struct GDBT_MAIL_WRITE
 {
-	int64		m_nSenderAID;
-	int64		m_nSenderCID;
+	AID			m_nSenderAID;
+	CID			m_nSenderCID;
 	wstring		m_strSenderName;
 	int			m_nSenderCharacterPlaySeconds;	
 	int			m_nDeltaCharPtm;
@@ -223,8 +223,8 @@ struct GDBT_MAIL_WRITE
 
 struct GDBT_MAIL_WRITE_RESULT	
 {
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int64	m_nMailUID;
 	
 	IUID	m_nItemUID[MAX_MAIL_APPENDED_ITEM_COUNT];
@@ -248,7 +248,7 @@ struct GDBT_MAIL_WRITE_RESULT
 
 struct GDBT_MAIL_CHECK_RECEIVER
 {
-	int64			m_nSenderCID;
+	CID				m_nSenderCID;
 	GPlayerGrade	m_nSenderPlayerGrade;
 	wstring			m_strReceiverName;
 	int				m_nMaxMailCount;
@@ -256,8 +256,8 @@ struct GDBT_MAIL_CHECK_RECEIVER
 
 struct GDBT_MAIL_DELETE
 {
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int64	m_nMailUID;
 
@@ -285,8 +285,8 @@ struct GDBT_MAIL_DELETE
 struct GDBT_MAIL_GET_ITEM
 {
 	MUID	m_uidPlayer;
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int64	m_nMailUID;
 	int		m_nMailSlotID;
 	int64	m_nIUID;
@@ -322,8 +322,8 @@ struct GDBT_MAIL_GET_ITEM
 
 struct GDBT_MAIL_GET_MONEY
 {
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int64	m_nMailUID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;

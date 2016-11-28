@@ -32,6 +32,9 @@ public:
 	// ÇÇ¸Á
 	DECL_CMD_HANDLER(OnPmangRequestAddPlayer);
 
+	// PWE
+	DECL_CMD_HANDLER(OnPWERequestAddPlayer);
+
 	// Admin
 	DECL_CMD_HANDLER(OnAdminChangeServerModeReq);
 

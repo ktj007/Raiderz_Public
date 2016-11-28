@@ -38,21 +38,40 @@ void GExtraActiveTalent_Grapple::OnHitArea( GEntityActor* pVictim, uint16 nCheck
 	// 이 탤런트는 딱 1명만 판정될 수 있다.
 	if (m_TalentHit.HasVictim()) return;
 
-	GTalentHitter_Instant* pNewHitter = GTalentHitter::NewTalentHitter< GTalentHitter_Instant >();
-	pNewHitter->Setup(m_pOwner->GetUID(), m_pTalentInfo, pVictim, 0, nCapsuleGroupIndex, nCapsuleIndex);
-	if (m_pOwner->GetModuleCombat()) m_pOwner->GetModuleCombat()->AddTargetHitter(pNewHitter);
-
-	if ( pVictim->IsNowInvincibility())
+	if (/*m_pTalentInfo->m_bAvoidable &&*/
+		pVictim->IsNowAvoidTime())
+	{
+		pVictim->OnAvoid(m_pTalentInfo, m_pOwner);
 		return;
+	}
+
+	if (pVictim->IsNowInvincibility())
+	{
+		pVictim->OnImmuned(m_pTalentInfo, m_pOwner);
+		return;
+	}
 
 	GuardEffector guard_effector;
 	if (GuardEffector::GUARD_SUCCESS == guard_effector.CheckGuard(pVictim, m_pOwner, m_pTalentInfo))
+	{
+		pVictim->OnGuard(m_pOwner, m_pTalentInfo);
+		pVictim->OnAbsoluteGuard(m_pOwner, m_pTalentInfo);	// grapple is just matter of success or not, so process it as absolute guard.
+		m_pOwner->OnGuardEnemy(pVictim, m_pTalentInfo);
+
 		return; // 가드 성공
+	}
 
 	if (pVictim->IsHittable(m_pOwner, m_pTalentInfo) == false) return;
 
-	if (pVictim->GetCurrentMotionFactor() == MF_STUN) return;
+	// if (pVictim->GetCurrentMotionFactor() == MF_STUN) return;
 	if (pVictim->GetActionState() == AS_SWIMMING) return;
+
+	if (m_pOwner->GetModuleCombat())
+	{
+		GTalentHitter_Instant* pNewHitter = GTalentHitter::NewTalentHitter<GTalentHitter_Instant>();
+		pNewHitter->Setup(m_pOwner->GetUID(), m_pTalentInfo, pVictim, 0, nCapsuleGroupIndex, nCapsuleIndex);
+		m_pOwner->GetModuleCombat()->AddTargetHitter(pNewHitter);
+	}
 
 	// 잡기에 걸리면 사용중인 탤런트 취소
 	pVictim->doCancelTalentForce(false);
@@ -98,32 +117,46 @@ void GExtraActiveTalent_Swallowed::OnHitArea( GEntityActor* pVictim, uint16 nChe
 	// 이 탤런트는 딱 1명만 판정될 수 있다.
 	if (m_TalentHit.HasVictim()) return;
 
-	GTalentHitter_Instant* pNewHitter = GTalentHitter::NewTalentHitter< GTalentHitter_Instant >();
-	pNewHitter->Setup(m_pOwner->GetUID(), m_pTalentInfo, pVictim, 0, nCapsuleGroupIndex, nCapsuleIndex);
-
-	if (m_pOwner->GetModuleCombat()) 
-		m_pOwner->GetModuleCombat()->AddTargetHitter(pNewHitter);
-
-	if ( pVictim->IsNowInvincibility())
+	if (/*m_pTalentInfo->m_bAvoidable &&*/
+		pVictim->IsNowAvoidTime())
+	{
+		pVictim->OnAvoid(m_pTalentInfo, m_pOwner);
 		return;
+	}
+
+	if (pVictim->IsNowInvincibility())
+	{
+		pVictim->OnImmuned(m_pTalentInfo, m_pOwner);
+		return;
+	}
 
 	GuardEffector guard_effector;
 	if (GuardEffector::GUARD_SUCCESS == guard_effector.CheckGuard(pVictim, m_pOwner, m_pTalentInfo))
+	{
+		pVictim->OnGuard(m_pOwner, m_pTalentInfo);
+		pVictim->OnAbsoluteGuard(m_pOwner, m_pTalentInfo);	// swallow is just matter of success or not, so process it as absolute guard.
+		m_pOwner->OnGuardEnemy(pVictim, m_pTalentInfo);
+
 		return; // 가드 성공
+	}
 
 	if (!pVictim->IsHittable(m_pOwner, m_pTalentInfo)) 
 		return;
 
-	if (pVictim->GetCurrentMotionFactor() == MF_STUN) 
-		return;
-
-	if (pVictim->GetActionState() == AS_SWIMMING) 
-		return;
+	// if (pVictim->GetCurrentMotionFactor() == MF_STUN) return;
+	if (pVictim->GetActionState() == AS_SWIMMING) return;
 
 	// 먹기 처리
 	GEntityNPC* pOwnerNPC = ToEntityNPC(m_pOwner);
 	if (!pOwnerNPC->GetNPCSwallow().Swallow(pVictim, m_pTalentInfo))
 		return;	// 먹을 수 없는 상태
+
+	if (m_pOwner->GetModuleCombat())
+	{
+		GTalentHitter_Instant* pNewHitter = GTalentHitter::NewTalentHitter<GTalentHitter_Instant>();
+		pNewHitter->Setup(m_pOwner->GetUID(), m_pTalentInfo, pVictim, 0, nCapsuleGroupIndex, nCapsuleIndex);
+		m_pOwner->GetModuleCombat()->AddTargetHitter(pNewHitter);
+	}
 
 	// 잡기에 걸리면 사용중인 탤런트 취소
 	pVictim->doCancelTalentForce(false);

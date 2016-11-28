@@ -53,7 +53,7 @@ inline void XPostItem_MoveItem(SH_ITEM_SLOT_TYPE nFromSlotType,  int nFromSlotID
 
 inline void XPostItem_SortInvenSlot()
 {
-	XPOSTCMD0(MC_ITEM_SORT_INVEN_SLOT_REQ);
+	//XPOSTCMD2(MC_ITEM_SORT_REQ, MCommand);
 }
 
 #endif

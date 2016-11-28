@@ -14,6 +14,6 @@ protected:
 	static float CalcLevelFactorDodgePercent(const GEntityActor* pAttacker, const GEntityActor* pVictim);
 	static float CalcAttackerDodgePercent(GEntityActor* pAttacker);
 	static float CalcVictimDodgePercent(GEntityActor* pVictim);
-	static float CalcBuffDodgePercent(GEntityActor* pActor, TALENT_CATEGORY nTalentCategory);
-	static float CalcBuffHitPercent(GEntityActor* pActor, TALENT_CATEGORY nTalentCategory);	
+	static float CalcBuffDodgePercent(GEntityActor* pActor, TALENT_DAMAGE_TYPE nDamageType);
+	static float CalcBuffHitPercent(GEntityActor* pActor, TALENT_DAMAGE_TYPE nDamageType);
 };

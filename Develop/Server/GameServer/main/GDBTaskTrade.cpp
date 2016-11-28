@@ -43,14 +43,14 @@ void GDBTaskTrade::OnExecute( mdb::MDatabase& rfDB )
 
 	for (; !rs.IsEOF(); rs.MoveNext())
 	{
-		if (rs.FieldW(L"CHAR_ID").AsInt() == rs.FieldW(L"TO_CHAR_ID").AsInt())
+		if (rs.FieldW(L"CHAR_SN").AsInt64() == rs.FieldW(L"TO_CHAR_SN").AsInt64())
 		{
 			// 아이템 로그 저장을 위한 자료구조.
-			if (m_Data.vTradeChar[TRADE_CHAR_FIRSET].m_nCID == rs.FieldW(L"TO_CHAR_ID").AsInt())
+			if (m_Data.vTradeChar[TRADE_CHAR_FIRSET].m_nCID == rs.FieldW(L"TO_CHAR_SN").AsInt64())
 			{
 				m_Data.ItemLog[TRADE_CHAR_FIRSET][i].Set(rs.FieldW(L"ITEM_ID").AsInt()
-					, rs.FieldW(L"IUID").AsInt64()
-					, rs.FieldW(L"TO_IUID").AsInt64()
+					, rs.FieldW(L"ITEM_SN").AsInt64()
+					, rs.FieldW(L"TO_ITEM_SN").AsInt64()
 					, rs.FieldW(L"STACK_AMT").AsShort()
 					, rs.FieldW(L"DELTA_STACK_AMT").AsShort()
 					, rs.FieldW(L"DURA").AsByte()
@@ -60,8 +60,8 @@ void GDBTaskTrade::OnExecute( mdb::MDatabase& rfDB )
 			else
 			{
 				m_Data.ItemLog[TRADE_CHAR_SECOND][j].Set(rs.FieldW(L"ITEM_ID").AsInt()
-					, rs.FieldW(L"IUID").AsInt64()
-					, rs.FieldW(L"TO_IUID").AsInt64()
+					, rs.FieldW(L"ITEM_SN").AsInt64()
+					, rs.FieldW(L"TO_ITEM_SN").AsInt64()
 					, rs.FieldW(L"STACK_AMT").AsShort()
 					, rs.FieldW(L"DELTA_STACK_AMT").AsShort()
 					, rs.FieldW(L"DURA").AsByte()
@@ -78,12 +78,12 @@ void GDBTaskTrade::OnExecute( mdb::MDatabase& rfDB )
 		// 아이템이 분리되서 새로 insert된것.
 		if (1 == rs.FieldW(L"TR_TYPE").AsByte())
 		{		
-			ti.nCID					= rs.FieldW(L"CHAR_ID").AsInt64();
-			ti.nToCID				= rs.FieldW(L"TO_CHAR_ID").AsInt64();
+			ti.nCID					= rs.FieldW(L"CHAR_SN").AsInt64();
+			ti.nToCID				= rs.FieldW(L"TO_CHAR_SN").AsInt64();
 			ti.nStackAmt			= rs.FieldW(L"STACK_AMT").AsShort();
 			ti.nSlotID				= rs.FieldW(L"SLOT_ID").AsByte();
 			ti.nToSlotID			= rs.FieldW(L"TO_SLOT_ID").AsShort();
-			ti.nIUID				= rs.FieldW(L"IUID").AsInt64();
+			ti.nIUID				= rs.FieldW(L"ITEM_SN").AsInt64();
 			ti.nDura				= rs.FieldW(L"DURA").AsByte();
 			ti.nRemainUsagePeriod	= rs.FieldW(L"REMAIN_USAGE_PERIOD").AsInt();
 

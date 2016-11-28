@@ -18,6 +18,8 @@
 #include "CCommandTable.h"
 #include "MLocale.h"
 #include "GQObjInteractor.h"
+#include "GPlayerQuest.h"
+#include "GPlayerQuests.h"
 
 GNPCInteractor::GNPCInteractor(void)
 {
@@ -41,21 +43,21 @@ bool GNPCInteractor::InteractionByItem(GEntityPlayer* pPlayer, GEntityNPC* pNPC,
 	return Interaction(pPlayer, pNPC, pNPC->GetNPCInfo()->m_InteractionInfo.m_vecNPCIEInfo, ITRT_ITEM, uidUseItem);
 }
 
-bool GNPCInteractor::InteractionByClick(GEntityPlayer* pPlayer, GEntityNPC* pNPC)
+bool GNPCInteractor::InteractionByClick(GEntityPlayer* pPlayer, GEntityNPC* pNPC, bool bRefreshInteraction)
 {
 	if (NULL == pPlayer) return false;
 	if (NULL == pNPC) return false;
 
-	return Interaction(pPlayer, pNPC, pNPC->GetNPCInfo()->m_InteractionInfo.m_vecNPCIEInfo, ITRT_CLICK);
+	return Interaction(pPlayer, pNPC, pNPC->GetNPCInfo()->m_InteractionInfo.m_vecNPCIEInfo, ITRT_CLICK, MUID::ZERO, bRefreshInteraction);
 }
 
-bool GNPCInteractor::Interaction(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vector<GNPCInteractionElementInfo*>& vecIElementInfo, ITRIGGER_TYPE nITrigType, MUID uidUseItem)
+bool GNPCInteractor::Interaction(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vector<GNPCInteractionElementInfo*>& vecIElementInfo, ITRIGGER_TYPE nITrigType, MUID uidUseItem, bool bRefreshInteraction)
 {
 	if (NULL == pPlayer) return false;
 	if (NULL == pNPC) return false;
 
 	if (false == pPlayer->GetDoing().IsEndableBusy()) return false;
-	if (true == pPlayer->GetDoing().IsBusy())
+	if (true == pPlayer->GetDoing().IsBusy() && (false == bRefreshInteraction || false == pPlayer->GetDoing().IsNowInteracting()))
 	{
 		pPlayer->GetDoing().EndDoing();
 	}	
@@ -70,12 +72,45 @@ bool GNPCInteractor::Interaction(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const
 	pPlayer->GetInteraction().BeginInteraction(nITrigType, ITAT_NPC, pNPC->GetUID(), vecFilteredIElementInfo, uidUseItem);
 	pNPC->GetNPCInteraction().Begin(pPlayer);	
 
-	RouteInteractableIElement(pPlayer, pNPC->GetUID(), pNPC->GetNPCInfo()->m_strOpeningStatement.c_str(), vecFilteredIElementInfo);
+	if (true == bRefreshInteraction)
+	{
+		RouteInteractableIElementRefresh(pPlayer, pNPC->GetUID(), pNPC->GetNPCInfo()->m_strOpeningStatement.c_str(), vecFilteredIElementInfo);
+	}
+	else
+	{
+		RouteInteractableIElement(pPlayer, pNPC->GetUID(), pNPC->GetNPCInfo()->m_strOpeningStatement.c_str(), vecFilteredIElementInfo);
+	}
 
 	return true;
 }
 
 void GNPCInteractor::RouteInteractableIElement(GEntityPlayer* pPlayer, const MUID& uidNPC, const wchar_t* szOpeningText, const vector<GNPCInteractionElementInfo*>& vecIElementInfo)
+{
+	vector<TD_INTERACTION_ELEMENT> vecTDInteractionElement = MakeTD_INTERACTION_ELEMENT(pPlayer, vecIElementInfo);
+
+	MCommand* pNewCmd = MakeNewCommand(MC_NPCINTERACTION_SELECTABLE_IELEMENT,
+		3,
+		NEW_UID(uidNPC),
+		NEW_WSTR(szOpeningText),
+		NEW_BLOB(vecTDInteractionElement));
+
+	pPlayer->RouteToMe(pNewCmd);
+}
+
+void GNPCInteractor::RouteInteractableIElementRefresh(GEntityPlayer* pPlayer, const MUID& uidNPC, const wchar_t* szOpeningText, const vector<GNPCInteractionElementInfo*>& vecIElementInfo)
+{
+	vector<TD_INTERACTION_ELEMENT> vecTDInteractionElement = MakeTD_INTERACTION_ELEMENT(pPlayer, vecIElementInfo);
+
+	MCommand* pNewCmd = MakeNewCommand(MC_NPCINTERACTION_REFRESH_SELECTABLE_IELEMENT,
+		3,
+		NEW_UID(uidNPC),
+		NEW_WSTR(szOpeningText),
+		NEW_BLOB(vecTDInteractionElement));
+
+	pPlayer->RouteToMe(pNewCmd);
+}
+
+vector<TD_INTERACTION_ELEMENT> GNPCInteractor::MakeTD_INTERACTION_ELEMENT(GEntityPlayer* pPlayer, const vector<GNPCInteractionElementInfo*>& vecIElementInfo)
 {
 	vector<TD_INTERACTION_ELEMENT> vecTDInteractionElement;
 	for each (GNPCInteractionElementInfo* pIElementInfo in vecIElementInfo)
@@ -86,17 +121,22 @@ void GNPCInteractor::RouteInteractableIElement(GEntityPlayer* pPlayer, const MUI
 
 		TD_INTERACTION_ELEMENT tdInteractionElement;
 		tdInteractionElement.nIElementID = pIElementInfo->m_nID;
+		tdInteractionElement.nIActType = pIElementInfo->m_nType;
 		wcsncpy_s(tdInteractionElement.szIEText, strIEText.c_str(), _TRUNCATE);
+
+		if (pIElementInfo->m_nType == IT_QUEST_END && pIElementInfo->m_vecAct.size() == 1)
+		{
+			GPlayerQuest* pQuest = pPlayer->GetQuests().Get(pIElementInfo->m_vecAct[0]);
+			if (pQuest)
+			{
+				tdInteractionElement.nQuestState = pQuest->GetState();
+			}
+		}
+
 		vecTDInteractionElement.push_back(tdInteractionElement);
-	}	
+	}
 
-	MCommand* pNewCmd = MakeNewCommand(MC_NPCINTERACTION_INTERACTION, 
-		3,
-		NEW_UID(uidNPC),
-		NEW_WSTR(szOpeningText),
-		NEW_BLOB(vecTDInteractionElement));
-
-	pPlayer->RouteToMe(pNewCmd);
+	return vecTDInteractionElement;
 }
 
 bool GNPCInteractor::InteractionElement(GEntityPlayer* pPlayer, GEntityNPC* pNPC, int nIElementID)

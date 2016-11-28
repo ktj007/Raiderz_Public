@@ -22,11 +22,6 @@ bool XMeshInfoLoader::LoadMeshInfo( CSMeshInfoMgr* pMeshInfoMgr, const TCHAR* sz
 			CSMeshInfo meshInfo;
 			if (_Attribute(strTempMeshName, pElement, MESHINFO_XML_ATTR_MESHNAME))
 				meshInfo.m_strMeshName = CSStrings::StringToLower(strTempMeshName);
-
-			int tempBPartCount = 0;
-			if(_Attribute(tempBPartCount, pElement, MESHINFO_XML_ATTR_BPARTCOUNT))
-				meshInfo.m_iMeshBPartCount = tempBPartCount;
-
 			//tstring strReAction;
 			//_Attribute(strReAction, pElement, MESHINFO_XML_ATTR_REACTION_NAME); 
 			//meshInfo.m_strReActionAnimationName = CSStrings::StringToLower(strReAction);

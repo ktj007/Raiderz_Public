@@ -57,27 +57,20 @@ public:
 	int8 Enchant(GBuffInfo* pBuffInfo, int nItemID, ENCHANT_COLOR nEnchantColor);
 	// 강화 실패
 	int8 EnchantBreak(GBuffInfo* pBuffInfo);
-
-	//SoulHunterZ - Attune
-	//int8 SoulAttune(int nItemID, int level);
-
 	// 액티브 강화버프 ID 얻기
 	int				GetActiveEnchantBuffID() const;
 	// 액티브 강화버프가 있는지 여부
 	bool			HasActiveEnchantBuff() const;
 	// 강화 횟수
 	int				GetEnchantCount() const;
-
-	//SoulHunterZ
-	int				GetItemXP() const;
-	int				GetNextAttuneXP() const;
-	uint8			GetItemAttuneLvl() const;
 	
 	bool			operator== (const GItem* pItem);
 	bool			operator!= (const GItem* pItem);
 
 	int8			GetEmptyEnchantSlotIdx(bool bIsActiveSlot, ENCHANT_COLOR nColor=ENCHANT_NONE);
 	int				GetAmount() const;
+
+	// int				SetAmount(int nAmount);
 
 private:
 	GItem();
@@ -107,11 +100,6 @@ public:
 	wstring			m_strExpiDt;				// 만료 일시 스트링 형식.
 	
 	uint8			m_nSoulCount;				// 영혼 흡수 횟수
-
-	//SoulHunterZ
-	int				m_nXP;
-	int				m_nNextAttuneXP;
-	uint8			m_nAttuneLvl;
 
 	int				m_nEnchants[ENCHANT_MAX_COUNT];		// 인챈트 목록 (첫번째는 활성화 인챈트)
 	

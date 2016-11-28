@@ -107,8 +107,6 @@ bool XPlayFrame::Open( int nPrevFrameID, const wchar_t* szArgs)
 	_ASSERT( m_pMovableDebugger == NULL);
 	m_pMovableDebugger = new XMovableDebugger();
 
-	m_Debugger.Create();
-
 	ReloadDashBoard();
 
 	global.smgr->GetRenderingStrategy()->SetFXAA_Level(4);
@@ -145,8 +143,6 @@ void XPlayFrame::Close( int nNextFrameID)
 
 	// Delete debug info
 #ifndef _PUBLISH
-
-	m_Debugger.Destroy();
 
 	if ( m_pMovableDebugger != NULL)
 		SAFE_DELETE( m_pMovableDebugger);
@@ -203,62 +199,6 @@ bool XPlayFrame::OnEvent( MEvent& e)
 
 	// Process debug info
 	if ( XGameFrameHelper::OnDebugEvent( e) == true)	return true;
-
-	// Process debuger event
-	if ( m_Debugger.OnDebugEvent( e) == true)			return true;
-
-
-#ifndef _PUBLISH
-
-	// Process dash board event
-	if ( m_DebugDashBoard.OnDebugEvent( e) == true)		return true;
-
-	if ( gg.controller  &&  e.nMessage == MWM_CHAR  &&  e.nKey == ',')
-	{
-		static XCameraType nLastCameraType;
-
-		if ( global.camera->GetPrimaryCamera())
-		{
-			RCameraSceneNode* pNextCameraSceneNode = NULL;
-			vec3 vOldCameraPos = global.camera->GetPrimaryCamera()->GetPosition();
-			vec3 vOldCameraDir = global.camera->GetPrimaryCamera()->GetDirection();
-
-			bool bEnableFog = global.camera->GetPrimaryCamera()->GetFogEnable();
-			float fFogNear = global.camera->GetPrimaryCamera()->GetFogNear();
-			float fFogFar = global.camera->GetPrimaryCamera()->GetFogFar();
-			DWORD dwFogColor = global.camera->GetPrimaryCamera()->GetFogColor();
-
-			bool bToggle = false;
-			if (global.camera->IsPrimaryCameraType(CAMERA_MAIN_BACKVIEW))
-			{
-				nLastCameraType = CAMERA_MAIN_BACKVIEW;
-				bToggle = true;
-			}
-			else if (global.camera->IsPrimaryCameraType(CAMERA_REPLAY_BACKVIEW))
-			{
-				nLastCameraType = CAMERA_REPLAY_BACKVIEW;
-				bToggle = true;
-			}
-
-			if ( bToggle)
-			{
-				global.camera->SetPrimaryCamera(CAMERA_FREE_LOOK);
-				pNextCameraSceneNode = global.camera->GetPrimaryCamera();
-				if (pNextCameraSceneNode)
-				{
-					pNextCameraSceneNode->SetPosition(vOldCameraPos);
-					pNextCameraSceneNode->SetDirection(vOldCameraDir);
-					pNextCameraSceneNode->SetFog( fFogNear, fFogFar, dwFogColor);
-					pNextCameraSceneNode->SetFogEnable( bEnableFog);
-				}
-			}
-			else if (global.camera->IsPrimaryCameraType(CAMERA_FREE_LOOK))
-				global.camera->SetPrimaryCamera( nLastCameraType);
-		}
-	}
-
-#endif
-
 
 	// Dispatch event
 	return DispatchEvent( e);
@@ -519,13 +459,6 @@ void XPlayFrame::OnRender()
 	}
 	else
 	{
-#ifndef _PUBLISH
-
-		m_Debugger.RenderDebug();
-		m_Debugger.RenderRecordMessage();
-
-#endif
-
 		// Render game
 		if ( m_pGame != NULL)		m_pGame->OnRender();
 

@@ -128,8 +128,14 @@ void GItemDyer::Route( GEntityPlayer* pPlayer, GItem* pTargetItem, int nColor)
 
 	if (true == pTargetItem->IsEquiped())
 	{
-		MCommand* pNewCmd = MakeNewCommand(MC_ITEM_CHANGE_LOOK_EQUIP_ITEM,
-			7, NEW_INT(-1), NEW_INT(-1), NEW_CHAR(static_cast<uint8>(pTargetItem->m_nSlotID)), NEW_UID(pPlayer->GetUID()), NEW_INT(pTargetItem->m_pItemData->m_nID), NEW_INT(nColor), NEW_INT(pTargetItem->GetActiveEnchantBuffID()));
+		MCommand* pNewCmd = MakeNewCommand(MC_ITEM_CHANGE_LOOK, 6,
+			NEW_USHORT(pPlayer->GetUIID()),
+			NEW_CHAR((char)pTargetItem->m_nSlotID),
+			NEW_INT(pTargetItem->m_pItemData->m_nID),
+			NEW_INT(nColor),
+			NEW_INT(pTargetItem->GetActiveEnchantBuffID()),
+			NEW_CHAR(0)	// TODO: enchant grade
+		);
 
 		pPlayer->RouteToThisCellExceptMe(pNewCmd);
 	}

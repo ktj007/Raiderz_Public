@@ -11,16 +11,16 @@ class GGuildSystemForMasterServer : public MTestMemPool<GGuildSystemForMasterSer
 public:
 	void MemberOnlineInfo(MUID uidPlayer, const vector<TD_GUILD_ONLINE_MEMBER_INFO>& vecOnlineMemberInfo);
 	void DestroySync(int nGID);
-	void JoinSync(int nCID, AID nAID, int nGID, const wstring& strName, int nLevel, int nFieldID, int nChannelID);
-	void LeaveSync(int nCID, int nGID);
-	void KickSync(int nCID, int nGID);
-	void OnLineSync(int nCID, int nGID, int nFieldID, int nChannelID);
-	void OffLineSync(int nCID, int nGID);
-	void MoveFieldSync(int nCID, int nGID, int nFieldID, int nChannelID);
-	void ChangeMasterSync(int nOldCID, int nNewCID, int nGID);
-	void DepositStorageMoneySync(int nCID, int nGID, int nDepositMoney, int nStorageMoney);
-	void WithdrawStorageMoneySync(int nCID, int nGID, int nWithdrawMoney, int nStorageMoney);
-	void MoveStorageItemSync(int nCID, int nGID, vector<TD_PLAYER_GAME_DATA_ITEM_INSTANCE>& vecTDItem);
+	void JoinSync(CID nCID, AID nAID, int nGID, const wstring& strName, int nLevel, int nFieldID, int nChannelID);
+	void LeaveSync(CID nCID, int nGID);
+	void KickSync(CID nCID, int nGID);
+	void OnLineSync(CID nCID, int nGID, int nFieldID, int nChannelID);
+	void OffLineSync(CID nCID, int nGID);
+	void MoveFieldSync(CID nCID, int nGID, int nFieldID, int nChannelID);
+	void ChangeMasterSync(CID nOldCID, CID nNewCID, int nGID);
+	void DepositStorageMoneySync(CID nCID, int nGID, int nDepositMoney, int nStorageMoney);
+	void WithdrawStorageMoneySync(CID nCID, int nGID, int nWithdrawMoney, int nStorageMoney);
+	void MoveStorageItemSync(CID nCID, int nGID, vector<TD_PLAYER_GAME_DATA_ITEM_INSTANCE>& vecTDItem);
 
 private:
 	void MoveStorageItem(GGuild* pGuild, GItem* pFromItem, SH_ITEM_SLOT_TYPE nFromSlotType, int nFromSlotID, SH_ITEM_SLOT_TYPE nToSlotType, int nToSlotID);

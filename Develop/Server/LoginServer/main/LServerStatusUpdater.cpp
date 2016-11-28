@@ -32,5 +32,6 @@ void LServerStatusUpdater::Start(const std::wstring& strServerVersion)
 
 void LServerStatusUpdater::OnUpdate(const float fDelta)
 {
-	m_prefDBManager->ServerStatusUpdate(LConfig::m_nWorldID, LConfig::m_nServerID, gmgr.pPlayerObjectManager->GetClientsCount(), gsys.pServer->GetServableChecker().IsServable());
+	m_prefDBManager->ServerStatusUpdate(LConfig::m_nWorldID, LConfig::m_nServerID, gmgr.pPlayerObjectManager->GetClientsCount(), gsys.pServer->GetServableChecker().IsServable(), 
+		0, 0, 0, 0, 0);	// 2015-11-19: Pass zeros for task count, CPU usage, memory usage, field count and FPS.
 }

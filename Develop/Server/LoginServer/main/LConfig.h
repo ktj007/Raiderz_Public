@@ -26,6 +26,8 @@ private:
 	static void InitGameDB(const wchar_t* szFileName);
 	static void InitLogDB(const wchar_t* szFileName);
 
+	static void InitLoginMode(const wchar_t* szFileName);
+
 
 public:
 	static void Init_INI();
@@ -66,6 +68,7 @@ public:
 	static int				m_nMoveServerTimeout;			///< 서버이동 접속종료 타임아웃(ms)
 	static int				m_nCommandTimeout;				///< 커맨드 응답 타임아웃
 	static bool				m_isAllowInsertNewAccount;		///< 새로운 계정일 경우 등록허용
+	static bool				m_bImmediateDeleteChar;			///< Turn this off to prevent instant reuse of character name.
 
 	// Pmang
 	static wstring			m_strPmangServerKey;				///< 피망 서버키
@@ -77,7 +80,32 @@ public:
 	// pmang db encrypt.
 	static bool				m_bPmangDBEncrypt;
 
+	// login mode
+	enum LLoginMode
+	{
+		LLM_DEBUG = 0,		// for testing purpose. (enable all modes)
+		LLM_NORMAL,			// Normal in-game login.
+		LLM_PMANG,			// from Pmang website (Neowiz Games, KR)
+		LLM_WMO,			// from GAMEcom website (WeMade Online, JP)
+		LLM_PWE,			// from Arc Games launcher or in-game (Perfect World Entertainment, US)
+		LLM_PWE_INGAME,		// Arc Games in-game login
+		LLM_PWE_ARC,		// Arc Games launcher login
+		LLM_GAMEFORGE,		// (GameForge, EU)
+	};
+
+	static LLoginMode			m_eLoginMode;
+
+	static bool					IsInGameLoginAllowed()	{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_NORMAL || m_eLoginMode == LLM_PWE || m_eLoginMode == LLM_PWE_INGAME); }
+	static bool					IsNormalLoginMode()		{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_NORMAL); }
+	static bool					IsPmangLoginMode()		{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_PMANG); }
+	static bool					IsWMOLoginMode()		{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_WMO); }
+	static bool					IsPWELoginMode()		{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_PWE || m_eLoginMode == LLM_PWE_INGAME || m_eLoginMode == LLM_PWE_ARC); }
+	static bool					IsPWEInGameLoginMode()	{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_PWE || m_eLoginMode == LLM_PWE_INGAME); }
+	static bool					IsPWEArcLoginMode()		{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_PWE || m_eLoginMode == LLM_PWE_ARC); }
+	static bool					IsGameForgeLoginMode()	{ return (m_eLoginMode == LLM_DEBUG || m_eLoginMode == LLM_GAMEFORGE); }
+
 	// etc
 	static wstring			m_strDumpDestServerIP;
 	static int				m_nDumpDestServerPort;
+	static bool				m_bDBTraceAllTask;
 };

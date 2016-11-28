@@ -32,7 +32,7 @@ int SLevelTable::CalcLevelUpRequiredXP( int nCurrentLevel )
 {
 	// http://iworks2.maiet.net/wiki/sh:formulas:xp_to_level
 
-	int nRetXP = 200 * (nCurrentLevel * nCurrentLevel) + (800 * nCurrentLevel * nCurrentLevel);
+	int nRetXP = 200 * (nCurrentLevel * nCurrentLevel) + (800 * nCurrentLevel);
 
 	return nRetXP;
 }

@@ -43,6 +43,8 @@ public:
 	GEntityNPC* Despawn(SPAWN_ID nSpawnID, bool bSpawnEnable=true);
 	// 스폰정보 리셋
 	void		Reset(SPAWN_ID nSpawnID);
+	// set next respawn time to initial start time (not to respawn time).
+	void		ResetSpawnTime(SPAWN_ID nSpawnID);
 	// 스폰의 NPC 인스턴스 반환
 	GEntityNPC* GetNPCInstance(SPAWN_ID nSpawnID);
 	// 활성화여부 설정

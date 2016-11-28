@@ -8,9 +8,6 @@ class GPlayerCRTLogger
 private:
 	set<CCommandResultTable> m_setLoggableCRT;
 
-private:
-	void RouteLogCRTList(GEntityPlayer* pPlayer);
-
 public:
 	void Init();
 

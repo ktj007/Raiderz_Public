@@ -13,7 +13,7 @@ ZCharLogic::~ZCharLogic(void)
 {
 }
 
-void ZCharLogic::NPCDieReward(const vector<int>& vecBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID)
+void ZCharLogic::NPCDieReward(const vector<CID>& vecBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID)
 {
 	MAP_RECEIEVE_GAMESERVER_UID mapReceiveGameServerUID;
 	ZReceiveGameServerUIDSelector::Select(vecBeneficiaryCID, mapReceiveGameServerUID);
@@ -21,7 +21,7 @@ void ZCharLogic::NPCDieReward(const vector<int>& vecBeneficiaryCID, int nAllBene
 	for each (const MAP_RECEIEVE_GAMESERVER_UID::value_type& val in mapReceiveGameServerUID)
 	{
 		const MUID& nReceiveGameServerUID = val.first;
-		const vector<int>& vecSelectedBeneficiaryCID = val.second;
+		const vector<CID>& vecSelectedBeneficiaryCID = val.second;
 
 		MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_CHAR_NPCDIE_REWARD,
 			nReceiveGameServerUID,

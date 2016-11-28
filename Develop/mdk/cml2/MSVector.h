@@ -164,7 +164,7 @@ private:
 
 		if (t == 0) return 0.0f;
 
-		unsigned long f = (s << 31) | ((e + 112) << 23) | (m << (23 - 11));
+		unsigned long f = (s << 31) | ((e + 127) << 23) | (m << (23 - 11));
 		return *((float*)&f);
 	}
 	union {

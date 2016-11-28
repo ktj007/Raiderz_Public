@@ -7,5 +7,4 @@ public:
 
 private:
 	void HP(GEntityPlayer* pPlayer, int nPercent);
-	void Level(GEntityPlayer* pPlayer, int level);
 };

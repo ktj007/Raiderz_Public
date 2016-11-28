@@ -82,8 +82,16 @@ void XMyTalent::LostMaintainEffect(XTalentInfo* pTalentInfo)
 
 bool XMyTalent::Train(XTalentInfo* pTalentInfo, bool bConsumeTP)
 {
-	if (NULL == pTalentInfo) return false;
-	if (IsLearnedTalent(pTalentInfo->m_nID)) return false; 	// 이미 배운것이면.
+	if (NULL == pTalentInfo)
+	{
+		mlog("Error in set player talent: TalentInfo is NULL");
+		return false;
+	}
+	if (IsLearnedTalent(pTalentInfo->m_nID))
+	{
+		mlog("Error in set player talent: TalentInfo is already learned: %d", pTalentInfo->m_nID);
+		return false;
+	}
 
 	m_setTalentID.insert(pTalentInfo->m_nID);
 	m_setStyleTalentID[pTalentInfo->m_nStyle].insert(pTalentInfo->m_nID);

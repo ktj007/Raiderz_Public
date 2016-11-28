@@ -38,6 +38,7 @@ public:
 	void MakeEventRewardDBT(GEntityPlayer* pPlayer, GQPEEndInfo* pEndInfo, GDBT_QPER_TOINVEN& dataToInven, GDBT_QPER_TOMAIL& dataToMail);
 
 	bool IsDoingEvent();
+	bool IsExistPlayerInField();
 
 	GGlueQuestPVP* GetDelegator(void);	
 

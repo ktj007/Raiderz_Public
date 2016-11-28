@@ -16,17 +16,13 @@ public:
 	DECL_CMD_HANDLER(OnRequestDye);
 	DECL_CMD_HANDLER(OnRequestUse);
 	DECL_CMD_HANDLER(OnRequestDrop);
-	DECL_CMD_HANDLER(OnRequestSortInventorySlot);
-	DECL_CMD_HANDLER(OnRequestItemInteractNPC);
+	DECL_CMD_HANDLER(OnRequsetItemInteractNPC);
 	DECL_CMD_HANDLER(OnRequestMove);
-	DECL_CMD_HANDLER(OnRequestEnchant);
-	DECL_CMD_HANDLER(OnRequestEnchantCheck);
-	DECL_CMD_HANDLER(OnRequestEnchantPrepare);
-	DECL_CMD_HANDLER(OnRequestEnchantCancel);
-	DECL_CMD_HANDLER(OnRequestAttune);
-	DECL_CMD_HANDLER(OnRequestAttunePrepare);
-	DECL_CMD_HANDLER(OnRequestAttuneCheck);
-	DECL_CMD_HANDLER(OnRequestAttuneCancel);
+	DECL_CMD_HANDLER(OnRequestSort);
+	DECL_CMD_HANDLER(OnRequsetEnchant);
+	DECL_CMD_HANDLER(OnRequsetEnchantCheck);
+	DECL_CMD_HANDLER(OnRequsetEnchantPrepare);
+	DECL_CMD_HANDLER(OnRequsetEnchantCancel);
 };
 
 #endif//#define _GCMD_HANDLER_ITEM_H

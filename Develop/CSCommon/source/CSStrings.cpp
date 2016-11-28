@@ -160,8 +160,6 @@ bool CSStrings::Init()
 	m_vecStrItemType.push_back(_T("gather"));
 	m_vecStrItemType.push_back(_T("enchant"));
 	m_vecStrItemType.push_back(_T("dye"));
-	m_vecStrItemType.push_back(_T("costume"));
-	m_vecStrItemType.push_back(_T("attune"));
 	if (ITEMTYPE_MAX != m_vecStrItemType.size()) 
 	{
 		_ASSERT(0);
@@ -295,6 +293,7 @@ bool CSStrings::Init()
 	m_vecStrEffectRelation.push_back(_T("party"));
 	m_vecStrEffectRelation.push_back(_T("allied_dead"));
 	m_vecStrEffectRelation.push_back(_T("self"));
+	m_vecStrEffectRelation.push_back(_T("caster_enemy"));
 	if (CSEffectInfo::RELATION_MAX != m_vecStrEffectRelation.size()) 
 	{
 		_ASSERT(0);
@@ -520,13 +519,15 @@ bool CSStrings::Init()
 	m_vecStrIElementType.push_back(_T("storage"));
 	m_vecStrIElementType.push_back(_T("soldtrade"));
 	m_vecStrIElementType.push_back(_T("inn_sleep"));
+	m_vecStrIElementType.push_back(_T("inn_save"));
+	m_vecStrIElementType.push_back(_T("trade_market"));
 	m_vecStrIElementType.push_back(_T("trigger"));
 	m_vecStrIElementType.push_back(_T("guild_destroy"));
 	m_vecStrIElementType.push_back(_T("guild_create"));
 	m_vecStrIElementType.push_back(_T("guild_storage"));
 	m_vecStrIElementType.push_back(_T("quest_count"));
-	m_vecStrIElementType.push_back(_T("quest_count_immo"));		
-	m_vecStrIElementType.push_back(_T("soulbinding"));
+	m_vecStrIElementType.push_back(_T("quest_count_despawn"));		
+	// m_vecStrIElementType.push_back(_T("soulbinding"));
 	m_vecStrIElementType.push_back(_T("challenger_quest"));
 	m_vecStrIElementType.push_back(_T("gather_1"));
 	m_vecStrIElementType.push_back(_T("gather_2"));
@@ -539,12 +540,24 @@ bool CSStrings::Init()
 	m_vecStrIElementType.push_back(_T("gather_9"));
 	m_vecStrIElementType.push_back(_T("gather_10"));
 	m_vecStrIElementType.push_back(_T("loot"));
-	m_vecStrIElementType.push_back(_T("loot_immo"));
+	m_vecStrIElementType.push_back(_T("loot_despawn"));
 	m_vecStrIElementType.push_back(_T("dialog"));
+	m_vecStrIElementType.push_back(_T("dialog_for_help"));
 	m_vecStrIElementType.push_back(_T("trade"));	
 	m_vecStrIElementType.push_back(_T("craft"));	
 	m_vecStrIElementType.push_back(_T("quest_begin"));
 	m_vecStrIElementType.push_back(_T("quest_end"));	
+	m_vecStrIElementType.push_back(_T("enchant"));
+	m_vecStrIElementType.push_back(_T("pc_talent"));
+	m_vecStrIElementType.push_back(_T("pc_talent_despawn"));
+	m_vecStrIElementType.push_back(_T("pc_buff"));
+	m_vecStrIElementType.push_back(_T("pc_buff_despawn"));
+	m_vecStrIElementType.push_back(_T("script"));
+	m_vecStrIElementType.push_back(_T("script_despawn"));
+	m_vecStrIElementType.push_back(_T("hellhound"));
+	m_vecStrIElementType.push_back(_T("skillset"));
+	m_vecStrIElementType.push_back(_T("beautyshop"));
+	m_vecStrIElementType.push_back(_T("element_enchant"));
 	if (IT_MAX != m_vecStrIElementType.size()) 
 	{
 		_ASSERT(0);

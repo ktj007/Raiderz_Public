@@ -1,7 +1,11 @@
 #pragma once
 
 #include "GDef.h"
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
 #include <hash_map>
+#endif
 #include <fstream>
 #include <ostream>
 #include "MStatisticsProfiler.h"
@@ -146,7 +150,11 @@ private:
 	float GetMaxX();
 	float GetMaxY();
 private:
-	typedef stdext::hash_map<uint32,Cell*> CellMap;
+#if (_MSC_VER >= 1900)
+	typedef std::unordered_map<uint32, Cell*> CellMap;
+#else
+	typedef std::unordered_map<uint32,Cell*> CellMap;
+#endif
 	Chunk*		m_ChunkTable;
 	CellMap		m_mapCells;
 	int			m_nChunkSizeX;

@@ -47,7 +47,7 @@ MCommandResult GCmdHandler_Master_Guild::OnDestroySync(MCommand* pCommand, MComm
 
 MCommandResult GCmdHandler_Master_Guild::OnJoinSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	AID nAID;
 	int nGID;
 	wstring strName;
@@ -55,8 +55,8 @@ MCommandResult GCmdHandler_Master_Guild::OnJoinSync(MCommand* pCommand, MCommand
 	int nFieldID;
 	int nChannelID;
 
-	if (!pCommand->GetParameter(&nCID,		0, MPT_INT))	return CR_ERROR;
-	if (!pCommand->GetParameter(&nAID,		1, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,		0, MPT_INT64))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nAID,		1, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,		2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(strName,	3, MPT_WSTR))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nLevel,	4, MPT_INT))	return CR_ERROR;
@@ -70,10 +70,10 @@ MCommandResult GCmdHandler_Master_Guild::OnJoinSync(MCommand* pCommand, MCommand
 
 MCommandResult GCmdHandler_Master_Guild::OnLeaveSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	
-	if (!pCommand->GetParameter(&nCID,		0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,		0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,		1, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildSystem->ForMasterServer().LeaveSync(nCID, nGID);
@@ -83,10 +83,10 @@ MCommandResult GCmdHandler_Master_Guild::OnLeaveSync(MCommand* pCommand, MComman
 
 MCommandResult GCmdHandler_Master_Guild::OnKickSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 
-	if (!pCommand->GetParameter(&nCID,		0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,		0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,		1, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildSystem->ForMasterServer().KickSync(nCID, nGID);
@@ -96,12 +96,12 @@ MCommandResult GCmdHandler_Master_Guild::OnKickSync(MCommand* pCommand, MCommand
 
 MCommandResult GCmdHandler_Master_Guild::OnOnLineSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nFieldID;
 	int nChannelID;
 
-	if (!pCommand->GetParameter(&nCID,		0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,		0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,		1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nFieldID,	2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nChannelID,3, MPT_INT))	return CR_ERROR;
@@ -113,10 +113,10 @@ MCommandResult GCmdHandler_Master_Guild::OnOnLineSync(MCommand* pCommand, MComma
 
 MCommandResult GCmdHandler_Master_Guild::OnOffLineSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 
-	if (!pCommand->GetParameter(&nCID,		0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,		0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,		1, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildSystem->ForMasterServer().OffLineSync(nCID, nGID);
@@ -126,12 +126,12 @@ MCommandResult GCmdHandler_Master_Guild::OnOffLineSync(MCommand* pCommand, MComm
 
 MCommandResult GCmdHandler_Master_Guild::OnMoveFieldSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nFieldID;
 	int nChannelID;
 
-	if (!pCommand->GetParameter(&nCID,		0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,		0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,		1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nFieldID,	2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nChannelID,3, MPT_INT))	return CR_ERROR;
@@ -143,12 +143,12 @@ MCommandResult GCmdHandler_Master_Guild::OnMoveFieldSync(MCommand* pCommand, MCo
 
 MCommandResult GCmdHandler_Master_Guild::OnChangeMasterSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nOldCID;
-	int nNewCID;	
+	CID nOldCID;
+	CID nNewCID;	
 	int nGID;
 
-	if (!pCommand->GetParameter(&nOldCID,	0, MPT_INT))	return CR_ERROR;
-	if (!pCommand->GetParameter(&nNewCID,	1, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nOldCID,	0, MPT_INT64))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nNewCID,	1, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,		2, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildSystem->ForMasterServer().ChangeMasterSync(nOldCID, nNewCID, nGID);
@@ -158,12 +158,12 @@ MCommandResult GCmdHandler_Master_Guild::OnChangeMasterSync(MCommand* pCommand, 
 
 MCommandResult GCmdHandler_Master_Guild::OnDepositStorageMoneySync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nDepositMoney;
 	int nStorageMoney;
 
-	if (!pCommand->GetParameter(&nCID,			0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,			0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,			1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nDepositMoney,	2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nStorageMoney,	3, MPT_INT))	return CR_ERROR;
@@ -175,12 +175,12 @@ MCommandResult GCmdHandler_Master_Guild::OnDepositStorageMoneySync(MCommand* pCo
 
 MCommandResult GCmdHandler_Master_Guild::OnWithdrawStorageMoneySync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nWithdrawMoney;
 	int nStorageMoney;
 
-	if (!pCommand->GetParameter(&nCID,			0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,			0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,			1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nWithdrawMoney,2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nStorageMoney,	3, MPT_INT))	return CR_ERROR;
@@ -192,11 +192,11 @@ MCommandResult GCmdHandler_Master_Guild::OnWithdrawStorageMoneySync(MCommand* pC
 
 MCommandResult GCmdHandler_Master_Guild::OnMoveStorageItemSync(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	vector<TD_PLAYER_GAME_DATA_ITEM_INSTANCE> vecTDItem;
 
-	if (!pCommand->GetParameter(&nCID,			0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,			0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,			1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetBlob(vecTDItem,			2))				return CR_ERROR;
 

@@ -112,6 +112,7 @@ bool ZServer::InitRequisites()
 	if (CreateNetwork() == false)
 	{
 		mlog3("Failed CreateNetwork.\n");
+//		SetServerInitResult(SERVERINIT_FAILED_NETWORK_INIT);
 		return false;
 	}
 
@@ -119,6 +120,7 @@ bool ZServer::InitRequisites()
 	{
 		_ASSERT(0);
 		mlog3("Failed InitDB\n");
+//		SetServerInitResult(SERVERINIT_FAILED_DB_CONNECT);
 		return false;
 	}
 	
@@ -176,9 +178,10 @@ bool ZServer::InitDB()
 {
 	SDsnFactory::GetInstance().Set(
 		new SDefaultDsnFactory(
-		mdb::MDatabaseDesc(ZConfig::m_strOdbcDriver, ZConfig::m_strAccountDB_Server, ZConfig::m_strAccountDB_DatabaseName, ZConfig::m_strAccountDB_UserName, ZConfig::m_strAccountDB_Password)
-		, mdb::MDatabaseDesc(ZConfig::m_strOdbcDriver, ZConfig::m_strGameDB_Server, ZConfig::m_strGameDB_DatabaseName, ZConfig::m_strGameDB_UserName, ZConfig::m_strGameDB_Password)
-		, mdb::MDatabaseDesc(ZConfig::m_strOdbcDriver, ZConfig::m_strLogDB_Server, ZConfig::m_strLogDB_DatabaseName, ZConfig::m_strLogDB_UserName, ZConfig::m_strLogDB_Password)));
+		mdb::MDatabaseDesc(ZConfig::m_strOdbcDriver, ZConfig::m_AccountDBConfig.strServer, ZConfig::m_AccountDBConfig.strDatabaseName, ZConfig::m_AccountDBConfig.strUserName, ZConfig::m_AccountDBConfig.strPassword)
+		, mdb::MDatabaseDesc(ZConfig::m_strOdbcDriver, ZConfig::m_GameDBConfig.strServer, ZConfig::m_GameDBConfig.strDatabaseName, ZConfig::m_GameDBConfig.strUserName, ZConfig::m_GameDBConfig.strPassword)
+		, mdb::MDatabaseDesc(ZConfig::m_strOdbcDriver, ZConfig::m_LogDBConfig.strServer, ZConfig::m_LogDBConfig.strDatabaseName, ZConfig::m_LogDBConfig.strUserName, ZConfig::m_LogDBConfig.strPassword)));
+
 
 	mdb::MDatabaseDesc dbAccountDesc = SDsnFactory::GetInstance().Get()->GetAccountDSN();
 	mdb::MDatabaseDesc dbGameDesc = SDsnFactory::GetInstance().Get()->GetGameDSN();
@@ -201,16 +204,19 @@ bool ZServer::InitInfo()
 {
 	if (InitDependencyInfo() == false)
 	{
+//		SetServerInitResult(SERVERINIT_FAILED_DEPENDENCYFILE_LOAD);
 		return false;
 	}
 
 	if (LoadInfoFiles() == false)
 	{
+//		SetServerInitResult(SERVERINIT_FAILED_DATAFILE_LOAD);
 		return false;
 	}
 
 	if (InitFixedParty() == false)
 	{
+//		SetServerInitResult(SERVERINIT_FAILED_INIT_FIXED_PARTY);
 		return false;
 	}
 

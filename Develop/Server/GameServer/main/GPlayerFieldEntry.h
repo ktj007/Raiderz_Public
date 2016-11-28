@@ -55,6 +55,7 @@ public:
 	MUID	GetReservedWarpField()		{ return m_WarpReservedInfo.uidField; }
 	int		GetReservedWarpFieldID()	{ return m_WarpReservedInfo.nField; }
 	vec3	GetReservedWarpPos()		{ return m_WarpReservedInfo.vPos; }
+	vec3	GetReservedWarpDir()		{ return m_WarpReservedInfo.vDir; }
 
 	bool	IsReserved();
 };

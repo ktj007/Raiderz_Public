@@ -900,7 +900,8 @@ bool GEntityNPC::doGuard(int nGuardTalentID)
 	SetDirForwardToEnemy();
 
 	// 방어 메세지 전달
-	MCommand* pNewCmd = MakeNewCommand(MC_ACTION_GUARD, m_UID, 3, NEW_USHORT(m_nUIID), NEW_SVEC2(GetDir()), NEW_VEC(GetPos()));
+	// MCommand* pNewCmd = MakeNewCommand(MC_ACTION_GUARD, m_UID, 3, NEW_USHORT(m_nUIID), NEW_SVEC2(GetDir()), NEW_VEC(GetPos()));
+	MCommand* pNewCmd = MakeNewCommand(MC_ACTION_GUARD_OTHER, m_UID, 3, NEW_USHORT(m_nUIID), NEW_SVEC2(GetDir()), NEW_VEC(GetPos()));
 	RouteToThisCell(pNewCmd);
 
 	return true;
@@ -1053,7 +1054,7 @@ GEntityPlayer* GEntityNPC::FindPlayer(const MUID& uidPlayer)
 	return m_pField->FindPlayer(uidPlayer);
 }
 
-GEntityPlayer* GEntityNPC::FindPlayerByCID(int nCID)
+GEntityPlayer* GEntityNPC::FindPlayerByCID(CID nCID)
 {
 	VALID_RET(m_pField, NULL);
 	return m_pField->FindPlayerByCID(nCID);
@@ -1334,6 +1335,18 @@ void GEntityNPC::RouteFaceTo( vec3 vDir )
 	if (!GetNPCInfo())	return;
 
 	MCommand* pNewCommand = MakeNewCommand((MC_NPC_FACE_TO), 3, NEW_USHORT(GetUIID()), NEW_SVEC2(vDir), NEW_VEC(GetPos()));
+	RouteToThisCell(pNewCommand);
+}
+
+void GEntityNPC::RouteStartCombat()
+{
+	MCommand* pNewCommand = MakeNewCommand(MC_NPC_START_COMBAT, 1, NEW_USHORT(GetUIID()));
+	RouteToThisCell(pNewCommand);
+}
+
+void GEntityNPC::RouteEndCombat()
+{
+	MCommand* pNewCommand = MakeNewCommand(MC_NPC_END_COMBAT, 1, NEW_USHORT(GetUIID()));
 	RouteToThisCell(pNewCommand);
 }
 
@@ -1703,6 +1716,20 @@ const wchar_t* GEntityNPC::GetName() const
 	return GetNPCInfo()->strName.c_str();
 }
 
+void GEntityNPC::OnCombatBegin(GEntityActor* pActor)
+{
+	__super::OnCombatBegin(pActor);
+
+	RouteStartCombat();
+}
+
+void GEntityNPC::OnCombatEnd(GEntityActor* pActor)
+{
+	__super::OnCombatEnd(pActor);
+
+	RouteEndCombat();
+}
+
 void GEntityNPC::OnDie()
 {
 	__super::OnDie();
@@ -1828,6 +1855,16 @@ void GEntityNPC::OnUseTalentFailed( int nTalentID, CCommandResultTable nFailCaus
 	}
 
 	__super::OnUseTalentFailed(nTalentID, nFailCause);
+}
+
+void GEntityNPC::OnActTalentFailed( int nTalentID, CCommandResultTable nFailCause )
+{
+	if (nFailCause == CR_FAIL_SYSTEM_INVALID_TALENT_ID)
+	{
+		dlog("%s - invalid talent (npcid: %d, talentid: %d)\n", __FUNCTION__, GetID(), nTalentID);
+	}
+
+	__super::OnActTalentFailed(nTalentID, nFailCause);
 }
 
 float GEntityNPC::GetSpellPower() const 

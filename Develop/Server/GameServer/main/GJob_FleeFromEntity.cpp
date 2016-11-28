@@ -103,6 +103,6 @@ string GJob_FleeFromEntity::GetParamString() const
 
 	char buff[512];
 	sprintf(buff, "FromEntity: %s(%I64d)", 
-		MLocale::ConvUTF16ToAnsi(pTarget->GetName()).c_str(), pTarget->GetUID());
+		MLocale::ConvUTF16ToAnsi(pTarget->GetName()).c_str(), pTarget->GetUID().Value);
 	return buff;
 }

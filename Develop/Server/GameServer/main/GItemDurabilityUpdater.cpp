@@ -47,6 +47,7 @@ bool GItemDurabilityUpdater::LostWeaponDurabilityByCombat(GEntityPlayer* pAttack
 	GItemHolder* pItemHolder = pAttacker->GetItemHolder();	
 	GItem* pWeaponItem = pItemHolder->GetEquipment().GetRightWeapon();	
 	if (NULL == pWeaponItem) return true;
+	if (0 == pWeaponItem->m_pItemData->m_nMaxDurability) return false;
 
 	if (0 >= pWeaponItem->m_nDurability)
 	{
@@ -88,6 +89,8 @@ bool GItemDurabilityUpdater::LostEquipmentDurabilityByCombat(GEntityPlayer* pDef
 	}
 
 	if (NULL == pEquipmentItem) return true;
+	if (0 == pEquipmentItem->m_pItemData->m_nMaxDurability) return false;
+
 	if (0 >= pEquipmentItem->m_nDurability)
 	{
 		pDefender->FailAndRouteSystemMsg(CR_FAIL_SYSTEM_EMPTY_DURABILITY);

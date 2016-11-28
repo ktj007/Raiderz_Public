@@ -40,6 +40,10 @@ void MAcceptor::ProcEvent( MAct* act, DWORD bytes_transferred )
 
 	memcpy(&LocalAddr, plocal, sizeof(sockaddr_in));
 	memcpy(&RemoteAddr, premote, sizeof(sockaddr_in));
+
+	// 2015-12-02: save these address into MServerTcpSocket object.
+	*(sockaddr_in*)&tcpsocket.m_Addr		= LocalAddr;
+	*(sockaddr_in*)&tcpsocket.m_remoteAddr	= RemoteAddr;
 	// Get Address End //
 
 	HANDLE hSocketHandle = reinterpret_cast<HANDLE>(tcpsocket.GetSocket());

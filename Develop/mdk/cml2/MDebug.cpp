@@ -57,7 +57,7 @@ DWORD MFilterException(LPEXCEPTION_POINTERS p)
 	_strtime( tmpbuf );
 	mlog("Crash ( %s )\n",tmpbuf);
 
-	mlog("Build "__DATE__" "__TIME__"\n\n");
+	mlog("Build " __DATE__ " " __TIME__ "\n\n");
 
 	mlog("\n[Exception]\n");
 	mlog("Address	:	%08x\n", p->ExceptionRecord->ExceptionAddress);

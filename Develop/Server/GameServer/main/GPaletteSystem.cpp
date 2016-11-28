@@ -68,7 +68,8 @@ bool GPaletteSystem::Select(GEntityPlayer* pPlayer, PALETTE_NUM nNum)
 	pPlayer->GetPalette().SelectPalette(nNum);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_SELECT,
-		1,		
+		2,		
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 		NEW_UCHAR(nNum));
 
 	pPlayer->RouteToMe(pNewCmd);
@@ -93,7 +94,8 @@ bool GPaletteSystem::SetPrimary(GEntityPlayer* pPlayer, PALETTE_NUM nNum)
 	pPlayer->GetPalette().SetPrimary(nNum);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_SET_PRIMARY,
-		1,		
+		2,		
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 		NEW_UCHAR(nNum));
 	pPlayer->RouteToMe(pNewCmd);
 
@@ -117,7 +119,8 @@ bool GPaletteSystem::SetSecondary(GEntityPlayer* pPlayer, PALETTE_NUM nNum)
 	pPlayer->GetPalette().SetSecondary(nNum);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_SET_SECONDARY,
-		1,		
+		2,		
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 		NEW_UCHAR(nNum));
 	pPlayer->RouteToMe(pNewCmd);
 
@@ -168,7 +171,8 @@ bool GPaletteSystem::PutUp(GEntityPlayer* pPlayer, PALETTE_NUM nNum, PALETTE_SLO
 	pPlayer->GetPalette().Set(nNum, nSlot, nType, nItemIDorTalentID);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_PUTUP,
-		4,		
+		5,		
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 		NEW_UCHAR(nNum),
 		NEW_UCHAR(nSlot),
 		NEW_UCHAR(nType),
@@ -207,7 +211,8 @@ bool GPaletteSystem::PutDown(GEntityPlayer* pPlayer, PALETTE_NUM nNum, PALETTE_S
 	vecSlot.push_back(nSlot);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_PUTDOWN,
-		2,
+		3,
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 		NEW_BLOB(vecNum),
 		NEW_BLOB(vecSlot));
 
@@ -254,7 +259,8 @@ bool GPaletteSystem::PutDown(GEntityPlayer* pPlayer, int nItemIDorTalentID, bool
 	}	
 
 	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_PUTDOWN,
-		2,
+		3,
+		NEW_INT(SST_MAIN),	// TODO: 2nd skill set.
 		NEW_BLOB(vecNum),
 		NEW_BLOB(vecSlot));
 
@@ -291,7 +297,8 @@ bool GPaletteSystem::Change(GEntityPlayer* pPlayer, PALETTE_NUM nNum1, PALETTE_S
 	pPlayer->GetPalette().Change(nNum1, nSlot1, nNum2, nSlot2);
 
 	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_CHANGE,
-		4,
+		5,
+		NEW_INT(SST_MAIN),
 		NEW_UCHAR(nNum1),
 		NEW_UCHAR(nSlot1),
 		NEW_UCHAR(nNum2),
@@ -307,22 +314,24 @@ bool GPaletteSystem::PutDownAllTalent(GEntityPlayer* pPlayer)
 	if (NULL == pPlayer) return false;
 
 	pPlayer->GetPalette().ResetTalentSlot();
-	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_PUTDOWN_ALLTALENT, 0,	NULL);
+	MCommand* pNewCmd = MakeNewCommand(MC_PALETTE_PUTDOWN_ALLTALENT, 1, NEW_INT(SST_MAIN));	// TODO: 2nd skill set.
 
 	pPlayer->RouteToMe(pNewCmd);
 
 	return true;
 }
 
-void GPaletteSystem::MakeTD_PALETTE(GEntityPlayer* pPlayer, TD_PALETTE& outtdPalette)
+void GPaletteSystem::MakeTD_PALETTE(GEntityPlayer* pPlayer, vector<TD_PALETTE>& outvecTDPalette)
 {
 	if (NULL == pPlayer) return;
 
 	GPalette& Palette = pPlayer->GetPalette();
 
-	outtdPalette.nSelectedNum = Palette.GetSelectedPalette();
-	outtdPalette.nPrimaryNum = Palette.GetPrimary();
-	outtdPalette.nSecondaryNum = Palette.GetSecondary();	
+	TD_PALETTE tdPalette;
+	tdPalette.nSelectedNum = Palette.GetSelectedPalette();
+	tdPalette.nPrimaryNum = Palette.GetPrimary();
+	tdPalette.nSecondaryNum = Palette.GetSecondary();	
+	tdPalette.eSkillSet = SST_MAIN;	// TODO: 2nd skill set.
 
 	for (int i = 0; i < PALETTENUM_MAX; ++i)
 	{
@@ -334,8 +343,10 @@ void GPaletteSystem::MakeTD_PALETTE(GEntityPlayer* pPlayer, TD_PALETTE& outtdPal
 			if (NULL == pPaletteItem) continue;
 
 			uint8 nIndex = gsys.pPaletteSystem->NumAndSlotToIndex(nNum, nSlot);
-			outtdPalette.paletteItems[nIndex].nType = pPaletteItem->m_nType;
-			outtdPalette.paletteItems[nIndex].nItemIDorTalentID = pPaletteItem->m_nItemIDorTalentID;		
+			tdPalette.paletteItems[nIndex].nType = pPaletteItem->m_nType;
+			tdPalette.paletteItems[nIndex].nItemIDorTalentID = pPaletteItem->m_nItemIDorTalentID;	
 		}
 	}	
+
+	outvecTDPalette.push_back(tdPalette);
 }

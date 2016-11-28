@@ -159,11 +159,11 @@ void XMyActionDie::Rebirth()
 
 		if (gg.currentgamestate->GetBattleArena()->IsInBattleArena())
 		{
-			XPostChar_Rebirth(REBT_PLACE_IN_BATTLEGROUD);
+			XPostChar_Rebirth(REBT_NEAR_SOULBINDING);
 		}
 		else
 		{
-			XPostChar_Rebirth(REBT_SOULBINDING);
+			XPostChar_Rebirth(REBT_NEAR_SOULBINDING);
 		}
 	}
 }

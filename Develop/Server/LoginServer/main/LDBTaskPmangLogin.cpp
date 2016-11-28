@@ -52,9 +52,11 @@ void LDBTaskPmangLogin::OnExecute(mdb::MDatabase& rfDB)
 		return;
 	}
 
-	m_Data.nDBAID			= rs.FieldW(L"ACCN_ID").AsInt64();
+	m_Data.nDBAID			= rs.FieldW(L"ACCN_SN").AsInt64();
 	m_Data.strDBPassword	= rs.FieldW(L"PWD").AsWString();
 	m_Data.bNewAcc			= rs.FieldW(L"NEW_ACC").AsBool();
+	m_Data.strStatus		= rs.FieldW(L"STATUS").AsWString();
+	m_Data.nCONN_SN			= rs.FieldW(L"CONN_SN").AsInt64();
 
 	SetTaskSuccess();
 }
@@ -93,12 +95,12 @@ void LDBTaskPmangLogin::Completer::DebugCheckExistAccount()
 		// 계정이 없으면 만들어준다.
 		gsys.pDBManager->PmangInsertAccount(m_Data.uidPlayer, m_Data.pmangUserData);
 
-		gsys.pDBManager->ConnectLog(LDBT_CONN_LOG(m_Data.nDBAID, L"test"));
+		gsys.pDBManager->ConnectLog(LDBT_CONN_LOG(m_Data.nCONN_SN, m_Data.nDBAID, L"test"));
 	}
 	else
 	{
 		SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
-		cmdRouter.ResponseLogin(m_Data.uidPlayer, CR_FAIL_LOGIN_NOT_EXIST_USER);
+		cmdRouter.ResponsePmangLogin(m_Data.uidPlayer, CR_FAIL_LOGIN_INVALID_ID_OR_PASSWORD);
 	}
 }
 
@@ -125,8 +127,4 @@ void LDBTaskPmangLogin::Completer::AddNewPlayer()
 
 	int nPCCafeID = _wtoi(m_Data.pmangUserData.strPCBID.c_str());
 	pPlayerObject->AddStatIndex(&m_Data.pmangUserData.statIndex, nPCCafeID);
-
-	PmRegionCode nRegionCode = m_Data.pmangUserData.statIndex.nRegionCode;
-	PmAgeCode nAgeCode = m_Data.pmangUserData.statIndex.nAgeCode;
-	PmGenderCode nGenderCode = m_Data.pmangUserData.statIndex.nGenderCode;
 }

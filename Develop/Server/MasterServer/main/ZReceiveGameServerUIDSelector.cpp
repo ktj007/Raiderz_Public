@@ -5,9 +5,9 @@
 #include "ZGameServerObjectManager.h"
 #include "AStlUtil.h"
 
-void ZReceiveGameServerUIDSelector::Select(const vector<int>& vecCID, MAP_RECEIEVE_GAMESERVER_UID& outmapReceiveServerUID)
+void ZReceiveGameServerUIDSelector::Select(const vector<CID>& vecCID, MAP_RECEIEVE_GAMESERVER_UID& outmapReceiveServerUID)
 {
-	for each (int nCID in vecCID)
+	for each (CID nCID in vecCID)
 	{
 		ZPlayer* pPlayer = gmgr.pPlayerManager->FindByCID(nCID);
 		if (NULL == pPlayer) continue;
@@ -29,9 +29,9 @@ void ZReceiveGameServerUIDSelector::Select(const vector<int>& vecCID, MAP_RECEIE
 	}
 }
 
-void ZReceiveGameServerUIDSelector::Select(int nCID, MAP_RECEIEVE_GAMESERVER_UID& outmapReceiveServerUID)
+void ZReceiveGameServerUIDSelector::Select(CID nCID, MAP_RECEIEVE_GAMESERVER_UID& outmapReceiveServerUID)
 {
-	vector<int> vecCID;
+	vector<CID> vecCID;
 	vecCID.push_back(nCID);
 
 	return Select(vecCID, outmapReceiveServerUID);

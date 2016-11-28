@@ -33,20 +33,16 @@ GCmdHandler_Item::GCmdHandler_Item(MCommandCommunicator* pCC) : MCommandHandler(
 	SetCmdHandler(MC_ITEM_USE_REQ,				OnRequestUse);
 	SetCmdHandler(MC_ITEM_DROP_REQ,				OnRequestDrop);
 
-	SetCmdHandler(MC_ITEM_SORT_INVEN_SLOT_REQ,	OnRequestSortInventorySlot);
-
 	SetCmdHandler(MC_ITEM_MOVE_REQ,				OnRequestMove);
+	SetCmdHandler(MC_ITEM_SORT_REQ,				OnRequestSort);
 
-	SetCmdHandler(MC_ITEM_INTERACT_NPC_REQ,		OnRequestItemInteractNPC);
+	SetCmdHandler(MC_ITEM_INTERACT_NPC_REQ,		OnRequsetItemInteractNPC);
 
-	SetCmdHandler(MC_ENCHANT_REQ,				OnRequestEnchant);
-	SetCmdHandler(MC_ENCHANT_CHECK_REQ,			OnRequestEnchantCheck);
-	SetCmdHandler(MC_ENCHANT_PREPARE,			OnRequestEnchantPrepare);
-	SetCmdHandler(MC_ENCHANT_CANCEL,			OnRequestEnchantCancel);
-
-	SetCmdHandler(MC_SH_SA_REQ,					OnRequestAttune);
-	SetCmdHandler(MC_SH_SA_PREPARE,				OnRequestAttunePrepare);
-	SetCmdHandler(MC_SH_SA_CANCEL,				OnRequestAttuneCancel);
+	SetCmdHandler(MC_ENCHANT_REQ,				OnRequsetEnchant);
+	SetCmdHandler(MC_ENCHANT_CHECK_REQ,			OnRequsetEnchantCheck);
+	SetCmdHandler(MC_ENCHANT_PREPARE,			OnRequsetEnchantPrepare);
+	SetCmdHandler(MC_ENCHANT_CANCEL,			OnRequsetEnchantCancel);
+	
 }
 
 MCommandResult GCmdHandler_Item::OnRequestEquip(MCommand* pCommand, MCommandHandler* pHandler)
@@ -188,16 +184,6 @@ MCommandResult GCmdHandler_Item::OnRequestDrop(MCommand* pCmd, MCommandHandler* 
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Item::OnRequestSortInventorySlot(MCommand* pCmd, MCommandHandler* pHandler)
-{
-	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(pCmd->GetSenderUID());
-	if (NULL == pPlayer) return CR_FALSE;
-
-	gsys.pItemSystem->GetSorter().Sort(pPlayer);
-
-	return CR_TRUE;
-}
-
 MCommandResult GCmdHandler_Item::OnRequestMove(MCommand* pCmd, MCommandHandler* pHandler)
 {	
 	SH_ITEM_SLOT_TYPE nFromSlotType;
@@ -238,7 +224,23 @@ MCommandResult GCmdHandler_Item::OnRequestMove(MCommand* pCmd, MCommandHandler* 
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Item::OnRequestItemInteractNPC(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Item::OnRequestSort(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(pCmd->GetSenderUID());
+	if (NULL == pPlayer) return CR_FALSE;
+
+	SH_ITEM_SLOT_TYPE nSlotType;
+	vector<TD_ITEM_INVENTORY_SORT> vectdItemSort;
+
+	if (!pCmd->GetParameter(&nSlotType, 0, MPT_INT)) return CR_FALSE;
+	if (!pCmd->GetBlob(vectdItemSort, 1)) return CR_FALSE;
+
+	gsys.pItemSystem->GetSorter().SortByTD(pPlayer, nSlotType, vectdItemSort);
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Item::OnRequsetItemInteractNPC(MCommand* pCmd, MCommandHandler* pHandler)
 {	
 	int nInvenSlotID;
 	MUID uidNPC;
@@ -256,7 +258,7 @@ MCommandResult GCmdHandler_Item::OnRequestItemInteractNPC(MCommand* pCmd, MComma
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Item::OnRequestEnchant(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Item::OnRequsetEnchant(MCommand* pCmd, MCommandHandler* pHandler)
 {	
 	int nTargetSlotType;
 	int nTargetSlotID;
@@ -278,7 +280,7 @@ MCommandResult GCmdHandler_Item::OnRequestEnchant(MCommand* pCmd, MCommandHandle
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Item::OnRequestEnchantCheck(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Item::OnRequsetEnchantCheck(MCommand* pCmd, MCommandHandler* pHandler)
 {	
 	int nTargetSlotType;
 	int nTargetSlotID;
@@ -313,7 +315,7 @@ MCommandResult GCmdHandler_Item::OnRequestEnchantCheck(MCommand* pCmd, MCommandH
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Item::OnRequestEnchantPrepare(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Item::OnRequsetEnchantPrepare(MCommand* pCmd, MCommandHandler* pHandler)
 {	
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(pCmd->GetSenderUID());
 	if (!pPlayer)
@@ -324,7 +326,7 @@ MCommandResult GCmdHandler_Item::OnRequestEnchantPrepare(MCommand* pCmd, MComman
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Item::OnRequestEnchantCancel(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Item::OnRequsetEnchantCancel(MCommand* pCmd, MCommandHandler* pHandler)
 {	
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(pCmd->GetSenderUID());
 	if (!pPlayer)
@@ -332,25 +334,5 @@ MCommandResult GCmdHandler_Item::OnRequestEnchantCancel(MCommand* pCmd, MCommand
 
 	gsys.pItemSystem->GetEnchant().EnchantCancel(pPlayer);
 
-	return CR_TRUE;
-}
-
-MCommandResult GCmdHandler_Item::OnRequestAttune(minet::MCommand *pCommand, minet::MCommandHandler *pHandler)
-{
-	return CR_TRUE;
-}
-
-MCommandResult GCmdHandler_Item::OnRequestAttunePrepare(minet::MCommand *pCommand, minet::MCommandHandler *pHandler)
-{
-	return CR_TRUE;
-}
-
-MCommandResult GCmdHandler_Item::OnRequestAttuneCheck(minet::MCommand *pCommand, minet::MCommandHandler *pHandler)
-{
-	return CR_TRUE;
-}
-
-MCommandResult GCmdHandler_Item::OnRequestAttuneCancel(minet::MCommand *pCommand, minet::MCommandHandler *pHandler)
-{
 	return CR_TRUE;
 }

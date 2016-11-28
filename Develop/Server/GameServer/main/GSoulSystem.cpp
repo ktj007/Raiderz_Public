@@ -59,7 +59,7 @@ void GSoulSystem::DrainSoul(GEntityPlayer* pPlayer, GEntityNPC* pVictimNPC)
 void GSoulSystem::doDrainSoul(GEntityPlayer* pPlayer, GEntityNPC* pVictimNPC)
 {
 	GItemHolder* pItemHolder = pPlayer->GetItemHolder();	
-	GItem* pCharmItem = pItemHolder->GetItem(SLOTTYPE_EQUIP, ITEMSLOT_CHARM);
+	GItem* pCharmItem = pItemHolder->GetItem(SLOTTYPE_EQUIP, ITEMSLOT_EARRING);
 	if (NULL == pCharmItem) return;
 	GItemData* pCharmItemData = pCharmItem->m_pItemData;
 	if (NULL == pCharmItemData) return;
@@ -80,7 +80,7 @@ void GSoulSystem::doDrainSoul(GEntityPlayer* pPlayer, GEntityNPC* pVictimNPC)
 	MCommand* pNewCmdMe = MakeNewCommand(MC_SOUL_DRAIN_ME, 
 		3,
 		NEW_UID(pVictimNPC->GetUID()),
-		NEW_CHAR(ITEMSLOT_CHARM),
+		NEW_CHAR(ITEMSLOT_EARRING),
 		NEW_UCHAR(nSoulQuantity));
 
 	pPlayer->RouteToMe(pNewCmdMe);

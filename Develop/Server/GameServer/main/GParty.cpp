@@ -14,6 +14,7 @@ GParty::GParty(MUID uidParty)
 , m_pActiveQuestStorage(NULL)
 , m_pActiveFieldGroupStorage(NULL)
 , m_nAutoPartyQuestID(INVALID_ID)
+, m_bPublicParty(false)
 {
 	m_pActiveFieldGroupStorage = new GPartyActiveFieldGroupStorage();
 	m_pActiveQuestStorage = new GPartyActiveQuestStorage();
@@ -93,7 +94,7 @@ void GParty::ClearField(void)
 	m_pActiveFieldGroupStorage->ClearField();
 }
 
-bool GParty::AddMember(MUID uidMember, wstring strMembersName, int nMemberCID)
+bool GParty::AddMember(MUID uidMember, wstring strMembersName, CID nMemberCID)
 {
 	return m_pMemberStorage->AddMember(uidMember, strMembersName, nMemberCID);
 }
@@ -143,7 +144,7 @@ MUID GParty::GetLeader(void) const
 	return m_pMemberStorage->GetLeader();
 }
 
-int GParty::GetLeaderCID( void ) const
+CID GParty::GetLeaderCID( void ) const
 {
 	return m_pMemberStorage->GetLeaderCID();
 }
@@ -206,13 +207,13 @@ void GParty::ChangeMemberUID(MUID uidOldMember, MUID uidNewMember)
 PARTY_SETTING GParty::GetPartySetting() const
 {
 	LOOTING_RULE_DATA lootingRuleData = m_pLootingRuleStorage->GetLootingRuleData();
-	PARTY_SETTING partySetting(m_pMemberStorage->GetLeader(), lootingRuleData, m_strName);
+	PARTY_SETTING partySetting(m_pMemberStorage->GetLeader(), lootingRuleData, m_bPublicParty, m_strName);
 	partySetting.m_nAutoPartyQuestID = m_nAutoPartyQuestID;
 
 	return partySetting;
 }
 
-int GParty::GetRoundRobinLastOrderCID()
+CID GParty::GetRoundRobinLastOrderCID()
 {
 	return m_pLootingRuleStorage->GetRoundRobinLastOrderCID();
 }
@@ -230,7 +231,7 @@ void GParty::SetPartySetting( const PARTY_SETTING& partySetting )
 	m_nAutoPartyQuestID = partySetting.m_nAutoPartyQuestID;
 }
 
-void GParty::SetRoundRobinLastOrderCID(int nLastOrderCID)
+void GParty::SetRoundRobinLastOrderCID(CID nLastOrderCID)
 {
 	m_pLootingRuleStorage->SetRoundRobinLastOrderCID(nLastOrderCID);
 }
@@ -240,7 +241,17 @@ void GParty::SetLootingRuleData(const LOOTING_RULE_DATA& lootingRuleData)
 	m_pLootingRuleStorage->SetLootingRuleData(lootingRuleData);
 }
 
-const wstring& GParty::GetName()
+bool GParty::IsPublic() const
+{
+	return m_bPublicParty;
+}
+
+void GParty::SetPublic(bool bPublic)
+{
+	m_bPublicParty = bPublic;
+}
+
+const wstring& GParty::GetName() const
 {
 	return m_strName;
 }
@@ -250,12 +261,12 @@ void GParty::SetName(wstring strName)
 	m_strName = strName;
 }
 
-MUID GParty::FindMemberUID( int nCID )
+MUID GParty::FindMemberUID( CID nCID )
 {
 	return m_pMemberStorage->FindMemberUID(nCID);
 }
 
-vector<int> GParty::CollectMemberCID()
+vector<CID> GParty::CollectMemberCID()
 {
 	return m_pMemberStorage->CollectMemberCID();
 }

@@ -6,7 +6,11 @@
 #include <list>
 #include <set>
 #include <string>
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
 #include <hash_map>
+#endif
 
 #include <D3D9TYPES.h>
 

@@ -22,6 +22,7 @@ LCmdHandler_Master_Global::LCmdHandler_Master_Global(MCommandCommunicator* pCC) 
 	SetCmdHandler(MLC_PLAYER_DUPLICATED_PLAYER_LOGIN,	OnDuplicatedPlayerLogin);
 
 	SetCmdHandler(MLC_PLAYER_PMANG_ADD_PLAYER_RES,		OnPmangResponseAddPlayer);
+	SetCmdHandler(MLC_PLAYER_PWE_ADD_PLAYER_RES,		OnPWEResponseAddPlayer);
 
 	SetCmdHandler(MLC_ADMIN_CHANGE_SERVER_MODE,			OnAdminChangeServerMode);
 }
@@ -102,6 +103,24 @@ MCommandResult LCmdHandler_Master_Global::OnPmangResponseAddPlayer(MCommand* pCo
 
 	SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
 	cmdRouter.ResponsePmangLogin(uidPlayer, (CCommandResultTable)nResult, LConfig::m_nServerMode);
+
+	return CR_TRUE;
+}
+
+MCommandResult LCmdHandler_Master_Global::OnPWEResponseAddPlayer(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	MUID uidPlayer;
+	int nResult;
+
+	if( !pCommand->GetParameter(&uidPlayer,	0, MPT_UID) )	return CR_ERROR;
+	if( !pCommand->GetParameter(&nResult,	1, MPT_INT) )	return CR_ERROR;
+
+	/// 플레이어 체크
+	LPlayerObject* pPlayer = gmgr.pPlayerObjectManager->GetPlayer(uidPlayer);
+	if (NULL == pPlayer) return CR_TRUE;
+
+	SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
+	cmdRouter.ResponsePWELogin(uidPlayer, (CCommandResultTable)nResult, LConfig::m_nServerMode);
 
 	return CR_TRUE;
 }

@@ -15,6 +15,7 @@ private:
 
 private:
 	void RouteEndTalentCooldown(GEntityActor* pOwner, int nTalentLine);
+	void RouteTalentAdjustCoolTime(GEntityActor* pOwner, int nTalentLine, int nAdjustInterval);
 	void UpdateCoolTime(MAP_COOLTIME& mapCoolTime, float fDelta);
 private:
 	// 탤런트 옵저버 이벤트 ------------------------------------
@@ -44,6 +45,12 @@ private:
 	virtual void	OnUpdatePhaseExtra3(GTalent* pTalent, float fDelta) override 	{}
 	virtual void	OnDummyCall(GTalent* pTalent, float fDelta) override {}
 
+	virtual void	OnGainBuff(int nBuffID) override;
+
+	void AdjustTalentCoolTime_ByTalentID(int nTalentID, int nAdjustInterval);
+	void AdjustTalentCoolTime_ByTalentLine(int nTalentLine, int nAdjustInterval);
+	void AdjustTalentCoolTime(int nDelegateTalentID, float& fLimitTime, int nAdjustInterval);
+
 public:
 	GActorCooltimeChecker(GEntityActor* pOwner);
 	virtual ~GActorCooltimeChecker();
@@ -54,7 +61,6 @@ public:
 	bool IsCooldown( int nTalentID );
 	void GetTalentRemainCoolTime(vector<pair<int, float>>& outvecTalentRemainCoolTime);
 	void InsertTalentRemainCoolTime(const vector<pair<int, float>>& vecTalentRemainCoolTime);
-	void ClearTalentCooldown(int nTalent);
 
 	static vector<int> GetRelativeTalentsID(GTalentInfo* pTalentInfo);
 	vector<string> GetDescription() const;

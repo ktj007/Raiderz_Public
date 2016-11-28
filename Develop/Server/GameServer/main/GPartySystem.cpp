@@ -28,6 +28,7 @@
 #include "GCommand.h"
 #include "GDBTaskDataParty.h"
 #include "GDBManager.h"
+#include "GPlayerTalent.h"
 
 GPartySystem::GPartySystem()
 : m_pPartyManager(NULL)
@@ -271,23 +272,12 @@ void GPartySystem::InviteReq(MUID uidTargetPlayer, MUID uidRequestPlayer)
 	}
 
 
-	// 파티 확인
-	if (pRequestPlayer->HasParty())
-	{
-		// 일반 파티원은 권한없음
-		if (!pRequestPlayer->IsPartyLeader())
-		{
-			m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_NOT_PARTY_LEADER);
-			return;
-		}
+	CCommandResultTable nResult = CheckCanInviteToParty(pRequestPlayer);
 
-		// 파티 꽉참
-		MUID uidParty = pRequestPlayer->GetPartyUID();
-		if (IsPartyFull(uidParty))
-		{
-			m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_FULL_PARTY);
-			return;
-		}
+	if (nResult != CR_SUCCESS)
+	{
+		m_pClientRouter->InviteRespond(pRequestPlayer, nResult);
+		return;
 	}
 
 
@@ -296,6 +286,43 @@ void GPartySystem::InviteReq(MUID uidTargetPlayer, MUID uidRequestPlayer)
 
 	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
 	pServerRouter->InviteReq(uidTargetPlayer, uidRequestPlayer);
+}
+
+void GPartySystem::InviteByNameReq(wstring strTargetPlayer, MUID uidRequestPlayer)
+{
+	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
+	if (pRequestPlayer == NULL)		return;
+
+	if (strTargetPlayer.length() <= 0)
+	{
+		mlog3("%s - too short name. name(%S)\n", __FUNCTION__, strTargetPlayer.c_str());
+		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_SYSTEM_TOO_SHORT_NAME_LEN);
+		return;
+	}
+	else if (strTargetPlayer.length() > PLAYER_NAME_LEN)
+	{
+		mlog3("%s - too long name. name(%S)\n", __FUNCTION__, strTargetPlayer.c_str());
+		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_SYSTEM_TOO_LONG_NAME_LEN);
+		return;
+	}
+
+	if (!_wcsicmp(strTargetPlayer.c_str(), pRequestPlayer->GetName()))
+	{
+		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_NOT_INVITE_SELF);
+		return;
+	}
+
+	CCommandResultTable nResult = CheckCanInviteToParty(pRequestPlayer);
+	if (nResult != CR_SUCCESS)
+	{
+		m_pClientRouter->InviteRespond(pRequestPlayer, nResult);
+		return;
+	}
+
+	pRequestPlayer->GetDoing().EndDoing();
+
+	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
+	pServerRouter->InviteByNameReq(strTargetPlayer, uidRequestPlayer);
 }
 
 void GPartySystem::InviteRes(MUID uidRequestPlayer, MUID uidTargetPlayer, CCommandResultTable nResult)
@@ -598,7 +625,7 @@ void GPartySystem::DoOffline(GEntityPlayer* pMember)
 	}
 }
 
-void GPartySystem::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
+void GPartySystem::JoinReq(MUID uidParty, MUID uidRequestPlayer)
 {
 	// 요청자 확인
 	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
@@ -608,7 +635,7 @@ void GPartySystem::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
 	// 요청자 인터렉션 확인
 	if (pRequestPlayer->GetDoing().IsBusy())
 	{
-		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_PLAYER_IS_BUSY);
+		m_pClientRouter->JoinRes(pRequestPlayer, CR_FAIL_PARTY_PLAYER_IS_BUSY);
 		return;
 	}
 
@@ -616,14 +643,14 @@ void GPartySystem::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
 	// 요청자 전투 확인
 	if (pRequestPlayer->HasDuel())
 	{
-		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_REQUESTER_IS_DUEL);
+		m_pClientRouter->JoinRes(pRequestPlayer, CR_FAIL_PARTY_REQUESTER_IS_DUEL);
 		return;
 	}
 
 	// 요청자 PVP영역 확인
 	if (pRequestPlayer->GetPlayerPVPArea().IsLocatedPvPArea())
 	{
-		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_REQUESTER_IN_PVPAREA);
+		m_pClientRouter->JoinRes(pRequestPlayer, CR_FAIL_PARTY_REQUESTER_IN_PVPAREA);
 		return;
 	}
 
@@ -631,7 +658,7 @@ void GPartySystem::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
 	// 요청자 투기장 확인
 	if (pRequestPlayer->GetPlayerBattleArena().IsEntered())
 	{
-		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_REQUESTER_IN_BATTLEARENA);
+		m_pClientRouter->JoinRes(pRequestPlayer, CR_FAIL_PARTY_REQUESTER_IN_BATTLEARENA);
 		return;
 	}
 
@@ -640,7 +667,7 @@ void GPartySystem::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
 	const GProxyParty* pProxyParty = gsys.pMasterServerFacade->FindProxyParty(uidParty);	
 	if (pProxyParty == NULL)
 	{
-		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		m_pClientRouter->JoinRes(pRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
 		return; 
 	}
 
@@ -648,17 +675,17 @@ void GPartySystem::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
 	// 파티 제한 확인
 	if (pProxyParty->IsFull())
 	{
-		m_pClientRouter->InviteRespond(pRequestPlayer, CR_FAIL_PARTY_FULL_PARTY);
+		m_pClientRouter->JoinRes(pRequestPlayer, CR_FAIL_PARTY_FULL_PARTY);
 		return;
 	}
 
 
 	// 가입 요청
 	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
-	pServerRouter->JoinInviteReq(uidParty, uidRequestPlayer);
+	pServerRouter->JoinReq(uidParty, uidRequestPlayer, pRequestPlayer->GetLevel(), static_cast<int>(pRequestPlayer->GetTalent().GetMainTalentStyle()));
 }
 
-void GPartySystem::JoinInviteRes(MUID uidRequestPlayer, CCommandResultTable nResult)
+void GPartySystem::JoinRes(MUID uidRequestPlayer, CCommandResultTable nResult)
 {
 	// 요청자 확인
 	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
@@ -668,12 +695,12 @@ void GPartySystem::JoinInviteRes(MUID uidRequestPlayer, CCommandResultTable nRes
 	// 응답 통보
 	if (nResult != CR_SUCCESS)
 	{
-		m_pClientRouter->InviteRespond(pRequestPlayer, nResult);
+		m_pClientRouter->JoinRes(pRequestPlayer, nResult);
 		return;
 	}
 }
 
-void GPartySystem::JoinAcceptReq(MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, wstring strRequestPlayerName)
+void GPartySystem::JoinAcceptReq(MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, wstring strRequestPlayerName, int nReqPlayerLevel, int nReqPlayerTalentStyle, int nReqPlayerFieldID)
 {
 	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
 
@@ -713,13 +740,12 @@ void GPartySystem::JoinAcceptReq(MUID uidParty, MUID uidLeader, MUID uidRequestP
 
 	// 가입 요청
 	pLeader->GetDoing().EndDoing();
-	pLeader->SetPartyInviteeUID(uidRequestPlayer);
+	pLeader->AddPartyInviteeUID(uidRequestPlayer);
 
-	bool isNowCombat = pLeader->IsNowCombat();
-	m_pClientRouter->InviteForMeQuestion(pLeader, uidRequestPlayer, strRequestPlayerName.c_str(), isNowCombat);
+	m_pClientRouter->JoinQuestion(pLeader, uidRequestPlayer, strRequestPlayerName.c_str(), nReqPlayerLevel, nReqPlayerTalentStyle, nReqPlayerFieldID);
 }
 
-void GPartySystem::JoinAcceptRes(MUID uidLeader, PARTY_RESPOND nRespond)
+void GPartySystem::JoinAcceptRes(MUID uidLeader, MUID uidRequestPlayer, PARTY_RESPOND nRespond)
 {	
 	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
 
@@ -729,14 +755,13 @@ void GPartySystem::JoinAcceptRes(MUID uidLeader, PARTY_RESPOND nRespond)
 
 
 	// 가입 요청자 확인
-	MUID uidRequestPlayer = pLeader->GetPartyInviteeUID();
-	pLeader->SetPartyInviteeUID(MUID::Invalid());
-
-	if (uidRequestPlayer.IsInvalid())
+	if (uidRequestPlayer.IsInvalid() || !pLeader->CheckPartyInviteeUID(uidRequestPlayer))
 	{
 		m_pClientRouter->JoinAcceptCancel(pLeader, CR_FAIL_SYSTEM_INVALID_PC_UID);
 		return;
 	}
+
+	pLeader->DeletePartyInviteeUID(uidRequestPlayer);
 
 
 	// 파티 확인
@@ -827,7 +852,7 @@ void GPartySystem::JoinAcceptCancel(MUID uidLeader, CCommandResultTable nResult)
 	m_pClientRouter->JoinAcceptCancel(pLeader, nResult);
 }
 
-void GPartySystem::AddParty(MUID uidParty, MUID uidLeader, QuestID nQuestID)
+void GPartySystem::AddParty(MUID uidParty, MUID uidLeader, bool bPublicParty, wstring strPartyName, QuestID nQuestID)
 {
 	// 파티장 확인
 	GEntityPlayer* pLeader = gmgr.pPlayerObjectManager->GetEntity(uidLeader);
@@ -837,6 +862,8 @@ void GPartySystem::AddParty(MUID uidParty, MUID uidLeader, QuestID nQuestID)
 	// 파티 생성
 	GParty* pParty = RestoreParty(uidParty);
 	VALID(pParty);
+	pParty->SetPublic(bPublicParty);
+	pParty->SetName(strPartyName);
 	pParty->SetAutoPartyQuestID(nQuestID);
 
 	// 파티장 설정
@@ -893,7 +920,7 @@ void GPartySystem::RemoveParty(MUID uidParty)
 	m_pPartyManager->DeleteParty(uidParty);
 }
 
-void GPartySystem::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberCID)
+void GPartySystem::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, CID nMemberCID)
 {
 	// 파티와 파티원 확인
 	GParty* pParty = m_pPartyManager->FindParty(uidParty);
@@ -1027,14 +1054,14 @@ void GPartySystem::RemoveOfflineMember(MUID uidParty, MUID uidMember, MUID uidOf
 	}
 }
 
-void GPartySystem::ChangePartyNameRes(MUID uidParty, wstring strName)
+void GPartySystem::ChangePublicPartySettingRes(MUID uidParty, bool bPublicParty, wstring strPartyName)
 {
 	GParty* pParty = m_pPartyManager->FindParty(uidParty);
 	if (pParty == NULL)	return;
 
-	pParty->SetName(strName);
+	pParty->SetName(strPartyName);
 
-	m_pClientRouter->ChangePartyNameRes(pParty, strName);
+	m_pClientRouter->ChangePublicPartySettingRes(pParty, bPublicParty, strPartyName);
 }
 
 void GPartySystem::ChangePartyLeaderRes( MUID uidParty, MUID uidNewLeader )
@@ -1114,6 +1141,30 @@ void GPartySystem::ChangeQuestIDRes( MUID uidParty, int nQuestID )
 	m_pClientRouter->ChangePartyQuestIDRes(pParty, nQuestID);
 }
 
+void GPartySystem::ShowInfoRes(MUID uidRequestor, const TD_PARTY& tdParty, const vector<TD_PARTY_MEMBER>& vecMembers)
+{
+	GEntityPlayer* pRequestorPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestor);
+	if (pRequestorPlayer == NULL) return;
+
+	m_pClientRouter->ShowInfoRes(pRequestorPlayer, tdParty, vecMembers);
+}
+
+void GPartySystem::CreateSinglePartyRes(MUID uidRequestPlayer, CCommandResultTable nResult)
+{
+	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
+	if (pRequestPlayer == NULL) return;
+
+	m_pClientRouter->CreateSinglePartyRes(pRequestPlayer, nResult);
+}
+
+void GPartySystem::ShowMatchingPublicPartyListRes(MUID uidRequestor, CCommandResultTable nResult, const vector<TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM>& vecMatchedItem, int nFilteredCount)
+{
+	GEntityPlayer* pRequestorPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestor);
+	if (pRequestorPlayer == NULL) return;
+
+	m_pClientRouter->ShowMatchedPublicPartyListRes(pRequestorPlayer, nResult, vecMatchedItem, nFilteredCount);
+}
+
 void GPartySystem::SyncParty(const TD_PARTY& tdParty, MCommand* pPartySyncCommand)
 {	
 	GParty* pParty = m_pPartyManager->FindParty(tdParty.m_uidParty);
@@ -1122,6 +1173,7 @@ void GPartySystem::SyncParty(const TD_PARTY& tdParty, MCommand* pPartySyncComman
 
 	PARTY_SETTING partySetting;
 	partySetting.m_uidLeader = tdParty.m_partySetting.m_uidLeader;
+	partySetting.m_bPublicParty = tdParty.m_partySetting.m_bPublicParty;
 	wcsncpy_s(partySetting.m_szName, tdParty.m_partySetting.m_szName, _TRUNCATE);
 	partySetting.m_nAutoPartyQuestID = tdParty.m_partySetting.m_nAutoPartyQuestID;
 	
@@ -1266,6 +1318,30 @@ void GPartySystem::MoveServerSync(MUID uidParty, MUID uidMember, MUID uidOffline
 	}
 }
 
+CCommandResultTable GPartySystem::CheckCanInviteToParty(GEntityPlayer* pRequestPlayer) const
+{
+	if (pRequestPlayer == NULL) return CR_FAIL;
+
+	// 파티 확인
+	if (pRequestPlayer->HasParty())
+	{
+		// 일반 파티원은 권한없음
+		if (!pRequestPlayer->IsPartyLeader())
+		{
+			return CR_FAIL_PARTY_NOT_PARTY_LEADER;
+		}
+
+		// 파티 꽉참
+		MUID uidParty = pRequestPlayer->GetPartyUID();
+		if (IsPartyFull(uidParty))
+		{
+			return CR_FAIL_PARTY_FULL_PARTY;
+		}
+	}
+
+	return CR_SUCCESS;
+}
+
 bool GPartySystem::IsPartyFull(MUID uidParty) const
 {
 	GParty* pParty = m_pPartyManager->FindParty(uidParty);
@@ -1292,7 +1368,7 @@ GParty* GPartySystem::RestoreParty(MUID uidParty)
 	{
 		MUID uidMember = it->first;
 		wstring strMemberName = it->second.m_strName;
-		int nMemberCID = it->second.m_nCID;
+		CID nMemberCID = it->second.m_nCID;
 
 		pParty->AddMember(uidMember, strMemberName, nMemberCID);
 		
@@ -1424,16 +1500,7 @@ bool GPartySystem::IsEmptyMemberInServer(const GParty* pParty) const
 	return true;
 }
 
-void GPartySystem::CreateSinglePartyReq(MUID uidRequestPlayer)
-{
-	if (IsRunForTest())
-	{
-		GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
-		pServerRouter->CreateSinglePartyReq(uidRequestPlayer);
-	}
-}
-
-void GPartySystem::ChangePartyNameReq(MUID uidLeader, wstring strName)
+void GPartySystem::ChangePublicPartySettingReq(MUID uidLeader, bool bPublicParty, wstring strPartyName)
 {
 	// 파티장 권한 확인
 	GEntityPlayer* pLeader = gmgr.pPlayerObjectManager->GetEntity(uidLeader);
@@ -1449,7 +1516,7 @@ void GPartySystem::ChangePartyNameReq(MUID uidLeader, wstring strName)
 	MUID uidParty = pLeader->GetPartyUID();
 
 	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
-	pServerRouter->ChangePartyNameReq(uidParty, uidLeader, strName);
+	pServerRouter->ChangePublicPartySettingReq(uidParty, uidLeader, bPublicParty, strPartyName);
 }
 
 void GPartySystem::ChangePartyLeaderReq(MUID uidLeader, MUID uidNewLeader)
@@ -1530,6 +1597,33 @@ void GPartySystem::ChangeQuestIDReq(MUID uidLeader, QuestID nQuestID)
 	pServerRouter->ChangeQuestIDReq(uidParty, uidLeader, nQuestID);
 }
 
+void GPartySystem::ShowInfoReq(MUID uidRequestor, MUID uidParty)
+{
+	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
+	pServerRouter->ShowInfoReq(uidRequestor, uidParty);
+}
+
+void GPartySystem::CreateSinglePartyReq(MUID uidRequestPlayer, bool bPublicParty, wstring strPartyName)
+{
+	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
+	if (pRequestPlayer == NULL) return;
+
+	if (pRequestPlayer->HasParty())
+	{
+		m_pClientRouter->CreateSinglePartyRes(pRequestPlayer, CR_FAIL_PARTY_ALEADY_HAS_PARTY);
+		return;
+	}
+
+	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
+	pServerRouter->CreateSinglePartyReq(uidRequestPlayer, bPublicParty, strPartyName);
+}
+
+void GPartySystem::ShowMatchingPublicPartyListReq(MUID uidRequestor, char nPage, char nLevelMin, char nLevelMax, wstring strSearchText)
+{
+	GServerPartyRouter* pServerRouter = gsys.pMasterServerFacade->GetPartyRouter();
+	pServerRouter->ShowMatchingPublicPartyListReq(uidRequestor, nPage, nLevelMin, nLevelMax, strSearchText);
+}
+
 vector<GEntityPlayer*> GPartySystem::CollectNeighborMember(GEntityPlayer* pPlayer, float fDistance) const
 {	
 	VALID_RET(pPlayer, vector<GEntityPlayer*>());
@@ -1546,6 +1640,7 @@ vector<GEntityPlayer*> GPartySystem::CollectNeighborMember(GEntityPlayer* pPlaye
 		GEntityPlayer* pMember = gmgr.pPlayerObjectManager->GetEntity(uidMember);
 		if (NULL == pMember) continue;
 		if (pPlayer == pMember) continue;
+		if (pPlayer->GetField() != pMember->GetField()) continue;
 
 		if (fDistance < pPlayer->DistanceTo(pMember)) continue;
 
@@ -1576,13 +1671,13 @@ vector<MUID> GPartySystem::CollectMemberUID( GEntityPlayer* pPlayer ) const
 	return vecMemberUID;
 }
 
-vector<int> GPartySystem::CollectNeighborMemberCID( GEntityPlayer* pPlayer, float fDistance ) const
+vector<CID> GPartySystem::CollectNeighborMemberCID( GEntityPlayer* pPlayer, float fDistance ) const
 {
-	VALID_RET(pPlayer, vector<int>());
+	VALID_RET(pPlayer, vector<CID>());
 
 	vector<GEntityPlayer*> vecMember = CollectNeighborMember(pPlayer, fDistance);
 
-	vector<int> vecMemberCID;
+	vector<CID> vecMemberCID;
 	for each (GEntityPlayer* pMember in vecMember)
 	{
 		vecMemberCID.push_back(pMember->GetCID());

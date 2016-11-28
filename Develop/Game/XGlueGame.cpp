@@ -155,6 +155,8 @@ void XGlueGame::DeclGlueFunc( MWLua* pLua )
 		.def( "GetKilledEnemyCount",				&XGlueGame::GetKilledEnemyCount)
 		.def( "GetKilledEpicEnemyCount",			&XGlueGame::GetKilledEpicEnemyCount)
 		.def( "GetCharColorCount",					&XGlueGame::GetCharColorCount)
+		.def("GetCharacterFaceCount",				&XGlueGame::GetFaceMaxCount)
+		.def("GetCharacterHairCount", &XGlueGame::GetHairMaxCount)
 		.def( "GetCharColorID",						&XGlueGame::GetCharColorID)
 		.def( "GetCharColor",						&XGlueGame::GetCharColor)
 		.def( "GetWeaponSet",						&XGlueGame::GetWeaponSet)
@@ -1054,6 +1056,19 @@ int XGlueGame::GetCharColorCount( const char* szPart)
 	return (int)pColorGroup->GetSize();
 }
 
+int XGlueGame::GetHairMaxCount(int nSex)
+{
+	SEX sex = (SEX)nSex;
+	if (sex == SEX_MALE) return MAX_CREATION_PLAYER_HAIR_MALE;
+	return MAX_CREATION_PLAYER_HAIR_FEMALE;
+}
+
+int XGlueGame::GetFaceMaxCount(int nSex)
+{
+	SEX sex = (SEX)nSex;
+	if (sex == SEX_MALE) return MAX_CREATION_PLAYER_FACE_MALE;
+	return MAX_CREATION_PLAYER_FACE_FEMALE;
+}
 
 int XGlueGame::GetCharColorID( const char* szPart, int i)
 {
@@ -3569,7 +3584,7 @@ void XGlueGame::RequireRebirth( int nSelect )
 	{
 	case 1:
 		{
-			XPostChar_Rebirth( REBT_SOULBINDING);
+			XPostChar_Rebirth(REBT_NEAR_SOULBINDING);
 		}
 		break;
 	case 2:
@@ -3587,7 +3602,7 @@ void XGlueGame::RequireRebirth( int nSelect )
 		{
 			if ( true == gvar.MyInfo.BattleArenaInfo.IsInBattleArena() == true)
 			{
-				XPostChar_Rebirth(REBT_PLACE_IN_BATTLEGROUD);
+				XPostChar_Rebirth(REBT_NEAR_SOULBINDING);
 			}
 			else
 			{
@@ -3679,7 +3694,6 @@ const char* XGlueGame::GetNpcAnswer( int i)
 void XGlueGame::SelectNpcAnswer( int i)
 {
 	int nElementID = gvar.Game.NPCInteractionInfo.GetList()[ i].nIElementID;
-
 	if ( gvar.Game.NPCInteractionInfo.MenuType() == MENU_NPC)				XPostNPCInteraction_IE( XGetInteractionInfo().InteractionTargetUID, nElementID);
 	else if ( gvar.Game.NPCInteractionInfo.MenuType() == MENU_SECTOR)		XPostSensorTriggerSelection( nElementID);
 	else if ( gvar.Game.NPCInteractionInfo.MenuType() == MENU_FOLLOW_WARP)	XPosSensorTriggerFollowWarp( nElementID);
@@ -4877,12 +4891,10 @@ MWLua::table XGlueGame::GetItemEffects( int nItemID )
 
 		t.set(XML_ATTR_MOD_CRITICAL_AMP, modifier.fCriticalAmp);
 
-		t.set(XML_ATTR_MOD_CRITICAL_MELEE_DAMAGE_AMP, modifier.fCriticalMeleeDamageAmp);
-		t.set(XML_ATTR_MOD_CRITICAL_RANGE_DAMAGE_AMP, modifier.fCriticalRangeDamageAmp);
+		t.set(XML_ATTR_MOD_CRITICAL_PHYSIC_DAMAGE_AMP, modifier.fCriticalPhysicDamageAmp);
 		t.set(XML_ATTR_MOD_CRITICAL_MAGIC_DAMAGE_AMP, modifier.fCriticalMagicDamageAmp);
 
-		t.set(XML_ATTR_MOD_MELEE_ATK_AMP, modifier.fMeleeDamageAmp);
-		t.set(XML_ATTR_MOD_RANGE_ATK_AMP, modifier.fRangeDamageAmp);
+		t.set(XML_ATTR_MOD_PHYSIC_ATK_AMP, modifier.fPhysicDamageAmp);
 		t.set(XML_ATTR_MOD_MAGIC_ATK_AMP, modifier.fMagicDamageAmp);
 
 		t.set(XML_ATTR_MOD_DEF_SLASH_AMP, modifier.fDefenceAmp[DA_SLASH]);

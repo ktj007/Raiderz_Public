@@ -3,6 +3,7 @@
 #include "GItemManager.h"
 #include "GExportDBStringTable.h"
 #include "GGlobal.h"
+#include "MDBUtil.h"
 
 GItemInfoSQLMaker::GItemInfoSQLMaker( GItemManager* pMgr ) : GSQLMaker(true, true), m_pMgr(pMgr)
 {
@@ -34,7 +35,7 @@ bool GItemInfoSQLMaker::BuildSQL()
 							   WHEN NOT MATCHED THEN INSERT (ITEM_ID, NAME, [TYPE], SLOT, TIER, MAX_DURA, COLOR) \
 							   VALUES (s.ITEM_ID, s.NAME, s.[TYPE], s.SLOT, s.TIER, s.MAX_DURA, s.COLOR);\n\n\0"
 							   , it->second->m_nID
-							   , gmgr.pExportDBStringTable->GetString(it->second->m_strName).c_str()
+							   , mdb::MDBStringEscaper::Escape(gmgr.pExportDBStringTable->GetString(it->second->m_strName)).c_str()
 							   , it->second->m_ItemType
 							   , it->second->m_nItemSlot
 							   , it->second->m_nTier

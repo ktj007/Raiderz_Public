@@ -191,7 +191,7 @@ int GLuaGlues::GetEnemyHP(MUID eID)
 void GLuaGlues::OutDebugUID(MUID uid)
 {
 	wchar_t str[64]=L"";
-	swprintf_s(str, L"%I64u\n", uid);
+	swprintf_s(str, L"%I64u\n", uid.Value);
 	OutputDebugString(str);
 }
 

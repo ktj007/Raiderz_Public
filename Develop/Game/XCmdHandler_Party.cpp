@@ -16,7 +16,7 @@ XCmdHandler_Party::XCmdHandler_Party(MCommandCommunicator* pCC) : MCommandHandle
 {
 	SetCmdHandler(MC_PARTY_INVITE,						OnInviteParty);
 	SetCmdHandler(MC_PARTY_INVITE_QUESTION,				OnInviteQuestion);
-	SetCmdHandler(MC_PARTY_INVITE_FOR_ME_QUESTION,		OnInviteForMeQuestion);
+//	SetCmdHandler(MC_PARTY_INVITE_FOR_ME_QUESTION,		OnInviteForMeQuestion);
 	SetCmdHandler(MC_PARTY_REFRESH_INFO_ALL,			OnRefreshInfoAll);
 	SetCmdHandler(MC_PARTY_REFRESH_INFO,				OnRefreshInfo);
 	SetCmdHandler(MC_PARTY_NOTIFY_JOIN,					OnNotifyJoin);
@@ -106,13 +106,13 @@ MCommandResult XCmdHandler_Party::OnInviteForMeQuestion(MCommand* pCommand, MCom
 	{
 		global.ui->OnSystemMsg( XGetStr( L"PARTY_DECLINEREQUESTBYOPTION"), FSParam(strInvitorName));
 
-		XPostPartyRequestInviteForMeQuestionRespond(false);
+		XPostPartyRequestInviteQuestionRespond(false);
 	}
 	else if (bCombat)
 	{
 		global.ui->OnSystemMsg( XGetStr( L"PARTY_DECLINEREQUESTBYDUEL"), FSParam(strInvitorName));
 
-		XPostPartyRequestInviteForMeQuestionRespond(false);
+		XPostPartyRequestInviteQuestionRespond(false);
 	}
 	else
 	{

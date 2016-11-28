@@ -29,7 +29,7 @@ bool PFieldMsgHandler::OnRequest(const minet::MCommand* pCmd)
 
 
 	// 채널 확인
-	int nFieldID = m_msgHelper.GetReceiverID(pCmd);
+	int nFieldID = static_cast<int>(m_msgHelper.GetReceiverID(pCmd));
 	PChatChannel* pChannel = gmgr.pChatChannelManager->FindChannel_Field(nFieldID);
 	if (pChannel == NULL)					return true;
 	if (!pChannel->IsExistPlayer(nCID))		return true;

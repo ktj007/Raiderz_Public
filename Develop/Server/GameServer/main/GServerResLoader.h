@@ -55,6 +55,8 @@ private:
 	bool LoadQPEventInfoMgr();
 	bool LoadPresetInfoMgr();
 	bool LoadExportDBStringTable();
+	bool LoadSetItemEffectInfo();
+	bool LoadGuideBook();
 	void CookItemInfo();
 
 public:

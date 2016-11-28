@@ -16,17 +16,17 @@ TEST_FRIEND_FT(LootSystem, FLootSystem, HandleUngettableItem_OtherField);
 public:
 	TEST_VIRTUAL ~GLootItemGetter() {}
 
-	TEST_VIRTUAL UNGETTABLE_ITEM_REASON GetItem(int nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
+	TEST_VIRTUAL UNGETTABLE_ITEM_REASON GetItem(CID nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
 	void GetItemForDBTask(const MUID& nPlayerUID, const MUID& nNPCUID, const MUID& nDropItemUID, int16 nSlotID, int16 nToStackAmt, int16 nStackModAmt, int64 nIUID);
 
 private:
-	void _GetItem(int nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
+	void _GetItem(CID nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
 	void DB(GEntityPlayer* pPlayer, GEntityNPC* pNPC,  const vector<GDropItem*>& vecDropItem);
 	void RemoveDropItem(GEntityNPC* pNPC,  const vector<GDropItem*>& vecDropItem);
 	void Route(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
 
 	map<int,int> CompressDropItem(const vector<GDropItem*>& vecDropItem);
 		
-	void HandleUngettableItem(UNGETTABLE_ITEM_REASON nUIR, int nCID, const vector<GDropItem*>& vecDropItem);
-	UNGETTABLE_ITEM_REASON CheckGettable(int nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);	
+	void HandleUngettableItem(UNGETTABLE_ITEM_REASON nUIR, CID nCID, const vector<GDropItem*>& vecDropItem);
+	UNGETTABLE_ITEM_REASON CheckGettable(CID nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);	
 };

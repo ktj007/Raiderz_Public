@@ -11,7 +11,7 @@ public :
 	};
 
 	bool		Set(const int idx, const int ORD_NUM, const int EFF_TYPE, const int ID, const int EXPI_CHAR_PTM);
-	CString&	BuildSQL(const int64 GSN, const int64 CSN);
+	CString&	BuildSQL(const AID GSN, const CID CSN);
 	void		Reset();
 
 

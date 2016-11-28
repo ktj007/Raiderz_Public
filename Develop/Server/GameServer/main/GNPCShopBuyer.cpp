@@ -202,7 +202,6 @@ bool GNPCShopBuyer::DB_Increase(GEntityPlayer* pPlayer, GItem* pItem, int nBuyAm
 		, pItem->m_pItemData->m_nMaxDurability
 		, pItem->GetEnchantCount()
 		, pItem->m_nDyedColor
-		, -1 , -1 , -1
 		, pItem->m_bBind
 		, pItem->m_UsagePeriod.IsPeriod() || pItem->m_ExpirationPeriod.IsPeriod()
 		, 0

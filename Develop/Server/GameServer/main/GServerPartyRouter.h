@@ -13,6 +13,7 @@ public:
 
 public:
 	virtual void InviteReq(MUID uidTargetPlayer, MUID uidRequestPlayer) = 0;
+	virtual void InviteByNameReq(wstring strTargetPlayer, MUID uidRequestPlayer) = 0;
 	virtual void AcceptRes(MUID uidRequestPlayer, MUID uidTargetPlayer, CCommandResultTable nResult) = 0;
 	virtual void UpdateParty(MUID uidParty, const TD_PARTY_MEMBER& tdPartyMember, const vector<int>& vecBuff) = 0;
 	virtual void UpdateMember(MUID uidParty, const TD_PARTY_MEMBER& tdPartyMember, const vector<int>& vecBuff) = 0;
@@ -27,15 +28,17 @@ public:
 	virtual void KickReq(MUID uidParty, MUID uidRequestPlyaer, MUID uidTargetPlayer) = 0;	
 	virtual void DoOffline(MUID uidParty, MUID uidMember) = 0;
 	virtual void DoOnline(MUID uidParty, MUID uidMember, MUID uidOffline) = 0;
-	virtual void JoinInviteReq(MUID uidParty, MUID uidRequestPlayer) = 0;	
+	virtual void JoinReq(MUID uidParty, MUID uidRequestPlayer, int nReqPlayerLevel, int nReqPlayerTalentStyle) = 0;
 	virtual void JoinAcceptRes(MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, CCommandResultTable nResult) = 0;
 	virtual void MoveServer(MUID uidParty, MUID uidMember) = 0;
-	virtual void CreateSinglePartyReq(MUID uidRequestPlayer) = 0;
 	virtual void PartyInfoAllReq(void) = 0;
-	virtual void ChangePartyNameReq(MUID uidParty, MUID uidLeader, wstring strName) = 0;
+	virtual void ChangePublicPartySettingReq(MUID uidParty, MUID uidLeader, bool bPublicParty, wstring strPartyName) = 0;
 	virtual void ChangePartyLeaderReq(MUID uidParty, MUID uidLeader, MUID uidNewLeader) = 0;
 	virtual void ChangePartyLootingRuleReq(MUID uidParty, MUID uidLeader, LOOTING_RULE_DATA rule) = 0;
 	virtual void ChangeQuestIDReq(MUID uidParty, MUID uidLeader, int nQuestID) = 0;
+	virtual void ShowInfoReq(MUID uidRequestor, MUID uidParty) = 0;
+	virtual void CreateSinglePartyReq(MUID uidRequestPlayer, bool bPublicParty, wstring strPartyName) = 0;
+	virtual void ShowMatchingPublicPartyListReq(MUID uidRequestor, char nPage, char nLevelMin, char nLevelMax, wstring strSearchText) = 0;
 	virtual void FixedPartyLogOn(MUID uidParty, MUID uidMember, MUID uidOffline) = 0;
 	virtual void CreateAutoPartyReq(QuestID nQuestID, const vector<MUID> vecPromotersUID) = 0;
 	virtual void JoinAutoPartyReq(MUID uidParty, MUID uidPlayer) = 0;

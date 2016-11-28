@@ -26,6 +26,7 @@ public:
 	bool GetCharEquipmentInfo(mdb::MDBRecordSet& rs);
 
 	SH_FEATURE_ITEMSLOT ConvertSlotIDToFeatureSlotID(const int16 nSlotID);
+	bool IsLookSlotID(const int16 nSlotID);
 
 
 	void SetAccountCharInfo(int idx, TD_AccountCharInfo* pCharInfo);

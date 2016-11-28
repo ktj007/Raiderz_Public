@@ -6,11 +6,7 @@
 
 void XGlueGameInteractionFunction::InteractionElementReq(int InteractionType, int nElementID)
 {
-	if (InteractionType == MENU_NPC)
-	{
-		XPostNPCInteraction_IE(XGetInteractionInfo().InteractionTargetUID, nElementID);
-	}
-	else if (InteractionType == MENU_SECTOR)
+	if (InteractionType == MENU_SECTOR)
 	{
 		XPostSensorTriggerSelection(nElementID);
 	}

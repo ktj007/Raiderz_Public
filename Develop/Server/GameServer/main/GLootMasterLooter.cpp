@@ -41,10 +41,10 @@ bool GLootMasterLooter::Check(GEntityPlayer* pPlayer, GEntityNPC* pNPC, GDropIte
 
 	if (false == bRandom)
 	{
-		const set<int>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
+		const set<CID>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
 		if (true == setBeneficiaryCID.empty()) return false;
 
-		vector<int> vecBeneficiaryCID = SetToVector(setBeneficiaryCID);
+		vector<CID> vecBeneficiaryCID = SetToVector(setBeneficiaryCID);
 
 		if (static_cast<int>(vecBeneficiaryCID.size()) <= nSelectedIndex)
 			return pPlayer->FailAndRouteSystemMsg(CR_FAIL_LOOT_NOT_MASTERLOOTABLE_PLAYER);
@@ -64,21 +64,21 @@ void GLootMasterLooter::Apply(GEntityNPC* pNPC, GDropItem* pDropItem, uint8 nSel
 	vector<GDropItem*> vecDropItem;
 	vecDropItem.push_back(pDropItem);
 
-	set<int> setPreViewableCID;
+	set<CID> setPreViewableCID;
 	pNPC->GetNPCLoot().GetDropList().GetViewableCID(setPreViewableCID);
 
-	int nCID = SelectAssignCID(pNPC, nSelectedIndex, bRandom);
+	CID nCID = SelectAssignCID(pNPC, nSelectedIndex, bRandom);
 	gsys.pLootSystem->GetItemGetter().GetItem(nCID, pNPC, vecDropItem);		
 
 	gsys.pLootSystem->GetModifyHandler().HandleDropListModification(pNPC, setPreViewableCID);
 }
 
-int GLootMasterLooter::SelectAssignCID(GEntityNPC* pNPC, uint8 nSelectedIndex, bool bRandom)
+CID GLootMasterLooter::SelectAssignCID(GEntityNPC* pNPC, uint8 nSelectedIndex, bool bRandom)
 {
 	VALID_RET(pNPC, false);
 
-	const set<int>& setContriubtorCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
-	vector<int> vecBeneficiaryCID = SetToVector(setContriubtorCID);
+	const set<CID>& setContriubtorCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
+	vector<CID> vecBeneficiaryCID = SetToVector(setContriubtorCID);
 	if (true == vecBeneficiaryCID.empty()) return 0;
 
 	if (true == bRandom)

@@ -27,6 +27,17 @@ void GMasterServerPartyRouter::InviteReq(MUID uidTargetPlayer, MUID uidRequestPl
 	gsys.pMasterServerFacade->Route(pNewCmd);
 }
 
+void GMasterServerPartyRouter::InviteByNameReq(wstring strTargetPlayer, MUID uidRequestPlayer)
+{
+	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_INVITE_BY_NAME_REQ,
+																	2,
+																	NEW_WSTR(strTargetPlayer.c_str()),
+																	NEW_UID(uidRequestPlayer)
+																	);
+
+	gsys.pMasterServerFacade->Route(pNewCmd);
+}
+
 void GMasterServerPartyRouter::AcceptRes(MUID uidRequestPlayer, MUID uidTargetPlayer, CCommandResultTable nResult)
 {
 	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_ACCEPT_RES,
@@ -192,12 +203,14 @@ void GMasterServerPartyRouter::DoOnline(MUID uidParty, MUID uidMember, MUID uidO
 	gsys.pMasterServerFacade->Route(pNewCmd);
 }
 
-void GMasterServerPartyRouter::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
+void GMasterServerPartyRouter::JoinReq(MUID uidParty, MUID uidRequestPlayer, int nReqPlayerLevel, int nReqPlayerTalentStyle)
 {
-	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_JOIN_INVITE_REQ,
-																	2,
+	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_JOIN_REQ,
+																	4,
 																	NEW_UID(uidParty),
-																	NEW_UID(uidRequestPlayer)
+																	NEW_UID(uidRequestPlayer),
+																	NEW_INT(nReqPlayerLevel),
+																	NEW_INT(nReqPlayerTalentStyle)
 																	);
 
 	gsys.pMasterServerFacade->Route(pNewCmd);
@@ -227,29 +240,20 @@ void GMasterServerPartyRouter::MoveServer(MUID uidParty, MUID uidMember)
 	gsys.pMasterServerFacade->Route(pNewCmd);
 }
 
-void GMasterServerPartyRouter::CreateSinglePartyReq(MUID uidRequestPlayer)
-{
-	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_CREATE_SINGLE_REQ,
-																	1,
-																	NEW_UID(uidRequestPlayer)
-																	);
-
-	gsys.pMasterServerFacade->Route(pNewCmd);
-}
-
 void GMasterServerPartyRouter::PartyInfoAllReq(void)
 {
 	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_INFO_ALL_REQ);
 	gsys.pMasterServerFacade->Route(pNewCmd);
 }
 
-void GMasterServerPartyRouter::ChangePartyNameReq(MUID uidParty, MUID uidLeader, wstring strName)
+void GMasterServerPartyRouter::ChangePublicPartySettingReq(MUID uidParty, MUID uidLeader, bool bPublicParty, wstring strPartyName)
 {
-	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_CHANGE_NAME_REQ,
-																3,
+	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_CHANGE_PUBLIC_PARTY_SETTING_REQ,
+																4,
 																NEW_UID(uidParty),
 																NEW_UID(uidLeader),
-																NEW_WSTR(strName.c_str())
+																NEW_BOOL(bPublicParty),
+																NEW_WSTR(strPartyName.c_str())
 																);
 	gsys.pMasterServerFacade->Route(pNewCmd);
 }
@@ -290,6 +294,41 @@ void GMasterServerPartyRouter::ChangeQuestIDReq( MUID uidParty, MUID uidLeader, 
 		NEW_UID(uidLeader),
 		NEW_INT(nQuestID)
 		);
+	gsys.pMasterServerFacade->Route(pNewCmd);
+}
+
+void GMasterServerPartyRouter::ShowInfoReq(MUID uidRequestor, MUID uidParty)
+{
+	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_SHOW_INFO_REQ,
+		2,
+		NEW_UID(uidRequestor), 
+		NEW_UID(uidParty));
+	gsys.pMasterServerFacade->Route(pNewCmd);
+}
+
+void GMasterServerPartyRouter::CreateSinglePartyReq(MUID uidRequestPlayer, bool bPublicParty, wstring strPartyName)
+{
+	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_CREATE_SINGLE_PARTY_REQ,
+		3,
+		NEW_UID(uidRequestPlayer),
+		NEW_BOOL(bPublicParty),
+		NEW_WSTR(strPartyName.c_str())
+		);
+
+	gsys.pMasterServerFacade->Route(pNewCmd);
+}
+
+void GMasterServerPartyRouter::ShowMatchingPublicPartyListReq(MUID uidRequestor, char nPage, char nLevelMin, char nLevelMax, wstring strSearchText)
+{
+	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST_REQ,
+		5,
+		NEW_UID(uidRequestor),
+		NEW_CHAR(nPage),
+		NEW_CHAR(nLevelMin),
+		NEW_CHAR(nLevelMax),
+		NEW_WSTR(strSearchText.c_str())
+		);
+
 	gsys.pMasterServerFacade->Route(pNewCmd);
 }
 

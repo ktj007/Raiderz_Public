@@ -20,7 +20,7 @@ public :
 	};
 
 
-	void					Input(const MUID& uidPlayer, const int64 nAID);
+	void					Input(const MUID& uidPlayer, const AID nAID);
 
 	void					OnExecute(mdb::MDatabase& rfDB);
 	mdb::MDB_THRTASK_RESULT	_OnCompleted();
@@ -30,7 +30,7 @@ private :
 	struct _DATA
 	{
 		MUID					uidPlayer;
-		int64					nAID;
+		AID						nAID;
 		bool					bIsCharNameDuplicated;
 	};
 

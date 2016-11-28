@@ -18,15 +18,16 @@ XCmdHandler_Item::XCmdHandler_Item(MCommandCommunicator* pCC) : MCommandHandler(
 	SetCmdHandler(MC_ITEM_EQUIP,				OnEquip);
 	SetCmdHandler(MC_ITEM_EQUIP_SWAPTOINVEN,	OnEquipSwapToInven);
 
-	SetCmdHandler(MC_ITEM_SORT_INVEN_SLOT,		OnSortInvenSlot);
+	//SetCmdHandler(MC_ITEM_SORT,		OnSortInvenSlot);
 	SetCmdHandler(MC_ITEM_UNEQUIP,				OnUnEquip);
-	SetCmdHandler(MC_ITEM_TALENT,				OnItemTalent);
+	SetCmdHandler(MC_TALENT_USE_DISPOSABLE_TALENT,				OnItemTalent);
 	
 	SetCmdHandler(MC_ITEM_ADD,					OnAdd);
 	SetCmdHandler(MC_ITEM_REMOVE,				OnRemove);
 
-	SetCmdHandler(MC_ITEM_CHANGE_LOOK_EQUIP_ITEM,			OnChangeLookEquipItem);
-	SetCmdHandler(MC_ITEM_CHANGE_LOOK_UNEQUIP_ITEM,			OnChangeLookUnEquipItem);
+	SetCmdHandler(MC_ITEM_CHANGE_LOOK,			OnChangeLookEquipItem);
+	SetCmdHandler(MC_ITEM_CHANGE_AND_REMOVE_LOOK,			OnChangeAndRemoveLookEquipItem);
+	SetCmdHandler(MC_ITEM_REMOVE_LOOK,			OnChangeLookUnEquipItem);
 
 	SetCmdHandler(MC_ACTION_SWITCHING_WEAPON_BEGIN,			OnSwitchingWeaponSetBegin);
 	SetCmdHandler(MC_ACTION_SWITCHING_WEAPON,				OnSwitchingWeaponSet);
@@ -104,17 +105,16 @@ MCommandResult XCmdHandler_Item::OnUnEquip(MCommand* pCommand, MCommandHandler* 
 MCommandResult XCmdHandler_Item::OnItemTalent(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	int nAmount=0;
-	int nInvenSlotID;
+	int nInvenSlotID, nTalentID;
 
-	if (pCommand->GetParameter(&nAmount,	0, MPT_INT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nInvenSlotID,	1, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nTalentID,	0, MPT_INT)==false) return CR_ERROR;
 
 	XItem* pItem = gvar.MyInfo.Inventory.GetItem(nInvenSlotID);
 	if (pItem == NULL) return CR_TRUE;
 
 	gvar.MyInfo.Inventory.Use(nInvenSlotID, &gvar.MyInfo.ChrStatus, nAmount);
 
-	gvar.Game.pMyPlayer->GetModuleMyControl()->DoActionUseTalent(pItem->m_pItemData->m_vecUsableParam.front());
+	gvar.Game.pMyPlayer->GetModuleMyControl()->DoActionUseTalent(nTalentID);
 
 	return CR_TRUE;
 }
@@ -125,8 +125,8 @@ MCommandResult XCmdHandler_Item::OnAdd(MCommand* pCommand, MCommandHandler* pHan
 
 	vector<TD_ITEM_INSERT> vecTDItemInsert;
 	vector<TD_ITEM_INCREASE> vecTDItemIncrease;
-	if (pCommand->GetBlob(vecTDItemInsert, 0)==false) return CR_ERROR;
-	if (pCommand->GetBlob(vecTDItemIncrease, 1)==false) return CR_ERROR;
+	if (pCommand->GetBlob(vecTDItemInsert, 1)==false) return CR_ERROR;
+	if (pCommand->GetBlob(vecTDItemIncrease, 2)==false) return CR_ERROR;
 
 	XPlayer* pMyPlayer = static_cast<XPlayer*>(gg.omgr->Find(XGetMyUID()));
 	if (pMyPlayer == NULL) return CR_FALSE;
@@ -251,23 +251,18 @@ MCommandResult XCmdHandler_Item::OnRemove(MCommand* pCommand, MCommandHandler* p
 
 MCommandResult XCmdHandler_Item::OnChangeLookEquipItem(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nSlotTypeFrom;
-	int nSlotIDFrom;
-	int8 nSlotIDTo;
-	MUID uidPlayer;
+	int8 nSlotID;
+	UIID nPlayerUIID;
 	int nItemID;
 	int nColor;
 	int nEnchantBuff;
+	if (pCommand->GetParameter(&nPlayerUIID, 0, MPT_USHORT) == false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSlotID, 1, MPT_CHAR) == false) return CR_ERROR;
+	if (pCommand->GetParameter(&nItemID,		2, MPT_INT)==false) return CR_ERROR;	
+	if (pCommand->GetParameter(&nColor,			3, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nEnchantBuff,	4, MPT_INT)==false) return CR_ERROR;
 
-	if (pCommand->GetParameter(&nSlotTypeFrom,	0, MPT_INT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nSlotIDFrom,	1, MPT_INT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nSlotIDTo,		2, MPT_CHAR)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&uidPlayer,		3, MPT_UID)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nItemID,		4, MPT_INT)==false) return CR_ERROR;	
-	if (pCommand->GetParameter(&nColor,			5, MPT_INT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nEnchantBuff,	6, MPT_INT)==false) return CR_ERROR;
-
-	XNetPlayer* user = gg.omgr->FindNetPlayer(uidPlayer);
+	XNetPlayer* user = gg.omgr->FindNetPlayer(nPlayerUIID);
 	if (user == NULL) return CR_FALSE;
 
 	if(!user->IsModuleEntity()) return CR_FALSE;
@@ -278,25 +273,55 @@ MCommandResult XCmdHandler_Item::OnChangeLookEquipItem(MCommand* pCommand, MComm
 	if (item_data)
 		mesh_name = static_cast<XItemData*>(item_data)->m_strMeshName;
 
-	SH_FEATURE_ITEMSLOT nEquipFeatureItemSlot = XPlayerInfoFeature::TransItemSlotToNetSlot(SH_ITEM_SLOT(nSlotIDTo));
+	SH_FEATURE_ITEMSLOT nEquipFeatureItemSlot = XPlayerInfoFeature::TransItemSlotToNetSlot(SH_ITEM_SLOT(nSlotID));
 	SH_FEATURE_ITEMSLOT nUnEquipFeatureItemSlot = FEATURE_ITEMSLOT_NONE;
-	
-	if(nSlotIDFrom > -1 && static_cast<SH_ITEM_SLOT_TYPE>(nSlotTypeFrom) == SLOTTYPE_EQUIP)
-		nUnEquipFeatureItemSlot = XPlayerInfoFeature::TransItemSlotToNetSlot(SH_ITEM_SLOT(nSlotIDFrom));
-
 	user->EquipItem(nEquipFeatureItemSlot, item_data->m_nID, nUnEquipFeatureItemSlot, nColor, nEnchantBuff);
+
+	return CR_TRUE;
+}
+
+MCommandResult XCmdHandler_Item::OnChangeAndRemoveLookEquipItem(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	int8 nSlotFromID;
+	int8 nSlotToID;
+	UIID nPlayerUIID;
+	int nItemID;
+	int nColor;
+	int nEnchantBuff;
+	if (pCommand->GetParameter(&nPlayerUIID, 0, MPT_USHORT) == false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSlotFromID, 1, MPT_CHAR) == false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSlotToID, 2, MPT_CHAR) == false) return CR_ERROR;
+	if (pCommand->GetParameter(&nItemID, 3, MPT_INT) == false) return CR_ERROR;
+	if (pCommand->GetParameter(&nColor, 4, MPT_INT) == false) return CR_ERROR;
+	if (pCommand->GetParameter(&nEnchantBuff, 5, MPT_INT) == false) return CR_ERROR;
+
+	XNetPlayer* user = gg.omgr->FindNetPlayer(nPlayerUIID);
+	if (user == NULL) return CR_FALSE;
+
+	if (!user->IsModuleEntity()) return CR_FALSE;
+
+	CSItemData* item_data = info.item->GetItemData(nItemID);
+
+	wstring mesh_name = L"";
+	if (item_data)
+		mesh_name = static_cast<XItemData*>(item_data)->m_strMeshName;
+
+	SH_FEATURE_ITEMSLOT nEquipFeatureItemSlot = XPlayerInfoFeature::TransItemSlotToNetSlot(SH_ITEM_SLOT(nSlotToID));
+	SH_FEATURE_ITEMSLOT nUnEquipFeatureItemSlot = XPlayerInfoFeature::TransItemSlotToNetSlot(SH_ITEM_SLOT(nSlotFromID));
+	user->EquipItem(nEquipFeatureItemSlot, item_data->m_nID, nUnEquipFeatureItemSlot, nColor, nEnchantBuff);
+	user->UnEquipItem(nUnEquipFeatureItemSlot);
 
 	return CR_TRUE;
 }
 
 MCommandResult XCmdHandler_Item::OnChangeLookUnEquipItem(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	MUID uidPlayer;
+	UIID nPlayerUIID;
 	int8 nSlot=0;
-	if (pCommand->GetParameter(&uidPlayer,	0, MPT_UID)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nPlayerUIID, 0, MPT_USHORT) == false) return CR_ERROR;
 	if (pCommand->GetParameter(&nSlot,		1, MPT_CHAR)==false) return CR_ERROR;
 
-	XNetPlayer* user =	gg.omgr->FindNetPlayer(uidPlayer);
+	XNetPlayer* user =	gg.omgr->FindNetPlayer(nPlayerUIID);
 	if (user == NULL) return CR_FALSE;
 
 	if(!user->IsModuleEntity()) return CR_FALSE;
@@ -451,10 +476,10 @@ MCommandResult XCmdHandler_Item::OnMove(MCommand* pCommand, MCommandHandler* pHa
 	int nToSlotID;
 	int nAmount;
 
-	if (!pCommand->GetParameter(&nFromSlotType, 0, MPT_INT)) return CR_FALSE;
-	if (!pCommand->GetParameter(&nFromSlotID,	1, MPT_INT)) return CR_FALSE;
-	if (!pCommand->GetParameter(&nToSlotType,	2, MPT_INT)) return CR_FALSE;
-	if (!pCommand->GetParameter(&nToSlotID,		3, MPT_INT)) return CR_FALSE;
+	if (!pCommand->GetParameter(&nFromSlotType, 0, MPT_CHAR)) return CR_FALSE;
+	if (!pCommand->GetParameter(&nFromSlotID,	1, MPT_SHORT)) return CR_FALSE;
+	if (!pCommand->GetParameter(&nToSlotType,	2, MPT_CHAR)) return CR_FALSE;
+	if (!pCommand->GetParameter(&nToSlotID,		3, MPT_SHORT)) return CR_FALSE;
 	if (!pCommand->GetParameter(&nAmount,		4, MPT_INT)) return CR_FALSE;
 
 	if (NULL == gvar.Game.pMyPlayer) return CR_ERROR;

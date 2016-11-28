@@ -17,11 +17,11 @@ XCmdHandler_Char::XCmdHandler_Char(MCommandCommunicator* pCC) : MCommandHandler(
 	SetCmdHandler(MC_CHAR_REBIRTH_NETPLAYER,	OnRebirthNetPlayer);
 	SetCmdHandler(MC_CHAR_UPDATE_SIMPLE_STATUS,	OnUpdateSimpleStatus);
 	SetCmdHandler(MC_CHAR_REWARD_EXP,			OnRewardExp);
-	SetCmdHandler(MC_SH_ITEM_XP,				OnRewardItemXP);
+//	SetCmdHandler(MC_SH_ITEM_XP,				OnRewardItemXP);
 	SetCmdHandler(MC_CHAR_UPDATE_MONEY,			OnUpdateMoney);
 	SetCmdHandler(MC_CHAR_UPDATE_TP,			OnUpdateTP);
 	SetCmdHandler(MC_CHAR_LEVEL_UP,				OnLevelUp);
-	SetCmdHandler(MC_CHAR_SAVE_SOULBINDING,		OnSaveSoulBinding);
+//	SetCmdHandler(MC_CHAR_SAVE_SOULBINDING,		OnSaveSoulBinding);
 	SetCmdHandler(MC_CHAR_SAVE_CHECKPOINT,		OnSaveCheckPoint);
 	SetCmdHandler(MC_CHAR_ENEMY_INFO,			OnEnemyInfo);
 	SetCmdHandler(MC_CHAR_ENEMY_INFO_CLEAR,		OnEnemyInfoClear);
@@ -37,7 +37,7 @@ MCommandResult XCmdHandler_Char::OnMyInfo(MCommand* pCommand, MCommandHandler* p
 	vector<TD_ITEM>	vecTDInventory;
 	vector<TD_ITEM> vecTDEquipment;
 	vector<TD_ITEM_SLOT_INFO> vecTDReservedDummySlotInfo;
-	vector<int> vecTalent;
+	vector<TD_TALENT> vecTalent;
 	vector<TD_PLAYERQUEST> vecTDPlayerQuest;
 	vector<TD_PALETTE> vecTDPalette;
 	vector<TD_FACTION> vecTDFaction;
@@ -207,9 +207,9 @@ MCommandResult XCmdHandler_Char::OnRewardExp(MCommand* pCommand, MCommandHandler
 	int nGainExp;
 	float fExpPercent;
 
-	if (pCommand->GetParameter(&nGainExp,	0, MPT_INT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&fExpPercent,1, MPT_FLOAT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nExp,		2, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nGainExp,	1, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&fExpPercent,2, MPT_FLOAT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nExp,		3, MPT_INT)==false) return CR_ERROR;
 
 
 	if (nGainExp > 0)
@@ -285,7 +285,7 @@ MCommandResult XCmdHandler_Char::OnUpdateMoney(MCommand* pCommand, MCommandHandl
 	if (gg.game == NULL) return CR_ERROR;
 
 	int nSilver;
-	if (pCommand->GetParameter(&nSilver,		0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nSilver,		1, MPT_INT)==false) return CR_ERROR;
 	if (gvar.MyInfo.ChrInfo.GetMoney() == nSilver) return CR_TRUE;
 
 	if (gvar.MyInfo.ChrInfo.GetMoney() < nSilver)
@@ -338,11 +338,11 @@ MCommandResult XCmdHandler_Char::OnLevelUp(MCommand* pCommand, MCommandHandler* 
 	
 	if (uidPlayer == XGetMyUID())
 	{
-		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nSTR,	6, MPT_USHORT)==false) return CR_ERROR;
-		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nDEX,	7, MPT_USHORT)==false) return CR_ERROR;
-		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nINT,	8, MPT_USHORT)==false) return CR_ERROR;
-		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nCHA,	9, MPT_USHORT)==false) return CR_ERROR;
-		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nCON,	10, MPT_USHORT)==false) return CR_ERROR;
+		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nSTR,	8, MPT_USHORT)==false) return CR_ERROR;
+		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nDEX,	9, MPT_USHORT)==false) return CR_ERROR;
+		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nINT,	10, MPT_USHORT)==false) return CR_ERROR;
+		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nCHA,	11, MPT_USHORT)==false) return CR_ERROR;
+		if (pCommand->GetParameter(&gvar.MyInfo.ChrInfo.nCON,	12, MPT_USHORT)==false) return CR_ERROR;
 
 		gvar.MyInfo.nLevel = nLevel;
 		gvar.MyInfo.ChrInfo.nMaxHP = max_hp;

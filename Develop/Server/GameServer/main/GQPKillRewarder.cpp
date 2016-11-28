@@ -30,6 +30,9 @@ GEntityNPC* GQPKillRewarder::Reward()
 	const GFieldInfo* pFieldInfo = pField->GetInfo();
 	if (NULL == pFieldInfo) return NULL;
 
+	if (false == pField->ExistPlayer())
+		return NULL;
+
 	if (false == m_pOwner->GetPlayerPVPArea().IsLocateAndBelongTeam()) return NULL;
 	if (true == m_pOwner->GetQPKillRewardOwner().IsEmpty()) return NULL;
 	if (true == m_pOwner->GetModuleBuff()->IsNowDisableQuestPVPDrop()) return NULL;

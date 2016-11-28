@@ -26,6 +26,10 @@ bool GBuffModifierApplier::OnEvent(TALENT_CONDITION nTiming)
 	case TC_BUFF_STACKED:
 		OnStacked();
 		break;
+	case TC_BUFF_GAIN_N_PERIOD:
+	case TC_BUFF_PERIOD:
+		OnPeriod();
+		break;
 	}
 
 	return ApplyEffect();
@@ -41,10 +45,15 @@ void GBuffModifierApplier::OnStacked()
 	RestoreEffect();
 }
 
+void GBuffModifierApplier::OnPeriod()
+{
+	RestoreEffect();
+}
+
 bool GBuffModifierApplier::ApplyEffect()
 {
 	if (!m_pOwner->GetOwner()->IsActor())
-		return false;
+		return true;
 
 	GBuffInfo* pBuffInfo = m_pOwner->GetInfo();
 	GEntityActor* pOwnerActor = ToEntityActor(m_pOwner->GetOwner());
@@ -74,7 +83,7 @@ bool GBuffModifierApplier::ApplyEffect()
 		m_ModEffector.RefreshStatus(pOwnerActor);
 	}
 		
-	return false;
+	return true;
 }
 
 bool GBuffModifierApplier::RestoreEffect()
@@ -101,7 +110,7 @@ bool GBuffModifierApplier::RestoreEffect()
 
 	ClearResotreInfo();
 
-	return false;
+	return true;
 }
 
 void GBuffModifierApplier::ClearResotreInfo()

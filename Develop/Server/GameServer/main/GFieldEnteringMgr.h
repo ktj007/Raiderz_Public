@@ -16,6 +16,8 @@ public:
 
 	int				GetQueueSize()	{ return (int)m_qEnteringPlayer.size(); }
 
+	void			OnPlayerFieldLoadingComplete(MUID uidPlayer);
+
 protected:
 	void			EnterPlayerWhoFieldLoadingComplete(MUID uidPlayer);
 

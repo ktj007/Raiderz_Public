@@ -14,7 +14,7 @@ public:
 	GDropItem(const MUID& nDropItemUID, int nItemID, int nItemAmount);
 	~GDropItem();
 
-	void InsertAuthorizedCID(int nCID);
+	void InsertAuthorizedCID(CID nCID);
 	void DecraseAmount(int nDecreaseAmount);
 
 	void SetFreeAuthority();
@@ -27,13 +27,13 @@ public:
 	void Visible();
 	void Unvisible();
 
-	void GetViewableCID(set<int>& outsetViewableCID) const;
+	void GetViewableCID(set<CID>& outsetViewableCID) const;
 	int GetAmount() const;
 	const MUID& GetUID() const;
 	int GetID() const;
 
-	bool IsViewableCID(int nCID) const;
-	bool IsAuthorizedCID(int nCID) const;
+	bool IsViewableCID(CID nCID) const;
+	bool IsAuthorizedCID(CID nCID) const;
 	bool IsGettable() const;
 	bool IsMasterLootable() const;
 	bool IsRollable() const;
@@ -44,13 +44,13 @@ public:
 	TD_LOOT_MASTERLOOT_UI		MakeTDMasterLootUI(GEntityNPC* pOwner) const;
 	TD_LOOT_MASTERLOOT_NOTIFY	MakeTDMasterLootNotify() const;
 
-	void ChangeGettableItem(int nCID);	///< 타입을 Gettable로 바꾸고 소유자를 한사람으로 고정한다.
+	void ChangeGettableItem(CID nCID);	///< 타입을 Gettable로 바꾸고 소유자를 한사람으로 고정한다.
 
 private:	
 	MUID		m_nDropItemUID;
 	int			m_nItemID;
 	int			m_nItemAmount;
-	set<int>	m_setAuthorizedCID;	///< 권한이 있는 사람의 CID
+	set<CID>	m_setAuthorizedCID;	///< 권한이 있는 사람의 CID
 	bool		m_bFreeAuthority;		///< 아무나 권한이 있는지 여부
 
 	DROP_ITEM_TYPE	m_nType;

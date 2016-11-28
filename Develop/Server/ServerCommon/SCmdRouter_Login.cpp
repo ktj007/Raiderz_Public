@@ -38,11 +38,24 @@ void SCmdRouter_Login::ResponsePmangLogin(const MUID& uidTargetPlayer, const int
 	m_pCommandCenter->PostCommand(pNewCommand);
 }
 
-void SCmdRouter_Login::ResponseAccountCharList(const MUID& uidTargetPlayer, const vector<TD_AccountCharInfo>& vecAccountCharInfo)
+void SCmdRouter_Login::ResponsePWELogin(const MUID& uidTargetPlayer, const int nResult, int nServerMode/*=SERVER_MODE_NORMAL*/)
+{
+	MCommand* pNewCommand = m_pCommandCenter->MakeNewCommand(MC_COMM_RESPONSE_LOGIN_ON_PWE,
+		uidTargetPlayer,
+		3,
+		NEW_INT(nResult),
+		NEW_UID(uidTargetPlayer),
+		NEW_UCHAR(nServerMode));
+
+	m_pCommandCenter->PostCommand(pNewCommand);
+}
+
+void SCmdRouter_Login::ResponseAccountCharList(const MUID& uidTargetPlayer, const int nResult, const vector<TD_AccountCharInfo>& vecAccountCharInfo)
 {
 	MCommand* pNewCommand = m_pCommandCenter->MakeNewCommand(MC_COMM_RESPONSE_ACCOUNT_CHAR_LIST
 		, uidTargetPlayer
-		, 1
+		, 2
+		, NEW_INT(nResult)
 		, NEW_BLOB(vecAccountCharInfo));
 	
 	m_pCommandCenter->PostCommand(pNewCommand);
@@ -91,12 +104,22 @@ void SCmdRouter_Login::MoveToGameServer(const MUID& uidTargetPlayer, const TD_LO
 	m_pCommandCenter->PostCommand(pNewCommand);
 }
 
-void SCmdRouter_Login::DuplicatedPlayerLogin(const MUID& uidTargetPlayer)
+void SCmdRouter_Login::NotifyKick(const MUID& uidTargetPlayer, const int nReason)
 {
-	MCommand* pNewCommand = m_pCommandCenter->MakeNewCommand(MC_COMM_DUPLICATED_PLAYER_LOGIN
+	MCommand* pNewCommand = m_pCommandCenter->MakeNewCommand(MC_COMM_NOTIFY_KICK
 		, uidTargetPlayer
-		, 0
-		, NULL);
+		, 1
+		, NEW_INT(nReason));
+
+	m_pCommandCenter->PostCommand(pNewCommand);
+}
+
+void SCmdRouter_Login::NotifyKick(const MUID& uidTargetPlayer, const wchar_t* wszReason)
+{
+	MCommand* pNewCommand = m_pCommandCenter->MakeNewCommand(MC_COMM_NOTIFY_REASON_KICK
+		, uidTargetPlayer
+		, 1
+		, NEW_WSTR(wszReason));
 
 	m_pCommandCenter->PostCommand(pNewCommand);
 }

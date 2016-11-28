@@ -184,7 +184,10 @@ public:
 	ModVar<int>				nSTAMax;
 
 	float					fMoveSpeed;					// (모두)
-	float					fRideSpeed;
+	float					fBattleMoveSpeed;
+	float					fAttackSpeed;
+	float					fCastSpeed;
+
 	ModVar<int>				nHPRegen,					// (서버)
 							nENRegen,					// (서버)
 							nSTARegen;					// (서버)
@@ -194,30 +197,47 @@ public:
 	ModVar<int>				nAP,						///< 방어력
 							nABS;						///< 피해 흡수
 
+	// Attribute Damage AP
+	ModVar<int>				nHolyAP,
+							nUnholyAP,
+							nFireAP,
+							nColdAP,
+							nLightningAP,
+							nPoisonAP;
+
+	// Attribute Magic Damage AP
+	ModVar<int>				nHolyMagicAP,
+							nUnholyMagicAP,
+							nFireMagicAP,
+							nColdMagicAP,
+							nLightningMagicAP,
+							nPoisonMagicAP;
+
 	ModVar<float>			fGuardRate;					///< 방어율
 
-	float					fMeleeDodgeAmp;
-	float					fRangeDodgeAmp;
+	float					fPhysicDodgeAmp;
 	float					fMagicDodgeAmp;
 
-	float					fMeleeHitRateAmp;
-	float					fRangeHitRateAmp;
+	float					fPhysicHitRateAmp;
 	float					fMagicHitRateAmp;
 
 	float					fCriticalAmp;
-	float					fCriticalMeleeAmp;
-	float					fCriticalRangeAmp;	
+	float					fCriticalPhysicAmp;
 	float					fCriticalMagicAmp;
 
-	float					fCriticalMeleeAmpForMe;
+	float					fCriticalPhysicAmpForMe;
+	float					fCriticalMagicAmpForMe;
 
-	float					fCriticalMeleeDamageAmp;	///< 추가 치명 대미지율 ( 1 = 100% )
-	float					fCriticalRangeDamageAmp;	///< 추가 치명 대미지율 ( 1 = 100% )
+	float					fCriticalPhysicDamageAmp;	///< 추가 치명 대미지율 ( 1 = 100% )
+	float					fCriticalPhysicDamageAmpForMe;
 	float					fCriticalMagicDamageAmp;	///< 추가 치명 대미지율 ( 1 = 100% )
+	float					fCriticalMagicDamageAmpForMe;
 
-	float					fMeleeDamageAmp;			///< 추가 근접 대미지율 (1 = 100%)
-	float					fRangeDamageAmp;			///< 추가 원거리 대미지율 (1 = 100%)
+	float					fPhysicDamageAmp;			///< 추가 근접 대미지율 (1 = 100%)
 	float					fMagicDamageAmp;			///< 추가 마법 대미지율 (1 = 100%)
+
+	float					fHealAmp;
+	float					fHealAmpForMe;
 
 
 	float					fDefenceAmp[DA_MAX];		///< 추가 방어율(1 = 100%)
@@ -230,8 +250,7 @@ public:
 	PerModVar<float>		fGatherTimeAmp[MAX_GATHER_TYPE];				///< 채집 시간 보정치
 
 
-	float					fModMeleePene;				///< 근접 공격 관통율 보너스
-	float					fModRangePene;				///< 원거리 공격 관통율 보너스
+	float					fModPhysicPene;				///< 근접 공격 관통율 보너스
 	float					fModMagicPene;				///< 마법 공격 관통율 보너스
 
 public:
@@ -254,6 +273,16 @@ public:
 							nINT,						// (모두)-
 							nCHA,						// (모두)-
 							nCON;						// (모두)-							
+
+	float					fRideSpeed;
+
+	float					fPVPDamage;
+	ModVar<int>				nPVPAP;
+
+	float					fEXPRate,
+							fDropMoneyAmount,
+							fDropItemRate,
+							fDropItemAmount;
 
 public:
 	CSPlayerModifier();

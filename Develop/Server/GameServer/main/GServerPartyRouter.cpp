@@ -6,12 +6,13 @@
 #include "GGlobal.h"
 #include "GPlayerObjectManager.h"
 #include "GPlayerObject.h"
+#include "GSharedField.h"
+#include "GPlayerTalent.h"
 
 void GServerPartyRouter::MakePartyMemberInfo(const GParty* pParty, MUID uidMember, TD_PARTY_MEMBER* pPartyMember, vector<int>* pVecBuff)
 {
 	_ASSERT(pParty != NULL);
 	_ASSERT(pPartyMember != NULL);
-	_ASSERT(pVecBuff != NULL);
 
 	GPlayerObject* pPlayerObject = gmgr.pPlayerObjectManager->GetPlayer(uidMember);
 	
@@ -27,8 +28,12 @@ void GServerPartyRouter::MakePartyMemberInfo(const GParty* pParty, MUID uidMembe
 		pPartyMember->nEN = 0;
 		pPartyMember->nSTA = 0;
 		pPartyMember->nLevel = 0;
+		pPartyMember->nFieldID = 0;
+		pPartyMember->nChannelID = INVALID_CHANNELID;
+		pPartyMember->nTalentStyle = TS_NONE;
 
-		pVecBuff->clear();
+		if (pVecBuff)
+			pVecBuff->clear();
 	}
 	else
 	{
@@ -36,26 +41,32 @@ void GServerPartyRouter::MakePartyMemberInfo(const GParty* pParty, MUID uidMembe
 
 		pPartyMember->m_uidPlayer = pMember->GetUID();
 		wcsncpy_s(pPartyMember->szName, pMember->GetName(), _TRUNCATE);
+		pPartyMember->nStatusFlag = 0;
+		pPartyMember->nLevel = pMember->GetLevel();
+		pPartyMember->nFieldID = pMember->GetFieldID();
+		pPartyMember->nChannelID = GetChannelID(pMember->GetField());
+		pPartyMember->nTalentStyle = pMember->GetTalent().GetMainTalentStyle();
+
+		if (pMember->IsPartyLeader())
+			SetBitSet(pPartyMember->nStatusFlag, UPS_PARTYLEADER);
 			
 		if (pMember->IsDead())
 		{
-			pPartyMember->nStatusFlag = 0;
 			SetBitSet(pPartyMember->nStatusFlag, UPS_DEAD);
 
 			pPartyMember->nHP = 0;
 			pPartyMember->nEN = 0;
 			pPartyMember->nSTA = 0;
-			pPartyMember->nLevel = 0;
 
-			pVecBuff->clear();
+			if (pVecBuff)
+				pVecBuff->clear();
 		}
 		else
 		{
-			pPartyMember->nStatusFlag = 0;
-			pPartyMember->nLevel = pMember->GetLevel();
-
 			pMember->GetSimpleStatus(pPartyMember->nHP, pPartyMember->nEN, pPartyMember->nSTA);
-			pMember->GetBuffList(*pVecBuff);			
+
+			if (pVecBuff)
+				pMember->GetBuffList(*pVecBuff);			
 		}
 	}
 }

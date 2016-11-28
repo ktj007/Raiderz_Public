@@ -30,6 +30,19 @@ bool GItemEquiper::Equip(GEntityPlayer* pPlayer, GItem* pItem, SH_ITEM_SLOT nSlo
 	
 	GDBT_ITEM_EQUIP data;
 	if (false == MakeDBTaskData(pPlayer, pItem, nSlot, nSubSlot, pItem->m_pItemData->m_bClaimRequired, data)) return false;
+
+	if ((data.unequip1.m_nSlotID != ITEMSLOT_NONE && 
+		(data.unequip1.m_nSlotID != data.equip.m_nToSlotID ||
+			data.unequip1.m_nToSlotID != data.equip.m_nSlotID ||
+			data.equip.m_nSlotType != SLOTTYPE_INVENTORY ||
+			data.unequip1.m_nSlotType != SLOTTYPE_EQUIP)) ||
+		(data.unequip2.m_nSlotID != ITEMSLOT_NONE && 
+			data.unequip2.m_nSlotType != SLOTTYPE_EQUIP))
+	{
+		mlog3("GItemEquiper::Equip() - DB task data validation failed: CHAR_SN(%I64d) Equip Item of slot (%d) to (%d)\n",
+			data.nCID, data.equip.m_nSlotID, data.equip.m_nToSlotID);
+		return false;
+	}
 		
 	if (false == gsys.pDBManager->ItemEquip(data)) return false;
 
@@ -105,7 +118,7 @@ bool GItemEquiper::MakeDBTaskData( GEntityPlayer* pPlayer, GItem* pItem, SH_ITEM
 		pPlayer->GetItemHolder()->ReserveSlot(SLOTTYPE_EQUIP, unequipData2.m_nSlotID);
 	}
 
-	data = GDBT_ITEM_EQUIP(pPlayer->GetUID(), (int64)pPlayer->GetCID(), equipData, unequipData1, unequipData2);
+	data = GDBT_ITEM_EQUIP(pPlayer->GetUID(), pPlayer->GetCID(), equipData, unequipData1, unequipData2);
 
 	return true;
 }
@@ -162,12 +175,12 @@ bool GItemEquiper::CheckHasPassiveTalent( GEntityPlayer* pPlayer, GItem* pItem )
 	if (NULL == pPlayer) return false;
 	if (NULL == pItem) return false;
 
-	/*TALENT_EXTRA_PASSIVE_TYPE nNeedTEPT = CSItemHelper::GetTEPTForEquip(pItem->m_pItemData);
+	TALENT_EXTRA_PASSIVE_TYPE nNeedTEPT = CSItemHelper::GetTEPTForEquip(pItem->m_pItemData);
 	if (nNeedTEPT == TEPT_NONE)
 		return true;
 
 	if (!pPlayer->HasPassiveTalent(nNeedTEPT))
-		return false;*/
+		return false;
 
 	return true;
 }

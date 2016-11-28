@@ -37,7 +37,7 @@ void ZPlayerLogic::DeletePlayer(AID nAID)
 	
 	/// 캐릭터 퇴장 처리
 	this->LeaveGameServer(nAID);
-	
+
 	gmgr.pPlayerManager->Delete(nAID);
 }
 
@@ -67,7 +67,7 @@ bool ZPlayerLogic::OnSelectChar(AID nAID, MUID uidPlayer)
 	return true;
 }
 
-bool ZPlayerLogic::OnInWorld(MUID uidRequestGameServer, AID nAID, int nCID, MUID uidPlayer, const std::wstring& strPlayerName, int nGID)
+bool ZPlayerLogic::OnInWorld(MUID uidRequestGameServer, AID nAID, CID nCID, MUID uidPlayer, const std::wstring& strPlayerName, int nGID)
 {
 	RVALID_RET(uidRequestGameServer.IsValid(), false);
 	RVALID_RET(nAID > 0, false);
@@ -85,7 +85,7 @@ bool ZPlayerLogic::OnInWorld(MUID uidRequestGameServer, AID nAID, int nCID, MUID
 	ZPlayer* pPlayer = gmgr.pPlayerManager->Find(nAID);
 	if (NULL == pPlayer)
 	{
-		mlog("Failed! ZPlayerLogic::InWorld(), Not Exist Player( AID= %d )\n", nAID);
+		mlog("Failed! ZPlayerLogic::InWorld(), Not Exist Player( AID= %I64d )\n", nAID);
 		return false;
 	}
 	

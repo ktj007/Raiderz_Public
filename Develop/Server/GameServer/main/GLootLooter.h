@@ -9,7 +9,7 @@ struct TD_LOOT_ROLL_RESULT;
 
 enum UNGETTABLE_ITEM_REASON;
 
-typedef map<int, vector<GDropItem*>> MAP_ROLLWINNERITEM;
+typedef map<CID, vector<GDropItem*>> MAP_ROLLWINNERITEM;
 
 TEST_FORWARD_FT(LootSystem, FLootSystem, PrepareMasterLootItem);
 TEST_FORWARD_FT(LootSystem, FLootSystem, RollItem);
@@ -34,12 +34,12 @@ private:
 	void LootItem_Apply(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vector<MUID>& vecDropItemUID);
 
 	TEST_VIRTUAL void RollItem(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
-	void RollItem_MakeData(GEntityNPC* pNPC, const vector<GDropItem*> &vecDropItem, const set<int>& setBeneficiaryCID, vector<TD_LOOT_ROLL_RESULT> &outvecTDRollResult, vector<TD_LOOT_ROLL_ITEM> &outvecTDRollItem, MAP_ROLLWINNERITEM& outmapRollWinnerItem);
-	void RollItem_Route( const set<int>& setBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult );
+	void RollItem_MakeData(GEntityNPC* pNPC, const vector<GDropItem*> &vecDropItem, const set<CID>& setBeneficiaryCID, vector<TD_LOOT_ROLL_RESULT> &outvecTDRollResult, vector<TD_LOOT_ROLL_ITEM> &outvecTDRollItem, MAP_ROLLWINNERITEM& outmapRollWinnerItem);
+	void RollItem_Route( const set<CID>& setBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult );
 	void RollItem_Apply(GEntityNPC* pNPC, const MAP_ROLLWINNERITEM& mapRollWinnerItem);
 
 	TEST_VIRTUAL void PrepareMasterLootItem(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
 
 	void PreapareMasterLootItem_Apply( const vector<GDropItem*>& vecDropItem );
-	void PrepareMasterLootItem_Route(int nMasterCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
+	void PrepareMasterLootItem_Route(CID nMasterCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem);
 };

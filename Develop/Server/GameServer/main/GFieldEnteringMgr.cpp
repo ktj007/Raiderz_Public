@@ -89,18 +89,27 @@ void GFieldEnteringMgr::EnterPlayerWhoFieldLoadingComplete(MUID uidPlayer)
 	GClientFieldRouter routerField;
 
 	// 필드 이동 중 날씨, 시간 변경 있을 수 있으니 적용한다.
+	// 2015-11-29: Time and Weather already sent with MC_FIELD_CHANGE_FIELD.
+	/*
 	GField* pField = pEntityPlayer->GetField();
 	if (pField != NULL)
 	{
-		GAME_TIME_TYPE nTimeType = pField->GetCurrentTime();
+		GAME_TIME_TYPE nTimeType = (pField->GetCurrentTime)();
 		GAME_WEATHER_TYPE nWeatherType = pField->GetCurrentWeather();		
 
 		routerField.ChangeTimeWeather(uidPlayer, nTimeType, nWeatherType);
 	}
+	*/
 
 	// 게임 시작
 	routerField.StartGame(uidPlayer);
 
 	// 필드 입장 무적 버프
 	pEntityPlayer->GetModuleBuff()->GainInvincibleBuff_EnterField();
+}
+
+void GFieldEnteringMgr::OnPlayerFieldLoadingComplete(MUID uidPlayer)
+{
+	GClientFieldRouter router;
+	router.ObjectLoading(uidPlayer);
 }

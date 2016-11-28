@@ -10,6 +10,7 @@ LCmdHandler_NotServable::LCmdHandler_NotServable(MCommandCommunicator* pCC) : MC
 {
 	SetCmdHandler(MC_COMM_REQUEST_LOGIN,				OnLogin);
 	SetCmdHandler(MC_COMM_REQUEST_LOGIN_ON_PMANG,		OnPmangLogin);
+	SetCmdHandler(MC_COMM_REQUEST_LOGIN_ON_PWE,			OnPWELogin);
 
 }
 
@@ -35,8 +36,22 @@ MCommandResult LCmdHandler_NotServable::OnPmangLogin(MCommand* pCommand, MComman
 
 	MUID uidPlayer = pCommand->GetSenderUID();
 
-	if (!_Login(uidPlayer, nCommandVersion))
+	if (!_PmangLogin(uidPlayer, nCommandVersion))
 		return CR_ERROR;
+
+	return CR_TRUE;
+}
+
+MCommandResult LCmdHandler_NotServable::OnPWELogin(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	int nCommandVersion;
+	if (!pCommand->GetParameter(&nCommandVersion,	2,	MPT_INT))	return CR_ERROR;
+
+	MUID uidPlayer = pCommand->GetSenderUID();
+
+	if (!_PWELogin(uidPlayer, nCommandVersion))
+		return CR_ERROR;
+
 
 	return CR_TRUE;
 }
@@ -51,11 +66,49 @@ bool LCmdHandler_NotServable::_Login(MUID uidPlayer, int nCommandVersion)
 	// 커맨드 버전 확인
 	if (!CCommandVersionChecker::IsValid(nCommandVersion))
 	{
-		cmdRouter.ResponsePmangLogin(uidPlayer, CR_FAIL_LOGIN_COMMAND_INVALID_VERSION);		
+		cmdRouter.ResponseLogin(uidPlayer, CR_FAIL_LOGIN_COMMAND_INVALID_VERSION);		
 		return true;
 	}
 
 	// 즉시 응답 커맨드 전송
 	cmdRouter.ResponseLogin(uidPlayer, CR_FAIL_LOGIN_SERVERS_ARE_STARTING);
+	return true;
+}
+
+bool LCmdHandler_NotServable::_PmangLogin(MUID uidPlayer, int nCommandVersion)
+{
+	// 요청자 확인
+	if (uidPlayer.IsInvalid()) return false;
+
+	SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
+
+	// 커맨드 버전 확인
+	if (!CCommandVersionChecker::IsValid(nCommandVersion))
+	{
+		cmdRouter.ResponsePmangLogin(uidPlayer, CR_FAIL_LOGIN_COMMAND_INVALID_VERSION);		
+		return true;
+	}
+
+	// 즉시 응답 커맨드 전송
+	cmdRouter.ResponsePmangLogin(uidPlayer, CR_FAIL_LOGIN_SERVERS_ARE_STARTING);
+	return true;
+}
+
+bool LCmdHandler_NotServable::_PWELogin(MUID uidPlayer, int nCommandVersion)
+{
+	// 요청자 확인
+	if (uidPlayer.IsInvalid()) return false;
+
+	SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
+
+	// 커맨드 버전 확인
+	if (!CCommandVersionChecker::IsValid(nCommandVersion))
+	{
+		cmdRouter.ResponsePWELogin(uidPlayer, CR_FAIL_LOGIN_COMMAND_INVALID_VERSION);		
+		return true;
+	}
+
+	// 즉시 응답 커맨드 전송
+	cmdRouter.ResponsePWELogin(uidPlayer, CR_FAIL_LOGIN_SERVERS_ARE_STARTING);
 	return true;
 }

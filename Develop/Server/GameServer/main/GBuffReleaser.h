@@ -8,6 +8,7 @@ class GEntityActor;
 class GTalentInfo;
 class GBuffInfo;
 class GBuff;
+enum CHAR_STANCE;
 
 class GBuffReleaser : public GActorObserver, public GBuffObserver, public MTestMemPool<GBuffReleaser>
 {
@@ -19,6 +20,9 @@ public:
 	void Update(float fDelta);
 
 private:
+	// Called when the Actor is dead
+	virtual void OnDie() override;
+
 	// 탤런트 사용이 시작될때 호출되는 이벤트
 	virtual void OnUseTalent( GEntityActor* pUser, GTalentInfo* pTalentInfo ) override;
 	// 피격 이벤트
@@ -63,6 +67,11 @@ private:
 	virtual void OnMeleeHit(GEntityActor* pAttacker, GTalentInfo* pTalentInfo) override;
 	// 접근공격으로 자신이 가격했을 때
 	virtual void OnMeleeHitEnemy(GEntityActor* pTarget, GTalentInfo* pTalentInfo) override;
+
+	virtual void OnSwitchingWeaponSetBegin() override;
+	virtual void OnSwitchingWeaponSet(SH_ITEM_SWITCH_WEAPON val) override;
+
+	virtual void OnChangeStance(CHAR_STANCE nStance) override;
 
 	// 이동, 공격등 적극적인 행동을 했을 때 (Player 전용)
 	virtual void OnDoSomething() override;

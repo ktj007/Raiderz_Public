@@ -17,6 +17,7 @@ void GFieldGridEntityInfoMaker::MakeSensorInfos(GEntityPlayer* pPlayer, vector<T
 
 	pField->GetFieldSensor().MakeUsableSensorInfo(pField, pPlayer, outvecSensorList);
 }
+
 void GFieldGridEntityInfoMaker::MakeBuffInfos(GEntityPlayer* pPlayer, GFieldGridSectorVec& vecCells, vector<TD_UPDATE_CACHE_BUFFENTITY>& outvecMagicArearInfoList)
 {
 	VALID(pPlayer);
@@ -53,6 +54,7 @@ void GFieldGridEntityInfoMaker::MakeBuffInfos(GEntityPlayer* pPlayer, GFieldGrid
 		grid_selector->Visit(MakeMaginAreaInfoList(*pField, outvecMagicArearInfoList), ETID_BUFF_ENTITY, sector->Position(), 0);
 	}
 }
+
 void GFieldGridEntityInfoMaker::MakeNPCInfos(GEntityPlayer* pPlayer, GFieldGridSectorVec& vecCells, vector<TD_UPDATE_CACHE_NPC>& outvecNPCInfoList, vector<TD_UPDATE_CACHE_PBART>& outvecEntityBPartInfoNode)
 {
 	VALID(pPlayer);
@@ -108,6 +110,7 @@ void GFieldGridEntityInfoMaker::MakeNPCInfos(GEntityPlayer* pPlayer, GFieldGridS
 	}
 }
 
+/*
 void GFieldGridEntityInfoMaker::MakePlayerInfos(GEntityPlayer* pPlayer, GFieldGridSectorVec& vecCells, vector<TD_UPDATE_CACHE_PLAYER>& outvecPlayerInfoList, vector<TD_PLAYER_FEATURE_TATTOO>& outvecPlayerFeatureTattoo)
 {
 	VALID(pPlayer);
@@ -160,5 +163,82 @@ void GFieldGridEntityInfoMaker::MakePlayerInfos(GEntityPlayer* pPlayer, GFieldGr
 	for each (GFieldGrid::Sector* const sector in vecCells)
 	{
 		grid_selector->Visit(MakePlayerInfoList(*pField, pPlayer->GetUID(), outvecPlayerInfoList, outvecPlayerFeatureTattoo), ETID_PLAYER, sector->Position(), 0);
+	}
+}
+*/
+
+void GFieldGridEntityInfoMaker::MakePlayerInfos(GEntityPlayer* pPlayer, GFieldGridSectorVec& vecCells, 
+	vector<TD_SIMPLE_UPDATE_CACHE_PLAYER>& outvecPlayerSimpleInfo,
+	vector<TD_UPDATE_CACHE_PLAYER>& outvecPlayerInfo,
+	vector<TD_PLAYER_FEATURE_TATTOO>& outvecPlayerFeatureTattoo,
+	vector<TD_PLAYER_BUFF_LIST>& outvecPlayerBuffInfo)
+{
+	VALID(pPlayer);
+	GField* pField = pPlayer->GetField();
+	VALID(pField);
+
+	GFieldGrid::EntitySelector* grid_selector =
+		pField->GetGrid().GetEntitySelector();
+
+	class MakePlayerInfoList : public GFieldGrid::Sector::IVisitor
+	{
+	public:
+
+		MakePlayerInfoList(GField& field, const MUID& finderUID, 
+			vector<TD_SIMPLE_UPDATE_CACHE_PLAYER>& outvecPlayerSimpleInfo,
+			vector<TD_UPDATE_CACHE_PLAYER>& outvecPlayerInfo,
+			vector<TD_PLAYER_FEATURE_TATTOO>& outvecPlayerFeatureTattoo,
+			vector<TD_PLAYER_BUFF_LIST>& outvecPlayerBuffInfo)
+			: m_field(field)
+			, m_playerSimpleInfoList(outvecPlayerSimpleInfo)
+			, m_playerInfoList(outvecPlayerInfo)
+			, m_playerFeatureTattoo(outvecPlayerFeatureTattoo)
+			, m_playerBuffInfoList(outvecPlayerBuffInfo)
+			, m_finderUID(finderUID) {}
+
+	private:
+		void OnVisit(const MUID& uid)
+		{
+			GEntityPlayer* const player = m_field.FindPlayer(uid);
+			if (NULL == player)
+				return;
+
+			if (m_finderUID == uid)
+				return;
+
+			if (player->IsNowInvisibility())
+				return;
+
+			TD_UPDATE_CACHE_PLAYER tdUpdateCachePlayer;
+			TD_PLAYER_FEATURE_TATTOO tdPlayerFeatureTattoo;
+			player->MakeTDCacheInfo(tdUpdateCachePlayer, tdPlayerFeatureTattoo);
+
+			TD_PLAYER_BUFF_LIST tdPlayerBuffInfo;
+			tdPlayerBuffInfo.nUIID = player->GetUIID();
+			player->GetBuffList(tdPlayerBuffInfo.nBuffID);
+
+			m_playerSimpleInfoList.push_back(tdUpdateCachePlayer.SimpleInfo);
+			m_playerInfoList.push_back(tdUpdateCachePlayer);
+			m_playerBuffInfoList.push_back(tdPlayerBuffInfo);
+
+			if (tdPlayerFeatureTattoo.IsValid())
+			{
+				m_playerFeatureTattoo.push_back(tdPlayerFeatureTattoo);
+			}
+		}
+	private:
+		GField&									m_field;
+		const MUID&								m_finderUID;
+		vector<TD_SIMPLE_UPDATE_CACHE_PLAYER>&	m_playerSimpleInfoList;
+		vector<TD_UPDATE_CACHE_PLAYER>&			m_playerInfoList;
+		vector<TD_PLAYER_FEATURE_TATTOO>&		m_playerFeatureTattoo;
+		vector<TD_PLAYER_BUFF_LIST>&			m_playerBuffInfoList;
+	};
+
+	for each (GFieldGrid::Sector* const sector in vecCells)
+	{
+		grid_selector->Visit(MakePlayerInfoList(*pField, pPlayer->GetUID(), 
+			outvecPlayerSimpleInfo, outvecPlayerInfo, outvecPlayerFeatureTattoo, outvecPlayerBuffInfo), 
+			ETID_PLAYER, sector->Position(), 0);
 	}
 }

@@ -89,6 +89,7 @@ public:
 	bool IsNowInvincibleTime();
 	bool IsNowSuperarmorTime();
 	bool IsNowAvoidTime();
+	bool IsNowIgnoreAllMFTime();
 
 	// 특정 포커스가 걸려있는지 여부
 	bool HasFocus(TALENT_FOCUS_TYPE nFocus);

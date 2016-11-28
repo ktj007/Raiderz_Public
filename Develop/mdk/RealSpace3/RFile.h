@@ -16,7 +16,6 @@ namespace rs3
 		void	Close(void);
 		void	SeekFromCurrent(long nOffset);
 
-
 	private:
 		MFile	m_MFile;
 		char*	m_pBuffer;

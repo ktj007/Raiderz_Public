@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="AsyncTask">
-      <UniqueIdentifier>{59220fb1-347e-46e1-b00d-ba2e44f2eaa7}</UniqueIdentifier>
+      <UniqueIdentifier>{47bb3df4-873d-48af-8c73-937f50ce510e}</UniqueIdentifier>
     </Filter>
     <Filter Include="base">
-      <UniqueIdentifier>{aa8067e5-b09a-41c1-aef7-94ab4a53727f}</UniqueIdentifier>
+      <UniqueIdentifier>{7639e807-fcca-44f0-a3ba-00b7df23ce52}</UniqueIdentifier>
     </Filter>
     <Filter Include="Mesh">
-      <UniqueIdentifier>{ed9aac22-8666-4f38-93b3-195c86806f59}</UniqueIdentifier>
+      <UniqueIdentifier>{05643ebd-f6e3-474a-b7b5-edac870e9b83}</UniqueIdentifier>
     </Filter>
     <Filter Include="command">
-      <UniqueIdentifier>{aee26a14-f297-46ca-bc3c-fddf6b7c24c7}</UniqueIdentifier>
+      <UniqueIdentifier>{52fb00c9-818f-44dc-8eaa-ae23dd117f79}</UniqueIdentifier>
     </Filter>
     <Filter Include="info">
-      <UniqueIdentifier>{f85469aa-d7c3-4ffd-9516-d6cff3aa7974}</UniqueIdentifier>
+      <UniqueIdentifier>{53f22f62-7c06-4cd8-9535-f41ead6704c6}</UniqueIdentifier>
     </Filter>
     <Filter Include="info\CraftInfo">
-      <UniqueIdentifier>{3d7c9534-f921-4fe1-bbb1-237550c81738}</UniqueIdentifier>
+      <UniqueIdentifier>{2dea9079-0db9-4787-b8fa-7bbe5d8fd353}</UniqueIdentifier>
     </Filter>
     <Filter Include="NotUsedYet">
-      <UniqueIdentifier>{e8579a08-fbdc-4e08-be98-1923b6e0e8ce}</UniqueIdentifier>
+      <UniqueIdentifier>{3074f89b-7452-435a-8edd-f2ceccf20063}</UniqueIdentifier>
     </Filter>
     <Filter Include="ThreadTask">
-      <UniqueIdentifier>{49dde621-094d-4629-bdd1-a8629529f1f3}</UniqueIdentifier>
+      <UniqueIdentifier>{ef56a922-163f-4d56-a14d-83fbd6addb41}</UniqueIdentifier>
     </Filter>
     <Filter Include="tracking">
-      <UniqueIdentifier>{b7cba668-7d5c-43f3-8420-cc6b3a306f20}</UniqueIdentifier>
+      <UniqueIdentifier>{c4678bea-2998-44b5-ab5a-1fb50524cc1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

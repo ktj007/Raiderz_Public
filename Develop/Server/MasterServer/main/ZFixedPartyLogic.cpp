@@ -152,8 +152,9 @@ void ZFixedPartyLogic::CreateFixedParty(int nFixedPartyID)
 
 	// 이름 설정
 	wstring strPartyName = gmgr.pFixedPartyInfoManager->FindFixedPartyName(nFixedPartyID);	
+	pParty->SetPublic(true);
 	pParty->SetName(strPartyName);
-	m_pRouter->ChangeNameRes(node.uidParty, strPartyName);
+	m_pRouter->ChangePublicPartySettingRes(node.uidParty, true, strPartyName);
 }
 
 int ZFixedPartyLogic::GetWaitingPartyCount(void)

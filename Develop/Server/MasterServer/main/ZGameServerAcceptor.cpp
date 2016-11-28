@@ -93,7 +93,7 @@ void ZGameServerAcceptor::MakeParam_SharedFields( vector<TDMG_MANAGED_SHARED_FIE
 	for (size_t i = 0; i < vecAssignmentInfo.size(); i++)
 	{
 		outvecParam[i].nFieldID = vecAssignmentInfo[i].nFieldID;
-		outvecParam[i].nChannelCount = (int)vecAssignmentInfo[i].vecChannelID.size();
+		outvecParam[i].nChannelCount = (int8)vecAssignmentInfo[i].vecChannelID.size();
 
 		for (size_t channel_index = 0; channel_index < vecAssignmentInfo[i].vecChannelID.size(); channel_index++)
 		{

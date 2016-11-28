@@ -18,6 +18,7 @@ using namespace std;
 #include "CSTalentDef.h"
 #include "CSTalentInfoEnum.h"
 #include "CSEffectInfo.h"
+#include "CSConvertIDContainer.h"
 
 class CSTalentInfo;
 
@@ -251,7 +252,7 @@ struct CSTalentConditionInfo
 	struct Release
 	{
 		// 버프 효과를 잃는 조건 타입
-		TALENT_CONDITION	nType;
+		set<TALENT_CONDITION>		setType;
 		// 버프 효과를 잃는 추가 조건 타입
 		vector<TALENT_CONDITION>	vecAdditionType;
 		// 버프 효과를 잃는 조건 인자
@@ -259,8 +260,12 @@ struct CSTalentConditionInfo
 
 		Release()
 		{
-			nType  = TC_NONE;
 			nParam = 0;
+		}
+
+		bool CheckCondition(TALENT_CONDITION condition)
+		{
+			return setType.find(condition) != setType.end();
 		}
 	} infoRelease;
 
@@ -374,7 +379,7 @@ struct RequireBuff
 	bool		bKeepIncludeBuff;
 	bool		bKeepExcludeBuff;
 
-	RequireBuff(): bKeepIncludeBuff(true), bKeepExcludeBuff(true)	{}
+	RequireBuff() : bKeepIncludeBuff(true), bKeepExcludeBuff(true) {}
 };
 
 enum WEAPON_REFRENCE
@@ -402,6 +407,51 @@ enum TARGETING_TYPE
 	TTT_GROUND
 };
 
+struct CSTalentWeaponApplyRate
+{
+	float	fApplyRate;
+	float	fFireApplyRate;
+	float	fColdApplyRate;
+	float	fLightningApplyRate;
+	float	fPoisonApplyRate;
+	float	fHolyApplyRate;
+	float	fUnholyApplyRate;
+
+	CSTalentWeaponApplyRate() {
+		fApplyRate			= 0.f;
+		fFireApplyRate		= 0.f;
+		fColdApplyRate		= 0.f;
+		fLightningApplyRate = 0.f;
+		fPoisonApplyRate	= 0.f;
+		fHolyApplyRate		= 0.f;
+		fUnholyApplyRate	= 0.f;
+	}
+};
+
+enum TALENT_USABLE_TYPE
+{
+	TUT_NONE = 0,
+	TUT_DAMAGE,
+	TUT_HEAL,
+};
+
+enum DAMAGE_SOUND_ATTRIB
+{
+	DSA_BLUNT = 0,
+	DSA_SLICE,
+	DSA_PIERCE,
+	DSA_INVALID
+};
+
+enum PC_SHOVE_TYPE	// for PC and NPC.
+{
+	PST_SCRAPE = 0,
+	PST_PASS,
+	PST_STOP,
+	PST_PUSH,
+	PST_INVALID
+};
+
 /// 탤런트 정보
 // 사용처는 (클라, 서버, 모두)로 표기한다.
 class CSCOMMON_API CSTalentInfo
@@ -421,25 +471,35 @@ public:
 	int						m_nENCost;						// en cost(Not Used) (모두)
 	int						m_nSTACost;						// sta cost(Not Used) (모두)
 	TALENT_CATEGORY			m_nCategory;					// 카테고리(모두)
-	TALENT_DAMAGETYPE		m_nDmgType;
 	TALENT_TYPE				m_nTalentType;					// 탤런트 타입 (모두)
 	TALENT_SKILL_TYPE		m_nSkillType;					// 탤런트 타입중 스킬일때의 타입 (모두)SwordTrailEffectForFocus
+	TALENT_DAMAGE_TYPE		m_nDamageType;
+	TALENT_USABLE_TYPE		m_nUsableType;
 	TALENT_STYLE			m_nStyle;						// 탤런트 스타일
-	TALENT_EXTRA_PASSIVE_TYPE	m_nExtraPassive;			// 탤런트 타입이 extra passive일 때 이 항목의 패시브 능력을 가진다. (모두)
-	int							m_nExtraPassiveParam;		// 패시브의 추가적인 수치
-	TALENT_EXTRA_PASSIVE_TYPE	m_nExtraPassive2;			// 탤런트 타입이 extra passive일 때 이 항목의 패시브 능력을 가진다. (모두)
-	int							m_nExtraPassiveParam2;		// 패시브의 추가적인 수치
+#define MAX_EXTRA_PASSIVE_PARAM_COUNT 2
+	TALENT_EXTRA_PASSIVE_TYPE	m_nExtraPassive;											// 탤런트 타입이 extra passive일 때 이 항목의 패시브 능력을 가진다. (모두)
+	int							m_nExtraPassiveParam[MAX_EXTRA_PASSIVE_PARAM_COUNT];		// 패시브의 추가적인 수치
+	TALENT_EXTRA_PASSIVE_TYPE	m_nExtraPassive2;											// 탤런트 타입이 extra passive일 때 이 항목의 패시브 능력을 가진다. (모두)
+	int							m_nExtraPassiveParam2[MAX_EXTRA_PASSIVE_PARAM_COUNT];		// 패시브의 추가적인 수치
 
 	TALENT_EXTRA_ACTIVE_TYPE	m_nExtraActive;				// 탤런트 타입이 extra active일 때 해당 스킬을 사용하면 특정한 행동을 한다. (모두)
 	int							m_nExtraActiveParam1;		// 액티브의 추가적인 수치
 	int							m_nExtraActiveParam2;		// 액티브의 추가적인 수치
 	uint32					m_nAICategories;				// AI를 위한 탤런트 타입 (서버)
 	TALENT_CONDITION		m_nTiming;					// 발동 조건
-	bool					m_bIgnoreMesmerize;				// Disabled 상태를 무시하고 사용 가능한지 여부(모두)
+#define TALENT_IGNORE_MESMERIZE_DISABLED	-1
+	int						m_nIgnoreMesmerize;				// Disabled 상태를 무시하고 사용 가능한지 여부(모두)
+	bool					m_bIgnoreMotionfactor;
+	bool					m_bUseIgnoreAllMFTime;
+	float					m_fIgnoreAllMFTimeStart;
+	float					m_fIgnoreAllMFTimeEnd;
 	float					m_fCoolTime;					// 쿨타임(초)
 	float					m_fDurationTime;				// 탤런트 지속시간
 
 	int						m_nTalentLine;					// 랭크 라인 (모두)
+	int						m_nComboTalentLine;
+	vector<int>				m_vecPrevComboTalentLine;
+	float					m_fComboStartTime;
 	int8					m_nRank;						// 랭크 (모두)
 	float					m_fCastingTime;					// 캐스팅하는데 걸리는 시간 (모두)
 	unsigned int			m_nEnabledStanceFlag;			// 탤런트 사용 가능한 스탠스 (모두)
@@ -450,11 +510,17 @@ public:
 	int						m_nExtraHitCapsuleGroup;		// 탤런트가 ExtraPhase가 되면 바뀔 NPC 캡슐그룹번호 (모두)
 	int						m_nExtraHitCapsuleGroup2;		// 탤런트가 ExtraPhase2가 되면 바뀔 NPC 캡슐그룹번호 (모두)
 	int						m_nExtraHitCapsuleGroup3;		// 탤런트가 ExtraPhase3가 되면 바뀔 NPC 캡슐그룹번호 (모두)
+	float					m_fEffectRange;
 
 	bool					m_bUntrainable;					// 탤런트 초기화 허용여부 (모두)
+	bool					m_bShowLearnedTalent;
+
+	bool					m_bShowEmoteMsg;
 
 	bool					m_bAvoidable;					// 회피 가능
 	bool					m_bAvailableOnGuard;			// 방어중 사용 가능 여부(모두)
+
+	bool					m_bGuardKnockback;
 
 
 	// 유효성 -------------------------
@@ -469,6 +535,8 @@ public:
 	tstring					m_szExtraActAnimation;			// 탤런트 사용 애니메이션 (모두)
 	tstring					m_szExtraActAnimation2;			// 탤런트 사용 애니메이션 (모두)
 	tstring					m_szExtraActAnimation3;			// 탤런트 사용 애니메이션 (모두)
+	tstring					m_szGrappledAni;
+	tstring					m_szGrappledBone;
 
 	tstring					m_szIcon;						// 아이콘
 	tstring					m_szTargetArt;					// 타겟 이펙트(Not Used)
@@ -515,6 +583,7 @@ public:
 	CSTalentEvents			m_Events;						///< 이벤트 정보
 
 	bool					m_bUseBloodEffect;				///< 탤런트사용으로 피격시 출혈 이펙트 사용
+	float					m_fHitBloodScale;
 
 	RequireBuff				m_RequireBuff;
 
@@ -560,6 +629,7 @@ public:
 // CLIENT만 사용 -------------
 public:
 	tstring					m_szDesc;				///< 설명(클라)
+	vector<tstring>			m_vecstrDescParam;
 	float					m_fExtraMotionTime;		///< Extra 모션의 플레이 시간 - TOOL에서 사용
 	float					m_fExtraMotionTime2;	///< Extra2 모션의 플레이 시간 - TOOL에서 사용
 	float					m_fExtraMotionTime3;	///< Extra3 모션의 플레이 시간 - TOOL에서 사용
@@ -567,6 +637,8 @@ public:
 	bool					m_bAffectedMotionSpd;	///< 모션 속도에 영향받는 탈랜트인지 여부
 
 	TARGETING_TYPE			m_eTargetingType;		///< 타겟팅 타입
+
+	DAMAGE_SOUND_ATTRIB		m_nDamageSoundAttrib;
 // CLIENT만 사용 -------------^
 
 // SERVER만 사용 -------------
@@ -597,7 +669,6 @@ public:
 	// 전투 공식 관련 -----------------
 	GTalentDrain			m_Drain;
 	bool					m_bCriticalEnable;
-	float					m_fWeaponApplyRate;		// 무기 대미지 배율 (1 = 100%)
 	WEAPON_REFRENCE			m_WeaponReference;		// 계산 공식에서 참조 되는 무기
 
 	float					m_fCriticalApplyRate;	// 추가 치명 배율 (1 = 100%)
@@ -632,6 +703,24 @@ public:
 
 	GUARD_CRASH_LEVEL		m_nGuardCrashLevel;	// 가드 크래시 레벨 (가드를 무시 정도)
 
+	int						m_nSkillIntensity;
+	float					m_fPC_ReturnAniStartTime;
+	bool					m_bFreezeFrame;
+
+	PC_SHOVE_TYPE			m_nPC_ShoveType;
+	PC_SHOVE_TYPE			m_nNPC_ShoveType;
+
+	CSConvertIDContainer	m_ConvertTalent;
+	CSConvertIDContainer	m_ConvertBuff;
+
+	// stores which talent lines refer this talent (m_ConvertTalent and m_ConvertBuff).
+	set<int>				m_setReferredByLine;
+
+	bool					m_bArenaCooltimeResetable;
+
+	// Element Attribute Enchants --------------------
+	CSTalentWeaponApplyRate	m_WeaponApplyRate;		// 무기 대미지 배율 (1 = 100%)
+
 	// Script -------------------------
 	tstring					m_strLuaOnStart;
 	tstring					m_strLuaOnAct;
@@ -657,12 +746,13 @@ public:
 	bool IsPassiveSkill() const;
 	bool IsNeedTarget() const;
 	bool IsMagicDamage() const;
-	bool HasRequireFocus();
-	bool HasNextFocus();
-	bool HasDamage();
-	bool HasHealEffect();
-	bool HasMotionfactor();
-	bool ExistMode() { return m_Modes.m_bExistMode; }
+	bool HasRequireFocus() const;
+	bool HasNextFocus() const;
+	bool HasDamage() const;
+	bool HasHealEffect() const;
+	bool HasMotionfactor() const;
+	bool HasForceMF() const;
+	bool ExistMode() const { return m_Modes.m_bExistMode; }
 
 	CSTalentInfo* GetMode(int nMode);
 	void InsertMode(CSTalentInfo* pModeTalentInfo);
@@ -670,4 +760,12 @@ public:
 
 	bool IsPhysicalAttack(void) const;
 	bool IsSelfRebirth() const;
+
+	bool IsComboRequired() const;
+	bool IsAbleToComboBy(int nByTalentLine) const;
+
+	bool IsReferredBy(int nByTalentLine) const;
+
+
+	bool IsIgnoreMesmerize() const { return m_nIgnoreMesmerize != TALENT_IGNORE_MESMERIZE_DISABLED; }
 };

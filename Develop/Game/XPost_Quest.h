@@ -6,15 +6,13 @@
 
 inline void XPostQuest_RequestGive(int nQuestID)
 {
-	XPOSTCMD1(MC_QUEST_GIVE_REQ, 	
-		MCommandParameterInt(nQuestID));
+	XPOSTCMD0(MC_QUEST_GIVE_REQ);
 }
 
 inline void XPostQuest_RequestReward(const MUID& uidNPC, int nQuestID, int nSelectedReward)
 {
-	XPOSTCMD3(MC_QUEST_REWARD_REQ, 
-		MCommandParameterUID(uidNPC), 
-		MCommandParameterInt(nQuestID), 
+	XPOSTCMD2(MC_QUEST_REWARD_REQ, 
+		MCommandParameterUID(uidNPC),
 		MCommandParameterInt(nSelectedReward));
 }
 

@@ -22,7 +22,7 @@ bool GWhisperBackMsgHandler::OnRequest(const minet::MCommand* pCmd)
 
 bool GWhisperBackMsgHandler::OnResponse(const minet::MCommand* pCmd)
 {
-	int nCID = m_msgHelper.GetSenderID(pCmd);
+	CID nCID = m_msgHelper.GetSenderID(pCmd);
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nCID);
 	VALID_RET(pPlayer != NULL, false);
 

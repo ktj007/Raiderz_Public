@@ -6,7 +6,7 @@
 struct DBP_CHAR_INSERT
 {
 	MUID uidPlayer;
-	int64 nAID;
+	AID nAID;
 	wchar_t szName[PLAYER_NAME_LEN+1];
 	uint8 nLevel;
 	int nXP;
@@ -17,12 +17,14 @@ struct DBP_CHAR_INSERT
 	int nFeatureFace;
 	short nFeatureHairColor;
 	short nFeatureSkinColor;
-	uint8 nEyeColor;
-	uint8 nMakeUp;
-	uint8 nTattooType;
+	int16 nEyeColor;
+	int16 nMakeUp;
+	int16 nTattooType;
 	short nTattooPosX;
 	short nTattooPosY;
 	uint8 nTattooScale;
+	int16 nTattooColor;
+	int16 nVoice;
 	int nTalentStyle;
 	int nEquipmentIndex;
 	int nEquipmentColorIndex;	
@@ -49,10 +51,12 @@ struct DBP_CHAR_INSERT
 		this->nEyeColor				= pInsertCharInfo->nEyeColor;
 
 		this->nMakeUp				= pInsertCharInfo->nMakeUp;
+		this->nVoice				= pInsertCharInfo->nVoice;
 		this->nTattooType			= pInsertCharInfo->nTattooType;
 		this->nTattooPosX			= pInsertCharInfo->nTattooPosX;
 		this->nTattooPosY			= pInsertCharInfo->nTattooPosY;
 		this->nTattooScale			= pInsertCharInfo->nTattooScale;
+		this->nTattooColor			= pInsertCharInfo->nTattooColor;
 
 		this->nTalentStyle			= pInsertCharInfo->nTalentStyle;
 		this->nEquipmentIndex		= pInsertCharInfo->nEquipmentIndex;
@@ -73,10 +77,12 @@ struct DBP_CHAR_INSERT
 	, nFeatureSkinColor(0)
 	, nEyeColor(0)
 	, nMakeUp(0)
+	, nVoice(0)
 	, nTattooType(0)
 	, nTattooPosX(0)
 	, nTattooPosY(0)
 	, nTattooScale(0)
+	, nTattooColor(0)
 	, nTalentStyle(0)
 	, nEquipmentIndex(0)
 	, nEquipmentColorIndex(0)	

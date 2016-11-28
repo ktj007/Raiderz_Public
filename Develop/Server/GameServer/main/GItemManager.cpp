@@ -87,11 +87,6 @@ GItem* GItemManager::MakeNewItem(GItem* pItem, int64 nIUID, int nAmount)
 		pNewItem->m_nEnchants[i] = pItem->m_nEnchants[i];
 	}
 
-	//SoulHunterZ
-	pNewItem->m_nAttuneLvl = pItem->m_nAttuneLvl;
-	pNewItem->m_nXP = pItem->m_nXP;
-	pNewItem->m_nNextAttuneXP = pItem->m_nNextAttuneXP;
-
 	return pNewItem;
 }
 
@@ -184,6 +179,7 @@ void GItemManager::InsertItemData( GItemData* pItemData )
 	GItemData* pLastItemData = GetItemData(pItemData->m_nID);
 	if (NULL != pLastItemData)
 	{
+		_VLOGGER->Log(_T(ITEM_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}
 

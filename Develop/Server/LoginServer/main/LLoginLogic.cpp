@@ -21,9 +21,9 @@ LLoginLogic::LLoginLogic()
 
 bool LLoginLogic::Login(MUID uidPlayer, wstring strUserID, wstring strPassword)
 {
-	AddPlayerObject(uidPlayer);
+	LPlayerObject* pNewPlayerObj = AddPlayerObject(uidPlayer);
 
-	LDBT_ACC_LOGIN data(uidPlayer, strUserID, L"", strUserID, strPassword, L"testing");
+	LDBT_ACC_LOGIN data(uidPlayer, strUserID, L"", strUserID, strPassword, pNewPlayerObj->GetRemoteIP());
 
 	bool bRet = gsys.pDBManager->LoginGetInfo(data);
 
@@ -40,10 +40,27 @@ bool LLoginLogic::PmangLogin(MUID uidPlayer, wstring strLoginStream)
 	return false;
 }
 
-void LLoginLogic::AddPlayerObject( MUID uidPlayer )
+bool LLoginLogic::PWELogin(MUID uidPlayer, wstring strUserID, wstring strPassword)
+{
+	LPlayerObject* pNewPlayerObj = AddPlayerObject(uidPlayer);
+
+	LDBT_ACC_LOGIN data(uidPlayer, strUserID, L"", strUserID, strPassword, pNewPlayerObj->GetRemoteIP());
+
+	bool bRet = gsys.pDBManager->PWELoginGetInfo(data);
+
+	if (!bRet)
+	{
+		DelPlayerObject(uidPlayer);
+	}
+
+	return bRet;
+}
+
+LPlayerObject* LLoginLogic::AddPlayerObject( MUID uidPlayer )
 {
 	LPlayerObject* pNewPlayer = (LPlayerObject*)gmgr.pPlayerObjectManager->NewObject(uidPlayer);
 	gmgr.pPlayerObjectManager->AddObject(pNewPlayer);
+	return pNewPlayer;
 }
 
 void LLoginLogic::DelPlayerObject( MUID uidPlayer )

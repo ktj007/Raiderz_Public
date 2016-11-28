@@ -34,7 +34,7 @@ private :
 	{
 	public :
 		_RESULT() : m_nGSN(0), m_bNEW_ACC(true) {}
-		int64	m_nGSN;
+		AID		m_nGSN;
 		wstring m_strPWD;
 		bool	m_bNEW_ACC;
 	};

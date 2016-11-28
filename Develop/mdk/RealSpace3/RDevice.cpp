@@ -125,7 +125,6 @@ void RDevice::Flip()
 	IncreaseFrameCount();
 
 	DWORD currentTime=timeGetTime();
-	float fFrameLimit = 60;
 	m_dwLastElapsedTime = currentTime - m_dwLastFlipTime;
 	if(m_dwLastFPSTime+FPS_INTERVAL<currentTime)
 	{
@@ -133,9 +132,8 @@ void RDevice::Flip()
 		m_dwLastFPSTime=currentTime;
 		m_nLastFPSFrameCount=m_nFrameCount;
 	}
-	
-	m_dwLastFlipTime = currentTime;
 
+	m_dwLastFlipTime = currentTime;
 
 	REngine::GetResourceProfiler().Reset();
 	REngine::GetResourceProfiler().UpdateTimeQueue("FrameTime", m_dwLastElapsedTime );

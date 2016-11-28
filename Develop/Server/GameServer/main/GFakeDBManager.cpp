@@ -170,7 +170,7 @@ bool GFakeDBManager::NPCShop_BuyUpdate( const GDBT_NPC_SHOP_TRADE_DATA& data )
 	return true;
 }
 
-//bool MockDBManager::ItemInsert( const MUID& uidPlayer, const int nCID, const int nItemID, const int nQty, const int nMaxQty, const int nDura, const int nColor, bool bBind, const uint8 nUsageState , const int nUsagePeriod, const int nAddExpiTimeMin, const int nPlayTime, const uint8 nCreateType, const bool bWriteLog , vector<DB_ITEM_UPDATE_QUANTITY>& vecRet )
+//bool MockDBManager::ItemInsert( const MUID& uidPlayer, const CID nCID, const int nItemID, const int nQty, const int nMaxQty, const int nDura, const int nColor, bool bBind, const uint8 nUsageState , const int nUsagePeriod, const int nAddExpiTimeMin, const int nPlayTime, const uint8 nCreateType, const bool bWriteLog , vector<DB_ITEM_UPDATE_QUANTITY>& vecRet )
 //{
 //	const int nCnt	= nQty / nMaxQty;
 //	const int nRQty = nQty % nMaxQty;
@@ -536,7 +536,7 @@ class FakeLogin : public GDBTaskLogin
 {
 public :
 	FakeLogin(const MUID& uidPlayer) : GDBTaskLogin(uidPlayer) {}
-	void SetAID(const int64 nAID)
+	void SetAID(const AID nAID)
 	{
 		m_Result.m_nGSN = nAID;
 	}
@@ -544,19 +544,19 @@ public :
 
 bool GFakeDBManager::LoginGetInfo( GDBT_ACC_LOGIN& data )
 {
-	static int64 AID = 1;
+	static AID nAID = 1;
 
 	FakeLogin t(data.m_uidPlayer);
 	
 	t.Input(data);
-	t.SetAID(AID++);
+	t.SetAID(nAID++);
 	t.SetTaskSuccess();
 	t.OnPrePost();
 	t.OnCompleted();
 	return true;
 }
 
-bool GFakeDBManager::CharGetLookList( const MUID& uidPlayer, const int64 nAID )
+bool GFakeDBManager::CharGetLookList( const MUID& uidPlayer, const AID nAID )
 {
 	GDBTaskCharGetLookList t(uidPlayer);
 
@@ -628,7 +628,7 @@ public :
 			ii.nDura = gmgr.pItemManager->GetItemData(vwi[i])->m_nMaxDurability;
 			ii.nMaxDura = gmgr.pItemManager->GetItemData(vwi[i])->m_nMaxDurability;
 			ii.nSlotType = 1;
-			ii.nSlotID = i;
+			ii.nSlotID = static_cast<int16>(i);
 			ii.nItemID = vwi[i];
 			ii.nStackAmt = 1;
 			ii.nIUID = GFakeDBManager::NewIUID();
@@ -644,7 +644,7 @@ public :
 			ii.nDura = gmgr.pItemManager->GetItemData(vdi[i])->m_nMaxDurability;
 			ii.nMaxDura = gmgr.pItemManager->GetItemData(vdi[i])->m_nMaxDurability;
 			ii.nSlotType = 1;
-			ii.nSlotID = vwi.size() + i;
+			ii.nSlotID = static_cast<int16>(vwi.size() + i);
 			ii.nItemID = vdi[i];
 			ii.nStackAmt = 1;
 			ii.nIUID = GFakeDBManager::NewIUID();
@@ -688,6 +688,9 @@ public :
 		c.fPosX = 62120.562500f;
 		c.fPosY = 43085.992188f;
 		c.fPosZ = 258.071350f;
+		c.fDirX = 1.f;
+		c.fDirY = 1.f;
+		c.fDirZ = 0.f;
 		c.nFeatureFace = 1;
 		c.nFeatureHair = 1;
 		c.nFeatureHairColor = 1;

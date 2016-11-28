@@ -7,6 +7,8 @@ typedef set<int> SET_TALENTID;
 class GEntityPlayer;
 class GTalentInfo;
 
+struct GTalentEnumInfo;
+
 
 /// 플레이어가 배운 탤런트들
 class GPlayerTalent : public MTestMemPool<GPlayerTalent>
@@ -18,6 +20,8 @@ private:
 	int				m_nRemainTP;			///< 남은 TP
 
 	MUID			m_nUsedTalentItemUID;	///< 사용한 탤런트 아이템의 UID
+
+	SET_TALENTID	m_setInternalTalentID;	// This set stores available talents for the player, but only for internal purpose.
 
 public:
 	GPlayerTalent(GEntityPlayer* pOwner);
@@ -51,6 +55,23 @@ public:
 
 	bool IsTPConsumeTalent(int nTalentID);
 
+	TALENT_STYLE GetMainTalentStyle();
+
+	bool IsStyleTalentLearnable(TALENT_STYLE nLearnStyle);
+	void CheckAvailableMasteryTalent(TALENT_STYLE nStyle, vector<int>& outvecTalentID);
+
+	SET_TALENTID GetTopRankTalentID();
+
+private:
+	typedef map<int, GTalentInfo*> MAP_TOPRANK_TALENT;
+	MAP_TOPRANK_TALENT m_mapTopRankTalent;
+
+	void EnumTalents(GTalentEnumInfo& out, bool bIncludeMasteryTalent=true);
+
+	// TALENT_STYLE GetTalentStyle(GTalentEnumInfo& talentEnumInfo);
+	bool IsTrainableTalentStyle(TALENT_STYLE nStyle);
+	bool HasHybridPassive(GTalentEnumInfo& talentEnumInfo);
+
 private:
 	/// 채집 탤런트 학습 여부 관리
 	class GGatherTalentRank
@@ -64,7 +85,8 @@ private:
 	};
 	GGatherTalentRank m_GatherTalentRank;
 
-	void Delete(int nTalentID);
+	void Delete(int nTalentID, bool bRefreshInternalTalent = true);
+	void RefreshInternalTalentID();
 };
 
 #endif

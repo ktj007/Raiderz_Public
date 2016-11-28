@@ -97,7 +97,7 @@ void GTalentEventChecker::OnUpdatePhaseAct( GTalent* pTalent, float fDelta )
 					}
 
 					GExtraActiveTalentRunner ExtraActiveTalentRunner;
-					ExtraActiveTalentRunner.Apply(pTalent->GetOwner(), vec3(pTalentEventInfo->m_vLocal.x, pTalentEventInfo->m_vLocal.y, 0.0f), pTalentInfo, pTarget);
+					ExtraActiveTalentRunner.Apply(pTalent->GetOwner(), vec3(pTalentEventInfo->m_vLocal.x, pTalentEventInfo->m_vLocal.y, 0.0f), pTalentInfo, pTarget, &infoTarget);
 				}break;
 			case TE_DELAYED_ACT:
 				{

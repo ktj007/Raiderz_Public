@@ -37,8 +37,11 @@ void GRegenUpdater::Update(float fDelta, GEntityActor* pActor)
 	// STA 리젠 - 플레이어만 쓴다.
 	bool bSTARegenUpdate = UpdateSTARegen(pActor);
 
+	// GM god mode - forcibly route update.
+	bool bGod = pActor->IsPlayer() && ToEntityPlayer(pActor)->IsGod();
 
-	if (bHPRegenUpdate || bENRegenUpdate || bSTARegenUpdate)
+
+	if (bHPRegenUpdate || bENRegenUpdate || bSTARegenUpdate || bGod)
 	{
 		pActor->OnUpdatedStatus();
 	}

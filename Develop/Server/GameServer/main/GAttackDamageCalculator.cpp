@@ -14,7 +14,7 @@ float GAttackDamageCalculator::CalcAttackDamage( GEntityActor* pAttacker, GEntit
 {
 	int nTalentDamage = 0;			// 탤런트 데미지
 	int nWeaponDamage = 0;			// 무기 데미지
-	float fWeaponApplyRate = pTalentInfo->m_fWeaponApplyRate;		// 무기 데미지 적용율
+	float fWeaponApplyRate = pTalentInfo->m_WeaponApplyRate.fApplyRate;		// 무기 데미지 적용율
 
 	float fTalentFactor1 = 1.0f;	// 탤런트 보정율1
 	float fTalentFactor2 = 1.0f;	// 탤런트 보정율267
@@ -35,16 +35,16 @@ float GAttackDamageCalculator::CalcAttackDamage( GEntityActor* pAttacker, GEntit
 		GEntityPlayer* pPlayerAttacker = static_cast< GEntityPlayer*>(pAttacker);
 
 		// 무기 데미지
-		nWeaponDamage = CalcPlayerWeaponDamage(pPlayerAttacker, pTalentInfo, bCritical);
+		nWeaponDamage = CalcPlayerWeaponDamage(pPlayerAttacker, pTalentInfo->m_nDamageType, pTalentInfo->m_WeaponReference);
 
 		// 순수 마법일 경우
 		if (pTalentInfo->IsMagicDamage())
 		{
 			// 탤런트 보정율1
-			fTalentFactor1 = CalcTalentFactor1(pAttacker, pTalentInfo->m_nDamageAttrib, pTalentInfo->m_fWeaponApplyRate);
+			fTalentFactor1 = CalcTalentFactor1(pAttacker, pTalentInfo->m_nDamageAttrib, fWeaponApplyRate);
 
 			// 방어구 보정율1
-			fArmorFactor1 = CalcArmorFactor1(pAttacker, pTalentInfo);
+			fArmorFactor1 = CalcArmorFactor1(pAttacker, pTalentInfo->m_nDamageAttrib, fWeaponApplyRate);
 
 			// 주문 증폭력
 			fSpellPower = pPlayerAttacker->GetSpellPower();
@@ -52,13 +52,13 @@ float GAttackDamageCalculator::CalcAttackDamage( GEntityActor* pAttacker, GEntit
 		else
 		{
 			// 탤런트 보정율2
-			fTalentFactor2 = CalcTalentFactor2(pPlayerAttacker, pTalentInfo);
+			fTalentFactor2 = CalcTalentFactor2(pPlayerAttacker, pTalentInfo->m_nDamageType, pTalentInfo->m_WeaponReference);
 
-			fArmorFactor2 = CalcArmorFactor2(pAttacker, pTalentInfo);
+			fArmorFactor2 = CalcArmorFactor2(pAttacker, pTalentInfo->m_WeaponApplyRate.fApplyRate, pTalentInfo->m_WeaponReference);
 		}
 
 		// 스탯 보정율
-		fCharacterFactor = CalcCharacterFactor(pPlayerAttacker, pTalentInfo);
+		fCharacterFactor = CalcCharacterFactor(pPlayerAttacker, pTalentInfo->m_nDamageType, pTalentInfo->m_WeaponReference);
 	}
 	else if (pAttacker->IsNPC())
 	{
@@ -77,19 +77,19 @@ float GAttackDamageCalculator::CalcAttackDamage( GEntityActor* pAttacker, GEntit
 
 
 	// 버프
-	fBuffPlusFactor = CalcBuffPlusFactor(pAttacker, pTalentInfo);
+	fBuffPlusFactor = CalcBuffPlusFactor(pAttacker, pTalentInfo->m_nDamageType);
 
 	// 버프 방어율
-	fBuffDefenceFactor = CalcBuffDefenceFactor(pAttacker, pVictim, pTalentInfo);
+	fBuffDefenceFactor = CalcBuffDefenceFactor(pAttacker, pVictim, pTalentInfo->m_nDamageAttrib, pTalentInfo->m_WeaponReference);
 
 
 	// 크리티컬 배율
 	if (bCritical)
 	{
-		fCriticalFactor = m_pCriticalCalculator->CalcCriticalDamageFactor(pAttacker, pTalentInfo);
+		fCriticalFactor = m_pCriticalCalculator->CalcCriticalDamageFactor(pAttacker, pTalentInfo->m_nDamageAttrib, pTalentInfo->m_nDamageType, pTalentInfo->m_nSkillType);
 	}
 
-	nTalentDamage = CalcTalentDamage(DamageInfo, bCritical);
+	nTalentDamage = CalcTalentDamage(DamageInfo);
 
 	_ASSERT(fTalentFactor1 < 10.0f);
 	_ASSERT(fArmorFactor1 < 10.0f);
@@ -107,14 +107,189 @@ float GAttackDamageCalculator::CalcAttackDamage( GEntityActor* pAttacker, GEntit
 	return fFinalDamage;
 }
 
+/*
+float GAttackDamageCalculator::CalcBuffAttackDamage( GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo, bool bCritical, const GDamageRangedInfo& DamageInfo )
+{
+	int nTalentDamage = 0;
+	int nWeaponDamage = 0;
+	float fWeaponApplyRate = pBuffInfo->m_WeaponApplyRate.fApplyRate;
+
+	float fTalentFactor1 = 1.0f;
+	float fTalentFactor2 = 1.0f;
+
+	float fArmorFactor1 = 1.0f;
+	float fArmorFactor2 = 1.0f;
+
+	float fCharacterFactor = 1.0f;
+	float fBuffPlusFactor = 0.0f;
+	float fBuffDefenceFactor = 1.0f;
+	float fCriticalFactor = 1.0f;
+
+	float fSpellPower = 1.0f;
+
+	if (pAttacker)
+	{
+		if (pAttacker->IsPlayer())
+		{
+			GEntityPlayer* pPlayerAttacker = static_cast<GEntityPlayer*>(pAttacker);
+			nWeaponDamage = CalcPlayerWeaponDamage(pPlayerAttacker, pBuffInfo->m_nDamageType);
+
+			if (pBuffInfo->IsMagicDamage())
+			{
+				fTalentFactor1 = CalcTalentFactor1(pAttacker, pBuffInfo->m_nDamageAttrib, fWeaponApplyRate);
+				fArmorFactor1 = CalcArmorFactor1(pAttacker, pBuffInfo->m_nDamageAttrib, fWeaponApplyRate);
+				fSpellPower = pPlayerAttacker->GetSpellPower();
+			}
+			else
+			{
+				fTalentFactor2 = CalcTalentFactor2(pPlayerAttacker, pBuffInfo->m_nDamageType);
+				fArmorFactor2 = CalcArmorFactor2(pAttacker, pBuffInfo->m_WeaponApplyRate.fApplyRate);
+			}
+
+			fCharacterFactor = CalcCharacterFactor(pPlayerAttacker, pBuffInfo->m_nDamageType);
+		}
+		else if (pAttacker->IsNPC())
+		{
+			GEntityNPC* pNPCAttacker = static_cast<GEntityNPC*>(pAttacker);
+			nWeaponDamage = CalcNPCWeaponDamage(pNPCAttacker->GetNPCInfo());
+
+			if (pBuffInfo->IsMagicDamage())
+			{
+				fSpellPower = pNPCAttacker->GetSpellPower();
+			}
+		}
+
+		fBuffPlusFactor = CalcBuffPlusFactor(pAttacker, pBuffInfo->m_nDamageType);
+		fBuffDefenceFactor = CalcBuffDefenceFactor(pAttacker, pVictim, pBuffInfo->m_nDamageAttrib);
+
+		if (bCritical)
+		{
+			fCriticalFactor = m_pCriticalCalculator->CalcCriticalDamageFactor(pAttacker, pBuffInfo->m_nDamageAttrib, pBuffInfo->m_nDamageType, ST_NONE);
+		}
+	}
+
+	nTalentDamage = CalcTalentDamage(DamageInfo);
+
+	_ASSERT(fTalentFactor1 < 10.0f);
+	_ASSERT(fArmorFactor1 < 10.0f);
+	_ASSERT(fTalentFactor2 < 10.0f);
+	_ASSERT(fArmorFactor2 < 10.0f);
+	_ASSERT(fWeaponApplyRate < 10.0f);
+
+	float fFinalDamage = GMath::TruncateToInt(nTalentDamage * fTalentFactor1 * fArmorFactor1 +
+		nWeaponDamage * fWeaponApplyRate * fTalentFactor2 * fArmorFactor2)
+		* (fCharacterFactor + fBuffPlusFactor)
+		* fCriticalFactor
+		* fBuffDefenceFactor
+		* fSpellPower;
+
+	return fFinalDamage;
+}
+*/
+
+bool GAttackDamageCalculator::CalcBuffRangedDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo, GDamageRangedInfo* poutDamageRangedInfo, GHealRangedInfo* poutHealRangedInfo, float* pfoutCriticalFactor)
+{
+	int nWeaponMinDamage = 0;
+	int nWeaponMaxDamage = 0;
+	float fWeaponApplyRate = pBuffInfo->m_WeaponApplyRate.fApplyRate;
+
+	float fTalentFactor1 = 1.0f;
+	float fTalentFactor2 = 1.0f;
+
+	float fArmorFactor1 = 1.0f;
+	float fArmorFactor2 = 1.0f;
+
+	float fCharacterFactor = 1.0f;
+	float fBuffPlusFactor = 0.0f;
+	float fBuffDefenceFactor = 1.0f;
+	float fCriticalFactor = 1.0f;
+
+	float fSpellPower = 1.0f;
+
+	if (pAttacker)
+	{
+		if (pAttacker->IsPlayer())
+		{
+			GEntityPlayer* pPlayerAttacker = static_cast<GEntityPlayer*>(pAttacker);
+
+			nWeaponMinDamage = CalcPlayerWeaponDamage(pPlayerAttacker, pBuffInfo->m_nDamageType, WR_RIGHT, CTWD_MIN);
+			nWeaponMaxDamage = CalcPlayerWeaponDamage(pPlayerAttacker, pBuffInfo->m_nDamageType, WR_RIGHT, CTWD_MAX);
+
+			if (pBuffInfo->IsMagicDamage())
+			{
+				fTalentFactor1 = CalcTalentFactor1(pAttacker, pBuffInfo->m_nDamageAttrib, fWeaponApplyRate);
+				fArmorFactor1 = CalcArmorFactor1(pAttacker, pBuffInfo->m_nDamageAttrib, fWeaponApplyRate);
+				fSpellPower = pPlayerAttacker->GetSpellPower();
+			}
+			else
+			{
+				fTalentFactor2 = CalcTalentFactor2(pPlayerAttacker, pBuffInfo->m_nDamageType);
+				fArmorFactor2 = CalcArmorFactor2(pAttacker, pBuffInfo->m_WeaponApplyRate.fApplyRate);
+			}
+
+			fCharacterFactor = CalcCharacterFactor(pPlayerAttacker, pBuffInfo->m_nDamageType);
+		}
+		else if (pAttacker->IsNPC())
+		{
+			GEntityNPC* pNPCAttacker = static_cast<GEntityNPC*>(pAttacker);
+
+			nWeaponMinDamage = CalcNPCWeaponDamage(pNPCAttacker->GetNPCInfo(), CTWD_MIN);
+			nWeaponMaxDamage = CalcNPCWeaponDamage(pNPCAttacker->GetNPCInfo(), CTWD_MAX);
+
+			if (pBuffInfo->IsMagicDamage())
+			{
+				fSpellPower = pNPCAttacker->GetSpellPower();
+			}
+		}
+
+		fBuffPlusFactor = CalcBuffPlusFactor(pAttacker, pBuffInfo->m_nDamageType);
+		fBuffDefenceFactor = CalcBuffDefenceFactor(pAttacker, pVictim, pBuffInfo->m_nDamageAttrib);
+
+		fCriticalFactor = m_pCriticalCalculator->CalcCriticalDamageFactor(pAttacker, pBuffInfo->m_nDamageAttrib, pBuffInfo->m_nDamageType, ST_NONE);
+	}
+
+	_ASSERT(fTalentFactor1 < 10.0f);
+	_ASSERT(fArmorFactor1 < 10.0f);
+	_ASSERT(fTalentFactor2 < 10.0f);
+	_ASSERT(fArmorFactor2 < 10.0f);
+	_ASSERT(fWeaponApplyRate < 10.0f);
+
+	int nFinalMinDamage = CalcBuffFinalDamage(pBuffInfo->m_nMinDamage, fTalentFactor1, fArmorFactor1, nWeaponMinDamage, fWeaponApplyRate, fTalentFactor2, fArmorFactor2, fCharacterFactor, fBuffPlusFactor, fBuffDefenceFactor, fSpellPower);
+	int nFinalMaxDamage = CalcBuffFinalDamage(pBuffInfo->m_nMaxDamage, fTalentFactor1, fArmorFactor1, nWeaponMaxDamage, fWeaponApplyRate, fTalentFactor2, fArmorFactor2, fCharacterFactor, fBuffPlusFactor, fBuffDefenceFactor, fSpellPower);
+	int nFinalMinHeal = CalcBuffFinalDamage(pBuffInfo->m_nMinHeal, fTalentFactor1, fArmorFactor1, nWeaponMinDamage, fWeaponApplyRate, fTalentFactor2, fArmorFactor2, fCharacterFactor, fBuffPlusFactor, fBuffDefenceFactor, fSpellPower);
+	int nFinalMaxHeal = CalcBuffFinalDamage(pBuffInfo->m_nMaxHeal, fTalentFactor1, fArmorFactor1, nWeaponMaxDamage, fWeaponApplyRate, fTalentFactor2, fArmorFactor2, fCharacterFactor, fBuffPlusFactor, fBuffDefenceFactor, fSpellPower);
+
+	if (poutDamageRangedInfo)
+		(*poutDamageRangedInfo) = GDamageRangedInfo(nFinalMaxDamage, nFinalMinDamage);
+
+	if (poutHealRangedInfo)
+		(*poutHealRangedInfo) = GHealRangedInfo(nFinalMaxHeal, nFinalMinHeal);
+
+	if (pfoutCriticalFactor)
+		(*pfoutCriticalFactor) = fCriticalFactor;
+
+	return true;
+}
+
+int GAttackDamageCalculator::CalcBuffFinalDamage(int nDamage, float fTalentFactor1, float fArmorFactor1, int nWeaponDamage, float fWeaponApplyRate, float fTalentFactor2, float fArmorFactor2, float fCharacterFactor, float fBuffPlusFactor, float fBuffDefenceFactor, float fSpellPower)
+{
+	float fFinalDamage = GMath::TruncateToInt(nDamage * fTalentFactor1 * fArmorFactor1 +
+		nWeaponDamage * fWeaponApplyRate * fTalentFactor2 * fArmorFactor2)
+		* (fCharacterFactor + fBuffPlusFactor)
+		* fBuffDefenceFactor
+		* fSpellPower;
+
+	return static_cast<int>(fFinalDamage);
+}
+
 int GAttackDamageCalculator::MakeDamageFromMinMaxDamage( const GDamageRangedInfo& DamageInfo )
 {
 	return (GMath::RandomNumber(DamageInfo.nMinDamage, DamageInfo.nMaxDamage));
 }
 
-float GAttackDamageCalculator::CalcCharacterFactor( GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo )
+float GAttackDamageCalculator::CalcCharacterFactor( GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE nDamageType, WEAPON_REFRENCE nWeaponReference /*= WR_RIGHT*/ )
 {
-	ATTACK_TYPE_FOR_CALCULATE attackType = CalcAttackTypeForCalculate(pAttacker, pTalentInfo);
+	ATTACK_TYPE_FOR_CALCULATE attackType = CalcAttackTypeForCalculate(pAttacker, nDamageType, nWeaponReference);
 
 	switch(attackType)	
 	{
@@ -126,19 +301,15 @@ float GAttackDamageCalculator::CalcCharacterFactor( GEntityPlayer* pAttacker, co
 	return CalcCharacterFactorForMelee(pAttacker);
 }
 
-float GAttackDamageCalculator::CalcBuffPlusFactor( GEntityActor* pAttacker, const GTalentInfo* pTalentInfo )
+float GAttackDamageCalculator::CalcBuffPlusFactor( GEntityActor* pAttacker, TALENT_DAMAGE_TYPE nDamageType )
 {
 	float fBuffFactor = 0.0f;
 
-	if (pTalentInfo->m_nCategory == TC_MELEE)
+	if (nDamageType == TDT_PHYSIC)
 	{
-		fBuffFactor += pAttacker->GetChrStatus()->ActorModifier.fMeleeDamageAmp;
+		fBuffFactor += pAttacker->GetChrStatus()->ActorModifier.fPhysicDamageAmp;
 	}
-	else if (pTalentInfo->m_nCategory == TC_RANGE)
-	{
-		fBuffFactor += pAttacker->GetChrStatus()->ActorModifier.fRangeDamageAmp;
-	}
-	else if (pTalentInfo->m_nCategory == TC_MAGIC)
+	else if (nDamageType == TDT_MAGIC)
 	{
 		fBuffFactor += pAttacker->GetChrStatus()->ActorModifier.fMagicDamageAmp;
 	}
@@ -146,15 +317,13 @@ float GAttackDamageCalculator::CalcBuffPlusFactor( GEntityActor* pAttacker, cons
 	return fBuffFactor;
 }
 
-int GAttackDamageCalculator::CalcPlayerWeaponDamage(GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo, bool bCritical)
+int GAttackDamageCalculator::CalcPlayerWeaponDamage(GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE damageType/* = TDT_PHYSIC*/, WEAPON_REFRENCE weaponReference/* = WR_RIGHT*/, CALC_TYPE_FOR_WEAPON_DAMAGE calcType/* = CTWD_MINMAX*/)
 {
-	if (pTalentInfo->m_nSkillType != ST_MELEE &&
-		pTalentInfo->m_nSkillType != ST_ARCHERY ) return 0;
-
 	int nDamage = 0;
 	GItemHolder* pItemHolder = pAttacker->GetItemHolder();
 
-	switch (pTalentInfo->m_WeaponReference)
+	/*
+	switch (weaponReference)
 	{
 	case WR_LEFT:
 		{
@@ -203,11 +372,25 @@ int GAttackDamageCalculator::CalcPlayerWeaponDamage(GEntityPlayer* pAttacker, co
 			_ASSERT(0);
 		}
 	}
+	*/
+
+	// all damages are now should based on right weapon.
+	// even in the case of shield attack of defender (e.g. Rush, Stunning Smash etc) we have to refer right weapon damage.
+	// (and you still can use those skills with 1H sword and without shield.)
+	const GItem* pRightItem = pItemHolder->GetEquipment().GetRightWeapon();
+	if (pRightItem)
+	{
+		nDamage = doCalcWeaponDamage(pAttacker, pRightItem, damageType, calcType);
+	}
+	else
+	{
+		nDamage = GConst::NO_WEAPON_DAMAGE_RIGHT;
+	}
 
 	return nDamage;
 }
 
-int GAttackDamageCalculator::doCalcWeaponDamage(GEntityActor* pActor, const GItem* pWeaponItem, bool bCritical)
+int GAttackDamageCalculator::doCalcWeaponDamage(GEntityActor* pActor, const GItem* pWeaponItem, TALENT_DAMAGE_TYPE damageType, CALC_TYPE_FOR_WEAPON_DAMAGE calcType/* = CTWD_MINMAX*/)
 {
 	if (!pWeaponItem)
 		return 0;
@@ -215,8 +398,31 @@ int GAttackDamageCalculator::doCalcWeaponDamage(GEntityActor* pActor, const GIte
 	GItemData* pItemData = pWeaponItem->m_pItemData;
 	VALID_RET(pItemData, 0);
 
-	int nWeaponDamage = bCritical?  pItemData->m_nMaxDamage : 
-									GMath::RandomNumber(pItemData->m_nMinDamage, pItemData->m_nMaxDamage);
+	//int nWeaponDamage = //bCritical?  pItemData->m_nMaxDamage : 
+	//								GMath::RandomNumber(pItemData->m_nMinDamage, pItemData->m_nMaxDamage);
+	int nWeaponDamage = 0;
+	if (damageType == TDT_PHYSIC)
+	{
+		switch (calcType)
+		{
+		case CTWD_MINMAX:
+		default:
+			nWeaponDamage = GMath::RandomNumber(pItemData->m_nMinDamage, pItemData->m_nMaxDamage); break;
+		case CTWD_MIN: nWeaponDamage = pItemData->m_nMinDamage; break;
+		case CTWD_MAX: nWeaponDamage = pItemData->m_nMaxDamage; break;
+		}
+	}
+	else if (damageType == TDT_MAGIC)
+	{
+		switch (calcType)
+		{
+		case CTWD_MINMAX:
+		default:
+			nWeaponDamage = GMath::RandomNumber(pItemData->m_nMagicMinDamage, pItemData->m_nMagicMaxDamage); break;
+		case CTWD_MIN: nWeaponDamage = pItemData->m_nMagicMinDamage; break;
+		case CTWD_MAX: nWeaponDamage = pItemData->m_nMagicMaxDamage; break;
+		}
+	}
 
 	if (!pWeaponItem->IsFineDuration() || !HasWeaponPassiveTalent(pActor, pWeaponItem))
 	{
@@ -226,17 +432,17 @@ int GAttackDamageCalculator::doCalcWeaponDamage(GEntityActor* pActor, const GIte
 	return nWeaponDamage;
 }
 
-int GAttackDamageCalculator::doCalcWeaponDamage(GEntityActor* pActor, const GItem* pLeftWeaponItem, const GItem* pRightWeaponItem, bool bCritical )
+int GAttackDamageCalculator::doCalcWeaponDamage(GEntityActor* pActor, const GItem* pLeftWeaponItem, const GItem* pRightWeaponItem, TALENT_DAMAGE_TYPE damageType, CALC_TYPE_FOR_WEAPON_DAMAGE calcType/* = CTWD_MINMAX*/)
 {
-	int nLeftDamage = doCalcWeaponDamage(pActor, pLeftWeaponItem, bCritical);
-	int nRightDamage = doCalcWeaponDamage(pActor, pRightWeaponItem, bCritical);
+	int nLeftDamage = doCalcWeaponDamage(pActor, pLeftWeaponItem, damageType, calcType);
+	int nRightDamage = doCalcWeaponDamage(pActor, pRightWeaponItem, damageType, calcType);
 
 	int nDamage = static_cast<int>((nLeftDamage + nRightDamage) * 0.5f);
 
 	return nDamage;
 }
 
-float GAttackDamageCalculator::CalcTalentFactor1( GEntityActor* pAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRatepTalentInfo )
+float GAttackDamageCalculator::CalcTalentFactor1( GEntityActor* pAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRate )
 {
 	const float fFactorDefault = 1.0f;
 
@@ -247,7 +453,7 @@ float GAttackDamageCalculator::CalcTalentFactor1( GEntityActor* pAttacker, DAMAG
 		return fFactorDefault;
 
 	GEntityPlayer* pPlayerAttacker = static_cast< GEntityPlayer*>(pAttacker);
-	return CalcPlayerTalentFactor1(pPlayerAttacker, nDamageAttrib, fWeaponApplyRatepTalentInfo);
+	return CalcPlayerTalentFactor1(pPlayerAttacker, nDamageAttrib, fWeaponApplyRate);
 }
 
 float GAttackDamageCalculator::CalcPlayerTalentFactor1( GEntityPlayer* pPlayerAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRate )
@@ -286,18 +492,18 @@ float GAttackDamageCalculator::CalcPlayerTalentFactor1( GEntityPlayer* pPlayerAt
 	return fFactor;
 }
 
-float GAttackDamageCalculator::CalcTalentFactor2( GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo )
+float GAttackDamageCalculator::CalcTalentFactor2( GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE nDamageType, WEAPON_REFRENCE nWeaponReference /*= WR_RIGHT*/ )
 {
 	float fCalcTalentFactor2 = 0.0f;
 	GItemHolder* pItemHolder = pAttacker->GetItemHolder();
 
-	if (pTalentInfo->m_nCategory == TC_MAGIC)
+	if (nDamageType == TDT_MAGIC)
 	{
 		fCalcTalentFactor2 = 1.0f;
 	}
 	else
 	{
-		switch (pTalentInfo->m_WeaponReference) 
+		switch (nWeaponReference) 
 		{
 		case WR_LEFT:
 			{
@@ -373,7 +579,7 @@ float GAttackDamageCalculator::CalcTalentFactor2_NotMagic(GEntityPlayer* pAttack
 		break;
 	case WEAPON_DUAL_PIERCE:
 		{
-			nBaseRank = pAttacker->GetPassiveRank(TEPT_BASE_WEAPON_1H_PIERCE);
+			nBaseRank = pAttacker->GetPassiveRank(TEPT_BASE_WEAPON_DUAL_PIERCE);
 			nSpecializationRank = pAttacker->GetPassiveRank(TEPT_SPECIALIZATION_PIERCE);
 		}
 		break;
@@ -397,12 +603,10 @@ float GAttackDamageCalculator::ClacTalentFactor2Fomula(int nBaseTalentRank, int 
 	return ( (nBaseTalentRank * 0.05f) + (nSpecializationTalentRank * 0.05f) + 1 );
 }
 
-float GAttackDamageCalculator::CalcArmorFactor1( GEntityActor* pAttacker, const GTalentInfo* pTalentInfo )
+float GAttackDamageCalculator::CalcArmorFactor1( GEntityActor* pAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRate )
 {
 	if (pAttacker->IsPlayer())
 	{
-		float fWeaponApplyRate = pTalentInfo->m_fWeaponApplyRate;		// 무기 데미지 적용율
-
 		GEntityPlayer* pPlayerAttacker = static_cast< GEntityPlayer*>(pAttacker);
 		GItemHolder* pItemHolder = pPlayerAttacker->GetItemHolder();
 
@@ -410,7 +614,7 @@ float GAttackDamageCalculator::CalcArmorFactor1( GEntityActor* pAttacker, const 
 		if (fWeaponApplyRate < 0.001f)
 		{
 			bool bHolyUnholy = false;
-			if (pTalentInfo->m_nDamageAttrib == DA_HOLY || pTalentInfo->m_nDamageAttrib == DA_UNHOLY)
+			if (nDamageAttrib == DA_HOLY || nDamageAttrib == DA_UNHOLY)
 			{
 				bHolyUnholy = true;
 			}
@@ -466,7 +670,7 @@ float GAttackDamageCalculator::GetArmorFactor2Table( ARMOR_TYPE nEquipmentType, 
 	return m_fArmorFactor2Table[nEquipmentType][nWeaponType];
 }
 
-float GAttackDamageCalculator::CalcArmorFactor2( GEntityActor* pAttacker, const GTalentInfo* pTalentInfo )
+float GAttackDamageCalculator::CalcArmorFactor2( GEntityActor* pAttacker, float fWeaponApplyRate, WEAPON_REFRENCE nWeaponReference /*= WR_RIGHT*/ )
 {
 	float fFactor = 1.0f;
 
@@ -474,25 +678,25 @@ float GAttackDamageCalculator::CalcArmorFactor2( GEntityActor* pAttacker, const 
 	{
 		GEntityPlayer* pPlayerAttacker = static_cast<GEntityPlayer*>(pAttacker);
 		GItemHolder* pItemHolder = pPlayerAttacker->GetItemHolder();
-		switch (pTalentInfo->m_WeaponReference)
+		switch (nWeaponReference)
 		{
 		case WR_LEFT:
 			{
 				WEAPON_TYPE nLeftWeaponType = pItemHolder->GetEquipment().GetLeftWeaponType();
-				fFactor = CalcArmorFactor2_Player(pPlayerAttacker, pTalentInfo, nLeftWeaponType);
+				fFactor = CalcArmorFactor2_Player(pPlayerAttacker, fWeaponApplyRate, nLeftWeaponType);
 			}
 			break;
 		case WR_RIGHT:
 			{
 				WEAPON_TYPE nRightWeaponType = pItemHolder->GetEquipment().GetRightWeaponType();
-				fFactor = CalcArmorFactor2_Player(pPlayerAttacker, pTalentInfo, nRightWeaponType);
+				fFactor = CalcArmorFactor2_Player(pPlayerAttacker, fWeaponApplyRate, nRightWeaponType);
 			}
 			break;
 		case WR_BOTH:
 			{
 				WEAPON_TYPE nLeftWeaponType = pItemHolder->GetEquipment().GetLeftWeaponType();
 				WEAPON_TYPE nRightWeaponType = pItemHolder->GetEquipment().GetRightWeaponType();
-				fFactor = CalcArmorFactor2_Player(pPlayerAttacker, pTalentInfo, nLeftWeaponType, nRightWeaponType);
+				fFactor = CalcArmorFactor2_Player(pPlayerAttacker, fWeaponApplyRate, nLeftWeaponType, nRightWeaponType);
 			}
 			break;
 		default:{
@@ -504,11 +708,10 @@ float GAttackDamageCalculator::CalcArmorFactor2( GEntityActor* pAttacker, const 
 	return fFactor;
 }
 
-float GAttackDamageCalculator::CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, const GTalentInfo* pTalentInfo, WEAPON_TYPE nWeaponType)
+float GAttackDamageCalculator::CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, float fWeaponApplyRate, WEAPON_TYPE nWeaponType)
 {
 	float fFactor = 1.0f;
 
-	float fWeaponApplyRate = pTalentInfo->m_fWeaponApplyRate;		// 무기 데미지 적용율
 	// 탤런트 보정율2는 순수 마법에 한정하여 적용한다.
 	if (fWeaponApplyRate < 0.001f)
 	{
@@ -525,38 +728,38 @@ float GAttackDamageCalculator::CalcArmorFactor2_Player(GEntityPlayer* pPlayerAtt
 	return fFactor;
 }
 
-float GAttackDamageCalculator::CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, const GTalentInfo* pTalentInfo, WEAPON_TYPE nLeftWeaponType, WEAPON_TYPE nRightWeaponType)
+float GAttackDamageCalculator::CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, float fWeaponApplyRate, WEAPON_TYPE nLeftWeaponType, WEAPON_TYPE nRightWeaponType)
 {		
-	float fLeftFactor = CalcArmorFactor2_Player(pPlayerAttacker, pTalentInfo, nLeftWeaponType);
-	float fRightFactor = CalcArmorFactor2_Player(pPlayerAttacker, pTalentInfo, nRightWeaponType);
+	float fLeftFactor = CalcArmorFactor2_Player(pPlayerAttacker, fWeaponApplyRate, nLeftWeaponType);
+	float fRightFactor = CalcArmorFactor2_Player(pPlayerAttacker, fWeaponApplyRate, nRightWeaponType);
 
 	float fFactor = (fLeftFactor + fRightFactor) * 0.5f;
 
 	return fFactor;
 }
 
-int GAttackDamageCalculator::CalcTalentDamage( const GDamageRangedInfo& DamageInfo, bool bCritical )
+int GAttackDamageCalculator::CalcTalentDamage( const GDamageRangedInfo& DamageInfo )
 {
+	/*
 	// 크리티컬 배율
 	if (bCritical)
 	{
 		return DamageInfo.nMaxDamage;
 	}
-
+	*/
 	return MakeDamageFromMinMaxDamage(DamageInfo);
 }
 
-float GAttackDamageCalculator::CalcBuffDefenceFactor( GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo )
+float GAttackDamageCalculator::CalcBuffDefenceFactor( GEntityActor* pAttacker, GEntityActor* pVictim, DAMAGE_ATTRIB nDamageAttrib, WEAPON_REFRENCE nWeaponReference /*= WR_RIGHT*/ )
 {
 	float fBuffFactor = 1.0f;
 
-	DAMAGE_ATTRIB nDamageAttrib = pTalentInfo->m_nDamageAttrib;
 	if (nDamageAttrib == DA_NONE)
 	{
 		// 피해타입이 없으면 무기 피해타입을 참조
 		if (pAttacker->IsPlayer())
 		{
-			nDamageAttrib = ToEntityPlayer(pAttacker)->GetDamageType(pTalentInfo);
+			nDamageAttrib = ToEntityPlayer(pAttacker)->GetDamageType(nDamageAttrib, nWeaponReference);
 		}
 	}
 
@@ -587,11 +790,18 @@ GAttackDamageCalculator::~GAttackDamageCalculator()
 	SAFE_DELETE(m_pCriticalCalculator);
 }
 
-int GAttackDamageCalculator::CalcNPCWeaponDamage( const GNPCInfo* pAttackerNPCInfo )
+int GAttackDamageCalculator::CalcNPCWeaponDamage( const GNPCInfo* pAttackerNPCInfo, CALC_TYPE_FOR_WEAPON_DAMAGE calcType/* = CTWD_MINMAX*/ )
 {
 	if (pAttackerNPCInfo)
 	{
-		return GMath::RandomNumber(pAttackerNPCInfo->m_nMinDamage, pAttackerNPCInfo->m_nMaxDamage);
+		switch (calcType)
+		{
+		case CTWD_MINMAX:
+		default:
+			return GMath::RandomNumber(pAttackerNPCInfo->m_nMinDamage, pAttackerNPCInfo->m_nMaxDamage);
+		case CTWD_MIN: return pAttackerNPCInfo->m_nMinDamage;
+		case CTWD_MAX: return pAttackerNPCInfo->m_nMaxDamage;
+		}
 	}
 	return 0;
 }
@@ -618,21 +828,19 @@ float GAttackDamageCalculator::CalcCharacterFactorForRange(GEntityPlayer* pAttac
 	return GMath::Round4Combat(((nStr + nDex) * 0.5f - 50) * 0.002f + 0.9f, 2);
 }
 
-ATTACK_TYPE_FOR_CALCULATE GAttackDamageCalculator::CalcAttackTypeForCalculate(GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo)
+ATTACK_TYPE_FOR_CALCULATE GAttackDamageCalculator::CalcAttackTypeForCalculate(GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE nDamageType, WEAPON_REFRENCE nWeaponReference /*= WR_RIGHT*/)
 {
-	switch(pTalentInfo->m_nCategory)
+	switch (nDamageType)
 	{
-	case TC_MAGIC:
+	case TDT_MAGIC:
 		return ATC_MAGIC_ATTACK;
-	case TC_RANGE:
-		return ATC_DEX_WEAPON_ATTACK;
-	case TC_MELEE:
+	case TDT_PHYSIC:
 		{
 			// 계산에 사용할 무기 타입을 구한다.
 			GItemHolder* pItemHolder = pAttacker->GetItemHolder();
 			WEAPON_TYPE nWeaponType = WEAPON_NONE;
 
-			switch(pTalentInfo->m_WeaponReference)
+			switch(nWeaponReference)
 			{
 			case WR_LEFT:			
 				nWeaponType = pItemHolder->GetEquipment().GetLeftWeaponType();

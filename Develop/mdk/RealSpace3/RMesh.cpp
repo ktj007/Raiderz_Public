@@ -339,9 +339,7 @@ RMeshNode*			RMesh::loadClothMeshNodeELUFile(std::string fileName)
 	static RMeshNodeLoaderImpl_v17 meshNodeLoaderImpl_v17;
 	static RMeshNodeLoaderImpl_v18 meshNodeLoaderImpl_v18;
 	static RMeshNodeLoaderImpl_v20 meshNodeLoaderImpl_v20;
-
 	RMeshNodeLoaderImpl *pImpl = NULL;
-
 	if ( nFileVersion == EXPORTER_MESH_VER20 )
 	{
 		pImpl = &meshNodeLoaderImpl_v20;

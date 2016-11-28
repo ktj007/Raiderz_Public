@@ -96,7 +96,7 @@ bool GCollision::HitTest2( GEntityActor* pThisEntity, MCapsule& tarCapsule, int8
 				if (hitCapsule.IsHitFirst())
 				{
 					noutHitCapsuleGroup = nCurCapsuleGroupIndex;
-					noutHitCapsuleindex = (int)i;
+					noutHitCapsuleindex = static_cast<int8>(i);
 					return true;
 				}
 
@@ -106,7 +106,7 @@ bool GCollision::HitTest2( GEntityActor* pThisEntity, MCapsule& tarCapsule, int8
 				{
 					fHitCapsuleDistance = fDistance;
 					noutHitCapsuleGroup = nCurCapsuleGroupIndex;
-					noutHitCapsuleindex = (int)i;
+					noutHitCapsuleindex = static_cast<int8>(i);
 				}
 			}
 		}

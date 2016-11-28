@@ -33,6 +33,7 @@ public:
 	DECL_CMD_HANDLER(OnRequestPlayerExtraInfo);
 
 	DECL_CMD_HANDLER(OnFieldLoadingComplete);
+	DECL_CMD_HANDLER(OnFieldObjectLoadingComplete);
 
 	DECL_CMD_HANDLER(OnStartMoveToLoginServerReq);
 

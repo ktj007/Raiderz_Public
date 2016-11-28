@@ -35,9 +35,10 @@ public :
 class LDBT_CONN_LOG
 {
 public :
-	LDBT_CONN_LOG(int64 nAID, const wstring& strIP) : m_nAID(nAID), m_strIP(strIP) {}
+	LDBT_CONN_LOG(int64 nCONN_SN, AID nAID, const wstring& strIP) : m_nCONN_SN(nCONN_SN), m_nAID(nAID), m_strIP(strIP) {}
 
-	int64	m_nAID;
+	int64	m_nCONN_SN;
+	AID		m_nAID;
 	wstring m_strIP;
 };
 

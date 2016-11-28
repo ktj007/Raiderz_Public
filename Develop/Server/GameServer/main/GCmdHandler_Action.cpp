@@ -54,6 +54,7 @@ GCmdHandler_Action::GCmdHandler_Action(MCommandCommunicator* pCC) : MCommandHand
 	SetCmdHandler(MC_ACTION_ACT_TALENT_REQ,				OnRequestActTalent);
 	SetCmdHandler(MC_ACTION_ACT_TALENT_WITH_HITCAPSULE_REQ,	OnRequestActTalentWithHitcapsule);
 	SetCmdHandler(MC_ACTION_ACT_TALENT_WITH_GROUND_REQ,	OnRequestActTalentWithGround);
+	SetCmdHandler(MC_ACTION_ACT_TALENT_MISS_REQ,		OnRequestActTalentMiss);
 	SetCmdHandler(MC_ACTION_CANCEL_TALENT_REQ,			OnRequestCancelTalent);
 	SetCmdHandler(MC_ACTION_STANDUP_REQ,				OnRequestStandUp);
 	SetCmdHandler(MC_ACTION_SWITCHING_WEAPON_BEGIN_REQ,	OnRequestSwitchingWeaponBegin);
@@ -106,6 +107,7 @@ MCommandResult GCmdHandler_Action::OnRequestMove(MCommand* pCmd, MCommandHandler
 //	comparer.SaveTimeSlice(L"Copy Parameter");
 //#endif
 
+	/*
 	if (pPlayer->IsGuarding())
 	{
 		// 너무 조금 움직인 것은 그냥 가드상태일 수도 있다.
@@ -115,6 +117,7 @@ MCommandResult GCmdHandler_Action::OnRequestMove(MCommand* pCmd, MCommandHandler
 			pPlayer->doGuardReleased();
 		}
 	}
+	*/
 
 //#ifndef _PUBLISH
 //	comparer.SaveTimeSlice(L"Cancel Guard");
@@ -245,8 +248,10 @@ MCommandResult GCmdHandler_Action::OnRequestMoveStop(MCommand* pCmd, MCommandHan
 
 	MUID uidPlayer = pCmd->GetSenderUID();
 	vec3 vPos;
+	svec2 svDir;
 
 	if (pCmd->GetParameter(&vPos, 0, MPT_VEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&svDir, 1, MPT_SVEC2)==false) return CR_FALSE;
 
 	if (pPlayer->HasMovingMotionfactor())		
 	{
@@ -255,8 +260,13 @@ MCommandResult GCmdHandler_Action::OnRequestMoveStop(MCommand* pCmd, MCommandHan
 
 	if (pPlayer->IsBeginUnableAction()) return CR_TRUE;
 
+	vec3 vDir;
+	vDir = svDir;
+
 	// Movement 모듈에서 처리하도록 하자.
 	pPlayer->SetPos(vPos);
+	pPlayer->SetDir(vDir);
+	pPlayer->SetFacingDir(vDir);
 	pPlayer->CheatCheck_Walk();
 
 	
@@ -267,7 +277,7 @@ MCommandResult GCmdHandler_Action::OnRequestMoveStop(MCommand* pCmd, MCommandHan
 	const UIID nPlayerUIID = pPlayer->GetUIID();
 
 	// 플레이어에게 이동 정보를 보내준다.
-	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_STOP_MOVE, 2, NEW_USHORT(nPlayerUIID), NEW_VEC(vPos));
+	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_STOP_MOVE, 2, NEW_USHORT(nPlayerUIID), NEW_VEC(vPos), NEW_SVEC2(svDir));
 	pPlayer->RouteToThisCellExceptMe(pNewCommand);
 
 	return CR_TRUE;
@@ -384,6 +394,7 @@ MCommandResult GCmdHandler_Action::OnRequestChangeStance(MCommand* pCmd, MComman
 	}
 
 	pPlayer->GetStance().Change(nNextStance);
+	pPlayer->OnChangeStance(nNextStance);
 	pPlayer->OnDoSomething();
 
 	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_CHANGE_STANCE, 2, NEW_USHORT(pPlayer->GetUIID()), NEW_CHAR(nValue));
@@ -629,20 +640,35 @@ MCommandResult GCmdHandler_Action::OnRequestJump(MCommand* pCmd, MCommandHandler
 	if (pPlayer->IsBeginUnableAction()) return CR_TRUE;
 
 	vec3 pos, dir;
-	if (pCmd->GetParameter(&pos, 0, MPT_VEC)==false) return CR_FALSE;
-	if (pCmd->GetParameter(&dir, 1, MPT_VEC)==false) return CR_FALSE;
+	unsigned short nMoveFlag;
+	if (pCmd->GetParameter(&pos,		0, MPT_VEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&dir,		1, MPT_VEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&nMoveFlag,	2, MPT_USHORT)==false) return CR_FALSE;
+
+	pPlayer->SetPos(pos);
+	pPlayer->SetDir(dir);
+	pPlayer->SetFacingDir(dir);
+	pPlayer->OnDoSomething();
+
+	if ((nMoveFlag & MOVEMENTFLAG_JUMPING) ||
+		(nMoveFlag & MOVEMENTFLAG_FALLING) ||
+		(nMoveFlag & MOVEMENTFLAG_USING_TALENT) ||
+		(nMoveFlag & MOVEMENTFLAG_MOTION_FACTOR))
+	{
+		return CR_FALSE;
+	}
 
 
 	// 점프 시작
 	pPlayer->doJump();
-	pPlayer->OnDoSomething();
 
 
 	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_JUMP,
 		3,
 		NEW_USHORT(pPlayer->GetUIID()),
 		NEW_VEC(pos),
-		NEW_VEC(dir));
+		NEW_VEC(dir),
+		NEW_USHORT(nMoveFlag));
 	pPlayer->RouteToThisCellExceptMe(pNewCommand);
 
 	return CR_TRUE;
@@ -678,9 +704,11 @@ MCommandResult GCmdHandler_Action::OnEndFalling(MCommand* pCmd, MCommandHandler*
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
 	if (NULL == pPlayer) return CR_FALSE;
 
+	/*
 	if (true == pPlayer->IsNowInvincibility()) return CR_TRUE;
 
 	if (true == pPlayer->IsDead()) return CR_TRUE;
+	*/
 
 	bool bIsFallenOnWater;
 	float fFallingHeight;
@@ -712,6 +740,8 @@ MCommandResult GCmdHandler_Action::OnRequestGuard(MCommand* pCmd, MCommandHandle
 	int nGuardLevel = pPlayer->GetPassiveValue(TEPT_GUARD);
 	int nGuardTalentID = CSTalentInfoHelper::NormalGuardTalentID(nCurrWeaponType, nGuardLevel, pPlayer->IsEquipShield());
 	if (nGuardTalentID == 0) return CR_FALSE;
+
+	pPlayer->doCancelTalentForce(false);	// abort current running talent to not let them attack/guard at a time.
 
 	pPlayer->doGuard(nGuardTalentID);
 	pPlayer->OnDoSomething();
@@ -746,6 +776,8 @@ MCommandResult GCmdHandler_Action::OnRequestUseTalent(MCommand* pCmd, MCommandHa
 
 	vCharDir = svCharDir;
 
+	// MF check is moved into GEntityActor::doUseTalent() to handle 'release immobilization' talent.
+	/*
 	if (pPlayer->HasMotionfactor())		
 	{
 		if (IsRunForTest())
@@ -758,6 +790,7 @@ MCommandResult GCmdHandler_Action::OnRequestUseTalent(MCommand* pCmd, MCommandHa
 
 		return CR_TRUE;	// 모션팩터가 적용중이면 무시한다.
 	}
+	*/
 
 	pPlayer->SetFacingDir(vCharDir);
 	GMath::NormalizeZ0(vCharDir);
@@ -767,6 +800,9 @@ MCommandResult GCmdHandler_Action::OnRequestUseTalent(MCommand* pCmd, MCommandHa
 	pPlayer->OnDoSomething();
 
 	// 스킬 사용
+
+	GModuleCombat* pModuleCombat = pPlayer->GetModuleCombat();
+
 	pPlayer->doUseTalent(nTalentID);
 	
 	return CR_TRUE;
@@ -777,29 +813,41 @@ MCommandResult GCmdHandler_Action::OnRequestActTalent(MCommand* pCmd, MCommandHa
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
 	if (NULL == pPlayer) return CR_FALSE;
 
+	/*
 	if (pPlayer->HasMotionfactor())		
 		return CR_TRUE;	// 모션팩터가 적용중이면 무시한다.
+		*/
 
 	if (pPlayer->IsBeginUnableAction()) return CR_TRUE;
 
+	int nTalentID;
 	svec3 svCharDir;
 	vec3 vCharDir;
 	MUID uidTarget;
 
-	if (pCmd->GetParameter(&svCharDir, 0, MPT_SVEC)==false) return CR_FALSE;
-	if (pCmd->GetParameter(&uidTarget, 1, MPT_UID)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&nTalentID, 0, MPT_INT)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&svCharDir, 1, MPT_SVEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&uidTarget, 2, MPT_UID)==false) return CR_FALSE;
 	vCharDir = svCharDir;
 
 	pPlayer->SetFacingDir(vCharDir);
 	GMath::NormalizeZ0(vCharDir);
 	pPlayer->SetDir(vCharDir);
 	pPlayer->CheatCheck_Walk();
-	pPlayer->OnDoSomething();
 
 	TALENT_TARGET_INFO Target;
 	Target.uidTarget = uidTarget;
 
-	pPlayer->GetModuleCombat()->ActTalent(Target);
+	GModuleCombat* pModuleCombat = pPlayer->GetModuleCombat();
+
+	if (pModuleCombat->IsUsingTalent())
+	{
+		pModuleCombat->ActTalent(Target);
+	}
+	if (nTalentID != INVALID_TALENT_ID)
+	{
+		pPlayer->doUseTalent(nTalentID, Target);
+	}
 
 	return CR_TRUE;
 }
@@ -809,18 +857,22 @@ MCommandResult GCmdHandler_Action::OnRequestActTalentWithHitcapsule(MCommand* pC
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
 	if (NULL == pPlayer) return CR_FALSE;
 
+	/*
 	if (pPlayer->HasMotionfactor())		
 		return CR_TRUE;	// 모션팩터가 적용중이면 무시한다.
+		*/
 
 	if (pPlayer->IsBeginUnableAction()) return CR_TRUE;
 
+	int nTalentID;
 	svec3 svCharDir;
 	vec3 vCharDir;
 
-	if (pCmd->GetParameter(&svCharDir, 0, MPT_SVEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&nTalentID, 0, MPT_INT)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&svCharDir, 1, MPT_SVEC)==false) return CR_FALSE;
 	vCharDir = svCharDir;
 
-	MCommandParameter* pParam = pCmd->GetParameter(1);
+	MCommandParameter* pParam = pCmd->GetParameter(2);
 	if(pParam->GetType()!=MPT_SINGLE_BLOB) return CR_FALSE;
 
 	TD_TALENT_TARGET_DETAIL* ttl = (TD_TALENT_TARGET_DETAIL*)pParam->GetPointer();
@@ -835,7 +887,16 @@ MCommandResult GCmdHandler_Action::OnRequestActTalentWithHitcapsule(MCommand* pC
 	Target.nCapsuleGroupIndex = ttl->nCapsuleGroupIndex;
 	Target.nCapsuleIndex = ttl->nCapsuleIndex;
 
-	pPlayer->GetModuleCombat()->ActTalent(Target);
+	GModuleCombat* pModuleCombat = pPlayer->GetModuleCombat();
+
+	if (pModuleCombat->IsUsingTalent())
+	{
+		pModuleCombat->ActTalent(Target);
+	}
+	else if (nTalentID != INVALID_TALENT_ID)
+	{
+		pPlayer->doUseTalent(nTalentID, Target);
+	}
 
 	return CR_TRUE;
 }
@@ -845,17 +906,21 @@ MCommandResult GCmdHandler_Action::OnRequestActTalentWithGround(MCommand* pCmd, 
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
 	if (NULL == pPlayer) return CR_FALSE;
 
+	/*
 	if (pPlayer->HasMotionfactor())		
 		return CR_TRUE;	// 모션팩터가 적용중이면 무시한다.
+		*/
 
 	if (pPlayer->IsBeginUnableAction()) return CR_TRUE;
 
+	int nTalentID;
 	svec3 svCharDir;
 	vec3 vCharDir;
 	vec3 vGroundPoint;
 
-	if (pCmd->GetParameter(&svCharDir, 0, MPT_SVEC)==false) return CR_FALSE;
-	if (pCmd->GetParameter(&vGroundPoint, 1, MPT_VEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&nTalentID, 0, MPT_INT)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&svCharDir, 1, MPT_SVEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&vGroundPoint, 2, MPT_VEC)==false) return CR_FALSE;
 	vCharDir = svCharDir;
 
 	pPlayer->SetFacingDir(vCharDir);
@@ -865,7 +930,62 @@ MCommandResult GCmdHandler_Action::OnRequestActTalentWithGround(MCommand* pCmd, 
 
 	TALENT_TARGET_INFO Target;
 	Target.vGroundPoint = vGroundPoint;
-	pPlayer->GetModuleCombat()->ActTalent(Target);
+	Target.vGroundPoint.z = pPlayer->GetPos().z;
+
+	GModuleCombat* pModuleCombat = pPlayer->GetModuleCombat();
+
+	if (pModuleCombat->IsUsingTalent())
+	{
+		pModuleCombat->ActTalent(Target);
+	}
+	else if (nTalentID != INVALID_TALENT_ID)
+	{
+		pPlayer->doUseTalent(nTalentID, Target);
+	}
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Action::OnRequestActTalentMiss(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
+	if (NULL == pPlayer) return CR_FALSE;
+
+	/*
+	if (pPlayer->HasMotionfactor())		
+		return CR_TRUE;
+		*/
+
+	if (pPlayer->IsBeginUnableAction()) return CR_TRUE;
+
+	int nTalentID;
+	svec3 svCharDir;
+	vec3 vCharDir;
+
+	if (pCmd->GetParameter(&nTalentID, 0, MPT_INT)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&svCharDir, 1, MPT_SVEC)==false) return CR_FALSE;
+	vCharDir = svCharDir;
+
+	pPlayer->SetFacingDir(vCharDir);
+	GMath::NormalizeZ0(vCharDir);
+	pPlayer->SetDir(vCharDir);
+	pPlayer->CheatCheck_Walk();
+	
+	TALENT_TARGET_INFO Target;
+	Target.uidTarget = MUID::Invalid();
+	Target.nCapsuleGroupIndex = INVALID_TALENT_ID;
+	Target.nCapsuleIndex = INVALID_TALENT_ID;
+
+	GModuleCombat* pModuleCombat = pPlayer->GetModuleCombat();
+
+	if (pModuleCombat->IsUsingTalent())
+	{
+		pModuleCombat->ActTalent(Target);
+	}
+	else if (nTalentID != INVALID_TALENT_ID)
+	{
+		pPlayer->doUseTalent(nTalentID, Target);
+	}
 
 	return CR_TRUE;
 }
@@ -909,6 +1029,9 @@ MCommandResult GCmdHandler_Action::OnRequestSwitchingWeaponBegin(MCommand* pCmd,
 
 	if (pPlayer->IsBeginUnableAction()) return CR_TRUE;
 
+	pPlayer->OnSwitchingWeaponSetBegin();
+	pPlayer->OnDoSomething();
+
 	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_SWITCHING_WEAPON_BEGIN, 
 		1,
 		NEW_USHORT(pPlayer->GetUIID()));
@@ -946,6 +1069,8 @@ MCommandResult GCmdHandler_Action::OnRequestSwitchingWeapon(MCommand* pCmd, MCom
 	{
 		gsys.pPaletteSystem->Select(pPlayer, nPaletteNum);
 	}	
+
+	pPlayer->OnDoSomething();
 
 	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_SWITCHING_WEAPON, 
 		2,

@@ -10,13 +10,23 @@
 #include "GCriticalCalculator.h"
 #include "GGuardCalculator.h"
 #include "GEquipmentSlot.h"
+#include "GBuffInfo.h"
+#include "GTalentInfoMgr.h"
 
 GCombatCalculator::GCombatCalculator()
 {
 }
 
-int GCombatCalculator::CalcDamage( GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, bool bCritical, float fResistFactor, const GDamageRangedInfo& DamageInfo, float* pfoutMotionFactor)
+int GCombatCalculator::CalcDamage( GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, bool bCritical, float fResistFactor, const GDamageRangedInfo& DamageInfo, bool bBackHit, float* pfoutMotionFactor )
 {
+	if (pfoutMotionFactor) *pfoutMotionFactor = 0.f;
+
+	if (bBackHit && pTalentInfo->m_nBackHitTalent != 0)
+	{
+		pTalentInfo = gmgr.pTalentInfoMgr->Find(pTalentInfo->m_nBackHitTalent, pTalentInfo->m_nMode, true);
+		VALID_RET(pTalentInfo, 0);
+	}
+
 	// 공격 데미지
 	float fAttackDamage = gsys.pAttackDamageCalculator->CalcAttackDamage(pAttacker, pVictim, pTalentInfo, bCritical, DamageInfo);
 
@@ -32,8 +42,11 @@ int GCombatCalculator::CalcDamage( GEntityActor* pAttacker, GEntityActor* pVicti
 	float fDefensedDamage = (fAttackDamage - fPenetrationDamage) * fDefenseFactor;
 	float fFinalAttackDamage = max(fPenetrationDamage + fDefensedDamage, 0.0f);
 
+
+
 	// 배후 공격 검사
 	GStateFactorCalculator stateFactorCalc;
+	/*
 	bool isBackHit = false;
 		
 	if (pTalentInfo->IsPhysicalAttack())
@@ -41,22 +54,22 @@ int GCombatCalculator::CalcDamage( GEntityActor* pAttacker, GEntityActor* pVicti
 		// 뒷방향 검사는 물리 공격의 경우만 한다.
 		isBackHit = pVictim->IsBack(pAttacker->GetPos());
 	}
+	*/
 
 	// 모션팩터 계산
 	MF_STATE mfState = pVictim->GetCurrentMotionFactor();
 
-	float fStateFactor = stateFactorCalc.CalcStateFactor(mfState, isBackHit);
-	float fMotionFactor = stateFactorCalc.CalcMotionFactor(mfState, isBackHit);
+	float fStateFactor = stateFactorCalc.CalcStateFactor(mfState, bBackHit);
+	float fMotionFactor = stateFactorCalc.CalcMotionFactor(mfState, bBackHit);
 
 	if (pfoutMotionFactor != NULL)
 	{
 		*pfoutMotionFactor = fMotionFactor;
 	}
 	
+
 	// 최종 데미지 계산
 	int nFinalDamage = GMath::TruncateToInt(max(fFinalAttackDamage * fResistFactor * fStateFactor, 0));
-
-	// TODO: Backstap
 
 	return nFinalDamage;
 }
@@ -82,7 +95,7 @@ float GCombatCalculator::CalcPenetrationFactor(GEntityActor* pAttacker, const GT
 
 
 	// 공격형태에 따른 기본 능력치를 구한다.
-	ATTACK_TYPE_FOR_CALCULATE attackType = GAttackDamageCalculator::CalcAttackTypeForCalculate(pPlayer, pTalentInfo);
+	ATTACK_TYPE_FOR_CALCULATE attackType = GAttackDamageCalculator::CalcAttackTypeForCalculate(pPlayer, pTalentInfo->m_nDamageType, pTalentInfo->m_WeaponReference);
 
 	int nBaseStat = 0;
 	float fBuffBonus = 0.0f;
@@ -90,12 +103,9 @@ float GCombatCalculator::CalcPenetrationFactor(GEntityActor* pAttacker, const GT
 	switch(attackType)
 	{
 	case ATC_STR_WEAPON_ATTACK:		
+	case ATC_DEX_WEAPON_ATTACK:
 		nBaseStat = pPlayer->GetSTR();
-		fBuffBonus = pPlayer->GetChrStatus()->ActorModifier.fModMeleePene;
-		break;
-	case ATC_DEX_WEAPON_ATTACK:		
-		nBaseStat = pPlayer->GetDEX();		
-		fBuffBonus = pPlayer->GetChrStatus()->ActorModifier.fModRangePene;
+		fBuffBonus = pPlayer->GetChrStatus()->ActorModifier.fModPhysicPene;
 		break;
 	case ATC_MAGIC_ATTACK:			
 		nBaseStat = pPlayer->GetINT();
@@ -178,6 +188,7 @@ bool GCombatCalculator::CheckRiposte(GEntityActor* pAttacker, GEntityActor* pVic
 
 bool GCombatCalculator::CheckResist(float& foutResistPercent, GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentResist& Resist)
 {
+	/*
 	float fResistPercent = GResistCalculator::CalcResistPercent(pAttacker, pVictim, Resist);
 
 	GPercentDice dice;
@@ -189,6 +200,7 @@ bool GCombatCalculator::CheckResist(float& foutResistPercent, GEntityActor* pAtt
 		}
 		return true;
 	}
+	*/
 
 	return false;
 }
@@ -203,8 +215,50 @@ bool GCombatCalculator::CheckCritical(GEntityActor* pAttacker, GEntityActor* pVi
 
 	GPercentDice dice;
 	GCriticalCalculator criticalCalculator;
-	float fCriticalPercent = criticalCalculator.CalcCriticalPercent(pAttacker, pVictim, pTalentInfo);
+	float fCriticalPercent = criticalCalculator.CalcCriticalPercent(pAttacker, 
+																	pVictim, 
+																	pTalentInfo->m_nDamageAttrib, 
+																	pTalentInfo->m_nDamageType, 
+																	pTalentInfo->m_nSkillType, 
+																	pTalentInfo->m_fCriticalApplyRate);
+#if 1 || 1
+	if (pAttacker->IsPlayer() && ToEntityPlayer(pAttacker)->IsDeveloper())
+		printf("[%S] Talent Critical Percent: %f\n", pAttacker->GetName(), fCriticalPercent);
+#endif
 	return dice.Dice(fCriticalPercent);
+}
+
+/*
+bool GCombatCalculator::CheckBuffCritical(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo)
+{
+	VALID_RET(pAttacker, false)
+	VALID_RET(pVictim, false)
+
+	GPercentDice dice;
+	GCriticalCalculator criticalCalculator;
+	float fCriticalPercent = criticalCalculator.CalcCriticalPercent(pAttacker, 
+																	pVictim, 
+																	pBuffInfo->m_nDamageAttrib, 
+																	pBuffInfo->m_nDamageType, 
+																	ST_NONE, 
+																	1.f);
+	return dice.Dice(fCriticalPercent);
+}
+*/
+
+float GCombatCalculator::GetBuffCriticalPercent(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo)
+{
+	VALID_RET(pAttacker, 0.f)
+	VALID_RET(pVictim, 0.f)
+
+	GCriticalCalculator criticalCalculator;
+	float fCriticalPercent = criticalCalculator.CalcCriticalPercent(pAttacker, 
+																	pVictim, 
+																	pBuffInfo->m_nDamageAttrib, 
+																	pBuffInfo->m_nDamageType, 
+																	ST_NONE, 
+																	1.f);
+	return fCriticalPercent;
 }
 
 float GCombatCalculator::CalcPerfectGuardRate(GEntityActor* pAttacker, GEntityActor* pGuarder)

@@ -128,10 +128,10 @@ string GCombatMonitorPort::ExtractFromActor( GEntityActor* pActor )
 				continue;
 
 			int nItemSlot = each->m_pItemData->m_nItemSlot;
-			if (nItemSlot < ITEMSLOT_DEFAULT_BEGIN)
+			if (nItemSlot < ITEMSLOT_DEFAULT_START)
 				continue;
 
-			if (nItemSlot > ITEMSLOT_DEFAULT_MAX)
+			if (nItemSlot > ITEMSLOT_DEFAULT_END)
 				continue;
 
 			string strSlotName = MLocale::ConvTCHARToAnsi(CSItemSlotStr[nItemSlot]);

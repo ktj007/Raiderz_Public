@@ -119,6 +119,13 @@ void MCommandCommunicator::Run(void)
 				continue;
 			}
 		}
+
+		if ( (pCommand->m_pCommandDesc->IsFlag(MCDT_LOCAL)==true) && (pCommand->m_Sender!=m_This) )
+		{
+			// Local Command should not come from game client.
+			SAFE_DELETE(pCommand);
+			continue;
+		}
 	
 
 		OnPrepareCommand(pCommand);

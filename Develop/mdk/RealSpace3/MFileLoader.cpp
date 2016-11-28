@@ -230,7 +230,7 @@ BYTE *CreateARGBFromDDS(const char *filename, int *width, int *height)
 		return NULL;
 	}
 
-	if ( pddsdesc->ddpfPixelFormat.dwRGBBitCount != 32 && pddsdesc->ddpfPixelFormat.dwRGBBitCount != 8 )
+	if ( pddsdesc->ddpfPixelFormat.dwRGBBitCount != 32 )
 	{
 		delete [] pData;
 		return NULL;
@@ -244,15 +244,7 @@ BYTE *CreateARGBFromDDS(const char *filename, int *width, int *height)
 	
 	BYTE *bData = pData + 4 + sizeof(MDDSDESC2);
 	DWORD dwSize = pddsdesc->dwWidth*pddsdesc->dwHeight*4;
-	if(pddsdesc->ddpfPixelFormat.dwRGBBitCount == 8)
-	dwSize = pddsdesc->dwWidth*pddsdesc->dwHeight*4;
-	//mlog("%i", sizeof(MDDSDESC2));
-	//mlog("sizeof dwSize = %i, sizeof bData = %i\n", dwSize, sizeof(bData));
 	BYTE *pTextureData = new BYTE[dwSize];
-	//mlog("sizeof texdata = %i, sizeof file = %i\n", sizeof(pTextureData), nSize);
-	if(pddsdesc->ddpfPixelFormat.dwRGBBitCount == 8)
-	memcpy(pTextureData, bData, dwSize / 4);
-	else
 	memcpy(pTextureData, bData, dwSize);
 	delete [] pData;
 	pData = NULL;

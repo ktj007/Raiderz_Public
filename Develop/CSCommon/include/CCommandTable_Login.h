@@ -32,6 +32,9 @@ enum CLoginCommandTable
 	MC_COMM_REQUEST_MOVE_GAME_SERVER_ON_PMANG	= 10104,		///< (C->S) 피망접속 시, 게임서버이동 예약 확인 요청
 	MC_COMM_REQUEST_MOVE_LOGIN_SERVER_ON_PMANG	= 10105,		///< (C->S) 피망접속 시, 로그인서버이동 예약 확인 요청
 
+	MC_COMM_REQUEST_LOGIN_ON_PWE				= 10203,		///< (C->S) Login Request Command used in RaiderZ NA (Perfect World Entertainment)
+	MC_COMM_RESPONSE_LOGIN_ON_PWE				= 10204,		///< (S->C) Login Response Command for RaiderZ NA
+
 };
 
 

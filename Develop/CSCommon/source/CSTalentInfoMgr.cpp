@@ -47,6 +47,25 @@ void CSTalentInfoMgr::Cooking()
 		CSTalentInfo* pTalentInfo = (*itor).second;
 
 		pTalentInfo->Cooking();
+
+		_CookTalentRefer(pTalentInfo);
+	}
+}
+
+void CSTalentInfoMgr::_CookTalentRefer(CSTalentInfo* pTalentInfo)
+{
+	// initialize referred talent line set.
+
+	set<int> setReferTo;
+	pTalentInfo->m_ConvertTalent.EnumConvToIDs_Into(setReferTo);
+	pTalentInfo->m_ConvertBuff.EnumConvToIDs_Into(setReferTo);
+
+	for (int nTalentID : setReferTo)
+	{
+		CSTalentInfo* pReferTalentInfo = Find(nTalentID, pTalentInfo->m_nMode, true);
+		if (!pReferTalentInfo) continue;
+
+		pReferTalentInfo->m_setReferredByLine.insert(pTalentInfo->m_nTalentLine);
 	}
 }
 
@@ -144,8 +163,8 @@ void CSTalentInfoMgr::Insert(CSTalentInfo* pTalentInfo )
 	}
 	
 	// 배우지 않아도 기본적으로 주어지는 탤런트 목럭 구하기
-	ClassifyGivedTalents(pTalentInfo->m_bNeedTraining, pTalentInfo->m_nExtraPassive, pTalentInfo->m_nExtraPassiveParam);
-	ClassifyGivedTalents(pTalentInfo->m_bNeedTraining, pTalentInfo->m_nExtraPassive2, pTalentInfo->m_nExtraPassiveParam2);
+	ClassifyGivedTalents(pTalentInfo->m_bNeedTraining, pTalentInfo->m_nExtraPassive, pTalentInfo->m_nExtraPassiveParam[0]);
+	ClassifyGivedTalents(pTalentInfo->m_bNeedTraining, pTalentInfo->m_nExtraPassive2, pTalentInfo->m_nExtraPassiveParam2[0]);
 	
 	// 해당 ID가 이미 있음
 	if(find(pTalentInfo->m_nID) != end())

@@ -2,6 +2,7 @@
 
 class GEntityActor;
 class GTalentInfo;
+class GBuffInfo;
 struct GTalentResist;
 
 __interface ICombatCalculator
@@ -11,7 +12,7 @@ public:
 	virtual bool CheckRiposte(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo);
 	virtual bool CheckResist(float& foutResistPercent, GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentResist& Resist);
 	virtual bool CheckCritical(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo);
-	virtual int CalcDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, bool bCritical, float fResistFactor, const GDamageRangedInfo& DamageInfo, float* fOutMotionFactor);
+	virtual int CalcDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, bool bCritical, float fResistFactor, const GDamageRangedInfo& DamageInfo, bool bBackHit, float* fOutMotionFactor);
 };
 
 
@@ -27,7 +28,9 @@ public:
 	virtual bool CheckResist(float& foutResistPercent, GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentResist& Resist);
 	// 크리티컬 성공했으면 true 반환
 	virtual bool CheckCritical(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo);
-	virtual int CalcDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, bool bCritical, float fResistFactor, const GDamageRangedInfo& DamageInfo,float* pfoutMotionFactor = NULL);
+	// virtual bool CheckBuffCritical(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo);
+	virtual float GetBuffCriticalPercent(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo);
+	virtual int CalcDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, bool bCritical, float fResistFactor, const GDamageRangedInfo& DamageInfo, bool bBackHit, float* pfoutMotionFactor = NULL);
 	virtual int CalcHealAmount( GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, const GHealRangedInfo& infoHeal);
 	
 	virtual float CalcPerfectGuardRate(GEntityActor* pAttacker, GEntityActor* pGuarder);	

@@ -98,9 +98,7 @@ float GExpCalculator::CalcXPFactorLevel( int nLevelFactor )
 	else
 	{
 		return GMath::Round4Combat(((nLevelFactor * nLevelFactor) * 0.05f), 1);
-	} 
-	
-	//SoulHunterZ - NPCs are always "considered the same level" so no factoring
+	}
 
 	return 1.0f;
 }

@@ -86,7 +86,7 @@ void GLootLooter::LootItem_Apply(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const
 		}
 	}
 
-	set<int> setPreViewableCID;
+	set<CID> setPreViewableCID;
 	pNPC->GetNPCLoot().GetDropList().GetViewableCID(setPreViewableCID);
 
 	GetItem(pPlayer, pNPC, vecGettableItem);
@@ -109,7 +109,7 @@ void GLootLooter::RollItem(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vecto
 
 	if (true == vecDropItem.empty()) return;
 
-	const set<int>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
+	const set<CID>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
 
 	vector<TD_LOOT_ROLL_ITEM> vecTDRollItem;
 	vector<TD_LOOT_ROLL_RESULT> vecTDRollResult;	
@@ -120,7 +120,7 @@ void GLootLooter::RollItem(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vecto
 	RollItem_Apply(pNPC, mapRollWinnerItem);
 }
 
-void GLootLooter::RollItem_MakeData(GEntityNPC* pNPC, const vector<GDropItem*> &vecDropItem, const set<int>& setBeneficiaryCID, vector<TD_LOOT_ROLL_RESULT> &outvecTDRollResult, vector<TD_LOOT_ROLL_ITEM> &outvecTDRollItem, MAP_ROLLWINNERITEM& outmapRollWinnerItem)
+void GLootLooter::RollItem_MakeData(GEntityNPC* pNPC, const vector<GDropItem*> &vecDropItem, const set<CID>& setBeneficiaryCID, vector<TD_LOOT_ROLL_RESULT> &outvecTDRollResult, vector<TD_LOOT_ROLL_ITEM> &outvecTDRollItem, MAP_ROLLWINNERITEM& outmapRollWinnerItem)
 {
 	VALID(pNPC);	
 
@@ -129,9 +129,9 @@ void GLootLooter::RollItem_MakeData(GEntityNPC* pNPC, const vector<GDropItem*> &
 	{
 		GDropItem* pDropItem = vecDropItem[i];
 
-		int nTopCID = 0;
+		CID nTopCID = 0;
 		int nTopResult = 0;
-		for each (int nBeneficiaryCID in setBeneficiaryCID)
+		for each (CID nBeneficiaryCID in setBeneficiaryCID)
 		{
 			int nRollResult = RandomNumber(1, 100);
 			if (nTopResult < nRollResult)
@@ -167,10 +167,10 @@ void GLootLooter::RollItem_MakeData(GEntityNPC* pNPC, const vector<GDropItem*> &
 	}
 }
 
-void GLootLooter::RollItem_Route( const set<int>& setBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult )
+void GLootLooter::RollItem_Route( const set<CID>& setBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult )
 {
-	set<int> setOtherServerBeneficiaryCID;
-	for each (int nBeneficiaryCID in setBeneficiaryCID)
+	set<CID> setOtherServerBeneficiaryCID;
+	for each (CID nBeneficiaryCID in setBeneficiaryCID)
 	{
 		GEntityPlayer* pBeneficiary = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL != pBeneficiary)
@@ -217,7 +217,7 @@ void GLootLooter::PrepareMasterLootItem(GEntityPlayer* pPlayer, GEntityNPC* pNPC
 
 	if (true == vecDropItem.empty()) return;
 
-	int nMasterCID = pNPC->GetNPCLoot().GetDropList().GetMasterCID();
+	CID nMasterCID = pNPC->GetNPCLoot().GetDropList().GetMasterCID();
 	if (NULL ==  pNPC->FindPlayerByCID(nMasterCID)) return pPlayer->RouteSystemMsg(CR_FAIL_LOOT_MASTER_FAR_DISTANCE);
 
 	PreapareMasterLootItem_Apply(vecDropItem);
@@ -232,7 +232,7 @@ void GLootLooter::PreapareMasterLootItem_Apply( const vector<GDropItem*>& vecDro
 	}
 }
 
-void GLootLooter::PrepareMasterLootItem_Route( int nMasterCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem )
+void GLootLooter::PrepareMasterLootItem_Route( CID nMasterCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem )
 {
 	vector<TD_LOOT_MASTERLOOT_UI>		vecTDLootMasterLootUI;
 	vector<TD_LOOT_MASTERLOOT_NOTIFY>	vecTDLootMasterLootNotify;	
@@ -242,10 +242,10 @@ void GLootLooter::PrepareMasterLootItem_Route( int nMasterCID, GEntityNPC* pNPC,
 		vecTDLootMasterLootNotify.push_back(pDropItem->MakeTDMasterLootNotify());
 	}
 
-	const set<int>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
+	const set<CID>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
 
-	set<int> setOtherServerBeneficiaryCID;
-	for each (int nBeneficiaryCID in setBeneficiaryCID)
+	set<CID> setOtherServerBeneficiaryCID;
+	for each (CID nBeneficiaryCID in setBeneficiaryCID)
 	{
 		GEntityPlayer* pBeneficiary = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL != pBeneficiary)

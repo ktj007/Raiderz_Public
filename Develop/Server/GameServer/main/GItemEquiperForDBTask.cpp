@@ -85,8 +85,15 @@ void GItemEquiperForDBTask::RouteToMe(GEntityPlayer* pPlayer, SH_ITEM_SLOT_TYPE 
 
 void GItemEquiperForDBTask::RouteToOther(GEntityPlayer* pPlayer, SH_ITEM_SLOT_TYPE nSlotTypeFrom, int nSlotIDFrom, SH_ITEM_SLOT nSlotIDTo, int nItemID, int nColor, int nEnchantBufFID)
 {
-	MCommand* pNewCommand = MakeNewCommand(MC_ITEM_CHANGE_LOOK_EQUIP_ITEM, 
-		7, NEW_INT(nSlotTypeFrom), NEW_INT(nSlotIDFrom), NEW_CHAR(nSlotIDTo), NEW_UID(pPlayer->GetUID()), NEW_INT(nItemID), NEW_INT(nColor), NEW_INT(nEnchantBufFID));
+	MCommand* pNewCommand = MakeNewCommand(MC_ITEM_CHANGE_AND_REMOVE_LOOK,
+		7,
+		NEW_USHORT(pPlayer->GetUIID()),
+		NEW_CHAR((char)nSlotIDFrom),
+		NEW_CHAR((char)nSlotIDTo),
+		NEW_INT(nItemID),
+		NEW_INT(nColor),
+		NEW_INT(nEnchantBufFID),
+		NEW_CHAR(0));	// TODO: enchant grade
 
 	pPlayer->RouteToThisCellExceptMe(pNewCommand);
 }
@@ -111,6 +118,8 @@ void GItemEquiperForDBTask::EquipItem(GEntityPlayer* pPlayer, GItemHolder* pItem
 		return;
 	}
 
+	pPlayer->RegainSetItemEffect();
+
 	gsys.pDBCacheSystem->SetItemSlot(pPlayer->GetUID(), SLOTTYPE_EQUIP, data.equip.m_nToSlotID, data.equip.m_nIUID);
 	pItemHolder->CancelReserveSlot(SLOTTYPE_EQUIP, data.equip.m_nToSlotID);
 
@@ -130,6 +139,8 @@ void GItemEquiperForDBTask::UnequipItem1(GEntityPlayer* pPlayer, GItemHolder* pI
 	if (!pItemHolder->PushItem(SLOTTYPE_INVENTORY, data.unequip1.m_nToSlotID, pUnequipItem1))
 		return;
 
+	pPlayer->RegainSetItemEffect();
+
 	gsys.pDBCacheSystem->SetItemSlot(pPlayer->GetUID(), SLOTTYPE_INVENTORY, data.unequip1.m_nToSlotID, data.unequip1.m_nIUID);
 	pItemHolder->CancelReserveSlot(SLOTTYPE_EQUIP, data.unequip1.m_nSlotID);
 	
@@ -146,6 +157,8 @@ void GItemEquiperForDBTask::UnequipItem2( GEntityPlayer* pPlayer, GItemHolder* p
 
 	if (!pItemHolder->PushItem(SLOTTYPE_INVENTORY, data.unequip2.m_nToSlotID, pUnequipItem2))
 		return;
+
+	pPlayer->RegainSetItemEffect();
 		
 	gsys.pDBCacheSystem->SetItemSlot(pPlayer->GetUID(), SLOTTYPE_INVENTORY, data.unequip2.m_nToSlotID, data.unequip2.m_nIUID);
 	pItemHolder->CancelReserveSlot(SLOTTYPE_EQUIP, data.unequip2.m_nSlotID);

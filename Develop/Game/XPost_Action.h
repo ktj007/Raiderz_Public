@@ -81,7 +81,7 @@ inline void XPostGuardReleased()
 
 inline void XPostJump(vec3& pos, vec3& dir)
 {
-	XPOSTCMD2(MC_ACTION_JUMP_REQ, MCommandParameterVector(pos), MCommandParameterVector(dir));
+	XPOSTCMD3(MC_ACTION_JUMP_REQ, MCommandParameterVector(pos), MCommandParameterVector(dir), MCommandParameterUShort(0));
 }
 
 inline void XPostFalling(vec3 pos, vec3 dir)
@@ -109,7 +109,7 @@ inline void XPostUseTalent(int nTalentID, vec3 vCharDir, vec3 vCharPos)
 inline void XPostActTalent(int nTalentID, vec3 vDir, MUID uidTarget)
 {
 	vDir.Normalize();
-	XPOSTCMD2(MC_ACTION_ACT_TALENT_REQ, MCommandParameterShortVector(vDir), MCommandParameterUID(uidTarget)); 
+	XPOSTCMD3(MC_ACTION_ACT_TALENT_REQ, MCommandParameterInt(nTalentID), MCommandParameterShortVector(vDir), MCommandParameterUID(uidTarget));
 
 	gvar.MyInfo.Talent.CoolTime.RequestActTalent( nTalentID);
 }
@@ -117,7 +117,7 @@ inline void XPostActTalent(int nTalentID, vec3 vDir, MUID uidTarget)
 inline void XPostActTalentWithHitCapsule(int nTalentID, vec3 vDir, TD_TALENT_TARGET_DETAIL& target)
 {
 	vDir.Normalize();
-	XPOSTCMD2(MC_ACTION_ACT_TALENT_WITH_HITCAPSULE_REQ, MCommandParameterShortVector(vDir), MCommandParameterSingleBlob(&target, sizeof(TD_TALENT_TARGET_DETAIL))); 
+	XPOSTCMD3(MC_ACTION_ACT_TALENT_WITH_HITCAPSULE_REQ, MCommandParameterInt(nTalentID), MCommandParameterShortVector(vDir), MCommandParameterSingleBlob(&target, sizeof(TD_TALENT_TARGET_DETAIL)));
 
 	gvar.MyInfo.Talent.CoolTime.RequestActTalent( nTalentID);
 }
@@ -125,7 +125,7 @@ inline void XPostActTalentWithHitCapsule(int nTalentID, vec3 vDir, TD_TALENT_TAR
 inline void XPostActTalentWithGround(int nTalentID, vec3 vDir, vec3 vGroundTarget)
 {
 	vDir.Normalize();
-	XPOSTCMD2(MC_ACTION_ACT_TALENT_WITH_GROUND_REQ, MCommandParameterShortVector(vDir), MCommandParameterVector(vGroundTarget)); 
+	XPOSTCMD3(MC_ACTION_ACT_TALENT_WITH_GROUND_REQ, MCommandParameterInt(nTalentID), MCommandParameterShortVector(vDir), MCommandParameterVector(vGroundTarget));
 
 	gvar.MyInfo.Talent.CoolTime.RequestActTalent( nTalentID);
 }
@@ -140,20 +140,9 @@ inline void XPostStandUp()
 	XPOSTCMD0(MC_ACTION_STANDUP_REQ);
 }
 
-
-inline void XPostRequestPlayerExtraInfo(const MUID& uidTarPlayer)
-{
-	XPOSTCMD1(MC_FIELD_PLAYER_EXTRA_INFO_REQ, MCommandParameterUID(uidTarPlayer));
-}
-
 inline void XPostPartyRequestInvite(const MUID& uidTarPlayer)
 {
 	XPOSTCMD1(MC_PARTY_INVITE_REQ, MCommandParameterUID(uidTarPlayer));
-}
-
-inline void XPostPartyRequestInviteForMe(const MUID& uidTarParty)
-{
-	XPOSTCMD1(MC_PARTY_INVITE_FOR_ME_REQ, MCommandParameterUID(uidTarParty));
 }
 
 inline void XPostRequestSwitchingWeaponSet(int8 nWeaponSet)
@@ -169,11 +158,6 @@ inline void XPostRequestSwitchingWeaponSetBegin()
 inline void XPostPartyRequestInviteQuestionRespond(int nRespond)
 {
 	XPOSTCMD1(MC_PARTY_INVITE_QUESTION_RESPOND, MCommandParameterInt(nRespond));
-}
-
-inline void XPostPartyRequestInviteForMeQuestionRespond(int nRespond)
-{
-	XPOSTCMD1(MC_PARTY_INVITE_FOR_ME_QUESTION_RESPOND, MCommandParameterInt(nRespond));
 }
 
 inline void XPostPartyRequestLeave()

@@ -13,7 +13,7 @@ bool GEffRemainTimeSqlBuilder::Set(const int idx, const int ORD_NUM, const int E
 	return true;
 }
 
-CString& GEffRemainTimeSqlBuilder::BuildSQL(const int64 GSN, const int64 CSN)
+CString& GEffRemainTimeSqlBuilder::BuildSQL(const AID GSN, const CID CSN)
 {
 	m_strSQL.ReleaseBuffer();
 

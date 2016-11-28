@@ -153,7 +153,7 @@ GEntityPlayer* GField::FindPlayer(const MUID& uidPlayer) const
 	return m_pEntityMgr->FindPlayer(uidPlayer);
 }
 
-GEntityPlayer* GField::FindPlayerByCID(int nCID) const
+GEntityPlayer* GField::FindPlayerByCID(CID nCID) const
 {
 	MAP_PLYAERCID::const_iterator itor = m_mapPlayerCID.find(nCID);
 	if (m_mapPlayerCID.end() == itor) return NULL;
@@ -417,7 +417,7 @@ void GField::CancelPreservedEnter(GEntityPlayer* pPlayer)
 	pPlayer->GetPlayerField().GetFieldEntry().ClearReserveWarp();
 }
 
-void GField::RemovePlayerCID(int nCID)
+void GField::RemovePlayerCID(CID nCID)
 {
 	MAP_PLYAERCID::iterator itor = m_mapPlayerCID.find(nCID);
 	if (m_mapPlayerCID.end() != itor)
@@ -487,7 +487,7 @@ GEntityNPC* GField::SpawnNPC(int nNPCID, const SPAWN_INFO* pSpawnInfo, const vec
 			pNPC->DontRewardQuest();
 			pNPC->GetNPCLoot().SetBPartLootID(pDetailInfo->bpart.nLootID);
 
-			vector<int> vecBeneficiaryCID;
+			vector<CID> vecBeneficiaryCID;
 			MUID uidParty;			
 
 			GEntityPlayer* pRewarder = FindPlayer(pDetailInfo->lootable.uidRewarder);
@@ -688,7 +688,7 @@ GAME_WEATHER_TYPE GField::GetCurrentWeather()
 	return m_pWeatherMgr->GetCurrentWeather();
 }
 
-GAME_TIME_TYPE GField::GetCurrentTime()
+GAME_TIME_TYPE (GField::GetCurrentTime)()
 {
 	if (m_pInfo && m_pInfo->m_TimeInfo.bFixed)
 	{
@@ -697,7 +697,7 @@ GAME_TIME_TYPE GField::GetCurrentTime()
 
 	if (NULL == gmgr.pEnvManager) return TIME_INVALID;
 
-	return gmgr.pEnvManager->GetCurrentTime();
+	return (gmgr.pEnvManager->GetCurrentTime)();
 }
 
 int GField::GetCurrentTimeDetail()
@@ -816,6 +816,24 @@ void GField::DespawnNow( int nNPCID, bool bSpawnEnable )
 	for each (GEntityNPC* pDespawnNPC in vecDespawnNPC)
 	{
 		pDespawnNPC->DespawnNow(bSpawnEnable);
+	}
+}
+
+void GField::DespawnAll(bool bResetSpawnTime)
+{
+	vector<GEntityNPC*> vecDespawnNPC = m_pEntityMgr->GetNPCs();
+	for each (GEntityNPC* pDespawnNPC in vecDespawnNPC)
+	{
+		pDespawnNPC->DespawnNow(true);
+
+		if (bResetSpawnTime)
+		{
+			const SPAWN_INFO* pSpawnInfo = pDespawnNPC->GetSpawnInfo();
+			if (pSpawnInfo)
+			{
+				GetSpawn()->ResetSpawnTime(pSpawnInfo->nID);
+			}
+		}
 	}
 }
 

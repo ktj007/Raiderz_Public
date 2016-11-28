@@ -95,11 +95,11 @@ public:
 
 	XPlayerInfoFeature&				GetOverlappedFeature()				{ return m_OverlappedFeature; }
 
-	void							InPlayer(TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo, bool bAppearEffect=true, bool bLoadingAsync = true);
+	void							InPlayer(TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_FEATURE_TATTOO* pTattooInfo, TD_PLAYER_BUFF_LIST* pBuffList, bool bAppearEffect=true, bool bLoadingAsync = true);
 
 	void							SetCharExtFeature( const XCharExtFeature* pExtFeature);
 
-	void							SetBuff( TD_UPDATE_CACHE_PLAYER* pPlayerInfo );
+	void							SetBuff( TD_PLAYER_BUFF_LIST* pBuffList );
 	void							PushBuff(int nBuff)				{ m_ctBuffList.PushBackItem(nBuff); }
 	void							PopBuff(int nBuff)				{ m_ctBuffList.PopItem(nBuff); }
 	XIDContainer&					GetBuffList()					{ return m_ctBuffList; }

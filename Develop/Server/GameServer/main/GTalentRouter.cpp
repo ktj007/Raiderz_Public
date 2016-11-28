@@ -123,6 +123,7 @@ void GTalentRouter::RouteActTalentProjectileMissile(int nTalentID,
 	pOwner->RouteToThisCell(pNewCommand);
 }
 
+/*
 void GTalentRouter::RouteActSpellMagicArea( int nTalentID, vec3 vTargetPos )
 {
 	GEntityActor* pOwner = m_pTalent->GetOwner();
@@ -131,6 +132,19 @@ void GTalentRouter::RouteActSpellMagicArea( int nTalentID, vec3 vTargetPos )
 		NEW_USHORT(pOwner->GetUIID()), 
 		NEW_INT(nTalentID), 
 		NEW_VEC(vTargetPos));
+
+	pOwner->RouteToThisCell(pNewCommand);
+}
+*/
+
+void GTalentRouter::RouteActTalentMiss( int nTalentID )
+{
+	GEntityActor* pOwner = m_pTalent->GetOwner();
+
+	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_ACT_TALENT_MISS, 3,
+		NEW_USHORT(pOwner->GetUIID()),
+		NEW_INT(nTalentID),
+		NEW_SVEC(pOwner->GetFacingDir()));
 
 	pOwner->RouteToThisCell(pNewCommand);
 }
@@ -150,27 +164,53 @@ void GTalentRouter::RouteExtraActTalent( GTalentInfo* pTalentInfo )
 	pOwner->RouteToThisCell(pNewCommand);
 }
 
-void GTalentRouter::RouteTalentHeal( GEntityActor* pUser, GEntityActor* pTarget, int nTalentID, int nHealAmount )
+void GTalentRouter::RouteTalentHeal( GEntityActor* pUser, GEntityActor* pTarget, int nTalentID, int nHealAmount, bool bCriticalHit )
 {
 	VALID(pUser);
 	VALID(pTarget);
-	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_TALENT_HEAL, 4, 
+	MCommand* pNewCommand = MakeNewCommand(MC_ACTION_TALENT_HEAL, 5, 
 		NEW_USHORT(pUser->GetUIID()), 
 		NEW_USHORT(pTarget->GetUIID()), 
 		NEW_INT(nTalentID),
-		NEW_INT(nHealAmount)
+		NEW_INT(nHealAmount),
+		NEW_BOOL(bCriticalHit)
 		);
 	pTarget->RouteToThisCell(pNewCommand);
 }
 
-void GTalentRouter::RouteBuffHeal( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nHealAmount )
+void GTalentRouter::RouteBuffHeal( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nHealAmount, bool bCriticalHit )
 {
 	VALID(pTarget);
-	MCommand* pNewCommand = MakeNewCommand(MC_BUFF_HEAL, 4, 
+	MCommand* pNewCommand = MakeNewCommand(MC_BUFF_HEAL, 5, 
 		NEW_USHORT(pUser?pUser->GetUIID():UIID_INVALID), 
 		NEW_USHORT(pTarget->GetUIID()), 
 		NEW_INT(nBuffID),
-		NEW_INT(nHealAmount)
+		NEW_INT(nHealAmount),
+		NEW_BOOL(bCriticalHit)
+		);
+	pTarget->RouteToThisCell(pNewCommand);
+}
+
+void GTalentRouter::RouteBuffRestoreEN( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nRestoreAmount )
+{
+	VALID(pTarget);
+	MCommand* pNewCommand = MakeNewCommand(MC_BUFF_RESTORE_EN, 4, 
+		NEW_USHORT(pUser?pUser->GetUIID():UIID_INVALID), 
+		NEW_USHORT(pTarget->GetUIID()), 
+		NEW_INT(nBuffID),
+		NEW_INT(nRestoreAmount)
+		);
+	pTarget->RouteToThisCell(pNewCommand);
+}
+
+void GTalentRouter::RouteBuffRestoreSTA( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nRestoreAmount )
+{
+	VALID(pTarget);
+	MCommand* pNewCommand = MakeNewCommand(MC_BUFF_RESTORE_STA, 4, 
+		NEW_USHORT(pUser?pUser->GetUIID():UIID_INVALID), 
+		NEW_USHORT(pTarget->GetUIID()), 
+		NEW_INT(nBuffID),
+		NEW_INT(nRestoreAmount)
 		);
 	pTarget->RouteToThisCell(pNewCommand);
 }

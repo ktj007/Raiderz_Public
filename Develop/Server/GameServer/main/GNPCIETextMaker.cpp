@@ -28,7 +28,7 @@ wstring GNPCIETextMaker::Make( GEntityPlayer* pPlayer, INTERACTION_TYPE nIEType,
 	case IT_QUEST_END :		return QuestEnd(pPlayer, nIEAct);
 	case IT_CRAFT :			return Craft(nIEAct);
 	case IT_INN_SLEEP :		return InnSleep(nIEAct);
-	case IT_SOULBINDING :	return SoulBinding(nIEAct);
+	// case IT_SOULBINDING :	return SoulBinding(nIEAct);
 	case IT_CHALLENGERQUEST:return ChallengeQuest(nIEAct);
 	case IT_GUILD_CREATE :	return L"$$INTERACTION_GUILD_CREATE";
 	case IT_GUILD_DESTROY:	return L"$$INTERACTION_GUILD_DESTROY";

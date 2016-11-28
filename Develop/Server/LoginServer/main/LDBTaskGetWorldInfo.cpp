@@ -45,6 +45,8 @@ void LDBTaskGetWorldInfo::OnExecute(MDatabase& rfDB)
 		data.nMaxPlayerCount = rs.FieldW(L"MAX_PLAYER_COUNT").AsInt();
 		data.isServable = rs.FieldW(L"SERVABLE").AsBool();
 		data.isExpire = rs.FieldW(L"EXPIRE").AsBool();
+		data.strState = rs.FieldW(L"STATE").AsWString();
+		data.nOrderNum = rs.FieldW(L"ORD_NUM").AsInt();
 
 		m_vecWorldInfo.push_back(data);
 
@@ -74,6 +76,18 @@ MDB_THRTASK_RESULT LDBTaskGetWorldInfo::_OnCompleted()
 		csInfo.nCurrentPlayerCount = dbInfo.nCurrentPlayerCount;
 		csInfo.nMaxPlayerCount = dbInfo.nMaxPlayerCount;
 		csInfo.nType = dbInfo.nType;
+		csInfo.nOrderNum = dbInfo.nOrderNum;
+
+		/*
+		if (dbInfo.strState == L"MAINTENANCE")				// Ongoing Maintenance
+			csInfo.strName += L" (Maintenance)";
+		else if (dbInfo.isServable && dbInfo.isExpire)		// Server is unavailable due to errors
+			csInfo.strName += L" (Down)";
+		else if (!dbInfo.isServable && !dbInfo.isExpire)	// Server is starting up
+			csInfo.strName += L" (Starting)";
+		else if (!dbInfo.isServable)						// Server is not running
+			csInfo.strName += L" (Inactive)";
+		*/
 
 		vecWorldInfo.push_back(csInfo);
 	}

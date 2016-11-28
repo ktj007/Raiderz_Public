@@ -58,10 +58,10 @@ MCommandResult GCmdHandler_Master_Login::OnRequestLoginGameServer(MCommand* pCom
 
 MCommandResult GCmdHandler_Master_Login::OnPlayerStateInWorldRes(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nResult;
 
-	if( !pCommand->GetParameter(&nCID,		0, MPT_INT) )	return CR_ERROR;
+	if( !pCommand->GetParameter(&nCID,		0, MPT_INT64) )	return CR_ERROR;
 	if( !pCommand->GetParameter(&nResult,	1, MPT_INT) )	return CR_ERROR;
 
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nCID);

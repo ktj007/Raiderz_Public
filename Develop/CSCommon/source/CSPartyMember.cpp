@@ -8,6 +8,9 @@ CSPartyMember::CSPartyMember()
 , m_nEN(0)
 , m_nSTA(0)
 , m_nLevel(0)
+, m_nFieldID(0)
+, m_nChannelID(INVALID_CHANNELID)
+, m_nTalentStyle(TS_NONE)
 , m_isSetted(false)
 {
 	// do nothing
@@ -21,6 +24,9 @@ CSPartyMember::CSPartyMember(MUID uidMember, tstring strMemberName)
 , m_nSTA(0)
 , m_strName(strMemberName)
 , m_nLevel(0)
+, m_nFieldID(0)
+, m_nChannelID(INVALID_CHANNELID)
+, m_nTalentStyle(TS_NONE)
 , m_isSetted(false)
 {
 	// do noting
@@ -40,6 +46,9 @@ void CSPartyMember::Assign(const TD_PARTY_MEMBER& tdPartyMember, const vector<in
 	m_nSTA = tdPartyMember.nSTA;
 	m_strName = tdPartyMember.szName;
 	m_nLevel = tdPartyMember.nLevel;
+	m_nFieldID = tdPartyMember.nFieldID;
+	m_nChannelID = tdPartyMember.nChannelID;
+	m_nTalentStyle = static_cast<TALENT_STYLE>(tdPartyMember.nTalentStyle);
 
 	m_vecBuff = vecBuff;
 
@@ -54,10 +63,13 @@ void CSPartyMember::Export(TD_PARTY_MEMBER* pPartyMember, vector<int>* pVecBuff)
 	pPartyMember->nEN = m_nEN;
 	pPartyMember->nSTA = m_nSTA;
 	pPartyMember->nLevel = m_nLevel;
+	pPartyMember->nFieldID = m_nFieldID;
+	pPartyMember->nChannelID = m_nChannelID;
+	pPartyMember->nTalentStyle = static_cast<uint8>(m_nTalentStyle);
 	_tcsncpy_s(pPartyMember->szName, m_strName.c_str(), _TRUNCATE);
 	
-
-	*pVecBuff = m_vecBuff;
+	if (pVecBuff)
+		*pVecBuff = m_vecBuff;
 }
 
 void CSPartyMember::Update(const CSPartyMember* pPartyMember)
@@ -68,6 +80,9 @@ void CSPartyMember::Update(const CSPartyMember* pPartyMember)
 	m_nSTA = pPartyMember->m_nSTA;
 	m_strName = pPartyMember->m_strName;
 	m_nLevel = pPartyMember->m_nLevel;
+	m_nFieldID = pPartyMember->m_nFieldID;
+	m_nChannelID = pPartyMember->m_nChannelID;
+	m_nTalentStyle = static_cast<TALENT_STYLE>(pPartyMember->m_nTalentStyle);
 
 	m_vecBuff = pPartyMember->m_vecBuff;
 

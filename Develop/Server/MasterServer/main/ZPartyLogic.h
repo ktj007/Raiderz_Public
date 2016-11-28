@@ -18,12 +18,12 @@ public:
 	virtual ZPartyCommandRouter* NewRouter(void);
 	
 	virtual void InviteReq(MUID uidSender, MUID uidTargetPlayer, MUID uidRequestPlayer);
+	virtual void InviteByNameReq(MUID uidSender, wstring strTargetPlayer, MUID uidRequestPlayer);
 	virtual void AcceptRes(MUID uidSender, MUID uidRequestPlayer, MUID uidTargetPlayer, CCommandResultTable nResult);
 	virtual void LeaveReq(MUID uidSender, MUID uidParty, MUID uidLeaveMember);
 	virtual void KickReq(MUID uidSender, MUID uidParty, MUID uidRequestPlayer, MUID uidTargetPlayer);
-	virtual void JoinInviteReq(MUID uidSender, MUID uidParty, MUID uidRequestPlayer);
+	virtual void JoinReq(MUID uidSender, MUID uidParty, MUID uidRequestPlayer, int nReqPlayerLevel, int nReqPlayerTalentStyle);
 	virtual void JoinAcceptRes(MUID uidSender, MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, CCommandResultTable nResult);
-	virtual void CreateSingleReq(MUID uidSender, MUID uidRequestPlayer);
 	virtual void PartyInfoAllReq(MUID uidSender);
 	virtual void AllMemberOfflineInGameServer(int nGameServerID);
 		 	
@@ -40,10 +40,14 @@ public:
 	virtual bool DoOnline(MUID uidParty, MUID uidMember, MUID uidOffline);
 	virtual void MoveServer(MUID uidParty, MUID uidMember);	
 
-	virtual void ChangeNameReq(MUID uidSender, MUID uidParty, MUID uidLeader, wstring strName);
+	virtual void ChangePublicPartySettingReq(MUID uidSender, MUID uidParty, MUID uidLeader, bool bPublicParty, wstring strPartyName);
 	virtual void ChangeLeaderReq(MUID uidSender, MUID uidParty, MUID uidLeader, MUID uidNewLeader);
 	virtual void ChangeLootingRuleReq(MUID uidSender, MUID uidParty, MUID uidLeader, LOOTING_RULE_DATA rule);
 	virtual void ChangeQuestIDReq( MUID uidSender, MUID uidParty, MUID uidLeader, int nQuestID );
+
+	virtual void ShowInfoReq(MUID uidSender, MUID uidRequestor, MUID uidParty);
+	virtual void CreateSinglePartyReq(MUID uidSender, MUID uidRequestPlayer, bool bPublicParty, wstring strPartyName);
+	virtual void ShowMatchingPublicPartyListReq(MUID uidSender, MUID uidRequestor, char nPage, char nLevelMin, char nLevelMax, wstring strSearchText);
 
 	bool FixedPartyLogOn(MUID uidParty, MUID uidMember, MUID uidOffline);
 	void CreateAutoPartyReq(int nQuestID, const vector<MUID>& vecMemberUID);

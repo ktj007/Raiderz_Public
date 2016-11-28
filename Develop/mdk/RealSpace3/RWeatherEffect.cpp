@@ -63,7 +63,11 @@ RWeatherEffect::RWeatherEffect() : RSceneNode(RRP_WEATHEREFFECT)
 	m_pWaterEffect = NULL;
 	m_vCameraPosition = RVector::ZERO;
 
+#if (_MSC_VER >= 1900)
+	SetAABB(RBoundingBox::_INFINITY);
+#else
 	SetAABB( RBoundingBox::INFINITY );
+#endif
 }
 
 RWeatherEffect::~RWeatherEffect()

@@ -13,13 +13,13 @@ ZPartyMember::ZPartyMember()
 	// do nothing
 }
 
-ZPartyMember::ZPartyMember(MUID uidMember, wstring strMemberName, int nMemberServerID, int MemberCID)
+ZPartyMember::ZPartyMember(MUID uidMember, wstring strMemberName, int nMemberServerID, CID nMemberCID)
 : CSPartyMember(uidMember, strMemberName)
 , m_nGameServerID(nMemberServerID)
 , m_pairFieldGroup(-1, MUID::Invalid())
 , m_isMoveServer(false)
 , m_isOffline(false)
-, m_nCID(MemberCID)
+, m_nCID(nMemberCID)
 {
 	// do noting
 }
@@ -132,7 +132,7 @@ bool ZPartyMember::IsExistQuest(int nQuestID) const
 	return it != m_setQuestID.end();
 }
 
-int ZPartyMember::GetCID( void ) const
+CID ZPartyMember::GetCID( void ) const
 {
 	return m_nCID;
 }

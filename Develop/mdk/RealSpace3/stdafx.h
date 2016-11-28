@@ -29,11 +29,14 @@
 #include <list>
 #include <vector>
 #include <map>
-#include <hash_map>
 #include <set>
 #include <string>
 #include <algorithm>
-#include <functional>
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
+#include <hash_map>
+#endif
 
 // BVH 카메라를 사용할거냐 말거냐
 #define BVH_CAMERA
@@ -67,6 +70,7 @@
 #include "RSceneNode.h"
 #include "RCameraSceneNode.h"
 #include "RSceneManager.h"
+
 // 엔진 / 장치
 #include "RDevice.h"
 
@@ -76,7 +80,7 @@
 //프로파일러
 #include "RProfiler.h"
 
-#ifdef _DEBUG
+#if defined(_DEBUG) && (_MSC_VER < 1900)
 #pragma comment(lib, "atlsd.lib")
 #else
 #pragma comment(lib, "atls.lib")

@@ -80,9 +80,9 @@ void ZPartyCommandRouter::KickRes(MUID uidTarget, MUID uidRequestPlayer, MUID ui
 	gsys.pCommandCenter->PostCommand(pNewCmd);
 }
 
-void ZPartyCommandRouter::JoinInviteRes(MUID uidTarget, MUID uidRequestPlayer, CCommandResultTable nResult)
+void ZPartyCommandRouter::JoinRes(MUID uidTarget, MUID uidRequestPlayer, CCommandResultTable nResult)
 {
-	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_JOIN_INVITE_RES,
+	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_JOIN_RES,
 							uidTarget,
 							2,
 							NEW_UID(uidRequestPlayer),
@@ -92,15 +92,18 @@ void ZPartyCommandRouter::JoinInviteRes(MUID uidTarget, MUID uidRequestPlayer, C
 	gsys.pCommandCenter->PostCommand(pNewCmd);
 }
 
-void ZPartyCommandRouter::JoinAcceptReq(MUID uidTarget, MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, wstring strRequestPlayerName)
+void ZPartyCommandRouter::JoinAcceptReq(MUID uidTarget, MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, wstring strRequestPlayerName, int nReqPlayerLevel, int nReqPlayerTalentStyle, int nReqPlayerFieldID)
 {
 	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_JOIN_ACCEPT_REQ,
 							uidTarget,
-							4,
+							7,
 							NEW_UID(uidParty),
 							NEW_UID(uidLeader),
 							NEW_UID(uidRequestPlayer),
-							NEW_WSTR(strRequestPlayerName.c_str())
+							NEW_WSTR(strRequestPlayerName.c_str()),
+							NEW_INT(nReqPlayerLevel),
+							NEW_INT(nReqPlayerTalentStyle),
+							NEW_INT(nReqPlayerFieldID)
 							);
 
 	gsys.pCommandCenter->PostCommand(pNewCmd);
@@ -129,6 +132,50 @@ void ZPartyCommandRouter::PartyInfoAllRes(MUID uidTarget, vector<TD_PARTY_INFO>&
 	gsys.pCommandCenter->PostCommand(pNewCmd);
 }
 
+void ZPartyCommandRouter::ShowInfoRes(MUID uidTarget, MUID uidRequestor, const ZParty* pParty)
+{
+	_ASSERT(pParty != NULL);
+
+	TD_PARTY tdParty;
+	vector<TD_PARTY_MEMBER> vecMember;
+
+	MakeTD_PartyInfo(pParty, tdParty, vecMember, NULL);
+
+	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_SHOW_INFO_RES,
+							uidTarget,
+							3,
+							NEW_UID(uidRequestor),
+							NEW_BLOB(&tdParty, sizeof(tdParty), 1),
+							NEW_BLOB(vecMember)
+							);
+
+	gsys.pCommandCenter->PostCommand(pNewCmd);
+}
+
+void ZPartyCommandRouter::CreateSinglePartyRes(MUID uidTarget, MUID uidRequestPlayer, CCommandResultTable nResult)
+{
+	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_CREATE_SINGLE_PARTY_RES,
+							uidTarget,
+							2,
+							NEW_UID(uidRequestPlayer),
+							NEW_INT(nResult));
+
+	gsys.pCommandCenter->PostCommand(pNewCmd);
+}
+
+void ZPartyCommandRouter::ShowMatchingPublicPartyListRes(MUID uidTarget, MUID uidRequestor, CCommandResultTable nResult, const vector<TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM>& vecMatchedItem, int nFilteredCount)
+{
+	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST_RES,
+							uidTarget,
+							4,
+							NEW_UID(uidRequestor),
+							NEW_INT(nResult),
+							NEW_BLOB(vecMatchedItem),
+							NEW_INT(nFilteredCount));
+
+	gsys.pCommandCenter->PostCommand(pNewCmd);
+}
+
 void ZPartyCommandRouter::Fail(MUID uidTarget, MUID uidPlayer, CCommandResultTable nResult )
 {
 	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_FAIL,
@@ -141,14 +188,14 @@ void ZPartyCommandRouter::Fail(MUID uidTarget, MUID uidPlayer, CCommandResultTab
 	gsys.pCommandCenter->PostCommand(pNewCmd);
 }
 
-void ZPartyCommandRouter::PartyAdd(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderCID)
+void ZPartyCommandRouter::PartyAdd(MUID uidParty, MUID uidLeader, wstring strLeaderName, CID nLeaderCID)
 {
 	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_ADD,
 							4,
 							NEW_UID(uidParty),
 							NEW_UID(uidLeader),
 							NEW_WSTR(strLeaderName.c_str()),
-							NEW_INT(nLeaderCID)
+							NEW_INT64(nLeaderCID)
 							);
 	
 	gsys.pCommandCenter->RouteToGameServer(pNewCmd);
@@ -164,14 +211,14 @@ void ZPartyCommandRouter::PartyRemove(MUID uidParty)
 	gsys.pCommandCenter->RouteToGameServer(pNewCmd);
 }
 
-void ZPartyCommandRouter::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberCID)
+void ZPartyCommandRouter::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, CID nMemberCID)
 {
 	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_ADD_MEMBER,
 							4,
 							NEW_UID(uidParty),
 							NEW_UID(uidMember),
 							NEW_WSTR(strMemberName.c_str()),
-							NEW_INT(nMemberCID)
+							NEW_INT64(nMemberCID)
 							);
 
 	gsys.pCommandCenter->RouteToGameServer(pNewCmd);
@@ -192,6 +239,7 @@ void ZPartyCommandRouter::PartySync(const ZParty* pParty)
 {
 	_ASSERT(pParty != NULL);
 
+	/*
 	TD_PARTY_SETTING tdPartySetting;
 	tdPartySetting.Import(pParty->GetPartySetting());
 
@@ -215,6 +263,13 @@ void ZPartyCommandRouter::PartySync(const ZParty* pParty)
 		
 		it++;		
 	}
+	*/
+
+	TD_PARTY tdParty;
+	vector<TD_PARTY_MEMBER> vecMember;
+	vector<vector<int>> vecBuff;
+
+	MakeTD_PartyInfo(pParty, tdParty, vecMember, &vecBuff);
 
 
 	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_SYNC,
@@ -341,12 +396,13 @@ void ZPartyCommandRouter::MoveServerSync(MUID uidParty, MUID uidMember, MUID uid
 	gsys.pCommandCenter->RouteToGameServer(pNewCmd);
 }
 
-void ZPartyCommandRouter::ChangeNameRes( MUID uidParty, wstring strName )
+void ZPartyCommandRouter::ChangePublicPartySettingRes( MUID uidParty, bool bPublicParty, wstring strPartyName )
 {
-	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_CHANGE_NAME,
-															2,
+	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_PARTY_CHANGE_PUBLIC_PARTY_SETTING,
+															3,
 															NEW_UID(uidParty),
-															NEW_WSTR(strName.c_str())
+															NEW_BOOL(bPublicParty),
+															NEW_WSTR(strPartyName.c_str())
 															);
 	gsys.pCommandCenter->RouteToGameServer(pNewCmd);
 }
@@ -375,5 +431,34 @@ void ZPartyCommandRouter::ChangeQuestIDRes( MUID uidParty, int nQuestID)
 		NEW_INT(nQuestID)
 		);
 	gsys.pCommandCenter->RouteToGameServer(pNewCmd);
+}
+
+void ZPartyCommandRouter::MakeTD_PartyInfo(const ZParty* pParty, TD_PARTY& outtdParty, vector<TD_PARTY_MEMBER>& outvecMember, vector<vector<int>>* outvecBuff)
+{
+	_ASSERT(pParty != NULL);
+
+	TD_PARTY_SETTING tdPartySetting;
+	tdPartySetting.Import(pParty->GetPartySetting());
+
+	outtdParty = TD_PARTY(pParty->GetUID(), tdPartySetting);
+
+	if (outvecBuff)
+		outvecBuff->resize(MAX_PARTY_MEMBER_COUNT);
+
+	int i = 0;
+	ZParty::member_iterator it = pParty->BeginMember();
+	while (it != pParty->EndMember())
+	{
+		ZPartyMember* pPartyMember = it->second;
+
+		TD_PARTY_MEMBER tdMember;
+		pPartyMember->Export(&tdMember, outvecBuff ? &((*outvecBuff)[i]) : NULL);
+		outvecMember.push_back(tdMember);
+
+		i++;
+		if (MAX_PARTY_MEMBER_COUNT <= i)	break;
+
+		it++;
+	}
 }
 

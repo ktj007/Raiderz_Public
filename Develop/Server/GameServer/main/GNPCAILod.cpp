@@ -44,12 +44,12 @@ void GNPCAILod::OnNotify(GAIEvent aiEvent)
 	{
 	case AI_LOD_REMAINS:	return;									// 현재 LOD 유지
 	case AI_LOD_COMBAT:		m_aiLod = AI_LOD_LEVEL_1;	break;		// 전투 LOD 
-	case AI_LOD_OLD:		m_aiLod = m_aiOldLod;		break;		// 전투 전 LOD로 복귀
+	case AI_LOD_OLD:		m_aiLod = m_aiOldLod;		return;		// 전투 전 LOD로 복귀
 	default:
 		m_aiLod = (AI_LOD_LEVEL)nTransAILod;
-		m_aiOldLod = m_aiLod;
 		break;
 	}
+	m_aiOldLod = m_aiLod;
 }
 
 AI_LOD_LEVEL GNPCAILod::GetLodLevel(void) const

@@ -162,7 +162,7 @@ void PTradeMarketService::OnTradeMarketDel(minet::MCommand& cmd)
 void PTradeMarketService::OnTradeMarketSearch(minet::MCommand& cmd)
 {
 	CID requester;
-	VALID(true == cmd.GetParameter(&requester, 0, minet::MPT_INT));
+	VALID(true == cmd.GetParameter(&requester, 0, minet::MPT_INT64));
 	SEARCH_FILTER* const filter = new SEARCH_FILTER();
 	VALID(NULL!=filter);
 	if (false == cmd.GetBlob(filter->wantedSearchTypeIDs, 1))
@@ -186,7 +186,7 @@ void PTradeMarketService::OnTradeMarketSearch(minet::MCommand& cmd)
 void PTradeMarketService::OnTradeMarketSearchNext(minet::MCommand& cmd)
 {
 	CID requester;
-	VALID(true == cmd.GetParameter(&requester, 0, minet::MPT_INT));
+	VALID(true == cmd.GetParameter(&requester, 0, minet::MPT_INT64));
 	Search(requester);
 }
 
@@ -276,7 +276,7 @@ void PTradeMarketService::Route(const CID& playerCID,vector<TD_TRADEMARKETITEM>&
 		return;
 	}
 
-	minet::MCommand* const cmd = gsys.pCommandCenter->MakeNewCommand(MPC_AG_TRADEMARKET_SEARCH_RESULT, 2, NEW_INT(playerCID), NEW_BLOB(findedItems));
+	minet::MCommand* const cmd = gsys.pCommandCenter->MakeNewCommand(MPC_AG_TRADEMARKET_SEARCH_RESULT, 2, NEW_INT64(playerCID), NEW_BLOB(findedItems));
 	VALID(NULL != cmd);
 	gsys.pCommandCenter->SendCommand(pGameServer->GetUID(), cmd);
 }

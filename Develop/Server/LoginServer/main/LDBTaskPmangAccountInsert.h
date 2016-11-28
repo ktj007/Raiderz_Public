@@ -30,7 +30,8 @@ protected :
 		std::wstring strPassword;
 		PmUserData	 pmangUserData;
 
-		int64 m_nGSN;
+		AID		m_nGSN;
+		int64	m_nCONN_SN;
 	};
 
 	class Completer

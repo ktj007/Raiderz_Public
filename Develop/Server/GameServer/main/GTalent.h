@@ -117,6 +117,7 @@ public:
 	void			ApplyDelayedAct();
 
 	void			OnGainDamage(GEntityActor* pTarget);
+	void			OnHitDone();
 
 	bool IsCastingComplete();
 	// 탤런트 사용자 반환
@@ -151,6 +152,7 @@ public:
 	bool			IsNowInvincibleTime();
 	bool			IsNowSuperarmorTime();
 	bool			IsNowAvoidTime();
+	bool			IsNowIgnoreAllMFTime();
 	bool			IsNowCasting();
 	bool			IsCancelable();
 	bool			IsMovable();

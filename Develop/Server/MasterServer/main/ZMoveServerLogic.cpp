@@ -36,7 +36,7 @@ bool ZMoveServerLogic::RequestLoginGameServer_Check(const MUID& uidRequester, co
 
 	if (PS_SELECT_CHAR != pPlayer->GetState())
 	{
-		mlog3("Error! ZMoveServerLogic::RequestLoginGameServer_Check(), Player State is Not PS_SELECT_CHAR! (AID= %d , CID= %d)\n", pLoginAccountInfo->nAID, pLoginAccountInfo->nCID);
+		mlog3("Error! ZMoveServerLogic::RequestLoginGameServer_Check(), Player State is Not PS_SELECT_CHAR! (AID= %I64d , CID= %I64d)\n", pLoginAccountInfo->nAID, pLoginAccountInfo->nCID);
 		return false;
 	}
 

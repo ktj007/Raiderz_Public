@@ -33,6 +33,7 @@ public:
 	DECL_CMD_HANDLER(OnRequestActTalent);
 	DECL_CMD_HANDLER(OnRequestActTalentWithHitcapsule);
 	DECL_CMD_HANDLER(OnRequestActTalentWithGround);
+	DECL_CMD_HANDLER(OnRequestActTalentMiss);
 	DECL_CMD_HANDLER(OnRequestCancelTalent);
 	DECL_CMD_HANDLER(OnRequestStandUp);
 	DECL_CMD_HANDLER(OnRequestSwitchingWeaponBegin);

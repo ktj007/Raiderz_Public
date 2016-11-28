@@ -12,6 +12,7 @@ public:
 	GCmdHandler_Training(MCommandCommunicator* pCC);
 
 	DECL_CMD_HANDLER(OnRequestLearnTalent);
+	DECL_CMD_HANDLER(OnRequestTrainLimitInfo);
 };
 
 

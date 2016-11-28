@@ -55,6 +55,12 @@ MCommandResult LCmdHandler_Login::OnLogin(MCommand* pCommand, MCommandHandler* p
 		cmdRouter.ResponseLogin(uidPlayer, CR_FAIL_LOGIN_COMMAND_INVALID_VERSION);
 		return CR_TRUE;
 	}
+
+	if (!LConfig::IsInGameLoginAllowed())
+	{
+		cmdRouter.ResponseLogin(uidPlayer, CR_FAIL_LOGIN);
+		return CR_TRUE;
+	}
 	
 	// 로그인 요청
 	LLoginLogic loginLogic;
@@ -64,6 +70,7 @@ MCommandResult LCmdHandler_Login::OnLogin(MCommand* pCommand, MCommandHandler* p
 		cmdRouter.ResponseLogin(uidPlayer, CR_FAIL_LOGIN_POST_DB);
 		return CR_TRUE;
 	}
+
 	return CR_TRUE;
 }
 

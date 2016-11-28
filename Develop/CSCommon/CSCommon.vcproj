@@ -66,6 +66,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMDd.lib"
 				OutputFile="Lib/CSCommonMDd.lib"
 			/>
 			<Tool
@@ -134,6 +135,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crld.lib"
 				OutputFile="Lib/CSCommond.lib"
 			/>
 			<Tool
@@ -202,6 +204,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crl.lib"
 				OutputFile="Lib/CSCommon.lib"
 			/>
 			<Tool
@@ -265,6 +268,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crl.lib"
 				OutputFile="Lib/CSCommon.lib"
 			/>
 			<Tool
@@ -333,6 +337,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMD_import.lib"
 				OutputFile="Lib/CSCommonMD_import.lib"
 			/>
 			<Tool
@@ -478,6 +483,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMDd.lib"
 				OutputFile="Lib/CSCommonMDd.lib"
 			/>
 			<Tool
@@ -547,6 +553,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMD.lib"
 				OutputFile="Lib/CSCommonMD.lib"
 			/>
 			<Tool
@@ -615,6 +622,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMDd_import.lib"
 				OutputFile="Lib/CSCommonMDd_import.lib"
 			/>
 			<Tool
@@ -683,6 +691,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crld.lib"
 				OutputFile="Lib/CSCommonMDWd.lib"
 			/>
 			<Tool
@@ -821,6 +830,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMDd_import.lib"
 				OutputFile="Lib/CSCommonMDd_import.lib"
 			/>
 			<Tool
@@ -889,6 +899,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMD_import.lib"
 				OutputFile="Lib/CSCommonMD_import.lib"
 			/>
 			<Tool
@@ -957,6 +968,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crlMDW.lib"
 				OutputFile="Lib/CSCommonMDW.lib"
 			/>
 			<Tool
@@ -1025,6 +1037,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crld.lib"
 				OutputFile="Lib/CSCommond.lib"
 			/>
 			<Tool
@@ -1093,6 +1106,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crl.lib"
 				OutputFile="Lib/CSCommon.lib"
 			/>
 			<Tool
@@ -1161,6 +1175,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="../crl/Lib/crl.lib"
 				OutputFile="Lib/CSCommon.lib"
 			/>
 			<Tool

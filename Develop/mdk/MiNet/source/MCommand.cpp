@@ -290,12 +290,12 @@ bool MCommand::CheckRule(void)
 	return true;
 }
 
-int MCommand::GetData(char* pData, uint16 nSize)
+int MCommand::GetData(char* pData, uint32 nSize)
 {
 	if (NULL == m_pCommandDesc)	return 0;
 	if (NULL == pData)			return 0;
 
-	uint16 nDataIndex = sizeof(uint16);
+	uint32 nDataIndex = sizeof(uint32);
 
 	// Command id
 	uint16 nCommandID = m_pCommandDesc->GetID();
@@ -322,25 +322,25 @@ int MCommand::GetData(char* pData, uint16 nSize)
 	}
 
 	// Write Total Size
-	memcpy(pData, &nDataIndex, sizeof(uint16));
+	memcpy(pData, &nDataIndex, sizeof(uint32));
 
 	return nDataIndex;
 }
 
-bool MCommand::SetData(char* pData, uint16 nDataLen)
+bool MCommand::SetData(char* pData, uint32 nDataLen)
 {
 	if (NULL == pData) return false;
 
 	Reset();
 
-	uint16 nDataIndex = 0;
+	uint32 nDataIndex = 0;
 
 	// Get Total Packet Size
-	uint16 nTotalPacketSize = 0;
-	memcpy(&nTotalPacketSize, pData, sizeof(uint16));
-	nDataIndex += sizeof(uint16);
+	uint32 nTotalPacketSize = 0;
+	memcpy(&nTotalPacketSize, pData, sizeof(uint32));
+	nDataIndex += sizeof(uint32);
 
-	if ((nDataLen != USHRT_MAX) && (nDataLen != nTotalPacketSize))
+	if ((nDataLen != UINT_MAX) && (nDataLen != nTotalPacketSize))
 	{
 		minet_logd("Network Error! MCommand::SetData(), Invalid Data Size!\n");
 		return false;
@@ -354,6 +354,9 @@ bool MCommand::SetData(char* pData, uint16 nDataLen)
 	MCommandDesc* pDesc = MGetCommandDescMap()->GetCommandDescByID(nCommandID);
 	if (pDesc == NULL)
 	{
+#if 1 || 1
+		printf("Network Error! MCommand::SetData(), MCommandDesc is not exist!(CmdID = %d)\n", nCommandID);
+#endif
 		minet_logd("Network Error! MCommand::SetData(), MCommandDesc is not exist!(CmdID = %d)\n", nCommandID);
 		_ASSERT(0);
 		return false;
@@ -373,10 +376,13 @@ bool MCommand::SetData(char* pData, uint16 nDataLen)
 			return false;
 		}
 		
-		uint16 nRemainSize = nTotalPacketSize - nDataIndex;
-		uint16 nCopyedDataSize = (uint16)pParam->SetData(pData + nDataIndex, nRemainSize);
+		uint32 nRemainSize = nTotalPacketSize - nDataIndex;
+		uint32 nCopyedDataSize = (uint32)pParam->SetData(pData + nDataIndex, nRemainSize);
 		if (nCopyedDataSize <= 0)
 		{
+#if 1 || 1
+			printf("Network Error! MCommand::SetData(), Failed MCommandParameter::SetData()!(CmdID = %d)\n", nCommandID);
+#endif
 			minet_logd("Network Error! MCommand::SetData(), Failed MCommandParameter::SetData()!(CmdID = %d)\n", nCommandID);
 			return false;
 		}
@@ -407,7 +413,7 @@ int MCommand::GetSize()
 	int nSize = 0;
 
 	// size + command id
-	nSize = sizeof(unsigned short int) + sizeof(unsigned short int);
+	nSize = sizeof(unsigned int) + sizeof(unsigned short int);
 
 	int nParamCount = (int)m_Params.size();
 

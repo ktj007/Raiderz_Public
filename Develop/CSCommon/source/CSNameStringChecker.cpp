@@ -166,7 +166,7 @@ bool CSNameStringChecker::Check_CpHangul() const
 		if (0x8141 <= nChar && nChar <= 0xc65a)
 		{
 			// 허용된 글자인지 체크
-			char chAnsi[4] = { cFirst, cSecond, 0, };
+			char chAnsi[4] = { (char)cFirst, (char)cSecond, 0, };
 			tstring tCharacter;
 #ifdef _UNICODE
 			tCharacter = MLocale::ConvAnsiToUCS2(chAnsi);

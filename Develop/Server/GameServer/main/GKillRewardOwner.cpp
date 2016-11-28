@@ -16,7 +16,7 @@ GKillRewardOwner::~GKillRewardOwner(void)
 {
 }
 
-bool GKillRewardOwner::IsCandidate(int nCID)
+bool GKillRewardOwner::IsCandidate(CID nCID)
 {
 	return (m_mapCandidateCID.end() != m_mapCandidateCID.find(nCID));
 }
@@ -26,11 +26,11 @@ bool GKillRewardOwner::IsEmpty()
 	return m_mapCandidateCID.empty();
 }
 
-void GKillRewardOwner::GetBeneficiaryAndParty(vector<int>& outvecBeneficiaryCID, MUID& outnPartyUID)
+void GKillRewardOwner::GetBeneficiaryAndParty(vector<CID>& outvecBeneficiaryCID, MUID& outnPartyUID)
 {	
 	outnPartyUID = MUID::ZERO;
 
-	int nRewardOwnerCID = GetRewardOwnerCID();
+	CID nRewardOwnerCID = GetRewardOwnerCID();
 	if (0 == nRewardOwnerCID) return;
 
 	// 현재 소유권자의 파티를 알수 있으면 현재파티로
@@ -52,8 +52,8 @@ void GKillRewardOwner::GetBeneficiaryAndParty(vector<int>& outvecBeneficiaryCID,
 	}
 	else
 	{
-		vector<int> vecMemberCID = pParty->CollectMemberCID();
-		for each (int nMemberCID in vecMemberCID)
+		vector<CID> vecMemberCID = pParty->CollectMemberCID();
+		for each (CID nMemberCID in vecMemberCID)
 		{
 			if (false == IsCandidate(nMemberCID)) continue;
 
@@ -62,7 +62,7 @@ void GKillRewardOwner::GetBeneficiaryAndParty(vector<int>& outvecBeneficiaryCID,
 	}
 }
 
-void GKillRewardOwner::InsertBeneficiaryAndParty( const vector<int>& vecBeneficiaryCID, const MUID& nPartyUID )
+void GKillRewardOwner::InsertBeneficiaryAndParty( const vector<CID>& vecBeneficiaryCID, const MUID& nPartyUID )
 {
 	if (true ==	vecBeneficiaryCID.empty()) return;
 
@@ -76,7 +76,7 @@ void GKillRewardOwner::InsertBeneficiaryAndParty( const vector<int>& vecBenefici
 }
 
 
-int GKillRewardOwner::GetRewardOwnerCID()
+CID GKillRewardOwner::GetRewardOwnerCID()
 {
 	if (true == m_mapCandidateRank.empty()) return 0;
 
@@ -90,7 +90,7 @@ MUID GKillRewardOwner::GetRewardOwnerPastPartyUID()
 	return m_mapCandidateRank.begin()->second.m_nPartyUID;
 }
 
-void GKillRewardOwner::Insert(int nCID, MUID nPartyUID)
+void GKillRewardOwner::Insert(CID nCID, MUID nPartyUID)
 {
 	if (m_mapCandidateCID.end() != m_mapCandidateCID.find(nCID)) return;
 
@@ -100,7 +100,7 @@ void GKillRewardOwner::Insert(int nCID, MUID nPartyUID)
 	m_mapCandidateCID.insert(MAP_CANDIDATE_CID::value_type(nCID, nCandidateRank));
 }
 
-void GKillRewardOwner::Delete(int nCID)
+void GKillRewardOwner::Delete(CID nCID)
 {
 	MAP_CANDIDATE_CID::iterator itor = m_mapCandidateCID.find(nCID);
 	if (m_mapCandidateCID.end() == itor) return;
@@ -111,9 +111,9 @@ void GKillRewardOwner::Delete(int nCID)
 	m_mapCandidateCID.erase(nCID);
 }
 
-void GKillRewardOwner::Delete(const vector<int>& vecCID)
+void GKillRewardOwner::Delete(const vector<CID>& vecCID)
 {
-	for each (int nCID in vecCID)
+	for each (CID nCID in vecCID)
 	{
 		Delete(nCID);
 	}

@@ -34,7 +34,7 @@ MCommandResult PCmdHandler_Chat::OnChatCreatePrivateChannelReq(MCommand* pComman
 {
 	CID		cidRequestPlayer;
 	wstring	strChannelName;
-	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(strChannelName,		1, MPT_WSTR)==false) return CR_ERROR;
 
 	PChattingLogic logicChatting;
@@ -46,7 +46,7 @@ MCommandResult PCmdHandler_Chat::OnChatEnterChannelReq(MCommand* pCommand, MComm
 {
 	CID		cidRequestPlayer;
 	wstring	strChannelName;
-	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(strChannelName,		1, MPT_WSTR)==false) return CR_ERROR;
 
 	PChattingLogic logicChatting;
@@ -57,7 +57,7 @@ MCommandResult PCmdHandler_Chat::OnChatLeaveChannelReq(MCommand* pCommand, MComm
 {
 	CID		cidRequestPlayer;
 	MUID	uidChannel;
-	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidChannel,			1, MPT_UID)==false) return CR_ERROR;
 
 	PChattingLogic logicChatting;
@@ -69,7 +69,7 @@ MCommandResult PCmdHandler_Chat::OnChatKickPlayerReq(MCommand* pCommand, MComman
 {
 	CID		cidRequestPlayer;
 	MUID	uidChannel;
-	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidChannel,			1, MPT_UID)==false) return CR_ERROR;
 
 	PChattingLogic logicChatting;
@@ -80,7 +80,7 @@ MCommandResult PCmdHandler_Chat::OnChatBanPlayerReq(MCommand* pCommand, MCommand
 {
 	CID		cidRequestPlayer;
 	MUID	uidChannel;
-	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidChannel,			1, MPT_UID)==false) return CR_ERROR;
 
 	PChattingLogic logicChatting;
@@ -91,7 +91,7 @@ MCommandResult PCmdHandler_Chat::OnChatUnbanPlayerReq(MCommand* pCommand, MComma
 {
 	CID		cidRequestPlayer;
 	MUID	uidChannel;
-	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidChannel,			1, MPT_UID)==false) return CR_ERROR;
 
 	PChattingLogic logicChatting;
@@ -102,7 +102,7 @@ MCommandResult PCmdHandler_Chat::OnChatChangeHostReq(MCommand* pCommand, MComman
 {
 	CID		cidRequestPlayer;
 	MUID	uidChannel;
-	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&cidRequestPlayer,	0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidChannel,			1, MPT_UID)==false) return CR_ERROR;
 
 	PChattingLogic logicChatting;

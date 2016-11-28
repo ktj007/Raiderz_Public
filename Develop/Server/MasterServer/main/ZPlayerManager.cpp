@@ -78,7 +78,8 @@ ZPlayer* ZBasePlayerManager::FindByName( wstring strName )
 		ZPlayer* pPlayer = val.second;
 		if (NULL == pPlayer) continue;
 
-		if (strName == pPlayer->GetPlayerName())
+		// if (strName == pPlayer->GetPlayerName())
+		if (_wcsicmp(strName.c_str(), pPlayer->GetPlayerName().c_str()) == 0)
 		{
 			return pPlayer;
 		}

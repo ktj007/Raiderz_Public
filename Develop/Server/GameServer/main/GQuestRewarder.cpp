@@ -16,7 +16,6 @@
 #include "GQuestRemoveItemCollector.h"
 #include "GQuestAddItemCollector.h"
 #include "GExpCalculator.h"
-#include "GConfig.h"
 
 
 bool GQuestRewarder::Reward(GEntityPlayer* pPlayer, int nQuestID, int nSelectedReward)
@@ -149,22 +148,22 @@ void GQuestRewarder::CalcRewardMoneyAndXP(GEntityPlayer* pPlayer, GQuestInfo* pQ
 	{
 		if (QRT_MONEY == rw.nType)
 		{
-			nMoney += rw.nParam1 * GConfig::m_QuestGoldRate;
+			nMoney += rw.nParam1;
 		}
 		else if (QRT_XP == rw.nType)
 		{
-			nXP += rw.nParam1 * GConfig::m_QuestXPRate;
+			nXP += rw.nParam1;
 		}	
 	}
 
 	if (selectedReward.nType == QRT_MONEY)
 	{
-		nMoney += selectedReward.nParam1 * GConfig::m_QuestGoldRate;
+		nMoney += selectedReward.nParam1;
 	}
 
 	if (selectedReward.nType == QRT_XP)
 	{
-		nXP += selectedReward.nParam1 * GConfig::m_QuestXPRate;
+		nXP += selectedReward.nParam1;
 	}
 
 	if (MAX_MONEY - nMoney < pPlayer->GetMoney())

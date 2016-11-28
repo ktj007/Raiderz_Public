@@ -31,17 +31,21 @@ public:
 	DECL_CMD_HANDLER(OnPartyRemoveOfflineMember);
 
 	DECL_CMD_HANDLER(OnPartyJoinAcceptReq);
-	DECL_CMD_HANDLER(OnPartyJoinInviteRes);	
+	DECL_CMD_HANDLER(OnPartyJoinRes);	
 	DECL_CMD_HANDLER(OnPartyJoinAcceptCancel);
 
 	DECL_CMD_HANDLER(OnPartyMoveServerSync);
 
 	DECL_CMD_HANDLER(OnPartyInfoAllRes);
 
-	DECL_CMD_HANDLER(OnPartyChangeNameRes);
+	DECL_CMD_HANDLER(OnPartyChangePublicPartySettingRes);
 	DECL_CMD_HANDLER(OnPartyChangeLeaderRes);
 	DECL_CMD_HANDLER(OnPartyChangeLootingRuleRes);
 	DECL_CMD_HANDLER(OnPartyChangeQuestIDRes);
+
+	DECL_CMD_HANDLER(OnPartyShowInfoRes);
+	DECL_CMD_HANDLER(OnPartyCreateSinglePartyRes);
+	DECL_CMD_HANDLER(OnPartyMatchedShowPublicPartyListRes);
 	
 	DECL_CMD_HANDLER(OnPartyFail);	
 };

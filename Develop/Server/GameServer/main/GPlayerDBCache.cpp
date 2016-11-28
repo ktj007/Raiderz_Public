@@ -5,7 +5,7 @@
 #include "GSystem.h"
 
 
-GPlayerDBCache::GPlayerDBCache( const MUID& uidPlayer, const int nCID, GCharacterDBCache* pCacheChar ) 
+GPlayerDBCache::GPlayerDBCache( const MUID& uidPlayer, const CID nCID, GCharacterDBCache* pCacheChar ) 
 : m_UID(uidPlayer), m_bFlushing(false), m_SyncingCnt(0), m_nCachingCnt(0), m_nLastFlushTm(0)
 {
 	if (NULL != pCacheChar)

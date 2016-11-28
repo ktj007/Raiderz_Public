@@ -3,7 +3,7 @@
 #include "GPlayerObjectManager.h"
 #include "GGlobal.h"
 
-GGuildMember::GGuildMember(int64 nAID, int nCID, const wchar_t* szName, int nLevel, GUILD_MEMBER_GRADE nGrade)
+GGuildMember::GGuildMember(AID nAID, CID nCID, const wchar_t* szName, int nLevel, GUILD_MEMBER_GRADE nGrade)
 : m_nAID(nAID)
 , m_nCID(nCID)
 , m_strName(szName)

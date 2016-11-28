@@ -64,7 +64,7 @@ bool XDebugNPCLogFrm::OnCommand( MWidget* pWidget, MEventMsg nMsg, const char* s
  
  				((MButton*)pWidget)->SetCheck(!((MButton*)pWidget)->glueGetCheck());
  
- 				XPostDebugString(L"npc_monitor_show_type", nParam, L"");
+// 				XPostDebugString(L"npc_monitor_show_type", nParam, L"");
 				return true;
 			}
 		}
@@ -83,7 +83,7 @@ void XDebugNPCLogFrm::OnShow( bool bShow)
 		SetBitSet(nParam, NPCLOG_MOVE);
 		SetBitSet(nParam, NPCLOG_COLT);
 
-		XPostDebugString(L"npc_monitor_show_type", nParam, L"");
+//		XPostDebugString(L"npc_monitor_show_type", nParam, L"");
 	}
 
 	MWidget::OnShow( bShow);

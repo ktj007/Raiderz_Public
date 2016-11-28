@@ -123,6 +123,9 @@ public:
 	void SetRecvTime(uint32 nTime)		{ m_KeepingAliveData.SetRecvTime(nTime); }
 
 	SOCKET GetSocket() const	{ return m_TCPSocket.GetSocket(); }
+
+	// 2015-12-02: Get Remote IP
+	std::string GetRemoteIP() const { return m_TCPSocket.GetRemoteIP(); }
 };
 
 

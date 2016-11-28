@@ -353,11 +353,15 @@ namespace mdb
 			, 0);
 		CHK_SQLRET_FAIL(Ret, false);
 
+#if MDB_USE_PSQLODBC
+		/* psqlODBC doesn't support SQL_ATTR_CURSOR_SCROLLABLE option. */
+#else
 		Ret = SQLSetStmtAttr(GetSQLSTMT().GetSTMT()
 			, SQL_ATTR_CURSOR_SCROLLABLE
 			, (SQLPOINTER)SQL_NONSCROLLABLE
 			, 0);
 		CHK_SQLRET_FAIL(Ret, false);
+#endif
 
 		return true;
 	}

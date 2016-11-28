@@ -34,15 +34,15 @@ public:
 	void RewardByGather(GEntityPlayer* pPlayer, int nLootID, GEntityNPC* pNPC);
 
 private:
-	void DivideContriubtorByServer(const vector<int>& vecBeneficiaryCID, vector<GEntityPlayer*>& outvecSameServerBeneficiary, vector<int>& outvecOtherServerBeneficiaryCID);
+	void DivideContriubtorByServer(const vector<CID>& vecBeneficiaryCID, vector<GEntityPlayer*>& outvecSameServerBeneficiary, vector<CID>& outvecOtherServerBeneficiaryCID);
 
 	void Exp(const vector<GEntityPlayer*>& vecSameServerBeneficiary, int nAllBeneficiaryCount, GNPCInfo* pNPCInfo);
 	void Quest(const vector<GEntityPlayer*>& vecSameServerBeneficiary, GEntityNPC* pNPC);
 	void Faction(const vector<GEntityPlayer*>& vecSameServerBeneficiary, GNPCInfo* pNPCInfo);
-	void ItemByDie(const vector<int>& vecBeneficiaryCID, MUID nPartyUID, GEntityNPC* pNPC);
+	void ItemByDie(const vector<CID>& vecBeneficiaryCID, MUID nPartyUID, GEntityNPC* pNPC);
 	void ItemByGather(GEntityPlayer* pPlayer, int nLootID, GEntityNPC* pNPC);
 
-	void RewardOtherServerBeneficiary(const vector<int>& vecOtherServerBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID);
+	void RewardOtherServerBeneficiary(const vector<CID>& vecOtherServerBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID);
 
 	void NotifyReward(vector<GEntityPlayer*> vecSameServerBeneficiary, int nNPCID);
 	void NotifyReward(GEntityPlayer* pSameServerBeneficiary, int nNPCID);

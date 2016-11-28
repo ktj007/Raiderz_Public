@@ -148,7 +148,27 @@ MCommand* CSMsgCommandHelper::MakeNewClientCommandNoticeRes(tstring strMsg)
 	return MakeNewCommand(MC_MSG_RES, MT_NOTICE, strMsg, NULL, NULL, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandAnnounceReq(tstring strMsg, int nSenderCID)
+MCommand* CSMsgCommandHelper::MakeNewClientCommandNoviceReq(tstring strMsg)
+{
+	return MakeNewCommand(MC_MSG_REQ, MT_NOVICE, strMsg, NULL, NULL, 0);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewClientCommandNoviceRes(tstring strMsg, tstring strSenderName)
+{
+	return MakeNewCommand(MC_MSG_RES, MT_NOVICE, strMsg, strSenderName, NULL, 0);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewClientCommandLFPReq(tstring strMsg)
+{
+	return MakeNewCommand(MC_MSG_REQ, MT_LFP, strMsg, NULL, NULL, 0);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewClientCommandLFPRes(tstring strMsg, tstring strSenderName)
+{
+	return MakeNewCommand(MC_MSG_RES, MT_LFP, strMsg, strSenderName, NULL, 0);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewServerCommandAnnounceReq(tstring strMsg, CID nSenderCID)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_ANNOUNCE, strMsg, nSenderCID, NULL, 0);
 }
@@ -158,22 +178,22 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandAnnounceRes(tstring strMsg, ts
 	return MakeNewCommand(MPC_MSG_RES, MT_ANNOUNCE, strMsg, strSenderName, NULL, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandWhisperReq(tstring strMsg, int nSenderCID, tstring strReceiverName)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandWhisperReq(tstring strMsg, CID nSenderCID, tstring strReceiverName)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_WHISPER, strMsg, nSenderCID, strReceiverName, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandWhisperRes(tstring strMsg, tstring strSenderName, int nReceiverCID)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandWhisperRes(tstring strMsg, tstring strSenderName, CID nReceiverCID)
 {
 	return MakeNewCommand(MPC_MSG_RES, MT_WHISPER, strMsg, strSenderName, nReceiverCID, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandWhisperBackRes(tstring strMsg, int nSenderCID, tstring strReceiverName)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandWhisperBackRes(tstring strMsg, CID nSenderCID, tstring strReceiverName)
 {
 	return MakeNewCommand(MPC_MSG_RES, MT_WHISPER_BACK, strMsg, nSenderCID, strReceiverName, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandPartyReq(tstring strMsg, int nSenderCID, MUID uidParty)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandPartyReq(tstring strMsg, CID nSenderCID, MUID uidParty)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_PARTY, strMsg, nSenderCID, uidParty, 0);
 }
@@ -183,7 +203,7 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandPartyRes(tstring strMsg, tstri
 	return MakeNewCommand(MPC_MSG_RES, MT_PARTY, strMsg, strSenderName, uidParty, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandGuildReq(tstring strMsg, int nSenderCID, int nGuildID)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandGuildReq(tstring strMsg, CID nSenderCID, int nGuildID)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_GUILD, strMsg, nSenderCID, nGuildID, 0);
 }
@@ -193,7 +213,7 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandGuildRes(tstring strMsg, tstri
 	return MakeNewCommand(MPC_MSG_RES, MT_GUILD, strMsg, strSenderName, nGuildID, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandChannelReq(tstring strMsg, int nSenderCID, MUID uidChannel)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandChannelReq(tstring strMsg, CID nSenderCID, MUID uidChannel)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_CHANNEL, strMsg, nSenderCID, uidChannel, 0);
 }
@@ -203,7 +223,7 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandChannelRes(tstring strMsg, tst
 	return MakeNewCommand(MPC_MSG_RES, MT_CHANNEL, strMsg, strSenderName, uidChannel, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandGlobalReq(tstring strMsg, int nSenderCID)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandGlobalReq(tstring strMsg, CID nSenderCID)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_GLOBAL, strMsg, nSenderCID, NULL, 0);
 }
@@ -213,7 +233,7 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandGlobalRes(tstring strMsg, tstr
 	return MakeNewCommand(MPC_MSG_RES, MT_GLOBAL, strMsg, strSenderName, NULL, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandAuctionReq(tstring strMsg, int nSenderCID)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandAuctionReq(tstring strMsg, CID nSenderCID)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_AUCTION, strMsg, nSenderCID, NULL, 0);
 }
@@ -223,7 +243,7 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandAuctionRes(tstring strMsg, tst
 	return MakeNewCommand(MPC_MSG_RES, MT_AUCTION, strMsg, strSenderName, NULL, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandFieldReq(tstring strMsg, int nSenderCID, int nFieldID)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandFieldReq(tstring strMsg, CID nSenderCID, int nFieldID)
 {
 	return MakeNewCommand(MPC_MSG_REQ, MT_FIELD, strMsg, nSenderCID, nFieldID, 0);
 }
@@ -233,7 +253,7 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandFieldRes(tstring strMsg, tstri
 	return MakeNewCommand(MPC_MSG_RES, MT_FIELD, strMsg, strSenderName, nFieldID, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandSystemRes(CCommandResultTable nResult, int nReceiverCID)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandSystemRes(CCommandResultTable nResult, CID nReceiverCID)
 {
 	return MakeNewCommand(MPC_MSG_RES, MT_SYSTEM, tstring(), NULL, nReceiverCID, nResult);
 }
@@ -248,9 +268,29 @@ MCommand* CSMsgCommandHelper::MakeNewServerCommandNoticeRes(tstring strMsg)
 	return MakeNewCommand(MPC_MSG_RES, MT_NOTICE, strMsg, NULL, NULL, 0);
 }
 
-MCommand* CSMsgCommandHelper::MakeNewServerCommandAdviceRes(CCommandResultTable nResult, int nReceiverCID)
+MCommand* CSMsgCommandHelper::MakeNewServerCommandAdviceRes(CCommandResultTable nResult, CID nReceiverCID)
 {
 	return MakeNewCommand(MPC_MSG_RES, MT_ADVICE, tstring(), NULL, nReceiverCID, nResult);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewServerCommandNoviceReq(tstring strMsg, CID nSenderCID)
+{
+	return MakeNewCommand(MPC_MSG_REQ, MT_NOVICE, strMsg, nSenderCID, NULL, 0);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewServerCommandNoviceRes(tstring strMsg, tstring strSenderName)
+{
+	return MakeNewCommand(MPC_MSG_RES, MT_NOVICE, strMsg, strSenderName, NULL, 0);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewServerCommandLFPReq(tstring strMsg, CID nSenderCID)
+{
+	return MakeNewCommand(MPC_MSG_REQ, MT_LFP, strMsg, nSenderCID, NULL, 0);
+}
+
+MCommand* CSMsgCommandHelper::MakeNewServerCommandLFPRes(tstring strMsg, tstring strSenderName)
+{
+	return MakeNewCommand(MPC_MSG_RES, MT_LFP, strMsg, strSenderName, NULL, 0);
 }
 
 bool CSMsgCommandHelper::IsSenderEmpty(const MCommand* pCmd)
@@ -299,9 +339,9 @@ tstring CSMsgCommandHelper::GetReceiverName(const MCommand* pCmd)
 #endif
 }
 
-int CSMsgCommandHelper::GetSenderID(const minet::MCommand* pCmd)
+int64 CSMsgCommandHelper::GetSenderID(const minet::MCommand* pCmd)
 {
-	int* pID;
+	int64* pID;
 	int nCount;
 	if (!pCmd->GetBlob(pID, nCount, 2))	return INVALID_ID;
 	if (nCount != 1)						return INVALID_ID;
@@ -309,9 +349,9 @@ int CSMsgCommandHelper::GetSenderID(const minet::MCommand* pCmd)
 	return *pID;
 }
 
-int CSMsgCommandHelper::GetReceiverID(const minet::MCommand* pCmd)
+int64 CSMsgCommandHelper::GetReceiverID(const minet::MCommand* pCmd)
 {
-	int* pID;
+	int64* pID;
 	int nCount;
 	if (!pCmd->GetBlob(pID, nCount, 3))	return INVALID_ID;
 	if (nCount != 1)						return INVALID_ID;
@@ -384,5 +424,5 @@ template <>
 void CSMsgCommandHelper::AddParameter(MCommand* pCmd, wstring strBlob)
 {
 	size_t len = (strBlob.length() + 1) * sizeof(wchar_t);
-	pCmd->AddParameter(NEW_BLOB(strBlob.c_str(), len, 1));
+	pCmd->AddParameter(NEW_BLOB(strBlob.c_str(), static_cast<unsigned short>(len), 1));
 }

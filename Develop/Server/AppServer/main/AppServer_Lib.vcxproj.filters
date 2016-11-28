@@ -294,6 +294,12 @@
     <ClCompile Include="PTradeMarketServiceConsumer.cpp">
       <Filter>TradeMarket</Filter>
     </ClCompile>
+    <ClCompile Include="PNoviceMsgHandler.cpp">
+      <Filter>Chatting</Filter>
+    </ClCompile>
+    <ClCompile Include="PLFPMsgHandler.cpp">
+      <Filter>Chatting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBaseApplication.h">
@@ -529,6 +535,12 @@
     </ClInclude>
     <ClInclude Include="PTradeMarketServiceConsumer.h">
       <Filter>TradeMarket</Filter>
+    </ClInclude>
+    <ClInclude Include="PNoviceMsgHandler.h">
+      <Filter>Chatting</Filter>
+    </ClInclude>
+    <ClInclude Include="PLFPMsgHandler.h">
+      <Filter>Chatting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

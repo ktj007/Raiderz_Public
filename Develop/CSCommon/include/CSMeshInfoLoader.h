@@ -14,7 +14,6 @@ class CSMeshInfoMgr;
 #define MESHINFO_XML_TAG_ANIINFO				"AniInfo"
 
 #define MESHINFO_XML_ATTR_MESHNAME				"MeshName"
-#define MESHINFO_XML_ATTR_BPARTCOUNT			"BPartsCount"
 #define MESHINFO_XML_ATTR_TOP_BONENAME			"TopBone"
 #define MESHINFO_XML_ATTR_BOTTOM_BONENAME		"BottomBone"
 #define MESHINFO_XML_ATTR_REACTION_NAME			"ReActionName"

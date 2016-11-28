@@ -43,7 +43,7 @@ void GBuffInfo::Cooking()
 		m_Condition.infoRelease.vecAdditionType.push_back(TC_BUFF_HIT);
 	}
 
-	if (m_Condition.infoRelease.nType == TC_RESIST)
+	if (m_Condition.infoRelease.CheckCondition(TC_RESIST))
 	{
 		// 버프풀기 조건이 저항인 경우에는 이진저항으로 고정
 		m_Resist.m_nMethod = TRM_BINARY;
@@ -54,12 +54,13 @@ void GBuffInfo::Cooking()
 	{
 	case BUFT_AURA:
 		m_TriggeredBuff.nTiming = TC_BUFF_GAIN_N_PERIOD;
-		m_fPeriod = 1.0f; // 주기시간 고정
+		// m_fPeriod = 1.0f; // 주기시간 고정
 		m_bSaveToDB = false;
 		break;
 	case BUFT_AURA_EFFECT_BUFF:
 	case BUFT_AURA_EFFECT_DEBUFF:
-		if (m_fDuration == 0.0f)
+		// if (m_fDuration == 0.0f)
+		if (m_fDuration == BUFF_DURATION_INFINITY)	// BUFF_DURATION_INFINITY = default value of buff.
 		{
 			// 지정된 시간이 없을 경우
 			m_fDuration = 1.0f; // 유효시간 고정
@@ -95,20 +96,14 @@ bool GBuffInfo::IsModified_MF() const
 	return m_MotionFactorGroup.IsModified();
 }
 
-bool GBuffInfo::HasHealEffect() const
-{
-	if (m_nMaxHeal > 0)
-		return true;
-
-	if (m_fPercentageHeal > 0.0f)
-		return true;
-
-	return false;
-}
-
 bool GBuffInfo::IsInvincibility() const
 {
 	return IsMatchPassiveExtraAttrib(BUFPEA_INVINCIBILITY);
+}
+
+bool GBuffInfo::IsAvoid() const
+{
+	return IsMatchPassiveExtraAttrib(BUFPEA_AVOID);
 }
 
 bool GBuffInfo::IsInvisibilityToNPC() const
@@ -265,6 +260,7 @@ void GBuffInfoMgr::ParseBuff(MXmlElement* pElement, MXml* pXml)
 
 	if (Exist(nID))
 	{		
+		_VLOGGER->Log(_T(BUFF_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}
 
@@ -308,12 +304,10 @@ void GBuffInfoMgr::ParseBuff(MXmlElement* pElement, MXml* pXml)
 
 	_Attribute(&pNewInfo->m_nStackPower,	pElement, BUFF_XML_ATTR_STACKPOWER);
 
-	int nDamageType=0;
 	_Attribute(&pNewInfo->m_nMinDamage,		pElement, BUFF_XML_ATTR_MIN_DAMAGE);
 	_Attribute(&pNewInfo->m_nMaxDamage,		pElement, BUFF_XML_ATTR_MAX_DAMAGE);
 	_Attribute(&pNewInfo->m_nMinHeal,		pElement, BUFF_XML_ATTR_MIN_HEAL);
 	_Attribute(&pNewInfo->m_nMaxHeal,		pElement, BUFF_XML_ATTR_MAX_HEAL);
-	_Attribute(&pNewInfo->m_fPercentageHeal,	pElement, BUFF_XML_ATTR_PERCENTAGE_HEAL);
 	if (_Attribute(strValue,				pElement, BUFF_XML_ATTR_DAMAGE_ATTRIB)) 
 	{
 		pNewInfo->m_nDamageAttrib = (DAMAGE_ATTRIB)CSStrings::StringToDamageAttrib(MLocale::ConvAnsiToUCS2(strValue.c_str()).c_str());
@@ -331,7 +325,7 @@ void GBuffInfoMgr::ParseBuff(MXmlElement* pElement, MXml* pXml)
 
 	if (_Attribute(strValue,				pElement, BUFF_XML_ATTR_RELEASE_CONDITION)) 
 	{
-		talentInfoParser.ParseEffectTiming(strValue, pNewInfo->m_Condition.infoRelease.nType);
+		talentInfoParser.ParseMultiEffectTiming(strValue, pNewInfo->m_Condition.infoRelease.setType);
 		_Attribute(&pNewInfo->m_Condition.infoRelease.nParam,	pElement, BUFF_XML_ATTR_RELEASE_PARAM);
 	}
 

@@ -32,8 +32,6 @@ protected:
 	XCursorSmartShower		m_CursorSmartShower;
 	int						m_nLoadingType;
 
-	XPlayFrame_Debugger		m_Debugger;
-
 #ifndef _PUBLISH
 	// Debugging and test
 	XMovableDebugger*		m_pMovableDebugger;

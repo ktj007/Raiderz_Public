@@ -8,12 +8,14 @@
 #include "GPlayerInteraction.h"
 #include "GNPCMgr.h"
 #include "GNPCInteractor.h"
+#include "GPlayerDoing.h"
 
 GCmdHandler_Interaction::GCmdHandler_Interaction(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 {
-	SetCmdHandler(MC_INTERACTION_INTERACTION_REQ,	OnInteraction);
-	SetCmdHandler(MC_NPCINTERACTION_IELEMENT_REQ,	OnNPCInteractionElement);
-	SetCmdHandler(MC_NPCINTERACTION_END_REQ,		OnNPCInteractionEnd);
+	SetCmdHandler(MC_INTERACTION_INTERACTION_REQ,						OnInteraction);
+	SetCmdHandler(MC_NPCINTERACTION_SELECT_IELEMENT_REQ,				OnNPCInteractionSelectElement);
+	SetCmdHandler(MC_NPCINTERACTION_REFRESH_SELECTABLE_IELEMENT_REQ,	OnNPCInteractionRefreshElement);
+	SetCmdHandler(MC_NPCINTERACTION_END_REQ,							OnNPCInteractionEnd);
 }
 
 MCommandResult GCmdHandler_Interaction::OnInteraction(MCommand* pCmd, MCommandHandler* pHandler)
@@ -37,7 +39,7 @@ MCommandResult GCmdHandler_Interaction::OnInteraction(MCommand* pCmd, MCommandHa
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Interaction::OnNPCInteractionElement(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Interaction::OnNPCInteractionSelectElement(MCommand* pCmd, MCommandHandler* pHandler)
 {
 	MUID uidPlayer = pCmd->GetSenderUID();
 	GEntityPlayer* pEntityPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(uidPlayer);
@@ -52,6 +54,24 @@ MCommandResult GCmdHandler_Interaction::OnNPCInteractionElement(MCommand* pCmd, 
 	if (NULL == pNPC) return CR_FALSE;
 
 	if (false == gsys.pInteractionSystem->GetNPCInteractor().InteractionElement(pEntityPlayer, pNPC, nIElementID))
+	{
+		gsys.pInteractionSystem->GetNPCInteractor().End(pEntityPlayer);
+	}
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Interaction::OnNPCInteractionRefreshElement(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	MUID uidPlayer = pCmd->GetSenderUID();
+	GEntityPlayer* pEntityPlayer = gmgr.pPlayerObjectManager->GetEntityInWorld(uidPlayer);
+	if (NULL == pEntityPlayer) return CR_FALSE;
+	if (false == pEntityPlayer->GetDoing().IsNowInteracting()) return CR_FALSE;
+
+	GEntityNPC* pNPC = pEntityPlayer->GetInteraction().GetInteractingNPC();
+	if (NULL == pNPC) return CR_FALSE;
+
+	if (false == gsys.pInteractionSystem->GetNPCInteractor().InteractionByClick(pEntityPlayer, pNPC, true))
 	{
 		gsys.pInteractionSystem->GetNPCInteractor().End(pEntityPlayer);
 	}

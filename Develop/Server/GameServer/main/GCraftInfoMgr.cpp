@@ -63,6 +63,7 @@ void GCraftInfoMgr::ParseCraft(MXmlElement* pElement, MXml* pXml)
 	
 	if (NULL != pExistInfo)
 	{
+		_VLOGGER->Log(_T(CRAFT_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}
 

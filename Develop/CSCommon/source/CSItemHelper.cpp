@@ -79,7 +79,8 @@ bool CSItemHelper::IsGuardableWeaponType( WEAPON_TYPE nWeaponType )
 		nWeaponType == WEAPON_1H_BLUNT ||
 		nWeaponType == WEAPON_TWO_HANDED ||
 		nWeaponType == WEAPON_2H_BLUNT ||
-		nWeaponType == WEAPON_STAFF) return true;
+		nWeaponType == WEAPON_STAFF ||
+		nWeaponType == WEAPON_DUAL_PIERCE) return true;
 
 	return false;
 }
@@ -347,6 +348,7 @@ bool CSItemHelper::IsMustCheckPassiveType(TALENT_EXTRA_PASSIVE_TYPE nPassiveType
 {
 	switch (nPassiveType)
 	{
+		/*
 	case TEPT_BASE_WEAPON_ONE_HANDED:
 	case TEPT_BASE_WEAPON_1H_SLASH:
 	case TEPT_BASE_WEAPON_1H_BLUNT:
@@ -358,6 +360,7 @@ bool CSItemHelper::IsMustCheckPassiveType(TALENT_EXTRA_PASSIVE_TYPE nPassiveType
 	case TEPT_BASE_WEAPON_GUN:
 	case TEPT_BASE_WEAPON_STAFF:
 	case TEPT_BASE_WEAPON_BOOK:
+	*/
 	case TEPT_BASE_SNEAK:
 	case TEPT_BASE_ELEMENTAL:
 	case TEPT_BASE_HOLY:

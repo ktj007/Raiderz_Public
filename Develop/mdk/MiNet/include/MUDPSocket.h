@@ -6,6 +6,10 @@
 #include "MPacket.h"
 #include "MiNetCommon.h"
 
+#if (_MSC_VER >= 1900)
+#include <WS2tcpip.h>
+#endif
+
 namespace minet {
 
 // INNER CLASS //////////////////////////////////////////////////////////////////////////
@@ -74,7 +78,17 @@ public:
 	bool						Send(DWORD dwIP, int nPort, char* pPacket, DWORD dwSize );
 	
 	SOCKET						GetLocalSocket()		{ return m_Socket; }
-	char*						GetLocalIPString()		{ return inet_ntoa(m_LocalAddress.sin_addr); }
+	char*						GetLocalIPString()		{ 
+#if (_MSC_VER >= 1900)
+		IN_ADDR		inAddr = m_LocalAddress.sin_addr;
+		static char szIP[64];
+
+		inet_ntop(AF_INET, &inAddr, szIP, 64);
+		return szIP;
+#else
+		return inet_ntoa(m_LocalAddress.sin_addr); 
+#endif
+	}
 	DWORD						GetLocalIP()			{ return m_LocalAddress.sin_addr.S_un.S_addr; }
 	WORD						GetLocalPort()			{ return m_LocalAddress.sin_port; }
 	void						GetTraffic(int* nSendTraffic, int* nRecvTraffic);

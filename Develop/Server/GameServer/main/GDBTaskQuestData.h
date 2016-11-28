@@ -12,14 +12,14 @@ class GDBT_QUEST_COMMON
 {
 public :
 	GDBT_QUEST_COMMON() : m_nAID(0), m_uidPlayer(0), m_nCID(0), m_nSlotID(0), m_nQuestID(0), m_nCharPtm(0), m_nLevel(0), m_nXP(0) {}
-	GDBT_QUEST_COMMON(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nSlotID, const int nQuestID, const int nCharPtm, int nDeltaCharPtm, const uint8 nLevel, int nXP
+	GDBT_QUEST_COMMON(const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nSlotID, const int nQuestID, const int nCharPtm, int nDeltaCharPtm, const uint8 nLevel, int nXP
 		, const wstring& strAcceptDt, const int nFieldID) 
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nSlotID(nSlotID), m_nQuestID(nQuestID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm)
 		, m_nLevel(nLevel), m_nXP(nXP), m_strAcceptDt(strAcceptDt), m_nFieldID(nFieldID) {}
 
-	int64			m_nAID;
+	AID				m_nAID;
 	MUID			m_uidPlayer;
-	int64			m_nCID;
+	CID				m_nCID;
 	uint8			m_nSlotID;
 	int				m_nQuestID;
 	int				m_nCharPtm;
@@ -34,7 +34,7 @@ class GDBT_QEUST_DONE
 {
 public :
 	GDBT_QEUST_DONE() : m_nIncXP(0), m_nMoney(0), m_nIncMoney(0), m_nNPCUID(MUID::ZERO) {}
-	GDBT_QEUST_DONE(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const int nLevel, const int nDeltaLevel, const uint8 nSlotID, const int nQID, QUEST_REWARD selRw
+	GDBT_QEUST_DONE(const AID nAID, const MUID& uidPlayer, const CID nCID, const int nLevel, const int nDeltaLevel, const uint8 nSlotID, const int nQID, QUEST_REWARD selRw
 		, const int nXP, const int nIncXP, const int nMoney, const int nIncMoney, const wstring& strAcceptDt, const wstring& strExpiDt, const int nCharPtm, int nDeltaCharPtm, MUID nNPCUID, int nFieldID, const vec3& vPos) 
 		: m_QuestComm(nAID, uidPlayer, nCID, nSlotID, nQID, nCharPtm, nDeltaCharPtm, nLevel, nXP, strAcceptDt, nFieldID)
 		, m_SelectedReward(selRw), m_nDeltaLevel(nDeltaLevel), m_nIncXP(nIncXP), m_nMoney(nMoney), m_nIncMoney(nIncMoney), m_strExpiDt(strExpiDt), m_nNPCUID(nNPCUID), m_vPos(vPos) {}
@@ -75,7 +75,7 @@ class GDBT_QUEST_GIVEUP
 {
 public :
 	GDBT_QUEST_GIVEUP() : m_nAID(0), m_uidPlayer(0), m_nCID(0), m_nLevel(0), m_nSlotID(0), m_nQuestID(0), m_nCharPtm(0), m_nFieldID(0) {}
-	GDBT_QUEST_GIVEUP(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nLevel, const uint8 nSlotID, const int nQuestID, const int nCharPtm, int nDeltaCharPtm
+	GDBT_QUEST_GIVEUP(const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nLevel, const uint8 nSlotID, const int nQuestID, const int nCharPtm, int nDeltaCharPtm
 		, const wstring& strAccpDate, const int nFieldID)
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nLevel(nLevel), m_nSlotID(nSlotID), m_nQuestID(nQuestID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm)
 		, m_strAcceptDt(strAccpDate), m_nFieldID(nFieldID) {}
@@ -96,9 +96,9 @@ public :
 		m_vecQItems.swap(data.m_vecQItems);
 	}
 
-	int64				m_nAID;
+	AID					m_nAID;
 	MUID				m_uidPlayer;
-	int64				m_nCID;
+	CID					m_nCID;
 	int					m_nLevel;	
 	uint8				m_nSlotID;
 	int					m_nQuestID;
@@ -113,7 +113,7 @@ class GDBT_QUEST_ACCEPT
 {
 public :
 	GDBT_QUEST_ACCEPT() : m_bChallange(false), m_nMoney(0), m_bComplete(false), m_uidNPC(MUID::ZERO) {}
-	GDBT_QUEST_ACCEPT(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nSlotID, const int nQuestID, const bool bChallange, const int nCharPtm, int nDeltaCharPtm
+	GDBT_QUEST_ACCEPT(const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nSlotID, const int nQuestID, const bool bChallange, const int nCharPtm, int nDeltaCharPtm
 		, const int nXP, const uint8 nLevel, const int nMoney, const bool bComplete, const wstring& strAcceptDt, const wstring& strExpiDt, const int nFieldID, const MUID& uidNPC)
 		: m_QuestComm(nAID, uidPlayer, nCID, nSlotID, nQuestID, nCharPtm, nDeltaCharPtm, nLevel, nXP, strAcceptDt, nFieldID)
 		, m_bChallange(bChallange), m_bComplete(bComplete), m_strExpiDt(strExpiDt), m_uidNPC(uidNPC) {}
@@ -146,7 +146,7 @@ class GDBT_QUEST_OBJECT
 {
 public :
 	GDBT_QUEST_OBJECT() : m_nObjID(0), m_nProgress(0), m_bComplete(false), m_uidNPC(MUID::ZERO) {}
-	GDBT_QUEST_OBJECT(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nSlotID, const int nQuestID, const int nCharPtm, int nDeltaCharPtm
+	GDBT_QUEST_OBJECT(const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nSlotID, const int nQuestID, const int nCharPtm, int nDeltaCharPtm
 		, const uint8 nLevel, const int nXP, const int nObjNum, const int16 nProgress, const bool bComplete, bool bTrigger, MUID uidNPC, const wstring& strAcceptDt, const int nFieldID) 
 		: m_QuestComm(nAID, uidPlayer, nCID, nSlotID, nQuestID, nCharPtm, nDeltaCharPtm, nLevel, nXP, strAcceptDt, nFieldID)
 		, m_nObjID(nObjNum), m_nProgress(nProgress), m_bComplete(bComplete), m_bTrigger(bTrigger), m_uidNPC(uidNPC) {}
@@ -163,12 +163,12 @@ class GDBT_QUEST_VAR
 {
 public :
 	GDBT_QUEST_VAR() : m_nAID(0), m_uidPlayer(0), m_nCID(0), m_nSlotID(0), m_nQuestID(0), m_nVar(0) {}
-	GDBT_QUEST_VAR(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nSlotID, const int nQuestID, const int nVar)
+	GDBT_QUEST_VAR(const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nSlotID, const int nQuestID, const int nVar)
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nSlotID(nSlotID), m_nQuestID(nQuestID), m_nVar(nVar) {}
 
-	const int64 m_nAID;
+	const AID	m_nAID;
 	const MUID	m_uidPlayer;
-	const int64	m_nCID;
+	const CID	m_nCID;
 	const uint8 m_nSlotID;
 	const int	m_nQuestID;
 	const int	m_nVar;

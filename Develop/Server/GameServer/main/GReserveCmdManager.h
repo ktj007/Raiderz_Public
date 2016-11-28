@@ -2,7 +2,7 @@
 
 class GReserveCmd;
 
-typedef map<int, GReserveCmd*> MAP_RESERVE_CMD;
+typedef map<CID, GReserveCmd*> MAP_RESERVE_CMD;
 
 class GReserveCmdManager : public MTestMemPool<GReserveCmdManager>
 {
@@ -12,13 +12,13 @@ public:
 
 	void Update();
 
-	void Reserve(vector<int>& vecCID, MCommand* pCmd);
-	void Reserve(int nCID, MCommand* pCmd);
-	void RunAndDeleteReserveCmd(int nCID);	
-	void RunReserveCmd(int nCID);	
-	void DeleteReserveCmd(int nCID);
+	void Reserve(vector<CID>& vecCID, MCommand* pCmd);
+	void Reserve(CID nCID, MCommand* pCmd);
+	void RunAndDeleteReserveCmd(CID nCID);	
+	void RunReserveCmd(CID nCID);	
+	void DeleteReserveCmd(CID nCID);
 
-	GReserveCmd* GetReserveCmd(int nCID);
+	GReserveCmd* GetReserveCmd(CID nCID);
 
 private:
 	void Clear();

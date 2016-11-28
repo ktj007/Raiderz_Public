@@ -19,8 +19,11 @@ public:
 	GEFfectTimingChecker();
 	void AddListener(TALENT_CONDITION nTiming, Listener* pListenner);
 
+	void Update(float fDelta);
+
 private:
 	void NotifyEvent(TALENT_CONDITION nTiming);
+	void NotifyEvent(TALENT_CONDITION nTiming, float fDelayTime);
 
 private:
 	// 피격 이벤트
@@ -75,4 +78,8 @@ private:
 private:
 	typedef map<TALENT_CONDITION, vector<Listener*>> TimingMap;
 	TimingMap			m_mapTimings;
+
+	typedef pair<TALENT_CONDITION, float> DelayedEvent;
+	typedef vector<DelayedEvent> DelayedEventVec;
+	DelayedEventVec		m_vecDelayedEvents;
 };

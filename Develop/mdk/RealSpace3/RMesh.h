@@ -3,7 +3,11 @@
 
 #include "RPreDefine.h"
 #include <vector>
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
 #include <hash_map>
+#endif
 
 #include "RMeshUtil.h"
 #include "RMeshAnimationMgr.h"

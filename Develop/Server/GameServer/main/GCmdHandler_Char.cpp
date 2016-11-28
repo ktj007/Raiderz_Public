@@ -32,7 +32,7 @@ MCommandResult GCmdHandler_Char::OnRequestRebirth(MCommand* pCmd, MCommandHandle
 
 	switch (nRebirthType)
 	{
-	case REBT_PLACE_IN_BATTLEGROUD	: gsys.pRebirthSystem->RebirthToPlaceInBattleArena(pPlayer);break;
+	// case REBT_PLACE_IN_BATTLEGROUD	: gsys.pRebirthSystem->RebirthToPlaceInBattleArena(pPlayer);break;
 	case REBT_SOULBINDING			: gsys.pRebirthSystem->RebirthToSoulBinding(pPlayer);		break;
 	case REBT_NEAR_SOULBINDING		: gsys.pRebirthSystem->RebirthToNearSoulBinding(pPlayer);	break;
 	case REBT_CHECKPOINT			: gsys.pRebirthSystem->RebirthToCheckPoint(pPlayer);		break;

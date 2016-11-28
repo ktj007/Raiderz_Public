@@ -22,12 +22,12 @@ class GDBT_PALETTE_SET
 {
 public :
 	GDBT_PALETTE_SET() : m_nAID(0), m_uidPlayer(0), m_nCID(0) {}
-	GDBT_PALETTE_SET(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const GDBT_PALETTE_SLOT& Slot )
+	GDBT_PALETTE_SET(const AID nAID, const MUID& uidPlayer, const CID nCID, const GDBT_PALETTE_SLOT& Slot )
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_Slot(Slot) {}
 
-	int64				m_nAID;
+	AID					m_nAID;
 	MUID				m_uidPlayer;
-	int64				m_nCID;
+	CID					m_nCID;
 	GDBT_PALETTE_SLOT	m_Slot;
 };
 
@@ -35,16 +35,16 @@ class GDBT_PALETTE_CHANGE
 {
 public :
 	GDBT_PALETTE_CHANGE() : m_nAID(0), m_uidPlayer(0), m_nCID(0) {}
-	GDBT_PALETTE_CHANGE(const int64 nAID, const MUID& uidPlayer, const int64 nCID
+	GDBT_PALETTE_CHANGE(const AID nAID, const MUID& uidPlayer, const CID nCID
 		, const GDBT_PALETTE_SLOT& Slot
 		, const GDBT_PALETTE_SLOT& ToSlot)
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID)
 		, m_Slot(Slot)
 		, m_ToSlot(ToSlot) {}
 
-	int64				m_nAID;
+	AID					m_nAID;
 	MUID				m_uidPlayer;
-	int64				m_nCID;
+	CID					m_nCID;
 	GDBT_PALETTE_SLOT	m_Slot;
 	GDBT_PALETTE_SLOT	m_ToSlot;
 };
@@ -53,12 +53,12 @@ class GDBT_PALETTE_RESET
 {
 public :
 	GDBT_PALETTE_RESET() : m_nAID(0), m_uidPlayer(0), m_nCID(0), m_nNum(PALETTENUM_1), m_nSlot(PALETTESLOT_1) {}
-	GDBT_PALETTE_RESET(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const PALETTE_NUM nNum, const PALETTE_SLOT nSlot)
+	GDBT_PALETTE_RESET(const AID nAID, const MUID& uidPlayer, const CID nCID, const PALETTE_NUM nNum, const PALETTE_SLOT nSlot)
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nNum(nNum), m_nSlot(nSlot) {}
 
-	int64			m_nAID;
+	AID				m_nAID;
 	MUID			m_uidPlayer;
-	int64			m_nCID;
+	CID				m_nCID;
 	PALETTE_NUM		m_nNum;
 	PALETTE_SLOT	m_nSlot;
 };

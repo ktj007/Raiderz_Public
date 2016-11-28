@@ -10,7 +10,7 @@ bool GLuaThisEnchanter::ConvertFromFile( string strFilename, string& outstrBuffe
 	std::ifstream ifs;
 	ifs.open(strFilename.c_str());
 
-	if (ifs == NULL)
+	if (!ifs)
 		return false;
 
 	char buf[256];
@@ -103,7 +103,7 @@ bool GLuaThisEnchanter::SaveToFile(string strFileName, const string& strText)
 	std::ofstream ofs;
 	ofs.open(strFileName.c_str());
 
-	if (ofs == NULL)
+	if (!ofs)
 		return false;
 	
 	ofs.write(strText.c_str(), (std::streamsize)strText.length());

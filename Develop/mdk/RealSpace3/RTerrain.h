@@ -42,8 +42,8 @@ class RShaderCompositeManager;
 class RTerrainShader;
 class RListener;
 
-#define MAX_LAYER_PER_PATCH	15
-#define MAX_LAYER_BY_ONE_MASK	8
+#define MAX_LAYER_PER_PATCH	7
+#define MAX_LAYER_BY_ONE_MASK	5
 
 // Samplers
 enum TERRAIN_SAMPLER 

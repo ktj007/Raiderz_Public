@@ -26,7 +26,6 @@ struct NPC_STATUS
 {
 public:
 	int						nLevel;
-	int						nClass;
 	bool					bRooted;
 	NPC_ATTACKABLE_TYPE		nAttackable;
 	NPC_AA_TYPE				nAA;
@@ -34,7 +33,6 @@ public:
 	NPC_STATUS()
 	{
 		nLevel = 1;
-		nClass = 0;
 		bRooted = false;
 		nAttackable = NAT_NONE;
 		nAA = NAAT_ALWAYS;
@@ -246,6 +244,9 @@ public:
 	
 	void ReturnToHomePoint();
 	void ReturnToSpawnPoint();
+
+	virtual void OnCombatBegin(GEntityActor* pActor);
+	virtual void OnCombatEnd(GEntityActor* pActor);
 	
 	// 자신이 죽었을때 호출되는 이벤트
 	virtual void OnDie() override;
@@ -255,6 +256,7 @@ public:
 	void OnEndCombat();
 
 	virtual void OnUseTalentFailed(int nTalentID, CCommandResultTable nFailCause) override;
+	virtual void OnActTalentFailed(int nTalentID, CCommandResultTable nFailCause) override;
 
 
 	virtual bool IsMovable() override;
@@ -263,6 +265,9 @@ public:
 	// TransData 구조체를 만들어 반환, 리턴값은 구조체를 보여줄지 여부를 판단
 	void MakeTDCacheInfo(TD_UPDATE_CACHE_NPC& out);
 	void MakeTDCacheInfo(GEntityPlayer* pReqPlayer, TD_UPDATE_CACHE_NPC& out);
+
+	void RouteStartCombat();
+	void RouteEndCombat();
 
 	// 메세지 관련
 	virtual void RouteMove(vec3& tarPos);
@@ -378,8 +383,6 @@ public:
 	virtual bool IsHittable(GEntityActor* pAttacker, GTalentInfo* pAttackTalentInfo);		///< 판정 가능한지 여부
 	virtual int GetLevel() const override					{ return m_NPCStatus.nLevel; }
 	virtual void SetLevel(int nLevel) override				{ m_NPCStatus.nLevel = nLevel; }
-	virtual int GetClassify() const							{ return m_NPCStatus.nClass; }
-	virtual void SetClassify(int nClassify)					{ m_NPCStatus.nClass = nClassify; }
 	virtual int GetCHA() const	{ return m_pNPCInfo->nCHA; }
 	virtual float GetValidInteractionDistance();		///< 인터랙션 가능 거리
 
@@ -389,7 +392,7 @@ public:
 	GEntity*		FindEntity(const MUID& uidEntity);
 	virtual GEntityPlayer*	FindPlayer(const MUID& uidPlayer);
 	virtual GEntityNPC*		FindNPC(const MUID& uidNPC) const;	
-	GEntityPlayer*	FindPlayerByCID(int nCID);	
+	GEntityPlayer*	FindPlayerByCID(CID nCID);	
 	
 	bool IsNowPuppet();
 

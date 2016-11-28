@@ -18,7 +18,7 @@ void PCmdRouter_Mail::TransNewMailReq(MUID uidGameServer, CID nCID, const TD_MAI
 {
 	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MPC_MAIL_TRANS_NEW_MAIL, 
 															2, 
-															NEW_INT(nCID), 
+															NEW_INT64(nCID), 
 															NEW_SINGLE_BLOB(pInfo, sizeof(TD_MAIL_MAILBOX_MAIL_INFO))
 															);
 

@@ -38,6 +38,8 @@
 #include "GQPEventInfoMgr.h"
 #include "GPresetInfoMgr.h"
 #include "GExportDBStringTable.h"
+#include "GSetItemEffectManager.h"
+#include "GGuideBookMgr.h"
 
 GServerManagers::GServerManagers() : GGlobalManager()
 {
@@ -86,6 +88,8 @@ void GServerManagers::Create()
 	pQPEventInfoMgr			= new GQPEventInfoMgr();
 	pPresetInfoMgr			= new GPresetInfoMgr();
 	pExportDBStringTable	= new GExportDBStringTable();
+	pSetItemEffectManager	= new GSetItemEffectManager();
+	pGuideBookMgr			= new GGuideBookMgr();
 
 	gmgr.pPlayerObjectManager	= pPlayerObjectManager;
 	gmgr.pItemManager			= pItemManager;
@@ -123,6 +127,8 @@ void GServerManagers::Create()
 	gmgr.pQPEventInfoMgr		= pQPEventInfoMgr;
 	gmgr.pPresetInfoMgr			= pPresetInfoMgr;
 	gmgr.pExportDBStringTable	= pExportDBStringTable;
+	gmgr.pSetItemEffectManager	= pSetItemEffectManager;
+	gmgr.pGuideBookMgr			= pGuideBookMgr;
 
 }
 
@@ -162,6 +168,8 @@ void GServerManagers::Destroy()
 	SAFE_DELETE(pAIRoomMgr);					gmgr.pAIRoomMgr = NULL;
 	SAFE_DELETE(pQPEventInfoMgr);				gmgr.pQPEventInfoMgr = NULL;
 	SAFE_DELETE(pPresetInfoMgr);				gmgr.pPresetInfoMgr = NULL;
+	SAFE_DELETE(pSetItemEffectManager);			gmgr.pSetItemEffectManager = NULL;
+	SAFE_DELETE(pGuideBookMgr);					gmgr.pGuideBookMgr = NULL;
 	
 	gmgr.SetNull();
 }

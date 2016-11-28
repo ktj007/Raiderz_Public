@@ -8,6 +8,7 @@ enum TALENT_TYPE
 	TT_ENCHANT	= 2,		// 아이템에 대응되는 탤런트
 	TT_ITEM		= 3,		// 액티브 속성의 아이템에 대응되는 탤런트
 	TT_GATHER   = 4,		// 채집 탤런트
+	TT_MASTERY	= 5,
 };
 
 /// 탤런트 카테고리 - 스킬 타입(TALENT_SKILL_TYPE)의 일반화
@@ -21,14 +22,12 @@ enum TALENT_CATEGORY
 	TC_MAX
 };
 
-enum TALENT_DAMAGETYPE
+enum TALENT_DAMAGE_TYPE
 {
-	TDT_INVALID = -1,
-	TDT_PHYS = 0,
+	TDT_PHYSIC = 0,
 	TDT_MAGIC,
 	TDT_MAX
 };
-
 
 /// 탤런트 스타일, 이값은 DB의 RZ_CODE에서도 사용하고 있기 때문에 변경이 있으면 DB도 반영을 해줘야 한다.
 enum TALENT_STYLE
@@ -38,13 +37,23 @@ enum TALENT_STYLE
 	TS_DEFENDER,
 	TS_BERSERKER,
 	TS_ASSASSIN,
-	TS_SORCERER,
 	TS_RANGER,
+	TS_SORCERER,
 	TS_CLERIC,
 	TS_COMMON,
 	TS_LICENSE,
 
 	TS_MAX	
+};
+
+static const TALENT_STYLE TALENT_TRAINABLE_STYLE[] = 
+{
+	TS_DEFENDER,
+	TS_BERSERKER,
+	TS_ASSASSIN,
+	// TS_RANGER,
+	TS_SORCERER,
+	TS_CLERIC
 };
 
 static const TCHAR* TALENT_CATEGORY_STR[] = 
@@ -158,6 +167,9 @@ enum TALENT_EXTRA_PASSIVE_TYPE
 	TEPT_MAGICAL_DYNAMICS,			///< 마법 역학
 	TEPT_ITEM_THROWING,				///< (아이템 사용)투척
 	TEPT_ITEM_TRAP,					///< (아이템 사용)덫 사용
+
+	TEPT_HYBIRD,
+	TEPT_CONVERT_BUFF,
 
 
 	TEPT_MAX,
@@ -313,6 +325,7 @@ enum TALENT_CONDITION
 	TC_NONE = 0,
 	TC_USE_TALENT,			// 탤런트르 사용한 경우
 	TC_FINISH_TALENT,		// 탤런트르 완료한 경우
+	TC_EXIT_TALENT,			// on talent finished or canceled
 	TC_BUFF_GAIN,			// 버프가 걸린 경우
 	TC_BUFF_GONE,			// 버프를 잃은 경우
 	TC_BUFF_GAIN_N_PERIOD,	// 버프의 걸릴 떄와 주기적 효과
@@ -346,6 +359,14 @@ enum TALENT_CONDITION
 	TC_MAGIC_HIT_ENEMY,		// 마법을 가격했을 때
 	TC_MELEE_HIT_ME,		// 접근 공격에 피격됐을 때
 	TC_MELEE_HIT_ENEMY,		// 접근 공격을 가격했을 때
+	TC_SWAP_WEAPON,			// on swapped primary/secondary weapon
+	TC_SHEATHE_WEAPON,		// on combat stance changed (to normal or battle)
+	TC_START_TALENT,		// on talent is just started
+	TC_TALENT_AVOID,		// on dodge any enemy's attack
+	TC_PHYSIC_CRIHIT,		// on critically hit an any attack
+	TC_PHYSIC_CRIHIT_30,	// on critical hit (30% trigger rate)
+	TC_PHYSIC_CRIHIT_40,	// on critical hit (40% trigger rate)
+	TC_PHYSIC_CRIHIT_50,	// on critical hit (50% trigger rate)
 	TC_DO_SOMETHING,		// 뭔가 적극적인 행동을 했을 때
 };
 
@@ -369,7 +390,8 @@ enum TALENT_WEAPON_ALLOWED
 	TALENT_WEAPON_ALLOWED_DWD,
 	TALENT_WEAPON_ALLOWED_BOW,
 	TALENT_WEAPON_ALLOWED_2HB,
-	TALENT_WEAPON_ALLOWED_STF			///< 스태프
+	TALENT_WEAPON_ALLOWED_STF,			///< 스태프
+	TALENT_WEAPON_ALLOWED_DWP
 };
 
 

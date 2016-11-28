@@ -40,6 +40,6 @@ string GJobT_Die::GetParamString() const
 
 	char buff[512];
 	sprintf(buff, "Rewarder: %s(%I64d)", 
-	MLocale::ConvUTF16ToAnsi(pTarget->GetName()).c_str(), m_uidRewarder);
+	MLocale::ConvUTF16ToAnsi(pTarget->GetName()).c_str(), m_uidRewarder.Value);
 	return buff;
 }

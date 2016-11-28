@@ -23,8 +23,8 @@ public:
 	//virtual bool Execute(CODBCRecordset& outRecordSet, LPCTSTR szSQL) override { return true; }
 	
 	// GM
-	virtual void GM_QUEST_HISTORY_RESET_ALL(const int64 nAID, const int64 nCID) override {}
-	virtual void GM_QUEST_RESET_ALL(const int64 nAID, const int64 nCID) override {}
+	virtual void GM_QUEST_HISTORY_RESET_ALL(const AID nAID, const CID nCID) override {}
+	virtual void GM_QUEST_RESET_ALL(const AID nAID, const CID nCID) override {}
 
 	virtual void FieldPlayerLog(vector<pair<int, int>>& FieldPlayerCount) override {}
 
@@ -34,14 +34,14 @@ public:
 	virtual void CharSelectLog(const GDBT_CHAR_SELECT_LOG& data) override {}
 	virtual void DisconnLogInsert(const GDBT_DISCONN_LOG& data) override {}
 
-	virtual bool GetCharInfo(const int nCID, GEntityPlayer* pPlayer, int& nBlankTime) { return true; }
-	virtual bool GetEquipSlotList(const uint32 nCID, PLAYER_INFO* poutPlayerInfo) { return true; }
+	virtual bool GetCharInfo(const CID nCID, GEntityPlayer* pPlayer, int& nBlankTime) { return true; }
+	virtual bool GetEquipSlotList(const CID nCID, PLAYER_INFO* poutPlayerInfo) { return true; }
 
 	virtual void UpdateDB_FromItemInfo() override {}
 
 	virtual void DeleteItemInstanceForDebug(int nItemID) override {}
 	virtual bool CharInsert(const MUID& uidPlayer,
-		const int nAID,				// AID
+		const AID nAID,				// AID
 		const wchar_t* szName,		// 캐릭터 이름
 		const uint8 nLevel, 
 		const int nXP, 
@@ -52,10 +52,11 @@ public:
 		const int nFace,			// 얼굴
 		const short nHairColor,		// 머리색
 		const short nSkinColor,		// 피부색
-		const uint8 nEyeColor,		// 눈색
+		const int16 nEyeColor,		// 눈색
 		const int nVoice,			// 목소리
-		const uint8 nMakeUp,		// 화장
-		const uint8 nTattooType,		// 문신
+		const int16 nMakeUp,		// 화장
+		const int16 nTattooType,		// 문신
+		const int16 nTattooColor,
 		const short nTattooPosX,		// 문신 좌표 x
 		const short nTattooPosY,		// 문신 좌표 y
 		const uint8 nTattooScale,	// 문신 크기
@@ -78,7 +79,7 @@ public:
 	virtual void CharLevelUpLog(GDBT_CHAR_LEVEL_UP_DATA& data) override {}
 	virtual void CharAddXPLog(GDBT_CHAR_XP_DATA& data) override {}
 
-	virtual bool CharUpdatePlayerGrade(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nPlayerGrade) override { return true; }
+	virtual bool CharUpdatePlayerGrade(const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nPlayerGrade) override { return true; }
 	virtual bool CharAddMoney(const GDBT_CHAR_MONEY_INC_DEC& data) override;
 	virtual bool CharMinusMoney(const GDBT_CHAR_MONEY_INC_DEC& data) override;
 	virtual bool CharDie(GDBT_CHAR_KILL& die, GDBT_CHAR_KILL& killer, int nKillerNpcID) override { return true; }
@@ -94,7 +95,7 @@ public:
 	virtual bool ItemDelete(const GDBT_ITEM_DATA& data) override;
 	virtual void ItemDeleteLog(const GDBT_ITEM_DATA& data) override {}
 	virtual bool ItemDescDurability(GDBT_ITEM_DEC_DURA_DATA& data) override;
-	virtual bool ItemUpdateSoulCnt(const int64 nCID, const uint8 nSlotType, const int16 nSlotID, const int64 nIUID, const uint8 nSoulCnt) override { return true; }
+	virtual bool ItemUpdateSoulCnt(const CID nCID, const uint8 nSlotType, const int16 nSlotID, const int64 nIUID, const uint8 nSoulCnt) override { return true; }
 	virtual bool ItemLearnTalent(GDBT_ITEM_LEARN_TALENT& data) override;
 	virtual bool ItemMove(GDBT_ITEM_MOVE& data) override;
 	virtual void ItemMoveLog(GDBT_ITEM_MOVE& data) override {}
@@ -164,10 +165,10 @@ public:
 	virtual bool GetCharTalent(GEntityPlayer* pPlayer) { return true; }
 	virtual bool GetCharPalette(GEntityPlayer* pPlayer) { return true; }
 
-	virtual bool GetBuffAndTalentCoolTime(int nCID, vector<REMAIN_BUFF_TIME>& outvecBuffRemainTime, vector<pair<int, float>>& outvecTalentCoolTime) { return true; }
+	virtual bool GetBuffAndTalentCoolTime(CID nCID, vector<REMAIN_BUFF_TIME>& outvecBuffRemainTime, vector<pair<int, float>>& outvecTalentCoolTime) { return true; }
 
 	virtual bool CharSerialize(const GDBT_CHAR_SERIALIZE& data) override;
-	virtual bool CharGetLookList(const MUID& uidPlayer, const int64 nAID) override;
+	virtual bool CharGetLookList(const MUID& uidPlayer, const AID nAID) override;
 
 	virtual bool QuestDone(GDBT_QEUST_DONE& data) override;
 	virtual void QuestDoneLog(GDBT_QEUST_DONE& data) override {}
@@ -194,18 +195,18 @@ public:
 	virtual void PostQPvPMailRewardMoneyLog(GDBT_QPER_TOMAIL& data, const wstring& strRegDate) override {}
 	virtual void PostQPvPMailRewardItemLog(GDBT_QPER_TOMAIL& data, const wstring& strRegDate) override {}
 
-	virtual bool Logout(int64 nAID, int64 nCID, GEntityPlayer* pPlayer, vector<REMAIN_BUFF_TIME>& vecBuffRemainTime, vector<pair<int, float>>& vecTalentCoolTime) override { return true; }
+	virtual bool Logout(AID nAID, CID nCID, GEntityPlayer* pPlayer, vector<REMAIN_BUFF_TIME>& vecBuffRemainTime, vector<pair<int, float>>& vecTalentCoolTime) override { return true; }
 
 	// server status
 	virtual bool ServerStatusStart(const int nWorldID, const int nServerID, const wstring& strServerName, const wstring& strServerVersion, const wstring& strIP, const uint16 nPort, const int nMaxUser , const uint8 nType, const int nUpdateElapsedTimeSec, const int nAllowDelayTm) override { return true; }
-	virtual bool ServerStatusUpdate(const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable) override { return true; }
+	virtual bool ServerStatusUpdate(const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable, const unsigned long long nTaskCount, const int nCPUUsage, const int nMemoryUsage, const int nFieldCount, const int nFPS) override { return true; }
 
 	// 우호도.
 	virtual bool FactionInsert(const GDBT_DATA_FACTION& data) override { return true; }
 	virtual bool FactionUpdate(const GDBT_DATA_FACTION& data) override { return true; }
 	
 	// 컷씬
-	virtual bool CutsceneSawnInsert(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const int nCutsceneID) override { return true; }
+	virtual bool CutsceneSawnInsert(const AID nAID, const MUID& uidPlayer, const CID nCID, const int nCutsceneID) override { return true; }
 
 	// 자격(Qualify)
 	virtual bool EmblemInsert(const GDBT_EMBLEM& data) override;

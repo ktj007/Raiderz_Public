@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "MTcpListenSocket.h"
 
+#if (_MSC_VER >= 1900)
+#include <WS2tcpip.h>
+#endif
+
 namespace minet {
 
 MTcpListenSocket::MTcpListenSocket() : MSocket()
@@ -53,7 +57,7 @@ bool MTcpListenSocket::Init( int addressFamily, WORD port, bool reuse, const cha
 	m_Addr.sin_family = AF_INET;
 	m_Addr.sin_port = htons(port);
 
-	DWORD dwAddr = INADDR_ANY;
+	DWORD dwAddr = INADDR_NONE;
 
 	if (NULL == szMyNetworkCardIP ||
 		0 == strlen(szMyNetworkCardIP) ||
@@ -64,17 +68,38 @@ bool MTcpListenSocket::Init( int addressFamily, WORD port, bool reuse, const cha
 	}
 	else
 	{
+#if (_MSC_VER >= 1900)
+		IN_ADDR inAddr;
+		if (inet_pton(AF_INET, szMyNetworkCardIP, &inAddr))
+			dwAddr = inAddr.s_addr;
+#else
 		dwAddr = inet_addr(szMyNetworkCardIP);
+#endif
 		if (INADDR_NONE == dwAddr)
 		{
 			// 연결할 host name을 입력한 경우
+#if (_MSC_VER >= 1900)
+			ADDRINFO* pAddrInfo;
+
+			ADDRINFO AddrHints = { 0 };
+			AddrHints.ai_family		= AF_INET;
+			AddrHints.ai_protocol	= IPPROTO_TCP;
+			AddrHints.ai_socktype	= SOCK_STREAM;
+
+			if (getaddrinfo(szMyNetworkCardIP, NULL, &AddrHints, &pAddrInfo) != 0)
+#else
 			HOSTENT* pHost = gethostbyname(szMyNetworkCardIP);
 			if (pHost == NULL)	// error
+#endif
 			{
 				minet_log("minet> MTcpListenSocket::Init(), Can't resolve hostname (Input=\"%s\")\n", szMyNetworkCardIP);
 				return false;
 			}
+#if (_MSC_VER >= 1900)
+			dwAddr = ((SOCKADDR_IN*)pAddrInfo->ai_addr)->sin_addr.s_addr;
+#else
 			memcpy((char FAR *)&(dwAddr), pHost->h_addr, pHost->h_length);
+#endif
 		}
 		minet_log("minet> listen socket binding ip: (IP=\"%s\")\n", szMyNetworkCardIP);
 	}

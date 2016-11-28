@@ -113,3 +113,23 @@ float CSNPCShopCalculator::CalcSellMod(float fBaseBuyMod, FACTION_RELATION_TYPE 
 
 	return fBuyMod;
 }
+
+float CSNPCShopCalculator::CalcRepairMod(float fBaseRepairMod, FACTION_RELATION_TYPE nFRT)
+{
+	float fRepairMod;
+
+	if (nFRT == FRT_GOOD)
+	{
+		fRepairMod = fBaseRepairMod * NPC_SHOP_SELL_MOD_FACTION_GOOD;
+	}
+	else if (nFRT >= FRT_EXCELLENT)
+	{
+		fRepairMod = fBaseRepairMod * NPC_SHOP_SELL_MOD_FACTION_EXCELLENT;
+	}
+	else
+	{
+		fRepairMod = fBaseRepairMod;
+	}
+
+	return fRepairMod;
+}

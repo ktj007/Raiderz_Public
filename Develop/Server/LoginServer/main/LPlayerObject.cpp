@@ -3,6 +3,12 @@
 #include "LGlobal.h"
 #include "LTimeoutManager.h"
 #include "LCommandCenter.h"
+#include "LServer.h"
+#include "MLocale.h"
+
+#if (_MSC_VER >= 1900)
+#include <WS2tcpip.h>
+#endif
 
 
 LPlayerObject::LPlayerObject(MUID& uidObject)
@@ -22,6 +28,8 @@ LPlayerObject::~LPlayerObject()
 void LPlayerObject::Create()
 {
 	SCommObject::Create();
+
+	InitRemoteIP();
 }
 
 void LPlayerObject::Destroy()
@@ -30,6 +38,16 @@ void LPlayerObject::Destroy()
 
 	// 감시중의 타임아웃을 중지한다. LTimeoutHandler에서 삭제된 LPlayerObject를 참조하는 경우를 피하기위해.
 	gmgr.pTimeoutManager->StopAllWatching(m_UID);
+}
+
+void LPlayerObject::InitRemoteIP()
+{
+	MLink* pLink = gsys.pServer->GetNetServer()->GetLinks()->GetLink(GetUID());
+	if (!pLink) return;
+
+ 	m_strRemoteIP = MLocale::ConvAnsiToUTF16(pLink->GetRemoteIP().c_str());
+
+	pLink->Drop();
 }
 
 void LPlayerObject::InitAccountInfo(ACCOUNT_INFO& info)

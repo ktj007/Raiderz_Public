@@ -22,7 +22,7 @@
 #include "GDBTaskItemData.h"
 
 
-UNGETTABLE_ITEM_REASON GLootItemGetter::GetItem(int nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem)
+UNGETTABLE_ITEM_REASON GLootItemGetter::GetItem(CID nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem)
 {
 	VALID_RET(pNPC, UIR_UNADDABLEITEM);
 
@@ -53,7 +53,7 @@ UNGETTABLE_ITEM_REASON GLootItemGetter::GetItem(int nCID, GEntityNPC* pNPC, cons
 	return nUIR;
 }
 
-void GLootItemGetter::_GetItem(int nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem)
+void GLootItemGetter::_GetItem(CID nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem)
 {
 	VALID(pNPC);
 	if (true == vecDropItem.empty()) return;
@@ -153,9 +153,9 @@ void GLootItemGetter::Route(GEntityPlayer* pPlayer, GEntityNPC* pNPC, const vect
 		vecTDLootOtherGainItem.push_back(TD_LOOT_OTHERGAIN_ITEM(nDropItemID, nDropItemAmount));
 	}
 
-	const set<int>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
-	set<int> setOtherServerBeneficiaryCID;	
-	for each (int nBeneficiaryCID in setBeneficiaryCID)
+	const set<CID>& setBeneficiaryCID = pNPC->GetNPCLoot().GetDropList().GetBeneficiaryCID();
+	set<CID> setOtherServerBeneficiaryCID;
+	for each (CID nBeneficiaryCID in setBeneficiaryCID)
 	{
 		if (pPlayer->GetCID() == nBeneficiaryCID) continue;
 
@@ -205,7 +205,7 @@ map<int,int> GLootItemGetter::CompressDropItem(const vector<GDropItem*>& vecDrop
 	return mapCompressedDropItem;
 }
 
-UNGETTABLE_ITEM_REASON GLootItemGetter::CheckGettable(int nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem)
+UNGETTABLE_ITEM_REASON GLootItemGetter::CheckGettable(CID nCID, GEntityNPC* pNPC, const vector<GDropItem*>& vecDropItem)
 {
 	VALID_RET(pNPC, UIR_UNADDABLEITEM);
 
@@ -234,7 +234,7 @@ UNGETTABLE_ITEM_REASON GLootItemGetter::CheckGettable(int nCID, GEntityNPC* pNPC
 	return UIR_NONE;
 }
 
-void GLootItemGetter::HandleUngettableItem(UNGETTABLE_ITEM_REASON nUIR, int nCID, const vector<GDropItem*>& vecDropItem)
+void GLootItemGetter::HandleUngettableItem(UNGETTABLE_ITEM_REASON nUIR, CID nCID, const vector<GDropItem*>& vecDropItem)
 {
 	if (true == vecDropItem.empty()) return;
 
@@ -249,7 +249,7 @@ void GLootItemGetter::HandleUngettableItem(UNGETTABLE_ITEM_REASON nUIR, int nCID
 	{
 		MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_LOOT_GETTABLE_ITEM_ADD_REQ,
 			2,
-			NEW_INT(nCID),
+			NEW_INT64(nCID),
 			NEW_BLOB(vecGettableItemAdd));
 
 		gsys.pMasterServerFacade->Route(pNewCmd);

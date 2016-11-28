@@ -23,7 +23,7 @@ LDBTaskCharInsert::~LDBTaskCharInsert()
 }
 
 
-void LDBTaskCharInsert::Input(const MUID& uidPlayer, const int64 nAID)
+void LDBTaskCharInsert::Input(const MUID& uidPlayer, const AID nAID)
 {
 	m_Data.uidPlayer	= uidPlayer;
 	m_Data.nAID			= nAID;
@@ -40,10 +40,10 @@ void LDBTaskCharInsert::OnExecute(mdb::MDatabase& rfDB)
 	if (0 == rs.GetFetchedCount())
 		return;
 
-	if (rs.FieldW(L"CHAR_ID").IsNull())
+	if (rs.FieldW(L"CHAR_SN").IsNull())
 		return;
 
-	int64 nNewCID = rs.FieldW(L"CHAR_ID").AsInt64();
+	CID nNewCID = rs.FieldW(L"CHAR_SN").AsInt64();
 	if (0 > nNewCID)
 	{
 		m_Data.bIsCharNameDuplicated = true;
@@ -100,7 +100,7 @@ void LDBTaskCharInsert::Completer::RefreshCharacter( LPlayerObject* pPlayerObjec
 	RouteResult(CR_SUCCESS);
 
 	// 캐릭터 목록 갱신
-	gsys.pDBManager->GetAccountCharList(m_Data.uidPlayer, (int)m_Data.nAID);
+	gsys.pDBManager->GetAccountCharList(m_Data.uidPlayer, m_Data.nAID);
 }
 
 void LDBTaskCharInsert::Completer::RouteResult(CCommandResultTable nResult)

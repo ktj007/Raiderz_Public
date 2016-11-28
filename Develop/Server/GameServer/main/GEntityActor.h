@@ -17,6 +17,7 @@
 #include "GImmuneHandler.h"
 #include "GIndexedIDMap.h"
 #include "GActorObserverMgr.h"
+#include "GBuffUser.h"
 
 class GModuleCombat;
 class GModuleBuff;
@@ -173,6 +174,8 @@ protected:
 	bool					m_isAllowCalcVictimDodge;		///< 방어자 회피율 적용여부
 	bool					m_bRegen;
 
+	GTalentInfo*			m_pLastUsedTalentInfo;
+
 
 	virtual void OnRebirth();
 	virtual void OnRebirthBySelf();
@@ -253,6 +256,9 @@ public:
 	virtual void doTryAttack(MUID& uidTarget)		{}
 	virtual bool doUseTalent(int nTalentID, TALENT_TARGET_INFO Target = TALENT_TARGET_INFO::Invalid(), bool bCheckEnabled=true, bool bGainStress=true);
 	virtual bool doUseTalent(GTalentInfo* pTalentInfo, TALENT_TARGET_INFO Target = TALENT_TARGET_INFO::Invalid(), bool bCheckEnabled=true, bool bGainStress=true);
+protected:
+	virtual int ConvertTalentID(GTalentInfo* pTalentInfo);
+public:
 	// 탤런트를 취소 (탤런트정보의 cancelable속성이 맞을 경우에만 해당)
 	virtual void doCancelTalent(bool bPostCommand=true);
 	// 탤런트를 강제로 취소
@@ -285,7 +291,7 @@ public:
 	bool IsNowAvoidTime();
 
 	// 피해정보를 탤런트에 근거하여 계산후 반환, 탤런트정보가 없다면 액터단위로 계산
-	virtual DAMAGE_ATTRIB GetDamageType(const GTalentInfo* pTalentInfo=NULL);
+	virtual DAMAGE_ATTRIB GetDamageType(DAMAGE_ATTRIB nTalentDamageAttrib=DA_NONE, WEAPON_REFRENCE nWeaponReference=WR_RIGHT);
 
 	// 탤런트를 사용 불가능한 상태인지 여부
 	bool IsDisableTalent(GTalentInfo* pTalentInfo);
@@ -322,6 +328,8 @@ public:
 	virtual void OnGuardEnemy(GEntityActor* pTarget, GTalentInfo* pAttackTalentInfo);
 	// 탤런트 사용이 완료됐을때 호출되는 이벤트
 	virtual void OnFinishTalent(GTalentInfo* pTalentInfo);
+	// will be called after the talent is just started
+	virtual void OnUseTalent( GEntityActor* pUser, GTalentInfo* pTalentInfo ) override;
 	// 탤런트 사용이 효과가 발동될때 호출되는 이벤트
 	virtual void OnActTalent( GEntityActor* pUser, GTalentInfo* pTalentInfo ) override;
 
@@ -341,6 +349,7 @@ public:
 	void ChangeActionState(ACTION_STATE nState);
 	virtual bool IsNowRunningCancelableTalent()		{ return true; }
 	virtual void OnUseTalentFailed(int nTalentID, CCommandResultTable nFailCause) {}
+	virtual void OnActTalentFailed(int nTalentID, CCommandResultTable nFailCause) {}
 	
 	void SetHP(int nHP);
 	void SetEN(int nEN);
@@ -424,6 +433,8 @@ public:
 
 	// 특정 버프가 걸렸는지 여부
 	bool HasBuff(int nBuffID);
+	// HasBuff(), but by Buff Line.
+	bool HasBuffLine(int nBuffLine);
 	// 특정 이로운 버프가 걸렸는지 여부
 	int GetBuffQty();
 	// 특정 디버프가 걸렸는지 여부
@@ -452,6 +463,7 @@ public:
 	virtual float GetMoveSpeed() { return GetWalkSpeed(); }
 			float GetWalkSpeed() const { return DefaultWalkSpeed() * (1 + m_ChrStatus.ActorModifier.fMoveSpeed); }
 	virtual float DefaultWalkSpeed() const;
+	float GetCastSpeed() const { return 1.f + m_ChrStatus.ActorModifier.fCastSpeed; }
 	int GetHPRegen() const { return m_ChrStatus.ActorModifier.nHPRegen.Calc(m_pChrInfo->nHPRegen); }
 	uint8 GetHPPercent() { if (GetMaxHP() <= 0) return 0;	return (GetHP() * 100) / GetMaxHP(); }
 	int GetENRegen() const { return m_ChrStatus.ActorModifier.nENRegen.Calc(m_pChrInfo->nENRegen); }
@@ -488,9 +500,13 @@ public:
 	void Warp(vec3 vPos);
 	virtual void Warp(vec3 vecPos, vec3 vecDir, bool bRouteToMe)	{ }
 
-	bool RemoveBuff(int nBuffID);
+	bool RemoveBuff( int nBuffID );
+	int RemoveBuff( const vector<int>& vecBuffIDs );
 	virtual bool GainBuff( int nBuffID, GTalentInfo* pTalentInfo=NULL, GEntityActor* pUser=NULL );
+	int GainBuff( const vector<int>& vecBuffIDs );
 	bool GainBuffDetail( int nBuffID, float fDuration, float fPeriod, GTalentInfo* pTalentInfo=NULL, GEntityActor* pUser=NULL );
+	virtual void LazyGainBuff( int nBuffID, const GBuffUser& User=GBuffUser() );
+	void LazyGainBuff( const vector<int>& vecBuffIDs );
 	void SetRegenActive(bool bActive) { return m_RegenUpdater.SetActive(bActive); }
 	bool IsRegenActive() { return m_RegenUpdater.IsActive(); }
 	void SetMFRegenActive(bool bActive) { return m_MotionFactor.SetActive(bActive); }
@@ -520,6 +536,9 @@ public:
 
 
 	bool HasBuff_ForTest( int nBuffID );
+
+	void SetLastUsedTalentInfo(GTalentInfo* pTalentInfo)	{ m_pLastUsedTalentInfo = pTalentInfo; }
+	GTalentInfo* GetLastUsedTalentInfo()					{ return m_pLastUsedTalentInfo; }
 	
 
 };

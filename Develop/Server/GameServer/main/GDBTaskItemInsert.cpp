@@ -34,7 +34,7 @@ void GDBTaskItemInsert::OnExecute( mdb::MDatabase& rfDB )
 	if (!ExecuteW(rs, GetSQLW(ITEM_INSERT)))
 		return;
 
-	m_Result.m_nIUID = rs.FieldW(L"IUID").AsInt64();
+	m_Result.m_nIUID = rs.FieldW(L"ITEM_SN").AsInt64();
 	m_Data.m_Item.m_nIUID = m_Result.m_nIUID;
 }
 

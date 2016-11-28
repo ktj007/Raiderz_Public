@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MDBFieldValueTypeFactory.h"
+#include "MDatabaseDefine.h"
 
 
 namespace mdb
@@ -38,6 +39,9 @@ namespace mdb
 
 		case SQL_CHAR :
 		case SQL_VARCHAR :
+#if MDB_USE_PSQLODBC
+		case SQL_LONGVARCHAR :
+#endif
 			{
 				return new MDBFieldValueTypeString(nIndex);
 			}
@@ -45,6 +49,9 @@ namespace mdb
 
 		case SQL_WCHAR :
 		case SQL_WVARCHAR :
+#if MDB_USE_PSQLODBC
+		case SQL_WLONGVARCHAR :
+#endif
 			{
 				return new MDBFieldValueTypeWString(nIndex);
 			}

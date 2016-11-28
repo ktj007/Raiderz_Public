@@ -19,7 +19,7 @@ ZLootLogic::~ZLootLogic(void)
 {
 }
 
-void ZLootLogic::MasterLootNotifyReq(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify)
+void ZLootLogic::MasterLootNotifyReq(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify)
 {
 	MAP_RECEIEVE_GAMESERVER_UID mapReceiveGameServerUID;
 	ZReceiveGameServerUIDSelector::Select(vecBeneficiaryCID, mapReceiveGameServerUID);
@@ -27,7 +27,7 @@ void ZLootLogic::MasterLootNotifyReq(const vector<int>& vecBeneficiaryCID, const
 	for each (const MAP_RECEIEVE_GAMESERVER_UID::value_type& val in mapReceiveGameServerUID)
 	{
 		const MUID& nReceiveGameServerUID = val.first;
-		const vector<int>& vecSelectedBeneficiaryCID = val.second;
+		const vector<CID>& vecSelectedBeneficiaryCID = val.second;
 
 		MCommand*pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_LOOT_MASTERLOOT_NOTIFY,
 			nReceiveGameServerUID,
@@ -39,7 +39,7 @@ void ZLootLogic::MasterLootNotifyReq(const vector<int>& vecBeneficiaryCID, const
 	}
 }
 
-void ZLootLogic::OtherGainitemReq(const vector<int>& vecBeneficiaryCID, MUID nGainnerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem)
+void ZLootLogic::OtherGainitemReq(const vector<CID>& vecBeneficiaryCID, MUID nGainnerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem)
 {
 	MAP_RECEIEVE_GAMESERVER_UID mapReceiveGameServerUID;
 	ZReceiveGameServerUIDSelector::Select(vecBeneficiaryCID, mapReceiveGameServerUID);
@@ -47,7 +47,7 @@ void ZLootLogic::OtherGainitemReq(const vector<int>& vecBeneficiaryCID, MUID nGa
 	for each (const MAP_RECEIEVE_GAMESERVER_UID::value_type& val in mapReceiveGameServerUID)
 	{
 		const MUID& nReceiveGameServerUID = val.first;
-		const vector<int>& vecSelectedBeneficiaryCID = val.second;
+		const vector<CID>& vecSelectedBeneficiaryCID = val.second;
 
 		MCommand*pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_LOOT_OTHER_GAIN_ITEM,
 			nReceiveGameServerUID,
@@ -60,7 +60,7 @@ void ZLootLogic::OtherGainitemReq(const vector<int>& vecBeneficiaryCID, MUID nGa
 	}	
 }
 
-void ZLootLogic::GettableItemAddReq(int nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd)
+void ZLootLogic::GettableItemAddReq(CID nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd)
 {
 	MAP_RECEIEVE_GAMESERVER_UID mapReceiveGameServerUID;
 	ZReceiveGameServerUIDSelector::Select(nBeneficiaryCID, mapReceiveGameServerUID);
@@ -68,19 +68,19 @@ void ZLootLogic::GettableItemAddReq(int nBeneficiaryCID, const vector<TD_LOOT_GE
 	for each (const MAP_RECEIEVE_GAMESERVER_UID::value_type& val in mapReceiveGameServerUID)
 	{
 		const MUID& nReceiveGameServerUID = val.first;
-		const vector<int>& vecSelectedBeneficiaryCID = val.second;
+		const vector<CID>& vecSelectedBeneficiaryCID = val.second;
 
 		MCommand*pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_LOOT_GETTABLE_ITEM_ADD,
 			nReceiveGameServerUID,
 			2,
-			NEW_INT(nBeneficiaryCID),
+			NEW_INT64(nBeneficiaryCID),
 			NEW_BLOB(vecTDGettableItemAdd));
 
 		gsys.pCommandCenter->PostCommand(pNewCmd);
 	}	
 }
 
-void ZLootLogic::RollResultReq(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult)
+void ZLootLogic::RollResultReq(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult)
 {
 	MAP_RECEIEVE_GAMESERVER_UID mapReceiveGameServerUID;
 	ZReceiveGameServerUIDSelector::Select(vecBeneficiaryCID, mapReceiveGameServerUID);
@@ -88,7 +88,7 @@ void ZLootLogic::RollResultReq(const vector<int>& vecBeneficiaryCID, const vecto
 	for each (const MAP_RECEIEVE_GAMESERVER_UID::value_type& val in mapReceiveGameServerUID)
 	{
 		const MUID& nReceiveGameServerUID = val.first;
-		const vector<int>& vecSelectedBeneficiaryCID = val.second;
+		const vector<CID>& vecSelectedBeneficiaryCID = val.second;
 
 		MCommand*pNewCmd = gsys.pCommandCenter->MakeNewCommand(MMC_LOOT_ROLLRESULT,
 			nReceiveGameServerUID,

@@ -4,6 +4,7 @@
 #include "GTalentInfoMgr.h"
 #include "GExportDBStringTable.h"
 #include "GGlobal.h"
+#include "MDBUtil.h"
 
 
 GTalentInfoSQLMaker::GTalentInfoSQLMaker(GTalentInfoMgr* pMgr) : GSQLMaker(true, true), m_pMgr(pMgr)
@@ -46,7 +47,7 @@ bool GTalentInfoSQLMaker::BuildSQL()
 								 ON t.TALENT_ID = s.TALENT_ID\
 								 WHEN MATCHED THEN UPDATE SET t.NAME = s.NAME, t.CONSUME_TP = s.CONSUME_TP, t.UNTRAINABLE = s.UNTRAINABLE, t.STYLE = s.STYLE\
 								 WHEN NOT MATCHED THEN INSERT (TALENT_ID, NAME, CONSUME_TP, UNTRAINABLE, STYLE) VALUES (s.TALENT_ID, s.NAME, s.CONSUME_TP, s.UNTRAINABLE, s.STYLE);\n\n"
-								 , it->second->m_nID, szTalentName, CONSUME_TP_FOR_LEARN_TALENT, it->second->m_bUntrainable, it->second->m_nStyle);
+								 , it->second->m_nID, mdb::MDBStringEscaper::Escape(szTalentName).c_str(), CONSUME_TP_FOR_LEARN_TALENT, it->second->m_bUntrainable, it->second->m_nStyle);
 
 		m_vSQL.push_back(szSQL);		
 	}

@@ -6,7 +6,7 @@ class GNPC_KILLER
 {
 public :
 	GNPC_KILLER() { Reset(); }
-	GNPC_KILLER(int64 nAID, int64 nCID, int nCharPtm, int nDeltaCharPtm, uint8 nLevel)
+	GNPC_KILLER(AID nAID, CID nCID, int nCharPtm, int nDeltaCharPtm, uint8 nLevel)
 		: m_nAID(nAID), m_nCID(nCID), m_nCharPtm(nCharPtm), m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel)
 	{
 
@@ -26,8 +26,8 @@ public :
 		MAX_COUNT = 5,
 	};
 
-	int64	m_nAID;
-	int64	m_nCID;
+	AID		m_nAID;
+	CID		m_nCID;
 	int		m_nCharPtm;
 	int		m_nDeltaCharPtm;
 	uint8	m_nLevel;

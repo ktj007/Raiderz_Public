@@ -42,7 +42,7 @@ public:
 	void ErasePlayer( MUID uidPlayer );
 	
 	void AddCID(GPlayerObject* pPlayer);
-	void RemoveCID(int nCID);
+	void RemoveCID(CID nCID);
 
 	void DeleteAllPlayer();
 	void Clear();
@@ -64,6 +64,6 @@ public:
 	MUID GetPlayerUID(CID nCID, int nGameServerID);
 
 	bool IsExist(const MUID& uidPlayer);
-	bool IsExist(int nCID);
+	bool IsExist(CID nCID);
 	bool IsMultiLoginPlayerID(wstring& strPlayerID);
 };

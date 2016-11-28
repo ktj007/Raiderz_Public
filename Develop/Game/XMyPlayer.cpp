@@ -561,7 +561,7 @@ bool XMyPlayer::CheckEnchantBuffGinEnable( SH_ITEM_SLOT nItemSlot )
 		eLWeaponSet = ITEMSLOT_LWEAPON;
 	}
 	
-	if(nItemSlot <= ITEMSLOT_DEFAULT_MAX)
+	if(nItemSlot <= ITEMSLOT_DEFAULT_END)
 	{
 		if(nItemSlot == eRWeaponSet ||
 			nItemSlot == eLWeaponSet)

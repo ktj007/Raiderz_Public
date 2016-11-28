@@ -75,6 +75,7 @@ void GTalentInfoParser::ParseTalent( GTalentInfoMgr* pTalentInfoMgr, MXmlElement
 	}
 	else
 	{		
+		_VLOGGER->Log(_T(TALENT_XML_ATTR_ID) IS_ALREADY_EXIST);
 	}
 }
 

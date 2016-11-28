@@ -19,20 +19,9 @@ int ZConfig::m_nSendPendingLimitCount = 200000;		// 20만개. 서버간에는 너그럽게 
 bool ZConfig::m_bWindowVisible = true;
 int ZConfig::m_nPort = DEFAULT_MASTER_SERVER_PORT;
 
-std::wstring ZConfig::m_strAccountDB_Server;
-std::wstring ZConfig::m_strAccountDB_DatabaseName;
-std::wstring ZConfig::m_strAccountDB_UserName;
-std::wstring ZConfig::m_strAccountDB_Password;
-
-std::wstring ZConfig::m_strGameDB_Server = L"";
-std::wstring ZConfig::m_strGameDB_DatabaseName = L"";
-std::wstring ZConfig::m_strGameDB_UserName = L"";
-std::wstring ZConfig::m_strGameDB_Password = L"";
-
-std::wstring ZConfig::m_strLogDB_Server;			///< DB Server
-std::wstring ZConfig::m_strLogDB_DatabaseName;	///< DB Name
-std::wstring ZConfig::m_strLogDB_UserName;		///< DB Username
-std::wstring ZConfig::m_strLogDB_Password;		///< DB Password
+ZDBConfig ZConfig::m_AccountDBConfig;
+ZDBConfig ZConfig::m_GameDBConfig;
+ZDBConfig ZConfig::m_LogDBConfig;
 
 std::wstring ZConfig::m_strSystemPath;
 std::wstring	ZConfig::m_strFieldPath;
@@ -75,23 +64,9 @@ void ZConfig::Init_INI()
 	m_bWindowVisible= GetPrivateProfileBool(CONFIG_TOKEN_APP_CONFIG,	L"WINDOW_VISIBLE",	true,						szFileName);
 	m_nPort			= GetPrivateProfileInt(CONFIG_TOKEN_APP_CONFIG,		L"PORT",				DEFAULT_MASTER_SERVER_PORT,	szFileName);
 
-	// account db
-	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"SERVER", L"SH_DB", szValue, 256, szFileName);	m_strAccountDB_Server = szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"DATABASE", L"RZ_ACCOUNTDB", szValue, 256, szFileName);	m_strAccountDB_DatabaseName = szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"USERNAME", L"dev", szValue, 256, szFileName);	m_strAccountDB_UserName = szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"PASSWORD", L"dev", szValue, 256, szFileName); m_strAccountDB_Password = szValue;
-		
-	// db
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_strGameDB_Server			= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"DATABASE",	L"RZ_GAMEDB",	szValue, 256, szFileName);	m_strGameDB_DatabaseName	= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"USERNAME",	L"dev",			szValue, 256, szFileName);	m_strGameDB_UserName		= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"PASSWORD",	L"dev",			szValue, 256, szFileName);	m_strGameDB_Password		= szValue;
-
-	// logdb
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_strLogDB_Server		= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"DATABASE",	L"RZ_LOGDB",	szValue, 256, szFileName);	m_strLogDB_DatabaseName	= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"USERNAME",	L"dev",			szValue, 256, szFileName);	m_strLogDB_UserName		= szValue;
-	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"PASSWORD",	L"dev",			szValue, 256, szFileName);	m_strLogDB_Password		= szValue;
+	InitAccountDB(szFileName);
+	InitGameDB(szFileName);
+	InitLogDB(szFileName);
 
 	// path
 	m_strSystemPath	= GetPathString(szFileName, L"SYSTEM");
@@ -123,4 +98,34 @@ wstring ZConfig::GetPathString(const wchar_t* szFileName, const wchar_t* szKeyNa
 	}
 
 	return strRet;
+}
+
+void ZConfig::InitAccountDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"SERVER",	 L"SH_DB",			szValue, 256, szFileName);	m_AccountDBConfig.strServer			= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"DATABASE", L"RZ_ACCOUNTDB",	szValue, 256, szFileName);	m_AccountDBConfig.strDatabaseName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"USERNAME", L"dev",			szValue, 256, szFileName);	m_AccountDBConfig.strUserName		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"PASSWORD", L"dev",			szValue, 256, szFileName);	m_AccountDBConfig.strPassword		= szValue;
+}
+
+void ZConfig::InitGameDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"SERVER",	  L"SH_DB",		szValue, 256, szFileName);	m_GameDBConfig.strServer		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"DATABASE", L"RZ_GAMEDB", szValue, 256, szFileName);	m_GameDBConfig.strDatabaseName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"USERNAME", L"dev",		szValue, 256, szFileName);	m_GameDBConfig.strUserName		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"PASSWORD", L"dev",		szValue, 256, szFileName);	m_GameDBConfig.strPassword		= szValue;
+}
+
+void ZConfig::InitLogDB(const wchar_t* szFileName)
+{
+	wchar_t szValue[256];
+
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"SERVER",	 L"SH_DB",		szValue, 256, szFileName);	m_LogDBConfig.strServer			= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"DATABASE", L"RZ_LOGDB",	szValue, 256, szFileName);	m_LogDBConfig.strDatabaseName	= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"USERNAME", L"dev",		szValue, 256, szFileName);	m_LogDBConfig.strUserName		= szValue;
+	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"PASSWORD", L"dev",		szValue, 256, szFileName);	m_LogDBConfig.strPassword		= szValue;
 }

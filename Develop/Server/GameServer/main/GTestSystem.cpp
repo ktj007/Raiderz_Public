@@ -393,7 +393,7 @@ void GTestSystem::RequestDebugString( MCommand* pCmd )
 	else if (strKey == L"remblem")
 	{
 		CString strSQL;
-		strSQL.Format(L"DELETE dbo.EmblemInstance WHERE CID = %d;", pPlayer->GetCID());
+		strSQL.Format(L"DELETE dbo.EmblemInstance WHERE CID = %I64d;", pPlayer->GetCID());
 		gsys.pDBManager->ExecuteAsyncForDev(pPlayer->GetUID(), strSQL.GetBuffer());
 	}
 	else if (strKey == L"leave")
@@ -456,7 +456,7 @@ void GTestSystem::RequestDebugString( MCommand* pCmd )
 		char buff[512];
 		float fHeight = 0;
 		GPathFinderImpl::GetHeightAtPosition(&fHeight, pMesh, pathPos);
-		sprintf_s(buff, "nearnode: %d %d %d -> %.1f", pathPos.x, pathPos.y, position.z, fHeight);
+		sprintf_s(buff, "nearnode: %d %d %d -> %.1f", pathPos.x, pathPos.y, static_cast<int>(position.z), fHeight);
 
 		if (!pMesh->m_pMesh->positionIsValid(pathPos))
 			pPlayer->Narration(MLocale::ConvAnsiToUTF16(buff).c_str());
@@ -600,9 +600,9 @@ void GTestSystem::RouteDamageDebug( GEntityActor* pAttacker, GEntityActor* pVict
 		GEntityPlayer* pPlayerAttacker = static_cast<GEntityPlayer*>(pAttacker);
 
 		// 스탯 보정율
-		fCharacterFactor = gsys.pAttackDamageCalculator->CalcCharacterFactor(pPlayerAttacker, pTalentInfo);
+		fCharacterFactor = gsys.pAttackDamageCalculator->CalcCharacterFactor(pPlayerAttacker, pTalentInfo->m_nDamageType, pTalentInfo->m_WeaponReference);
 	}
-	fWeaponFactor = pTalentInfo->m_fWeaponApplyRate;
+	fWeaponFactor = pTalentInfo->m_WeaponApplyRate.fApplyRate;
 
 	swprintf_s(text, L"]TalentDmg(%d~%d), 스탯보정율(%.2f), 무기데미지율(%.2f)",
 		nTalentDamageMin, nTalentDamageMax,
@@ -617,7 +617,7 @@ void GTestSystem::RouteDamageDebug( GEntityActor* pAttacker, GEntityActor* pVict
 	GDefenseFactorCalculator defenseFactorCalculator;
 
 	// 저항율
-	float fCriticalPercent = criticalCalculator.CalcCriticalPercent(pAttacker, pVictim, pTalentInfo);
+	float fCriticalPercent = criticalCalculator.CalcCriticalPercent(pAttacker, pVictim, pTalentInfo->m_nDamageAttrib, pTalentInfo->m_nDamageType, pTalentInfo->m_nSkillType, pTalentInfo->m_fCriticalApplyRate);
 
 	// 공격 데미지
 	float fAttackDamage = gsys.pAttackDamageCalculator->CalcAttackDamage(pAttacker, pVictim, pTalentInfo, bCritical, DamageInfo);

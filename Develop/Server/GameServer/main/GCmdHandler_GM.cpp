@@ -32,7 +32,6 @@
 #include "GItemDurabilityUpdater.h"
 #include "CSCharHelper.h"
 #include "GNPCLoot.h"
-#include "GPlayerCRTLogger.h"
 #include "GFactionSystem.h"
 #include "GRelationChecker.h"
 #include "GServer.h"
@@ -62,6 +61,8 @@
 #include "CCommandResultTable.h"
 #include "GServerModeChanger.h"
 #include "GGMExpoHandler.h"
+#include "GNPCShopSystem.h"
+#include "GNPCShopRepairer.h"
 
 
 GCmdHandler_GM::GCmdHandler_GM(MCommandCommunicator* pCC) : MCommandHandler(pCC)
@@ -73,11 +74,9 @@ GCmdHandler_GM::GCmdHandler_GM(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 	SetCmdHandler(MC_GM_NPC_AI_RUNNING_REQ,		OnRequestNPCAIRunning);
 	SetCmdHandler(MC_GM_AI_USE_TALENT_REQ,		OnRequestGMAICommand);
 	SetCmdHandler(MC_GM_AI_SET_MONITOR_TARGET,	OnRequestGMAISetMonitorNPC);
-	SetCmdHandler(MC_REQUEST_DEBUG_STRING,		OnRequestDebugString);
+	SetCmdHandler(MC_DEBUG_STRING_REQ,			OnRequestDebugString);
 	SetCmdHandler(MC_GM_GET_PLAYERUID_REQ,		OnRequestGMGetPlayerUID);
 	SetCmdHandler(MC_GM_REPORT_TARGET_ENTITY,	OnRequestReportTargetEntity);
-
-	SetCmdHandler(MC_GM_MOVE_TO_MYSPOT_REQ,		OnRequestGMMoveToMySpot);
 
 	SetCmdHandler(MC_GM_ENABLE_ICHECK_REQ,		OnRequestGMEnableICheck);
 	SetCmdHandler(MC_GM_DISABLE_ICHECK_REQ,		OnRequestGMDisableICheck);
@@ -101,8 +100,6 @@ GCmdHandler_GM::GCmdHandler_GM(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 	SetCmdHandler(MC_GM_BREAK_PART_REQ,			OnRequestGMBreakPart);
 	SetCmdHandler(MC_GM_RANGE_BREAK_PART_REQ,	OnRequestGMRangeBreakPart);
 
-	SetCmdHandler(MC_GM_LOG_CRT_INSERT_REQ,		OnRequestGMLogCRTInsert);
-	SetCmdHandler(MC_GM_LOG_CRT_DELETE_REQ,		OnRequestGMLogCRTDelete);
 	SetCmdHandler(MC_GM_QUERY_MULTILOGIN_REQ,	OnRequestGMQueryMultiLogin);
 	
 
@@ -127,6 +124,7 @@ GCmdHandler_GM::GCmdHandler_GM(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 	SetCmdHandler(MC_GM_REBIRTH_REQ,			OnRequestGMRebirth);
 	SetCmdHandler(MC_GM_REQUEST_SPAWN,			OnRequestSpawn);
 	SetCmdHandler(MC_GM_ITEM_GIVE_REQ,			OnRequestGMItemGive);
+	SetCmdHandler(MC_GM_ITEM_REPAIR_ALL,		OnRequestGMItemRepairAll);
 	SetCmdHandler(MC_GM_RESET_COOLTIME_REQ,		OnRequestGMResetCoolTime);
 
 	SetCmdHandler(MC_GM_MOVE_REQ,				OnRequestGMMove);
@@ -144,9 +142,11 @@ GCmdHandler_GM::GCmdHandler_GM(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 	SetCmdHandler(MC_GM_GHOST_REQ,				OnRequestGMGhost);	
 	SetCmdHandler(MC_GM_RANGE_KILL_NPC_REQ,		OnRequestGMRangeKillEntity);
 	SetCmdHandler(MC_GM_KILL_ENTITY_REQ,		OnRequestGMKillEntity);
+	SetCmdHandler(MC_GM_RANGE_AGGRO_NPC_REQ,	OnRequestGMRangeAggroEntity);
+	SetCmdHandler(MC_GM_RANGE_WEAKEN_NPC_REQ,	OnRequestGMRangeWeakenEntity);
+	SetCmdHandler(MC_GM_RANGE_DESPAWN_CORPSE_REQ, OnRequestGMRangeDespawnCorpse);
 	SetCmdHandler(MC_GM_REGEN_REQ,				OnRequestGMRegen);
-
-	SetCmdHandler(MC_GM_BAN,					OnRequestGMBan);
+	SetCmdHandler(MC_GM_FULL_REQ,				OnRequestGMFullHP);
 
 	// GameGuard - Auth	
 
@@ -198,9 +198,6 @@ MCommandResult GCmdHandler_GM::OnRequestSpawn(MCommand* pCmd, MCommandHandler* p
 
 		vecNPCUID.Vector().push_back(pNPC->GetUID());		
 	}
-
-	MCommand* pNewCmd = MakeNewCommand(MC_GM_SPAWN, 1, NEW_BLOB(vecNPCUID.Vector()));
-	pEntityPlayer->RouteToMe(pNewCmd);
 
 	return CR_TRUE;
 }
@@ -344,10 +341,13 @@ MCommandResult GCmdHandler_GM::OnRequestGMMove(MCommand* pCmd, MCommandHandler* 
 	if (IsGM(pEntityPlayer) == false) return CR_TRUE;
 
 	int nFieldID=0;
-	vec3 vPosition, vDir(0,1,0);
+	vec3 vPos, vDir;
+	svec3 svDir;
 
-	if (pCmd->GetParameter(&nFieldID,	0, MPT_INT)==false) return CR_FALSE;
-	if (pCmd->GetParameter(&vPosition,	1, MPT_VEC)==false) return CR_FALSE;
+	if (pCmd->GetParameter(&nFieldID,	0, MPT_INT)==false)		return CR_FALSE;
+	if (pCmd->GetParameter(&vPos,		1, MPT_VEC)==false)		return CR_FALSE;
+	if (pCmd->GetParameter(&svDir,		2, MPT_SVEC)==false)	return CR_FALSE;
+	vDir = svDir;
 
 	if (NULL == gmgr.pFieldInfoMgr->Find(nFieldID))
 	{
@@ -355,26 +355,7 @@ MCommandResult GCmdHandler_GM::OnRequestGMMove(MCommand* pCmd, MCommandHandler* 
 		return CR_TRUE;
 	}
 
-	pEntityPlayer->GetPlayerField().Gate(nFieldID, vPosition, vDir);
-
-	return CR_TRUE;
-}
-
-MCommandResult GCmdHandler_GM::OnRequestGMMoveToMySpot(MCommand* pCmd, MCommandHandler* pHandler)
-{
-	GEntityPlayer* pEntityPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
-	if (NULL == pEntityPlayer) return CR_FALSE;
-
-	if (IsGM(pEntityPlayer) == false) return CR_TRUE;
-
-	//int nFieldID = m_pPlayerInfo->nLastField;
-	//vec3 vPosition = m_pPlayerInfo->vLastPos, vDir(0,1,0);
-
-	// 서버에 세팅된 값으로 이동
-	const MARKER_INFO* pMarkerInfo = gsys.pPlayerSystem->GetSoulBindingMarker(pEntityPlayer->GetPlayerInfo()->nSoulBindingID);
-	if (NULL == pMarkerInfo) return CR_FALSE;
-
-	pEntityPlayer->GetPlayerField().Gate(pMarkerInfo->nFieldID, pMarkerInfo->vPoint, pMarkerInfo->vDir);
+	pEntityPlayer->GetPlayerField().Gate(nFieldID, vPos, vDir);
 
 	return CR_TRUE;
 }
@@ -526,9 +507,13 @@ MCommandResult GCmdHandler_GM::OnRequestGMGhost(MCommand* pCmd, MCommandHandler*
 				ptd_player_feature_Tattoo = &td_player_feature_Tattoo;
 			}
 
-			MCommand* pNewCmd = MakeNewCommand(MC_FIELD_IN_PLAYER, 2, 
+			vector<int> vecBuffID;
+			pEntityPlayer->GetBuffList(vecBuffID);
+
+			MCommand* pNewCmd = MakeNewCommand(MC_FIELD_IN_PLAYER, 3, 
 				NEW_SINGLE_BLOB(&td_player_info, sizeof(TD_UPDATE_CACHE_PLAYER)),
-				NEW_SINGLE_BLOB(ptd_player_feature_Tattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)));
+				NEW_SINGLE_BLOB(ptd_player_feature_Tattoo, sizeof(TD_PLAYER_FEATURE_TATTOO)),
+				NEW_BLOB(vecBuffID));
 			pEntityPlayer->RouteToThisCellExceptMe(pNewCmd);
 		}		
 	}
@@ -574,7 +559,7 @@ MCommandResult GCmdHandler_GM::OnRequestGMChangeTime(MCommand* pCmd, MCommandHan
 	}
 	else
 	{
-		GAME_TIME_TYPE nCurrTime = gmgr.pEnvManager->GetCurrentTime();
+		GAME_TIME_TYPE nCurrTime = (gmgr.pEnvManager->GetCurrentTime)();
 		if (nCurrTime == TIME_NIGHT) nTimeType = TIME_DAWN;
 		else nTimeType = (GAME_TIME_TYPE)(nCurrTime+1);
 	}
@@ -598,6 +583,18 @@ MCommandResult GCmdHandler_GM::OnRequestGMItemGive(MCommand* pCmd, MCommandHandl
 	if (pCmd->GetParameter(&nQuantity, 1, MPT_INT) == false) return CR_FALSE;
 
 	gsys.pItemSystem->GetAdder().Add(pEntityPlayer->GetUID(), nItemID, nQuantity);
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_GM::OnRequestGMItemRepairAll(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	GEntityPlayer* pEntityPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
+	if (NULL == pEntityPlayer) return CR_FALSE;
+
+	if (IsGM(pEntityPlayer) == false) return CR_TRUE;
+
+	gsys.pNPCShopSystem->GetRepairer().RepairAllForGM(pEntityPlayer);
 
 	return CR_TRUE;
 }
@@ -668,6 +665,22 @@ MCommandResult GCmdHandler_GM::OnRequestGMRegen(MCommand* pCmd, MCommandHandler*
 	return CR_TRUE;
 }
 
+MCommandResult GCmdHandler_GM::OnRequestGMFullHP(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
+	if (NULL == pPlayer) return CR_FALSE;
+
+	if (IsGM(pPlayer) == false) return CR_TRUE;
+
+	pPlayer->SetHP(pPlayer->GetMaxHP());
+	pPlayer->SetEN(pPlayer->GetMaxEN());
+	pPlayer->SetSTA(pPlayer->GetMaxSTA());
+
+	pPlayer->OnUpdatedStatus();
+
+	return CR_TRUE;
+}
+
 
 MCommandResult GCmdHandler_GM::OnRequestGMRangeKillEntity(MCommand* pCmd, MCommandHandler* pHandler)
 {
@@ -693,6 +706,89 @@ MCommandResult GCmdHandler_GM::OnRequestGMRangeKillEntity(MCommand* pCmd, MComma
 		pNeighborNPC->GetHateTable().AddPoint_FoundEnemy(pPlayer);
 		pNeighborNPC->SetKiller(pPlayer->GetUID());
 		pNeighborNPC->doDie();
+	}
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_GM::OnRequestGMRangeAggroEntity(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
+	if (NULL == pPlayer) return CR_FALSE;
+
+	if (IsGM(pPlayer) == false) return CR_TRUE;
+
+	float fRange;
+
+	if (pCmd->GetParameter(&fRange, 0, MPT_FLOAT) == false) return CR_FALSE;
+
+	vector<GEntityNPC*> vecNeighborNPC;
+	pPlayer->GetNeighborNPC(fRange, vecNeighborNPC);
+
+	GRelationChecker relationChecker;
+
+	for each (GEntityNPC* pNeighborNPC in vecNeighborNPC)
+	{
+		if (true == pNeighborNPC->IsDead()) continue;
+		if (false == relationChecker.IsEnemy(pPlayer, pNeighborNPC)) continue;
+		if (true == pNeighborNPC->IsNowCombat()) continue;
+
+		EVENT_START_COMBAT param;
+		param.uidEnemy = pPlayer->GetUID();
+
+		GMessage msg(GMSG_AI_EVT_STARTCOMBAT, &param);
+		pNeighborNPC->GetModuleAI()->Message(msg);
+	}
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_GM::OnRequestGMRangeWeakenEntity(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
+	if (NULL == pPlayer) return CR_FALSE;
+
+	if (IsGM(pPlayer) == false) return CR_TRUE;
+
+	float fRange;
+
+	if (pCmd->GetParameter(&fRange, 0, MPT_FLOAT) == false) return CR_FALSE;
+
+	vector<GEntityNPC*> vecNeighborNPC;
+	pPlayer->GetNeighborNPC(fRange, vecNeighborNPC);
+
+	GRelationChecker relationChecker;
+
+	for each (GEntityNPC* pNeighborNPC in vecNeighborNPC)
+	{
+		if (true == pNeighborNPC->IsDead()) continue;
+		if (false == relationChecker.IsEnemy(pPlayer, pNeighborNPC)) continue;
+
+		pNeighborNPC->SetHP(1);
+	}
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_GM::OnRequestGMRangeDespawnCorpse(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
+	if (NULL == pPlayer) return CR_FALSE;
+
+	if (IsGM(pPlayer) == false) return CR_TRUE;
+
+	float fRange;
+
+	if (pCmd->GetParameter(&fRange, 0, MPT_FLOAT) == false) return CR_FALSE;
+
+	vector<GEntityNPC*> vecNeighborNPC;
+	pPlayer->GetNeighborNPC(fRange, vecNeighborNPC);
+
+	for each (GEntityNPC* pNeighborNPC in vecNeighborNPC)
+	{
+		if (false == pNeighborNPC->IsDead()) continue;
+
+		pNeighborNPC->DespawnNow(true);
 	}
 
 	return CR_TRUE;
@@ -1004,37 +1100,6 @@ MCommandResult GCmdHandler_GM::OnRequestGMRangeBreakPart(MCommand* pCmd, MComman
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_GM::OnRequestGMLogCRTInsert(MCommand* pCmd, MCommandHandler* pHandler)
-{
-	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
-	if (NULL == pPlayer) return CR_TRUE;	
-
-	if (IsDeveloper(pPlayer) == false) return CR_TRUE;
-
-	int nCRT;
-	if (pCmd->GetParameter(&nCRT,		0, MPT_INT) == false) return CR_FALSE;
-
-	GEntityPlayer::GetPlayerCRTLogger().Insert(pPlayer, static_cast<CCommandResultTable>(nCRT));
-
-	return CR_TRUE;
-}
-
-
-MCommandResult GCmdHandler_GM::OnRequestGMLogCRTDelete(MCommand* pCmd, MCommandHandler* pHandler)
-{
-	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
-	if (NULL == pPlayer) return CR_TRUE;	
-
-	if (IsDeveloper(pPlayer) == false) return CR_TRUE;
-
-	int nCRT;
-	if (pCmd->GetParameter(&nCRT,		0, MPT_INT) == false) return CR_FALSE;
-
-	GEntityPlayer::GetPlayerCRTLogger().Delete(pPlayer, static_cast<CCommandResultTable>(nCRT));
-
-	return CR_TRUE;
-}
-
 MCommandResult GCmdHandler_GM::OnRequestGMQueryMultiLogin(MCommand* pCmd, MCommandHandler* pHandler)
 {
 	GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(pCmd->GetSenderUID());
@@ -1214,7 +1279,7 @@ MCommandResult GCmdHandler_GM::OnRequestServerDump(MCommand* pCmd, MCommandHandl
 	pPlayer->RouteToMe(pNewCmd);
 
 	// MasterServer 에도 보냄.
-	MCommand* pNewCmdToMaster = gsys.pMasterServerFacade->MakeNewCommand(MMC_DEBUG_DUMP, 1, NEW_INT((AID)pPlayer->GetAID()));
+	MCommand* pNewCmdToMaster = gsys.pMasterServerFacade->MakeNewCommand(MMC_DEBUG_DUMP, 1, NEW_INT64(pPlayer->GetAID()));
 	gsys.pMasterServerFacade->Route(pNewCmdToMaster);
 
 	return CR_TRUE;
@@ -1250,28 +1315,4 @@ MCommandResult GCmdHandler_GM::OnRequestDebugEchoReq(MCommand* pCmd, MCommandHan
 	else if (nType == 3) pEntityPlayer->RouteToField(pNewCommand);
 
 	return CR_TRUE;
-}
-
-MCommandResult GCmdHandler_GM::OnRequestGMBan(MCommand* pCommand, MCommandHandler* pHandler)
-{
-	if(IsGM(pCommand) == false) return CR_FALSE;
-	
-	GEntityPlayer* pPlayer;
-	wstring charName;
-
-	if(pCommand->GetParameter(charName, 0, MPT_WSTR) == false) return CR_FALSE;
-
-	pPlayer = gmgr.pPlayerObjectManager->GetEntityFromPlayerID(charName);
-
-	if(!pPlayer)
-		return CR_FALSE;
-
-	GPlayerObject * player = gmgr.pPlayerObjectManager->GetPlayer(pPlayer->GetUID());
-
-	wstring accName = player->GetAccountInfo().szUserID;
-
-	//Now we need to run a DB script to ban the account
-
-	return CR_TRUE;
-
 }

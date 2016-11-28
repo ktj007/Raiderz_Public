@@ -66,6 +66,7 @@ public:
 
 	static bool		INCLUDE_DEV_FIELD_LIST;					///< 개발중인 필드도 로딩할 지 여부
 	static int		DYNAMICFIELD_EXPIRED_TIME;
+	static float	INACTIVE_SHAREDFIELD_NPC_CLEARTIME;		// despawn all NPCs after specified time is elapsed since players inactivitiy (in seconds).
 	static int		TIME_SYNCH_INTERVAL;
 	static int		MAX_BUFF_QTY;							// 최대로 가질 수 있는 버프 갯수
 	static int		MAX_DEBUFF_QTY;							// 최대로 가질 수 있는 디버프 갯수
@@ -78,6 +79,11 @@ public:
 
 	static float	INTERACT_QUEST_OBJECTIVE_ANI_TIME;		// 인터랙션으로 퀘스트 목적 상태값을 변경 시킬때 사용하는 애니메이션 시간
 	static float	LOOT_ROLL_TIME;							// 주사위 굴림을 할 수 있는 시간
+
+	// beginning field of newly made character.
+	static int		FIRST_ENTER_FIELD_ID;
+	static int		FIRST_TUTORIAL_FIELD_ID;
+	static int		FIRST_ENTER_MARKER_ID;
 	
 	// 전투 관련 -----
 	static int		NO_WEAPON_DAMAGE_LEFT;					// 왼손 무기를 장착하지 않았을 경우의 기본 데미지
@@ -94,6 +100,8 @@ public:
 	static float	NPC_FINDPATH_TICK_OTHER;				// 길찾기 범위밖 갱신 틱시간
 	static float	NPC_FINDPATH_MOVESPEED_FACTOR;			// 길찾기 갱신 틱시간 속도 보정치 (틱시간 * 이동속도 / 팩터)
 	static float	NPC_DEFAULT_COMBAT_RADIUS;				// NPC 기본 전투 범위 (범위를 넘어서면 전투 종료, 단위: cm)
+
+	static float	TALENT_CRITICAL_DAMAGE_APPLY_RATE;
 	
 	// PVP 관련 --------------
 	static float	PVP_DURATIONTIME;						// 플레이어간 피격시 PVP상태 지속시간
@@ -168,6 +176,7 @@ public:
 	static int		AITEST_TYPE;
 
 	static bool		SERVER_SLEEP;
+	static int		SERVER_SLEEP_DURATION;
 
 	// DynamicField Test 관련 ------------
 	static bool		DFTEST_ENABLE;
@@ -218,6 +227,9 @@ public:
 
 	// AFK
 	static float	AFK_TIMEOUT;
+
+	// Party
+	static float	PARTY_MEMBER_POSITION_TICK;			// party member position sync interval for other distanced members (displayed on field map of client), in seconds.
 
 	// 자동파티
 	static float	AUTOPARTY_MATCH_PROCESS_INTERVAL; // 자동파티 매치작업 시간간격

@@ -73,6 +73,10 @@ public:
 	int GetKilledEpicEnemyCount();
 	int GetCharColorCount( const char* szPart);
 	int GetCharColorID( const char* szPart, int i);
+	/// 캐릭터 생성시에 선택할 수 있는 머리 개수를 반환한다.
+	int				GetHairMaxCount(int nSex);
+	/// 캐릭터 생성시에 선택할 수 있는 얼굴 개수를 반환한다.
+	int				GetFaceMaxCount(int nSex);
 	MWLua::ret_int4 GetCharColor( const char* szPart, int id);
 	int GetWeaponSet();
 	bool IsInQuestPvpArea();

@@ -62,3 +62,8 @@ GParty* GPartyManager::FindParty(MUID uidParty)
 
 	return iter->second;
 }
+
+const GPartyManager::PARTY_MAP& GPartyManager::GetPartyMap() const
+{
+	return m_mapEntries;
+}

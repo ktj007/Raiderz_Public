@@ -34,5 +34,6 @@ void ZServerStatusUpdater::Start(const std::wstring& strServerVersion)
 void ZServerStatusUpdater::OnUpdate(const float fDelta)
 {
 	// 서버 상태 갱신
-	m_prefDBManager->ServerStatusUpdate(ZConfig::m_nMyWorldID, ZConfig::m_nMyServerID, gmgr.pPlayerManager->GetObjectCount(), gsys.pServer->GetServableChecker().IsServable());
+	m_prefDBManager->ServerStatusUpdate(ZConfig::m_nMyWorldID, ZConfig::m_nMyServerID, gmgr.pPlayerManager->GetObjectCount(), gsys.pServer->GetServableChecker().IsServable(), 
+		0, 0, 0, 0, 0);	// 2015-11-19: Pass zeros for task count, CPU usage, memory usage, field count and FPS.
 }

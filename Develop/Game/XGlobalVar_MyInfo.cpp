@@ -56,7 +56,7 @@ void GlobalVar_MyInfo::SetFrom_TD_MYINFO(
 	const TD_MYINFO& TDMyInfo, 
 	const vector<TD_ITEM>& vecTDInventory, 
 	const vector<TD_ITEM>& vecTDEquipment,
-	const vector<int>& vecTalentID, 
+	const vector<TD_TALENT>& vecTalentID,
 	const vector<TD_PLAYERQUEST>& vecTDPlayerQuest, 
 	const TD_PALETTE& TDPalette,
 	const vector<TD_FACTION>& vecTDFaction, 
@@ -89,9 +89,9 @@ void GlobalVar_MyInfo::SetFrom_TD_MYINFO(
 
 	// 배운 탤런트들
 	Talent.InitTalent();
-	for each (int nTalentID in vecTalentID)
+	for each (TD_TALENT nTalent in vecTalentID)
 	{
-		XTalentInfo* pTalentInfo = info.talent->Get(nTalentID);
+		XTalentInfo* pTalentInfo = info.talent->Get(nTalent.nID);
 		_ASSERTE(NULL != pTalentInfo && "pTalentInfo is NULL");
 		if (pTalentInfo)
 		{
@@ -281,9 +281,7 @@ void GlobalVar_MyInfo::Assign( const TD_MYINFO& td_myinfo )
 	this->nLevel = td_myinfo.nLevel;
 	this->SetExpPercent(td_myinfo.fExpPercent);
 	this->Talent.SetTP(td_myinfo.nRemainTP);
-	this->nFatigueType = static_cast<FATIGUE_TYPE>(td_myinfo.nFatigueType);	
-
-	this->nSoulbindingFieldID = td_myinfo.nSoulbindingFieldID;
+	this->nFatigueType = static_cast<FATIGUE_TYPE>(td_myinfo.nFatigueType);
 	this->nCheckPointFieldID = td_myinfo.nCheckPointFieldID;
 
 	this->Mailbox.SetSummaryInfo(td_myinfo.bExistUnreadMail, td_myinfo.bIsFullMailbox);

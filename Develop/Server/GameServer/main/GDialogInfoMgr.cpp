@@ -62,6 +62,7 @@ void GDialogInfoMgr::ParseDialog(MXmlElement* pElement, MXml* pXml)
 	GDialogInfo* pExistInfo = Get(nDialogID);
 	if (NULL != pExistInfo)
 	{		
+		_VLOGGER->Log(_T(DIALOG_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}	
 

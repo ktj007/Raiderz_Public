@@ -43,7 +43,7 @@ public:
 	int							CalculateOnlineMemberCount(MUID uidParty) const;
 	vector<GEntityPlayer*>		CollectNeighborMember(GEntityPlayer* pPlayer, float fDistance) const;
 	vector<MUID>				CollectMemberUID(GEntityPlayer* pPlayer) const;
-	vector<int>					CollectNeighborMemberCID(GEntityPlayer* pPlayer, float fDistance=FLT_MAX) const;
+	vector<CID>					CollectNeighborMemberCID(GEntityPlayer* pPlayer, float fDistance=FLT_MAX) const;
 
 public:
 	virtual void 				RouteToAllMembers(MUID uidParty, MCommand* pCommand, const MUID& uidExceptMember=MUID::ZERO);	
@@ -60,6 +60,7 @@ public:		// C-G
 	virtual void				JoinAutoPartyReq(MUID uidParty, GEntityPlayer* pPlayer);
 
 	virtual void 				InviteReq(MUID uidTargetPlayer, MUID uidRequestPlayer);	
+	virtual void 				InviteByNameReq(wstring strTargetPlayer, MUID uidRequestPlayer);
 	virtual void 				InviteRes(MUID uidRequestPlayer, MUID uidTargetPlayer, CCommandResultTable nResult);
 	virtual void 				AcceptReq(MUID uidTargetPlayer, MUID uidRequestPlayer, wstring strRequestPlayerName);
 	virtual void 				AcceptRes(MUID uidTargetPlayer, PARTY_RESPOND nRespond);
@@ -70,24 +71,27 @@ public:		// C-G
 	virtual void				KickRes(MUID uidRequestPlayer, MUID uidTargetPlayer, CCommandResultTable nResult);
 	virtual void				DoOnline(MUID uidMember);
 	virtual void				DoOffline(GEntityPlayer* pMember);	
-	virtual void				JoinInviteReq(MUID uidParty, MUID uidRequestPlayer);
-	virtual void				JoinInviteRes(MUID uidRequestPlayer, CCommandResultTable nResult);
-	virtual void				JoinAcceptReq(MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, wstring strRequestPlayerName);
-	virtual void				JoinAcceptRes(MUID uidLeader, PARTY_RESPOND nRespond);	
+	virtual void				JoinReq(MUID uidParty, MUID uidRequestPlayer);
+	virtual void				JoinRes(MUID uidRequestPlayer, CCommandResultTable nResult);
+	virtual void				JoinAcceptReq(MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, wstring strRequestPlayerName, int nReqPlayerLevel, int nReqPlayerTalentStyle, int nReqPlayerFieldID);
+	virtual void				JoinAcceptRes(MUID uidLeader, MUID uidRequestPlayer, PARTY_RESPOND nRespond);	
 	virtual void				JoinAcceptCancel(MUID uidLeader, CCommandResultTable nResult);
-	virtual void				CreateSinglePartyReq(MUID uidRequestPlayer);
 
-	virtual void 				ChangePartyNameReq(MUID uidLeader, wstring strName);
+	virtual void 				ChangePublicPartySettingReq(MUID uidLeader, bool bPublicParty, wstring strPartyName);
 	virtual void 				ChangePartyLeaderReq(MUID uidLeader, MUID uidNewLeader);
 	virtual void 				ChangePartyLootingRuleReq(MUID uidLeader, LOOTING_RULE_DATA rule);
 	virtual void				ChangeQuestIDReq(MUID uidLeader, QuestID nQuestID);
 
+	virtual void				ShowInfoReq(MUID uidRequestor, MUID uidParty);
+	virtual void				CreateSinglePartyReq(MUID uidRequestPlayer, bool bPublicParty, wstring strPartyName);
+	virtual void				ShowMatchingPublicPartyListReq(MUID uidRequestor, char nPage, char nLevelMin, char nLevelMax, wstring strSearchText);
+
 	void						FixedPartyLogOn(MUID uidMember, wstring strName) const;
 		
 public:		// M-G
-	virtual void				AddParty(MUID uidParty, MUID uidLeader, QuestID nQuestID=INVALID_ID);
+	virtual void				AddParty(MUID uidParty, MUID uidLeader, bool bPublicParty=false, wstring strPartyName=L"", QuestID nQuestID=INVALID_ID);
 	virtual void				RemoveParty(MUID uidParty);
-	virtual void				AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberCID);
+	virtual void				AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, CID nMemberCID);
 	virtual void				RemoveMember(MUID uidParty, MUID uidMember);
 	virtual void				AddOfflineMember(MUID uidParty, MUID uidMember);
 	virtual void				RemoveOfflineMember(MUID uidParty, MUID uidMember, MUID uidOffline);
@@ -98,13 +102,17 @@ public:		// M-G
 	virtual void				SyncQuestRunner(MUID uidParty, MUID uidMember, MUID uidField, const vector<int>& vecQuestID);
 	virtual void				SyncEraseQuestRunner(MUID uidParty, MUID uidMember);	
 	virtual void				MoveServerSync(MUID uidParty, MUID uidMember, MUID uidOffline);
-	virtual void				ChangePartyNameRes(MUID uidParty, wstring strName);
+	virtual void				ChangePublicPartySettingRes(MUID uidParty, bool bPublicParty, wstring strPartyName);
 	virtual void				ChangePartyLeaderRes(MUID uidParty, MUID uidNewLeader);
 	virtual void				ChangePartyLootingRuleRes(MUID uidParty, LOOTING_RULE_DATA rule);
 	virtual void				ChangeQuestIDRes(MUID uidParty, int nQuestID);
+	virtual void				ShowInfoRes(MUID uidRequestor, const TD_PARTY& tdParty, const vector<TD_PARTY_MEMBER>& vecMembers);
+	virtual void				CreateSinglePartyRes(MUID uidRequestPlayer, CCommandResultTable nResult);
+	virtual void				ShowMatchingPublicPartyListRes(MUID uidRequestor, CCommandResultTable nResult, const vector<TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM>& vecMatchedItem, int nFilteredCount);
 	
 
 private:
+	CCommandResultTable			CheckCanInviteToParty(GEntityPlayer* pRequestPlayer) const;
 	bool						IsPartyFull(MUID uidParty) const;	
 	GParty*						RestoreParty(MUID uidParty);
 	void						AddQuest(MUID uidParty, GEntityPlayer* pMember) const;

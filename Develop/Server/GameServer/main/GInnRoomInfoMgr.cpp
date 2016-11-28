@@ -55,6 +55,7 @@ void GInnRoomInfoMgr::ParseInnRoom(MXmlElement* pElement, MXml* pXml)
 	GInnRoomInfo* pExistInfo = Get(nID);
 	if (NULL != pExistInfo)
 	{
+		_VLOGGER->Log(_T(INNROOM_XML_ATTR_ID) IS_ALREADY_EXIST);
 		_ASSERT(0);
 		return;
 	}

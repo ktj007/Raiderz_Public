@@ -13,7 +13,7 @@ GCmdHandler_Master_Char::GCmdHandler_Master_Char(MCommandCommunicator* pCC) : MC
 
 MCommandResult GCmdHandler_Master_Char::OnNPCDieReward(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	vector<int> vecBeneficiaryCID;
+	vector<CID> vecBeneficiaryCID;
 	int nAllBeneficiaryCount;
 	int nNPCID;
 
@@ -24,9 +24,9 @@ MCommandResult GCmdHandler_Master_Char::OnNPCDieReward(MCommand* pCommand, MComm
 	GNPCRewarder npcRewarder;
 
 	vector<GEntityPlayer*> vecExistBeneficiary;
-	vector<int> vecNotExistBeneficiaryCID;
+	vector<CID> vecNotExistBeneficiaryCID;
 
-	for each (int nBeneficiaryCID in vecBeneficiaryCID)
+	for each (CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		GEntityPlayer* pPlayer = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL == pPlayer) continue;

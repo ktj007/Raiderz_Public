@@ -11,7 +11,7 @@
 #include "PChatModule_LeavePartyChannel.h"
 
 
-PChatChannel* PChatChannelFactory::NewChatChannel_Private(int nOwnerCID, const std::wstring& strChannelName)
+PChatChannel* PChatChannelFactory::NewChatChannel_Private(CID nOwnerCID, const std::wstring& strChannelName)
 {
 	MUID uidNewChannel = gsys.pServer->NewUID();
 

@@ -3,7 +3,7 @@
 
 #include "CSGuild.h"
 #include "GGuildMember.h"
-typedef map<int, GGuildMember*> MAP_GUILD_MEMBER;
+typedef map<CID, GGuildMember*> MAP_GUILD_MEMBER;
 
 class GGuildStorage;
 
@@ -14,7 +14,7 @@ friend class GGuildMgr;
 private:
 	int						m_nID;				///< 길드 ID
 	wstring					m_strName;			///< 길드 이름
-	int						m_nMasterCID;		///< 길드 마스터CID
+	CID						m_nMasterCID;		///< 길드 마스터CID
 	MAP_GUILD_MEMBER		m_mapMember;		///< 전체 멤버
 	
 	wstring					m_strMasterName;	///< 길드 마스터 이름(클라에서 CID대신 이름으로 관리해서)
@@ -28,26 +28,26 @@ private:
 public:	
 	~GGuild();
 
-	void InsertMember(int64 nAID, int nCID, const wchar_t* szName, int nLevel, GUILD_MEMBER_GRADE nGrade);
-	void DeleteMember(int nCID);
+	void InsertMember(AID nAID, CID nCID, const wchar_t* szName, int nLevel, GUILD_MEMBER_GRADE nGrade);
+	void DeleteMember(CID nCID);
 
-	void ChangeGuildMaster(int nOldMasterCID, int nNewMasterCID);
+	void ChangeGuildMaster(CID nOldMasterCID, CID nNewMasterCID);
 
 	int GetID() { return m_nID; }
 	const wchar_t* GetName() { return m_strName.c_str(); }
-	int GetMasterCID() { return m_nMasterCID; }
+	CID GetMasterCID() { return m_nMasterCID; }
 	const wchar_t* GetMasterName() { return m_strMasterName.c_str(); }
 	MAP_GUILD_MEMBER& GetContainer() { return m_mapMember; }
 
-	GGuildMember* GetMember(int nCID);
+	GGuildMember* GetMember(CID nCID);
 	GGuildMember* GetMember(const wchar_t* szName);
-	bool IsExist(int nCID);
+	bool IsExist(CID nCID);
 	bool IsExist(const wchar_t* szName);
-	bool IsGuildMaster(int nCID);
-	bool IsOnlineMember(int nCID);
+	bool IsGuildMaster(CID nCID);
+	bool IsOnlineMember(CID nCID);
 	size_t GetMemberCount() { return m_mapMember.size(); }
 
-	vector<int> CollectMemberCID();
+	vector<CID> CollectMemberCID();
 
 	void Delete();
 

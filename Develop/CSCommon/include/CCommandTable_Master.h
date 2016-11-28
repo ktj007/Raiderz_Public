@@ -96,8 +96,8 @@ enum CMaster2GameCommandTable
 	MMC_PARTY_ADD_OFFLINE_MEMBER					= 14440,	///< (M->G) 오프라인 파티원 추가
 	MMC_PARTY_REMOVE_OFFLINE_MEMBER					= 14441,	///< (M->G) 오프라인 파티원 제거
 
-	MMC_PARTY_JOIN_INVITE_REQ						= 14442,	///< (G->M) 가입 요청
-	MMC_PARTY_JOIN_INVITE_RES						= 14443,	///< (M->G) 가입 응답
+	MMC_PARTY_JOIN_REQ								= 14442,	///< (G->M) 가입 요청
+	MMC_PARTY_JOIN_RES								= 14443,	///< (M->G) 가입 응답
 	MMC_PARTY_JOIN_ACCEPT_REQ						= 14444,	///< (M->G) 수락 요청
 	MMC_PARTY_JOIN_ACCEPT_RES						= 14445,	///< (G->M) 수락 응답
 	MMC_PARTY_JOIN_ACCEPT_CANCEL					= 14446,	///< (M->G) 수락 취소
@@ -105,26 +105,33 @@ enum CMaster2GameCommandTable
 	MMC_PARTY_MOVE_SERVER							= 14447,	///< (G->M) 서버이동 상태 통보
 	MMC_PARTY_MOVE_SERVER_SYNC						= 14448,	///< (M->G) 서버이동 완료 상태 전달
 
-	MMC_PARTY_CREATE_SINGLE_REQ						= 14449,	///< (G->M) 1인파티 생성 요청(Debug)
+	MMC_PARTY_CREATE_SINGLE_PARTY_REQ				= 14449,	///< (G->M) 1인파티 생성 요청
+	MMC_PARTY_CREATE_SINGLE_PARTY_RES				= 14450,
 
-	MMC_PARTY_INFO_ALL_REQ							= 14450,	///< (G->M) 전체 파티정보 요청
-	MMC_PARTY_INFO_ALL_RES							= 14451,	///< (M->G) 전체 파티정보 전달
-	MMC_PARTY_REMOVE_FIELD_SELF						= 14452,	///< (G->M) 필드 제거
+	MMC_PARTY_INFO_ALL_REQ							= 14451,	///< (G->M) 전체 파티정보 요청
+	MMC_PARTY_INFO_ALL_RES							= 14452,	///< (M->G) 전체 파티정보 전달
+	MMC_PARTY_REMOVE_FIELD_SELF						= 14453,	///< (G->M) 필드 제거
 
-	MMC_PARTY_CHANGE_NAME_REQ						= 14456,	///< (G->M) 파티 이름 변경 요청	
-	MMC_PARTY_CHANGE_NAME							= 14457,	///< (M->G) 파티 이름 변경
+	MMC_PARTY_CHANGE_PUBLIC_PARTY_SETTING_REQ		= 14457,	///< (G->M) 파티 이름 변경 요청	
+	MMC_PARTY_CHANGE_PUBLIC_PARTY_SETTING			= 14458,	///< (M->G) 파티 이름 변경
 	
-	MMC_PARTY_CHANGE_LEADER_REQ						= 14458,	///< (G->M) 파티장 변경 요청
-	MMC_PARTY_CHANGE_LEADER							= 14459,	///< (M->G) 파티장 변경
+	MMC_PARTY_CHANGE_LEADER_REQ						= 14459,	///< (G->M) 파티장 변경 요청
+	MMC_PARTY_CHANGE_LEADER							= 14460,	///< (M->G) 파티장 변경
 
-	MMC_PARTY_CHANGE_LOOTING_RULE_REQ				= 14460,	///< (G->M) 파티 루팅룰 변경 요청
-	MMC_PARTY_CHANGE_LOOTING_RULE					= 14461,	///< (M->G) 파티 루팅룰 변경
-	MMC_PARTY_CHANGE_QUESTID_REQ					= 14462,	///< (G->M) 파티 수행퀘스트 변경 요청
-	MMC_PARTY_CHANGE_QUESTID						= 14463,	///< (M->G) 파티 수행퀘스트 변경
+	MMC_PARTY_CHANGE_LOOTING_RULE_REQ				= 14461,	///< (G->M) 파티 루팅룰 변경 요청
+	MMC_PARTY_CHANGE_LOOTING_RULE					= 14462,	///< (M->G) 파티 루팅룰 변경
+	MMC_PARTY_CHANGE_QUESTID_REQ					= 14463,	///< (G->M) 파티 수행퀘스트 변경 요청
+	MMC_PARTY_CHANGE_QUESTID						= 14464,	///< (M->G) 파티 수행퀘스트 변경
 	
-	MMC_PARTY_FIXED_LOG_ON							= 14464,	///< (G->M) Expo 대비 준비된 파티에 로그온
-	MMC_PARTY_CREATE_AUTO_PARTY_REQ					= 14465,	///< (G->M) 발기인 모아 파티 만들기 요청
-	MMC_PARTY_JOIN_ATUTO_PARTY_REQ					= 14466,	///< (G->M) 자동파티 가입
+	MMC_PARTY_FIXED_LOG_ON							= 14465,	///< (G->M) Expo 대비 준비된 파티에 로그온
+	MMC_PARTY_CREATE_AUTO_PARTY_REQ					= 14466,	///< (G->M) 발기인 모아 파티 만들기 요청
+	MMC_PARTY_JOIN_ATUTO_PARTY_REQ					= 14467,	///< (G->M) 자동파티 가입
+
+	MMC_PARTY_INVITE_BY_NAME_REQ					= 14468,
+	MMC_PARTY_SHOW_INFO_REQ							= 14469,
+	MMC_PARTY_SHOW_INFO_RES							= 14470,
+	MMC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST_REQ	= 14471,
+	MMC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST_RES	= 14472,
 
 	MMC_PARTY_FAIL									= 14490,	///< (M->G) 처리 실패
 
@@ -232,6 +239,10 @@ enum CMaster2LoginCommandTable
 	// Pmang
 	MLC_PLAYER_PMANG_ADD_PLAYER_REQ			= 15112,	///< (L->M) 피망 플레이어 추가 요청
 	MLC_PLAYER_PMANG_ADD_PLAYER_RES			= 15113,	///< (M->L) 피망 플레이어 추가 응답
+
+	// PWE
+	MLC_PLAYER_PWE_ADD_PLAYER_REQ			= 15121,	///< (L->M) 피망 플레이어 추가 요청
+	MLC_PLAYER_PWE_ADD_PLAYER_RES			= 15122,	///< (M->L) 피망 플레이어 추가 응답
 
 	// Admin
 	MLC_ADMIN_CHANGE_SERVER_MODE			= 15401,	///< (M->L) 서버 모드 변경

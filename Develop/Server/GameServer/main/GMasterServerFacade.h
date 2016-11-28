@@ -87,9 +87,9 @@ public:
 
 	void UpdateProxyFieldInfo(MUID uidField, const TDMG_PROXY_FIELD_UPDATE_INFO* pTDProxyFieldUpdateInfo);
 
-	void AddProxyParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderCID);
+	void AddProxyParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, CID nLeaderCID);
 	void RemoveProxyParty(MUID uidParty);
-	void AddProxyPartyMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberCID);
+	void AddProxyPartyMember(MUID uidParty, MUID uidMember, wstring strMemberName, CID nMemberCID);
 	void RemoveProxyPartyMember(MUID uidParty, MUID uidMember);
 	void ChangeProxyPartyLeader(MUID uidParty, MUID uidNewLeader);
 	void ClearProxyParty(void);

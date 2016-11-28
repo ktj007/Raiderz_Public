@@ -13,9 +13,6 @@
 #include "GReserveCmdManager.h"
 #include "GPlayerAcceptor_FromLoginServer.h"
 #include "GPlayerAcceptor_FromGameServer.h"
-#include "PmStatIndexParser.h"
-#include "PmRegionStat.h"
-#include "GPMSSystem.h"
 #include "GLoginLogicMoveGameServer.h"
 #include "GClientMoveServerRouter.h"
 #include "SCmdRouter_Login.h"
@@ -96,7 +93,8 @@ bool GLoginLogic::CheckCommandVersion(MUID uidPlayer, int nCommandVersion)
 
 void GLoginLogic::AddPmangStatIndex(MUID uidPlayer, wstring strStatIndex, int nPCCafeID)
 {
-
+	GPlayerObject* pPlayerObject = gmgr.pPlayerObjectManager->GetPlayer(uidPlayer);
+	if (pPlayerObject == NULL)	return;
 }
 
 
@@ -108,7 +106,7 @@ bool GLoginLogic::DuplicatedLogin(MUID uidPlayer, MUID uidConnectionKey)
 	{
 		// 접속해있는 유저가 있으면 로그아웃을 통보한다.
 		SCmdRouter_Login router(gsys.pCommandCenter);
-		router.DuplicatedPlayerLogin(uidPlayer);
+		router.NotifyKick(uidPlayer, CR_FAIL_DUPLICATED_PLAYER_LOGIN);
 
 		gsys.pServer->HardDisconnect(uidPlayer);
 		gsys.pServer->GetServerInfo().nDisconnCountByDup++;

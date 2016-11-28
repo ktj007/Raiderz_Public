@@ -32,14 +32,14 @@ void XDebugMovableFrm::OnShow( bool bShow)
 
 	if ( bShow == true)
 	{
-		XPostDebugString(L"show_actor_pos", 1, L"");
+		//XPostDebugString(L"show_actor_pos", 1, L"");
 		gvar.Debug.bRenderMoveDebug = true;
 
 		BringToTop();
 	}
 	else
 	{
-		XPostDebugString(L"show_actor_pos", 0, L"");
+		//XPostDebugString(L"show_actor_pos", 0, L"");
 		gvar.Debug.bRenderMoveDebug = false;
 	}
 }

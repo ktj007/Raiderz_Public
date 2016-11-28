@@ -145,7 +145,7 @@ void XMyActionUseTalent::Enter(void* pParam)
 			pModuleAction->StopMove(false);
 
 			XModulePost* pModulePost = m_pOwner->GetOwner()->GetModulePost();
-			pModulePost->PostMoveStop(m_pOwner->GetOwner()->GetPosition());
+			pModulePost->PostMoveStop(m_pOwner->GetOwner()->GetPosition(), m_pOwner->GetOwner()->GetDirection());
 		}
 	}
 	
@@ -533,9 +533,36 @@ bool XMyActionUseTalent::HasCastingTime( XTalentInfo* pTalentInfo )
 
 void XMyActionUseTalent::PostUseTalent()
 {
-	XPostUseTalent(m_nTalentID, 
-				m_pOwner->GetOwner()->GetDirection(), 
-				m_pOwner->GetOwner()->GetPosition());
+	if (m_pUseTarget)
+	{
+		vec3 dir = m_pOwner->GetOwner()->GetDirection();
+		TD_TALENT_TARGET_DETAIL TarInfo;
+		stTargetID* pTargetInfo = NULL;
+		pTargetInfo = m_pUseTarget->GetTargetInfo();
+		if (pTargetInfo)
+		{
+			if (pTargetInfo->uidTarget != MUID::ZERO)
+			{
+				TarInfo.uidTarget = pTargetInfo->uidTarget;
+				TarInfo.nCapsuleGroupIndex = pTargetInfo->nTargetGroupID;
+				TarInfo.nCapsuleIndex = pTargetInfo->nTargetCapsuleID;
+
+				XPostActTalentWithHitCapsule(m_nTalentID, dir, TarInfo);
+				return;
+			}
+			else if (pTargetInfo->vTargetPos != vec3::ZERO)
+			{
+				XPostActTalentWithGround(m_nTalentID, dir, pTargetInfo->vTargetPos);
+				return;
+			}
+		}
+	}
+	else
+	{
+		// Å¸°ÙÀÌ ¾ø´Ù¸é Å¸°ÙÀÌ °ð ÀÚ½ÅÀÌ´Ù.
+		XPostActTalent(m_nTalentID, m_pOwner->GetOwner()->GetDirection(), m_pOwner->GetOwner()->GetUID());
+		return;
+	}
 }
 
 bool XMyActionUseTalent::CheckBuff( int nTalentID )

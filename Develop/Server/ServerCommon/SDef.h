@@ -27,8 +27,10 @@ template<> struct CompileTimeAssert<true> {};
 	#define		DCHECK(x)			{ if (!(x)) { mlog3("\""#x"\" is invalid. (%s() ==> %s:%d)\n", __FUNCTION__, __FILE__, __LINE__); }}
 	#define		RVALID(x)			{ if (!(x)) { mlog3("\""#x"\" is invalid. (%s() ==> %s:%d)\n", __FUNCTION__, __FILE__, __LINE__); return; }}
 	#define		RVALID_RET(x, r)	{ if (!(x)) { mlog3("\""#x"\" is invalid. (%s() ==> %s:%d)\n", __FUNCTION__, __FILE__, __LINE__); return (r); }}
-	#define		VALID(x)			{ assert(x); RVALID(x) }
-	#define		VALID_RET(x, r)		{ assert(x); RVALID_RET(x,r) }
+	// #define		VALID(x)			{ assert(x); RVALID(x) }
+	// #define		VALID_RET(x, r)		{ assert(x); RVALID_RET(x,r) }
+	#define		VALID(x)			{ _ASSERT(x); RVALID(x) }
+	#define		VALID_RET(x, r)		{ _ASSERT(x); RVALID_RET(x,r) }
 #else
 	#define		DCHECK(x)			
 	#define		RVALID(x)			{ if (!(x)) return; }
@@ -61,9 +63,12 @@ enum RESPONSE_GATE_TYPE
 };
 
 /// 최초 접속시 입장할 필드 ID - GConfig::TEST_ENABLE_TUTORIAL
-#define FIRST_ENTER_FIELD_ID	1090000			///< 부러진 돛대 필드
+// moved to GConst to allow change of field IDs
+/*
+#define FIRST_ENTER_FIELD_ID	109			///< 부러진 돛대 필드
 #define FIRST_TUTORIAL_FIELD_ID 1090000		///< 부러진 돛대 튜토리얼 필드
-#define FIRST_ENTER_MARKER_ID	8			///< 1번 마커
+#define FIRST_ENTER_MARKER_ID	1			///< 1번 마커
+*/
 
 
 /// 피망

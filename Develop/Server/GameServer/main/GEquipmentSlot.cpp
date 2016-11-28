@@ -132,7 +132,7 @@ bool GEquipmentSlot::IsUnarmed() const
 
 void GEquipmentSlot::CollectAllItem(vector<GItem*>& outvecItem)
 {
-	for (int i = ITEMSLOT_HEAD; i <= ITEMSLOT_RWEAPON2; i++)
+	for (int i = ITEMSLOT_BEGIN; i < ITEMSLOT_MAX; i++)
 	{
 		GItem* pItem = GetItem(static_cast<SH_ITEM_SLOT>(i));
 		if (NULL != pItem)

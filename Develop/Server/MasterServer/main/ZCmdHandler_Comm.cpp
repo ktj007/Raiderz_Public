@@ -46,6 +46,9 @@ ZCmdHandler_Comm::ZCmdHandler_Comm(MCommandCommunicator* pCC) : MCommandHandler(
 	// 피망
 	SetCmdHandler(MLC_PLAYER_PMANG_ADD_PLAYER_REQ,	OnPmangRequestAddPlayer);
 
+	// PWE
+	SetCmdHandler(MLC_PLAYER_PWE_ADD_PLAYER_REQ,	OnPWERequestAddPlayer);
+
 	// Admin
 	SetCmdHandler(MMC_ADMIN_CHANGE_SERVER_MODE_REQ,	OnAdminChangeServerModeReq);
 	SetCmdHandler(MMC_DEBUG_DUMP,					OnDebugDump);
@@ -263,11 +266,11 @@ MCommandResult ZCmdHandler_Comm::OnRequestAppServerList(MCommand* pCommand, MCom
 MCommandResult ZCmdHandler_Comm::OnRequestAddPlayer(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	MUID uidPlayer;
-	int nAID;
+	AID nAID;
 	wstring strUserID;
 	
 	if (pCommand->GetParameter(&uidPlayer,		0, MPT_UID)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nAID,			1, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nAID,			1, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(strUserID,		2, MPT_WSTR)==false) return CR_ERROR;
 	
 	
@@ -296,7 +299,7 @@ MCommandResult ZCmdHandler_Comm::OnRequestAddPlayer(MCommand* pCommand, MCommand
 	ZPlayerLogic playerLogic;
 	if (!playerLogic.AddPlayer(uidPlayer, nAID, strUserID, NULL))
 	{
-		mlog3("Error! ZCmdHandler_Comm::OnRequestAddPlayer(), Failed! ZPlayerLogic::AddPlayer(AID=%d)\n", nAID);
+		mlog3("Error! ZCmdHandler_Comm::OnRequestAddPlayer(), Failed! ZPlayerLogic::AddPlayer(AID=%I64d)\n", nAID);
 		return CR_TRUE;
 	}
 	
@@ -308,12 +311,12 @@ MCommandResult ZCmdHandler_Comm::OnRequestAddPlayer(MCommand* pCommand, MCommand
 MCommandResult ZCmdHandler_Comm::OnPmangRequestAddPlayer(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	MUID uidPlayer;
-	int nAID;
+	AID nAID;
 	wstring strUserID;
 	TD_PMANG_USER_DATA* pTdPmangUserData;
 
 	if (!pCommand->GetParameter(&uidPlayer,		0, MPT_UID))	return CR_ERROR;
-	if (!pCommand->GetParameter(&nAID,			1, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nAID,			1, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(strUserID,		2, MPT_WSTR))	return CR_ERROR;
 	if (!pCommand->GetSingleBlob(pTdPmangUserData, 3))			return CR_ERROR;
 	
@@ -349,7 +352,7 @@ MCommandResult ZCmdHandler_Comm::OnPmangRequestAddPlayer(MCommand* pCommand, MCo
 	ZPlayerLogic playerLogic;
 	if (!playerLogic.AddPlayer(uidPlayer, nAID, strUserID, &pmUserData))
 	{
-		mlog3("Error! ZCmdHandler_Comm::OnPmangRequestAddPlayer(), Failed! ZPlayerLogic::AddPlayer(AID=%d)\n", nAID);
+		mlog3("Error! ZCmdHandler_Comm::OnPmangRequestAddPlayer(), Failed! ZPlayerLogic::AddPlayer(AID=%I64d)\n", nAID);
 		return CR_TRUE;
 	}
 
@@ -358,12 +361,57 @@ MCommandResult ZCmdHandler_Comm::OnPmangRequestAddPlayer(MCommand* pCommand, MCo
 	return CR_TRUE;
 }
 
+MCommandResult ZCmdHandler_Comm::OnPWERequestAddPlayer(MCommand* pCommand, MCommandHandler* pHandler)
+{
+	MUID uidPlayer;
+	AID nAID;
+	wstring strUserID;
+	
+	if (pCommand->GetParameter(&uidPlayer,		0, MPT_UID)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nAID,			1, MPT_INT64)==false) return CR_ERROR;
+	if (pCommand->GetParameter(strUserID,		2, MPT_WSTR)==false) return CR_ERROR;
+	
+	
+	// 로그인 서버 확인
+	MUID uidLoginServer = pCommand->GetSenderUID();
+	if (uidLoginServer != gmgr.pLoginServerFacade->GetUID())	return CR_TRUE;
+	
+	// 플레이어 중복 로그인 체크
+	ZDuplicationLoginLogic duplicationLoginLogic;
+	if (duplicationLoginLogic.IsDuplicated(nAID))
+	{
+		// 게임에 접속해 있는 플레이어를 내보낸다.
+		duplicationLoginLogic.StartKickInWorldPlayer(uidPlayer, nAID, strUserID, NULL);
+		ZPlayerCommandRouter::SendPWEAddPlayerResponse(uidLoginServer, uidPlayer, CR_INFO_LOGIN_KICKING_DUPLICATED_PLAYER);
+		return CR_TRUE;
+	}
+
+	// 최대 동접 수 체크
+	if (gmgr.pPlayerManager->GetObjectCount() >= WORLD_PLAYER_LIMIT)
+	{
+		ZPlayerCommandRouter::SendPWEAddPlayerResponse(uidLoginServer, uidPlayer, CR_FAIL_LOGIN_WORLD_IS_FULL);
+		return CR_TRUE;
+	}
+	
+	// 플레이어 등록
+	ZPlayerLogic playerLogic;
+	if (!playerLogic.AddPlayer(uidPlayer, nAID, strUserID, NULL))
+	{
+		mlog3("Error! ZCmdHandler_Comm::OnPWERequestAddPlayer(), Failed! ZPlayerLogic::AddPlayer(AID=%I64d)\n", nAID);
+		return CR_TRUE;
+	}
+	
+	ZPlayerCommandRouter::SendPWEAddPlayerResponse(uidLoginServer, uidPlayer, CR_SUCCESS);
+	
+	return CR_TRUE;
+}
+
 MCommandResult ZCmdHandler_Comm::OnDeletePlayer_FromLoginServer(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nAID;
+	AID nAID;
 	MUID uidPlayer;
 
-	if (pCommand->GetParameter(&nAID,			0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nAID,			0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidPlayer,		1, MPT_UID)==false) return CR_ERROR;
 
 	// 중복접속 처리 대기중인 플레이어 처리
@@ -383,10 +431,10 @@ MCommandResult ZCmdHandler_Comm::OnDeletePlayer_FromLoginServer(MCommand* pComma
 
 MCommandResult ZCmdHandler_Comm::OnDeletePlayer_FromGameServer(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nAID;
+	AID nAID;
 	MUID uidPlayer;
 
-	if (pCommand->GetParameter(&nAID,			0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nAID,			0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidPlayer,		1, MPT_UID)==false) return CR_ERROR;
 
 	// 중복접속 처리 대기중인 플레이어 처리
@@ -406,10 +454,10 @@ MCommandResult ZCmdHandler_Comm::OnDeletePlayer_FromGameServer(MCommand* pComman
 
 MCommandResult ZCmdHandler_Comm::OnPlayerStateSelectChar(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nAID;
+	AID nAID;
 	MUID uidPlayer;
 
-	if (pCommand->GetParameter(&nAID,			0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nAID,			0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidPlayer,		1, MPT_UID)==false) return CR_ERROR;
 
 	ZPlayerLogic playerLogic;
@@ -420,14 +468,14 @@ MCommandResult ZCmdHandler_Comm::OnPlayerStateSelectChar(MCommand* pCommand, MCo
 
 MCommandResult ZCmdHandler_Comm::OnPlayerStateInWorldReq(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nAID;
-	int nCID;
+	AID nAID;
+	CID nCID;
 	MUID uidPlayer;
 	wstring strPlayerName;
 	int nGID;
 
-	if (pCommand->GetParameter(&nAID,			0, MPT_INT)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&nCID,			1, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nAID,			0, MPT_INT64)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nCID,			1, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidPlayer,		2, MPT_UID)==false) return CR_ERROR;
 	if (pCommand->GetParameter(strPlayerName,	3, MPT_WSTR)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&nGID,			4, MPT_INT)==false) return CR_ERROR;
@@ -442,11 +490,11 @@ MCommandResult ZCmdHandler_Comm::OnPlayerStateInWorldReq(MCommand* pCommand, MCo
 
 MCommandResult ZCmdHandler_Comm::OnPlayerInFieldNotify(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	MUID uidField;
 	int nFieldID;
 
-	if (pCommand->GetParameter(&nCID,			0, MPT_INT)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&nCID,			0, MPT_INT64)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&uidField,		1, MPT_UID)==false) return CR_ERROR;
 	if (pCommand->GetParameter(&nFieldID,		2, MPT_INT)==false) return CR_ERROR;
 
@@ -478,9 +526,9 @@ MCommandResult ZCmdHandler_Comm::OnAdminChangeServerModeReq(MCommand* pCommand, 
 
 MCommandResult ZCmdHandler_Comm::OnDebugDump(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nAID;
+	AID nAID;
 
-	if (!pCommand->GetParameter(&nAID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nAID, 0, MPT_INT64))	return CR_ERROR;
 
 	ZPlayer* pPlayer = gmgr.pPlayerManager->Find(nAID);
 	if (pPlayer == NULL) return CR_TRUE;

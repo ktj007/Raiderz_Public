@@ -53,7 +53,7 @@ public:
 
 	bool IsTodayQuest(const GQuestInfo* pInfo) const;
 protected:
-	virtual tm GetCurrentTime();
+	virtual tm (GetCurrentTime)();	// 2015-11-29: Visual C++ 2015 already defines another GetCurrentTime macro so I've added brace here.
 
 private:
 	void OnLoadCompleted();

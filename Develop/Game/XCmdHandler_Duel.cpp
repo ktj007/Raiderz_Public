@@ -142,8 +142,8 @@ MCommandResult XCmdHandler_Duel::OnDuelFight(MCommand* pCommand, MCommandHandler
 {
 	MUID uidFigher1;
 	MUID uidFigher2;
-	if (pCommand->GetParameter(&uidFigher1,	0, MPT_UID)==false) return CR_ERROR;
-	if (pCommand->GetParameter(&uidFigher2,	1, MPT_UID)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&uidFigher1,	1, MPT_UID)==false) return CR_ERROR;
+	if (pCommand->GetParameter(&uidFigher2,	2, MPT_UID)==false) return CR_ERROR;
 
 	XPlayer* pPlayer1 = gg.omgr->FindPlayer(uidFigher1);
 	if(pPlayer1)	pPlayer1->SetDuel(true, uidFigher2);
@@ -295,7 +295,7 @@ MCommandResult XCmdHandler_Duel::OnDuelPartyReady(MCommand* pCommand, MCommandHa
 MCommandResult XCmdHandler_Duel::OnDuelPartyFight(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	vector<MUID> vecPlayers;
-	if (pCommand->GetBlob(vecPlayers,	0)==false) return CR_ERROR;
+	if (pCommand->GetBlob(vecPlayers,	1)==false) return CR_ERROR;
 	
 	// 플레이어들 적 정보 세팅
 	XGetMyPlayer()->SetDuel(false, MUID::ZERO);

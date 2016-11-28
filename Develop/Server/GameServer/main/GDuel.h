@@ -38,7 +38,12 @@ public:
 	GDuel(MUID uid, GField* pDuelField, GEntityPlayer* pFighter1, GEntityPlayer* pFighter2);
 	GDuel( MUID uid, GField* pDuelField, const vector<GEntityPlayer*>& pFighters1, const vector<GEntityPlayer*>& pFighters2 );
 	virtual ~GDuel();
+private:
+	// Unique Session ID Generator
+	static unsigned short	m_nCurrentGlobalSessionID;
+	static unsigned short	AssignSessionID();
 
+public:
 	// 해당 팀 구하기
 	GDuel::DUEL_TEAM GetTeam( MUID uidPlayer );
 	// 틱마다 호출됨
@@ -121,7 +126,7 @@ private:
 	// 결투 커맨드를 전송 (결투자들에게)
 	void RouteFight();
 	// 완료 커맨드를 전송 (결투자들에게)
-	void RouteFinished();
+	void RouteFinished(bool bShowMessage=true);
 	// 결투취소 커맨드를 전송 (결투자들에게)
 	void RouteCancel();
 	// 결투 카운터 커맨드를 전송 (결투자들에게)
@@ -147,6 +152,7 @@ private:
 
 	DuelTeamIndexMap	m_mapDuelTeamIndex;
 	MUID				m_UID;
+	unsigned short		m_nSessionID;	// Session ID of this Duel
 	int					m_nReadyCount;
 	vector<MUID>	m_vecAllFighters;
 	vector<MUID>	m_vecFighters1;

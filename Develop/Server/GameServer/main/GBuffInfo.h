@@ -19,6 +19,7 @@ public:
 	bool			HasUseTalent() const	{ return m_nTalentID != INVALID_TALENT_ID; }
 
 	bool 			IsInvincibility() const;
+	bool			IsAvoid() const;
 	bool 			IsInvisibilityToNPC() const;
 	bool 			IsInvisibility() const;
 	TALENT_CATEGORY IsDisableTalent() const;
@@ -30,7 +31,6 @@ public:
 	bool			IsAbsoluteGuard() const;
 	bool			IsInstantEffect() const;
 	bool			IsDisableQuestPVPDrop() const;
-	bool			HasHealEffect() const; 
 	
 	void			Cooking();
 

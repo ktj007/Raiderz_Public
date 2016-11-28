@@ -12,8 +12,11 @@
 #include "GConst.h"
 #include "GPartySystem.h"
 
+unsigned short GDuel::m_nCurrentGlobalSessionID = 0;
+
 GDuel::GDuel( MUID uid, GField* pDuelField, GEntityPlayer* pFighter1, GEntityPlayer* pFighter2 )
 : m_UID(uid)
+, m_nSessionID(AssignSessionID())
 , m_nState(DUEL_QUESTION)
 , m_pField(pDuelField)
 , m_nWinTeam(TEAM_NONE)
@@ -34,6 +37,7 @@ GDuel::GDuel( MUID uid, GField* pDuelField, GEntityPlayer* pFighter1, GEntityPla
 
 GDuel::GDuel( MUID uid, GField* pDuelField, const vector<GEntityPlayer*>& pFighters1, const vector<GEntityPlayer*>& pFighters2 )
 : m_UID(uid)
+, m_nSessionID(AssignSessionID())
 , m_nState(DUEL_QUESTION)
 , m_pField(pDuelField)
 , m_nWinTeam(TEAM_NONE)
@@ -63,6 +67,11 @@ GDuel::~GDuel()
 	}
 	
 	DestroyFlag();
+}
+
+unsigned short GDuel::AssignSessionID()
+{
+	return m_nCurrentGlobalSessionID++;
 }
 
 void GDuel::RouteToFighters(MCommand* pNewCmd)
@@ -429,21 +438,23 @@ void GDuel::RouteFight()
 	if (IsSingleDuel())
 	{
 		// 1대1 결투
-		pNewCmd = MakeNewCommand(MC_DUEL_FIGHT, 2,
+		pNewCmd = MakeNewCommand(MC_DUEL_FIGHT, 3,
+			NEW_USHORT(m_nSessionID),
 			NEW_UID(m_vecFighters1.front()),
 			NEW_UID(m_vecFighters2.front()));
 	}
 	else
 	{
 		// 다대다 전투
-		pNewCmd = MakeNewCommand(MC_DUEL_PARTY_FIGHT, 1,
+		pNewCmd = MakeNewCommand(MC_DUEL_PARTY_FIGHT, 2,
+			NEW_USHORT(m_nSessionID),
 			NEW_BLOB(m_vecAllFighters));
 	}
 
 	RouteToFighters(pNewCmd);
 }
 
-void GDuel::RouteFinished()
+void GDuel::RouteFinished(bool bShowMessage)
 {
 	VALID(m_nWinTeam != TEAM_NONE);
 	vector<MUID> vecWinners = GetTeamUIDList(m_nWinTeam);
@@ -455,9 +466,10 @@ void GDuel::RouteFinished()
 	if (IsSingleDuel())
 	{
 		// 1대1 결투
-		pNewCmd = MakeNewCommand(MC_DUEL_FINISHED, 2,
+		pNewCmd = MakeNewCommand(MC_DUEL_FINISHED, 3,
 			NEW_UID(vecWinners.front()),
-			NEW_UID(vecLosers.front()));
+			NEW_UID(vecLosers.front()),
+			NEW_BOOL(bShowMessage));
 	}
 	else
 	{
@@ -467,12 +479,13 @@ void GDuel::RouteFinished()
 		VALID(pLoser);
 
 		// 다대다 전투
-		pNewCmd = MakeNewCommand(MC_DUEL_PARTY_FINISHED, 5,
+		pNewCmd = MakeNewCommand(MC_DUEL_PARTY_FINISHED, 6,
 			NEW_INT(m_nWinTeam),
 			NEW_UID(pWinner->GetUID()),
 			NEW_UID(pLoser->GetUID()),
 			NEW_INT(vecWinners.size()),
-			NEW_INT(vecLosers.size())
+			NEW_INT(vecLosers.size()),
+			NEW_BOOL(bShowMessage)
 			);
 	}
 

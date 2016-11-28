@@ -286,7 +286,7 @@ void GGameRule_DeathMatch::RouteScore()
 
 	// 데스매치용 점수 패킷 날리기
 	MCommand* pNewCmd = MakeNewCommand(MC_BATTLEARENA_DEATHMATCH_UPDATE, 1, 
-										NEW_BLOB(&vecTeamScores[0], sizeof(int), vecTeamScores.size()));
+										NEW_BLOB(&vecTeamScores[0], sizeof(int), static_cast<unsigned short>(vecTeamScores.size())));
 	RouteToAllTeam(pNewCmd);
 }
 

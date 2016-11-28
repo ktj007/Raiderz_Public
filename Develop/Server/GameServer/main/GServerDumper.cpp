@@ -100,7 +100,7 @@ void GServerDumper::Dump_Players(MLogger* pLogger)
 }
 void GServerDumper::Dump_Player( MLogger* pLogger, GPlayerObject* pPlayerObject, GEntityPlayer* pEntityPlayer )
 {
-	Log(pLogger, L"AID = %d , ID = %s , Name = %s , UID = (%u:%u) , UIID = %d , CID = %d , PS = %d\n"
+	Log(pLogger, L"AID = %I64d , ID = %s , Name = %s , UID = (%u:%u) , UIID = %d , CID = %I64d , PS = %d\n"
 		, pPlayerObject->GetAccountInfo().nAID
 		, pPlayerObject->GetAccountInfo().szUserID
 		, pEntityPlayer->GetName()

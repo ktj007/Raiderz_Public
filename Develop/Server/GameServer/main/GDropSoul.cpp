@@ -16,7 +16,7 @@ void GDropSoul::Clear()
 	nAuthorizedCID = 0;
 }
 
-bool GDropSoul::IsAuthorizedCID(int nCID)
+bool GDropSoul::IsAuthorizedCID(CID nCID)
 {
 	if (nCID == nAuthorizedCID) return true;
 

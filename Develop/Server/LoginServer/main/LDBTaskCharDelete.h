@@ -6,7 +6,7 @@
 #include "MMemPool.h"
 
 
-class SAccountCharList;
+//class SAccountCharList;
 
 
 class LDBTaskCharDelete : public LDBAsyncTask, public MMemPool<LDBTaskCharDelete>
@@ -50,7 +50,7 @@ private :
 		void Do();
 
 	private :
-		void RebuildCharList(const int nIndex, SAccountCharList& CharList);
+		//void RebuildCharList(const int nIndex, SAccountCharList& CharList);
 		void RouteResult(CCommandResultTable nCRT, int nIndex);
 
 	private :

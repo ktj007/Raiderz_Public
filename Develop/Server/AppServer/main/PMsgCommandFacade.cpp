@@ -16,6 +16,8 @@
 #include "SProxyPlayer.h"
 #include "PCommandCenter.h"
 #include "PNoticeMsgHandler.h"
+#include "PNoviceMsgHandler.h"
+#include "PLFPMsgHandler.h"
 
 
 PMsgCommandFacade::PMsgCommandFacade()
@@ -28,6 +30,8 @@ PMsgCommandFacade::PMsgCommandFacade()
 	SetHandler(MT_CHANNEL, new PChannelMsgHandler());
 	SetHandler(MT_FIELD, new PFieldMsgHandler());
 	SetHandler(MT_GLOBAL, new PGlobalMsgHandler());
+	SetHandler(MT_NOVICE, new PNoviceMsgHandler());
+	SetHandler(MT_LFP, new PLFPMsgHandler());
 	SetHandler(MT_NOTICE, new PNoticeMsgHandler());
 }
 

@@ -20,9 +20,9 @@ struct GDBT_TRADE_RESULT
 
 struct GDBT_TRADE_ITEM
 {
-	int64	nCID;
+	CID		nCID;
 	int16	nSlotID;
-	int64	nToCID;
+	CID		nToCID;
 	int16	nToSlotID;
 	int64	nIUID;
 	int16	nStackAmt;

@@ -34,5 +34,6 @@ void GServerStatusUpdater::Start(const std::wstring& strServerVersion)
 
 void GServerStatusUpdater::OnUpdate(const float fDelta)
 {
-	m_prefDBManager->ServerStatusUpdate(GConfig::m_nMyWorldID, GConfig::m_nMyServerID, gsys.pServer->GetServerInfo().nNowPlayer, gsys.pServer->GetServableChecker().IsServable());
+	m_prefDBManager->ServerStatusUpdate(GConfig::m_nMyWorldID, GConfig::m_nMyServerID, gsys.pServer->GetServerInfo().nNowPlayer, gsys.pServer->GetServableChecker().IsServable(), 
+		0, 0, 0, 0, 0);	// 2015-11-19: Pass zeros for task count, CPU usage, memory usage, field count and FPS.
 }

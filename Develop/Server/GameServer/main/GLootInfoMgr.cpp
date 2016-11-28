@@ -58,6 +58,7 @@ void GLootInfoMgr::ParseLOOT(MXmlElement* pElement, MXml* pXml)
 
 	if (IsExist(nLootID))
 	{
+		_VLOGGER->Log(_T(LOOT_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}
 

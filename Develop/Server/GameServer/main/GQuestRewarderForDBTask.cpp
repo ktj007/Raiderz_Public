@@ -162,7 +162,7 @@ void GQuestRewarderForDBTask::RewardXP( GEntityPlayer* pPlayer, int nXP, int nDe
 	if (0 < nDeltaLevel)
 	{
 		GPlayerLevelUpdater levelUpater = GPlayerLevelUpdater(pPlayer);
-		levelUpater.LevelUpForDBTask(nLevel, nXP, nDeltaXP);
+		levelUpater.LevelUp(nLevel, nXP, nDeltaXP, INVALID_NPC_ID);
 	}
 	else
 	{

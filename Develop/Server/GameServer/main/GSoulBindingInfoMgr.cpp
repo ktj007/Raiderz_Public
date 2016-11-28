@@ -68,6 +68,7 @@ void GSoulBindingInfoMgr::ParserSoulBinding(MXmlElement* pElement, MXml* pXml)
 	_ASSERT(NULL == pExistInfo);
 	if (NULL != pExistInfo)
 	{
+		_VLOGGER->Log(_T(SOULBINDING_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}	
 	int nFieldID;
@@ -75,6 +76,7 @@ void GSoulBindingInfoMgr::ParserSoulBinding(MXmlElement* pElement, MXml* pXml)
 	GFieldInfo* pFieldInfo = gmgr.pFieldInfoMgr->Find(nFieldID);	
 	if (NULL == pFieldInfo)
 	{
+		_VLOGGER->Log(_T(SOULBINDING_XML_ATTR_FIELD) IS_NOT_IN_FIELDLIST);
 		return;
 	}
 
@@ -83,6 +85,7 @@ void GSoulBindingInfoMgr::ParserSoulBinding(MXmlElement* pElement, MXml* pXml)
 	const MARKER_INFO* pMarkerInfo = pFieldInfo->FindMarker(nMarkerID);	
 	if (NULL == pMarkerInfo)
 	{
+		_VLOGGER->Log(_T(SOULBINDING_XML_ATTR_MARKER) IS_NOT_IN_FIELDLIST);
 		return;
 	}
 

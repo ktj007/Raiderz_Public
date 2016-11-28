@@ -41,7 +41,7 @@ void GDBTaskItemBuyInsert::OnExecute( mdb::MDatabase& rfDB )
 	if (!ExecuteW(rs, GetSQLW(ITEM_BUY)))
 		return;
 
-	m_Result.nIUID = rs.FieldW(L"IUID").AsInt64();
+	m_Result.nIUID = rs.FieldW(L"ITEM_SN").AsInt64();
 }
 
 mdb::MDB_THRTASK_RESULT GDBTaskItemBuyInsert::_OnCompleted()

@@ -45,7 +45,7 @@ void GDBTaskQuestDone::OnExecute( mdb::MDatabase& rfDB )
 		return;
 
 	for (; !rs.IsEOF(); rs.MoveNext())
-		m_Data.m_mapIUID.insert(map<int, int64>::value_type(rs.FieldW(L"SLOT_ID").AsInt(), rs.FieldW(L"NEW_IUID").AsInt64()));
+		m_Data.m_mapIUID.insert(map<int, int64>::value_type(rs.FieldW(L"SLOT_ID").AsInt(), rs.FieldW(L"NEW_ITEM_SN").AsInt64()));
 }
 
 mdb::MDB_THRTASK_RESULT GDBTaskQuestDone::_OnCompleted()

@@ -13,22 +13,27 @@
 
 GCmdHandler_Party::GCmdHandler_Party(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 {
-	SetCmdHandler(MC_PARTY_INVITE_REQ,						OnRequestInviteParty);
-	SetCmdHandler(MC_PARTY_INVITE_FOR_ME_REQ,				OnRequestInviteForMe);
-	SetCmdHandler(MC_PARTY_INVITE_QUESTION_RESPOND,			OnRequestInviteQuestionRespond);
-	SetCmdHandler(MC_PARTY_LEAVE_REQ,						OnRequestLeaveParty);
-	SetCmdHandler(MC_PARTY_KICK_REQ,						OnRequestKickParty);	
-	SetCmdHandler(MC_PARTY_INVITE_FOR_ME_QUESTION_RESPOND,	OnRequestInviteForMeQuestionRespond);
+	SetCmdHandler(MC_PARTY_INVITE_REQ,							OnRequestInviteParty);
+	SetCmdHandler(MC_PARTY_INVITE_BY_NAME_REQ,					OnRequestInvitePartyByName);
+	SetCmdHandler(MC_PARTY_JOIN_REQ,							OnRequestJoinParty);
+	SetCmdHandler(MC_PARTY_INVITE_QUESTION_RESPOND,				OnRequestInviteQuestionRespond);
+	SetCmdHandler(MC_PARTY_LEAVE_REQ,							OnRequestLeaveParty);
+	SetCmdHandler(MC_PARTY_KICK_REQ,							OnRequestKickParty);	
+	SetCmdHandler(MC_PARTY_JOIN_QUESTION_RESPOND,				OnRequestJoinQuestionRespond);
 	
-	SetCmdHandler(MC_PARTY_CHANGE_NAME_REQ,					OnRequestChangeName);
-	SetCmdHandler(MC_PARTY_CHANGE_LEADER_REQ,				OnRequestChangeLeader);
-	SetCmdHandler(MC_PARTY_CHANGE_LOOTING_RULE_REQ,			OnRequestChangeLootingRule);
-	SetCmdHandler(MC_PARTY_CHANGE_QUESTID_REQ,				OnRequestQuestID);
-	
-	SetCmdHandler(MC_AUTOPARTY_ENQUEUE_REQ,					OnRequestAutoPartyEnqueue);
-	SetCmdHandler(MC_AUTOPARTY_DEQUEUE_REQ,					OnRequestAutoPartyDequeue);
-	SetCmdHandler(MC_AUTOPARTY_CHECK_SENSOR_REQ,			OnRequestAutoPartyCheckSensor);
-	SetCmdHandler(MC_AUTOPARTY_CHANGE_STATE_REQ,			OnRequestAutoPartyChangeState);
+	SetCmdHandler(MC_PARTY_CHANGE_PUBLIC_PARTY_SETTING_REQ,		OnRequestChangePublicPartySetting);
+	SetCmdHandler(MC_PARTY_CHANGE_LEADER_REQ,					OnRequestChangeLeader);
+	SetCmdHandler(MC_PARTY_CHANGE_LOOTING_RULE_REQ,				OnRequestChangeLootingRule);
+	SetCmdHandler(MC_PARTY_CHANGE_QUESTID_REQ,					OnRequestQuestID);
+
+	SetCmdHandler(MC_PARTY_SHOW_INFO_REQ,						OnRequestShowInfo);
+	SetCmdHandler(MC_PARTY_CREATE_SINGLE_PARTY_REQ,				OnRequestCreateSingleParty);
+	SetCmdHandler(MC_PARTY_MATCHING_SHOW_PUBLIC_PARTY_LIST_REQ,	OnRequestMatchingShowPublicPartyList);
+
+	SetCmdHandler(MC_AUTOPARTY_ENQUEUE_REQ,						OnRequestAutoPartyEnqueue);
+	SetCmdHandler(MC_AUTOPARTY_DEQUEUE_REQ,						OnRequestAutoPartyDequeue);
+	SetCmdHandler(MC_AUTOPARTY_CHECK_SENSOR_REQ,				OnRequestAutoPartyCheckSensor);
+	SetCmdHandler(MC_AUTOPARTY_CHANGE_STATE_REQ,				OnRequestAutoPartyChangeState);
 }
 
 MCommandResult GCmdHandler_Party::OnRequestInviteParty(MCommand* pCmd, MCommandHandler* pHandler)
@@ -46,7 +51,18 @@ MCommandResult GCmdHandler_Party::OnRequestInviteParty(MCommand* pCmd, MCommandH
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Party::OnRequestInviteForMe(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Party::OnRequestInvitePartyByName(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	wstring strTargetPlayer;
+	if (!pCmd->GetParameter(strTargetPlayer, 0, MPT_WSTR))		return CR_FALSE;
+
+	MUID uidRequestPlayer = pCmd->GetSenderUID();
+	gsys.pPartySystem->InviteByNameReq(strTargetPlayer, uidRequestPlayer);
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Party::OnRequestJoinParty(MCommand* pCmd, MCommandHandler* pHandler)
 {
 	// 커맨드 확인
 	MUID uidParty;
@@ -55,7 +71,7 @@ MCommandResult GCmdHandler_Party::OnRequestInviteForMe(MCommand* pCmd, MCommandH
 	
 	// 가입요청
 	MUID uidRequestPlayer = pCmd->GetSenderUID();
-	gsys.pPartySystem->JoinInviteReq(uidParty, uidRequestPlayer);
+	gsys.pPartySystem->JoinReq(uidParty, uidRequestPlayer);
 
 
 	return CR_TRUE;
@@ -100,28 +116,32 @@ MCommandResult GCmdHandler_Party::OnRequestKickParty(MCommand* pCmd, MCommandHan
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Party::OnRequestInviteForMeQuestionRespond(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Party::OnRequestJoinQuestionRespond(MCommand* pCmd, MCommandHandler* pHandler)
 {
 	// 커맨드 확인
+	MUID uidJoinRequestPlayer;
 	int nRespond;
-	if (!pCmd->GetParameter(&nRespond, 0, MPT_INT))		return CR_FALSE;
+	if (!pCmd->GetParameter(&uidJoinRequestPlayer, 0, MPT_UID))	 return CR_FALSE;
+	if (!pCmd->GetParameter(&nRespond, 1, MPT_INT))		return CR_FALSE;
 
 	
 	// 가입수락 응답
 	MUID uidLeader = pCmd->GetSenderUID();
-	gsys.pPartySystem->JoinAcceptRes(uidLeader, PARTY_RESPOND(nRespond));
+	gsys.pPartySystem->JoinAcceptRes(uidLeader, uidJoinRequestPlayer, PARTY_RESPOND(nRespond));
 
 
 	return CR_TRUE;
 }
 
-MCommandResult GCmdHandler_Party::OnRequestChangeName(MCommand* pCmd, MCommandHandler* pHandler)
+MCommandResult GCmdHandler_Party::OnRequestChangePublicPartySetting(MCommand* pCmd, MCommandHandler* pHandler)
 {
-	wstring strName;
-	if (!pCmd->GetParameter(strName, 0, MPT_WSTR))	return CR_FALSE;
+	bool bPublicParty;
+	wstring strPartyName;
+	if (!pCmd->GetParameter(&bPublicParty, 0, MPT_BOOL))	return CR_FALSE;
+	if (!pCmd->GetParameter(strPartyName, 1, MPT_WSTR))	return CR_FALSE;
 
 	MUID uidRequestor = pCmd->GetSenderUID();	
-	gsys.pPartySystem->ChangePartyNameReq(uidRequestor, strName);
+	gsys.pPartySystem->ChangePublicPartySettingReq(uidRequestor, bPublicParty, strPartyName);
 
 	return CR_TRUE;
 }
@@ -168,6 +188,52 @@ MCommandResult GCmdHandler_Party::OnRequestQuestID(MCommand* pCmd, MCommandHandl
 	MUID uidRequestor = pCmd->GetSenderUID();
 
 	gsys.pPartySystem->ChangeQuestIDReq(uidRequestor, nQuestID);
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Party::OnRequestShowInfo(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	MUID uidParty;
+
+	if (!pCmd->GetParameter(&uidParty, 0, MPT_UID))		return CR_FALSE;
+
+	MUID uidRequestor = pCmd->GetSenderUID();
+
+	gsys.pPartySystem->ShowInfoReq(uidRequestor, uidParty);
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Party::OnRequestCreateSingleParty(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	bool bPublicParty;
+	wstring strPartyName;
+
+	if (!pCmd->GetParameter(&bPublicParty, 0, MPT_BOOL))		return CR_FALSE;
+	if (!pCmd->GetParameter(strPartyName, 1, MPT_WSTR))			return CR_FALSE;
+
+	MUID uidRequestor = pCmd->GetSenderUID();
+
+	gsys.pPartySystem->CreateSinglePartyReq(uidRequestor, bPublicParty, strPartyName);
+
+	return CR_TRUE;
+}
+
+MCommandResult GCmdHandler_Party::OnRequestMatchingShowPublicPartyList(MCommand* pCmd, MCommandHandler* pHandler)
+{
+	char nPage;
+	char nLevelMin;
+	char nLevelMax;
+	wstring strSearchText;
+
+	if (!pCmd->GetParameter(&nPage, 0, MPT_CHAR))				return CR_FALSE;
+	if (!pCmd->GetParameter(&nLevelMin, 1, MPT_CHAR))			return CR_FALSE;
+	if (!pCmd->GetParameter(&nLevelMax, 2, MPT_CHAR))			return CR_FALSE;
+	if (!pCmd->GetParameter(strSearchText, 3, MPT_WSTR))		return CR_FALSE;
+
+	MUID uidRequestor = pCmd->GetSenderUID();
+	gsys.pPartySystem->ShowMatchingPublicPartyListReq(uidRequestor, nPage, nLevelMin, nLevelMax, strSearchText);
 
 	return CR_TRUE;
 }

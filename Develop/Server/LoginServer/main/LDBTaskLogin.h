@@ -31,9 +31,11 @@ private :
 	{
 	public :
 		_RESULT() : m_nGSN(0), m_bNEW_ACC(true) {}
-		int64	m_nGSN;
+		AID		m_nGSN;
 		wstring m_strPWD;
 		bool	m_bNEW_ACC;
+		wstring m_strSTATUS;
+		int64	m_nCONN_SN;
 	};
 
 	class Completer
@@ -43,6 +45,7 @@ private :
 		void Do();
 
 	private :
+		CCommandResultTable CheckError();
 		void DebugCheckExistAccount();
 		void InitAccountInfo();
 

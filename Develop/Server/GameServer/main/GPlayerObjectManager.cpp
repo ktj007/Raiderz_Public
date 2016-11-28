@@ -103,7 +103,7 @@ GPlayerObjectManager::GPlayerObjectMap::iterator GPlayerObjectManager::EraseAndD
 {
 	GPlayerObject* pPlayerObject = (*itor).second;
 	UIID nUIID = pPlayerObject->GetUIID();
-	int nCID = pPlayerObject->GetEntity()->GetCID();	
+	CID nCID = pPlayerObject->GetEntity()->GetCID();	
 	pPlayerObject->Destroy();
 
 	GPlayerObjectMap::iterator itorRet = m_PlayerObjectMap.erase(itor);
@@ -187,11 +187,11 @@ void GPlayerObjectManager::AddCID(GPlayerObject* pPlayer)
 	GEntityPlayer* pEntity = pPlayer->GetEntity();
 	VALID(pEntity != NULL);
 
-	int nCID = pEntity->GetCID();
+	CID nCID = pEntity->GetCID();
 	m_CIDPlayerMap.insert(GCIDPlayerMap::value_type(nCID, pPlayer));
 }
 
-void GPlayerObjectManager::RemoveCID(int nCID)
+void GPlayerObjectManager::RemoveCID(CID nCID)
 {
 	m_CIDPlayerMap.erase(nCID);
 }
@@ -223,7 +223,7 @@ bool GPlayerObjectManager::IsExist( const MUID& uidPlayer )
 	return (NULL != GetEntity(uidPlayer));
 }
 
-bool GPlayerObjectManager::IsExist( int nCID )
+bool GPlayerObjectManager::IsExist( CID nCID )
 {
 	return (NULL != GetEntity(nCID));
 }

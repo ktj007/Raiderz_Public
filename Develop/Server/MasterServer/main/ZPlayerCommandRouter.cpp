@@ -52,6 +52,17 @@ void ZPlayerCommandRouter::SendPmangAddPlayerResponse(const MUID& uidLoginServer
 	gsys.pCommandCenter->PostCommand(pNewCommand);
 }
 
+void ZPlayerCommandRouter::SendPWEAddPlayerResponse(const MUID& uidLoginServer, const MUID& uidPlayer, int nResult)
+{
+	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MLC_PLAYER_PWE_ADD_PLAYER_RES
+		, uidLoginServer
+		, 2
+		, NEW_UID(uidPlayer)
+		, NEW_INT(nResult));
+
+	gsys.pCommandCenter->PostCommand(pNewCommand);
+}
+
 void ZPlayerCommandRouter::SendDuplicatedPlayerLogin_ToLoginServer(const MUID& uidLoginServer, const MUID& uidPlayer, const MUID& uidConnectionKey/*=MUID::ZERO*/)
 {
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MLC_PLAYER_DUPLICATED_PLAYER_LOGIN
@@ -81,7 +92,7 @@ void ZPlayerCommandRouter::SendPlayerStateInWorldRes(const MUID& uidGameServer, 
 	minet::MCommand* pNewCommand = gsys.pCommandCenter->MakeNewCommand(MMC_PLAYER_STATE_IN_WORLD_RES
 		, uidGameServer
 		, 2
-		, NEW_INT(nCID)
+		, NEW_INT64(nCID)
 		, NEW_INT(nResult));
 
 	gsys.pCommandCenter->PostCommand(pNewCommand);
@@ -104,7 +115,7 @@ void ZPlayerCommandRouter::RouteProxyPlayerRemove(CID cid)
 {
 	MCommand* pNewCmd = gsys.pCommandCenter->MakeNewCommand(MSC_PROXY_PLAYER_REMOVE,
 															1,
-															NEW_INT(cid)
+															NEW_INT64(cid)
 															);
 
 	gsys.pCommandCenter->RouteProxyInfo(pNewCmd);

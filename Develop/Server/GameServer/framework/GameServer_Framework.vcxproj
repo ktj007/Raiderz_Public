@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="DebugDLL|Win32">
       <Configuration>DebugDLL</Configuration>
@@ -43,46 +43,46 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_profile|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD_profile|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMD|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_pyo|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnitTest_DBDebug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -122,7 +122,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+    <_ProjectFileVersion>14.0.23107.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMD|Win32'">
     <OutDir>$(Configuration)\</OutDir>
@@ -171,6 +171,7 @@
     </ClCompile>
     <Lib>
       <OutputFile>Lib\GameServer_framework.lib</OutputFile>
+      <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_vld|Win32'">
@@ -293,21 +294,21 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GActorMeshInfo.cpp" />
     <ClCompile Include="GAsyncTask.cpp" />
+    <ClCompile Include="GCommandTable.cpp" />
     <ClCompile Include="GConfig.cpp" />
     <ClCompile Include="GConfig_Arg.cpp" />
     <ClCompile Include="GConfig_Lua.cpp" />
     <ClCompile Include="GConst.cpp" />
-    <ClCompile Include="GFilePath.cpp" />
-    <ClCompile Include="GMath.cpp" />
-    <ClCompile Include="GSystem.cpp" />
-    <ClCompile Include="GActorMeshInfo.cpp" />
-    <ClCompile Include="GCommandTable.cpp" />
     <ClCompile Include="GCraftInfo.cpp" />
+    <ClCompile Include="GFilePath.cpp" />
     <ClCompile Include="GItemHandler.cpp" />
+    <ClCompile Include="GMath.cpp" />
     <ClCompile Include="GPool.cpp" />
     <ClCompile Include="GProcess.cpp" />
     <ClCompile Include="GProcessManager.cpp" />
+    <ClCompile Include="GSystem.cpp" />
     <ClCompile Include="GTalentHandler.cpp" />
     <ClCompile Include="GThreadTask.cpp" />
     <ClCompile Include="GThreadTaskMgr.cpp" />
@@ -323,28 +324,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GActorMeshInfo.h" />
     <ClInclude Include="GAsyncTask.h" />
     <ClInclude Include="GAsyncTaskID.h" />
+    <ClInclude Include="GCommandTable.h" />
     <ClInclude Include="GConfig.h" />
     <ClInclude Include="GConfig_Arg.h" />
     <ClInclude Include="GConfig_Lua.h" />
     <ClInclude Include="GConst.h" />
+    <ClInclude Include="GCraftInfo.h" />
     <ClInclude Include="GDef.h" />
     <ClInclude Include="GFilePath.h" />
-    <ClInclude Include="GMath.h" />
-    <ClInclude Include="GState.h" />
-    <ClInclude Include="GSystem.h" />
-    <ClInclude Include="GActorMeshInfo.h" />
-    <ClInclude Include="GCommandTable.h" />
-    <ClInclude Include="GCraftInfo.h" />
+    <ClInclude Include="GFrameworkLib.h" />
     <ClInclude Include="GItemHandler.h" />
+    <ClInclude Include="GMath.h" />
     <ClInclude Include="GPool.h" />
     <ClInclude Include="GProcess.h" />
     <ClInclude Include="GProcessManager.h" />
+    <ClInclude Include="GState.h" />
+    <ClInclude Include="GSystem.h" />
     <ClInclude Include="GTalentHandler.h" />
     <ClInclude Include="GThreadTask.h" />
     <ClInclude Include="GThreadTaskMgr.h" />
-    <ClInclude Include="GFrameworkLib.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

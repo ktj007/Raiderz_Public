@@ -6,8 +6,8 @@ public:
 	GFakeDBIDGenerator(void);
 	~GFakeDBIDGenerator(void);
 
-	static int NewCID();
+	static CID NewCID();
 
 private:
-	static int			m_nCID;	
+	static CID			m_nCID;	
 };

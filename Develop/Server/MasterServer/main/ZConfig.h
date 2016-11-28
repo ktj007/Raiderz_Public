@@ -8,11 +8,23 @@
 
 
 
+struct ZDBConfig
+{
+	std::wstring	strServer;
+	std::wstring	strDatabaseName;
+	std::wstring	strUserName;
+	std::wstring	strPassword;
+};
+
 /// 인게임 설정값
 class ZConfig : public SConfig
 {
 private:
 	static wstring GetPathString(const wchar_t* szFileName, const wchar_t* szKeyName);
+
+	static void InitAccountDB(const wchar_t* szFileName);
+	static void InitGameDB(const wchar_t* szFileName);
+	static void InitLogDB(const wchar_t* szFileName);
 public:
 	static void Init_INI();
 
@@ -28,24 +40,11 @@ public:
 	static wstring		m_strOdbcDriver;
 	static int			m_nSocketPoolSize;			///< 소켓 풀 사이즈
 	static int			m_nSendPendingLimitCount;	///< 센드 커멘드 팬딩 제한
-	
-	// accountdb
-	static std::wstring		m_strAccountDB_Server;			///< Account DB Server
-	static std::wstring		m_strAccountDB_DatabaseName;	///< Account DB Name
-	static std::wstring		m_strAccountDB_UserName;		///< Account DB Username
-	static std::wstring		m_strAccountDB_Password;		///< Account DB Password
 
-	// db
-	static std::wstring		m_strGameDB_Server;			///< DB Server
-	static std::wstring		m_strGameDB_DatabaseName;	///< DB Name
-	static std::wstring		m_strGameDB_UserName;		///< DB Username
-	static std::wstring		m_strGameDB_Password;		///< DB Password
-
-	// logdb
-	static std::wstring		m_strLogDB_Server;			///< DB Server
-	static std::wstring		m_strLogDB_DatabaseName;	///< DB Name
-	static std::wstring		m_strLogDB_UserName;		///< DB Username
-	static std::wstring		m_strLogDB_Password;		///< DB Password
+	// database
+	static ZDBConfig	m_AccountDBConfig;
+	static ZDBConfig	m_GameDBConfig;
+	static ZDBConfig	m_LogDBConfig;
 
 	// config
 	static bool		m_bWindowVisible;				///< 서버창을 보일지 여부

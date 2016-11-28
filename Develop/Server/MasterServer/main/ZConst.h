@@ -15,6 +15,10 @@ public:
 	static bool		INCLUDE_DEV_FIELD_LIST;					///< 개발중인 필드도 로딩할 지 여부
 	static bool INSERT_WORLD_INFO;						///< 월드 추가 - 내부 테스트용
 
+	// beginning field of newly made character.
+	static int		FIRST_ENTER_FIELD_ID;
+	static int		FIRST_TUTORIAL_FIELD_ID;
+
 
 	/// 디버그용------------------------------------------------------------------
 
@@ -26,5 +30,9 @@ public:
 	static bool		DEBUG_CONSOLE_SHOW_GAMETICK;
 	static int		DEBUG_CONSOLE_GAMETICK_TICK;
 
+	static bool		TEST_ENABLE_TUTORIAL;				///< 튜토리얼 켜고끄기
+
 	static void Init();
+
+	static int GetFirstEnterFieldID();
 };

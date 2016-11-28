@@ -50,6 +50,8 @@
 #include "GDBTaskDataConnection.h"
 #include "GEquipmentSlot.h"
 #include "GConfig.h"
+#include "GPlayerGuideBook.h"
+#include "GConst.h"
 
 
 GDBTaskCharSerialize::GDBTaskCharSerialize(const MUID& uidReqPlayer) 
@@ -67,7 +69,7 @@ GDBTaskCharSerialize::~GDBTaskCharSerialize()
 
 }
 
-void GDBTaskCharSerialize::Input(const int64 nCID, const UIID& nUIID, bool bReload)
+void GDBTaskCharSerialize::Input(const CID nCID, const UIID& nUIID, bool bReload)
 {
 	m_Data.nCID		= nCID;
 	m_Data.nUIID	= nUIID;	
@@ -87,8 +89,11 @@ void GDBTaskCharSerialize::OnExecute(mdb::MDatabase& rfDB)
 	
 	if (!GetCharPalette(rfDB))
 		return;
-	
-	if (!GetEffectRemaindSecondsList(rfDB))
+
+	if (!GetTalentCoolTimeList(rfDB))
+		return;
+
+	if (!GetBuffRemainEffectList(rfDB))
 		return;
 	
 	if (!GetQuestListDoing(rfDB))
@@ -109,6 +114,9 @@ void GDBTaskCharSerialize::OnExecute(mdb::MDatabase& rfDB)
 	if (!GetEmblem(rfDB))
 		return;
 
+	if (!GetGuideBook(rfDB))
+		return;
+
 	if (!GetMailSummaryInfo(rfDB))
 		return;
 }
@@ -126,7 +134,7 @@ bool GDBTaskCharSerialize::GetCharInfo(mdb::MDatabase& rfDB)
 		return false;
 	}
 
-	m_Data.CharInfo.nCID					= rs.FieldW(L"CHAR_ID").AsInt64();
+	m_Data.CharInfo.nCID					= rs.FieldW(L"CHAR_SN").AsInt64();
 	m_Data.CharInfo.nSex					= static_cast<SEX>(rs.FieldW(L"SEX").AsByte());
 	m_Data.CharInfo.nFeatureHair			= rs.FieldW(L"FEAT_HAIR").AsByte();
 	m_Data.CharInfo.nFeatureFace			= rs.FieldW(L"FEAT_FACE").AsByte();
@@ -134,10 +142,12 @@ bool GDBTaskCharSerialize::GetCharInfo(mdb::MDatabase& rfDB)
 	m_Data.CharInfo.nFeatureSkinColor		= rs.FieldW(L"FEAT_SKIN_COLOR").AsByte();
 
 	m_Data.CharInfo.nTattooType				= rs.FieldW(L"TATOO").AsByte();
+	m_Data.CharInfo.nTattooColor			= rs.FieldW(L"TATOO_COLOR").AsByte();
 	m_Data.CharInfo.nTattooPosX				= rs.FieldW(L"TATOO_POS_X").AsShort();
 	m_Data.CharInfo.nTattooPosY				= rs.FieldW(L"TATOO_POS_Y").AsShort();
-	m_Data.CharInfo.nTattooScale				= rs.FieldW(L"TATOO_SCALE").AsByte();
+	m_Data.CharInfo.nTattooScale			= rs.FieldW(L"TATOO_SCALE").AsByte();
 	m_Data.CharInfo.nMakeUp					= rs.FieldW(L"MAKEUP").AsByte();
+	m_Data.CharInfo.nVoice					= rs.FieldW(L"VOICE").AsByte();
 
 	m_Data.CharInfo.nLevel					= rs.FieldW(L"LEV").AsInt();	
 	m_Data.CharInfo.nXP						= rs.FieldW(L"EXP").AsInt();
@@ -157,6 +167,9 @@ bool GDBTaskCharSerialize::GetCharInfo(mdb::MDatabase& rfDB)
 	m_Data.CharInfo.fPosX					= rs.FieldW(L"POS_X").AsFloat();
 	m_Data.CharInfo.fPosY					= rs.FieldW(L"POS_Y").AsFloat();
 	m_Data.CharInfo.fPosZ					= rs.FieldW(L"POS_Z").AsFloat();
+	m_Data.CharInfo.fDirX					= rs.FieldW(L"DIR_X").AsFloat();
+	m_Data.CharInfo.fDirY					= rs.FieldW(L"DIR_Y").AsFloat();
+	m_Data.CharInfo.fDirZ					= rs.FieldW(L"DIR_Z").AsFloat();
 	m_Data.CharInfo.nSharedFieldID			= rs.FieldW(L"SHR_FIELD_ID").AsInt();
 	m_Data.CharInfo.fEnterPosX				= rs.FieldW(L"ENT_POS_X").AsFloat();
 	m_Data.CharInfo.fEnterPosY				= rs.FieldW(L"ENT_POS_Y").AsFloat();
@@ -261,10 +274,10 @@ bool GDBTaskCharSerialize::GetCharPalette(mdb::MDatabase& rfDB)
 }
 
 
-bool GDBTaskCharSerialize::GetEffectRemaindSecondsList(mdb::MDatabase& rfDB)
+bool GDBTaskCharSerialize::GetTalentCoolTimeList(mdb::MDatabase& rfDB)
 {
 	mdb::MDBRecordSet rs(&rfDB);
-	if (!ExecuteW(rs, GetSQLW(REMAIND_TIME)))
+	if (!ExecuteW(rs, GetSQLW(TALENT_COOLTIME)))
 	{
 		return false;
 	}
@@ -274,47 +287,78 @@ bool GDBTaskCharSerialize::GetEffectRemaindSecondsList(mdb::MDatabase& rfDB)
 		return true;
 	}
 
-	const size_t nIDHash		= rs.MakeHashValueW(L"ID");
-	const size_t nTypeHash		= rs.MakeHashValueW(L"EFF_TYPE");
-	const size_t nSecondHash	= rs.MakeHashValueW(L"REMAIN_TIME");	
+	const size_t nIDHash			= rs.MakeHashValueW(L"TALENT_ID");
+	const size_t nSecondHash		= rs.MakeHashValueW(L"REMAIN_TIME");	
 
 	for (; !rs.IsEOF(); rs.MoveNext())
 	{
 		const int	nID		= rs.FieldHash(nIDHash).AsInt();
-		const float fTime	= static_cast<float>(rs.FieldHash(nSecondHash).AsInt());
-		const int	nType	= rs.FieldHash(nTypeHash).AsInt();
-
-		switch (nType)
-		{
-		case 0 :
-			{
-				m_Data.vecTalentCollTimeSec.push_back(TalentRemaindSecVec::value_type(nID, fTime));
-			}
-			break;
-
-		case 1 :
-			{
-				REMAIN_BUFF_TIME remainBuffTime;
-
-				remainBuffTime.nID = nID;
-				remainBuffTime.fRemainDurationSeconds = fTime;
-
-				m_Data.vecBuffRemaindSec.push_back(remainBuffTime);
-			}
-			break;
-
-		case 2 :
-			{
-
-			}
-			break;
-
-		default :
-			_ASSERT(false && L"정의도지 않은 타입");
-			continue;
-		}		
+		const float fTime	= rs.FieldHash(nSecondHash).AsFloat();
+		
+		m_Data.vecTalentCollTimeSec.push_back(TalentRemaindSecVec::value_type(nID, fTime));
 	}
 	
+	rs.Close();
+
+	return true;
+}
+
+bool GDBTaskCharSerialize::GetBuffRemainEffectList(mdb::MDatabase& rfDB)
+{
+	mdb::MDBRecordSet rs(&rfDB);
+	if (!ExecuteW(rs, GetSQLW(REMAIN_BUFF_LIST)))
+	{
+		return false;
+	}
+
+	if (0 == rs.GetFetchedCount())
+	{
+		return true;
+	}
+
+	const size_t nIDHash				= rs.MakeHashValueW(L"BUFF_ID");
+	const size_t nStackHash				= rs.MakeHashValueW(L"STACK_COUNT");
+	const size_t nCritPercHash			= rs.MakeHashValueW(L"CRIT_PERCENT");
+	const size_t nCritAppRateHash		= rs.MakeHashValueW(L"CRIT_APPLY_RATE");
+	const size_t nMinDamageHash			= rs.MakeHashValueW(L"MIN_DAMAGE");
+	const size_t nMaxDamageHash			= rs.MakeHashValueW(L"MAX_DAMAGE");
+	const size_t nMinHealHash			= rs.MakeHashValueW(L"MIN_HEAL_AMT");
+	const size_t nMaxHealHash			= rs.MakeHashValueW(L"MAX_HEAL_AMT");
+	const size_t nMinAttrDamageHash		= rs.MakeHashValueW(L"MIN_ATTR_DAMAGE");
+	const size_t nMaxAttrDamageHash		= rs.MakeHashValueW(L"MAX_ATTR_DAMAGE");
+	const size_t nSecondHash			= rs.MakeHashValueW(L"REMAIN_TIME");
+
+	for (; !rs.IsEOF(); rs.MoveNext())
+	{
+		const int	nID					= rs.FieldHash(nIDHash).AsInt();
+		const int	nStack				= rs.FieldHash(nStackHash).AsInt();
+		const float fCritPerc			= rs.FieldHash(nCritPercHash).AsFloat();
+		const float fCritAppRate		= rs.FieldHash(nCritAppRateHash).AsFloat();
+		const int	nMinDamage			= rs.FieldHash(nMinDamageHash).AsInt();
+		const int	nMaxDamage			= rs.FieldHash(nMaxDamageHash).AsInt();
+		const int	nMinHealAmt			= rs.FieldHash(nMinHealHash).AsInt();
+		const int	nMaxHealAmt			= rs.FieldHash(nMaxHealHash).AsInt();
+		const int	nMinAttrDamage		= rs.FieldHash(nMinAttrDamageHash).AsInt();
+		const int	nMaxAttrDamage		= rs.FieldHash(nMaxAttrDamageHash).AsInt();
+		const float fTime				= rs.FieldHash(nSecondHash).AsFloat();
+
+		REMAIN_BUFF_TIME remainBuffTime;
+
+		remainBuffTime.nID						= nID;
+		remainBuffTime.nStackedCount			= nStack;
+		remainBuffTime.fRemainDurationSeconds	= fTime;
+		remainBuffTime.fCriticalPercent			= fCritPerc;
+		remainBuffTime.fCriticalApplyRate		= fCritAppRate;
+		remainBuffTime.nMinDamage				= nMinDamage;
+		remainBuffTime.nMaxDamage				= nMaxDamage;
+		remainBuffTime.nMinHeal					= nMinHealAmt;
+		remainBuffTime.nMaxHeal					= nMaxHealAmt;
+		remainBuffTime.nMinAttrDamage			= nMinAttrDamage;
+		remainBuffTime.nMaxAttrDamage			= nMaxAttrDamage;
+
+		m_Data.vecBuffRemaindSec.push_back(remainBuffTime);
+	}
+
 	rs.Close();
 
 	return true;
@@ -472,6 +516,22 @@ bool GDBTaskCharSerialize::GetEmblem( mdb::MDatabase& rfDB )
 	return true;
 }
 
+bool GDBTaskCharSerialize::GetGuideBook( mdb::MDatabase& rfDB )
+{
+	mdb::MDBRecordSet rs(&rfDB);
+
+	if (!ExecuteW(rs, GetSQLW(GUIDEBOOK)))
+		return false;
+
+	const size_t nBookIDhash = rs.MakeHashValueW(L"BOOK_ID");
+	for (; !rs.IsEOF(); rs.MoveNext())
+	{
+		m_Data.qGuideBook.push_back(rs.FieldHash(nBookIDhash).AsInt());
+	}
+
+	return true;
+}
+
 bool GDBTaskCharSerialize::GetMailSummaryInfo(mdb::MDatabase& rfDB)
 {
 	mdb::MDBRecordSet rs(&rfDB);
@@ -527,13 +587,16 @@ void GDBTaskCharSerialize::Completer::Do()
 	AddItemList(pEntityPlayer);
 	RemoveExpiredItem(pEntityPlayer);
 	SetActiveWeaponSet(pEntityPlayer);	
-	AddEffectRemainSecList(pEntityPlayer);
+	// AddEffectRemainSecList(pEntityPlayer);
+	AddTalentCoolTimeList(pEntityPlayer);
+	AddBuffRemainEffectList(pEntityPlayer);
 	AddDoingQuestList(pEntityPlayer);
 	AddDoneCount(pEntityPlayer);	
 	AddFaction(pEntityPlayer);
 	AddSawnCutscene(pEntityPlayer);
 	AddRepice(pEntityPlayer);
 	AddEmblem(pEntityPlayer);
+	AddGuideBook(pEntityPlayer);
 	SetMailSummaryInfo(pEntityPlayer);
 	SetInfo(pEntityPlayer);
 
@@ -584,7 +647,7 @@ void GDBTaskCharSerialize::Completer::SetPlayerInfo( GEntityPlayer* pEntityPlaye
 	PLAYER_INFO*	pPlayerInfo	= pEntityPlayer->GetPlayerInfo();
 	GDBT_CHARINFO&	DBCharInfo	= m_Data.CharInfo;
 
-	pPlayerInfo->nCID				= (int)DBCharInfo.nCID;
+	pPlayerInfo->nCID				= DBCharInfo.nCID;
 	pPlayerInfo->nSex				= DBCharInfo.nSex;
 	pPlayerInfo->nFeatureHair		= DBCharInfo.nFeatureHair;
 	pPlayerInfo->nFeatureFace		= DBCharInfo.nFeatureFace;
@@ -592,7 +655,9 @@ void GDBTaskCharSerialize::Completer::SetPlayerInfo( GEntityPlayer* pEntityPlaye
 	pPlayerInfo->nFeatureSkinColor	= DBCharInfo.nFeatureSkinColor;
 	pPlayerInfo->nEyeColor			= DBCharInfo.nEyeColor;
 	pPlayerInfo->nMakeUp			= DBCharInfo.nMakeUp;
+	pPlayerInfo->nVoice				= DBCharInfo.nVoice;
 	pPlayerInfo->nTattooType			= DBCharInfo.nTattooType;
+	pPlayerInfo->nTattooColor			= DBCharInfo.nTattooColor;
 	pPlayerInfo->nTattooPosX			= DBCharInfo.nTattooPosX;
 	pPlayerInfo->nTattooPosY			= DBCharInfo.nTattooPosY;
 	pPlayerInfo->nTattooScale		= DBCharInfo.nTattooScale;
@@ -700,7 +765,7 @@ void GDBTaskCharSerialize::Completer::SetGateInfo( GEntityPlayer* pEntityPlayer 
 
 	// pos
 	gateInfo.vPosition = vec3(DBCharInfo.fPosX, DBCharInfo.fPosY, DBCharInfo.fPosZ);
-	gateInfo.vDirection = vec3(1.0f, 1.0f, 0.0f);
+	gateInfo.vDirection = vec3(DBCharInfo.fDirX, DBCharInfo.fDirY, DBCharInfo.fDirZ);//vec3(1.0f, 1.0f, 0.0f);
 
 	// field info
 	if (true == DBCharInfo.uidDynamicFieldGroup.IsValid())
@@ -774,9 +839,21 @@ void GDBTaskCharSerialize::Completer::AddTalentList( GEntityPlayer* pEntityPlaye
 	}
 }
 
+/*
 void GDBTaskCharSerialize::Completer::AddEffectRemainSecList( GEntityPlayer* pEntityPlayer )
 {
 	pEntityPlayer->GetActorCooltimeChecker().InsertTalentRemainCoolTime(m_Data.vecTalentCollTimeSec);		
+	pEntityPlayer->InsertBuffRemainTime(m_Data.vecBuffRemaindSec);
+}
+*/
+
+void GDBTaskCharSerialize::Completer::AddTalentCoolTimeList( GEntityPlayer* pEntityPlayer )
+{
+	pEntityPlayer->GetActorCooltimeChecker().InsertTalentRemainCoolTime(m_Data.vecTalentCollTimeSec);		
+}
+
+void GDBTaskCharSerialize::Completer::AddBuffRemainEffectList( GEntityPlayer* pEntityPlayer )
+{
 	pEntityPlayer->InsertBuffRemainTime(m_Data.vecBuffRemaindSec);
 }
 
@@ -907,6 +984,14 @@ void GDBTaskCharSerialize::Completer::AddRepice( GEntityPlayer* pEntityPlayer )
 void GDBTaskCharSerialize::Completer::AddEmblem( GEntityPlayer* pEntityPlayer )
 {
 	pEntityPlayer->GetEmblem().LoadFromDB(m_Data.qEmblem);
+}
+
+void GDBTaskCharSerialize::Completer::AddGuideBook( GEntityPlayer* pEntityPlayer )
+{
+	for (size_t i = 0; i < m_Data.qGuideBook.size(); ++i)
+	{
+		pEntityPlayer->GetPlayerGuideBook().Insert(m_Data.qGuideBook[i]);
+	}
 }
 
 void GDBTaskCharSerialize::Completer::SetMailSummaryInfo(GEntityPlayer* pEntityPlayer)

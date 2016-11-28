@@ -40,9 +40,6 @@ void XItem::ApplyTDItem(const TD_ITEM& tdItem)
 	m_bClaimed		= tdItem.m_bBind;
 	m_nSoulCount	= tdItem.m_nSoulQuantity;
 	m_nDyedColor	= tdItem.m_nDyedColor;
-	m_nEXP			= tdItem.m_nXP;
-	m_nNextAttuneXP	= tdItem.m_nNextAttuneXP;
-	m_nAttuneLvl	= tdItem.m_nAttuneLevel;
 
 	for (int i=0; i<ENCHANT_MAX_COUNT; ++i)
 	{

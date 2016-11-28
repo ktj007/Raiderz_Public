@@ -6,6 +6,7 @@
 #include "GMasterServerFacade.h"
 #include "CCommandTable_Master.h"
 #include "CCommandTable.h"
+#include "CCommandTable_GM.h"
 #include "GStrings.h"
 #include "GCommand.h"
 #include "GCommandCenter.h"

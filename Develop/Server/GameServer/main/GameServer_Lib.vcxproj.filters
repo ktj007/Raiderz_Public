@@ -2,562 +2,571 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="logic">
-      <UniqueIdentifier>{0a650122-3867-4258-ad6d-a60b80339531}</UniqueIdentifier>
+      <UniqueIdentifier>{e64f815b-c6d2-4c20-8475-f5e977a94ad2}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity">
-      <UniqueIdentifier>{2f7271d4-0aa4-4b4e-b508-cac21b603f80}</UniqueIdentifier>
+      <UniqueIdentifier>{578a8cdb-c8b9-4d7e-a4d1-5bd87b803a17}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules">
-      <UniqueIdentifier>{14a3b1c7-9f70-446a-8709-662b86243719}</UniqueIdentifier>
+      <UniqueIdentifier>{fe0e739a-c429-47fc-a295-b90c81d5d339}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\combat">
-      <UniqueIdentifier>{217ec93d-e4cc-46e1-8e4e-dceb96f8a3f7}</UniqueIdentifier>
+      <UniqueIdentifier>{243902fc-bc84-44ff-b80a-fc386de126df}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\combat\MotionFactor">
-      <UniqueIdentifier>{79815872-819e-412a-b0f1-c3f5fd191697}</UniqueIdentifier>
+      <UniqueIdentifier>{d1f48674-7d37-4227-9216-f71c2ba01569}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI">
-      <UniqueIdentifier>{88e2f87c-345b-4241-a2df-99cce48b8980}</UniqueIdentifier>
+      <UniqueIdentifier>{7852126d-53b3-4621-b344-24b52172db38}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\colt">
-      <UniqueIdentifier>{3962206f-9070-4ee7-b103-5c7d8caca263}</UniqueIdentifier>
+      <UniqueIdentifier>{1d4b7165-987d-46ee-a0e7-110f6a65e13d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\BehaviorState">
-      <UniqueIdentifier>{0552f583-2769-44be-b727-bda7bbf60db6}</UniqueIdentifier>
+      <UniqueIdentifier>{e4f614ba-8a72-4319-a4c0-0e32d373d37a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\CombatState">
-      <UniqueIdentifier>{c77a262e-ac25-4c77-9b3f-158ea09cafa0}</UniqueIdentifier>
+      <UniqueIdentifier>{e063dc22-d505-447f-8f14-4ed43e411f7b}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\LOD">
-      <UniqueIdentifier>{10c0cf57-45ef-4a7d-b3ff-e715988dcd91}</UniqueIdentifier>
+      <UniqueIdentifier>{e5e869fd-08b4-4f05-ac7a-63f25ebda8c3}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\LOD\Event Invoker">
-      <UniqueIdentifier>{2433ed57-74e1-43a3-9e2e-880dee9c99ac}</UniqueIdentifier>
+      <UniqueIdentifier>{ac7c6c7c-a421-4331-ad84-9f9b646f2852}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\LOD\Event Handler">
-      <UniqueIdentifier>{16471c61-8ea6-4623-b954-8f6c0cd591d5}</UniqueIdentifier>
+      <UniqueIdentifier>{63cf63f5-55bc-4b9a-9b29-c80f19de8fba}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\LOD\Event Base">
-      <UniqueIdentifier>{8eed3406-565f-49be-ae47-58db029c76d6}</UniqueIdentifier>
+      <UniqueIdentifier>{b38f6ce2-296e-4600-a4f2-8daf11a3eb14}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\LOD\UpdateDelegate">
-      <UniqueIdentifier>{3127bc42-a861-4d4f-91f2-4ec313a10a96}</UniqueIdentifier>
+      <UniqueIdentifier>{bc319d8e-38e3-488e-9ff6-42eebee2cb37}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\AI\Module">
-      <UniqueIdentifier>{592d8286-357f-4ff8-b34a-3ab345d11347}</UniqueIdentifier>
+      <UniqueIdentifier>{83afe319-600b-48e9-905b-1fcbf74a7a77}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\job">
-      <UniqueIdentifier>{b91b42f5-05d6-448b-aa8e-8bd3610f4f45}</UniqueIdentifier>
+      <UniqueIdentifier>{73d33acd-e868-4c0a-94c8-f7feb4e9a440}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\job\task">
-      <UniqueIdentifier>{8ab5f4f0-ba25-461e-b2af-a8600de81c19}</UniqueIdentifier>
+      <UniqueIdentifier>{5a6cfb62-8911-47f6-a9bf-135492eaf4b4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\job\move">
-      <UniqueIdentifier>{ef46c7c7-2190-43b7-a72c-7753b579149a}</UniqueIdentifier>
+      <UniqueIdentifier>{2012a451-fddb-42ff-9fdf-52ac113d2a95}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\modules\job\instant_job">
-      <UniqueIdentifier>{1c467ecc-1646-4bea-afe5-a124a53df089}</UniqueIdentifier>
+      <UniqueIdentifier>{5b22b38b-f938-49ec-84e0-5574b33959d5}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\party">
-      <UniqueIdentifier>{a7ce0496-af0e-414d-be32-ecf5f7e127b5}</UniqueIdentifier>
+      <UniqueIdentifier>{c5c7fdee-7824-410d-9c01-8a2baa6c4ed5}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\party\storage">
-      <UniqueIdentifier>{54df8d04-d9f2-4f88-ab4f-f1a9e40fbcc2}</UniqueIdentifier>
+      <UniqueIdentifier>{708fd456-f943-4f53-a05e-0b03c8c39d1c}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\party\core">
-      <UniqueIdentifier>{fc852435-7300-4393-9eec-36de1e49dd5c}</UniqueIdentifier>
+      <UniqueIdentifier>{da7d20e9-65a1-4024-bcec-2297ae82a835}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\player">
-      <UniqueIdentifier>{2a2bf464-e41e-4e31-9630-55a45c94a69c}</UniqueIdentifier>
+      <UniqueIdentifier>{c364c69e-bfa1-4359-9dd6-246a8c24bcfb}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\player\GameData">
-      <UniqueIdentifier>{147e9cf2-068f-4912-88c9-8a710ef3db83}</UniqueIdentifier>
+      <UniqueIdentifier>{40d1527a-1b9a-420c-b8f4-3123d5e732ee}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\player\system">
-      <UniqueIdentifier>{cfefb86f-da2a-41aa-8c7a-2ceaa494fd95}</UniqueIdentifier>
+      <UniqueIdentifier>{1d1ecb0f-805b-4379-8ff1-1310b7433c24}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\npc">
-      <UniqueIdentifier>{ebd6e933-41b2-464a-909a-5ed54d036141}</UniqueIdentifier>
+      <UniqueIdentifier>{cda3becd-8fbf-4b8f-b394-e015773547bc}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\entity\actor">
-      <UniqueIdentifier>{4c169180-58a5-4099-a3c8-e0bb4b205f1e}</UniqueIdentifier>
+      <UniqueIdentifier>{e368d3b3-b264-4cea-9417-92192bc41806}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field">
-      <UniqueIdentifier>{dab23786-95c2-4351-bbe4-a142666392eb}</UniqueIdentifier>
+      <UniqueIdentifier>{a2b8e9bc-0f3d-42c3-ba4f-42c6a9828b3f}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\dynamic">
-      <UniqueIdentifier>{3e916d91-0175-491c-b79e-7f63f679311f}</UniqueIdentifier>
+      <UniqueIdentifier>{0157c3d9-3e7c-4544-9af8-3b998979e4e2}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\dynamic\trial">
-      <UniqueIdentifier>{e46e55bf-9d32-4214-901d-32dd2713bb00}</UniqueIdentifier>
+      <UniqueIdentifier>{9e852702-62eb-4d39-b62b-b9ede24ad155}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\dynamic\innroom">
-      <UniqueIdentifier>{31e88674-171e-480d-beaf-5ae273a55a72}</UniqueIdentifier>
+      <UniqueIdentifier>{69d367a6-f93a-4d94-bc65-cf3694220a95}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\dynamic\policy">
-      <UniqueIdentifier>{8fbccbb8-755d-4579-88d3-2ee531d0ddf7}</UniqueIdentifier>
+      <UniqueIdentifier>{e47c2d92-d411-43cc-a1c0-675578efdedd}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\shared">
-      <UniqueIdentifier>{4f21599c-a29d-4d13-a980-2ffbfbba3e28}</UniqueIdentifier>
+      <UniqueIdentifier>{a241915c-ee42-4921-aefc-211b8ef5cdcb}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\pathfinder">
-      <UniqueIdentifier>{d2902670-f5ff-4eb1-91cd-75a09ff98c7e}</UniqueIdentifier>
+      <UniqueIdentifier>{b8d90e04-32fa-4f19-a958-ba4b65b8b326}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\info">
-      <UniqueIdentifier>{ab628c0b-9fbd-4715-a1cf-2ec4ece4fe5c}</UniqueIdentifier>
+      <UniqueIdentifier>{9105972a-8b02-4a59-8aee-c26d84e4edf7}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\FieldMgr">
-      <UniqueIdentifier>{27c17e38-557f-4451-81bf-1354cec52ebb}</UniqueIdentifier>
+      <UniqueIdentifier>{beb0a742-1f29-460a-b4aa-f57b87c357a1}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\PlayerField">
-      <UniqueIdentifier>{53056936-e213-420d-b806-9cb70a3395c1}</UniqueIdentifier>
+      <UniqueIdentifier>{458aad1d-1d68-4ceb-8216-9b078d09402d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\ManagedFieldInfo">
-      <UniqueIdentifier>{68fb7c84-c999-4403-9a4f-b3903f163eda}</UniqueIdentifier>
+      <UniqueIdentifier>{0e37cdff-f3da-4566-a6d2-87d4073380d3}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field\Spawn">
-      <UniqueIdentifier>{c1e860d5-5af0-4e9c-98ad-cc29621ba3b0}</UniqueIdentifier>
+      <UniqueIdentifier>{7d24cec0-f14c-46cb-acc7-c43894874804}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\player">
-      <UniqueIdentifier>{556cdcb7-6a66-4e14-999f-d8ed3fc4ff4c}</UniqueIdentifier>
+      <UniqueIdentifier>{6093f3d3-bbc1-43d1-be39-b0074b91c7a0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command">
-      <UniqueIdentifier>{603a8c6f-d30d-4da6-8371-51b68960d1de}</UniqueIdentifier>
+      <UniqueIdentifier>{f3ad53cd-5c07-4192-8d11-ab5dbed4be3d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Handler">
-      <UniqueIdentifier>{8755510a-6f03-48e1-90c2-3afb30014bbf}</UniqueIdentifier>
+      <UniqueIdentifier>{0f56eb97-3ab9-4a28-87fd-221c3c760f65}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Handler\Game">
-      <UniqueIdentifier>{c559eaa5-646d-4fa3-9f2a-21f35ecb0b0f}</UniqueIdentifier>
+      <UniqueIdentifier>{897db3e6-0264-4779-ba59-43c775c3e5d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Handler\MasterServer">
-      <UniqueIdentifier>{828ff105-c082-4302-90e4-c58b7b142d67}</UniqueIdentifier>
+      <UniqueIdentifier>{b75dd785-09f0-4caf-9388-63fd8c641a6d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Handler\Login">
-      <UniqueIdentifier>{5a989b99-88a2-406a-b3c7-33332fcbec1b}</UniqueIdentifier>
+      <UniqueIdentifier>{739dbe5f-6f69-4880-a54e-c360db3b271d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Handler\AppServer">
-      <UniqueIdentifier>{ab053bcf-d2cf-4152-a38e-6277b09a98f1}</UniqueIdentifier>
+      <UniqueIdentifier>{744d8a7c-774d-40ef-9259-f2c96443d58c}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router">
-      <UniqueIdentifier>{7523540d-2988-4923-a5a5-6778e89b0f01}</UniqueIdentifier>
+      <UniqueIdentifier>{891a86dd-8f02-483c-9bbe-6f7a15e7b2c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\PlayerRouter">
-      <UniqueIdentifier>{25ce35e1-1d47-4f2a-aec4-27e4db2dd5b6}</UniqueIdentifier>
+      <UniqueIdentifier>{aacf146a-ea39-4fac-b83a-bc6206593fcc}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\PartyRouter">
-      <UniqueIdentifier>{2c838333-3af7-4b7d-a186-2e6a7141e0e3}</UniqueIdentifier>
+      <UniqueIdentifier>{a912a025-b94c-4f43-bbed-d2b6d78dd66b}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\FieldRouter">
-      <UniqueIdentifier>{55d237d8-1a3d-4908-a4cc-3435a6adbd46}</UniqueIdentifier>
+      <UniqueIdentifier>{baa1508e-200e-4b77-9165-53fb0645c4ec}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\GateRouter">
-      <UniqueIdentifier>{7b02ce5d-fe8f-4145-9a6a-5a7779306e94}</UniqueIdentifier>
+      <UniqueIdentifier>{e059e284-74f8-4b21-b1ac-ae1ccb927b7c}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\ChatChannelRouter">
-      <UniqueIdentifier>{8b0b6f44-7ed2-4e76-ae2c-2fdd3afd4a2e}</UniqueIdentifier>
+      <UniqueIdentifier>{d14a4902-48fa-4369-a76e-981885e6c1e8}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\MailRouter">
-      <UniqueIdentifier>{94b39172-393d-448a-8c25-1b1e277f65f9}</UniqueIdentifier>
+      <UniqueIdentifier>{d210c1e1-ab35-48e0-ad6e-2ab60cde8453}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\CharRouter">
-      <UniqueIdentifier>{69bf9588-cbbc-49ed-ba58-6ae7983c57f5}</UniqueIdentifier>
+      <UniqueIdentifier>{e412e7b4-9630-4486-8084-05e7e66cff4d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\GuildRouter">
-      <UniqueIdentifier>{f4a8316d-e890-42a0-a5ad-d02a1fad597a}</UniqueIdentifier>
+      <UniqueIdentifier>{54e8972a-b0f0-46c1-8873-dffca63e52c8}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\command\Router\MoveServerRouter">
-      <UniqueIdentifier>{faa7ee7e-fdf3-43e0-b93f-9d4200016261}</UniqueIdentifier>
+      <UniqueIdentifier>{c9fbe46c-4e92-4278-919b-977e1cf5d8d9}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\base">
-      <UniqueIdentifier>{aca1c9c7-720f-450e-8e2e-d0b44665fc8b}</UniqueIdentifier>
+      <UniqueIdentifier>{d6934c7f-e0b3-42e5-b471-e0e8467b1bb6}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\script">
-      <UniqueIdentifier>{367e1093-e2b4-4893-8227-311279dee0be}</UniqueIdentifier>
+      <UniqueIdentifier>{472c5c5b-1bde-434e-8aed-824e16ec8219}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\script\handler">
-      <UniqueIdentifier>{6c93c407-506f-45ef-ace0-48c99c3d49cc}</UniqueIdentifier>
+      <UniqueIdentifier>{910a9a80-5d82-43f9-852c-466254813f8e}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\script\GlueDelegator_NullObject">
-      <UniqueIdentifier>{e26a698b-79c3-411d-9fff-994e155ca00f}</UniqueIdentifier>
+      <UniqueIdentifier>{04a17b8c-fa42-4a7f-ace1-f967dde86e12}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\script\GlueDelegator">
-      <UniqueIdentifier>{87c67dd5-3345-49bd-bdde-ceb47cae83ac}</UniqueIdentifier>
+      <UniqueIdentifier>{73befc2a-4faa-42d5-92b6-b7967fa3bbe4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\npc">
-      <UniqueIdentifier>{4bff4866-fffd-447b-a2bf-9ba591782ef4}</UniqueIdentifier>
+      <UniqueIdentifier>{ac381db2-3f76-49cc-bd89-35a77dc3845a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\item">
-      <UniqueIdentifier>{8a8bc22d-b8d0-47fa-8cba-0f2adb9b3c95}</UniqueIdentifier>
+      <UniqueIdentifier>{ee776c5c-0e33-4898-9f91-a9ebf13356bf}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\item\Container">
-      <UniqueIdentifier>{b7d5029d-69ba-432a-8d32-3dfa8a69fa3d}</UniqueIdentifier>
+      <UniqueIdentifier>{e0917845-756d-4582-8193-0f8dcb2fa2a3}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\item\system">
-      <UniqueIdentifier>{59446d1f-3fcd-4b9e-bdde-073ea6315443}</UniqueIdentifier>
+      <UniqueIdentifier>{a804670e-5ec9-43be-935d-badcf2d3ea0c}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\message">
-      <UniqueIdentifier>{f6605ee7-670e-4b95-929f-a9158c19dff9}</UniqueIdentifier>
+      <UniqueIdentifier>{2c4bb9ea-891a-4161-a4c7-524b2a5e90e5}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent">
-      <UniqueIdentifier>{4b6eadec-c9da-4949-9c5a-6a03b9f1be52}</UniqueIdentifier>
+      <UniqueIdentifier>{36d4e9ba-7934-40ae-b584-91039538516d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent\focus">
-      <UniqueIdentifier>{6da11a5f-4f1d-44c8-ae6f-09def958cbd4}</UniqueIdentifier>
+      <UniqueIdentifier>{28985397-6604-4ae8-86ee-47811c7aa0d2}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent\buff">
-      <UniqueIdentifier>{693a4362-f0ce-480a-825a-dc09564a7a8e}</UniqueIdentifier>
+      <UniqueIdentifier>{3c1489bd-2fe2-4e7e-ad8d-cecf5925b3ac}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent\effector">
-      <UniqueIdentifier>{18f938b9-c5e1-4208-9cc7-02de21459494}</UniqueIdentifier>
+      <UniqueIdentifier>{47772593-1085-42cd-8d86-9922b23d17c2}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent\info">
-      <UniqueIdentifier>{8c669fd8-5444-45b7-89ec-5459c96bda62}</UniqueIdentifier>
+      <UniqueIdentifier>{d37df459-3e8a-4898-83b8-b5203744ae99}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent\implement">
-      <UniqueIdentifier>{afb09cff-7219-42a2-b569-43910902884a}</UniqueIdentifier>
+      <UniqueIdentifier>{1d55042c-335b-41a6-9465-471af850adbb}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent\command">
-      <UniqueIdentifier>{1d9e3974-3429-4d2c-b36e-198ec7a4151c}</UniqueIdentifier>
+      <UniqueIdentifier>{144d12c4-feb9-4df1-9c25-cc86f488c1fb}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\world">
-      <UniqueIdentifier>{b1e373d6-a17a-40d4-8be2-42289552807c}</UniqueIdentifier>
+      <UniqueIdentifier>{392a3df6-1291-4f20-bcff-f4de9f70e2a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db">
-      <UniqueIdentifier>{6e78d62c-d067-4b70-8471-735c4ae2c8bb}</UniqueIdentifier>
+      <UniqueIdentifier>{16626f57-2550-4ef8-8ae2-ca0fba92afc0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Export">
-      <UniqueIdentifier>{d4e9fb99-941a-4fe4-9a4b-bfb4e86276e6}</UniqueIdentifier>
+      <UniqueIdentifier>{909a6c22-56da-488d-aef5-8feb7782a827}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Export\StringTable">
-      <UniqueIdentifier>{24785cb2-24bf-4fcf-8f5d-c9de8c2b45cc}</UniqueIdentifier>
+      <UniqueIdentifier>{5f1beb47-2539-4f7c-85ac-25a8cd2e83d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\DBManager">
-      <UniqueIdentifier>{73c9f953-6e25-4619-8ab2-e0da0421acdd}</UniqueIdentifier>
+      <UniqueIdentifier>{16c4fee0-dd96-4712-9213-d5a68da5d77a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task">
-      <UniqueIdentifier>{72cdea18-3a16-4e2e-a30a-97a640b9bbe1}</UniqueIdentifier>
+      <UniqueIdentifier>{94bc1342-66aa-42e4-a4a1-a524ecb73ae7}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask">
-      <UniqueIdentifier>{f4f1ec35-bc27-432e-bb07-c5e1d2adb5da}</UniqueIdentifier>
+      <UniqueIdentifier>{def264d3-139c-4815-9350-360ed93dda77}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Account">
-      <UniqueIdentifier>{379371fe-dfd8-4a49-9242-2e5d6c893b4f}</UniqueIdentifier>
+      <UniqueIdentifier>{1e9a1bc0-d947-4b28-9f20-66a1c07618d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Character">
-      <UniqueIdentifier>{3e8bd1e4-4da3-40d3-b227-5e081180ea7c}</UniqueIdentifier>
+      <UniqueIdentifier>{68d9cafa-5ee2-49df-824f-19a4cec6f88d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Character\Money">
-      <UniqueIdentifier>{9db448d1-ad8c-40a8-afdf-071e41655e59}</UniqueIdentifier>
+      <UniqueIdentifier>{2c27ec8e-badc-4dac-94ef-6c1a48ee5387}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Character\XP">
-      <UniqueIdentifier>{54a00ffe-f1d9-44ee-8d5e-e74ef9d8057e}</UniqueIdentifier>
+      <UniqueIdentifier>{2892b19f-6897-435d-a7b9-a069fe667736}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\System">
-      <UniqueIdentifier>{aec4b991-0039-4ced-a400-0dbfed3286a5}</UniqueIdentifier>
+      <UniqueIdentifier>{26205b13-8410-4330-b7e6-1f5ba70030d7}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Talent">
-      <UniqueIdentifier>{54448042-3c82-4954-a33f-d1fd6b272e4f}</UniqueIdentifier>
+      <UniqueIdentifier>{bfb8bdee-6d00-43ff-9878-8451a6f66f22}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Util">
-      <UniqueIdentifier>{ccb19c96-c7ea-4f1b-a903-089a98f3a106}</UniqueIdentifier>
+      <UniqueIdentifier>{362189b1-e111-4e3b-8e5c-8662f711092a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Quest">
-      <UniqueIdentifier>{a66cbcaa-a9f9-4628-bcfe-d228c91b563a}</UniqueIdentifier>
+      <UniqueIdentifier>{18dab240-f88d-4c73-adf3-5c11edb3733c}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Guild">
-      <UniqueIdentifier>{0264b949-f053-4d75-b756-93ecccc1c309}</UniqueIdentifier>
+      <UniqueIdentifier>{3688b3d9-11f4-4eec-b464-3093537cfe94}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Emblem">
-      <UniqueIdentifier>{cd14c8eb-ca04-4b93-bddf-8245e5069b93}</UniqueIdentifier>
+      <UniqueIdentifier>{efb0a977-20c4-4a4d-b760-566a86be97e4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Item">
-      <UniqueIdentifier>{ce7b407c-be5f-4978-9576-c852b61a9909}</UniqueIdentifier>
+      <UniqueIdentifier>{01296020-116a-4e94-8153-a23cf4643229}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Item\Looting">
-      <UniqueIdentifier>{0ea20055-3eb9-4ed7-8c6d-24ab48474abe}</UniqueIdentifier>
+      <UniqueIdentifier>{dd4b2f49-76c2-4844-92cc-4a174d578d81}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Item\Equipment">
-      <UniqueIdentifier>{4541c4de-45c8-4207-8af4-db6a3740a1c6}</UniqueIdentifier>
+      <UniqueIdentifier>{7d2f2b4e-5686-4e95-9f50-473565704b3a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Item\ENCHENT">
-      <UniqueIdentifier>{94b644ac-38f1-427c-91b9-4bbd3363b382}</UniqueIdentifier>
+      <UniqueIdentifier>{ec37152f-3c47-428d-b0d0-013e88e7925d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Trade">
-      <UniqueIdentifier>{05a78b14-9618-4b0b-b295-9fb920b7b419}</UniqueIdentifier>
+      <UniqueIdentifier>{af4afc54-e53c-41b7-891e-c226f84f0d09}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Cache">
-      <UniqueIdentifier>{ed107472-473f-4336-a7d5-642780d93257}</UniqueIdentifier>
+      <UniqueIdentifier>{f36a63dc-8a6a-40ef-92e7-58609d30d284}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Craft">
-      <UniqueIdentifier>{d900f542-9b72-49a4-b8b9-68b81578fbd4}</UniqueIdentifier>
+      <UniqueIdentifier>{ce342600-cfd5-46db-969f-fe33c010d4cb}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\NPCShop">
-      <UniqueIdentifier>{ac74b228-2c19-4a07-921a-70eaf265bd8a}</UniqueIdentifier>
+      <UniqueIdentifier>{29e0f6da-30eb-409a-8b74-6409a55b46a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\NPCShop\Buy">
-      <UniqueIdentifier>{7c0d3207-9ed9-4d40-ab30-4fc6ef1037f0}</UniqueIdentifier>
+      <UniqueIdentifier>{5e5f7522-9c3f-4d15-908b-7c21b86f44f2}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\NPCShop\Sell">
-      <UniqueIdentifier>{0bbe6353-bc18-4a0d-ae08-e9d86611ce45}</UniqueIdentifier>
+      <UniqueIdentifier>{1910e95c-5d4c-4b9f-ba4c-c1c8e39dc31a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\NPCShop\Repair">
-      <UniqueIdentifier>{6d01868b-44d2-47d5-893c-dc6a3e83dc38}</UniqueIdentifier>
+      <UniqueIdentifier>{d57305db-8b67-460e-aca8-ae6be3612a5b}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Mail">
-      <UniqueIdentifier>{4ad150d5-f401-4b38-91ea-daaa12ab21f4}</UniqueIdentifier>
+      <UniqueIdentifier>{0cbb77bd-59d9-4cf3-8e93-e439077a4b8d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\Storage">
-      <UniqueIdentifier>{39c72cf3-271a-4a4c-a44d-02abf543af34}</UniqueIdentifier>
+      <UniqueIdentifier>{349123a0-4235-4294-bd36-e00fa02a1382}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\GDBTask\TradeMarket">
-      <UniqueIdentifier>{8937f7fb-f54f-4b02-90e3-05bf9088ee38}</UniqueIdentifier>
+      <UniqueIdentifier>{9c9c8883-5658-4c52-a728-6fb006edc684}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\DBHelper">
-      <UniqueIdentifier>{46f4defc-4c61-4b83-a015-db9d76e5ca63}</UniqueIdentifier>
+      <UniqueIdentifier>{5c9a8a0d-6f46-41fe-832e-861b9abb3a17}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\Common">
-      <UniqueIdentifier>{6f26a47f-36cc-471c-8b0c-5ff673d99ac1}</UniqueIdentifier>
+      <UniqueIdentifier>{d1b29515-7f66-4edb-a42c-f049728f5352}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Task\Data">
-      <UniqueIdentifier>{0e3977f5-2eb0-4190-9d23-2702da709470}</UniqueIdentifier>
+      <UniqueIdentifier>{44cfc58b-867f-451d-94f0-f38dc1a36d3c}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Cache">
-      <UniqueIdentifier>{aaea3a6a-b148-4fcd-b1ea-561276e2ddc7}</UniqueIdentifier>
+      <UniqueIdentifier>{62ef449b-e1bc-4ada-8af3-1bd29f9666af}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Cache\Data">
-      <UniqueIdentifier>{66a068db-3ca7-48fa-9cc1-c56db47aeff1}</UniqueIdentifier>
+      <UniqueIdentifier>{76a877ec-233a-4704-a23f-3dffac331e21}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\Cache\SyncingList">
-      <UniqueIdentifier>{42118024-ab5b-42a7-8c7d-ab0e332d02da}</UniqueIdentifier>
+      <UniqueIdentifier>{1e30ad93-8ef0-48a8-bea9-b0c8dee54464}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\FakeDB">
-      <UniqueIdentifier>{4205e292-46d4-495c-9555-a489d9766782}</UniqueIdentifier>
+      <UniqueIdentifier>{d30161e1-a71d-4044-acdc-7d9548925cb8}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\db\LOG">
-      <UniqueIdentifier>{af5e4df2-4825-4cc9-8506-ed19bc6d244e}</UniqueIdentifier>
+      <UniqueIdentifier>{de37e0e1-5375-46ab-9fe6-1d8bd6ebadd3}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\Formulas">
-      <UniqueIdentifier>{ca616f33-d75c-4462-a109-9851494d14cb}</UniqueIdentifier>
+      <UniqueIdentifier>{3f16abe9-7a65-4581-a2b6-63dd8ab82234}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\loot">
-      <UniqueIdentifier>{bbfea84f-357f-48bd-9414-efb9ac9faef4}</UniqueIdentifier>
+      <UniqueIdentifier>{029f51e0-f30d-4c57-9a09-3e444f5fffae}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\loot\droplist">
-      <UniqueIdentifier>{724ae165-9c0a-400a-ac63-7dd32702ddda}</UniqueIdentifier>
+      <UniqueIdentifier>{dd0d40a8-4221-43da-b6f2-32cf6d32d6d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\loot\system">
-      <UniqueIdentifier>{fe1af540-46cf-4ffd-9fdd-690cf8c8ac25}</UniqueIdentifier>
+      <UniqueIdentifier>{23575ca3-e52d-49fe-b980-84a35ed172ce}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\loot\info">
-      <UniqueIdentifier>{b21de65e-fc25-4d4f-af82-8de8be37bf22}</UniqueIdentifier>
+      <UniqueIdentifier>{51555f65-7259-4e44-afeb-665421d5b312}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\loot\rewardowner">
-      <UniqueIdentifier>{67050b12-18a0-4ecc-9113-8431d49fc0bc}</UniqueIdentifier>
+      <UniqueIdentifier>{9c0e8d69-50c0-4821-87da-44ee9881c1d5}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\interaction">
-      <UniqueIdentifier>{14add272-113d-4c79-a17e-6f690521f835}</UniqueIdentifier>
+      <UniqueIdentifier>{13a5de91-b830-4d2b-ab98-f19be6076ab9}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\interaction\NPC">
-      <UniqueIdentifier>{0c8ca7d2-a19c-4f5d-a11f-088c716686e9}</UniqueIdentifier>
+      <UniqueIdentifier>{2b557241-d8b8-4951-b9b9-44191eeeb0c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\interaction\PC">
-      <UniqueIdentifier>{3b9b0688-89d7-4b94-b730-5ce654fa3f16}</UniqueIdentifier>
+      <UniqueIdentifier>{bfc5502c-150c-4cfb-b5fd-0451faffc34b}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\dialog">
-      <UniqueIdentifier>{34f4eb5a-a7d7-400d-9b9c-0192681059d8}</UniqueIdentifier>
+      <UniqueIdentifier>{ae387342-cf46-4ab5-b282-8df9aa548088}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\quest">
-      <UniqueIdentifier>{23aa04ce-d2c5-4a65-84ca-d3f35c23b01e}</UniqueIdentifier>
+      <UniqueIdentifier>{36e49319-7d17-4000-9a3b-70491bdc8196}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\quest\system">
-      <UniqueIdentifier>{0563dc65-9248-4522-8528-c38e822dd826}</UniqueIdentifier>
+      <UniqueIdentifier>{3a099169-560a-4473-9285-a7a0efc7a570}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\quest\system\QObj">
-      <UniqueIdentifier>{4697e8ff-8176-4bd6-9288-f87db9c9b090}</UniqueIdentifier>
+      <UniqueIdentifier>{89f2e7b3-b586-4edc-bca7-177e0581d34b}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\quest\player">
-      <UniqueIdentifier>{ace39825-9f7f-41ee-a5a5-b542c3bb1eb8}</UniqueIdentifier>
+      <UniqueIdentifier>{6b0debf5-c799-475c-9b62-ada623163c66}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\quest\npc">
-      <UniqueIdentifier>{8d13396e-fa0c-455c-997f-40defc4639b7}</UniqueIdentifier>
+      <UniqueIdentifier>{ceab7d7f-a82d-481c-abad-c37ace2a46a3}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\quest\challenger">
-      <UniqueIdentifier>{d077c23c-e077-41b4-879a-a1c9a6dc2f49}</UniqueIdentifier>
+      <UniqueIdentifier>{2ba24d04-d06e-4bfc-92a4-301537909a62}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\soulbinding">
-      <UniqueIdentifier>{0774ade4-ee43-4270-81f3-44b5ed567da4}</UniqueIdentifier>
+      <UniqueIdentifier>{f89b980b-939b-4b9a-9d4a-2d1115f39383}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\trade">
-      <UniqueIdentifier>{5f90455d-6a51-4372-af58-5e6939c78cc7}</UniqueIdentifier>
+      <UniqueIdentifier>{86f2151a-87d3-4ad3-ae61-1c1e2ea6bbc4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\trade\system">
-      <UniqueIdentifier>{bf2bdac6-f8b0-40f3-8ddb-c88e05bd91ab}</UniqueIdentifier>
+      <UniqueIdentifier>{9ed244bb-c56e-4e3f-a28a-7a460b24349e}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\trade\player">
-      <UniqueIdentifier>{61732537-65f6-444f-bcf2-27d1ad89a04d}</UniqueIdentifier>
+      <UniqueIdentifier>{5244b528-e390-461c-bac2-9500142934c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\training">
-      <UniqueIdentifier>{76ab0a87-12b9-4684-8577-00c57e53b38e}</UniqueIdentifier>
+      <UniqueIdentifier>{d43ab8eb-30a0-44df-a561-cb56fdf71c7d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\conditions">
-      <UniqueIdentifier>{be16584d-6233-4e2b-9d5d-12080667cfbb}</UniqueIdentifier>
+      <UniqueIdentifier>{0abb967c-cfe4-4cea-bf7a-2988bb57afc1}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\fatigue">
-      <UniqueIdentifier>{6d8853a0-9556-4873-bcf6-46ae26065c4e}</UniqueIdentifier>
+      <UniqueIdentifier>{39ea8692-fa6c-46d7-a9fa-e0523ddbda13}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\craft">
-      <UniqueIdentifier>{5db7ef0d-1025-4d2c-b992-ca446ce201f3}</UniqueIdentifier>
+      <UniqueIdentifier>{79fb08d8-b233-4962-9b7f-f211d9e88165}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\inn">
-      <UniqueIdentifier>{6ea0c301-7f01-48e0-9385-32db51bd4649}</UniqueIdentifier>
+      <UniqueIdentifier>{81264423-540e-467f-9122-973ccf9f0701}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\guild">
-      <UniqueIdentifier>{10e44c99-5864-42a8-88e3-d8ab7abf0a0d}</UniqueIdentifier>
+      <UniqueIdentifier>{b977c8a7-3165-43e7-9d45-f9f77d3d50d8}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\duel">
-      <UniqueIdentifier>{f33cd4ab-ca7c-4f89-bad8-555a9b9b5b2f}</UniqueIdentifier>
+      <UniqueIdentifier>{9e550dd0-d780-4985-8c0b-1ac7412401c9}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\anticheat">
-      <UniqueIdentifier>{36c385d0-80ea-47b8-8aad-98590323a985}</UniqueIdentifier>
+      <UniqueIdentifier>{a16d3886-6f97-43c9-8db6-497a9da580a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\palette">
-      <UniqueIdentifier>{047a01ca-1e07-4b3c-88a2-f9d82cb7d0ff}</UniqueIdentifier>
+      <UniqueIdentifier>{acbf7754-35d2-45b2-b776-58d292634257}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\soul">
-      <UniqueIdentifier>{05c65157-a054-4bb7-b9df-deac30df49c7}</UniqueIdentifier>
+      <UniqueIdentifier>{f366e6b3-b493-4728-8899-242c4d380b4b}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\test">
-      <UniqueIdentifier>{73f5a956-e819-4cee-9f33-a65a15832522}</UniqueIdentifier>
+      <UniqueIdentifier>{34fbc56c-4429-4220-b3ee-0d5d7343a45e}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\battlearena">
-      <UniqueIdentifier>{54b418b2-f54e-4e91-ae27-9ac3f779d193}</UniqueIdentifier>
+      <UniqueIdentifier>{71a9ebcc-90db-48a7-bd27-bc2631319ef1}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\battlearena\match_rules">
-      <UniqueIdentifier>{0f548826-a633-4f90-81ff-aa4d75a50603}</UniqueIdentifier>
+      <UniqueIdentifier>{019a43da-9335-49ca-86f7-0cf1646aede4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\battlearena\finish_rules">
-      <UniqueIdentifier>{4b58ce31-a4fa-44f7-a212-396ebc69b238}</UniqueIdentifier>
+      <UniqueIdentifier>{866e8293-0927-4fa3-9ba8-200837fa8b44}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\gm">
-      <UniqueIdentifier>{4637352b-f98e-466f-8558-d597dfd0aa1c}</UniqueIdentifier>
+      <UniqueIdentifier>{b6d12e65-7ba7-4664-8072-61178566fc2a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\MasterServer">
-      <UniqueIdentifier>{73feff32-9f54-42f8-9146-093e5a1ee9e2}</UniqueIdentifier>
+      <UniqueIdentifier>{c2ba6947-be8e-4289-a245-d20958f4a982}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\MasterServer\ProxyField">
-      <UniqueIdentifier>{f5227545-f369-47a2-81fb-ea077573a998}</UniqueIdentifier>
+      <UniqueIdentifier>{5550a720-014b-483e-9fa5-823091cd11ce}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\login">
-      <UniqueIdentifier>{8b9687a8-be0a-4d1b-a5bc-0481684c85d9}</UniqueIdentifier>
+      <UniqueIdentifier>{aae927cd-8a1b-4478-9c6b-e02d3bab9923}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\Faction">
-      <UniqueIdentifier>{4977e9ff-28f1-470c-93fb-dcaa166b5fd5}</UniqueIdentifier>
+      <UniqueIdentifier>{795bbeb4-2db4-4db2-97f8-a06bcccb6b56}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\combat">
-      <UniqueIdentifier>{c64ae333-d3e9-459d-bb33-ba9c0c14e19b}</UniqueIdentifier>
+      <UniqueIdentifier>{c4a87302-b7ed-46cb-9460-a19d79d01562}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\hate table">
-      <UniqueIdentifier>{1b8f39ab-d647-4c84-9e6a-4a75e4c68919}</UniqueIdentifier>
+      <UniqueIdentifier>{5fb758db-e13f-4104-b1b8-82c824d00c10}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\npcshop">
-      <UniqueIdentifier>{cd087132-99a3-47b9-816d-ca7b479d3e3d}</UniqueIdentifier>
+      <UniqueIdentifier>{5a2b59b9-6740-4ef7-a0e7-974b41276e69}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\AppServer">
-      <UniqueIdentifier>{7d5f5f17-b3c8-4bd7-aa94-e7d2662460d3}</UniqueIdentifier>
+      <UniqueIdentifier>{dc25a3f9-d09c-4106-9bca-b883cf7d851e}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\ChatMessage">
-      <UniqueIdentifier>{506af092-9918-461d-98c4-b3a601e91208}</UniqueIdentifier>
+      <UniqueIdentifier>{7017326e-8494-43c9-b312-8cba535c8db7}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\ChatMessage\RelayMessage">
-      <UniqueIdentifier>{75f60c5c-c760-4662-b99c-95cbe6c2c825}</UniqueIdentifier>
+      <UniqueIdentifier>{58b6b2d9-e9c6-47af-8e63-8c1952957e63}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\ChatMessage\ResponseMessage">
-      <UniqueIdentifier>{5be1e429-1db5-4892-9fb9-d9d53e8749d1}</UniqueIdentifier>
+      <UniqueIdentifier>{f1d0e852-fb44-4b33-9cae-d759598e28ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\ChatMessage\Base">
-      <UniqueIdentifier>{956e9985-5b99-4b78-a4fe-53606edb4cad}</UniqueIdentifier>
+      <UniqueIdentifier>{a193b6b5-509f-444f-ae66-94297d622809}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\ChatMessage\SystemMessage">
-      <UniqueIdentifier>{6669d455-10e3-4009-a5cf-0256336ceea5}</UniqueIdentifier>
+      <UniqueIdentifier>{36cbfc89-47bd-4a2f-9fd8-257eef6841a0}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\cutscene">
-      <UniqueIdentifier>{16c4549f-d547-43b7-9681-a8347c5d83e1}</UniqueIdentifier>
+      <UniqueIdentifier>{3bd50cda-302b-4bf7-9e24-3242e739fdb4}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\emblem">
-      <UniqueIdentifier>{ccc334be-c14c-4f65-aaa9-02e3a34b1ab5}</UniqueIdentifier>
+      <UniqueIdentifier>{d58c5f80-9e69-4290-9b49-c1b049566d3f}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\reservecmd">
-      <UniqueIdentifier>{7089629b-0e36-4812-a66c-f55a17489a79}</UniqueIdentifier>
+      <UniqueIdentifier>{d2085f32-f850-4d00-93b3-deafa3122546}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\TimeCalculator">
-      <UniqueIdentifier>{f3946e31-c892-4d54-a8b1-dac51f046d47}</UniqueIdentifier>
+      <UniqueIdentifier>{7a7f5d8e-716c-47f9-9d38-1d0a1c3534f5}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\mail">
-      <UniqueIdentifier>{9ed78a6e-eff7-45f4-8378-a66db3b934bf}</UniqueIdentifier>
+      <UniqueIdentifier>{4667b3c1-87db-4a83-b25e-c997f0c3a1c6}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\questpvp">
-      <UniqueIdentifier>{4e18a4b4-72ed-4880-ba11-1d50a4d4f766}</UniqueIdentifier>
+      <UniqueIdentifier>{4b9fd208-8a67-421f-aeb0-2d211fdb6820}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\storage">
-      <UniqueIdentifier>{42efe00e-87c3-4fb8-8a36-09fe4bff17e3}</UniqueIdentifier>
+      <UniqueIdentifier>{4cf37729-97b4-4895-a661-c2bfb79975ae}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\npc_session">
-      <UniqueIdentifier>{0c1909d7-2957-42b8-a5f4-f630af6dc532}</UniqueIdentifier>
+      <UniqueIdentifier>{1cda2653-969b-44b8-b184-8956211fc396}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\TradeMarket">
-      <UniqueIdentifier>{fe23e48b-ed2b-417e-a0ef-92969353c629}</UniqueIdentifier>
+      <UniqueIdentifier>{8e8af187-a4f5-413b-831e-608a2fbf20e8}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework">
-      <UniqueIdentifier>{20bd27a3-138b-484c-b037-c4abaaef2794}</UniqueIdentifier>
+      <UniqueIdentifier>{dbd6ee09-a139-45c7-a80b-c41545a784ac}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework\server">
-      <UniqueIdentifier>{768c6ece-a2d4-4dbb-88f1-3ce974c51a48}</UniqueIdentifier>
+      <UniqueIdentifier>{a8611cd4-3f8d-438d-baf1-5212079b42d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework\application">
-      <UniqueIdentifier>{ad3758a8-1248-40e5-a8c4-2dfc659f2e24}</UniqueIdentifier>
+      <UniqueIdentifier>{fb590d31-9a39-452e-a359-e72fcdbe51df}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework\net">
-      <UniqueIdentifier>{bf46dec4-60b3-4071-8f58-59f685fdd29e}</UniqueIdentifier>
+      <UniqueIdentifier>{45302659-c078-4765-bd7b-dd76425d53a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework\AsyncTask">
-      <UniqueIdentifier>{7eeb2538-2645-4000-a9b3-637fadf2a070}</UniqueIdentifier>
+      <UniqueIdentifier>{2bfe042a-9c20-4316-b606-1d8705791f9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework\gameguard">
-      <UniqueIdentifier>{21da8b41-bb15-4f02-b04e-aaa19d32da48}</UniqueIdentifier>
+      <UniqueIdentifier>{53da42c2-bb41-41c4-b185-f32d6541b102}</UniqueIdentifier>
     </Filter>
     <Filter Include="resource">
-      <UniqueIdentifier>{483b11ee-4b5f-4da4-844e-91a3dfbda0cd}</UniqueIdentifier>
+      <UniqueIdentifier>{f8b788b8-26f8-4acd-b380-38223447f577}</UniqueIdentifier>
     </Filter>
     <Filter Include="util">
-      <UniqueIdentifier>{053328f1-aa31-46ed-8df2-e85baf6e3ec2}</UniqueIdentifier>
+      <UniqueIdentifier>{579d21ce-3498-4b96-9c70-f699448f8d95}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\AutoTest">
-      <UniqueIdentifier>{630e92f9-c496-4364-8df3-54364b99dc15}</UniqueIdentifier>
+      <UniqueIdentifier>{1a167436-a842-44cc-94de-0a2c77e2406e}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\AutoTest\runner">
-      <UniqueIdentifier>{e4cdc675-1bb4-440b-945b-f8825ce9d3f4}</UniqueIdentifier>
+      <UniqueIdentifier>{42f2e722-e9e6-4cb1-a7a7-abd9fcfb9f9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\AutoTest\test">
-      <UniqueIdentifier>{5895bb0f-7eba-4254-8b66-d201058aff76}</UniqueIdentifier>
+      <UniqueIdentifier>{0419015b-d9c5-4c30-b3aa-bb9da39b7c92}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\AutoTest\reporter">
-      <UniqueIdentifier>{d64c1b8c-abfc-4dbb-a801-25aaed0a7e0a}</UniqueIdentifier>
+      <UniqueIdentifier>{53791b9b-5390-4a53-81d5-0e706f54da89}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\reporter">
-      <UniqueIdentifier>{0d412b5b-e339-44ec-8dae-0a734fbc5f61}</UniqueIdentifier>
+      <UniqueIdentifier>{e9a0b6e9-4b85-49f1-ba9b-b51594da5241}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\TestDynamicField">
-      <UniqueIdentifier>{9caa89f6-77b2-4f39-a4f9-93aa9e88ea36}</UniqueIdentifier>
+      <UniqueIdentifier>{bd7d668b-5c47-44d0-9cca-88b334312def}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\SharedMemMUID">
-      <UniqueIdentifier>{26bcd9e4-e3fb-4a6c-b697-4b4aa5b55e5c}</UniqueIdentifier>
+      <UniqueIdentifier>{a2d623ef-20d8-4df0-9942-743914cb93d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="util\MonitorPort">
-      <UniqueIdentifier>{7ec4f028-adf1-4b67-869d-11553e096405}</UniqueIdentifier>
+      <UniqueIdentifier>{c5d49158-85fc-4cba-a8fa-7d30ba12a244}</UniqueIdentifier>
     </Filter>
     <Filter Include="PMS">
-      <UniqueIdentifier>{8e2b35a9-5979-4e4a-88e5-c166e59bc3c4}</UniqueIdentifier>
+      <UniqueIdentifier>{186e1cb8-d728-49a7-b52a-7878dcc1cdbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\item\setitem">
+      <UniqueIdentifier>{58dd4bc3-b420-4519-84dd-5cd1ba7c2f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\guidebook">
+      <UniqueIdentifier>{845a1e14-c52f-4794-b56e-82f3a7445392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\db\Task\GDBTask\GuideBook">
+      <UniqueIdentifier>{da98703b-7cf7-4c56-b233-52bb4d3d01d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1650,9 +1659,6 @@
     <ClCompile Include="GItemSorter.cpp">
       <Filter>logic\item\system</Filter>
     </ClCompile>
-    <ClCompile Include="GItemSoulAttunement.cpp">
-      <Filter>logic\item\system</Filter>
-    </ClCompile>
     <ClCompile Include="GItemSystem.cpp">
       <Filter>logic\item\system</Filter>
     </ClCompile>
@@ -1895,9 +1901,6 @@
     </ClCompile>
     <ClCompile Include="GDBTaskCharIncMoney.cpp">
       <Filter>logic\db\Task\GDBTask\Character\Money</Filter>
-    </ClCompile>
-    <ClCompile Include="GDBTaskCharItemUpdateXP.cpp">
-      <Filter>logic\db\Task\GDBTask\Character\XP</Filter>
     </ClCompile>
     <ClCompile Include="GDBTaskCharLevelUp.cpp">
       <Filter>logic\db\Task\GDBTask\Character\XP</Filter>
@@ -2986,6 +2989,51 @@
       <Filter>PMS</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="GPlayerGuideBook.cpp">
+      <Filter>logic\entity\player</Filter>
+    </ClCompile>
+    <ClCompile Include="GPlayerBuffConverter.cpp">
+      <Filter>logic\entity\player</Filter>
+    </ClCompile>
+    <ClCompile Include="GNoviceMsgHandler.cpp">
+      <Filter>logic\ChatMessage\RelayMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFPMsgHandler.cpp">
+      <Filter>logic\ChatMessage\RelayMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="GTalentCoolTimeSqlBuilder.cpp">
+      <Filter>logic\db\DBManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GBuffRemainEffectSqlBuilder.cpp">
+      <Filter>logic\db\DBManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GSetItemEffectManager.cpp">
+      <Filter>logic\item\setitem</Filter>
+    </ClCompile>
+    <ClCompile Include="GSetItemEffect.cpp">
+      <Filter>logic\item\setitem</Filter>
+    </ClCompile>
+    <ClCompile Include="GPlayerPosSynchor.cpp">
+      <Filter>logic\entity\player</Filter>
+    </ClCompile>
+    <ClCompile Include="GBuffUser.cpp">
+      <Filter>logic\talent\buff</Filter>
+    </ClCompile>
+    <ClCompile Include="GDBTaskItemSort.cpp">
+      <Filter>logic\db\Task\GDBTask\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="GGuideBook.cpp">
+      <Filter>logic\guidebook</Filter>
+    </ClCompile>
+    <ClCompile Include="GGuideBookMgr.cpp">
+      <Filter>logic\guidebook</Filter>
+    </ClCompile>
+    <ClCompile Include="GGuideBookSystem.cpp">
+      <Filter>logic\guidebook</Filter>
+    </ClCompile>
+    <ClCompile Include="GDBTaskGuideBookInsert.cpp">
+      <Filter>logic\db\Task\GDBTask\GuideBook</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GEffectTargetSelector.h">
@@ -4116,9 +4164,6 @@
     <ClInclude Include="GItemSorter.h">
       <Filter>logic\item\system</Filter>
     </ClInclude>
-    <ClInclude Include="GItemSoulAttunement.h">
-      <Filter>logic\item\system</Filter>
-    </ClInclude>
     <ClInclude Include="GItemSystem.h">
       <Filter>logic\item\system</Filter>
     </ClInclude>
@@ -4388,9 +4433,6 @@
     </ClInclude>
     <ClInclude Include="GDBTaskCharIncMoney.h">
       <Filter>logic\db\Task\GDBTask\Character\Money</Filter>
-    </ClInclude>
-    <ClInclude Include="GDBTaskCharItemUpdateXP.h">
-      <Filter>logic\db\Task\GDBTask\Character\XP</Filter>
     </ClInclude>
     <ClInclude Include="GDBTaskCharLevelUp.h">
       <Filter>logic\db\Task\GDBTask\Character\XP</Filter>
@@ -5575,5 +5617,59 @@
       <Filter>PMS</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="GPlayerGuideBook.h">
+      <Filter>logic\entity\player</Filter>
+    </ClInclude>
+    <ClInclude Include="GPlayerBuffConverter.h">
+      <Filter>logic\entity\player</Filter>
+    </ClInclude>
+    <ClInclude Include="GNoviceMsgHandler.h">
+      <Filter>logic\ChatMessage\RelayMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFPMsgHandler.h">
+      <Filter>logic\ChatMessage\RelayMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="GTalentCoolTimeSqlBuilder.h">
+      <Filter>logic\db\DBManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GBuffRemainEffectSqlBuilder.h">
+      <Filter>logic\db\DBManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GDBTaskDataTalentCoolTime.h">
+      <Filter>logic\db\Task\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GDBTaskDataBuffRemainEffect.h">
+      <Filter>logic\db\Task\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GSetItemEffectManager.h">
+      <Filter>logic\item\setitem</Filter>
+    </ClInclude>
+    <ClInclude Include="GSetItemEffect.h">
+      <Filter>logic\item\setitem</Filter>
+    </ClInclude>
+    <ClInclude Include="GPlayerPosSynchor.h">
+      <Filter>logic\entity\player</Filter>
+    </ClInclude>
+    <ClInclude Include="GBuffUser.h">
+      <Filter>logic\talent\buff</Filter>
+    </ClInclude>
+    <ClInclude Include="GDBTaskItemSort.h">
+      <Filter>logic\db\Task\GDBTask\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="GGuideBook.h">
+      <Filter>logic\guidebook</Filter>
+    </ClInclude>
+    <ClInclude Include="GGuideBookMgr.h">
+      <Filter>logic\guidebook</Filter>
+    </ClInclude>
+    <ClInclude Include="GGuideBookSystem.h">
+      <Filter>logic\guidebook</Filter>
+    </ClInclude>
+    <ClInclude Include="GDBTaskGuideBookInsert.h">
+      <Filter>logic\db\Task\GDBTask\GuideBook</Filter>
+    </ClInclude>
+    <ClInclude Include="GDBTaskDataGuideBookInsert.h">
+      <Filter>logic\db\Task\Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

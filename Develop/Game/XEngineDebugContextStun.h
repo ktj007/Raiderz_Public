@@ -171,7 +171,7 @@ public:
 
 		vector<TD_ITEM> vecTDInventory;
 		vector<TD_ITEM> vecTDEquipment;
-		vector<int> vecTalentID;		
+		vector<TD_TALENT> vecTalentID;
 		vector<TD_PLAYERQUEST> vecTDPlayerQuest;
 		TD_PALETTE tdPalette;
 		vector<TD_FACTION> vecTDFaction;		

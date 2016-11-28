@@ -10,9 +10,11 @@ struct DBTASK_WORLD_INFO
 	int		nMaxPlayerCount;
 	bool	isServable;				// 서비스 가능 여부
 	bool	isExpire;				// 만료 여부
+	wstring strState;				// FINE or MAINTENANCE.
+	int		nOrderNum;
 
 	DBTASK_WORLD_INFO()
-		: nID(0), nType(0), nCurrentPlayerCount(0), nMaxPlayerCount(0), isServable(false), isExpire(false)
+		: nID(0), nType(0), nCurrentPlayerCount(0), nMaxPlayerCount(0), isServable(false), isExpire(false), nOrderNum(0)
 	{
 	}
 };

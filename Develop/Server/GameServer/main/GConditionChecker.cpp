@@ -135,10 +135,10 @@ bool GConditionChecker::Level( GCondition_Leaf* pCondition, GEntityPlayer* pPlay
 	int nMaxLevel= pCondition->GetMaxLevel_For_CT_LEVEL();
 	int nLevel = pPlayer->GetLevel();
 
-	/*if (nLevel < nMinLevel) return false;
-	if (nLevel > nMaxLevel) return false;*/
+	if (nLevel < nMinLevel) return false;
+	if (nLevel > nMaxLevel) return false;
 
-	return true; //SoulHunterZ
+	return true;
 
 }
 

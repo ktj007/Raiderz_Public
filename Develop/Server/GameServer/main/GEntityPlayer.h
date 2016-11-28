@@ -12,7 +12,6 @@
 #include "GActorMeshInfo.h"
 #include "GPlayerField.h"
 #include "GPlayerCRTLogger.h"
-#include "GItemHolder.h"
 
 class GEntityPlayer;
 class GTalentInfo;
@@ -66,6 +65,9 @@ class GPlayerAFK;
 class GPlayerSpawnedNPC;
 class GPlayerSit;
 class GPlayerRide;
+class GPlayerGuideBook;
+class GPlayerBuffConverter;
+class GPlayerPosSynchor;
 
 
 struct GDBCACHEDATA_CHARACTER;
@@ -177,6 +179,9 @@ protected:
 	GPlayerSit*					m_pSit;
 	GPlayerSpawnedNPC*			m_pSpawnedNPC;
 	GPlayerRide*				m_pRide;
+	GPlayerGuideBook*			m_pPlayerGuideBook;
+	GPlayerBuffConverter*		m_pBuffConverter;
+	GPlayerPosSynchor*			m_pPlayerPosSynchor;
 
 	GPlayerSetterForTest*		m_pPlayerSetterForTest;
 	
@@ -193,7 +198,8 @@ protected:
 	// 파티
 	MUID						m_uidParty;							///< 등록되어있는 파티 UID
 	MUID						m_uidInvitor;						///< 초대해준 플레이어 UID
-	MUID						m_uidInvitee;						///< 가입요청한 플레이어 UID
+	typedef map<MUID, float>	MAP_INVITEEUID;
+	MAP_INVITEEUID				m_mapuidInvitee;					///< 가입요청한 플레이어 UID
 	bool						m_bPartyLeader;
 	bool						m_isMoveServer;						///< 서버이동 시작
 
@@ -257,6 +263,7 @@ private:
 	virtual void OnSectorChanged(const vector<GFieldGrid::Sector*>& vecNewSectors, const vector<GFieldGrid::Sector*>& vecOldSectors);
 
 	virtual void OnUpdate(float fDelta);
+	virtual void ProcessInviteeTimeout(float fDelta);
 
 	virtual void	RouteInEntity(const vector<MUID>& vecPlayers) override;
 	virtual void	RouteOutEntity(const vector<MUID>& vecPlayers) override;
@@ -293,7 +300,7 @@ public:
 	virtual bool Create(MUID& uid);
 	virtual void Destroy();
 
-	int64 GetAID() const;
+	AID GetAID() const;
 
 	virtual const wchar_t* GetName() const override;
 
@@ -354,6 +361,7 @@ public:
 	virtual void OnMagicActTalent( GTalentInfo* pTalentInfo ) override;
 	virtual void OnMeleeHit(GEntityActor* pAttacker, GTalentInfo* pTalentInfo) override;	
 	virtual void OnMeleeHitEnemy(GEntityActor* pTarget, GTalentInfo* pTalentInfo) override;	
+	virtual void OnTalentAvoid(GEntityActor* pOwner, GEntityActor* pAttacker, GTalentInfo* pTalentInfo) override;
 
 	// 수영 ----------------
 	void doSwimming();
@@ -363,7 +371,7 @@ public:
 	virtual bool IsEquipShield() const override;
 	
 	// 피해정보를 탤런트에 근거하여 계산후 반환, 탤런트정보가 없다면 액터단위로 계산
-	virtual DAMAGE_ATTRIB GetDamageType( const GTalentInfo* pTalentInfo=NULL )  override;
+	virtual DAMAGE_ATTRIB GetDamageType( DAMAGE_ATTRIB nTalentDamageAttrib=DA_NONE, WEAPON_REFRENCE nWeaponReference=WR_RIGHT )  override;
 
 	// 탤런트 관련 ----------------
 	bool HasPassiveTalent(TALENT_EXTRA_PASSIVE_TYPE nType);
@@ -391,8 +399,9 @@ public:
 	bool SetPartyLeader(bool bPartyLeader);
 	MUID GetPartyInvitorUID() const { return m_uidInvitor; }
 	void SetPartyInvitorUID(MUID val) { m_uidInvitor = val; }
-	MUID GetPartyInviteeUID() const { return m_uidInvitee;	}
-	void SetPartyInviteeUID(MUID val) { m_uidInvitee = val;	}
+	void AddPartyInviteeUID(MUID val);
+	void DeletePartyInviteeUID(MUID val);
+	bool CheckPartyInviteeUID(MUID val) const;
 	void SetMoveServer(bool isMoveServer)	{ m_isMoveServer = isMoveServer;	}
 	bool IsMoveServer(void)					{ return m_isMoveServer;	}
 
@@ -540,12 +549,14 @@ public:
 	GPlayerEnemyInfoSender&			GetEnemyInfoSender()				{ return *m_pEnemyInfoSender; }
 	GPlayerStance&					GetStance()							{ return *m_pStance; }
 	GPlayerRide&					GetRide()							{ return *m_pRide; }
+	GPlayerGuideBook&				GetPlayerGuideBook()				{ return *m_pPlayerGuideBook; }
+	GPlayerBuffConverter&			GetBuffConverter()					{ return *m_pBuffConverter; }
 	
 	void							PostDieLog();
 	void							GetKillerIDAndBasicCode(PLAYER_DIE_INFO& dinfo);
 	void							GetPVPCode(PLAYER_DIE_INFO& dinfo);
 		
-	int GetCID() const;
+	CID GetCID() const;
 	int GetGID() const;
 	virtual GActorMeshInfo* GetMeshInfo();	
 	bool	IsSameName(GEntityPlayer* pOtherPlayer);
@@ -605,6 +616,12 @@ public:
 private:
 	bool SetSensorExitMarker(const GFieldInfo* pFieldInfo, int nMarkerID, CHANNELID nChannelID);
 	virtual void OnUseTalentFailed(int nTalentID, CCommandResultTable nFailCause) override;	
+	virtual void OnActTalentFailed(int nTalentID, CCommandResultTable nFailCause) override;
+
+public:
+	void RegainSetItemEffect();
+private:
+	vector<int> m_vecLastSetItemEffectBuffIDs;
 };
 
 GEntityPlayer* ToEntityPlayer(GEntity* pEntity);

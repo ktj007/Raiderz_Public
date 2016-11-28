@@ -177,6 +177,11 @@ void GActorObserverMgr::OnMeleeHitEnemy( GEntityActor* pTarget, GTalentInfo* pTa
 	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnMeleeHitEnemy(pTarget, pTalentInfo));
 }
 
+void GActorObserverMgr::OnStartTalent( GTalentInfo* pTalentInfo )
+{
+	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnStartTalent(pTalentInfo));
+}
+
 void GActorObserverMgr::OnUseTalent( GEntityActor* pUser, GTalentInfo* pTalentInfo )
 {
 	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnUseTalent(pUser, pTalentInfo));
@@ -302,6 +307,11 @@ void GActorObserverMgr::OnItemUnequipped( GItem* pItem )
 	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnItemUnequipped(pItem));
 }
 
+void GActorObserverMgr::OnSwitchingWeaponSetBegin()
+{
+	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnSwitchingWeaponSetBegin());
+}
+
 void GActorObserverMgr::OnSwitchingWeaponSet( SH_ITEM_SWITCH_WEAPON val )
 {
 	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnSwitchingWeaponSet(val));
@@ -310,6 +320,11 @@ void GActorObserverMgr::OnSwitchingWeaponSet( SH_ITEM_SWITCH_WEAPON val )
 void GActorObserverMgr::OnJobFinished( const GJob* pJob )
 {
 	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnJobFinished(pJob));
+}
+
+void GActorObserverMgr::OnChangeStance( CHAR_STANCE nStance )
+{
+	NOTIFY_OBSERVERS(GActorObserver, m_setActorObservers, OnChangeStance(nStance));
 }
 
 void GActorObserverMgr::OnDoSomething()

@@ -26,7 +26,7 @@ namespace rs3
 			static void				makeSortEdgeInfo(RClothEdgeAndTriangleInfo* pEdgeAndTriInfo,const rs3::RMeshNode *pClothMeshNode);
 			static void				makeTriangleOfETI(RClothEdgeAndTriangleInfo* pEdgeAndTriInfo,const rs3::RMeshNode *pClothMeshNode);
 
-		static void				makeClothInfoFromETI(RClothInfo *pClothInfo,RClothEdgeAndTriangleInfo* pEdgeAndTriInfo);	
+		static void				makeClothInfoFromETI(RClothInfo *pClothInfo,RClothEdgeAndTriangleInfo* pEdgeAndTriInfo);
 			static void				makeParticlesFromETI(RClothInfo *pClothInfo,RClothEdgeAndTriangleInfo* pEdgeAndTriInfo);
 			static void				makeTrianglesFromETI(RClothInfo *pClothInfo,RClothEdgeAndTriangleInfo* pEdgeAndTriInfo);
 			static void				makeConstraintsFromETI(RClothInfo *pClothInfo,RClothEdgeAndTriangleInfo& edgeAndTriInfo);

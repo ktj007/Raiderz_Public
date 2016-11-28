@@ -9,7 +9,7 @@ GPartyMemberStorage::GPartyMemberStorage(int nLimitMemberCount)
 	_ASSERT(0 <= m_nLimitMemberCount);
 }
 
-bool GPartyMemberStorage::AddMember(MUID uidMember, wstring strMembersName, int nMemberCID)
+bool GPartyMemberStorage::AddMember(MUID uidMember, wstring strMembersName, CID nMemberCID)
 {
 	if (IsFull())					return false;
 	if (IsExistMember(uidMember))	return false;
@@ -110,7 +110,7 @@ MUID GPartyMemberStorage::GetLeader(void) const
 	return m_uidLeader;
 }
 
-int GPartyMemberStorage::GetLeaderCID() const
+CID GPartyMemberStorage::GetLeaderCID() const
 {
 	partymember_iterator itor = m_mapMember.find(m_uidLeader);
 	if (m_mapMember.end() == itor) return 0;
@@ -206,7 +206,7 @@ bool GPartyMemberStorage::ChangeMemberUID(MUID uidOldMember, MUID uidNewMember)
 	return true;
 }
 
-MUID GPartyMemberStorage::FindMemberUID(int nCID)
+MUID GPartyMemberStorage::FindMemberUID(CID nCID)
 {
 	for (map_partymember::iterator itor=m_mapMember.begin(); itor!=m_mapMember.end(); itor++)
 	{
@@ -219,9 +219,9 @@ MUID GPartyMemberStorage::FindMemberUID(int nCID)
 	return MUID::ZERO;
 }
 
-vector<int> GPartyMemberStorage::CollectMemberCID()
+vector<CID> GPartyMemberStorage::CollectMemberCID()
 {
-	vector<int> vecMemberCID;
+	vector<CID> vecMemberCID;
 
 	for (map_partymember::iterator itor=m_mapMember.begin(); itor!=m_mapMember.end(); itor++)
 	{

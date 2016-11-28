@@ -154,6 +154,8 @@ void GItemUnequiper::UnequipForDBTask(GDBT_ITEM_UNEQUIP& data)
 		Route(pPlayer, data.unequip2.m_nSlotID, data.unequip2.m_nToSlotID);	
 	}
 
+	pPlayer->RegainSetItemEffect();
+
 	bool bAfterUnarmed = pPlayer->GetItemHolder()->GetEquipment().IsUnarmed();
 	if (false == bBeforeUnarmed && true == bAfterUnarmed)
 	{
@@ -202,8 +204,8 @@ void GItemUnequiper::RouteToOther(GEntityPlayer* pPlayer, SH_ITEM_SLOT nSlotIDFr
 {
 	VALID(pPlayer);
 
-	MCommand* pNewCommand = MakeNewCommand(MC_ITEM_CHANGE_LOOK_UNEQUIP_ITEM, 
-		2, NEW_UID(pPlayer->GetUID()), NEW_CHAR(nSlotIDFrom));
+	MCommand* pNewCommand = MakeNewCommand(MC_ITEM_REMOVE_LOOK,
+		2, NEW_USHORT(pPlayer->GetUIID()), NEW_CHAR(nSlotIDFrom));
 
 	pPlayer->RouteToThisCellExceptMe(pNewCommand);
 }

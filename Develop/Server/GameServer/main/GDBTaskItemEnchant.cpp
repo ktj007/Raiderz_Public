@@ -126,8 +126,14 @@ mdb::MDB_THRTASK_RESULT GDBTaskItemEnchant::_OnCompleted()
 
 		// 주변에게 룩 갱신 알림
 		{
-			MCommand* pNewCommand = MakeNewCommand(MC_ITEM_CHANGE_LOOK_EQUIP_ITEM,
-				7, NEW_INT(-1), NEW_INT(-1), NEW_CHAR((char)pItem->m_nSlotID), NEW_UID(pPlayer->GetUID()), NEW_INT(pItem->m_pItemData->m_nID), NEW_INT(pItem->m_nDyedColor), NEW_INT(pItem->GetActiveEnchantBuffID()));
+			MCommand* pNewCommand = MakeNewCommand(MC_ITEM_CHANGE_LOOK, 6,
+				NEW_USHORT(pPlayer->GetUIID()),
+				NEW_CHAR((char)pItem->m_nSlotID),
+				NEW_INT(pItem->m_pItemData->m_nID),
+				NEW_INT(pItem->m_nDyedColor),
+				NEW_INT(pItem->GetActiveEnchantBuffID()),
+				NEW_CHAR(0)	// TODO: enchant grade
+			);
 
 			pPlayer->RouteToThisCellExceptMe(pNewCommand);
 		}

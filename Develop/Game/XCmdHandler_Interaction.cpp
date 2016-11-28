@@ -17,7 +17,7 @@
 
 XCmdHandler_Interaction::XCmdHandler_Interaction(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 {
-	SetCmdHandler(MC_NPCINTERACTION_INTERACTION,	OnNPCInteraction);
+	SetCmdHandler(MC_NPCINTERACTION_SELECTABLE_IELEMENT,	OnNPCInteraction);
 	SetCmdHandler(MC_NPCINTERACTION_END,			OnNPCInteractionEnd);
 	SetCmdHandler(MC_NPCINTERACTION_ICON,			OnNPCICon);	
 	SetCmdHandler(MC_NPCINTERACTION_LOOT_START,		OnNPCInteractionLootStart);
@@ -161,7 +161,7 @@ MCommandResult XCmdHandler_Interaction::OnNPCICon(MCommand* pCommand, MCommandHa
 
 		pNPC->SetNPCIConTypeToIconState(tdNPCIcon.m_nIcon);
 
-		if (tdNPCIcon.m_nIcon == NIT_COMBAT) continue;
+		if (tdNPCIcon.m_nIcon == NIT_NONE) continue;
 
 		map<UIID, NPC_ICON_INFO>::iterator itor = gvar.Game.vecNPCIcon.find(tdNPCIcon.m_nUIID);
 		if (itor != gvar.Game.vecNPCIcon.end())

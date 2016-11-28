@@ -14,6 +14,13 @@ enum ATTACK_TYPE_FOR_CALCULATE
 	ATC_MAGIC_ATTACK			// 마법공격
 };
 
+enum CALC_TYPE_FOR_WEAPON_DAMAGE
+{
+	CTWD_MINMAX,
+	CTWD_MIN,
+	CTWD_MAX
+};
+
 
 class GCriticalCalculator;
 
@@ -31,38 +38,42 @@ protected:
 	virtual float ClacTalentFactor2Fomula(int nBaseTalentRank, int nSpecializationTalentRank);
 protected:
 	float CalcPlayerTalentFactor1( GEntityPlayer* pPlayerAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRate );
-	virtual float CalcTalentFactor2(GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo);	
+	virtual float CalcTalentFactor2( GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE nDamageType, WEAPON_REFRENCE nWeaponReference = WR_RIGHT );	
 	virtual float CalcTalentFactor2_NotMagic(GEntityPlayer* pAttacker, WEAPON_TYPE nWeaponType);
 	virtual float CalcTalentFactor2_NotMagic(GEntityPlayer* pAttacker, WEAPON_TYPE nLeftWeaponType, WEAPON_TYPE nRightWeaponType);
 
-	virtual float CalcArmorFactor1( GEntityActor* pAttacker, const GTalentInfo* pTalentInfo );
-	virtual float CalcArmorFactor2( GEntityActor* pAttacker, const GTalentInfo* pTalentInfo );
-	virtual float CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, const GTalentInfo* pTalentInfo, WEAPON_TYPE nWeaponType);
-	virtual float CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, const GTalentInfo* pTalentInfo, WEAPON_TYPE nLeftWeaponType, WEAPON_TYPE nRightWeaponType);
+	virtual float CalcArmorFactor1( GEntityActor* pAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRate );
+	virtual float CalcArmorFactor2( GEntityActor* pAttacker, float fWeaponApplyRate, WEAPON_REFRENCE nWeaponReference = WR_RIGHT );
+	virtual float CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, float fWeaponApplyRate, WEAPON_TYPE nWeaponType);
+	virtual float CalcArmorFactor2_Player(GEntityPlayer* pPlayerAttacker, float fWeaponApplyRate, WEAPON_TYPE nLeftWeaponType, WEAPON_TYPE nRightWeaponType);
 
-	virtual int CalcNPCWeaponDamage(const GNPCInfo* pAttackerNPCInfo);
-	virtual int CalcPlayerWeaponDamage(GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo, bool bCritical);
-	virtual int doCalcWeaponDamage(GEntityActor* pActor, const GItem* pLeftWeaponItem, const GItem* pRightWeaponItem, bool bCritical);
-	virtual int doCalcWeaponDamage(GEntityActor* pActor, const GItem* pWeaponItem, bool bCritical);
+	virtual int CalcNPCWeaponDamage(const GNPCInfo* pAttackerNPCInfo, CALC_TYPE_FOR_WEAPON_DAMAGE calcType = CTWD_MINMAX);
+	virtual int CalcPlayerWeaponDamage(GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE damageType = TDT_PHYSIC, WEAPON_REFRENCE weaponReference = WR_RIGHT, CALC_TYPE_FOR_WEAPON_DAMAGE calcType = CTWD_MINMAX);
+	virtual int doCalcWeaponDamage(GEntityActor* pActor, const GItem* pLeftWeaponItem, const GItem* pRightWeaponItem, TALENT_DAMAGE_TYPE damageType = TDT_PHYSIC, CALC_TYPE_FOR_WEAPON_DAMAGE calcType = CTWD_MINMAX);
+	virtual int doCalcWeaponDamage(GEntityActor* pActor, const GItem* pWeaponItem, TALENT_DAMAGE_TYPE damageType = TDT_PHYSIC, CALC_TYPE_FOR_WEAPON_DAMAGE calcType = CTWD_MINMAX);
 
 	bool	HasWeaponPassiveTalent( GEntityActor* pActor, const GItem* pWeaponItem );
 
-	virtual float CalcBuffPlusFactor(GEntityActor* pAttacker, const GTalentInfo* pTalentInfo);
-	virtual float CalcBuffDefenceFactor( GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo );
-	virtual int CalcTalentDamage(const GDamageRangedInfo& DamageInfo, bool bCritical);
+	virtual float CalcBuffPlusFactor(GEntityActor* pAttacker, TALENT_DAMAGE_TYPE nDamageType);
+	virtual float CalcBuffDefenceFactor( GEntityActor* pAttacker, GEntityActor* pVictim, DAMAGE_ATTRIB nDamageAttrib, WEAPON_REFRENCE nWeaponReference = WR_RIGHT );
+	virtual int CalcTalentDamage( const GDamageRangedInfo& DamageInfo );
 
 	virtual float CalcCharacterFactorForMagic(GEntityPlayer* pAttacker);
 	virtual float CalcCharacterFactorForMelee(GEntityPlayer* pAttacker);
 	virtual float CalcCharacterFactorForRange(GEntityPlayer* pAttacker);
 
+	virtual int CalcBuffFinalDamage(int nDamage, float fTalentFactor1, float fArmorFactor1, int nWeaponDamage, float fWeaponApplyRate, float fTalentFactor2, float fArmorFactor2, float fCharacterFactor, float fBuffPlusFactor, float fBuffDefenceFactor, float fSpellPower);
+
 	// debug를 위해 public으로 풀어둠
 public:
 	GAttackDamageCalculator(GCriticalCalculator* pCriticalCalculator=NULL);
 	virtual ~GAttackDamageCalculator();
-	virtual float CalcCharacterFactor(GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo);	
+	virtual float CalcCharacterFactor(GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE nDamageType, WEAPON_REFRENCE nWeaponReference = WR_RIGHT);
 	virtual float CalcAttackDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GTalentInfo* pTalentInfo, bool bCritical, const GDamageRangedInfo& DamageInfo);
+	// virtual float CalcBuffAttackDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo, bool bCritical, const GDamageRangedInfo& DamageInfo);
+	virtual bool CalcBuffRangedDamage(GEntityActor* pAttacker, GEntityActor* pVictim, const GBuffInfo* pBuffInfo, GDamageRangedInfo* poutDamageRangedInfo, GHealRangedInfo* poutHealRangedInfo, float* pfoutCriticalFactor);
 	virtual int MakeDamageFromMinMaxDamage(const GDamageRangedInfo& DamageInfo);	
 
-	static ATTACK_TYPE_FOR_CALCULATE CalcAttackTypeForCalculate(GEntityPlayer* pAttacker, const GTalentInfo* pTalentInfo);
-	virtual float CalcTalentFactor1( GEntityActor* pAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRatepTalentInfo );
+	static ATTACK_TYPE_FOR_CALCULATE CalcAttackTypeForCalculate(GEntityPlayer* pAttacker, TALENT_DAMAGE_TYPE nDamageType, WEAPON_REFRENCE nWeaponReference = WR_RIGHT);
+	virtual float CalcTalentFactor1( GEntityActor* pAttacker, DAMAGE_ATTRIB nDamageAttrib, float fWeaponApplyRate );
 };

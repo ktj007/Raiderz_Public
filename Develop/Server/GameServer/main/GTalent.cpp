@@ -199,17 +199,23 @@ void GTalent::OnStart()
 	if (GetPhase() == TALENT_PHASE_CANCELED)
 		return;	// 초기화 실패로 취소됨
 
-	// OnUseTalent 이벤트
-	PFI_B(3050, "GEntityActor::OnUseTalent");
-	m_pOwner->OnUseTalent(m_pOwner, m_pTalentInfo);
+	PFI_B(3050, "GEntityActor::OnStartTalent");
+	m_pOwner->OnStartTalent(m_pTalentInfo);
 	PFI_E(3050);
+
+	ApplyTalentEffect(TC_START_TALENT);
+
+	// OnUseTalent 이벤트
+	PFI_B(3051, "GEntityActor::OnUseTalent");
+	m_pOwner->OnUseTalent(m_pOwner, m_pTalentInfo);
+	PFI_E(3051);
 
 	m_pRouter->RouteUseTalent(m_pTalentInfo, GetInitPos(), GetInitDir());
 }
-
 void GTalent::OnExit()
 {
-	m_TalentHit.OnExit(this);
+	ApplyTalentEffect(TC_EXIT_TALENT);
+
 	NOTIFY_OBSERVERS(GTalentObserver, m_vecObservers, OnExit(this));
 }
 
@@ -408,6 +414,15 @@ bool GTalent::IsNowAvoidTime()
 		m_fElapsedTime <= m_pTalentInfo->m_fAvoidTimeEnd);
 }
 
+bool GTalent::IsNowIgnoreAllMFTime()
+{
+	if (!m_pTalentInfo->IsUseIgnoreAllMFTime())
+		return false;
+
+	return (m_fElapsedTime >= m_pTalentInfo->m_fIgnoreAllMFTimeStart &&
+		m_fElapsedTime <= m_pTalentInfo->m_fIgnoreAllMFTimeEnd);
+}
+
 bool GTalent::IsExpired()
 {
 	if (m_nPhase == TALENT_PHASE_PREPARE)
@@ -435,7 +450,7 @@ bool GTalent::IsMovable()
 
 bool GTalent::IsCastingComplete()
 {
-	return m_fElapsedTime >= m_pTalentInfo->m_fCastingTime;
+	return ((m_fElapsedTime * m_pOwner->GetCastSpeed()) >= m_pTalentInfo->m_fCastingTime);
 }
 
 void GTalent::AttachObserver( GTalentObserver* pOvr )
@@ -573,23 +588,30 @@ void GTalent::RouteActTalent()
 {
 	if (m_pTalentInfo->HasProjectileEvent())
 	{
-		vec3 vTargetPos;
-		if (IsAimingDirectionTalent())
+		if (m_Target.uidTarget.IsValid())
 		{
-			GetTargetPos(vTargetPos);
-			m_vInitialTargetPos = vTargetPos;
+			vec3 vTargetPos;
+			if (IsAimingDirectionTalent())
+			{
+				GetTargetPos(vTargetPos);
+				m_vInitialTargetPos = vTargetPos;
+			}
+			else
+			{
+				vTargetPos = GetInitTargetPos();
+			}
+
+			// 발사체용 액트패킷 날리기
+			m_pRouter->RouteActTalentProjectileMissile(	m_pTalentInfo->m_nID,
+														vTargetPos,
+														m_Target.uidTarget,
+														m_Target.nCapsuleGroupIndex,
+														m_Target.nCapsuleIndex );
 		}
 		else
 		{
-			vTargetPos = GetInitTargetPos();
+			m_pRouter->RouteActTalentMiss( m_pTalentInfo->m_nID );
 		}
-		
-		// 발사체용 액트패킷 날리기
-		m_pRouter->RouteActTalentProjectileMissile(	m_pTalentInfo->m_nID, 
-													vTargetPos, 
-													m_Target.uidTarget,
-													m_Target.nCapsuleGroupIndex,
-													m_Target.nCapsuleIndex);
 	}
 	else
 	{
@@ -712,5 +734,10 @@ bool GTalent::IsNowCasting()
 void GTalent::OnGainDamage( GEntityActor* pTarget )
 {
 	m_TalentHit.OnGainDamage(pTarget);
+}
+
+void GTalent::OnHitDone()
+{
+	m_TalentHit.OnHitDone(this);
 }
 

@@ -11,3 +11,6 @@
 
 #include "LDBTaskPmangAccountInsert.h"
 #include "LDBTaskPmangLogin.h"
+
+#include "LDBTaskPWEAccountInsert.h"
+#include "LDBTaskPWELogin.h"

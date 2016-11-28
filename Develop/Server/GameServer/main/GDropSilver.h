@@ -11,17 +11,17 @@ public:
 	GDropMoney();		
 	void Clear();
 
-	void Drop(int nBeneficiaryCID, GLootInfo* pLootInfo);
-	void Drop(const vector<int>& vecBeneficiaryCID, GLootInfo* pLootInfo);
+	void Drop(CID nBeneficiaryCID, GLootInfo* pLootInfo);
+	void Drop(const vector<CID>& vecBeneficiaryCID, GLootInfo* pLootInfo);
 
-	bool IsAuthorizedCID(int nCID);
+	bool IsAuthorizedCID(CID nCID);
 	bool IsEmpty();
 	int	 GetQuantity();
 
-	void GetViewableCID(set<int>& outsetViewableCID);
-	void GetAuthorizedCID(set<int>& outsetAuthorizedCID);
+	void GetViewableCID(set<CID>& outsetViewableCID);
+	void GetAuthorizedCID(set<CID>& outsetAuthorizedCID);
 
 private:
 	int			m_nMoney;
-	set<int>	m_setAuhorizedCID;	// 획득 권한이 있는 사람의 CID
+	set<CID>	m_setAuhorizedCID;	// 획득 권한이 있는 사람의 CID
 };

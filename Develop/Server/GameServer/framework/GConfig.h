@@ -12,10 +12,21 @@
 #define CONFIG_AUTO_TEST_AI_PROFILE	L"ai_profile"
 
 
+struct GDBConfig
+{
+	std::wstring strServer;
+	std::wstring strDBName;
+	std::wstring strUserName;
+	std::wstring strPassword;
+};
+
+
 /// 인게임 설정값
 class GFRAMEWORK_API GConfig : public SConfig
 {
 private:
+	static void InitAccountDB(const wchar_t* szFileName);
+	static void InitGameDB(const wchar_t* szFileName);
 	static void InitLogDB(const wchar_t* szFileName);
 public:
 	static void Init_INI();
@@ -37,16 +48,9 @@ public:
 	static int			m_nSendPendingLimitCount;	///< 센드 커멘드 팬딩 제한
 
 	// db
-	static std::wstring		m_strGameDB_Server;			///< DB Server
-	static std::wstring		m_strGameDB_DatabaseName;	///< DB Name
-	static std::wstring		m_strGameDB_UserName;		///< DB Username
-	static std::wstring		m_strGameDB_Password;		///< DB Password
-
-	// LogDB
-	static std::wstring		m_strLogDB_Server;			///< LogDB Server.
-	static std::wstring		m_strLogDB_DatabaseName;	///< LogDB Name.
-	static std::wstring		m_strLogDB_UserName;		///< LogDB Username.
-	static std::wstring		m_strLogDB_Password;		///< LogDB Password.
+	static GDBConfig	m_AccountDBConfig;
+	static GDBConfig	m_GameDBConfig;
+	static GDBConfig	m_LogDBConfig;
 
 	// config
 	static bool		m_bWindowVisible;				///< 서버창을 보일지 여부
@@ -71,6 +75,7 @@ public:
 	static bool		m_bDBTaskCount;
 	static bool		m_bNoDB;
 	static bool		m_bLogPoolCount;				///< 메모리 풀 갯수 로그로 남길지 여부
+	static bool		m_bDBTraceAllTask;
 
 	static bool				m_bExportUpdateDB;
 	static bool				m_bExportWriteFile;
@@ -124,12 +129,8 @@ public:
 	// 개발
 	static bool				m_moveSectorWithoutCopySectorVector;
 
-	//Game Rates
-	static int				m_KillXPRate;
-	static int				m_QuestXPRate;
-	static int				m_QuestGoldRate;
-	static int				m_GoldDropRate;
-	static float			m_ItemDropRate;
+	// const
+	static bool				m_bImmediateDeleteChar;
 };
 
 

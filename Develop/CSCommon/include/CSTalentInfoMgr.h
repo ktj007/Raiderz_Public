@@ -27,6 +27,7 @@ public:
 	CSTalentInfoMgr() {}
 	virtual ~CSTalentInfoMgr() {}
 	virtual void Cooking();		// Loading후 TalentInfo의 추가적인 정보 작성
+	void _CookTalentRefer(CSTalentInfo* pTalentInfo);
 	void _SortHitInfos();
 	void _CopyHitInfoRef();
 

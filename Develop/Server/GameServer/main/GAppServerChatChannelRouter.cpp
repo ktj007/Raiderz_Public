@@ -8,7 +8,7 @@ bool GAppServerChatChannelRouter::CreateChannelReq(CID cidPlayer, wstring strCha
 {
 	MCommand* pNewCmd = gsys.pAppServerFacade->MakeNewCommand(MPC_MSG_CREATE_PRIVATE_CHANNEL_REQ,
 																2,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_WSTR(strChannelName.c_str())
 																);
 	return gsys.pAppServerFacade->Route(pNewCmd);
@@ -18,7 +18,7 @@ bool GAppServerChatChannelRouter::EnterChannelReq(CID cidPlayer, wstring strChan
 {
 	MCommand* pNewCmd = gsys.pAppServerFacade->MakeNewCommand(MPC_MSG_ENTER_CHANNEL_REQ,
 																2,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_WSTR(strChannelName.c_str())
 																);
 	return gsys.pAppServerFacade->Route(pNewCmd);
@@ -28,7 +28,7 @@ bool GAppServerChatChannelRouter::LeaveChannelReq(CID cidPlayer, MUID uidChannel
 {
 	MCommand* pNewCmd = gsys.pAppServerFacade->MakeNewCommand(MPC_MSG_LEAVE_CHANNEL_REQ,
 																2,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_UID(uidChannel)
 																);	
 	return gsys.pAppServerFacade->Route(pNewCmd);
@@ -38,7 +38,7 @@ bool GAppServerChatChannelRouter::KickPlayerReq(CID cidPlayer, MUID uidChannel, 
 {
 	MCommand* pNewCmd = gsys.pAppServerFacade->MakeNewCommand(MPC_MSG_KICK_REQ,
 																3,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_UID(uidChannel),
 																NEW_WSTR(strTargetPlayerName.c_str())
 																);
@@ -49,7 +49,7 @@ bool GAppServerChatChannelRouter::BanPlayerReq(CID cidPlayer, MUID uidChannel, w
 {
 	MCommand* pNewCmd = gsys.pAppServerFacade->MakeNewCommand(MPC_MSG_BAN_REQ,
 																3,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_UID(uidChannel),
 																NEW_WSTR(strTargetPlayerName.c_str())
 																);
@@ -61,7 +61,7 @@ bool GAppServerChatChannelRouter::UnbanPlayerReq(CID cidPlayer, MUID uidChannel,
 {
 	MCommand* pNewCmd = gsys.pAppServerFacade->MakeNewCommand(MPC_MSG_UNBAN_REQ,
 																3,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_UID(uidChannel),
 																NEW_WSTR(strBanedPlayerName.c_str())
 																);
@@ -72,7 +72,7 @@ bool GAppServerChatChannelRouter::ChangeHostReq(CID cidPlayer, MUID uidChannel, 
 {
 	MCommand* pNewCmd = gsys.pAppServerFacade->MakeNewCommand(MPC_MSG_CHANGE_HOST_REQ,
 																3,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_UID(uidChannel),
 																NEW_WSTR(strTargetPlayerName.c_str())
 																);

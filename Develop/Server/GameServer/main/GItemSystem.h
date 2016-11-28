@@ -27,6 +27,7 @@ class GItemSystemSetterForTest;
 class GItemSorter;
 class GItemEnchant;
 class GItemDyer;
+
 class GItemSystem : public MTestMemPool<GItemSystem>
 {
 friend class GItemSystemSetterForTest;

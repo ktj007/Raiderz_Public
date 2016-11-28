@@ -19,7 +19,7 @@ class GPlayerQuest;
 struct GDBT_CHARINFO
 {
 	SEX						nSex;
-	int64					nCID;
+	CID						nCID;
 	int						nLevel;
 	int						nXP;
 	int						nRemaindTP;
@@ -36,7 +36,9 @@ struct GDBT_CHARINFO
 	short					nFeatureSkinColor;
 	uint8					nEyeColor;
 	uint8					nMakeUp;
+	uint8					nVoice;
 	uint8					nTattooType;
+	uint8					nTattooColor;
 	short					nTattooPosX;
 	short					nTattooPosY;
 	uint8					nTattooScale;
@@ -51,6 +53,9 @@ struct GDBT_CHARINFO
 	float					fPosX;
 	float					fPosY;
 	float					fPosZ;
+	float					fDirX;
+	float					fDirY;
+	float					fDirZ;
 	int						nSharedFieldID;
 	float					fEnterPosX;
 	float					fEnterPosY;
@@ -126,12 +131,13 @@ typedef deque<int>					RecipeQ;
 typedef deque<GDBT_QUESTINSTANCE>	QuestQ;
 typedef deque<GDBT_QUESTHISTORY>	QusetHistoryQ;
 typedef deque<int>					QualifyQ;
+typedef deque<int>					GuideBookQ;
 
 struct GCHAR_SERIAL_DATA
 {
 	MUID					uidPlayer;
 	UIID					nUIID;
-	int64					nCID;
+	CID						nCID;
 	bool					bReload;
 
 	GDBT_CHARINFO			CharInfo;
@@ -146,6 +152,7 @@ struct GCHAR_SERIAL_DATA
 	SawnCutsceneVec			vecSawnCutscene;
 	RecipeQ					qRecipe;
 	QualifyQ				qEmblem;
+	GuideBookQ				qGuideBook;
 	GDBT_MAIL_SUMMARY_INFO	MailSummary;
 };
 
@@ -163,19 +170,21 @@ public :
 		, ITEM
 		, TALENT
 		, PALETTE
-		, REMAIND_TIME
+		, TALENT_COOLTIME
+		, REMAIN_BUFF_LIST
 		, QLIST_DOING
 		, QLIST_DONTDOING
 		, FACTION_LIST
 		, SAWN_CUTSCENE_LIST
 		, RECIPE_LIST
 		, QUALIFY_LIST
+		, GUIDEBOOK
 		, MAIL_SUMMARY
 		, END
 	};
 
 
-	void					Input(const int64 nCID, const UIID& nUIID, bool bReload);
+	void					Input(const CID nCID, const UIID& nUIID, bool bReload);
 
 
 	void					OnExecute(mdb::MDatabase& rfDB) override;
@@ -188,13 +197,15 @@ private :
 	bool					GetCharItemList(mdb::MDatabase& rfDB);
 	bool					GetCharTalent(mdb::MDatabase& rfDB);
 	bool					GetCharPalette(mdb::MDatabase& rfDB);
-	bool					GetEffectRemaindSecondsList(mdb::MDatabase& rfDB);
+	bool					GetTalentCoolTimeList(mdb::MDatabase& rfDB);
+	bool					GetBuffRemainEffectList(mdb::MDatabase& rfDB);
 	bool					GetQuestListDoing(mdb::MDatabase& rfDB);
 	bool					GetQuestListDontDoing(mdb::MDatabase& rfDB);
 	bool					GetFactionList(mdb::MDatabase& rfDB);
 	bool					GetSawnCutsceneList(mdb::MDatabase& rfDB);
 	bool					GetRecipeList(mdb::MDatabase& rfDB);
 	bool					GetEmblem(mdb::MDatabase& rfDB);
+	bool					GetGuideBook(mdb::MDatabase& rfDB);
 	bool					GetMailSummaryInfo(mdb::MDatabase& rfDB);
 
 
@@ -221,7 +232,9 @@ protected :
 		void SetActiveWeaponSet(GEntityPlayer* pEntityPlayer);
 
 		void AddTalentList(GEntityPlayer* pEntityPlayer);
-		void AddEffectRemainSecList(GEntityPlayer* pEntityPlayer);
+		// void AddEffectRemainSecList(GEntityPlayer* pEntityPlayer);
+		void AddTalentCoolTimeList(GEntityPlayer* pEntityPlayer);
+		void AddBuffRemainEffectList(GEntityPlayer* pEntityPlayer);
 
 		void AddDoingQuestList(GEntityPlayer* pEntityPlayer);
 		void AddQuestObjective(GEntityPlayer* pEntityPlayer, GPlayerQuest* pPlayerQuest, int nObjectiveID, int nDBProgress);
@@ -232,6 +245,7 @@ protected :
 		void AddSawnCutscene(GEntityPlayer* pEntityPlayer);
 		void AddRepice(GEntityPlayer* pEntityPlayer);
 		void AddEmblem(GEntityPlayer* pEntityPlayer);
+		void AddGuideBook(GEntityPlayer* pEntityPlayer);
 		void SetMailSummaryInfo(GEntityPlayer* pEntityPlayer);
 		
 		void SerializeGuld(GEntityPlayer* pEntityPlayer);

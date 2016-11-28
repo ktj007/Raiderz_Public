@@ -2,6 +2,33 @@
 #include "GDBTaskSQL.h"
 
 
+GAccountDBTaskQuery::GAccountDBTaskQuery( const MUID& uidReqPlayer, const SDBTASK_ID nTaskID) 
+: GDBAsyncTask(uidReqPlayer, SDBT_DBTYPE_ACCOUNTDB, nTaskID)
+{
+
+}
+
+GAccountDBTaskQuery::~GAccountDBTaskQuery()
+{
+
+}
+
+void GAccountDBTaskQuery::OnExecute( mdb::MDatabase& rfDB )
+{
+	_ASSERT(1 == GetQuerySize());
+
+	if (1 != GetQuerySize())
+		return;
+
+	mdb::MDatabaseQuery dbq(&rfDB);
+	ExecuteW(dbq, GetSQLW(0));
+}
+
+mdb::MDB_THRTASK_RESULT GAccountDBTaskQuery::_OnCompleted()
+{
+	return mdb::MDBTR_SUCESS;
+}
+
 GGameDBTaskQuery::GGameDBTaskQuery( const MUID& uidReqPlayer, const SDBTASK_ID nTaskID) 
 : GDBAsyncTask(uidReqPlayer, SDBT_DBTYPE_GAMEDB, nTaskID)
 {

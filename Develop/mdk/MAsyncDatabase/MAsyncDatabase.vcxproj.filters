@@ -109,6 +109,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>AsyncDatabase</Filter>
     </ClCompile>
+    <ClCompile Include="MDBUtil.cpp">
+      <Filter>AsyncDatabase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MAsyncDatabase.h">
@@ -211,6 +214,7 @@
     <ClInclude Include="MDatabaseConst.h" />
     <ClInclude Include="ODBC_C_API_HEADER.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="MDBUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

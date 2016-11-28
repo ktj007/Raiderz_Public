@@ -77,7 +77,7 @@ void GCheatChecker::OnLog_Warning( CHEAT_TYPE nCheatType, int nCheatSubType, GEn
 	vec3 vPos = pPlayer->GetPos();
 
 	// TODO: DB에 기록
-	mlog("cheat warning: type(%d/%d), player(%s[%u] %.1f %.1f %.1f), speed: %.2f\n", 
+	mlog("cheat warning: type(%d/%d), player(%s[%I64d] %.1f %.1f %.1f), speed: %.2f\n", 
 		nCheatType, nCheatSubType, MLocale::ConvUTF16ToAnsi(pPlayer->GetName()).c_str(), cidPlayer, vPos.x, vPos.y, vPos.z, pPlayer->GetWalkSpeed());
 }
 
@@ -91,7 +91,7 @@ void GCheatChecker::OnLog_Disconnect( CHEAT_TYPE nCheatType, int nCheatSubType, 
 	vec3 vPos = pPlayer->GetPos();
 
 	// TODO: DB에 기록
-	mlog("cheated disconnect: type(%d/%d), player(%s[%u] %.1f %.1f %.1f), speed: %.2f\n", 
+	mlog("cheated disconnect: type(%d/%d), player(%s[%I64d] %.1f %.1f %.1f), speed: %.2f\n", 
 		nCheatType, nCheatSubType, MLocale::ConvUTF16ToAnsi(pPlayer->GetName()).c_str(), cidPlayer, vPos.x, vPos.y, vPos.z, pPlayer->GetWalkSpeed());
 }
 

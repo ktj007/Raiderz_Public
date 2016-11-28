@@ -22,9 +22,6 @@ GItem::GItem()
 , m_nSlotID(0)
 , m_nSlotType(SLOTTYPE_NONE)
 , m_strExpiDt(L"NULL")
-, m_nXP(0)
-, m_nNextAttuneXP(0)
-, m_nAttuneLvl(0)
 {
 	for (int i=0; i<ENCHANT_MAX_COUNT; ++i)
 	{
@@ -52,9 +49,6 @@ TD_ITEM GItem::ToTD_ITEM()
 	tdItem.m_bBind = this->m_bBind;
 	tdItem.m_nDyedColor = this->m_nDyedColor;
 	tdItem.m_nSoulQuantity = this->m_nSoulCount;
-	tdItem.m_nXP = this->m_nXP;
-	tdItem.m_nNextAttuneXP = this->m_nNextAttuneXP;
-	tdItem.m_nAttuneLevel = this->m_nAttuneLvl;
 
 	for (int i=0; i<ENCHANT_MAX_COUNT; ++i)
 	{
@@ -98,11 +92,6 @@ TD_PLAYER_GAME_DATA_ITEM_INSTANCE GItem::ToTD_PLAYER_GAME_DATA_ITEM_INSTANCE()
 	tdItem.nSlotType = m_nSlotType;
 	tdItem.nSlotID = m_nSlotID;
 
-	//SoulHunterZ
-	tdItem.nXP = m_nXP;
-	tdItem.nNextAttuneXP = m_nNextAttuneXP;
-	tdItem.nAttuneLevel = m_nAttuneLvl;
-
 	// 강화 정보
 	for (int i=0; i<ENCHANT_MAX_COUNT; ++i)
 	{
@@ -125,7 +114,7 @@ TD_UPDATE_DURABILITY GItem::ToTD_UPDATE_DURABILITY()
 
 TD_ITEM_INSERT GItem::ToTD_ITEM_INSERT()
 {
-	return TD_ITEM_INSERT(m_pItemData->m_nID, m_nSlotID, m_nAmount, m_nDurability, m_nDyedColor, m_nSoulCount);
+	return TD_ITEM_INSERT(m_pItemData->m_nID, m_nSlotID, m_nAmount, m_nDurability, m_nDyedColor, m_nSoulCount, m_nEnchants, 0, TD_ITEM_ATTRIBUTE());
 }
 
 int GItem::GetLostedDurability()
@@ -325,17 +314,23 @@ int GItem::GetAmount() const
 	return m_nAmount;
 }
 
-int GItem::GetItemXP() const
+/*
+int GItem::SetAmount(int nAmount)
 {
-	return m_nXP;
-}
+	if (!m_pItemData)
+		return 0;
 
-int GItem::GetNextAttuneXP() const
-{
-	return m_nNextAttuneXP;
-}
+	if (nAmount > m_pItemData->m_nStackAmount)
+	{
+		m_nAmount = m_pItemData->m_nStackAmount;
+		nAmount -= m_pItemData->m_nStackAmount;
+	}
+	else
+	{
+		m_nAmount += nAmount;
+		nAmount = 0;
+	}
 
-uint8 GItem::GetItemAttuneLvl() const
-{
-	return m_nAttuneLvl;
+	return nAmount;
 }
+*/

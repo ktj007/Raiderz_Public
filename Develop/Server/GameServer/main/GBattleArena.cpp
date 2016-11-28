@@ -171,7 +171,7 @@ void GBattleArena::OnPlayingEnter()
 	}
 
 	// 게임 시작 패킷을 전송	
-	RouteToAllTeam(MakeNewCommand(MC_BATTLEARENA_GAMESTART, 1, NEW_BLOB(&vecTeamUIDs[0], sizeof(MUID), vecTeamUIDs.size())));
+	RouteToAllTeam(MakeNewCommand(MC_BATTLEARENA_GAMESTART, 1, NEW_BLOB(&vecTeamUIDs[0], sizeof(MUID), static_cast<unsigned short>(vecTeamUIDs.size()))));
 }
 
 void GBattleArena::OnScoreBoardEnter()

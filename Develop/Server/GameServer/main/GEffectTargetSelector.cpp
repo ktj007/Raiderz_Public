@@ -83,7 +83,7 @@ vector<GEntityActor*> GEffectTargetSelector::Select(const Desc& desc) const
 
 	GetActors(*pField, vCenterPoint, fEffectRadius, vecEffectTarget);
 	// 관계는 자기 자신에만 한정한다
-	FilterRelation(pSelf, EffectInfo.m_nRelation, vecEffectTarget);
+	FilterRelation(pSelf, EffectInfo.m_nRelation, vecEffectTarget, pCaster);
 	FilterLimit(vCenterPoint, EffectInfo.m_nLimit, vecEffectTarget);	
 
 	return vecEffectTarget;
@@ -108,7 +108,7 @@ void GEffectTargetSelector::GetActors(GField& field, const vec3& vCenterPoint, f
 	}
 }
 
-void GEffectTargetSelector::FilterRelation(GEntitySync* pSelf, CSEffectInfo::RELATION nRelation, vector<GEntityActor*> &outvecEffectTarget) const
+void GEffectTargetSelector::FilterRelation(GEntitySync* pSelf, CSEffectInfo::RELATION nRelation, vector<GEntityActor*> &outvecEffectTarget, GEntitySync* pCaster/*=NULL*/) const
 {
 	VALID(pSelf);
 
@@ -124,6 +124,19 @@ void GEffectTargetSelector::FilterRelation(GEntitySync* pSelf, CSEffectInfo::REL
 	else
 	{
 		VALID(false);
+	}
+
+	GEntityActor* pCasterActor = NULL;
+	if (pCaster)
+	{
+		if (pCaster->IsActor())
+		{
+			pCasterActor = ToEntityActor(pCaster);
+		}
+		else if (pCaster->IsBuffEntity())
+		{
+			pCasterActor = static_cast<GBuffEntity*>(pCaster)->GetOwner();
+		}
 	}
 
 	GRelationChecker relationChecker;
@@ -190,6 +203,19 @@ void GEffectTargetSelector::FilterRelation(GEntitySync* pSelf, CSEffectInfo::REL
 			for each (GEntityActor* pEffectTarget in outvecEffectTarget)
 			{
 				if (pEffectTarget->GetUID() == pSelfActor->GetUID())
+				{
+					vecFiteredEffcteeTarget.push_back(pEffectTarget);
+				}
+			}
+		}
+		break;
+	case CSEffectInfo::RELATION_CASTER_ENEMY:
+		{
+			VALID(pCasterActor);
+
+			for each (GEntityActor* pEffectTarget in outvecEffectTarget)
+			{
+				if (relationChecker.IsEnemy(pCasterActor, pEffectTarget))
 				{
 					vecFiteredEffcteeTarget.push_back(pEffectTarget);
 				}

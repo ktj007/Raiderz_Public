@@ -1,1 +1,5 @@
 #include "StdAfx.h"
+#include "LPMSObject.h"
+#include "PMPMSConnector.h"
+#include "PmRegionStat.h"
+#include "MLocale.h"

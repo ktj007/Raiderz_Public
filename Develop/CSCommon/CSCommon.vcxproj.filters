@@ -2,91 +2,97 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="logic">
-      <UniqueIdentifier>{96832c23-f1e1-4366-84ee-8a9693922742}</UniqueIdentifier>
+      <UniqueIdentifier>{0c42e6ca-43b3-4d9f-b63a-f7fdfaf165ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\item">
-      <UniqueIdentifier>{5d255bb8-907d-43c1-8d50-438dca9dd72b}</UniqueIdentifier>
+      <UniqueIdentifier>{7d62da22-9917-4df3-b81b-503d22e81ae1}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent">
-      <UniqueIdentifier>{e91117b7-f017-4082-b071-97e0376e7b52}</UniqueIdentifier>
+      <UniqueIdentifier>{51b9780f-fbcb-43d9-b8f4-cab0a58228d3}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\talent\effector">
-      <UniqueIdentifier>{81044c46-7b0f-4676-9a61-725aa400aff7}</UniqueIdentifier>
+      <UniqueIdentifier>{29b4c25b-2277-4a2b-a2f9-5a5471ee2e72}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\field">
-      <UniqueIdentifier>{7a50fde7-57c9-48ed-8f0b-931a434e9330}</UniqueIdentifier>
+      <UniqueIdentifier>{050dd542-9add-462d-ad71-28a686cdfac8}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\character">
-      <UniqueIdentifier>{e583a41c-8274-4ede-90fe-9ad3462633f2}</UniqueIdentifier>
+      <UniqueIdentifier>{e0b94de7-5db9-4d0e-b891-dc90db3b1ab9}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\quest">
-      <UniqueIdentifier>{e696967c-9f92-4e36-818c-b2d5b8254a09}</UniqueIdentifier>
+      <UniqueIdentifier>{9f75c55c-25ca-4381-a762-44e232054b01}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\effectinfo">
-      <UniqueIdentifier>{70b8812a-598b-42b2-8476-056b454974fa}</UniqueIdentifier>
+      <UniqueIdentifier>{c0cc1447-34ba-4072-8868-eb3ce5e9a50f}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\buff">
-      <UniqueIdentifier>{120b91b5-b8a3-4d51-9b0e-39d9f23389f0}</UniqueIdentifier>
+      <UniqueIdentifier>{2cc16d89-4f3a-412a-b4fd-4ac4c66deabe}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\faction">
-      <UniqueIdentifier>{a4366852-8ab9-4fba-b2e3-361eee83c44f}</UniqueIdentifier>
+      <UniqueIdentifier>{71c2359e-6519-43ae-b2bc-7cf48fdd20db}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\recipe">
-      <UniqueIdentifier>{375d4f89-02cc-40b5-83f9-dadb10376568}</UniqueIdentifier>
+      <UniqueIdentifier>{c07eadae-0b40-4ee5-9f2d-610953346486}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\mesh">
-      <UniqueIdentifier>{da826956-0048-4eb2-9e49-eb5d37b7233e}</UniqueIdentifier>
+      <UniqueIdentifier>{bc50709c-b819-4f44-8609-1d228b45b8c2}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\party">
-      <UniqueIdentifier>{4eb116c7-1ff2-4924-a1ba-b92392092091}</UniqueIdentifier>
+      <UniqueIdentifier>{c7cf9f42-2d19-44c5-9517-3d769f14fd19}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\condition">
-      <UniqueIdentifier>{bdf1372d-730b-4533-9a3e-fdf19165cacc}</UniqueIdentifier>
+      <UniqueIdentifier>{145207e8-0016-4479-b766-dc6f7bc53784}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\npcshop">
-      <UniqueIdentifier>{17ad6442-40a7-4e8e-aaff-86fe3de54876}</UniqueIdentifier>
+      <UniqueIdentifier>{f4c01cf3-189b-4709-b1ae-6ef29e78030f}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\msg">
-      <UniqueIdentifier>{3826b30e-4189-4349-8716-f8f98c9706cb}</UniqueIdentifier>
+      <UniqueIdentifier>{644e881b-8c90-4054-bc8b-dd3288ba540a}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\define">
-      <UniqueIdentifier>{648d2e14-fe1e-4de0-927f-a438a94ed2df}</UniqueIdentifier>
+      <UniqueIdentifier>{057dde75-76df-4050-8925-50a2ce8fb00c}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\inn">
-      <UniqueIdentifier>{c272534e-5296-48f7-87e6-053e3c38c3dd}</UniqueIdentifier>
+      <UniqueIdentifier>{648965b3-61c7-4366-b069-21927ff17f77}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\emblem">
-      <UniqueIdentifier>{5abe1731-cf82-4e4e-a336-49e857e5e9ef}</UniqueIdentifier>
+      <UniqueIdentifier>{0131183b-c983-4ac5-a93f-f44b374b6172}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\string_filter">
-      <UniqueIdentifier>{139ff9c4-dd91-4bcc-8175-8c33e6c4634c}</UniqueIdentifier>
+      <UniqueIdentifier>{b56cd60c-eead-4098-abab-f88c5cf5267d}</UniqueIdentifier>
     </Filter>
     <Filter Include="logic\TradeMarket">
-      <UniqueIdentifier>{5f14994d-8252-434f-80ea-7e9d4b00a453}</UniqueIdentifier>
+      <UniqueIdentifier>{f0b40b3c-e325-4bd1-8f4b-4491bc802ca4}</UniqueIdentifier>
     </Filter>
     <Filter Include="packet">
-      <UniqueIdentifier>{2c6e89c9-a8c4-46a9-a931-ae49bcd630dd}</UniqueIdentifier>
+      <UniqueIdentifier>{eddec79f-0f53-4934-b84f-28fd8f19bce7}</UniqueIdentifier>
     </Filter>
     <Filter Include="core">
-      <UniqueIdentifier>{849e28b7-83bb-4822-bb9a-3c3e300af7eb}</UniqueIdentifier>
+      <UniqueIdentifier>{3022926a-652b-4660-908d-55c6d7216eb6}</UniqueIdentifier>
     </Filter>
     <Filter Include="locale">
-      <UniqueIdentifier>{774b8788-3365-41b2-bdb2-b1427ed69b29}</UniqueIdentifier>
+      <UniqueIdentifier>{a26ebb1c-b9fc-4fcc-89c1-2a9628de221e}</UniqueIdentifier>
     </Filter>
     <Filter Include="locale\FormatString">
-      <UniqueIdentifier>{3ce1c52c-3682-4a0d-a8f5-a4b0beb5fe17}</UniqueIdentifier>
+      <UniqueIdentifier>{820f4204-d3c0-4a8a-85ad-c5b4f7772b5c}</UniqueIdentifier>
     </Filter>
     <Filter Include="locale\FormatString\FSHelper">
-      <UniqueIdentifier>{55e068a1-2ff0-4b1e-b004-e50096ffa7f6}</UniqueIdentifier>
+      <UniqueIdentifier>{61cbfb67-cdeb-487d-b6f2-34cabcedb1b7}</UniqueIdentifier>
     </Filter>
     <Filter Include="helper">
-      <UniqueIdentifier>{b12ffda3-540b-4405-a93c-769be4238bde}</UniqueIdentifier>
+      <UniqueIdentifier>{d405bc66-a2b3-47ff-98fc-0c787de38c0b}</UniqueIdentifier>
     </Filter>
     <Filter Include="GoogleMockUtil">
-      <UniqueIdentifier>{f9f0a663-4e83-4604-b7b3-2af7f85538ee}</UniqueIdentifier>
+      <UniqueIdentifier>{a3d02143-db15-4885-a6d8-2a25bd3635b2}</UniqueIdentifier>
     </Filter>
     <Filter Include="localization">
-      <UniqueIdentifier>{4810f556-2f96-4fb9-b344-e5ca5fc217fd}</UniqueIdentifier>
+      <UniqueIdentifier>{61f594a3-1f6d-4e59-a357-28b49edbc72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\item\setitem">
+      <UniqueIdentifier>{45fad0a3-e5bc-4da8-b909-0b5f5c59a184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic\guidebook">
+      <UniqueIdentifier>{37c50875-2363-4abb-9605-d47886603e8f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +326,21 @@
     </ClCompile>
     <ClCompile Include="source\CSGoogleMockListener.cpp">
       <Filter>GoogleMockUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CCommandTable_GM.cpp">
+      <Filter>packet</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CSSetItemEffectManager.cpp">
+      <Filter>logic\item\setitem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CSSetItemEffect.cpp">
+      <Filter>logic\item\setitem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CSGuideBook.cpp">
+      <Filter>logic\guidebook</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CSGuideBookMgr.cpp">
+      <Filter>logic\guidebook</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -643,5 +664,23 @@
     </ClInclude>
     <ClInclude Include="include\CSCommonLib.h" />
     <ClInclude Include="include\CSTypes.h" />
+    <ClInclude Include="include\CSConvertIDContainer.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCommandTable_GM.h">
+      <Filter>packet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSSetItemEffectManager.h">
+      <Filter>logic\item\setitem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSSetItemEffect.h">
+      <Filter>logic\item\setitem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSGuideBook.h">
+      <Filter>logic\guidebook</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CSGuideBookMgr.h">
+      <Filter>logic\guidebook</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #include "SBaseDsnFactory.h"
 #include "LDBParamData.h"
 #include "LConfig.h"
+#include "MDBUtil.h"
 
 // 계정 - 기본 정보 읽기
 // 캐릭터
@@ -53,13 +54,14 @@ mdb::MDB_AYSNC_RESULT LDBManager::InitAsyncDB()
 		return mdb::MDBAR_DBCONN_ERR;
 
 	RegistTraceTaskID();	
+	SDBAsyncTask::GetTaskTracer().EnableTraceAll(LConfig::m_bDBTraceAllTask);
 
 	return mdb::MDBAR_SUCCESS;
 }
 
 
 // 서버군의 모든 서버들 상태 정보 받아오기
-wchar_t g_szDB_SERVER_GET_STATUS_INFO[] = L"{CALL dbo.USP_RZ_SERVER_GET_STATUS_INFO (%d, %d)}";
+wchar_t g_szDB_SERVER_GET_STATUS_INFO[] = L"{CALL RZ_SERVER_GET_STATUS_INFO (%d, %d)}";
 bool LDBManager::GetServerStatusList(const int nWorldID, const std::vector<int>& vecServerID)
 {
 	LDBTaskServerGetStatus* pTask = new LDBTaskServerGetStatus();
@@ -80,7 +82,7 @@ bool LDBManager::GetServerStatusList(const int nWorldID, const std::vector<int>&
 
 
 // 계정 로그인 정보 받아오기
-wchar_t g_szDB_LOGIN_GETINFO[] = L"{CALL dbo.USP_RZ_LOGIN_GET_INFO (N'%s', N'%s')}";
+wchar_t g_szDB_LOGIN_GETINFO[] = L"{CALL RZ_LOGIN_GET_INFO ('%s')}";
 bool LDBManager::LoginGetInfo(LDBT_ACC_LOGIN& data)
 {
 	LDBTaskLogin* pTask = new LDBTaskLogin(data.m_uidPlayer);
@@ -88,7 +90,7 @@ bool LDBManager::LoginGetInfo(LDBT_ACC_LOGIN& data)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_LOGIN_GETINFO, MCleanSQLStr(data.m_strUSER_ID).c_str(), MCleanSQLStr(data.m_strPWD).c_str());
+	strSQL.Format(g_szDB_LOGIN_GETINFO, mdb::MDBStringEscaper::Escape(data.m_strSITE_USER_ID).c_str());
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -97,7 +99,7 @@ bool LDBManager::LoginGetInfo(LDBT_ACC_LOGIN& data)
 }
 
 // 계정 로그인 정보 받아오기
-wchar_t g_szDB_PMANG_LOGIN_GETINFO[] = L"{CALL dbo.USP_RZ_LOGIN_GET_INFO (N'%d', N'%s')}";
+wchar_t g_szDB_PMANG_LOGIN_GETINFO[] = L"{CALL RZ_LOGIN_GET_INFO ('%s')}";
 bool LDBManager::PmangLoginGetInfo(const MUID& uidPlayer, const wstring& strUserID, const PmUserData& pmangUserData)
 {
 	LDBTaskPmangLogin* pTask = new LDBTaskPmangLogin(uidPlayer);
@@ -105,7 +107,7 @@ bool LDBManager::PmangLoginGetInfo(const MUID& uidPlayer, const wstring& strUser
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_PMANG_LOGIN_GETINFO, pmangUserData.nUserType , MCleanSQLStr(pmangUserData.strUserSerial).c_str());
+	strSQL.Format(g_szDB_PMANG_LOGIN_GETINFO, mdb::MDBStringEscaper::Escape(pmangUserData.strUserSerial).c_str());
 
 	pTask->Input(strUserID, pmangUserData);
 	pTask->PushSQL(strSQL);
@@ -113,9 +115,25 @@ bool LDBManager::PmangLoginGetInfo(const MUID& uidPlayer, const wstring& strUser
 	return Post(pTask);
 }
 
+wchar_t g_szDB_PWE_LOGIN_GETINFO[] = L"{CALL RZ_LOGIN_GET_INFO ('%s')}";
+bool LDBManager::PWELoginGetInfo(LDBT_ACC_LOGIN& data)
+{
+	LDBTaskPWELogin* pTask = new LDBTaskPWELogin(data.m_uidPlayer);
+	if (NULL == pTask)
+		return false;
+
+	CString strSQL;
+	strSQL.Format(g_szDB_PWE_LOGIN_GETINFO, mdb::MDBStringEscaper::Escape(data.m_strSITE_USER_ID).c_str());
+
+	pTask->Input(data);
+	pTask->PushSQL(strSQL);
+
+	return Post(pTask);
+}
+
 
 // 계정 추가 - UserID, Name
-wchar_t g_szDB_ACC_INSERT[] = L"{CALL USP_RZ_ACCOUNT_INSERT (N'%s', N'%s', N'%s', N'%s')}";
+wchar_t g_szDB_ACC_INSERT[] = L"{CALL RZ_ACCOUNT_INSERT ('%s', '%s')}";
 bool LDBManager::InsertAccount(LDBT_ACC_INSERT& data)
 {
 	LDBTaskAccountInsert* pTask = new LDBTaskAccountInsert(data.m_uidPlayer);
@@ -123,7 +141,9 @@ bool LDBManager::InsertAccount(LDBT_ACC_INSERT& data)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_ACC_INSERT, MCleanSQLStr(data.m_strUSER_ID).c_str(), MCleanSQLStr(data.m_strSITE_CODE).c_str(), MCleanSQLStr(data.m_strSITE_USER_ID).c_str(), MCleanSQLStr(data.m_strPWD).c_str());
+	strSQL.Format(g_szDB_ACC_INSERT, 
+		mdb::MDBStringEscaper::Escape(data.m_strUSER_ID).c_str(), 
+		mdb::MDBStringEscaper::Escape(data.m_strPWD).c_str());
 
 	pTask->Input(data);
 	pTask->PushSQL(strSQL);
@@ -132,7 +152,7 @@ bool LDBManager::InsertAccount(LDBT_ACC_INSERT& data)
 }
 
 // 피망 계정 추가 - UserID, Name
-wchar_t g_szDB_PMANG_ACC_INSERT[] = L"{CALL USP_RZ_ACCOUNT_INSERT (N'%s', N'%d', N'%s', N'%s')}";
+wchar_t g_szDB_PMANG_ACC_INSERT[] = L"{CALL RZ_ACCOUNT_INSERT ('%s', '%s')}";
 bool LDBManager::PmangInsertAccount(const MUID& uidPlayer, const PmUserData& pmangUserData)
 {
 	LDBTaskPmangAccountInsert* pTask = new LDBTaskPmangAccountInsert(uidPlayer);
@@ -140,7 +160,11 @@ bool LDBManager::PmangInsertAccount(const MUID& uidPlayer, const PmUserData& pma
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_PMANG_ACC_INSERT, MCleanSQLStr(pmangUserData.strUserID).c_str(), pmangUserData.nUserType, MCleanSQLStr(pmangUserData.strUserSerial).c_str(), L"");
+	strSQL.Format(g_szDB_PMANG_ACC_INSERT,
+		pmangUserData.strUserID.length() ? 
+			mdb::MDBStringEscaper::Escape(pmangUserData.strUserID) : 
+			mdb::MDBStringEscaper::Escape(pmangUserData.strUserSerial),
+		L"");
 
 	pTask->Input(pmangUserData.strUserID, L"", pmangUserData);
 	pTask->PushSQL(strSQL);
@@ -148,9 +172,28 @@ bool LDBManager::PmangInsertAccount(const MUID& uidPlayer, const PmUserData& pma
 	return Post(pTask);
 }
 
-static const wchar_t g_szDB_CHAR_GET_SIMPLE_INFO[] = L"{CALL dbo.USP_RZ_CHAR_GET_SIMPLE_INFO (%d, %I64d)}";
-static const wchar_t g_szDB_CHAR_GET_EQUIPMENT_INFO[] = L"{CALL dbo.USP_RZ_CHAR_GET_EQUIPMENT_INFO (%d, %I64d)}";
-bool LDBManager::GetAccountCharList(const MUID& uidPlayer, const int64 nAID)
+// 계정 추가 - UserID, Name
+wchar_t g_szDB_PWE_ACC_INSERT[] = L"{CALL RZ_ACCOUNT_INSERT ('%s', '%s')}";
+bool LDBManager::PWEInsertAccount(LDBT_ACC_INSERT& data)
+{
+	LDBTaskPWEAccountInsert* pTask = new LDBTaskPWEAccountInsert(data.m_uidPlayer);
+	if (NULL == pTask)
+		return false;
+
+	CString strSQL;
+	strSQL.Format(g_szDB_PWE_ACC_INSERT, 
+		mdb::MDBStringEscaper::Escape(data.m_strUSER_ID).c_str(), 
+		mdb::MDBStringEscaper::Escape(data.m_strPWD).c_str());
+
+	pTask->Input(data);
+	pTask->PushSQL(strSQL);
+
+	return Post(pTask);
+}
+
+static const wchar_t g_szDB_CHAR_GET_SIMPLE_INFO[] = L"{CALL RZ_CHAR_GET_SIMPLE_INFO (%I64d)}";
+static const wchar_t g_szDB_CHAR_GET_EQUIPMENT_INFO[] = L"{CALL RZ_CHAR_GET_EQUIPMENT_INFO (%I64d)}";
+bool LDBManager::GetAccountCharList(const MUID& uidPlayer, const AID nAID)
 {
 	LDBTaskCharGetLookList* pTask = new LDBTaskCharGetLookList();
 	if (NULL == pTask)
@@ -159,8 +202,8 @@ bool LDBManager::GetAccountCharList(const MUID& uidPlayer, const int64 nAID)
 	CString strSQLCharGetSimpleInfo;
 	CString strSQLCharGetEquipmentInfo;
 
-	strSQLCharGetSimpleInfo.Format(g_szDB_CHAR_GET_SIMPLE_INFO, LConfig::m_nWorldID, nAID);
-	strSQLCharGetEquipmentInfo.Format(g_szDB_CHAR_GET_EQUIPMENT_INFO, LConfig::m_nWorldID, nAID);	
+	strSQLCharGetSimpleInfo.Format(g_szDB_CHAR_GET_SIMPLE_INFO, nAID);
+	strSQLCharGetEquipmentInfo.Format(g_szDB_CHAR_GET_EQUIPMENT_INFO, nAID);	
 
 	pTask->Input(uidPlayer);
 	
@@ -170,16 +213,16 @@ bool LDBManager::GetAccountCharList(const MUID& uidPlayer, const int64 nAID)
 	return Post(pTask);
 }
 
-wchar_t g_szDB_CHAR_DELETE[] = L"{CALL dbo.USP_RZ_CHAR_DELETE (%d, %I64d, %I64d)}";
+wchar_t g_szDB_CHAR_DELETE[] = L"{CALL RZ_CHAR_DELETE_BY_INDEX (%I64d, %d, %s)}";
 // 캐릭터 삭제
-bool LDBManager::DeleteCharacter(const MUID& uidPlayer, const int64 nAID, const int64 nCID, const int nIndex)
+bool LDBManager::DeleteCharacter(const MUID& uidPlayer, const AID nAID, const int nIndex)
 {
 	LDBTaskCharDelete* pTask = new LDBTaskCharDelete();
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(g_szDB_CHAR_DELETE, LConfig::m_nWorldID, nAID, nCID);
+	strSQL.Format(g_szDB_CHAR_DELETE, nAID, nIndex, mdb::MDBBoolUtil::ToWString(LConfig::m_bImmediateDeleteChar));
 
 	pTask->Input(uidPlayer, nIndex);
 	pTask->PushSQL(strSQL);
@@ -187,7 +230,8 @@ bool LDBManager::DeleteCharacter(const MUID& uidPlayer, const int64 nAID, const 
 	return Post(pTask);
 }
 
-wchar_t g_szDB_CHAR_INSERT[] = L"{CALL dbo.USP_RZ_CHAR_INSERT (%d, %I64d, N'%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d)}";
+//wchar_t g_szDB_CHAR_INSERT[] = L"{CALL dbo.USP_RZ_CHAR_INSERT_20110603 (%d, %I64d, N'%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d)}";
+wchar_t g_szDB_CHAR_INSERT[] = L"{CALL RZ_CHAR_INSERT (%I64d, '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', %d)}";
 bool LDBManager::InsertCharacter(const DBP_CHAR_INSERT& rfParam)
 {
 	LDBTaskCharInsert* pTask = new LDBTaskCharInsert();
@@ -195,10 +239,11 @@ bool LDBManager::InsertCharacter(const DBP_CHAR_INSERT& rfParam)
 		return false;
 
 	CString strSQLInsertCharacter;
+	/*
 	strSQLInsertCharacter.Format(g_szDB_CHAR_INSERT
 		, LConfig::m_nWorldID
 		, rfParam.nAID
-		, MCleanSQLStr(rfParam.szName).c_str()
+		, mdb::MDBStringEscaper::Escape(rfParam.szName).c_str()
 		, rfParam.nLevel
 		, rfParam.nXP
 		, rfParam.nSilver
@@ -213,6 +258,7 @@ bool LDBManager::InsertCharacter(const DBP_CHAR_INSERT& rfParam)
 		, rfParam.nTattooPosX
 		, rfParam.nTattooPosY
 		, rfParam.nTattooScale
+		, rfParam.nTattooColor
 		, rfParam.nMakeUp
 		, rfParam.nTotalTP
 		, rfParam.nHP
@@ -225,6 +271,26 @@ bool LDBManager::InsertCharacter(const DBP_CHAR_INSERT& rfParam)
 		, rfParam.nSecondaryPalettedID
 		, rfParam.nTalentStyle
 		, rfParam.nEquipmentIndex
+		, rfParam.nEquipmentColorIndex);
+		*/
+	strSQLInsertCharacter.Format(g_szDB_CHAR_INSERT
+		, rfParam.nAID
+		, mdb::MDBStringEscaper::Escape(rfParam.szName).c_str()
+		, rfParam.nRace
+		, rfParam.nSex
+		, rfParam.nFeatureHair
+		, rfParam.nFeatureFace
+		, rfParam.nFeatureHairColor
+		, rfParam.nFeatureSkinColor
+		, rfParam.nEyeColor
+		, rfParam.nTattooType
+		, rfParam.nTattooPosX
+		, rfParam.nTattooPosY
+		, rfParam.nTattooScale
+		, rfParam.nTattooColor
+		, rfParam.nMakeUp
+		, rfParam.nVoice
+		, rfParam.nTalentStyle
 		, rfParam.nEquipmentColorIndex);
 
 	pTask->Input(rfParam.uidPlayer, rfParam.nAID);
@@ -380,13 +446,13 @@ bool LDBManager::Post( LDBAsyncTask* pTask )
 
 bool LDBManager::ServerStatusStart( const int nWorldID, const int nServerID, const wstring& strServerName, const wstring& strServerVersion, const wstring& strIP, const uint16 nPort, const int nMaxUser , const uint8 nType, const int nUpdateElapsedTimeSec, const int nAllowDelayTm )
 {
-	LGameDBTaskQuery* pTask = new LGameDBTaskQuery(SDBTID_SERVER_START);
+	LAccountDBTaskQuery* pTask = new LAccountDBTaskQuery(SDBTID_SERVER_START);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
-		, nWorldID, nServerID, MCleanSQLStr(strServerName).c_str(), MCleanSQLStr(strServerVersion).c_str(), MCleanSQLStr(strIP).c_str()
+	strSQL.Format(L"{CALL RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
+		, nWorldID, nServerID, strServerName.c_str(), strServerVersion.c_str(), strIP.c_str()
 		, nPort, nType, nMaxUser, nUpdateElapsedTimeSec, nAllowDelayTm );
 
 	pTask->PushSQL(strSQL);
@@ -394,35 +460,36 @@ bool LDBManager::ServerStatusStart( const int nWorldID, const int nServerID, con
 	return Post(pTask);	
 }
 
-bool LDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable )
+bool LDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable, const unsigned long long nTaskCount, const int nCPUUsage, const int nMemoryUsage, const int nFieldCount, const int nFPS )
 {
-	LGameDBTaskQuery* pTask = new LGameDBTaskQuery(SDBTID_SERVER_UPDATE);
+	LAccountDBTaskQuery* pTask = new LAccountDBTaskQuery(SDBTID_SERVER_UPDATE);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL USP_RZ_SERVER_UPDATE (%d, %d, %d, %d)}", nWordID, nServerID, nCurUserCount, bIsServable);
+	strSQL.Format(L"{CALL RZ_SERVER_UPDATE (%d, %d, %d, %s, %I64d, %d, %d, %d, %d)}", 
+		nWordID, nServerID, nCurUserCount, mdb::MDBBoolUtil::ToWString(bIsServable), nTaskCount, nCPUUsage, nMemoryUsage, nFieldCount, nFPS);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-void LDBManager::UpdaateCreateDt( const int64 nAID )
+void LDBManager::UpdaateCreateDt( const AID nAID )
 {
 	LAccountDBTaskQuery* pTask = new LAccountDBTaskQuery(SDBTID_ACC_UPDATE_CREATE_DT);
 	if (NULL == pTask)
 		return;
 
 	CString strSQl;
-	strSQl.Format(L"{CALL USP_RZ_ACCOUNT_UPDATE_REG_DATE (%I64d)}", nAID);
+	strSQl.Format(L"{CALL RZ_ACCOUNT_UPDATE_REG_DATE (%I64d)}", nAID);
 
 	pTask->PushSQL(strSQl);
 
 	Post(pTask);
 }
 
-wchar_t g_szDB_WORLD_GET_LIST[] = L"{CALL dbo.USP_RZ_WORLD_GET_LIST}";
+wchar_t g_szDB_WORLD_GET_LIST[] = L"{CALL RZ_WORLD_GET_LIST}";
 bool LDBManager::WorldGetList(void)
 {
 	LDBTaskGetWorldInfo* pTask = new LDBTaskGetWorldInfo();
@@ -437,6 +504,7 @@ bool LDBManager::WorldGetList(void)
 	return Post(pTask);
 }
 
+wchar_t g_szDB_CONN_SINGLE_LOG[] = L"{CALL RZ_CONN_SINGLE_LOG (%I64d, %d, %d, %I64d, '%s')}";
 bool LDBManager::ConnectLog( LDBT_CONN_LOG& data )
 {
 	LLogDBTaskQuery* pTask = new LLogDBTaskQuery(SDBTID_CONN_LOG);
@@ -444,8 +512,12 @@ bool LDBManager::ConnectLog( LDBT_CONN_LOG& data )
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_CONN_LOG (%I64d, %d, '%s')}"
-		, data.m_nAID, LConfig::m_nWorldID, MCleanSQLStr(data.m_strIP).c_str());
+	strSQL.Format(g_szDB_CONN_SINGLE_LOG,
+		data.m_nCONN_SN,
+		LConfig::m_nServerID,
+		LConfig::m_nWorldID,
+		data.m_nAID,
+		mdb::MDBStringEscaper::Escape(data.m_strIP).c_str());
 
 	pTask->PushSQL(strSQL);
 

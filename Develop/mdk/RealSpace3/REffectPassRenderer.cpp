@@ -7,6 +7,8 @@
 #include "REffectActor.h"
 #include "RParticleShader.h"
 
+#include <functional>
+
 namespace rs3 {
 
 struct SORT_INFO

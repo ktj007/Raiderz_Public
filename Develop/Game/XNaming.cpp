@@ -214,8 +214,6 @@ const wchar_t* XNaming::GetSlotTypeName( SH_ITEM_SLOT  nSlot)
 	case ITEMSLOT_LEG		:	return L"다리";
 	case ITEMSLOT_LFINGER	:
 	case ITEMSLOT_RFINGER	:	return L"반지";
-	case ITEMSLOT_NECK		:	return L"목걸이";
-	case ITEMSLOT_CHARM		:	return L"charm";
 	case ITEMSLOT_LWEAPON	:
 	case ITEMSLOT_RWEAPON	:
 	case ITEMSLOT_LWEAPON2	:

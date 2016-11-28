@@ -62,6 +62,7 @@ void GNPCShopInfoMgr::ParseNPCShop(MXmlElement* pElement, MXml* pXml)
 	_ASSERT(NULL == pExistInfo);
 	if (NULL != pExistInfo)
 	{
+		_VLOGGER->Log(_T(TRADE_XML_ATTR_ID) IS_ALREADY_EXIST);
 		return;
 	}
 
@@ -74,6 +75,7 @@ void GNPCShopInfoMgr::ParseNPCShop(MXmlElement* pElement, MXml* pXml)
 	_ASSERT(NULL != pNewInfo->m_pDialogInfo);
 	if (NULL == pNewInfo->m_pDialogInfo)
 	{
+		_VLOGGER->Log(_T(TRADE_XML_ATTR_DIALOG) IS_NOT_IN_DIALOG);
 	}
 
 	_Attribute(&pNewInfo->m_fBaseBuyMod,	pElement, TRADE_XML_ATTR_BUYMOD);
@@ -111,6 +113,7 @@ void GNPCShopInfoMgr::ParseItem(MXmlElement* pElement, MXml* pXml, GNPCShopInfo*
 		GConditionsInfo* pConditionsInfo = gmgr.pCondtionsInfoMgr->Get(nConditionsID);
 		if (NULL == pConditionsInfo)
 		{			
+			_VLOGGER->Log(_T(TRADE_XML_ATTR_CONDITION) IS_NOT_IN_CONDITIONS);
 			return;
 		}
 
@@ -120,6 +123,7 @@ void GNPCShopInfoMgr::ParseItem(MXmlElement* pElement, MXml* pXml, GNPCShopInfo*
 			_ASSERT(NULL != pItemData);
 			if (NULL == pItemData)
 			{
+				_VLOGGER->ValidateItemID(nItemID, _T(TRADE_XML_ATTR_ID));
 				continue;
 			}
 
@@ -133,6 +137,7 @@ void GNPCShopInfoMgr::ParseItem(MXmlElement* pElement, MXml* pXml, GNPCShopInfo*
 			GItemData* pItemData = gmgr.pItemManager->GetItemData(nItemID);
 			if (NULL == pItemData)
 			{				
+				_VLOGGER->ValidateItemID(nItemID, _T(TRADE_XML_ATTR_ID));
 				continue;
 			}
 

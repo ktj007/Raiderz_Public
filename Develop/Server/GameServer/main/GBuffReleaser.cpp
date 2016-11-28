@@ -45,7 +45,7 @@ bool GBuffReleaser::CheckType( TALENT_CONDITION condition )
 			return true;
 	}
 
-	return (pBuffInfo->m_Condition.infoRelease.nType == condition);
+	return pBuffInfo->m_Condition.infoRelease.CheckCondition(condition);
 }
 
 bool GBuffReleaser::CheckParam( int nConditionParam )
@@ -72,6 +72,21 @@ void GBuffReleaser::CancelForced()
 {
 	VALID(m_pBuff);
 	m_pBuff->CancelForced();
+}
+
+void GBuffReleaser::OnDie()
+{
+	VALID(m_pBuff);
+	GBuffInfo* pBuffInfo = m_pBuff->GetInfo();
+	VALID(pBuffInfo);
+
+	if (m_pBuff->IsEchant())
+		return;
+
+	if (!pBuffInfo->m_bReleaseOnDead)
+		return;
+
+	CancelForced();
 }
 
 void GBuffReleaser::OnHit( GEntityActor* pOwner, GEntityActor* pAttacker, GTalentInfo* pTalentInfo )
@@ -289,6 +304,30 @@ void GBuffReleaser::OnMeleeHit( GEntityActor* pAttacker, GTalentInfo* pTalentInf
 void GBuffReleaser::OnMeleeHitEnemy( GEntityActor* pTarget, GTalentInfo* pTalentInfo )
 {
 	if (!CheckType(TC_MELEE_HIT_ENEMY))
+		return;
+
+	Cancel();
+}
+
+void GBuffReleaser::OnSwitchingWeaponSetBegin()
+{
+	if (!CheckType(TC_SWAP_WEAPON))
+		return;
+
+	Cancel();
+}
+
+void GBuffReleaser::OnSwitchingWeaponSet( SH_ITEM_SWITCH_WEAPON val )
+{
+	if (!CheckType(TC_SWAP_WEAPON))
+		return;
+
+	Cancel();
+}
+
+void GBuffReleaser::OnChangeStance( CHAR_STANCE nStance )
+{
+	if (!CheckType(TC_SHEATHE_WEAPON) || nStance != CS_NORMAL)
 		return;
 
 	Cancel();

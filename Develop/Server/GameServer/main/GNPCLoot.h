@@ -10,7 +10,7 @@ class GNPCLoot : public MTestMemPool<GNPCLoot>
 TEST_FRIEND_NPCSETTER;
 
 private:
-	set<int>				m_setLootingPlayerCID;		///< 루팅중인 플레이어의 CID
+	set<CID>				m_setLootingPlayerCID;		///< 루팅중인 플레이어의 CID
 	GDropList*				m_pDropList;
 	int						m_nBPartLootID;
 
@@ -18,10 +18,10 @@ public:
 	GNPCLoot(GEntityNPC* pOwner);
 	~GNPCLoot();
 
-	void Begin(int nCID);
-	void End(int nCID);
-	set<int> GetLootingPlayerCID();
-	bool IsLootingPlayer(int nCID);
+	void Begin(CID nCID);
+	void End(CID nCID);
+	set<CID> GetLootingPlayerCID();
+	bool IsLootingPlayer(CID nCID);
 	bool IsLootingPlayerEmpty();
 
 	GDropList&	GetDropList() { _ASSERT(m_pDropList); return (*m_pDropList); }

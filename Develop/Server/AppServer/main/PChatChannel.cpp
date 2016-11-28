@@ -27,7 +27,7 @@ PChatChannel::~PChatChannel()
 	m_mapChatModules.Clear();
 }
 
-bool PChatChannel::Init(int nOwnerCID, const std::wstring& strChannelName)
+bool PChatChannel::Init(CID nOwnerCID, const std::wstring& strChannelName)
 {
 	VALID_RET(CCT_PRIVATE == m_eType, false);
 	VALID_RET(0 != nOwnerCID, false);

@@ -72,6 +72,9 @@ void GQuestPVP::BeginEvent(int nEventID)
 
 void GQuestPVP::EndEvent(int nEventID, QUESTPVP_TEAM nWinnerTeam)
 {
+	if (!IsDoingEvent())	return;
+	VALID(m_nDoingEventID == nEventID);
+
 	GQPEventInfo* pInfo = gmgr.pQPEventInfoMgr->Get(nEventID);
 	VALID(pInfo);
 	GQPEEndInfo* pEndInfo = pInfo->GetEndInfo(nWinnerTeam);
@@ -265,6 +268,11 @@ bool GQuestPVP::IsDoingEvent()
 	if (0 == m_nDoingEventID) return false;
 
 	return true;
+}
+
+bool GQuestPVP::IsExistPlayerInField()
+{
+	return m_pField && m_pField->ExistPlayer();
 }
 
 void GQuestPVP::RouteToQuestPVPTeam(MCommand* pNewCmd)

@@ -21,6 +21,7 @@ private:
 	bool RestoreEffect();
 	void OnDuplicated();
 	void OnStacked();
+	void OnPeriod();
 	void ClearResotreInfo();
 
 private:

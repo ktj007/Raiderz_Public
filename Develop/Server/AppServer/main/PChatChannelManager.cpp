@@ -176,7 +176,7 @@ void PChatChannelManager::LeaveAllChannel(CID cidPlayer)
 	
 	auto_ptr<MCommand> pCmd(gsys.pCommandCenter->MakeNewCommand(MPC_MSG_LEAVE_CHANNEL_REQ,
 																2,
-																NEW_INT(cidPlayer),
+																NEW_INT64(cidPlayer),
 																NEW_UID()
 																));
 

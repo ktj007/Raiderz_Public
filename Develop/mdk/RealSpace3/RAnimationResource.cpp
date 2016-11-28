@@ -269,7 +269,11 @@ bool RAnimationResource::LoadVisibilityKey(RFile& rf, RAnimationNode* pANode)
 
 int RAnimationResource::GetNodeIndex( const string& strName )
 {
-	stdext::hash_map<string,int>::iterator itr = m_nodeIndexMap.find(strName);
+#if (_MSC_VER >= 1900)
+	std::unordered_map<string, int>::iterator itr = m_nodeIndexMap.find(strName);
+#else
+	std::unordered_map<string,int>::iterator itr = m_nodeIndexMap.find(strName);
+#endif
 	if(m_nodeIndexMap.end()!=itr)
 		return itr->second;
 
@@ -320,6 +324,7 @@ bool RAnimationResource::LoadAniNode( RFile& rf, const char* filename )
 	static RAnimationFileLoadImpl_v9 animFileLoadImpl_v9;
 	static RAnimationFileLoadImpl_v11 animFileLoadImpl_v11;
 	static RAnimationFileLoadImpl_v12 animFileLoadImpl_v12;
+
 	RAnimationFileLoadImpl *pImpl = NULL;
 	if ( m_header.ver == EXPORTER_ANI_VER12 )
 		pImpl = &animFileLoadImpl_v12;

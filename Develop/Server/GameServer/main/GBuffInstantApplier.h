@@ -21,7 +21,7 @@ private:
 	void ApplySingleEffect(GEntityActor* pEffecteeTarget, MUID uidUser);
 	bool ApplyEffects();
 	bool IsNeedEffect();
-	void RouteGainInstantEffect(GEntityActor* pActor, GBuff* pBuff);
+	void RouteGainInstantEffect(GEntityActor* pActor, GBuff* pBuff, bool bCriticalHit);
 	
 private:
 	GBuff* m_pOwner;

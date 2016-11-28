@@ -50,6 +50,12 @@ inline void XPostField_LoadingComplete()
 	XPOSTCMD0(MC_FIELD_LOADING_COMPLETE);
 }
 
+inline void XPostField_ObjectLoadingComplete()
+{
+	XPOSTCMD0(MC_FIELD_OBJECT_LOADING_COMPLETE);
+}
+
+
 inline void XPostRequestDialogSelect(int nSelect)
 {
 	XPOSTCMD1(MC_DIALOG_SELECT_REQ, MCommandParameterInt(nSelect));

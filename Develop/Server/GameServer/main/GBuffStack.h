@@ -12,7 +12,7 @@ public:
 	void Update_Expired( float fDelta );
 
 	// 스택 추가
-	void Increase(float fDurationTime);
+	void Increase(float fDurationTime, bool bRoute=true);
 	// 스택 소멸
 	void Decrease(bool bRoute=true);
 	// 소멸되는지 여부

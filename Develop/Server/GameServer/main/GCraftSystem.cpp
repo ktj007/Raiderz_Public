@@ -54,25 +54,25 @@ void GCraftSystem::Show_Route(GEntityPlayer* pPlayer, const GCraftInfo* pCraftIn
 {
 	float fMakeMod = CalcMakeMod(pPlayer, pCraftInfo);
 
-	vector<TD_CRAFT_RECIPE> vecCraftRecipe;
+	vector<int> vecCraftRecipe;
 	for each (int nRecipeID in pCraftInfo->m_setRecipeID)
 	{
 		GRecipeInfo* pRecipeInfo = gmgr.pRecipeInfoMgr->Get(nRecipeID);
 		if (NULL == pRecipeInfo) continue;
 
 		bool bMakable = gsys.pConditionsSystem->Check(pPlayer, pRecipeInfo->m_nConditionID);
-		vecCraftRecipe.push_back(TD_CRAFT_RECIPE(nRecipeID, bMakable));
+		vecCraftRecipe.push_back(nRecipeID);
 	}
 
 	MCommand* pNewCmd = MakeNewCommand(MC_CRAFT_SHOW,
-		2,		
+		2,
 		NEW_BLOB(vecCraftRecipe),
 		NEW_FLOAT(fMakeMod));
 
 	pPlayer->RouteToMe(pNewCmd);
 }
 
-bool GCraftSystem::Make(GEntityPlayer* pPlayer, int nCraftID, int nRecipeID)
+bool GCraftSystem::Make(GEntityPlayer* pPlayer, int nCraftID, int nRecipeID, int nCraftAmount)
 {
 	VALID_RET(pPlayer, false);
 	
@@ -83,8 +83,8 @@ bool GCraftSystem::Make(GEntityPlayer* pPlayer, int nCraftID, int nRecipeID)
 
 	int nPrice = 0;
 	GITEM_STACK_AMT_VEC vecRecpItemList;
-	if (false == Make_Check(pPlayer, pCraftInfo, pRecipeInfo, nPrice, vecRecpItemList)) return false;	
-	if (false == Make_Apply(pPlayer, pRecipeInfo->m_nProductItemID, pRecipeInfo->m_nAmount, nPrice, vecRecpItemList)) return false;
+	if (false == Make_Check(pPlayer, pCraftInfo, pRecipeInfo, nCraftAmount, nPrice, vecRecpItemList)) return false;	
+	if (false == Make_Apply(pPlayer, pRecipeInfo->m_nProductItemID, nCraftAmount, nPrice, vecRecpItemList)) return false;
 
 	Make_Route(pPlayer, nRecipeID);	
 
@@ -111,7 +111,7 @@ bool GCraftSystem::MakeRecipeItemList( GEntityPlayer* pPlayer, GRecipeInfo* pRec
 	return true;
 }
 
-bool GCraftSystem::Make_Check(GEntityPlayer* pPlayer, GCraftInfo* pCraftInfo, GRecipeInfo* pRecipeInfo, int& outnPrice, GITEM_STACK_AMT_VEC& outvecRecpItemList)
+bool GCraftSystem::Make_Check(GEntityPlayer* pPlayer, GCraftInfo* pCraftInfo, GRecipeInfo* pRecipeInfo, int nCraftAmount, int& outnPrice, GITEM_STACK_AMT_VEC& outvecRecpItemList)
 {
 	VALID_RET(pPlayer, false);
 	VALID_RET(pCraftInfo, false);
@@ -136,7 +136,7 @@ bool GCraftSystem::Make_Check(GEntityPlayer* pPlayer, GCraftInfo* pCraftInfo, GR
 
 	if (outnPrice > pPlayer->GetPlayerInfo()->GetMoney()) return false;
 
-	if (false == gsys.pItemSystem->GetAdder().CheckItemAddable(pPlayer, CHECK_ADDABLE_ITEM(pRecipeInfo->m_nProductItemID, pRecipeInfo->m_nAmount))) return false;	
+	if (false == gsys.pItemSystem->GetAdder().CheckItemAddable(pPlayer, CHECK_ADDABLE_ITEM(pRecipeInfo->m_nProductItemID, nCraftAmount))) return false;	
 
 	return true;
 }
@@ -207,7 +207,6 @@ bool GCraftSystem::Make_Apply(GEntityPlayer* pPlayer, int nProductItemID, int nA
 			, nMaxDura
 			, 0
 			, nColor
-			, -1 , -1 , -1
 			, bClaimed
 			, bPeriodItem
 			, nUsagePeriod, strExpiDt);

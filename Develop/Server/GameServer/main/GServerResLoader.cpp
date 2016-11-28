@@ -38,6 +38,8 @@
 #include "GPresetInfoMgr.h"
 #include "GBPartRewardParser.h"
 #include "GExportDBStringTable.h"
+#include "GSetItemEffectManager.h"
+#include "GGuideBookMgr.h"
 
 #define FILE_LOG(filename)	{if (m_pLisener) m_pLisener->OnLog(filename);}
 
@@ -185,6 +187,18 @@ GServerResLoader::Result GServerResLoader::LoadAll( GGlobalManager* pGlobalManag
 		return m_Result;
 	}	
 
+	// Set Item bonus effect
+	if (!LoadSetItemEffectInfo())
+	{
+		return m_Result;
+	}
+
+	// Guide Books
+	if (!LoadGuideBook())
+	{
+		return m_Result;
+	}
+
 	CookItemInfo();
 	m_pGlobalManager->pTalentInfoMgr->Cooking();
 
@@ -242,6 +256,7 @@ bool GServerResLoader::LoadItemInfo()
 
 	GItemManager* pItemManager = m_pGlobalManager->pItemManager;
 	wstring strPath = m_strRootPath + FILENAME_ITEMINFO;	
+	_VLI(strPath.c_str());
 	if ( pItemManager && !pItemManager->LoadFromFile(strPath.c_str()) )
 	{
 		_ASSERT(0);
@@ -690,6 +705,8 @@ bool GServerResLoader::LoadChallengerQuestInfo()
 		return false;
 	}
 
+
+
 	return true;
 }
 
@@ -751,6 +768,44 @@ bool GServerResLoader::LoadExportDBStringTable()
 	if (!pTable->Load(GConfig::m_strExportLocale))
 	{
 		m_Result = Result(false, L"Failed to loading 'export db string table'\n");
+		return false;
+	}
+
+	return true;
+}
+
+bool GServerResLoader::LoadSetItemEffectInfo()
+{
+	GResLoadingTimeChecker tc(L"SetItemEffectInfo");
+
+	FILE_LOG(FILENAME_SETITEM);
+
+	GSetItemEffectManager* pSetItemEffectManager = m_pGlobalManager->pSetItemEffectManager;
+	wstring strPath = m_strRootPath + FILENAME_SETITEM;
+
+	if (pSetItemEffectManager && pSetItemEffectManager->LoadFromFile(strPath.c_str()) == false)
+	{
+		_ASSERT(0);
+		m_Result = Result(false, L"Failed Loading SetItemEffectInfo : setitem.xml\n");
+		return false;
+	}
+
+	return true;
+}
+
+bool GServerResLoader::LoadGuideBook()
+{
+	GResLoadingTimeChecker tc(L"GuideBook");
+
+	FILE_LOG(FILENAME_GUIDEBOOK);
+
+	GGuideBookMgr* pGuideBookMgr = m_pGlobalManager->pGuideBookMgr;
+	wstring strPath = m_strRootPath + FILENAME_GUIDEBOOK;
+
+	if (pGuideBookMgr && pGuideBookMgr->Load(strPath.c_str()) == false)
+	{
+		_ASSERT(0);
+		m_Result = Result(false, L"Failed to load GuideBooks : guidebook.xml\n");
 		return false;
 	}
 

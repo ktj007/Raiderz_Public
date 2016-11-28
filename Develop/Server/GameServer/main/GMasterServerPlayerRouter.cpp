@@ -20,11 +20,11 @@ GMasterServerPlayerRouter::~GMasterServerPlayerRouter()
 	// do nothing
 }
 
-void GMasterServerPlayerRouter::RouteDeletePlayer(int nAID, const MUID& uidPlayer)
+void GMasterServerPlayerRouter::RouteDeletePlayer(AID nAID, const MUID& uidPlayer)
 {
 	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PLAYER_DELETE_PLAYER,
 		2,
-		NEW_INT(nAID),
+		NEW_INT64(nAID),
 		NEW_UID(uidPlayer)
 		);
 
@@ -40,8 +40,8 @@ void GMasterServerPlayerRouter::RoutePlayerState_InWorldReq(const GEntityPlayer*
 
 	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PLAYER_STATE_IN_WORLD_REQ,
 		5,
-		NEW_INT((int)pPlayerObject->GetAccountInfo().nAID),
-		NEW_INT(pEntityPlayer->GetCID()),
+		NEW_INT64(pPlayerObject->GetAccountInfo().nAID),
+		NEW_INT64(pEntityPlayer->GetCID()),
 		NEW_UID(pEntityPlayer->GetUID()),
 		NEW_WSTR(pEntityPlayer->GetName()),
 		NEW_INT(pEntityPlayer->GetGID())
@@ -55,7 +55,7 @@ void GMasterServerPlayerRouter::RoutePlayerInFieldNotify(const GEntityPlayer* pE
 
 	MCommand* pNewCmd = gsys.pMasterServerFacade->MakeNewCommand(MMC_PLAYER_IN_FIELD_NOTIFY,
 																	3,
-																	NEW_INT(pEntityPlayer->GetCID()),
+																	NEW_INT64(pEntityPlayer->GetCID()),
 																	NEW_UID(uidField),
 																	NEW_INT(nFieldID)
 																	);

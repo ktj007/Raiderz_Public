@@ -60,33 +60,33 @@ void PGameServerObject::PickUpLog(int nQuantity, vector<PLog*>& outvecLog)
 	}
 }
 
-void PGameServerObject::InsertLog_Char(const wstring& strDate, int nCID, LOG_CHAR_TYPE nType, const wstring& strIP)
+void PGameServerObject::InsertLog_Char(const wstring& strDate, CID nCID, LOG_CHAR_TYPE nType, const wstring& strIP)
 {
 	PLog_Char* pNewLog = new PLog_Char(strDate, nCID, nType, strIP);
 	m_vecTopPriorityLog.push_back(pNewLog);
 }
 
-void PGameServerObject::InsertLog_ItemAcquire(const wstring& strDate, int nCID, LOG_ITEM_ACQUIRE_TYPE nType, const int64& nIUID, int nQuantity, int nGold)
+void PGameServerObject::InsertLog_ItemAcquire(const wstring& strDate, CID nCID, LOG_ITEM_ACQUIRE_TYPE nType, const int64& nIUID, int nQuantity, int nGold)
 {
 	PLog_ItemAcquire* pNewLog = new PLog_ItemAcquire(strDate, nCID, nType, nIUID, nQuantity, nGold);
 	m_vecTopPriorityLog.push_back(pNewLog);
 }
 
-void PGameServerObject::InsertLog_ItemLost(const wstring& strDate, int nCID, LOG_ITEM_LOST_TYPE nType, const int64& nIUID, int nQuantity, int nGold)
+void PGameServerObject::InsertLog_ItemLost(const wstring& strDate, CID nCID, LOG_ITEM_LOST_TYPE nType, const int64& nIUID, int nQuantity, int nGold)
 {
 	PLog_ItemLost* pNewLog = new PLog_ItemLost(strDate, nCID, nType, nIUID, nQuantity, nGold);
 	m_vecTopPriorityLog.push_back(pNewLog);
 }
 
-void PGameServerObject::InsertLog_ItemTrade(const wstring& strDate,	int nCID1, const vector<TDL_LOG_ITEM>& vecTDItem1, int nGold1, 
-									  int nCID2, const vector<TDL_LOG_ITEM>& vecTDItem2, int nGold2)
+void PGameServerObject::InsertLog_ItemTrade(const wstring& strDate,	CID nCID1, const vector<TDL_LOG_ITEM>& vecTDItem1, int nGold1, 
+									  CID nCID2, const vector<TDL_LOG_ITEM>& vecTDItem2, int nGold2)
 {
 	PLog_ItemTrade* pNewLog = new PLog_ItemTrade(strDate,	nCID1, vecTDItem1, nGold1,
 		nCID2, vecTDItem2, nGold2);
 	m_vecTopPriorityLog.push_back(pNewLog);
 }
 
-void PGameServerObject::InsertLog_Quest(const wstring& strDate, int nCID, LOG_QUEST_TYPE nType, int nQID)
+void PGameServerObject::InsertLog_Quest(const wstring& strDate, CID nCID, LOG_QUEST_TYPE nType, int nQID)
 {
 	PLog_Quest* pNewLog = new PLog_Quest(strDate, nCID, nType, nQID);
 	m_vecTopPriorityLog.push_back(pNewLog);

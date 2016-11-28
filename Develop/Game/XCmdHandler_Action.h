@@ -33,6 +33,7 @@ protected:
 	DECL_CMD_HANDLER(OnActSpellMagicArea);
 	DECL_CMD_HANDLER(OnReCastingSpell);
 	DECL_CMD_HANDLER(OnEndTalentCooldown);
+	DECL_CMD_HANDLER(OnAdjustTalentCooldown);
 
 	DECL_CMD_HANDLER(OnTalentHit);
 	DECL_CMD_HANDLER(OnBuffHit);
@@ -45,7 +46,8 @@ protected:
 	DECL_CMD_HANDLER(OnAttackArchery);
 	DECL_CMD_HANDLER(OnAttackArcheryDetail);
 	
-	DECL_CMD_HANDLER(OnGuard);
+	DECL_CMD_HANDLER(OnGuardOther);
+	DECL_CMD_HANDLER(OnGuardMe);
 	DECL_CMD_HANDLER(OnGuardFailed);
 	DECL_CMD_HANDLER(OnGuardReleased);
 	DECL_CMD_HANDLER(OnJump);

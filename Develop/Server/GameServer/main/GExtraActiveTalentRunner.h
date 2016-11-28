@@ -10,7 +10,7 @@ class GExtraActiveTalentRunner
 {
 public:
 	// 엑스트라 액티브 탤런트를 적용 시킴, 탤런트 라인 적용을 먼저 시도하고 해당이 안되면 특정 엑스트라 탤런트 적용
-	void Apply(GEntityActor* pUser, vec3 vPos, GTalentInfo* pTalentInfo, GEntityActor* pVictim);
+	void Apply(GEntityActor* pUser, vec3 vPos, GTalentInfo* pTalentInfo, GEntityActor* pVictim, const TALENT_TARGET_INFO* pTargetInfo = NULL);
 private:
 	// 저격모드 (PC전용)
 	void onTogglePrecision( GEntityActor* pTargetActor );
@@ -29,7 +29,7 @@ private:
 	// 도발
 	void onTaunt(GEntityActor* pUser, GTalentInfo* pTalentInfo, GEntityActor* pVictim);
 	// 버프 엔티티 생성
-	void onBuffEntity(GEntityActor* pUser, vec3 vPos, int nIncludeBuffID, int nLimitQty);
+	void onBuffEntity(GEntityActor* pUser, vec3 vPos, int nIncludeBuffID, int nLimitQty, const TALENT_TARGET_INFO* pTargetInfo);
 	// 가장최근의 마법류 디버프(100번대) 해제
 	void onDispel(GEntityActor* pUser, GTalentInfo* pTalentInfo, GEntityActor* pVictim);
 	// 가장최근의 독 디버프(200번대) 해제

@@ -18,6 +18,7 @@ public:
 	
 	bool Train(GEntityPlayer* pReqPlayer, int nTalentID);	
 	bool TrainForDBTask(GDBT_TALENT& data);
+	bool TrainForDBTaskFail_NotEnoughTP(GDBT_TALENT& data);
 
 	bool TrainByItem(GEntityPlayer* pPlayer, GItem* pItem);
 	bool TrainByItemForDBTask(GDBT_ITEM_LEARN_TALENT& data);
@@ -29,7 +30,9 @@ public:
 
 private:
 	bool Train_Check(GEntityPlayer* pReqPlayer, int nTalentID);
-	bool Train_DB(GEntityPlayer* pReqPlayer, int nTalentID, bool bAsync=true);	
+	bool Train_DB(GEntityPlayer* pReqPlayer, int nTalentID, int nConsumeTP=CONSUME_TP_FOR_LEARN_TALENT, bool bAsync=true);	
+
+	bool TrainMastery(GEntityPlayer* pReqPlayer, TALENT_STYLE nTalentStyle);
 };
 
 #endif //_GTRAININIG_SYSTEM_H_

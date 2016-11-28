@@ -176,18 +176,14 @@ void XModuleBuff::BuffGain( int nBuffID, float fLostRemained, bool bRemainBuffGa
 	//------------------------------------------------------------------------
 	// 이펙트 설정
 	XModuleEffect * pEffect = m_pOwner->GetModuleEffect();
-	if(pEffect)
+	if (pEffect)
 	{
 		XBuffEffectEventData* pEventData = new XBuffEffectEventData;
-		pEventData->m_nParam1			= nBuffID;
-		pEventData->m_eEffectType		= BUFF_GAIN_EFFECT;
-		pEventData->m_bRemainBuffGain	= bRemainBuffGain;
+		pEventData->m_nParam1 = nBuffID;
+		pEventData->m_eEffectType = BUFF_GAIN_EFFECT;
+		pEventData->m_bRemainBuffGain = bRemainBuffGain;
 		pEffect->OnEffectEvent(XEFTEVT_EFFECT_BUFF, pEventData);
 	}
-
-	//Mount
-	if(pBuffInfo->IsRideBuff())
-		m_pOwner->AsPlayer()->SetRide(pBuffInfo->m_RideNPCID);
 
 	//------------------------------------------------------------------------
 	// UI 설정

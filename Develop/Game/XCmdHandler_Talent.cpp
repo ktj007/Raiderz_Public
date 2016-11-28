@@ -12,6 +12,7 @@
 XCmdHandler_Talent::XCmdHandler_Talent(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 {
 	SetCmdHandler(MC_BUFF_GAIN,						OnBuffGain);
+	SetCmdHandler(MC_BUFF_GAIN_WITH_STACK,			OnBuffGain);
 	SetCmdHandler(MC_BUFF_LOST,						OnBuffLost);
 	SetCmdHandler(MC_BUFF_INSTANT_EFFECT_GAIN,		OnBuffInstantEffectGain);
 	SetCmdHandler(MC_TALENT_INSTANT_EFFECT_GAIN,	OnTalentInstantEffectGain);
@@ -19,6 +20,8 @@ XCmdHandler_Talent::XCmdHandler_Talent(MCommandCommunicator* pCC) : MCommandHand
 	SetCmdHandler(MC_FOCUS_LOST,					OnFocusLost);
 	SetCmdHandler(MC_FOCUS_UPDATE_BUBBLE,			OnFocusUpdateBubble);
 	SetCmdHandler(MC_BUFF_HEAL,						OnBuffHeal);
+	SetCmdHandler(MC_BUFF_RESTORE_EN,				OnBuffHeal);
+	SetCmdHandler(MC_BUFF_RESTORE_STA,				OnBuffHeal);
 	SetCmdHandler(MC_BUFF_STACK_INCREASE,			OnBuffIncrease);
 	SetCmdHandler(MC_BUFF_STACK_DECREASE,			OnBuffDecrease);
 }

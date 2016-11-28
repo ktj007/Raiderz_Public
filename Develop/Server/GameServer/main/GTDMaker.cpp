@@ -87,7 +87,9 @@ void GTDMaker::MakeTD_MyInfo(GPlayerObject* pPlayer, TD_MYINFO& out)
 	out.nEyeColor = pSrcPlayerInfo->nEyeColor;
 
 	out.nMakeUp = pSrcPlayerInfo->nMakeUp;
+	out.nVoice = pSrcPlayerInfo->nVoice;
 	out.nTattooType = pSrcPlayerInfo->nTattooType;
+	out.nTattooColor = pSrcPlayerInfo->nTattooColor;
 	out.nTattooPosX = pSrcPlayerInfo->nTattooPosX;
 	out.nTattooPosY = pSrcPlayerInfo->nTattooPosY;
 	out.nTattooScale = pSrcPlayerInfo->nTattooScale;
@@ -113,7 +115,7 @@ void GTDMaker::MakeTD_MyInfo(GPlayerObject* pPlayer, TD_MYINFO& out)
 	out.nFatigueType = gsys.pFatigueSystem->GetFatigueType(pEntityPlayer->GetPlayerInfo()->nFatigueQuantity);
 	out.nPlayerGrade = (int8)pEntityPlayer->GetPlayerGrade();
 
-	out.nSoulbindingFieldID = gsys.pPlayerSystem->GetSoulBindingFieldID(pEntityPlayer);;
+	out.eSkillSet = SST_MAIN;	// TODO: 2nd skill set
 	out.nCheckPointFieldID = pEntityPlayer->GetPlayerField().GetFieldDynamic().GetCheckpoint().nFieldID;
 
 	out.bExistUnreadMail = pEntityPlayer->GetMailbox().IsExistUnreadMail();
@@ -123,7 +125,7 @@ void GTDMaker::MakeTD_MyInfo(GPlayerObject* pPlayer, TD_MYINFO& out)
 
 void GTDMaker::MakeTD_ItemFromInventory(GEntityPlayer* pPlayer, vector<TD_ITEM>& outvecTDItem)
 {
-	GItemHolder* pItemHolder = pPlayer->GetItemHolder();
+	GItemHolder* pItemHolder = pPlayer->GetItemHolder();	
 	
 	if (0 < pItemHolder->GetItemCount(SLOTTYPE_INVENTORY))
 	{
@@ -169,7 +171,7 @@ vector<TD_NPC_ICON> GTDMaker::MakeTD_NPCIcon(const vector<NPC_ICON>& vecNPCICon)
 
 	for each (NPC_ICON npcIcon in vecNPCICon)
 	{
-		vecTDNPCIcon.push_back(TD_NPC_ICON(npcIcon.m_pNPC->GetUIID(), npcIcon.m_nIcon));
+		vecTDNPCIcon.push_back(TD_NPC_ICON(npcIcon.m_pNPC->GetUIID(), npcIcon.m_nIcon, npcIcon.m_pNPC->GetID()));
 	}
 
 	return vecTDNPCIcon;
@@ -211,7 +213,7 @@ void GTDMaker::MakeTD_PLAYERQUEST(GEntityPlayer* pEntityPlayer, vector<TD_PLAYER
 		GPlayerQuest* pPlayerQuest = pairPlayerQuest.second;
 		if (NULL == pPlayerQuest) continue;
 
-		TD_PLAYERQUEST tdPlayerQuest;
+		TD_PLAYERQUEST tdPlayerQuest = { 0 };
 		tdPlayerQuest.nQuestID = pPlayerQuest->GetInfo()->nID;
 		tdPlayerQuest.nState = pPlayerQuest->GetState();
 		tdPlayerQuest.nAcceptTime = pPlayerQuest->GetAcceptTime();

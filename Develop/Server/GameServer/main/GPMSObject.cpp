@@ -1,1 +1,7 @@
 #include "StdAfx.h"
+#include "GPMSObject.h"
+#include "GGlobal.h"
+#include "GMsgCommandFacade.h"
+#include "PMPMSConnector.h"
+#include "PmRegionStat.h"
+#include "MLocale.h"

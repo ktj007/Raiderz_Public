@@ -12,7 +12,7 @@ public:
 
 public:
 	ZPartyMember();
-	ZPartyMember(MUID uidMember, wstring strMemberName, int nMemberServerID, int nMemberCID);
+	ZPartyMember(MUID uidMember, wstring strMemberName, int nMemberServerID, CID nMemberCID);
 	virtual ~ZPartyMember();
 
 	// 추가 정보
@@ -40,11 +40,11 @@ public:
 	quest_iterator FindQuest(int nQuestID) const;
 	bool IsExistQuest(int nQuestID) const;
 
-	int GetCID(void) const;
+	CID GetCID(void) const;
 
 private:
 	int			m_nGameServerID;
-	int			m_nCID;
+	CID			m_nCID;
 	bool		m_isMoveServer;
 	bool		m_isOffline;
 

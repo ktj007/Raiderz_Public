@@ -47,6 +47,11 @@ protected:
 	int								m_nPCCafeID;
 	bool							m_isSetStatIndex;
 
+	wstring							m_strRemoteIP;
+
+private:
+	void InitRemoteIP();
+
 public:
 	LPlayerObject(MUID& uidObject);
 	virtual ~LPlayerObject();
@@ -77,4 +82,5 @@ public:
 	PlayerObjectState	GetState()				{ return m_nState; }
 	LMasterServer*		GetMasterServer()		{ return m_pConnectingMasterServer; }
 	int					GetSelectedCharIndex()	{ return m_nSelectedCharIndex; }
+	wstring				GetRemoteIP()			{ return m_strRemoteIP; }
 };

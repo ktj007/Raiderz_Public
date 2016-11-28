@@ -39,7 +39,7 @@ MCommandResult SCmdHandler_ProxyPlayer::OnProxyPlayerRemove(MCommand* pCommand, 
 {
 	// 커맨드 확인
 	CID cid;
-	if (!pCommand->GetParameter(&cid, 0, MPT_INT)) return CR_ERROR;
+	if (!pCommand->GetParameter(&cid, 0, MPT_INT64)) return CR_ERROR;
 
 	// 플레이어 정보 제거
 	sm_pManager->RemovePlayer(cid);

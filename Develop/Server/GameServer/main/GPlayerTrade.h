@@ -45,7 +45,7 @@ typedef vector<GTRADE_ITEM> GTRADE_ITEM_VEC;
 class GTRADE_CHAR
 {
 public :
-	GTRADE_CHAR(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const int nXP, const int nMoney, int nModMoney, const int nCharPtm
+	GTRADE_CHAR(const AID nAID, const MUID& uidPlayer, const CID nCID, const int nXP, const int nMoney, int nModMoney, const int nCharPtm
 			  , int nDeltaCharPtm, uint8 nLevel, const int nFieldID, const float fPosX, const float fPosY, const float fPosZ)
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nCID(nCID), m_nXP(nXP), m_nMoney(nMoney), m_nModMoney(nModMoney), m_nCharPtm(nCharPtm)
 		, m_nDeltaCharPtm(nDeltaCharPtm), m_nLevel(nLevel), m_nFieldID(nFieldID), m_fPosX(fPosX), m_fPosY(fPosY), m_fPosZ(fPosZ)
@@ -54,9 +54,9 @@ public :
 	}
 
 public :
-	int64			m_nAID;
+	AID				m_nAID;
 	MUID			m_uidPlayer;
-	int64			m_nCID;
+	CID				m_nCID;
 	int				m_nXP;
 	int				m_nMoney;
 	int				m_nModMoney;

@@ -56,13 +56,13 @@ class GDBT_CHAR_LEVEL_UP_DATA;
 class GDBT_ITEM_DATA;
 class GDBT_ITEM_DEC_STACK_AMT_DATA;
 class GDBT_ITEM_DEC_DURA_DATA;
-class GDBT_ITEM_XP_DATA;
 class GDBT_QEUST_DONE;
 class GDBT_QUEST_ACCEPT;
 class GDBT_QUEST_COMMON;
 class GDBT_QUEST_OBJECT;
 class GDBT_QUEST_GIVEUP;
 class GDBT_QUEST_VAR;
+class GDBT_QUEST_ADDITEM;
 class GDBT_ITEM_MOVE;
 class GDBT_ITEM;
 class GDBT_ITEM_MERGE_AND_SPLIT;
@@ -85,7 +85,9 @@ class GDBT_DATA_FACTION;
 class GDBT_EMBLEM;
 class GDBT_ITEM_ENCH;
 class GDBT_ITEM_DYE;
-class GDBT_EFF_REMAIN_TIME_INSERT;
+// class GDBT_EFF_REMAIN_TIME_INSERT;
+class GDBT_TALENT_COOL_TIME_UPDATE_ALL;
+class GDBT_BUFF_REMAIN_EFFECT_UPDATE_ALL;
 class GDBT_QUESTPVP_EVENT_REWARD;
 class GDBT_QPER_TOINVEN;
 class GDBT_QPER_TOMAIL;
@@ -96,6 +98,7 @@ class GDBT_CHAR_SELECT_LOG;
 class GDBT_DISCONN_LOG;
 class GDBT_STORAGE_UPDATE_MONEY;
 class GDBT_GUILD_UPDATE_STORAGEMONEY;
+class GDBT_ITEM_SORT;
 
 
 struct TD_ITEM;
@@ -116,10 +119,15 @@ struct GDBT_MAIL_GET_MONEY;
 class GLOG_DATA_MONEY;
 class GLogCacheContainer;
 
-class GEffRemainTimeSqlBuilder;
+// class GEffRemainTimeSqlBuilder;
+class GTalentCoolTimeSqlBuilder;
+class GBuffRemainEffectSqlBuilder;
 
 // 물품거래소
 struct GDBT_TRADEMARKET_PUT_ON;
+
+// Guide Book
+struct GDBT_GUIDEBOOK_INSERT_DATA;
 
 enum PROFILE_DATA_TYPE
 {
@@ -147,26 +155,26 @@ public:
 	virtual void FieldPlayerLog(vector<pair<int, int>>& FieldPlayerCount);
 
 	// GM
-	virtual void GM_QUEST_HISTORY_RESET_ALL(const int64 nAID, const int64 nCID);
-	virtual void GM_QUEST_RESET_ALL(const int64 nAID, const int64 nCID);
+	virtual void GM_QUEST_HISTORY_RESET_ALL(const AID nAID, const CID nCID);
+	virtual void GM_QUEST_RESET_ALL(const AID nAID, const CID nCID);
 
 	// 계정 관련 ------------------------------------------------
 	virtual bool LoginGetInfo(GDBT_ACC_LOGIN& data);
-	virtual bool AccInsert(unsigned int& outAID,		// 반환값 : AID 
+	virtual bool AccInsert(AID& outAID,		// 반환값 : AID 
 		GDBT_ACC_INSERT& data
 	);
 
-	virtual bool AccDelete(const unsigned int nAID);
+	virtual bool AccDelete(const AID nAID);
 
 	virtual void CharSelectLog(const GDBT_CHAR_SELECT_LOG& data);
 	virtual void DisconnLogInsert(const GDBT_DISCONN_LOG& data);
 
 	// 캐릭터 관리 관련 ----------------------------------------
-	virtual bool CharGetLookList(const MUID& uidPlayer, const int64 nAID);
+	virtual bool CharGetLookList(const MUID& uidPlayer, const AID nAID);
 	virtual bool CharSerialize(const GDBT_CHAR_SERIALIZE& data);
 
 	virtual bool CharInsert(const MUID& uidPlayer,
-		const int nAID,				// AID
+		const AID nAID,				// AID
 		const wchar_t* szName,		// 캐릭터 이름
 		const uint8 nLevel, 
 		const int nXP, 
@@ -177,10 +185,11 @@ public:
 		const int nFace,			// 얼굴
 		const short nHairColor,		// 머리색
 		const short nSkinColor,		// 피부색
-		const uint8 nEyeColor,		// 눈색
+		const int16 nEyeColor,		// 눈색
 		const int nVoice,			// 목소리
-		const uint8 nMakeUp,		// 화장
-		const uint8 nTattooType,		// 문신
+		const int16 nMakeUp,		// 화장
+		const int16 nTattooType,		// 문신
+		const int16 nTattooColor,
 		const short nTattooPosX,		// 문신 좌표 x
 		const short nTattooPosY,		// 문신 좌표 y
 		const uint8 nTattooScale,	// 문신 크기
@@ -200,11 +209,16 @@ public:
 	virtual bool CharDelete(const GDBT_CHAR_DELETE& data);
 
 	// 캐릭터 ----------------------------------------
+	/*
 	virtual bool PostEffRemainTimeInsert(const GDBT_EFF_REMAIN_TIME_INSERT& data, GEffRemainTimeSqlBuilder& efb);
 	virtual bool EffRemainTimeInsert(const GDBT_EFF_REMAIN_TIME_INSERT& data);
-	virtual bool Logout(int64 nAID, int64 nCID, GEntityPlayer* pPlayer, vector<REMAIN_BUFF_TIME>& vecBuffRemainTime, vector<pair<int, float>>& vecTalentCoolTime);
+	*/
+	virtual bool PostTalentCoolTimeUpdateAll(const GDBT_TALENT_COOL_TIME_UPDATE_ALL& data, GTalentCoolTimeSqlBuilder& ctb);
+	virtual bool TalentCoolTimeUpdateAll(const GDBT_TALENT_COOL_TIME_UPDATE_ALL& data);
+	virtual bool PostBuffRemainEffectUpdateAll(const GDBT_BUFF_REMAIN_EFFECT_UPDATE_ALL& data, GBuffRemainEffectSqlBuilder& bfb);
+	virtual bool BuffRemainEffectUpdateAll(const GDBT_BUFF_REMAIN_EFFECT_UPDATE_ALL& data);
+	virtual bool Logout(AID nAID, CID nCID, GEntityPlayer* pPlayer, vector<REMAIN_BUFF_TIME>& vecBuffRemainTime, vector<pair<int, float>>& vecTalentCoolTime);
 
-	vec3 GetPlayerPos( GEntityPlayer* pPlayer );
 	virtual bool CharAddXP(GDBT_CHAR_XP_DATA& data);
 	virtual void CharAddXPLog(GDBT_CHAR_XP_DATA& data);
 	virtual bool CharLevelUp(GDBT_CHAR_LEVEL_UP_DATA& data);	// 캐릭터의 레벨 업데이트
@@ -213,14 +227,14 @@ public:
 	virtual bool CharAddMoney(const GDBT_CHAR_MONEY_INC_DEC& data);
 	virtual bool CharMinusMoney(const GDBT_CHAR_MONEY_INC_DEC& data);
 	virtual bool CharRegistInnRoom(const GDBT_CHAR_REGIST_INN_ROOM& data);				// 캐릭터의 여관방 업데이트
-	virtual bool CharUpdatePlayerGrade(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const uint8 nPlayerGrade);
+	virtual bool CharUpdatePlayerGrade(const AID nAID, const MUID& uidPlayer, const CID nCID, const uint8 nPlayerGrade);
 	virtual bool CharDie(GDBT_CHAR_KILL& die, GDBT_CHAR_KILL& killer, int nKillerNpcID);
 		
-		/*const int64 nGSN, const int nWorldID, const MUID& uidPlayer, const int64 nPlayerCID, int nCode, const int nPlayTime
+		/*const AID nGSN, const int nWorldID, const MUID& uidPlayer, const CID nPlayerCID, int nCode, const int nPlayTime
 		, const int nLevel, const int nXP, const int nMoney, const int nFieldID, const float fX, const float fY, const float fZ
 		, int nKillerNpcID, const MUID& uidKillerPlayer, int nKillerCode);*/
 
-	virtual bool GM_CharUpdateTP(const int64 nAID, const int64 nCID, const int16 nRemainTP, const int16 nTotalTP, const int nCharPtm);		// 캐릭터의 TP 추가
+	virtual bool GM_CharUpdateTP(const AID nAID, const CID nCID, const int16 nRemainTP, const int16 nTotalTP, const int nCharPtm);		// 캐릭터의 TP 추가
 	virtual void CharUpdateMoneyLog(const GLOG_DATA_MONEY& data);
 	
 	// 아이템 --------------------------------------------------
@@ -236,7 +250,7 @@ public:
 	virtual bool ItemDescDurability(GDBT_ITEM_DEC_DURA_DATA& data);	
 	virtual void ItemDyeLog(const GDBT_ITEM_DYE& data);
 	virtual bool ItemDye(const GDBT_ITEM_DYE& data);
-	virtual bool ItemUpdateSoulCnt(const int64 nCID, const uint8 nSlotType, const int16 nSlotID, const int64 nIUID, const uint8 nSoulCnt);
+	virtual bool ItemUpdateSoulCnt(const CID nCID, const uint8 nSlotType, const int16 nSlotID, const int64 nIUID, const uint8 nSoulCnt);
 	virtual bool ItemLearnTalent(GDBT_ITEM_LEARN_TALENT& data);
 	virtual bool ItemMove(GDBT_ITEM_MOVE& data);
 	virtual void ItemMoveLog(GDBT_ITEM_MOVE& data);
@@ -248,12 +262,9 @@ public:
 	virtual void ItemDecStackAmtLog(GDBT_ITEM_DEC_STACK_AMT_DATA& data);
 	virtual bool ItemEnchant(const GDBT_ITEM_ENCH& data);
 	virtual void ItemEnchLog(const GDBT_ITEM_ENCH& data);
-
-	//SoulHunterZ - Attune System
-	virtual bool ItemAddXP(GDBT_ITEM_XP_DATA& data);
-	//virtual void ItemAddXPLog(GDBT_ITEM_XP_DATA& data);
-	//virtual bool ItemAttune(const GDBT_ITEM_ATTUNE& data);
-	//virtual void ItemAttuneLog(const GDBT_ITEM_ATTUNE& data);
+	virtual bool MakeItemSortList(const GDBT_ITEM_SORT& data, wstring& stroutFromSlot, wstring& stroutToSlot, wstring& stroutMergeSlot);
+	virtual bool ItemSort(const GDBT_ITEM_SORT& data);
+	virtual void ItemSortLog(const GDBT_ITEM_SORT& data);
 	
 	// 트레이드 --------------------------------------------------
 	virtual bool Trade(GTRADE_CHAR_VEC& vTradeChar, const uint8 nItemInstanceCnt);
@@ -265,13 +276,15 @@ public:
 	virtual void NPCShop_BuyLog(const GDBT_NPC_SHOP_TRADE_DATA& data);
 	virtual bool NPCShop_SellPartUpdate(const GDBT_NPC_SHOP_TRADE_DATA& data);
 	virtual bool NPCShop_SellPartDelete(const GDBT_NPC_SHOP_TRADE_DATA& data);
-	bool MakeSellVeryCommonList(GITEM_STACK_AMT_VEC& vec, wstring& strString);
+	// bool MakeSellVeryCommonList(GITEM_STACK_AMT_VEC& vec, wstring& strString);
+	wstring MakeSellVeryCommonList(GITEM_STACK_AMT_VEC& vec);
 	virtual bool NPCShop_SellVeryCommon(GDBT_SELL_ITEM_VERY_COMMON& data);
 	virtual void NPCShop_SellLog(const GDBT_NPC_SHOP_TRADE_DATA& data);
 	virtual void NPCShop_SellVeryCommonLog(GDBT_SELL_ITEM_VERY_COMMON& data);
 	virtual bool NPCShop_Repair(GDBT_REPAIR_ITEM& data);
 	virtual bool NPCShop_RepairAll(GDBT_REPAIR_ALL_ITEM& data);
-	bool MakeRepairAllList(GDBT_ITEM_REPAIR_VEC& vec, wstring& strString);
+	// bool MakeRepairAllList(GDBT_ITEM_REPAIR_VEC& vec, wstring& strString);
+	wstring MakeRepairAllList(GDBT_ITEM_REPAIR_VEC& vec);
 	virtual void NPCShop_RepairLog(const GDBT_ITEM_REPAIR_CHAR& data);
 	
 
@@ -300,7 +313,7 @@ public:
 	virtual bool Craft_RecpDelete(const GDBT_RECIPE& data);
 
 	// 보관함
-	virtual bool StorageSerialize(const MUID& uidPlayer, const int64 nCID);
+	virtual bool StorageSerialize(const MUID& uidPlayer, const CID nCID);
 	virtual bool StorageUpdateMoney(const GDBT_STORAGE_UPDATE_MONEY& data);
 
 
@@ -331,14 +344,16 @@ public:
 	// 퀘스트 --------------------------------------------------
 	virtual bool QuestAccept(GDBT_QUEST_ACCEPT& data);
 	virtual void QuestAcceptLog(GDBT_QUEST_ACCEPT& data);
-	virtual bool MakeQuestGiveupList(GITEM_STACK_AMT_VEC& vec, wstring& strString);
+	// virtual bool MakeQuestGiveupList(GITEM_STACK_AMT_VEC& vec, wstring& strString);
 	virtual void QuestGiveupLog(GDBT_QUEST_GIVEUP& data);
 	virtual bool QuestGiveup(GDBT_QUEST_GIVEUP& data);
 	virtual bool QuestFail(const GDBT_QUEST_COMMON& data);
 	virtual void QuestFailLog(const GDBT_QUEST_COMMON& data);
 	virtual bool QuestComplete(const GDBT_QUEST_COMMON& data);
 	virtual void QuestCompleteLog(const GDBT_QUEST_COMMON& data);
-	virtual bool MakeQuestRemoveItemList(GITEM_STACK_AMT_VEC& vec, wstring& strString);
+	// virtual bool MakeQuestRemoveItemList(GITEM_STACK_AMT_VEC& vec, wstring& strString);
+	virtual wstring MakeQuestRemoveItemList(const GITEM_STACK_AMT_VEC& vec);
+	virtual wstring MakeQuestAddItemList(const vector<GDBT_QUEST_ADDITEM>& vec);
 	virtual bool QuestDone(GDBT_QEUST_DONE& data);
 	virtual void QuestDoneLog(GDBT_QEUST_DONE& data);
 	virtual bool QuestUpdateObject(const GDBT_QUEST_OBJECT& data);
@@ -362,14 +377,14 @@ public:
 	virtual bool FactionUpdate(const GDBT_DATA_FACTION& data);
 	
 	// 컷씬
-	virtual bool CutsceneSawnInsert(const int64 nAID, const MUID& uidPlayer, const int64 nCID, const int nCutsceneID);
+	virtual bool CutsceneSawnInsert(const AID nAID, const MUID& uidPlayer, const CID nCID, const int nCutsceneID);
 
 	// 우편
 	virtual bool MailGetList(const GDBT_MAIL_GET_MAILBOX_LIST& data, bool bOpenMaibox);
 	virtual bool MailCheckReceiver(const GEntityPlayer* pPlayer, const GDBT_MAIL_WRITE& data);
 	virtual bool MailWrite(const MUID& uidPlayer, const GDBT_MAIL_WRITE& data);
 	virtual bool MailGetContent(const MUID& uidPlayer, int64 nMUID, bool bHasText);
-	virtual bool MailSetRead(const MUID& uidPlayer, int64 nAID, int64 nCID, int64 nMUID);
+	virtual bool MailSetRead(const MUID& uidPlayer, AID nAID, CID nCID, int64 nMUID);
 	virtual bool MailDelete(const MUID& uidPlayer, const GDBT_MAIL_DELETE& data);
 	virtual bool MailGetAppendedItem(const GDBT_MAIL_GET_ITEM& data);
 	virtual bool MailGetAppendedMoney(const MUID& uidPlayer, const GDBT_MAIL_GET_MONEY& data);
@@ -393,7 +408,7 @@ public:
 
 	// server status
 	virtual bool ServerStatusStart(const int nWorldID, const int nServerID, const wstring& strServerName, const wstring& strServerVersion, const wstring& strIP, const uint16 nPort, const int nMaxUser , const uint8 nType, const int nUpdateElapsedTimeSec, const int nAllowDelayTm);
-	virtual bool ServerStatusUpdate(const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable);
+	virtual bool ServerStatusUpdate(const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable, const unsigned long long nTaskCount, const int nCPUUsage, const int nMemoryUsage, const int nFieldCount, const int nFPS);
 
 	// Expo 대비
 	virtual bool ResetExpoCharacters();
@@ -401,6 +416,8 @@ public:
 
 	// 물품관리소
 	virtual bool TradeMarketPutOn(const GDBT_TRADEMARKET_PUT_ON& data);
+
+	virtual bool GuideBookInsert(const GDBT_GUIDEBOOK_INSERT_DATA& data);
 
 private :
 	int CalculateElapsedDeadTimeSec(GEntityPlayer* pPlayer);
@@ -411,6 +428,7 @@ public :
 
 	virtual bool		Post(GDBAsyncTask* pTask);
 	
+	bool				InitAccountDB();
 	bool				InitGameDB();
 	bool				InitGameDBSelectChar();
 	bool				InitLogDB();
@@ -422,6 +440,7 @@ public :
 	void				Release();
 	void				LogingDBTaskExecCnt();
 
+	void				ReleaseAccountDB();
 	void				ReleaseGameDB();
 	void				ReleaseGameDBSelectChar();
 	void				ReleaseLogDB();
@@ -431,6 +450,7 @@ public :
 	
 	void				ExecuteAsyncForDev(const MUID& uidPlayer, wchar_t* szSQL);
 	
+	uint32				GetAccountDBQCount()		{ return m_nAccountDBQCount; }
 	uint32				GetGameDBQCount()			{ return m_nGameDBQCount; }
 	uint32				GetGameDBSelectCharQCount() { return m_nGameDBSelectCharQCount; }
 	uint32				GetLogDBQCount()			{ return m_nLogDBQCount; }
@@ -438,9 +458,11 @@ public :
 	bool				IsDirectPostItem(int nItemID);
 
 protected :
+	SAsyncDB*						m_pAccountDB;
 	SAsyncDB*						m_pGameDB;
 	SAsyncDB*						m_pGameDBSelectChar;
 	SAsyncDB*						m_pLogDB;	
+	uint32							m_nAccountDBQCount;
 	uint32							m_nGameDBQCount;
 	uint32							m_nGameDBSelectCharQCount;
 	uint32							m_nLogDBQCount;

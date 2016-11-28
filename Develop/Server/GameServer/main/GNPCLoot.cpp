@@ -13,22 +13,22 @@ GNPCLoot::~GNPCLoot()
 	SAFE_DELETE(m_pDropList);
 }
 
-void GNPCLoot::Begin(int nCID)
+void GNPCLoot::Begin(CID nCID)
 {
 	m_setLootingPlayerCID.insert(nCID);
 }
 
-void GNPCLoot::End(int nCID)
+void GNPCLoot::End(CID nCID)
 {
 	m_setLootingPlayerCID.erase(nCID);
 }
 
-set<int> GNPCLoot::GetLootingPlayerCID()
+set<CID> GNPCLoot::GetLootingPlayerCID()
 {
 	return m_setLootingPlayerCID;
 }
 
-bool GNPCLoot::IsLootingPlayer(int nCID)
+bool GNPCLoot::IsLootingPlayer(CID nCID)
 {
 	if (m_setLootingPlayerCID.end() == m_setLootingPlayerCID.find(nCID)) return false;
 

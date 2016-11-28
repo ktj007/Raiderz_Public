@@ -84,7 +84,6 @@ class CSCOMMON_API CSMeshInfo
 {
 public:
 		tstring							m_strMeshName;
-		int								m_iMeshBPartCount;
 
 		map<int, CSHitGroup>			m_mapHitGroupInfo;
 		vector<CSColCapsule>			m_vecColCapsules;

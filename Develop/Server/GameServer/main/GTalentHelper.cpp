@@ -11,6 +11,9 @@
 
 GTalentInfo* GTalentHelper::FindTalentInfo( int nTalentID, GEntity* pEntity/*=NULL*/ )
 {
+	if (nTalentID == INVALID_TALENT_ID)
+		return NULL;
+
 	if (pEntity && pEntity->IsPlayer())
 	{
 		GEntityPlayer* pEntityPlayer = static_cast<GEntityPlayer*>(pEntity);
@@ -30,6 +33,7 @@ GTalentInfo* GTalentHelper::FindTalentInfo( int nTalentID, GEntity* pEntity/*=NU
 void GTalentHelper::AddHitterForTargetAndNonProjTalent( GTalent* pTalent )
 {
 	VALID(pTalent);
+	if (!pTalent->GetTargetUID().IsValid()) return;
 
 	if (pTalent->GetInfo()->m_EffectInfo.m_nPoint == CSEffectInfo::POINT_TARGET && 
 		!pTalent->GetInfo()->IsProjectileType())

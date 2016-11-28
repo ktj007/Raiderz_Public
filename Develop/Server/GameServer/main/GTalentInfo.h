@@ -80,7 +80,8 @@ public:
 	bool					isAttackable()			{ return !m_HitInfo.m_vSegments.empty(); }
 	bool					IsMoving();
 	bool					IsKnockbackDirSyncToAttackerDir() { return IsMoving(); }
-	bool					IsAggressive()			{ return (	m_EffectInfo.m_nRelation == CSEffectInfo::RELATION_ENEMY); }
+	bool					IsAggressive()			{ return (	m_EffectInfo.m_nRelation == CSEffectInfo::RELATION_ENEMY ||
+																m_EffectInfo.m_nRelation == CSEffectInfo::RELATION_CASTER_ENEMY); }
 	bool					IsRequireMoveSpeed()	{ return m_fRequireMoveSpeed >= 0.0f; }
 	bool					IsExtraActive()			{ return (m_nExtraActive != TEAT_NONE); }
 	bool					IsGuard()				{ return m_nSkillType == ST_GUARD; }
@@ -104,8 +105,9 @@ public:
 	bool					IsUseAvoidTime()			{ return m_bUseAvoidTime; }
 	bool					IsUseInvincibleTime()		{ return m_bUseInvincibleTime; }
 	bool					IsUseSuperarmorTime()		{ return m_bUseSuperarmorTime; }
+	bool					IsUseIgnoreAllMFTime()		{ return m_bUseIgnoreAllMFTime; }
 
-	bool					IsEffective(GEntityActor* pReqActor, GEntityActor* pTarActor);
+	bool					IsEffective(GEntityActor* pReqActor, GEntityActor* pTarActor, GEntityActor* pCasActor=NULL);
 	bool					IsMovingWithCasting();
 
 	void					RemoveExpiredTime()		{ m_fExpiredTime = 0.0f; }

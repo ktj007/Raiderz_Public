@@ -63,6 +63,14 @@ mdb::MDB_THRTASK_RESULT LDBTaskCharGetLookList::_OnCompleted()
 	return mdb::MDBTR_SUCESS;
 }
 
+mdb::MDB_THRTASK_RESULT LDBTaskCharGetLookList::_OnFailed()
+{
+	SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
+	cmdRouter.ResponseAccountCharList(m_commonBody.GetPlayerUID(), CR_FAIL_LOGIN_CHAR_LIST_ERROR, vector<TD_AccountCharInfo>());
+
+	return mdb::MDBTR_SUCESS;
+}
+
 LDBTaskCharGetLookList::Completer::Completer(SCommonBodyCharGetLookList& commonBody)
 : m_commonBody(commonBody)
 {
@@ -87,7 +95,7 @@ void LDBTaskCharGetLookList::Completer::Do()
 	for (int i = 0; i < m_commonBody.GetCharCount(); ++i)
 	{
 		// 룩 정보
-		TD_AccountCharInfo tdAccountCharInfo;
+		TD_AccountCharInfo tdAccountCharInfo = {0};
 
 		m_commonBody.SetAccountCharInfo(i, &tdAccountCharInfo);
 		vecAccountCharInfo.push_back(tdAccountCharInfo);
@@ -103,5 +111,5 @@ void LDBTaskCharGetLookList::Completer::Do()
 
 	// 캐릭터 목록 응답
 	SCmdRouter_Login cmdRouter(gsys.pCommandCenter);
-	cmdRouter.ResponseAccountCharList(uidPlayer, vecAccountCharInfo);
+	cmdRouter.ResponseAccountCharList(uidPlayer, CR_SUCCESS, vecAccountCharInfo);
 }

@@ -12,6 +12,8 @@
 using std::vector;
 
 
+enum GDBTaskTalentLearnResult;
+
 class GDBTaskTalentLearn : public GDBAsyncTask, public MMemPool<GDBTaskTalentLearn>
 {
 public :
@@ -35,16 +37,18 @@ private :
 	class Completer
 	{
 	public :
-		Completer(GDBT_TALENT& data) : m_Data(data) {}
+		Completer(GDBT_TALENT& data, GDBTaskTalentLearnResult eResult) : m_Data(data), m_eResult(eResult) {}
 		void Do();
 
 	private :
-		GDBT_TALENT& m_Data;
+		GDBT_TALENT&				m_Data;
+		GDBTaskTalentLearnResult	m_eResult;
 	};
 
 
 protected :
-	GDBT_TALENT m_Data;
+	GDBT_TALENT					m_Data;
+	GDBTaskTalentLearnResult	m_eResult;
 };
 
 

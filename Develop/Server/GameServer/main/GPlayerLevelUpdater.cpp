@@ -16,6 +16,7 @@
 #include "GExpSystem.h"
 #include "GDB_CODE.h"
 #include "GTimeCalculator.h"
+#include "GGuideBookSystem.h"
 
 GPlayerLevelUpdater::GPlayerLevelUpdater(GEntityPlayer* pPlayer)
 : m_pPlayer(pPlayer)
@@ -31,6 +32,14 @@ void GPlayerLevelUpdater::LevelUp(const int nGainXP, const int nNpcID)
 	int nNewLevel = GExpCalculator::CalcNewLevel(pPlayerInfo->nLevel, pPlayerInfo->nXP+nGainXP);
 	int nNewExp = GExpCalculator::CalcNewExp(pPlayerInfo->nLevel, pPlayerInfo->nXP+nGainXP);
 
+	LevelUp(nNewLevel, nNewExp, nGainXP, nNpcID);
+}
+
+void GPlayerLevelUpdater::LevelUp(const int nNewLevel, const int nNewExp, const int nGainExp, const int nNpcID)
+{
+	PLAYER_INFO* pPlayerInfo = m_pPlayer->GetPlayerInfo();
+	if (NULL == pPlayerInfo) return;
+
 	if (nNewLevel == pPlayerInfo->nLevel) return;
 
 	GDBT_CHAR_LEVEL_UP_DATA data(m_pPlayer->GetAID()
@@ -39,10 +48,11 @@ void GPlayerLevelUpdater::LevelUp(const int nGainXP, const int nNpcID)
 		, GDB_CODE::CD_L_KILL_NPC_GAIN_XP_LEVEL_UP
 		, GTimeCalculator::GetTimeAsString(GTimeSec(0))
 		, nNewExp
-		, nGainXP
+		, nGainExp
 		, nNewLevel
 		, m_pPlayer->GetMoney()
 		, m_pPlayer->GetTalent().GetTP() + (nNewLevel - m_pPlayer->GetLevel())
+		, nNewLevel - m_pPlayer->GetLevel()
 		, pPlayerInfo->nPlayTimeSec
 		, pPlayerInfo->GetDeltaPlayTime()
 		, nNpcID
@@ -69,13 +79,15 @@ void GPlayerLevelUpdater::LevelUpForDBTask(int nLevel, int nExp, int nGainExp)
 	gsys.pExpSystem->RouteAddExp(m_pPlayer, nGainExp);
 	
 	MCommand* pNewCommand = MakeNewCommand(MC_CHAR_LEVEL_UP, 
-		11, 
+		13, 
 		NEW_UID(m_pPlayer->GetUID()), 
 		NEW_UCHAR(m_pPlayer->GetLevel()), 
 		NEW_USHORT(m_pPlayer->GetMaxHPProto()), 
 		NEW_USHORT(m_pPlayer->GetMaxENProto()), 
 		NEW_USHORT(m_pPlayer->GetMaxSTAProto()),
 		NEW_USHORT(m_pPlayer->GetTalent().GetTP()),
+		NEW_USHORT(0),	// TODO: 2nd skill set
+		NEW_USHORT(0),
 		NEW_USHORT(m_pPlayer->GetSTRProto()),
 		NEW_USHORT(m_pPlayer->GetDEXProto()),
 		NEW_USHORT(m_pPlayer->GetINTProto()),
@@ -85,6 +97,8 @@ void GPlayerLevelUpdater::LevelUpForDBTask(int nLevel, int nExp, int nGainExp)
 	m_pPlayer->RouteToThisCell(pNewCommand);
 
 	m_pPlayer->GetNPCIconSender().SendByPlayerConditionChange(CT_LEVEL);
+
+	gsys.pGuideBookSystem->AddGuideBook_OnLevelUp(m_pPlayer, m_pPlayer->GetLevel());
 }
 
 
@@ -110,6 +124,7 @@ void GPlayerLevelUpdater::SetLevelForGM( int nNewLevel, int nNewExp)
 		, nNewLevel
 		, m_pPlayer->GetMoney()
 		, m_pPlayer->GetTalent().GetTP() + nAddTP
+		, nAddTP
 		, pPlayerInfo->nPlayTimeSec
 		, pPlayerInfo->GetDeltaPlayTime()
 		, 0

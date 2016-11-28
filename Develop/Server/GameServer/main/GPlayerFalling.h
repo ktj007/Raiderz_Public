@@ -12,4 +12,7 @@ public:
 
 private:
 	GEntityPlayer*	m_pOwner;
+
+	bool _EndFalling(bool bIsFallenOnWater, float fFallingHeight);
+	void RouteFallingDamage(int nFallingDamage);
 };

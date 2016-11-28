@@ -76,6 +76,8 @@ using namespace minet;
 #define FILENAME_CHALLENGER_QUEST	PATH_SYSTEM	L"challenger.xml"
 #define FILENAME_QPEVENT			PATH_SYSTEM	L"qpevent.xml"
 #define FILENAME_PRESET				PATH_SYSTEM	L"preset.xml"
+#define FILENAME_SETITEM			PATH_SYSTEM	L"setitem.xml"
+#define FILENAME_GUIDEBOOK			PATH_SYSTEM L"guidebook.xml"
 
 #define FILENAME_PROFILE			L"profile.txt"
 #define FILENAME_SCRIPT_ENTRY		PATH_SCRIPT L"entry.lua"				// 맨처음에 entry.lua 스크립트를 읽음
@@ -324,6 +326,14 @@ struct REMAIN_BUFF_TIME
 	, fRemainNextPeriodSeconds(0.0f)
 	, fRemainBuffOffsetSeconds(0.0f)
 	, nStackedCount(1)
+	, fCriticalPercent(0.0f)
+	, fCriticalApplyRate(1.0f)
+	, nMinDamage(0)
+	, nMaxDamage(0)
+	, nMinHeal(0)
+	, nMaxHeal(0)
+	, nMinAttrDamage(0)
+	, nMaxAttrDamage(0)
 	{}
 
 	int		nID;						// 버프ID
@@ -331,6 +341,14 @@ struct REMAIN_BUFF_TIME
 	float	fRemainNextPeriodSeconds;	// 다음 주기까지 남은 시간
 	float	fRemainBuffOffsetSeconds;	// 남은 BuffOffset
 	int		nStackedCount;				// 중첩개수
+	float	fCriticalPercent;
+	float	fCriticalApplyRate;
+	int		nMinDamage;
+	int		nMaxDamage;
+	int		nMinHeal;
+	int		nMaxHeal;
+	int		nMinAttrDamage;
+	int		nMaxAttrDamage;
 
 	// TODO: 서버간 이동 시, 버프 이동을 고려할때. [2010/8/3 praptor]
 	// TODO: fRemainNextPeriodSeconds 외에 fRemainPeriodTick이 필요할까? - praptor, 2010.03.09	

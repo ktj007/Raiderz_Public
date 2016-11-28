@@ -18,7 +18,7 @@
 #include "GSoulBindingInfoMgr.h"
 #include "GPlayerSpawnedNPC.h"
 
-void GExtraActiveTalentRunner::Apply(GEntityActor* pUser, vec3 vPos, GTalentInfo* pTalentInfo, GEntityActor* pVictim)
+void GExtraActiveTalentRunner::Apply(GEntityActor* pUser, vec3 vPos, GTalentInfo* pTalentInfo, GEntityActor* pVictim, const TALENT_TARGET_INFO* pTargetInfo/* = NULL*/)
 {
 	PFI_BLOCK_THISFUNC(9024);
 
@@ -34,7 +34,7 @@ void GExtraActiveTalentRunner::Apply(GEntityActor* pUser, vec3 vPos, GTalentInfo
 	case TEAT_ADVENT:				{ onApplyAdvent(pUser); } break;	
 	case TEAT_SPAWN:				{ onSpawn(pUser, pTalentInfo->m_nExtraActiveParam1, pTalentInfo->m_nExtraActiveParam2); }	break;
 	case TEAT_TAUNT:				{ onTaunt(pUser, pTalentInfo, pVictim); } break;
-	case TEAT_BUFF_ENTITY:			{ onBuffEntity(pUser, vPos, pTalentInfo->m_nExtraActiveParam1, pTalentInfo->m_nExtraActiveParam2); } break;
+	case TEAT_BUFF_ENTITY:			{ onBuffEntity(pUser, vPos, pTalentInfo->m_nExtraActiveParam1, pTalentInfo->m_nExtraActiveParam2, pTargetInfo); } break;
 	case TEAT_DISPEL:				{ onDispel(pUser, pTalentInfo, pVictim); }	break;
 	case TEAT_CURE_POISON:			{ onCurePoison(pUser, pTalentInfo, pVictim); }	break;
 	case TEAT_CURE_DISEASE:			{ onCureDisease(pUser, pTalentInfo, pVictim); }	break;
@@ -295,13 +295,20 @@ void GExtraActiveTalentRunner::onTaunt( GEntityActor* pUser, GTalentInfo* pTalen
 	pVictimNPC->GetHateTable().Lock(pUser->GetUID(), (float)pTalentInfo->m_nExtraActiveParam1);
 }
 
-void GExtraActiveTalentRunner::onBuffEntity(GEntityActor* pUser, vec3 vPos, int nIncludeBuffID, int nLimitQty)
+void GExtraActiveTalentRunner::onBuffEntity(GEntityActor* pUser, vec3 vPos, int nIncludeBuffID, int nLimitQty, const TALENT_TARGET_INFO* pTargetInfo)
 {
 	VALID(pUser);
 	vec3 vOut;
-	MMatrix m;
-	m.SetLocalMatrix(pUser->GetPos(), -pUser->GetDir(), vec3::AXISZ);
-	m.TransformVect(vPos, vOut);
+	if (pTargetInfo && pTargetInfo->HasGroundPoint())
+	{
+		vOut = pTargetInfo->vGroundPoint;
+	}
+	else
+	{
+		MMatrix m;
+		m.SetLocalMatrix(pUser->GetPos(), -pUser->GetDir(), vec3::AXISZ);
+		m.TransformVect(vPos, vOut);
+	}
 
 	GBuffEntity::Spawn(pUser, vOut, nIncludeBuffID, nLimitQty);
 }

@@ -16,6 +16,8 @@
 #include "GCommandCenter.h"
 #include "CCommandResultTable.h"
 #include "GLootSystem.h"
+#include "GPartyManager.h"
+#include "MStringUtil.h"
 
 
 GStandAloneModePartyRouter::GStandAloneModePartyRouter()
@@ -33,6 +35,7 @@ void GStandAloneModePartyRouter::SyncParty(const GParty* pParty)
 	_ASSERT(pParty != NULL);
 
 
+	/*
 	// 정보 수집
 	TD_PARTY_SETTING tdPartySetting;
 	tdPartySetting.Import(pParty->GetPartySetting());
@@ -55,6 +58,13 @@ void GStandAloneModePartyRouter::SyncParty(const GParty* pParty)
 
 		i++;
 	}
+	*/
+
+	TD_PARTY tdParty;
+	vector<TD_PARTY_MEMBER> vecPartyMember;
+	vector<vector<int> > vecBuffs;
+
+	MakeTD_PartyInfo(pParty, tdParty, vecPartyMember, &vecBuffs);
 
 
 	_ASSERT(MAX_PARTY_MEMBER_COUNT == 5);
@@ -80,6 +90,30 @@ void GStandAloneModePartyRouter::SyncParty(const GParty* pParty)
 void GStandAloneModePartyRouter::InviteReq(MUID uidTargetPlayer, MUID uidRequestPlayer)
 {
 	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
+
+	if (pRequestPlayer != NULL)
+	{
+		wstring strRequestPlayerName = pRequestPlayer->GetName();
+		gsys.pPartySystem->AcceptReq(uidTargetPlayer, uidRequestPlayer, strRequestPlayerName);
+	}
+	else
+	{
+		gsys.pPartySystem->InviteRes(uidRequestPlayer, uidTargetPlayer, CR_FAIL_SYSTEM_INVALID_PC_UID);
+	}
+}
+
+void GStandAloneModePartyRouter::InviteByNameReq(wstring strTargetPlayer, MUID uidRequestPlayer)
+{
+	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
+	GEntityPlayer* pTargetPlayer = gmgr.pPlayerObjectManager->GetEntityFromPlayerID(strTargetPlayer);
+
+	if (pTargetPlayer == NULL)
+	{
+		gsys.pPartySystem->InviteRes(uidRequestPlayer, MUID::ZERO, CR_FAIL_SYSTEM_INVALID_PC_UID);
+		return;
+	}
+
+	MUID uidTargetPlayer = pTargetPlayer->GetUID();
 
 	if (pRequestPlayer != NULL)
 	{
@@ -422,7 +456,7 @@ void GStandAloneModePartyRouter::DoOnline(MUID uidParty, MUID uidMember, MUID ui
 	if (pProxyParty != NULL)
 	{
 		wstring strMemberName = pProxyParty->GetName(uidOffline);
-		int nMemberCID = pProxyParty->GetCID(uidOffline);
+		CID nMemberCID = pProxyParty->GetCID(uidOffline);
 		gsys.pMasterServerFacade->RemoveProxyPartyMember(uidParty, uidOffline);
 		gsys.pMasterServerFacade->AddProxyPartyMember(uidParty, uidMember, strMemberName, nMemberCID);
 	}
@@ -430,12 +464,18 @@ void GStandAloneModePartyRouter::DoOnline(MUID uidParty, MUID uidMember, MUID ui
 	gsys.pPartySystem->RemoveOfflineMember(uidParty, uidMember, uidOffline);
 }
 
-void GStandAloneModePartyRouter::JoinInviteReq(MUID uidParty, MUID uidRequestPlayer)
+void GStandAloneModePartyRouter::JoinReq(MUID uidParty, MUID uidRequestPlayer, int nReqPlayerLevel, int nReqPlayerTalentStyle)
 {
 	GParty* pParty = gsys.pPartySystem->FindParty(uidParty);
 	if (pParty == NULL)
 	{
-		gsys.pPartySystem->JoinInviteRes(uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		gsys.pPartySystem->JoinRes(uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		return;
+	}
+
+	if (!pParty->IsPublic())
+	{
+		gsys.pPartySystem->JoinRes(uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
 		return;
 	}
 
@@ -443,14 +483,14 @@ void GStandAloneModePartyRouter::JoinInviteReq(MUID uidParty, MUID uidRequestPla
 	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
 	if (pRequestPlayer == NULL)
 	{
-		gsys.pPartySystem->JoinInviteRes(uidRequestPlayer, CR_FAIL_SYSTEM_INVALID_PC_UID);
+		gsys.pPartySystem->JoinRes(uidRequestPlayer, CR_FAIL_SYSTEM_INVALID_PC_UID);
 		return;
 	}
 
 
 	MUID uidLeader = pParty->GetLeader();
 	wstring strRequestPlayerName = pRequestPlayer->GetName();
-	gsys.pPartySystem->JoinAcceptReq(uidParty, uidLeader, uidRequestPlayer, strRequestPlayerName);
+	gsys.pPartySystem->JoinAcceptReq(uidParty, uidLeader, uidRequestPlayer, strRequestPlayerName, nReqPlayerLevel, nReqPlayerTalentStyle, pRequestPlayer->GetFieldID());
 }
 
 void GStandAloneModePartyRouter::JoinAcceptRes(MUID uidParty, MUID uidLeader, MUID uidRequestPlayer, CCommandResultTable nResult)
@@ -458,7 +498,7 @@ void GStandAloneModePartyRouter::JoinAcceptRes(MUID uidParty, MUID uidLeader, MU
 	GParty* pParty = gsys.pPartySystem->FindParty(uidParty);
 	if (pParty == NULL)
 	{
-		gsys.pPartySystem->JoinInviteRes(uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
+		gsys.pPartySystem->JoinRes(uidRequestPlayer, CR_FAIL_PARTY_INVALID_PARTY);
 		gsys.pPartySystem->JoinAcceptCancel(uidLeader, CR_FAIL_PARTY_INVALID_PARTY);
 		return;
 	}
@@ -466,13 +506,13 @@ void GStandAloneModePartyRouter::JoinAcceptRes(MUID uidParty, MUID uidLeader, MU
 	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
 	if (pRequestPlayer == NULL)
 	{
-		gsys.pPartySystem->JoinInviteRes(uidRequestPlayer, CR_FAIL_SYSTEM_INVALID_PC_UID);
+		gsys.pPartySystem->JoinRes(uidRequestPlayer, CR_FAIL_SYSTEM_INVALID_PC_UID);
 		gsys.pPartySystem->JoinAcceptCancel(uidLeader, CR_FAIL_SYSTEM_INVALID_PC_UID);
 		return;
 	}
 
 
-	gsys.pPartySystem->JoinInviteRes(uidRequestPlayer, nResult);
+	gsys.pPartySystem->JoinRes(uidRequestPlayer, nResult);
 
 	if (nResult == CR_SUCCESS)
 	{
@@ -486,24 +526,14 @@ void GStandAloneModePartyRouter::MoveServer(MUID uidParty, MUID uidMember)
 	// do nothing
 }
 
-void GStandAloneModePartyRouter::CreateSinglePartyReq(MUID uidRequestPlayer)
-{
-	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
-	if (pRequestPlayer == NULL)		return;
-
-	MUID uidParty = gsys.pServer->NewUID();
-	gsys.pMasterServerFacade->AddProxyParty(uidParty, uidRequestPlayer, pRequestPlayer->GetName(), pRequestPlayer->GetCID()); 
-	gsys.pPartySystem->AddParty(uidParty, uidRequestPlayer);
-}
-
 void GStandAloneModePartyRouter::PartyInfoAllReq(void)
 {
 	// do nothing
 }
 
-void GStandAloneModePartyRouter::ChangePartyNameReq(MUID uidParty, MUID uidLeader, wstring strName)
+void GStandAloneModePartyRouter::ChangePublicPartySettingReq(MUID uidParty, MUID uidLeader, bool bPublicParty, wstring strPartyName)
 {
-	gsys.pPartySystem->ChangePartyNameRes(uidParty, strName);
+	gsys.pPartySystem->ChangePublicPartySettingRes(uidParty, bPublicParty, strPartyName);
 }
 
 void GStandAloneModePartyRouter::ChangePartyLeaderReq(MUID uidParty, MUID uidLeader, MUID uidNewLeader)
@@ -520,6 +550,85 @@ void GStandAloneModePartyRouter::ChangePartyLootingRuleReq(MUID uidParty, MUID u
 void GStandAloneModePartyRouter::ChangeQuestIDReq( MUID uidParty, MUID uidLeader, int nQuestID )
 {
 	gsys.pPartySystem->ChangeQuestIDRes(uidParty, nQuestID);
+}
+
+void GStandAloneModePartyRouter::ShowInfoReq(MUID uidRequestor, MUID uidParty)
+{
+	GEntityPlayer* pRequestorPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestor);
+	if (pRequestorPlayer == NULL) return;
+
+	GParty* pParty = gsys.pPartySystem->FindParty(uidParty);
+	if (pParty == NULL)
+	{
+		pRequestorPlayer->FailAndRouteSystemMsg(CR_FAIL_PARTY_INVALID_PARTY);
+		return;
+	}
+
+	TD_PARTY tdParty;
+	vector<TD_PARTY_MEMBER> vecPartyMember;
+
+	MakeTD_PartyInfo(pParty, tdParty, vecPartyMember, NULL);
+
+	gsys.pPartySystem->ShowInfoRes(uidRequestor, tdParty, vecPartyMember);
+}
+
+void GStandAloneModePartyRouter::CreateSinglePartyReq(MUID uidRequestPlayer, bool bPublicParty, wstring strPartyName)
+{
+	GEntityPlayer* pRequestPlayer = gmgr.pPlayerObjectManager->GetEntity(uidRequestPlayer);
+	if (pRequestPlayer == NULL)		return;
+
+	MUID uidParty = gsys.pServer->NewUID();
+	gsys.pMasterServerFacade->AddProxyParty(uidParty, uidRequestPlayer, pRequestPlayer->GetName(), pRequestPlayer->GetCID());
+	gsys.pPartySystem->AddParty(uidParty, uidRequestPlayer, bPublicParty, strPartyName);
+}
+
+void GStandAloneModePartyRouter::ShowMatchingPublicPartyListReq(MUID uidRequestor, char nPage, char nLevelMin, char nLevelMax, wstring strSearchText)
+{
+	if (nPage < 0) return;
+	if (nLevelMin < 0 || nLevelMax < 0) return;
+
+	int nStartIndex = nPage * PARTY_PUBLIC_PARTY_LIST_COUNT_PER_ONE_PAGE;
+	bool bAllLevels = nLevelMin == 0 && nLevelMax == 0;
+	strSearchText = cml2::ToLower(strSearchText);	// insensitive search
+
+	vector<TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM> vecFilteredParty;
+	int nTotalFilteredCount = 0;
+
+	GPartyManager::PARTY_MAP::const_reverse_iterator iterEnd = gsys.pPartySystem->GetPartyManager()->GetPartyMap().rend();
+	for (GPartyManager::PARTY_MAP::const_reverse_iterator iter = gsys.pPartySystem->GetPartyManager()->GetPartyMap().rbegin(); iter != iterEnd; iter++)
+	{
+		const MUID& uidParty = iter->first;
+		const GParty* pParty = iter->second;
+
+		if (!pParty->IsPublic())
+			continue;
+
+		if (cml2::ToLower(pParty->GetName()).find(strSearchText) == string::npos)
+			continue;
+
+		GEntityPlayer* pLeader = gmgr.pPlayerObjectManager->GetEntity(pParty->GetLeader());
+		if (!pLeader)
+			continue;
+
+		if (!bAllLevels && (pLeader->GetLevel() < nLevelMin || pLeader->GetLevel() > nLevelMax))
+			continue;
+
+		if (--nStartIndex < 0 && vecFilteredParty.size() < PARTY_PUBLIC_PARTY_LIST_COUNT_PER_ONE_PAGE)
+		{
+			vecFilteredParty.push_back(
+				TD_PARTY_MATCHING_PUBLIC_PARTY_LIST_ITEM(
+					uidParty,
+					pParty->GetLeader(),
+					MLocale::ConvUTF16ToTCHAR(pParty->GetName().c_str()).c_str(),
+					MLocale::ConvUTF16ToTCHAR(pLeader->GetName()).c_str(),
+					pParty->GetMemberCount())
+				);
+		}
+
+		nTotalFilteredCount++;
+	}
+
+	gsys.pPartySystem->ShowMatchingPublicPartyListRes(uidRequestor, CR_SUCCESS, vecFilteredParty, nTotalFilteredCount);
 }
 
 void GStandAloneModePartyRouter::FixedPartyLogOn(MUID uidParty, MUID uidMember, MUID uidOffline)
@@ -583,7 +692,7 @@ void GStandAloneModePartyRouter::CreateAutoPartyReq(QuestID nQuestID, const vect
 
 			gsys.pMasterServerFacade->AddProxyParty(uidParty, uidMember, strName, nCID);
 
-			gsys.pPartySystem->AddParty(uidParty, uidMember, nQuestID);
+			gsys.pPartySystem->AddParty(uidParty, uidMember, false, L"", nQuestID);
 		}
 		else
 		{
@@ -626,4 +735,31 @@ void GStandAloneModePartyRouter::JoinAutoPartyReq(MUID uidParty, MUID uidPlayer)
 
 	gsys.pMasterServerFacade->AddProxyPartyMember(uidParty, uidPlayer, strName, nCID);
 	gsys.pPartySystem->AddMember(uidParty, uidPlayer, strName, nCID);
+}
+
+void GStandAloneModePartyRouter::MakeTD_PartyInfo(const GParty* pParty, TD_PARTY& outtdParty, vector<TD_PARTY_MEMBER>& outvecMember, vector<vector<int>>* outvecBuff)
+{
+	_ASSERT(pParty != NULL);
+
+	TD_PARTY_SETTING tdPartySetting;
+	tdPartySetting.Import(pParty->GetPartySetting());
+
+	outtdParty = TD_PARTY(pParty->GetUID(), tdPartySetting);
+
+	if (outvecBuff)
+		outvecBuff->resize(MAX_PARTY_MEMBER_COUNT);
+
+	int i = 0;
+	for(partymember_iterator it = pParty->GetMemberBegin(); it != pParty->GetMemberEnd(); it++)
+	{
+		if (MAX_PARTY_MEMBER_COUNT <= i)	break;
+
+		MUID uidMember = it->first;
+
+		TD_PARTY_MEMBER tdMember;
+		MakePartyMemberInfo(pParty, uidMember, &tdMember, outvecBuff ? &((*outvecBuff)[i]) : NULL);
+		outvecMember.push_back(tdMember);
+
+		i++;
+	}
 }

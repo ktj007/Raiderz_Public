@@ -2,6 +2,7 @@
 #include "GEFfectTimingChecker.h"
 #include "GEntitySync.h"
 #include "GEntityActor.h"
+#include "GBuffInfo.h"
 
 
 GEFfectTimingChecker::GEFfectTimingChecker() 
@@ -17,6 +18,25 @@ void GEFfectTimingChecker::AddListener( TALENT_CONDITION nTiming, Listener* pLis
 	}
 
 	m_mapTimings[nTiming].push_back(pListenner);
+}
+
+void GEFfectTimingChecker::Update(float fDelta)
+{
+	for (DelayedEventVec::iterator iter = m_vecDelayedEvents.begin(); iter != m_vecDelayedEvents.end(); )
+	{
+		float& fLeftTime = iter->second;
+		fLeftTime -= fDelta;
+
+		if (fLeftTime <= 0.f)
+		{
+			NotifyEvent(iter->first);
+			iter = m_vecDelayedEvents.erase(iter);
+		}
+		else
+		{
+			iter++;
+		}
+	}
 }
 
 void GEFfectTimingChecker::OnHit(GEntityActor* pOwner, GEntityActor* pAttacker, GTalentInfo* pTalentInfo)
@@ -71,8 +91,16 @@ void GEFfectTimingChecker::OnGuardEnemy( GEntityActor* pOwner, GEntityActor* pTa
 
 void GEFfectTimingChecker::OnGain(MUID uidUser, GEntitySync* pTarget, GBuffInfo* pBuffInfo)
 {
-	NotifyEvent(TC_BUFF_GAIN);
-	NotifyEvent(TC_BUFF_GAIN_N_PERIOD);
+	float fDelay = pBuffInfo->m_EffectInfo.m_fDelay;
+
+	NotifyEvent(TC_BUFF_GAIN, fDelay);
+	NotifyEvent(TC_BUFF_GAIN_N_PERIOD, fDelay);
+
+	if (pBuffInfo->IsStackable())
+	{
+		// treat 'buff gained' as 'one buff stacked', and activate the stack timing effect.
+		NotifyEvent(TC_BUFF_STACKED, fDelay);
+	}
 }
 
 void GEFfectTimingChecker::OnLost(MUID uidUser, GEntitySync* pTarget, GBuffInfo* pBuffInfo, bool bRoute)
@@ -99,6 +127,10 @@ void GEFfectTimingChecker::OnDispelled()
 void GEFfectTimingChecker::OnDuplicated(MUID uidUser, GEntitySync* pTarget, GBuffInfo* pBuffInfo)
 {
 	NotifyEvent(TC_BUFF_DUPLICATED);
+
+	// Regain Effect.
+	NotifyEvent(TC_BUFF_GAIN);
+	NotifyEvent(TC_BUFF_GAIN_N_PERIOD);
 }
 
 void GEFfectTimingChecker::OnMaxStacked()
@@ -116,8 +148,20 @@ void GEFfectTimingChecker::NotifyEvent(TALENT_CONDITION nTiming)
 	const vector<Listener*>& vecListeners = m_mapTimings[nTiming];
 	for each (Listener* each in vecListeners)
 	{
-		if (each->OnEvent(nTiming))
+		if (!each->OnEvent(nTiming))
 			return; // 소유자가 죽었음
+	}
+}
+
+void GEFfectTimingChecker::NotifyEvent(TALENT_CONDITION nTiming, float fDelayTime)
+{
+	if (fDelayTime > 0.f)
+	{
+		m_vecDelayedEvents.push_back(DelayedEvent(nTiming, fDelayTime));
+	}
+	else
+	{
+		NotifyEvent(nTiming);
 	}
 }
 

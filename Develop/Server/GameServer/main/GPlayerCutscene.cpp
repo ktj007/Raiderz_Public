@@ -166,7 +166,7 @@ bool GPlayerCutscene::EndCutscene(int nCutsceneID)
 
 	/// 4. 시간, 날씨 정보
 	GClientFieldRouter routerField;
-	GAME_TIME_TYPE nTimeType = pField->GetCurrentTime();
+	GAME_TIME_TYPE nTimeType = (pField->GetCurrentTime)();
 	GAME_WEATHER_TYPE nWeatherType = pField->GetCurrentWeather();		
 	routerField.ChangeTimeWeather(m_pOwner->GetUID(), nTimeType, nWeatherType);
 

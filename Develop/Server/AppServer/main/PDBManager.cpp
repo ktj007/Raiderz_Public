@@ -3,9 +3,10 @@
 #include "SDBTask.h"
 #include "SAsyncDB.h"
 #include "PDBTaskSQL.h"
+#include "MDBUtil.h"
 
 
-PDBManager::PDBManager() : m_pGameDB(NULL), m_pLogDB(NULL)
+PDBManager::PDBManager() : m_pAccountDB(NULL), m_pGameDB(NULL), m_pLogDB(NULL)
 {
 }
 
@@ -15,36 +16,51 @@ PDBManager::~PDBManager()
 
 bool PDBManager::ServerStatusStart( const int nWorldID, const int nServerID, const wstring& strServerName, const wstring& strServerVersion, const wstring& strIP, const uint16 nPort, const int nMaxUser , const uint8 nType, const int nUpdateElapsedTimeSec, const int nAllowDelayTm )
 {
-	PGameDBTaskQuery* pTask = new PGameDBTaskQuery(SDBTID_SERVER_START);
+	PAccountDBTaskQuery* pTask = new PAccountDBTaskQuery(SDBTID_SERVER_START);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL dbo.USP_RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
-		, nWorldID, nServerID, MCleanSQLStr(strServerName).c_str(), MCleanSQLStr(strServerVersion).c_str(), MCleanSQLStr(strIP).c_str()
-		, nPort, nType, nMaxUser, nUpdateElapsedTimeSec, nAllowDelayTm );
+	strSQL.Format(L"{CALL RZ_SERVER_START (%d, %d, '%s', '%s', '%s', %d, %d, %d, %d, %d)}"
+		, nWorldID
+		, nServerID
+		, mdb::MDBStringEscaper::Escape(strServerName).c_str()
+		, mdb::MDBStringEscaper::Escape(strServerVersion).c_str()
+		, strIP.c_str()
+		, nPort
+		, nType
+		, nMaxUser
+		, nUpdateElapsedTimeSec
+		, nAllowDelayTm );
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-bool PDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable )
+bool PDBManager::ServerStatusUpdate( const int nWordID, const int nServerID, const int nCurUserCount, const bool bIsServable, const unsigned long long nTaskCount, const int nCPUUsage, const int nMemoryUsage, const int nFieldCount, const int nFPS )
 {
-	PGameDBTaskQuery* pTask = new PGameDBTaskQuery(SDBTID_SERVER_UPDATE);
+	PAccountDBTaskQuery* pTask = new PAccountDBTaskQuery(SDBTID_SERVER_UPDATE);
 	if (NULL == pTask)
 		return false;
 
 	CString strSQL;
-	strSQL.Format(L"{CALL USP_RZ_SERVER_UPDATE (%d, %d, %d, %d)}", nWordID, nServerID, nCurUserCount, bIsServable);
+	strSQL.Format(L"{CALL RZ_SERVER_UPDATE (%d, %d, %d, %s, %I64d, %d, %d, %d, %d)}", 
+		nWordID, nServerID, nCurUserCount, mdb::MDBBoolUtil::ToWString(bIsServable), nTaskCount, nCPUUsage, nMemoryUsage, nFieldCount, nFPS);
 
 	pTask->PushSQL(strSQL);
 
 	return Post(pTask);
 }
 
-bool PDBManager::Init( mdb::MDatabaseDesc& dbGameDBDesc, mdb::MDatabaseDesc& dbLogDBDesc )
+bool PDBManager::Init( mdb::MDatabaseDesc& dbAccountDBDesc, mdb::MDatabaseDesc& dbGameDBDesc, mdb::MDatabaseDesc& dbLogDBDesc )
 {
+	if (!InitAccountDB(dbAccountDBDesc))
+	{
+		MLog3("Init AccountDB fail.\n");
+		return false;
+	}
+
 	if (!InitGameDB(dbGameDBDesc))
 	{
 		MLog3("Init GameDB fail.\n");
@@ -62,12 +78,16 @@ bool PDBManager::Init( mdb::MDatabaseDesc& dbGameDBDesc, mdb::MDatabaseDesc& dbL
 
 void PDBManager::Release()
 {
+	ReleaseAccountDB();
 	ReleaseGameDB();
 	ReleaseLogDB();
 }
 
 void PDBManager::Update()
 {
+	if (NULL != m_pAccountDB)
+		m_pAccountDB->Update();
+
 	if (NULL != m_pGameDB)
 		m_pGameDB->Update();
 
@@ -82,14 +102,16 @@ bool PDBManager::Post( SDBAsyncTask* pTask )
 
 
 	SDBT_DBTYPE DBType = pTask->GetDBType();
-	if (SDBT_DBTYPE_GAMEDB != pTask->GetDBType())
+	if (SDBT_DBTYPE_ACCOUNTDB != pTask->GetDBType() && SDBT_DBTYPE_GAMEDB != pTask->GetDBType())
 	{
 		SAFE_DELETE(pTask);
 		return false;
 	}
 
 	SAsyncDB* pAsyncDB = NULL;
-	if (SDBT_DBTYPE_GAMEDB == pTask->GetDBType())
+	if (SDBT_DBTYPE_ACCOUNTDB == pTask->GetDBType())
+		pAsyncDB = m_pAccountDB;
+	else if (SDBT_DBTYPE_GAMEDB == pTask->GetDBType())
 		pAsyncDB = m_pGameDB;
 
 	if (NULL == pAsyncDB)
@@ -108,6 +130,30 @@ bool PDBManager::Post( SDBAsyncTask* pTask )
 	}
 
 	return true;
+}
+
+bool PDBManager::InitAccountDB(mdb::MDatabaseDesc& dbAccountDBDesc)
+{
+	if (NULL == m_pAccountDB)
+	{
+		m_pAccountDB = new SAsyncDB;
+		if (NULL == m_pAccountDB)
+			return false;
+	}
+
+	if (mdb::MDBAR_SUCCESS != m_pAccountDB->Init(SDBT_DBTYPE_ACCOUNTDB, dbAccountDBDesc))
+		return false;
+
+	return true;
+}
+
+void PDBManager::ReleaseAccountDB()
+{
+	if (NULL != m_pAccountDB)
+	{
+		m_pAccountDB->Release();
+		SAFE_DELETE(m_pAccountDB);
+	}
 }
 
 bool PDBManager::InitGameDB(mdb::MDatabaseDesc& dbGameDBDesc)

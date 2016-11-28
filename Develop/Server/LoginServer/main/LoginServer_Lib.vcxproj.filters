@@ -247,6 +247,12 @@
       <Filter>db\Util</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="LDBTaskPWELogin.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="LDBTaskPWEAccountInsert.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LConfig.h">
@@ -445,5 +451,11 @@
       <Filter>db\DBData</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="LDBTaskPWELogin.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="LDBTaskPWEAccountInsert.h">
+      <Filter>db</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

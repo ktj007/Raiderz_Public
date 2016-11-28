@@ -47,12 +47,6 @@ inline void XPostGM_Summon(const wchar_t* szPlayerID)
 	XPOSTCMD1(MC_GM_SUMMON_REQ, MCommandParameterWideString(szPlayerID));
 }
 
-// 내 원위치로 이동 요청
-inline void XPostGMMoveToMySpot()
-{
-	XPOSTCMD0(MC_GM_MOVE_TO_MYSPOT_REQ);
-}
-
 // 부활 요청
 inline void XPostGMRebirth(const vec3& vPos)
 {
@@ -166,11 +160,6 @@ inline void XPostGMReportTargetEntity(MUID uidTarget)
 	XPOSTCMD1(MC_GM_REPORT_TARGET_ENTITY, MCommandParameterUID(uidTarget));
 }
 
-inline void XPostDebugString(const wchar_t* szKey, int nParam1, const wchar_t* szText)
-{
-	XPOSTCMD4(MC_REQUEST_DEBUG_STRING, MCommandParameterWideString(szKey), MCommandParameterInt(nParam1), MCommandParameterWideString(szText), MCommandParameterBlob());
-}
-
 inline void XPostGMSetMe(const wchar_t* szType, const wchar_t* szValue)
 {
 	XPOSTCMD2(MC_GM_SET_ME_REQ, MCommandParameterWideString(szType), MCommandParameterWideString(szValue));
@@ -218,16 +207,6 @@ inline void XPostGM_BreakPart(MUID uidNPC, uint8 nBPartID)
 inline void XPostGM_RangeBreakPart(float fRange)
 {
 	XPOSTCMD1(MC_GM_RANGE_BREAK_PART_REQ, MCommandParameterFloat(fRange));
-}
-
-inline void XPostGM_LogCRTInsert(int nCRT)
-{
-	XPOSTCMD1(MC_GM_LOG_CRT_INSERT_REQ, MCommandParameterInt(nCRT));
-}
-
-inline void XPostGM_LogCRTDelete(int nCRT)
-{
-	XPOSTCMD1(MC_GM_LOG_CRT_DELETE_REQ, MCommandParameterInt(nCRT));
 }
 
 inline void XPostGM_FactionIncrease(uint8 nFactionID, uint16 nQuantity)
@@ -278,11 +257,6 @@ inline void XPostGM_Regen()
 inline void XPostGM_Dye(SH_ITEM_SLOT_TYPE nSlotType, int nSlotID, int nColor)
 {
 	XPOSTCMD3(MC_GM_DYE_REQ, MCommandParameterInt(nSlotType), MCommandParameterInt(nSlotID), MCommandParameterInt(nColor));
-}
-
-inline void XPostGM_Ban(wstring * name)
-{
-	XPOSTCMD1(MC_GM_BAN, MCommandParameterWideString((const wchar_t*)name));
 }
 
 #endif

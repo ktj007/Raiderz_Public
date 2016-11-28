@@ -19,7 +19,7 @@ MCommand* XNewCmd(int nCmdID)
 	return global.net->NewCommand(nCmdID, uidTarget);
 }
 
-XNetClient::XNetClient(const MNetClientDesc& desc) : MNetClient(desc), m_pRecorder(NULL), m_pControlNetCmdState(NULL)
+XNetClient::XNetClient(const MNetClientDesc& desc) : MNetClient(desc),m_pControlNetCmdState(NULL)
 {
 	m_pCmdHandlerGroup = new XCmdHandlerGroup(this);
 	m_pRequestCommandFilter = new XRequestCommandFilter();
@@ -81,11 +81,6 @@ bool XNetClient::Post( MCommand* pCommand )
 	{
 		SAFE_DELETE(pCommand);
 		return false;
-	}
-
-	if (m_pRecorder && m_pRecorder->IsRecording())
-	{
-		m_pRecorder->Record(pCommand);
 	}
 
 	return MNetClient::Post(pCommand);

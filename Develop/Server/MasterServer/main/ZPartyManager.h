@@ -12,10 +12,10 @@ public:
 	ZPartyManager();
 	virtual ~ZPartyManager();
 
-	ZParty* AddParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, int nLeaderCID);
-	ZParty* AddParty(MUID uidLeader, wstring strLeaderName, int nLeaderServerID, int nLeaderCID);
+	ZParty* AddParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, CID nLeaderCID);
+	ZParty* AddParty(MUID uidLeader, wstring strLeaderName, int nLeaderServerID, CID nLeaderCID);
 	void RemoveParty(MUID uidParty);
-	void AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberServerID, int nMemberCID);
+	void AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberServerID, CID nMemberCID);
 	void RemoveMember(MUID uidParty, MUID uidMember);
 	void ChangeLeader(MUID uidParty, MUID uidNewLeader);	
 	int GetCount(void) const;

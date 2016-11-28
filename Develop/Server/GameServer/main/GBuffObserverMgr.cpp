@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "GBuffObserverMgr.h"
 #include "GBuffObserver.h"
-#include "GBuffInfo.h"
 
 #define NOTIFY_OBSERVERS_REVERSE(obs_type, set, event)					\
 	vector<obs_type*>::reverse_iterator it = set.rbegin(); \
@@ -36,8 +35,6 @@ void GBuffObserverMgr::OnGain(MUID uidUser, GEntitySync* pTarget, GBuffInfo* pBu
 {
 	// GAIN 패킷을 먼저 쏘기위해 반대 순서로 알림
 	NOTIFY_OBSERVERS_REVERSE(GBuffObserver, m_vecObservers, OnGain(uidUser, pTarget, pBuffInfo));
-	if(pBuffInfo->IsRideBuff())
-		Sleep(1000); //Hack fix for allowing movement on mounts.
 }
 
 void GBuffObserverMgr::OnLost(MUID uidUser, GEntitySync* pTarget, GBuffInfo* pBuffInfo, bool bRoute)

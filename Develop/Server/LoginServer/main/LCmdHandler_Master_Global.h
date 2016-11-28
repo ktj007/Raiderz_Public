@@ -13,6 +13,7 @@ public:
 	DECL_CMD_HANDLER(OnDuplicatedPlayerLogin);
 	
 	DECL_CMD_HANDLER(OnPmangResponseAddPlayer);
+	DECL_CMD_HANDLER(OnPWEResponseAddPlayer);
 
 	DECL_CMD_HANDLER(OnAdminChangeServerMode);
 };

@@ -5,7 +5,7 @@
 #include "LServableChecker.h"
 
 LDBTaskServerGetStatus::LDBTaskServerGetStatus()
-: LDBAsyncTask(SDBT_DBTYPE_GAMEDB, SDBTID_SERVERGETSTATUS)
+: LDBAsyncTask(SDBT_DBTYPE_ACCOUNTDB, SDBTID_SERVERGETSTATUS)
 {
 }
 

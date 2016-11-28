@@ -150,7 +150,11 @@ bool RActor::DeleteActorNode(std::vector<RActorNode*> &vecActorNode, bool bNotif
 		itrVec = remove( m_actorNodes.begin(), m_actorNodes.end(), pActorNode  ); 
 		m_actorNodes.erase( itrVec, m_actorNodes.end() ); 
 
-		stdext::hash_map<string,RActorNode*>::iterator itrMap;
+#if (_MSC_VER >= 1900)
+		std::unordered_map<string, RActorNode*>::iterator itrMap;
+#else
+		std::unordered_map<string,RActorNode*>::iterator itrMap;
+#endif
 		itrMap = m_actorNodeMap.find( pActorNode->GetNodeName() );
 		m_actorNodeMap.erase( itrMap );
 
@@ -275,7 +279,11 @@ void RActor::Destroy()
 	}
 	
 	m_bUsingActorPassRenderer = true;
+#if (_MSC_VER >= 1900)
+	SetAABB(RBoundingBox::_INVALID);
+#else
 	SetAABB( RBoundingBox::INVALID );
+#endif
 
 	m_pAutoAnimation = NULL;
 
@@ -1111,7 +1119,11 @@ bool RActor::DeleteActorNode(RActorNode* pActorNode, bool bNotifyToController)
 		itrVec = remove( m_actorNodes.begin(), m_actorNodes.end(), pDeleteActorNode ); 
 		m_actorNodes.erase( itrVec, m_actorNodes.end() ); 
 
-		stdext::hash_map<string,RActorNode*>::iterator itrMap;
+#if (_MSC_VER >= 1900)
+		std::unordered_map<string, RActorNode*>::iterator itrMap;
+#else
+		std::unordered_map<string,RActorNode*>::iterator itrMap;
+#endif
 		itrMap = m_actorNodeMap.find(pDeleteActorNode->GetNodeName());
 		m_actorNodeMap.erase( itrMap );
 
@@ -1406,7 +1418,11 @@ void RActor::SaveToXML(MXmlElement &element)
 
 RActorNode* RActor::GetActorNode(const char* szNodeName)
 {
-	stdext::hash_map<string,RActorNode*>::iterator itr = m_actorNodeMap.find(string(szNodeName));
+#if (_MSC_VER >= 1900)
+	std::unordered_map<string, RActorNode*>::iterator itr = m_actorNodeMap.find(string(szNodeName));
+#else
+	std::unordered_map<string,RActorNode*>::iterator itr = m_actorNodeMap.find(string(szNodeName));
+#endif
 	if(itr!=m_actorNodeMap.end())
 		return itr->second;
 	return NULL;

@@ -10,7 +10,7 @@ class GDBT_CRAFT_DATA
 {
 public :
 	GDBT_CRAFT_DATA() : m_nAID(0), m_uidPlayer(0), m_nXP(0), m_nMoney(0), m_nModMoney(0), m_nModStackAmt(0), m_nNPCID(0), m_nAddExpiMin(-1) {}
-	GDBT_CRAFT_DATA(const int64 nAID, const MUID& uidPlayer, int nDeltaCahrPtm, uint8 nLevel, const int nMoney, const int nModMoney, const int nXP, const int16 nModStackAmt
+	GDBT_CRAFT_DATA(const AID nAID, const MUID& uidPlayer, int nDeltaCahrPtm, uint8 nLevel, const int nMoney, const int nModMoney, const int nXP, const int16 nModStackAmt
 		, const int nAddExpiMin, const int nNPCID,  GITEM_STACK_AMT_VEC& vRecp)
 		: m_nAID(nAID), m_uidPlayer(uidPlayer), m_nDeltaCharPtm(nDeltaCahrPtm), m_nLevel(nLevel), m_nMoney(nMoney), m_nModMoney(nModMoney), m_nXP(nXP), m_nModStackAmt(nModStackAmt)
 		, m_nAddExpiMin(nAddExpiMin), m_nNPCID(nNPCID)
@@ -36,7 +36,7 @@ public :
 		m_vRecp.swap(data.m_vRecp);
 	}
 
-	int64				m_nAID;
+	AID					m_nAID;
 	MUID				m_uidPlayer;
 	int					m_nDeltaCharPtm;
 	uint8				m_nLevel;

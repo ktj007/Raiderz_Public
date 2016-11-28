@@ -13,6 +13,10 @@ public:
 
 	
 	DECL_CMD_HANDLER(OnSectorEntityInfo);
+	DECL_CMD_HANDLER(OnSectorNpcEntityInfo);
+	DECL_CMD_HANDLER(OnSectorBpartEntityInfo);
+	DECL_CMD_HANDLER(OnSectorMagicAreaEntityInfo);
+	DECL_CMD_HANDLER(OnSectorSensorEntityInfo);
 	DECL_CMD_HANDLER(OnUpdateUsableSensor);
 	DECL_CMD_HANDLER(OnSensorDestinationSelection);
 	DECL_CMD_HANDLER(OnSensorErrorMsg);

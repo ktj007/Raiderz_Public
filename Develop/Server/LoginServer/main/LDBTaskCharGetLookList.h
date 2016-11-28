@@ -21,6 +21,7 @@ public :
 
 	void								OnExecute(mdb::MDatabase& rfDB);
 	mdb::MDB_THRTASK_RESULT				_OnCompleted();
+	mdb::MDB_THRTASK_RESULT				_OnFailed();
 
 
 protected :

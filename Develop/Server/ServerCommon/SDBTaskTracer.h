@@ -10,7 +10,9 @@
 class SDBTaskTracer
 {
 public :
-	SDBTaskTracer() {}
+	SDBTaskTracer() : m_bTraceAll(false) {}
+
+	void	EnableTraceAll(bool bEnable) { m_bTraceAll = bEnable; }
 
 	void	PushTraceTaskID(SDBTASK_ID TaskID);
 	void	PopTraceTaskID(SDBTASK_ID TaskID);
@@ -21,6 +23,7 @@ public :
 
 private :
 	map<SDBTASK_ID, size_t> m_mapTraceID;			
+	bool					m_bTraceAll;	// for debug.
 };
 
 

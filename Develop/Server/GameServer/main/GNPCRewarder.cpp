@@ -28,7 +28,7 @@ void GNPCRewarder::RewardByDie(GEntityNPC* pNPC)
 	GNPCInfo* pNPCInfo = pNPC->GetNPCInfo();
 	if (NULL == pNPCInfo) return;
 
-	vector<int> vecAllBeneficiaryCID;
+	vector<CID> vecAllBeneficiaryCID;
 	MUID nPartyUID;
 	pNPC->GetNPCRewardOwner().GetBeneficiaryAndParty(vecAllBeneficiaryCID, nPartyUID);
 	if (true == vecAllBeneficiaryCID.empty())
@@ -45,7 +45,7 @@ void GNPCRewarder::RewardByDie(GEntityNPC* pNPC)
 	}
 
 	vector<GEntityPlayer*> vecSameServerBeneficiary;
-	vector<int> vecOtherServerBeneficiaryCID;
+	vector<CID> vecOtherServerBeneficiaryCID;
 	DivideContriubtorByServer(vecAllBeneficiaryCID, vecSameServerBeneficiary, vecOtherServerBeneficiaryCID);
 
 	if (true == vecSameServerBeneficiary.empty()) return;
@@ -90,9 +90,9 @@ void GNPCRewarder::RewardByGather(GEntityPlayer* pPlayer, int nLootID, GEntityNP
 	ItemByGather(pPlayer, nLootID, pNPC);
 }
 
-void GNPCRewarder::DivideContriubtorByServer( const vector<int>& vecBeneficiaryCID, vector<GEntityPlayer*>& outvecSameServerBeneficiary, vector<int>& outvecOtherServerBeneficiaryCID )
+void GNPCRewarder::DivideContriubtorByServer( const vector<CID>& vecBeneficiaryCID, vector<GEntityPlayer*>& outvecSameServerBeneficiary, vector<CID>& outvecOtherServerBeneficiaryCID )
 {
-	for each(int nBeneficiaryCID in vecBeneficiaryCID)
+	for each(CID nBeneficiaryCID in vecBeneficiaryCID)
 	{
 		GEntityPlayer* pBeneficiary = gmgr.pPlayerObjectManager->GetEntity(nBeneficiaryCID);
 		if (NULL == pBeneficiary)
@@ -142,7 +142,7 @@ void GNPCRewarder::Faction(const vector<GEntityPlayer*>& vecSameServerBeneficiar
 	gsys.pFactionSystem->RewardFaction(vecSameServerBeneficiary, pNPCInfo);
 }
 
-void GNPCRewarder::ItemByDie(const vector<int>& vecBeneficiaryCID, MUID nPartyUID, GEntityNPC* pNPC)
+void GNPCRewarder::ItemByDie(const vector<CID>& vecBeneficiaryCID, MUID nPartyUID, GEntityNPC* pNPC)
 {
 	if (NULL == pNPC) return;
 
@@ -163,7 +163,7 @@ void GNPCRewarder::ItemByGather(GEntityPlayer* pPlayer, int nLootID, GEntityNPC*
 	}
 }
 
-void GNPCRewarder::RewardOtherServerBeneficiary(const vector<int>& vecOtherServerBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID)
+void GNPCRewarder::RewardOtherServerBeneficiary(const vector<CID>& vecOtherServerBeneficiaryCID, int nAllBeneficiaryCount, int nNPCID)
 {
 	if (true == vecOtherServerBeneficiaryCID.empty()) return;
 

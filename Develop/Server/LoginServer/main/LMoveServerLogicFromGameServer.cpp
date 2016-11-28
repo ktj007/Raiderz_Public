@@ -75,4 +75,6 @@ void LMoveServerLogicFromGameServer::Apply(MUID uidPlayer, MUID uidConnectionKey
 
 void LMoveServerLogicFromGameServer::AddPmangStatIndex(MUID uidPlayer, wstring strStatIndex, int nPCCafeID)
 {
+	LPlayerObject* pPlayerObject = gmgr.pPlayerObjectManager->GetPlayer(uidPlayer);
+	if (pPlayerObject == NULL)	return;
 }

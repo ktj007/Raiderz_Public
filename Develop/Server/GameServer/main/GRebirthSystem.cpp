@@ -207,7 +207,11 @@ void GRebirthSystem::Route(GEntityPlayer* pPlayer, int nFieldID, vec3 vPos, vec3
 		NEW_SINGLE_BLOB(&td_simple_status, sizeof(TD_UPDATE_SIMPLE_STATUS)));
 	pPlayer->RouteToMe(pNewMyCmd);	
 
-	MCommand* pNewCommand = MakeNewCommand(MC_CHAR_REBIRTH_NETPLAYER, 1, NEW_UID(pPlayer->GetUID()));
+	MCommand* pNewCommand = MakeNewCommand(MC_CHAR_REBIRTH_NETPLAYER,
+		3,
+		NEW_UID(pPlayer->GetUID()),
+		NEW_VEC(vPos),
+		NEW_SVEC2(vDir));
 	pPlayer->RouteToThisCellExceptMe(pNewCommand);	
 }
 

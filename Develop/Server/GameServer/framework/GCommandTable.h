@@ -4,6 +4,7 @@
 #include "MCommandTable.h"
 #include "CCommandTable.h"
 #include "CCommandTable_Login.h"
+#include "CCommandTable_GM.h"
 #include "CCommandTable_Master.h"
 #include "CCommandTable_App.h"
 #include "SMinetInitScope.h"

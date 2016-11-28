@@ -637,7 +637,6 @@ void XBaseApplication::CreateGameFrames()
 #endif
 
 #ifndef _PUBLISH
-	m_GameFrameMgr.Add(new XReplayFrame());
 	m_GameFrameMgr.Add(new XTestFrame());
 	m_GameFrameMgr.Add(new XMintDesignFrame());
 	m_GameFrameMgr.Add(new XHelloWorldFrame());

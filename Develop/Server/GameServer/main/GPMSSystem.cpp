@@ -1,1 +1,5 @@
 #include "StdAfx.h"
+#include "GPMSSystem.h"
+#include "GPMSObject.h"
+#include "GConfig.h"
+#include "PMServerInitLogger.h"

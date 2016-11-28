@@ -60,7 +60,8 @@ GGlueNPC* GGlueField::Spawn(int nNPCID, vec3 vStartPos)
 	if (GConst::DEBUG_DISABLE_DEFAULT_FIELD_SPAWN)
 		return GNullGlueNPC::GetNull();
 
-	if (IsInvalidOwner())		return GNullGlueNPC::GetNull();
+	if (IsInvalidOwner() || !GetOwnerField()->ExistPlayer())		
+		return GNullGlueNPC::GetNull();
 	
 	GEntityNPC* pNpc = GetOwnerField()->Spawn(nNPCID, vStartPos);
 	return TO_SAFE_LUAPTR(pNpc);	
@@ -85,7 +86,8 @@ GGlueNPC* GGlueField::SpawnLimited(int nNPCID, vec3 vStartPos, float fLimitTime)
 	if (GConst::DEBUG_DISABLE_DEFAULT_FIELD_SPAWN)
 		return GNullGlueNPC::GetNull();
 
-	if (IsInvalidOwner())		return GNullGlueNPC::GetNull();
+	if (IsInvalidOwner() || !GetOwnerField()->ExistPlayer())		
+		return GNullGlueNPC::GetNull();
 
 	GEntityNPC* pNpc = GetOwnerField()->Spawn(nNPCID, vStartPos, 0.0f, fLimitTime);
 	return TO_SAFE_LUAPTR(pNpc);	
@@ -96,7 +98,8 @@ void GGlueField::SpawnDelay(int nNPCID, vec3 vStartPos, float fDelayTime)
 	if (GConst::DEBUG_DISABLE_DEFAULT_FIELD_SPAWN)
 		return;
 
-	if (IsInvalidOwner())		return;
+	if (IsInvalidOwner() || !GetOwnerField()->ExistPlayer())		
+		return;
 
 	GetOwnerField()->Spawn(nNPCID, vStartPos, fDelayTime);
 }
@@ -132,7 +135,9 @@ GGlueNPC* GGlueField::SpawnByID(unsigned long nSpawnID)
 	if (GConst::DEBUG_DISABLE_DEFAULT_FIELD_SPAWN)
 		return GNullGlueNPC::GetNull();
 
-	if (IsInvalidOwner())		return GNullGlueNPC::GetNull();
+	if (IsInvalidOwner() || !GetOwnerField()->ExistPlayer())		
+		return GNullGlueNPC::GetNull();
+
 	GEntityNPC* pNpc = GetOwnerField()->Spawn(nSpawnID);
 	return TO_SAFE_LUAPTR(pNpc);	
 }
@@ -142,7 +147,9 @@ void GGlueField::SpawnDelayByID(unsigned long nSpawnID, float fDelayTime)
 	if (GConst::DEBUG_DISABLE_DEFAULT_FIELD_SPAWN)
 		return;
 
-	if (IsInvalidOwner())		return;
+	if (IsInvalidOwner() || !GetOwnerField()->ExistPlayer())		
+		return;
+
 	GetOwnerField()->Spawn(nSpawnID, fDelayTime);	
 }
 

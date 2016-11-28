@@ -21,6 +21,7 @@
 #include "GEquipmentSlot.h"
 #include "GOverlappedEquipmentSlot.h"
 #include "GPalette.h"
+#include "GModuleBuff.h"
 
 ////////////////////////////////////////////////////////////////
 GInvincibleProcessor::GInvincibleProcessor() 
@@ -101,12 +102,18 @@ void GModuleCombat::OnUpdate(float fDelta)
 
 	m_Invincible.Update(fDelta);
 
-	m_TargetHitterList.Update(fDelta, m_pOwner->GetField());
+	bool bHitDone = false;
+
+	if (!m_TargetHitterList.IsEmpty())
+		bHitDone = m_TargetHitterList.Update(fDelta, m_pOwner->GetField());
 
 	// 히터 처리 후에 탤런트 종료
 	if (m_pTalent)
 	{
 		m_pTalent->UpdateExpired(fDelta);
+
+		if (bHitDone)
+			m_pTalent->OnHitDone();
 	}
 
 	// 히터 처리 후에 포커스 처리를 함
@@ -137,7 +144,7 @@ CCommandResultTable GModuleCombat::IsUsableTalent(GTalentInfo* pTalentInfo)
 			float fPlayerMoveSpeed = 1.0f + pEntityActor->GetChrStatus()->ActorModifier.fMoveSpeed;
 			float fRequiredMoveSpeed = pTalentInfo->m_fRequireMoveSpeed;
 
-			if (fPlayerMoveSpeed - fRequiredMoveSpeed + TALENT_REQUIRED_MOVE_TRUNCATED < 0.0f ||
+			if (fPlayerMoveSpeed < fRequiredMoveSpeed - TALENT_REQUIRED_MOVE_TRUNCATED ||
 				!pEntityActor->IsMovable())
 			{
 				return CR_FAIL_USE_TALENT_NOTENOUGH_SPEED;
@@ -199,30 +206,59 @@ CCommandResultTable GModuleCombat::UseTalent(GTalentInfo* pTalentInfo, TALENT_TA
 	if (crRet != CR_SUCCESS)
 		return crRet;
 
+	GTalentInfo* pLastUsedTalentInfo = m_pOwnerActor->GetLastUsedTalentInfo();
+	bool bChained = (pLastUsedTalentInfo) &&
+		((!CSTalentInfoHelper::IsNormalAttackTalent(pLastUsedTalentInfo->m_nID) && CSTalentInfoHelper::IsNormalAttackTalent(pTalentInfo->m_nID)) ||
+			(pLastUsedTalentInfo->m_nComboTalentLine == pTalentInfo->m_nTalentLine || pTalentInfo->IsReferredBy(pLastUsedTalentInfo->m_nComboTalentLine)));
+
 	if (m_pTalent)
 	{
 		if (m_pOwner->IsPlayer() &&
 			!CSTalentInfoHelper::IsNormalAttackTalent(m_pTalent->GetID()) &&
-			!m_pTalent->IsExpired())
+			!m_pTalent->IsExpired() &&
+			!bChained)
 		{
 			return CR_FAIL_USE_TALENT_ALREADY_RUNNING;
 		}
-		
+
 		if (!m_pTalent->IsExpired())
 		{
 			CancelTalent(false);
 		}
-		
+
 		SAFE_DELETE(m_pTalent);
 	}
 
-	// 즉시 탤런트면 사용비용 바로 처리
-	GUseCostMgr costMgr;
-	if (CSTalentInfoHelper::IsImmediateTalent(pTalentInfo) &&
-		m_pOwner->IsActor() &&
-		!costMgr.Pay_TalentCost(ToEntityActor(m_pOwner), pTalentInfo))
+	if (bCheckEnabled && pTalentInfo->IsComboRequired() &&
+		(!pLastUsedTalentInfo || !pTalentInfo->IsAbleToComboBy(pLastUsedTalentInfo->m_nTalentLine)))
 	{
-		return CR_FAIL_USE_TALENT_NOTENOUGH_EN;
+		return CR_FAIL_USE_TALENT_DISABLED;
+	}
+
+	if (m_pOwner->IsActor())
+	{
+		GEntityActor* pActor = ToEntityActor(m_pOwner);
+
+		if (pActor->HasMotionFactor() &&
+			!pTalentInfo->m_bIgnoreMotionfactor)
+		{
+			return CR_FAIL_USE_TALENT;
+		}
+
+		// 즉시 탤런트면 사용비용 바로 처리
+		GUseCostMgr costMgr;
+		if (CSTalentInfoHelper::IsImmediateTalent(pTalentInfo) &&
+			!costMgr.Pay_TalentCost(pActor, pTalentInfo))
+		{
+			return CR_FAIL_USE_TALENT_NOTENOUGH_EN;
+		}
+
+		// handle immobilization talent
+		if (pTalentInfo->m_bIgnoreMotionfactor)
+		{
+			pActor->ReleaseMotionFactor();
+			pActor->GetModuleBuff()->DispelImmobilization();
+		}
 	}
 
 	m_pTalent = gsys.pTalentFactory->NewTalent(m_pOwnerActor, pTalentInfo, Target, bGainStress);
@@ -234,6 +270,9 @@ CCommandResultTable GModuleCombat::UseTalent(GTalentInfo* pTalentInfo, TALENT_TA
 	PFI_B(3001, "GTalent::Start");
 	m_pTalent->Start();
 	PFI_E(3001);
+
+	if (!CSTalentInfoHelper::IsNormalAttackTalent(pTalentInfo->m_nID))
+		m_pOwnerActor->SetLastUsedTalentInfo(pTalentInfo);
 
 	return CR_SUCCESS;
 }
@@ -344,6 +383,12 @@ bool GModuleCombat::IsNowAvoidTime()
 {
 	if (!m_pTalent)						return false;
 	return m_pTalent->IsNowAvoidTime();
+}
+
+bool GModuleCombat::IsNowIgnoreAllMFTime()
+{
+	if (!m_pTalent)						return false;
+	return m_pTalent->IsNowIgnoreAllMFTime();
 }
 
 CCommandResultTable GModuleCombat::CheckPlayerTalentEnable(GEntityPlayer* pOwnerPlayer, GTalentInfo* pTalentInfo)

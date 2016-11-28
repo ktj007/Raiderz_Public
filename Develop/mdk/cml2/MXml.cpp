@@ -994,3 +994,50 @@ void _SetAttribute(MXmlElement* pElement, const char* szName, bool bValue)
 	if (bValue) pElement->SetAttribute(szName, "true");
 	else pElement->SetAttribute(szName, "false");
 }
+
+/*
+bool _LoadXml(MXml* pXml, MZFileSystem* pFileSystem, char* szFileName)
+{
+	char *buffer;
+	MZFile mzf;
+
+	if(pFileSystem) 
+	{
+		if(!mzf.Open(szFileName, pFileSystem)) 
+		{
+			if(!mzf.Open(szFileName)) 
+				return false;
+		}
+	} 
+	else 
+	{
+		if(!mzf.Open(szFileName))
+			return false;
+	}
+
+	buffer = new char[mzf.GetLength()+1];
+	buffer[mzf.GetLength()] = 0;
+	mzf.Read(buffer,mzf.GetLength());
+
+	if (!pXml->LoadStream(buffer))
+	{
+		delete[] buffer;
+		return false;
+	}
+	delete[] buffer;
+	mzf.Close();
+	return true;
+}
+
+bool _LoadXml(MXml* pXml, char* szFileName)
+{
+	if (pXml->LoadFile(szFileName) == false) return false;
+	return true;
+}
+
+MXmlElement* _GetFirstChildElementFromXml(MXml* pXml)
+{
+	MXmlHandle docHandle = pXml->DocHandle();
+	return docHandle.FirstChild("XML").FirstChild().Element();	//FirstChild("XML").FirstChild(szTagName).Element();
+}
+*/

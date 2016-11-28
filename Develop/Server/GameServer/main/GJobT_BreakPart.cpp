@@ -31,6 +31,6 @@ string GJobT_BreakPart::GetParamString() const
 
 	char buff[512];
 	sprintf(buff, "Opponent: %s(%I64d), PartID: %d", 
-		MLocale::ConvUTF16ToAnsi(pTarget->GetName()).c_str(), pTarget->GetUID(), m_nPartID);
+		MLocale::ConvUTF16ToAnsi(pTarget->GetName()).c_str(), pTarget->GetUID().Value, m_nPartID);
 	return buff;
 }

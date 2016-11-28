@@ -10,7 +10,7 @@ public:
 	GPartyMemberStorage(int nLimitMemberCount);
 	
 	// Members
-	bool AddMember(MUID uidMember, wstring strMembersName, int nMemberCID);
+	bool AddMember(MUID uidMember, wstring strMembersName, CID nMemberCID);
 	void RemoveMember(MUID uidMember);
 	bool IsEmpty(void) const;
 	bool IsFull(void) const;	
@@ -22,13 +22,13 @@ public:
 	partymember_iterator GetMemberBegin(void) const;
 	partymember_iterator GetMemberEnd(void) const;
 	partymember_iterator FindMember(MUID uidMember) const;
-	MUID FindMemberUID(int nCID);
-	vector<int> CollectMemberCID();
+	MUID FindMemberUID(CID nCID);
+	vector<CID> CollectMemberCID();
 
 	// Leader
 	bool SetLeader(MUID uidNewLeader);
 	MUID GetLeader(void) const;
-	int  GetLeaderCID() const;
+	CID  GetLeaderCID() const;
 	MUID FindCandidateForLeader(void) const;
 
 	// Name

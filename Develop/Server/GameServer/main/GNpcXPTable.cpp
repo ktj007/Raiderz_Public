@@ -16,13 +16,13 @@ void GNpcXPTable::MakeNPCGradeFactor()
 	m_FactorGrade[1]		= 0.3f;
 	m_FactorGrade[2]		= 0.6f;
 	m_FactorGrade[3]		= 1.0f;
-	m_FactorGrade[4]		= 8.0f;
-	m_FactorGrade[5]		= 12.0f;
-	m_FactorGrade[6]		= 20.0f;
-	m_FactorGrade[7]		= 25.0f;
-	m_FactorGrade[8]		= 35.0f;
-	m_FactorGrade[9]		= 50.0f;
-	m_FactorGrade[10]		= 80.0f;
+	m_FactorGrade[4]		= 5.0f;
+	m_FactorGrade[5]		= 10.0f;
+	m_FactorGrade[6]		= 15.0f;
+	m_FactorGrade[7]		= 20.0f;
+	m_FactorGrade[8]		= 25.0f;
+	m_FactorGrade[9]		= 35.0f;
+	m_FactorGrade[10]		= 45.0f;
 }
 
 float GNpcXPTable::GetFactorGrade( int nGrade )

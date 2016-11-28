@@ -34,19 +34,16 @@ float GDodgeCalculator::CalcVictimDodgePercent(GEntityActor* pVictim)
 	return 0.0f;
 }
 
-float GDodgeCalculator::CalcBuffDodgePercent(GEntityActor* pActor, TALENT_CATEGORY nTalentCategory)
+float GDodgeCalculator::CalcBuffDodgePercent(GEntityActor* pActor, TALENT_DAMAGE_TYPE nDamageType)
 {
 	float fDodgeAmp = 0.0f;
 
-	switch(nTalentCategory)
+	switch(nDamageType)
 	{
-	case TC_MELEE:
-		fDodgeAmp = pActor->GetChrStatus()->ActorModifier.fMeleeDodgeAmp;
+	case TDT_PHYSIC:
+		fDodgeAmp = pActor->GetChrStatus()->ActorModifier.fPhysicDodgeAmp;
 		break;
-	case TC_RANGE:
-		fDodgeAmp = pActor->GetChrStatus()->ActorModifier.fRangeDodgeAmp;
-		break;
-	case TC_MAGIC:			
+	case TDT_MAGIC:
 		fDodgeAmp = pActor->GetChrStatus()->ActorModifier.fMagicDodgeAmp;
 		break;
 	default:
@@ -57,19 +54,16 @@ float GDodgeCalculator::CalcBuffDodgePercent(GEntityActor* pActor, TALENT_CATEGO
 	return fDodgeAmp * 100.0f;
 }
 
-float GDodgeCalculator::CalcBuffHitPercent(GEntityActor* pActor, TALENT_CATEGORY nTalentCategory)
+float GDodgeCalculator::CalcBuffHitPercent(GEntityActor* pActor, TALENT_DAMAGE_TYPE nDamageType)
 {
 	float fHitRateAmp = 0.0f;
 
-	switch(nTalentCategory)
+	switch(nDamageType)
 	{
-	case TC_MELEE:
-		fHitRateAmp = pActor->GetChrStatus()->ActorModifier.fMeleeHitRateAmp;
+	case TDT_PHYSIC:
+		fHitRateAmp = pActor->GetChrStatus()->ActorModifier.fPhysicHitRateAmp;
 		break;
-	case TC_RANGE:
-		fHitRateAmp = pActor->GetChrStatus()->ActorModifier.fRangeHitRateAmp;
-		break;
-	case TC_MAGIC:
+	case TDT_MAGIC:
 		fHitRateAmp = pActor->GetChrStatus()->ActorModifier.fMagicHitRateAmp;
 		break;
 	default:
@@ -105,14 +99,14 @@ float GDodgeCalculator::CalcDodgePercent(GEntityActor* pAttacker, GEntityActor* 
 
 
 	// 버프 회피율
-	float fBuffDodgePercent = CalcBuffDodgePercent(pVictim, pTalentInfo->m_nCategory);
+	float fBuffDodgePercent = CalcBuffDodgePercent(pVictim, pTalentInfo->m_nDamageType);
 
 	float fFinalDodgePercent = max(min(fTalentDodgeRate + fLFPercent + fVictimDodgePercent - fAttackerDodgePercent + fBuffDodgePercent, 100.0f), 0.0f);
 	fFinalDodgePercent = GMath::Round4Combat(fFinalDodgePercent, 2);
 
 
 	// 최후 명중률 보정
-	fFinalDodgePercent -= CalcBuffHitPercent(pAttacker, pTalentInfo->m_nCategory);
+	fFinalDodgePercent -= CalcBuffHitPercent(pAttacker, pTalentInfo->m_nDamageType);
 	fFinalDodgePercent = max(min(fFinalDodgePercent, 100), 0);
 
 

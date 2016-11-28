@@ -55,7 +55,7 @@ void GPlayerSensorCacheUpdater::Route( GEntityPlayer* pEntityPlayer, vector<TD_T
 	if (!vecSensors.empty())		pMarkerPtr = &vecSensors[0];
 
 	MCommand* pNewCommand = MakeNewCommand(MC_TRIGGER_UPDATE_USABLE_SENSOR, 1, 
-		NEW_BLOB(pMarkerPtr, sizeof(TD_TRIGGER_SENSOR_INFO), (int)vecSensors.size()));
+		NEW_BLOB(pMarkerPtr, static_cast<unsigned short>(sizeof(TD_TRIGGER_SENSOR_INFO)), static_cast<unsigned short>(vecSensors.size())));
 
 	pEntityPlayer->RouteToMe(pNewCommand);
 }

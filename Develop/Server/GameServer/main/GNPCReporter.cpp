@@ -59,7 +59,7 @@ wstring GNPCReporter::GetHateTableString(GEntityNPC* pNPC)
 			}
 		}
 
-		swprintf_s(buff, L"[%3d] %16s(%4I64d) | %4.1f\n", nIndex+1, strName.c_str(), uid, score); strText += buff;
+		swprintf_s(buff, L"[%3d] %16s(%4I64d) | %4.1f\n", nIndex+1, strName.c_str(), uid.Value, static_cast<double>(score)); strText += buff;
 		nIndex++;
 	}
 
@@ -110,7 +110,7 @@ bool GNPCReporter::Report( MUID uidField, MUID uidNPC )
 
 	fwprintf(file, L"%16s\n", L"[Field]");
 	fputws(SEERATE_STRING, file);
-	fwprintf(file, L"%16s | %I64d\n", L"FieldUID", pNPC->GetFieldUID());
+	fwprintf(file, L"%16s | %I64d\n", L"FieldUID", pNPC->GetFieldUID().Value);
 	if (pField->GetInfo())
 	{
 		fwprintf(file, L"%16s | %d\n", L"FieldID", pField->GetInfo()->m_nFieldID);
@@ -121,7 +121,7 @@ bool GNPCReporter::Report( MUID uidField, MUID uidNPC )
 	fputws(SEERATE_STRING, file);
 	fwprintf(file, L"%16s\n", L"[Status]");
 	fputws(SEERATE_STRING, file);
-	fwprintf(file, L"%16s | %I64d\n", L"EntityUID", pNPC->GetUID());
+	fwprintf(file, L"%16s | %I64d\n", L"EntityUID", pNPC->GetUID().Value);
 	fwprintf(file, L"%16s | %4d / %4d\n", L"HP", pNPC->GetHP(), pNPC->GetMaxHP());
 	fwprintf(file, L"%16s | %4d / %4d\n", L"EN", pNPC->GetEN(), pNPC->GetMaxEN());
 	fwprintf(file, L"%16s | %4d / %4d\n", L"STA", pNPC->GetSTA(), pNPC->GetMaxSTA());

@@ -19,10 +19,10 @@ void GReserveCmdManager::Update()
 {
 	uint32 nNowTime = gsys.pSystem->GetNowTime();
 
-	set<int> setTimeOverCID;
+	set<CID> setTimeOverCID;
 	for each (const MAP_RESERVE_CMD::value_type& val in m_mapReserveCmd)
 	{
-		const int& nCID = val.first;
+		const CID& nCID = val.first;
 		GReserveCmd* pReserveCmd = val.second;
 		if (NULL == pReserveCmd) continue;
 
@@ -32,7 +32,7 @@ void GReserveCmdManager::Update()
 		}		
 	}
 
-	for each (const int& nTimeOverCID in setTimeOverCID)
+	for each (const CID& nTimeOverCID in setTimeOverCID)
 	{
 		DeleteReserveCmd(nTimeOverCID);
 	}	
@@ -43,15 +43,15 @@ void GReserveCmdManager::Clear()
 	SAFE_DELETE_MAP(m_mapReserveCmd);
 }
 
-void GReserveCmdManager::Reserve(vector<int>& vecCID, MCommand* pCmd)
+void GReserveCmdManager::Reserve(vector<CID>& vecCID, MCommand* pCmd)
 {
-	for each (int nCID in vecCID)
+	for each (CID nCID in vecCID)
 	{
 		Reserve(nCID, pCmd);
 	}
 }
 
-void GReserveCmdManager::Reserve(int nCID, MCommand* pCmd)
+void GReserveCmdManager::Reserve(CID nCID, MCommand* pCmd)
 {
 	if (NULL == pCmd) return;
 
@@ -68,7 +68,7 @@ void GReserveCmdManager::Reserve(int nCID, MCommand* pCmd)
 	}
 }
 
-GReserveCmd* GReserveCmdManager::GetReserveCmd(int nCID)
+GReserveCmd* GReserveCmdManager::GetReserveCmd(CID nCID)
 {
 	MAP_RESERVE_CMD::iterator itor = m_mapReserveCmd.find(nCID);
 	if (m_mapReserveCmd.end() == itor) return NULL;
@@ -78,13 +78,13 @@ GReserveCmd* GReserveCmdManager::GetReserveCmd(int nCID)
 	return pReserveCmd;
 }
 
-void GReserveCmdManager::RunAndDeleteReserveCmd(int nCID)
+void GReserveCmdManager::RunAndDeleteReserveCmd(CID nCID)
 {
 	RunReserveCmd(nCID);
 	DeleteReserveCmd(nCID);
 }
 
-void GReserveCmdManager::RunReserveCmd(int nCID)
+void GReserveCmdManager::RunReserveCmd(CID nCID)
 {
 	GReserveCmd* pReserveCmd = GetReserveCmd(nCID);
 	if (NULL == pReserveCmd) return;
@@ -92,7 +92,7 @@ void GReserveCmdManager::RunReserveCmd(int nCID)
 	pReserveCmd->Run();	
 }
 
-void GReserveCmdManager::DeleteReserveCmd(int nCID)
+void GReserveCmdManager::DeleteReserveCmd(CID nCID)
 {
 	GReserveCmd* pReserveCmd = GetReserveCmd(nCID);
 	if (NULL == pReserveCmd) return;

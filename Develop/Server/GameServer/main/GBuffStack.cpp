@@ -16,7 +16,7 @@ GBuffStack::~GBuffStack(void)
 {
 }
 
-void GBuffStack::Increase( float fDurationTime )
+void GBuffStack::Increase( float fDurationTime, bool bRoute )
 {
 	const int nStackMaxCount = m_pOwner->GetInfo()->m_nStackMaxCount;
 
@@ -34,7 +34,10 @@ void GBuffStack::Increase( float fDurationTime )
 		std::sort(m_qDurations.begin(), m_qDurations.end());
 	}
 
-	RouteStackIncrease();
+	if (bRoute)
+	{
+		RouteStackIncrease();
+	}
 }
 
 void GBuffStack::Decrease(bool bRoute)
@@ -71,8 +74,7 @@ void GBuffStack::Update_Expired( float fDelta )
 		float& fDuration = *it;
 		fDuration -= fDelta;
 
-		if (fDuration != BUFF_DURATION_INFINITY && 
-			fDuration <= 0.0f)
+		if (fDuration <= 0.0f)
 		{
 			// 시간 만료
 			it = m_qDurations.erase(it);

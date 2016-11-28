@@ -28,7 +28,6 @@ public:
 	DECL_CMD_HANDLER(OnRequestGMGetPlayerUID);			///< UID 요청
 	DECL_CMD_HANDLER(OnRequestReportTargetEntity);		///< UID 요청
 	DECL_CMD_HANDLER(OnRequestGMMove);
-	DECL_CMD_HANDLER(OnRequestGMMoveToMySpot);
 	DECL_CMD_HANDLER(OnRequestGMMoveToPlayer);
 	DECL_CMD_HANDLER(OnRequestGMMoveToNPC);
 	DECL_CMD_HANDLER(OnRequestGMSummon);
@@ -40,9 +39,13 @@ public:
 	DECL_CMD_HANDLER(OnRequestGMChangeWeather);
 	DECL_CMD_HANDLER(OnRequestGMChangeTime);	
 	DECL_CMD_HANDLER(OnRequestGMItemGive);
+	DECL_CMD_HANDLER(OnRequestGMItemRepairAll);
 	DECL_CMD_HANDLER(OnRequestGMClearInventory);
 	DECL_CMD_HANDLER(OnRequestGMKillEntity);
 	DECL_CMD_HANDLER(OnRequestGMRangeKillEntity);
+	DECL_CMD_HANDLER(OnRequestGMRangeAggroEntity);
+	DECL_CMD_HANDLER(OnRequestGMRangeWeakenEntity);
+	DECL_CMD_HANDLER(OnRequestGMRangeDespawnCorpse);
 	DECL_CMD_HANDLER(OnRequestGMSetMe);
 	DECL_CMD_HANDLER(OnRequestGMSetNPC);
 	DECL_CMD_HANDLER(OnRequestGMSetItem);
@@ -64,9 +67,6 @@ public:
 
 	DECL_CMD_HANDLER(OnRequestGMBreakPart);	
 	DECL_CMD_HANDLER(OnRequestGMRangeBreakPart);
-	
-	DECL_CMD_HANDLER(OnRequestGMLogCRTInsert);
-	DECL_CMD_HANDLER(OnRequestGMLogCRTDelete);
 
 	DECL_CMD_HANDLER(OnRequestGMQueryMultiLogin);
 
@@ -83,10 +83,9 @@ public:
 	DECL_CMD_HANDLER(OnRequestServerDump);
 	DECL_CMD_HANDLER(OnRequestGMDye);
 	DECL_CMD_HANDLER(OnRequestGMRegen);
+	DECL_CMD_HANDLER(OnRequestGMFullHP);
 
 	DECL_CMD_HANDLER(OnRequestDebugEchoReq);
-
-	DECL_CMD_HANDLER(OnRequestGMBan);
 };
 
 

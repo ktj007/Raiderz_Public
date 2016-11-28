@@ -36,7 +36,7 @@ void ZMoveServerCommandRouter::RouteReadyEnterLoginServerReq(const MUID& uidLogi
 		, NEW_UID(uidRequesterGameServer)
 		, NEW_UID(uidPlayer)
 		, NEW_UID(uidConnectionKey)
-		, NEW_INT(nAID)
+		, NEW_INT64(nAID)
 		, NEW_WSTR(strUserID.c_str())
 		);
 

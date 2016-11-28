@@ -45,6 +45,12 @@ void GSpawn::Reset()
 	m_rgrSpawn.Start();
 }
 
+void GSpawn::ResetSpawnTime()
+{
+	SetRespawnTime(static_cast<float>(m_pSpawnInfo ? m_pSpawnInfo->nStartTime : 0));
+	m_rgrSpawn.Start();
+}
+
 bool GSpawn::Update( float fDelta )
 {
 	if (!m_bEnable)						
@@ -142,7 +148,10 @@ void GSpawn::OnTimeChangedDetail( int nTime )
 	if (m_pSpawnInfo->pairEnableTime.first <= nTime &&
 		m_pSpawnInfo->pairEnableTime.second >= nTime)
 	{
-		Spawn();
+		if (m_pField && m_pField->ExistPlayer())
+		{
+			Spawn();
+		}
 	}
 	else
 	{
@@ -158,7 +167,10 @@ void GSpawn::OnTimeChanged( GAME_TIME_TYPE nOldTime, GAME_TIME_TYPE nNewTime )
 
 	if (m_pSpawnInfo->bEnableTimeList[nNewTime])
 	{
-		Spawn();
+		if (m_pField && m_pField->ExistPlayer())
+		{
+			Spawn();
+		}
 	}
 	else
 	{
@@ -175,7 +187,10 @@ void GSpawn::OnWeatherChanged( GAME_WEATHER_TYPE nOldWeather, GAME_WEATHER_TYPE 
 
 	if (m_pSpawnInfo->bEnableWeatherList[nNewWeather])
 	{
-		Spawn();
+		if (m_pField && m_pField->ExistPlayer())
+		{
+			Spawn();
+		}
 	}
 	else
 	{
@@ -257,7 +272,7 @@ bool GSpawn::IsMatchTime()
 	VALID_RET(m_pField, false);
 	if (!m_pSpawnInfo->bUseConditionTime)	return true;
 		
-	return m_pSpawnInfo->bEnableTimeList[m_pField->GetCurrentTime()];
+	return m_pSpawnInfo->bEnableTimeList[(m_pField->GetCurrentTime)()];
 }
 
 bool GSpawn::IsMatchTimeDetail()

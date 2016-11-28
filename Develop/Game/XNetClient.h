@@ -5,8 +5,6 @@
 #include "MCommand.h"
 
 using namespace minet;
-
-class XRecorder;
 class XCmdHandlerGroup;
 class XRequestCommandFilter;
 class XWhoIsRequester;
@@ -15,9 +13,6 @@ class XControlNetCmdState;
 class XNetClient : public MNetClient
 {
 private:
-	friend class XReplay;
-
-	XRecorder*					m_pRecorder;
 	XControlNetCmdState*		m_pControlNetCmdState;
 protected:
 	XCmdHandlerGroup*			m_pCmdHandlerGroup;
@@ -33,9 +28,6 @@ public:
 	XNetClient(const MNetClientDesc& desc);
 	virtual ~XNetClient();
 	virtual bool Post(MCommand* pCommand);
-	void SetRecorder(XRecorder* pRecorder)	{ m_pRecorder = pRecorder; }
-	void ReleaseRecorder()					{ m_pRecorder = NULL; }
-	XRecorder* GetRecorder()				{ return m_pRecorder; }
 	XWhoIsRequester* GetWhoIsRequester()	{ return m_pWhoIsRequester; }
 	void SetControlNetCmdState(XControlNetCmdState* pCmdState);
 };

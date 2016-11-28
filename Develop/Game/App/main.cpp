@@ -46,13 +46,6 @@
 /// 크래쉬 핸들러
 void XCrashDumpHandler(const char* szFileName)
 {
-#ifndef _PUBLISH
-	if (global.net && global.net->GetNetClient() && global.net->GetNetClient()->GetRecorder() && global.net->GetNetClient()->GetRecorder()->IsRecording())
-	{
-		global.net->GetNetClient()->GetRecorder()->Stop();
-	}
-#endif
-
 	if (XCONST::AUTO_REPORT_CRASHDUMP)
 	{
 		XCrashReporter::bAutoReport = true;

@@ -103,6 +103,9 @@ bool GItemUser::Apply_Equip(GEntityPlayer* pPlayer, GItem* pItem)
 	if (NULL == pPlayer) return false;
 	if (NULL == pItem) return false;
 
+	if (pPlayer->IsDead())
+		return false;
+
 	return gsys.pItemSystem->GetEquiper().Equip(pPlayer, pItem, pItem->m_pItemData->m_nItemSlot);
 }
 
@@ -119,6 +122,11 @@ bool GItemUser::Apply_Usable(GEntityPlayer* pPlayer, GItem* pItem, const MUID ui
 	case USABLE_INTERACTION:
 	case USABLE_INTERACTION_DEAD:	return Apply_Interaction(pPlayer, pItem, uidNPC);
 	case USABLE_QUEST_ADD:			return Apply_QuestAdd(pPlayer, pItem);
+	}
+
+	if (pItem->m_pItemData->m_bUsableConsume)
+	{
+		gsys.pItemSystem->GetRemover().Remove(pPlayer, pItem->m_nSlotType, pItem->m_nSlotID, 1);
 	}
 
 	return false;
@@ -175,7 +183,11 @@ GEntityNPC* GItemUser::GetInteractionNPC(GEntityPlayer* pPlayer, GItem* pItem, c
 bool GItemUser::Apply_TalentUse(GEntityPlayer* pPlayer, GItem* pItem)
 {
 	pPlayer->GetTalent().EnableUseItemTalent(pItem->GetUID());
+	/*
 	MCommand* pNewCommand = MakeNewCommand(MC_ITEM_TALENT, 2, NEW_INT(pItem->GetAmount()), NEW_INT(pItem->m_nSlotID));
+	pPlayer->RouteToMe(pNewCommand);
+	*/
+	MCommand* pNewCommand = MakeNewCommand(MC_TALENT_USE_DISPOSABLE_TALENT, 1, NEW_INT(pItem->m_pItemData->m_vecUsableParam.front()));
 	pPlayer->RouteToMe(pNewCommand);
 
 	return true;

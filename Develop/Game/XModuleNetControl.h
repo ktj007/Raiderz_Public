@@ -142,7 +142,7 @@ public:
 
 	virtual void				OnRebirth();										// ActionRebirth()
 	virtual void				OnDie(MF_STATE nMFState = MF_NONE, bool bSetAni = true);
-			void				OnReInPlayer(TD_UPDATE_CACHE_PLAYER* pPlayerInfo);
+			void				OnReInPlayer(TD_UPDATE_CACHE_PLAYER* pPlayerInfo, TD_PLAYER_BUFF_LIST* = NULL);
 
 	virtual void				OnSwitchingWeaponBegin();
 	virtual void				OnSwitchingWeapon(int8 nWeaponSet);

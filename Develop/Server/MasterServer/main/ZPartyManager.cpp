@@ -12,7 +12,7 @@ ZPartyManager::~ZPartyManager()
 	Clear();
 }
 
-ZParty* ZPartyManager::AddParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, int nLeaderCID)
+ZParty* ZPartyManager::AddParty(MUID uidParty, MUID uidLeader, wstring strLeaderName, int nLeaderServerID, CID nLeaderCID)
 {
 	ZPartyMap::iterator it = m_mapParty.find(uidParty);
 	if (it != m_mapParty.end())
@@ -26,7 +26,7 @@ ZParty* ZPartyManager::AddParty(MUID uidParty, MUID uidLeader, wstring strLeader
 	return pParty;
 }
 
-ZParty* ZPartyManager::AddParty(MUID uidLeader, wstring strLeaderName, int nLeaderServerID, int nLeaderCID)
+ZParty* ZPartyManager::AddParty(MUID uidLeader, wstring strLeaderName, int nLeaderServerID, CID nLeaderCID)
 {
 	MUID uidParty = m_UIDGenerator.Generate();
 
@@ -46,7 +46,7 @@ void ZPartyManager::RemoveParty(MUID uidParty)
 	m_mapParty.erase(uidParty);
 }
 
-void ZPartyManager::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberServerID, int nMemberCID)
+void ZPartyManager::AddMember(MUID uidParty, MUID uidMember, wstring strMemberName, int nMemberServerID, CID nMemberCID)
 {
 	ZPartyMap::iterator it = m_mapParty.find(uidParty);
 	if (it == m_mapParty.end())		return;

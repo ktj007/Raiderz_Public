@@ -37,7 +37,7 @@ void GPlayerNPCIconSender::SendByFindEnemy(GEntityNPC* pNPC)
 {
 	if (NULL == pNPC) return;
 
-	Send(vector<NPC_ICON>(1, NPC_ICON(pNPC, NIT_COMBAT)), vector<NPC_ICON>());
+	// Send(vector<NPC_ICON>(1, NPC_ICON(pNPC, NIT_COMBAT)), vector<NPC_ICON>());
 }
 
 void GPlayerNPCIconSender::SendByPlayerConditionChange(CONDITION_TYPE nConditionType)

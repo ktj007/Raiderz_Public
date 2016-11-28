@@ -11,47 +11,82 @@
 #include "MLocale.h"
 #include "CSFormatString.h"
 #include "CSHelper.h"
+#include "CSBuffInfoDef.h"
 
 
 #define COMPOSITE_ATTR(PREFIX,TXT,SUFFIX)		(string(PREFIX)+(TXT)+(SUFFIX)).c_str()
 
+TALENT_CONDITION CSTalentInfoParser::_ParseEffectTiming(const string& strCondition)
+{
+	if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_NONE)						return TC_NONE;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_USE_THIS_TALENT)		return TC_USE_TALENT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_FINISH_THIS_TALENT)	return TC_FINISH_TALENT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_EXIT_THIS_TALENT)		return TC_EXIT_TALENT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_GAIN)					return TC_BUFF_GAIN;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_GONE)					return TC_BUFF_GONE;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_EXPIRED)				return TC_BUFF_EXPIRED;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_PERIOD)				return TC_BUFF_PERIOD;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_GAIN_N_PERIOD)			return TC_BUFF_GAIN_N_PERIOD;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_HIT_THIS_TALENT)		return TC_HIT_TALENT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_HIT_SUCCUESS)			return TC_HIT_SUCCESS;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ALL_THIS_TALENT)	return TC_HIT_ALL_TALENT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ME)				return TC_HIT_ME;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_MISS_ME)				return TC_MISS_ME;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_GUARD_ME)				return TC_GUARD_ME;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_PERFECT_GUARD_ME)		return TC_PERFECT_GUARD_ME;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_CRITICAL_HIT_ME)		return TC_CRITICAL_HIT_ME;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ENEMY)				return TC_HIT_ENEMY;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_MISS_ENEMY)			return TC_MISS_ENEMY;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_GUARD_ENEMY)			return TC_GUARD_ENEMY;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_CRITICAL_HIT_ENEMY)	return TC_CRITICAL_HIT_ENEMY;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_COUNTER)				return TC_COUNTER;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_RESIST)				return TC_RESIST;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_BUFF_HIT)				return TC_BUFF_HIT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_BUFF_MAX_STACKED)		return TC_BUFF_MAX_STACKED;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_BUFF_STACKED)			return TC_BUFF_STACKED;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ME_N)				return TC_HIT_ME_N;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_CRIHIT_ME_N)			return TC_CRIHIT_ME_N;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_DAMAGE)				return TC_DAMAGE;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_AFFECTED)				return TC_AFFECTED;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_MAGIC_ACT)				return TC_MAGIC_ACT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_MAGIC_HIT_ME)			return TC_MAGIC_HIT_ME;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_MAGIC_HIT_ENEMY)		return TC_MAGIC_HIT_ENEMY;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_MELEE_HIT_ME)			return TC_MELEE_HIT_ME;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_MELEE_HIT_ENEMY)		return TC_MELEE_HIT_ENEMY;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_SWAP_WEAPON)			return TC_SWAP_WEAPON;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_SHEATHE_WEAPON)		return TC_SHEATHE_WEAPON;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_START_TALENT)			return TC_START_TALENT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_AVOID)					return TC_TALENT_AVOID;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_PHYSICCRIHIT)			return TC_PHYSIC_CRIHIT;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_PHYSICCRIHIT_30)		return TC_PHYSIC_CRIHIT_30;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_PHYSICCRIHIT_40)		return TC_PHYSIC_CRIHIT_40;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_PHYSICCRIHIT_50)		return TC_PHYSIC_CRIHIT_50;
+	else if (strCondition == TALENT_XML_VALUE_BUFF_CONDITION_DO_SOMETHING)			return TC_DO_SOMETHING;
+
+	_ASSERT(0);
+	return TC_NONE;
+}
+
 void CSTalentInfoParser::ParseEffectTiming(const string& strValue, TALENT_CONDITION& nValue)
 {
-	if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_NONE)						nValue = TC_NONE;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_USE_THIS_TALENT)		nValue = TC_USE_TALENT;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_FINISH_THIS_TALENT)	nValue = TC_FINISH_TALENT;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_GAIN)					nValue = TC_BUFF_GAIN;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_GONE)					nValue = TC_BUFF_GONE;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_EXPIRED)				nValue = TC_BUFF_EXPIRED;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_PERIOD)				nValue = TC_BUFF_PERIOD;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_GAIN_N_PERIOD)			nValue = TC_BUFF_GAIN_N_PERIOD;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_HIT_THIS_TALENT)		nValue = TC_HIT_TALENT;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_HIT_SUCCUESS)			nValue = TC_HIT_SUCCESS;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ALL_THIS_TALENT)	nValue = TC_HIT_ALL_TALENT;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ME)				nValue = TC_HIT_ME;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_MISS_ME)				nValue = TC_MISS_ME;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_GUARD_ME)				nValue = TC_GUARD_ME;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_PERFECT_GUARD_ME)		nValue = TC_PERFECT_GUARD_ME;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_CRITICAL_HIT_ME)		nValue = TC_CRITICAL_HIT_ME;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ENEMY)				nValue = TC_HIT_ENEMY;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_MISS_ENEMY)			nValue = TC_MISS_ENEMY;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_GUARD_ENEMY)			nValue = TC_GUARD_ENEMY;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_CRITICAL_HIT_ENEMY)	nValue = TC_CRITICAL_HIT_ENEMY;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_COUNTER)				nValue = TC_COUNTER;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_RESIST)				nValue = TC_RESIST;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_BUFF_HIT)				nValue = TC_BUFF_HIT;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_BUFF_MAX_STACKED)			nValue = TC_BUFF_MAX_STACKED;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_BUFF_STACKED)			nValue = TC_BUFF_STACKED;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_HIT_ME_N)				nValue = TC_HIT_ME_N;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_CRIHIT_ME_N)			nValue = TC_CRIHIT_ME_N;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_DAMAGE)				nValue = TC_DAMAGE;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_AFFECTED)				nValue = TC_AFFECTED;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_MAGIC_ACT)				nValue = TC_MAGIC_ACT;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_MAGIC_HIT_ME)			nValue = TC_MAGIC_HIT_ME;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_MAGIC_HIT_ENEMY)		nValue = TC_MAGIC_HIT_ENEMY;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_MELEE_HIT_ME)			nValue = TC_MELEE_HIT_ME;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_MELEE_HIT_ENEMY)		nValue = TC_MELEE_HIT_ENEMY;
-	else if (strValue == TALENT_XML_VALUE_BUFF_CONDITION_DO_SOMETHING)			nValue = TC_DO_SOMETHING;
+	nValue = _ParseEffectTiming(strValue);
+}
+
+void CSTalentInfoParser::ParseMultiEffectTiming(const string& strValue, set<TALENT_CONDITION>& setValue)
+{
+	MCsvParser csv_parser;
+	csv_parser.LoadFromStream(strValue.c_str());
+	int nColCount = csv_parser.GetColCount(0);
+
+	char szCondition[1024];
+	for (int nCol = 0; nCol < nColCount; nCol++)
+	{
+		if (csv_parser.GetData(nCol, 0, szCondition, 1024))
+		{
+			TALENT_CONDITION nCondition = _ParseEffectTiming(string(szCondition));
+			setValue.insert(nCondition);
+		}
+	}
 }
 
 void CSTalentInfoParser::ParseTalentEffect(MXmlElement* pElement, CSEffectInfo& outEffect, const char* pszPrefix, const char* pszSuffix)
@@ -77,6 +112,20 @@ void CSTalentInfoParser::ParseTalentEffect(MXmlElement* pElement, CSEffectInfo& 
 	}
 
 	_Attribute(&outEffect.m_nLimit,	pElement, COMPOSITE_ATTR(pszPrefix,BUFF_XML_ATTR_EFFECT_LIMIT,pszSuffix));	
+
+	if (_Attribute(strValue,	pElement, COMPOSITE_ATTR(pszPrefix, BUFF_XML_ATTR_EFFECT_DELAY, pszSuffix)))
+	{
+		static const tstring tstrTALENT_XML_VALUE_BUFF_CONDITION_PERIOD = MLocale::ConvAnsiToTCHAR(TALENT_XML_VALUE_BUFF_CONDITION_PERIOD);
+
+		if (strValue == tstrTALENT_XML_VALUE_BUFF_CONDITION_PERIOD)
+		{
+			_Attribute(outEffect.m_fDelay,	pElement, BUFF_XML_ATTR_PERIOD);
+		}
+		else
+		{
+			outEffect.m_fDelay = static_cast<float>(atof(MLocale::ConvTCHARToAnsi(strValue.c_str()).c_str()));
+		}
+	}
 }
 
 void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElement* pElement, MXml* pXml)
@@ -94,6 +143,8 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 	pTalentInfo->m_szName = CSFormatString::Format(_T("TALENT_NAME_{0}{1}"), FSParam(pTalentInfo->m_nID, preFix));
 	pTalentInfo->m_szDesc = CSFormatString::Format(_T("TALENT_DESC_{0}{1}"), FSParam(pTalentInfo->m_nID, preFix));
 
+	_Attribute(pTalentInfo->m_szIcon,					pElement, TALENT_XML_ATTR_ICON);
+
 	_ParseNPC(pElement, pTalentInfo);
 	
 	_Attribute(&pTalentInfo->m_bPerfectGuardOnly,		pElement, TALENT_XML_ATTR_PERFECTGUARDONLY);
@@ -105,9 +156,31 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 	_Attribute(&pTalentInfo->m_nExtraHitCapsuleGroup,	pElement, TALENT_XML_ATTR_EXTRA_HITCAPSULEGROUP);
 	_Attribute(&pTalentInfo->m_nExtraHitCapsuleGroup2,	pElement, TALENT_XML_ATTR_EXTRA_HITCAPSULEGROUP2);
 	_Attribute(&pTalentInfo->m_nExtraHitCapsuleGroup3,	pElement, TALENT_XML_ATTR_EXTRA_HITCAPSULEGROUP3);
-	_Attribute(&pTalentInfo->m_bIgnoreMesmerize,			pElement, TALENT_XML_ATTR_IGNORE_MESMERIZE, false);
-	_Attribute(&pTalentInfo->m_RequireBuff.bKeepIncludeBuff,			pElement, TALENT_XML_ATTR_KEEP_INCLUDEBUFF);
-	_Attribute(&pTalentInfo->m_RequireBuff.bKeepExcludeBuff,			pElement, TALENT_XML_ATTR_KEEP_EXCLUDEBUFF);
+	_Attribute(&pTalentInfo->m_fEffectRange,			pElement, TALENT_XML_ATTR_EFFECT_RANGE);
+	_Attribute(&pTalentInfo->m_bIgnoreMotionfactor,			pElement, TALENT_XML_ATTR_IGNORE_MOTIONFACTOR);
+	if (_Attribute(&pTalentInfo->m_fIgnoreAllMFTimeStart,	pElement, TALENT_XML_ATTR_IGNORE_ALL_MF_TIME_START))
+	{
+		pTalentInfo->m_bUseIgnoreAllMFTime = true;
+		_Attribute(&pTalentInfo->m_fIgnoreAllMFTimeEnd,		pElement, TALENT_XML_ATTR_IGNORE_ALL_MF_TIME_END);
+	}
+	// _Attribute(&pTalentInfo->m_RequireBuff.bKeepIncludeBuff,			pElement, TALENT_XML_ATTR_KEEP_INCLUDEBUFF);
+	// _Attribute(&pTalentInfo->m_RequireBuff.bKeepExcludeBuff,			pElement, TALENT_XML_ATTR_KEEP_EXCLUDEBUFF);
+
+	if (_Attribute(strValue,							pElement, TALENT_XML_ATTR_IGNORE_MESMERIZE))
+	{
+		if (!_stricmp(strValue.c_str(), "True") || !_stricmp(strValue.c_str(), "Yes"))
+		{
+			pTalentInfo->m_nIgnoreMesmerize = 0;
+		}
+		else
+		{
+			int nValue = int(strtol(strValue.c_str(), NULL, 10));
+			if (errno != ERANGE)
+			{
+				pTalentInfo->m_nIgnoreMesmerize = nValue;
+			}
+		}
+	}
 
 	if (_Attribute(strValue,							pElement, TALENT_XML_ATTR_GUARD_CRASH_LEVEL))
 	{
@@ -115,8 +188,10 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 	}
 
 	CSCSVParser csv_parser;
-	csv_parser.Parse_CSV(pElement, TALENT_XML_ATTR_NPC_INCLUDE, pTalentInfo->m_RequireBuff.vecIncludeBuffID);
-	csv_parser.Parse_CSV(pElement, TALENT_XML_ATTR_NPC_EXCLUDE, pTalentInfo->m_RequireBuff.vecExcludeBuffID);
+	// csv_parser.Parse_CSV(pElement, TALENT_XML_ATTR_NPC_INCLUDE, pTalentInfo->m_RequireBuff.vecIncludeBuffID);
+	// csv_parser.Parse_CSV(pElement, TALENT_XML_ATTR_NPC_EXCLUDE, pTalentInfo->m_RequireBuff.vecExcludeBuffID);
+	csv_parser.Parse_CSV(pElement, TALENT_XML_ATTR_BUFF_INCLUDE, pTalentInfo->m_RequireBuff.vecIncludeBuffID);
+	csv_parser.Parse_CSV(pElement, TALENT_XML_ATTR_BUFF_EXCLUDE, pTalentInfo->m_RequireBuff.vecExcludeBuffID);
 	
 	int nDodgeDifficulty = 230;
 	if (_Attribute(&nDodgeDifficulty,				pElement, TALENT_XML_ATTR_DODGE_DIFFICULTY))
@@ -137,12 +212,6 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 		else if (strValue == TALENT_XML_VALUE_CATEGORY_MELEE) pTalentInfo->m_nCategory = TC_MELEE;
 		else if (strValue == TALENT_XML_VALUE_CATEGORY_RANGE) pTalentInfo->m_nCategory = TC_RANGE;
 		else if (strValue == TALENT_XML_VALUE_CATEGORY_MAGIC) pTalentInfo->m_nCategory = TC_MAGIC;
-	}
-
-	if(_Attribute(strValue,								pElement, TALENT_XML_ATTR_DMGTYPE))
-	{
-		if(strValue == TALENT_XML_VALUE_DMGTYPE_PHYS)  pTalentInfo->m_nDmgType = TDT_PHYS;
-		else if(strValue == TALENT_XML_VALUE_DMGTYPE_MAG) pTalentInfo->m_nDmgType = TDT_MAGIC;
 	}
 
 	if (_Attribute(strValue,							pElement, TALENT_XML_ATTR_STYLE))
@@ -170,6 +239,7 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 		else if (strValue == TALENT_XML_VALUE_TALENTTYPE_ENCHANT) pTalentInfo->m_nTalentType = TT_ENCHANT;
 		else if (strValue == TALENT_XML_VALUE_TALENTTYPE_ITEM) pTalentInfo->m_nTalentType = TT_ITEM;
 		else if (strValue == TALENT_XML_VALUE_TALENTTYPE_GATHER) pTalentInfo->m_nTalentType = TT_GATHER;
+		else if (strValue == TALENT_XML_VALUE_TALENTTYPE_MASTERY) pTalentInfo->m_nTalentType = TT_MASTERY;
 	}
 
 	_ParseExtraPassiveType(pElement, pTalentInfo);
@@ -185,14 +255,20 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 	_ParseFocus(pElement, pTalentInfo);
 
 
-	_Attribute(&pTalentInfo->m_nTalentLine,			pElement, TALENT_XML_ATTR_TALENTLINE);
-	_Attribute(&pTalentInfo->m_nCooltimeLine,		pElement, TALENT_XML_ATTR_COOLTIMELINE);
+	_Attribute(&pTalentInfo->m_nTalentLine,				pElement, TALENT_XML_ATTR_TALENTLINE);
+	_Attribute(&pTalentInfo->m_nComboTalentLine,		pElement, TALENT_XML_ATTR_COMBO_TALENTLINE);
+	csv_parser.Parse_CSV(								pElement, TALENT_XML_ATTR_PREV_COMBO_TALENTLINE,	pTalentInfo->m_vecPrevComboTalentLine);
+	_Attribute(&pTalentInfo->m_fComboStartTime,			pElement, TALENT_XML_ATTR_COMBO_START_TIME);
+	_Attribute(&pTalentInfo->m_nTalentLine,				pElement, TALENT_XML_ATTR_TALENTLINE);
+	_Attribute(&pTalentInfo->m_nCooltimeLine,			pElement, TALENT_XML_ATTR_COOLTIMELINE);
 	int nRank = 0;	
 	_Attribute(&nRank,								pElement, TALENT_XML_ATTR_RANK);
 	pTalentInfo->m_nRank = static_cast<char>(nRank);
 
 	_Attribute(&pTalentInfo->m_fRequireMoveSpeed,	pElement, TALENT_XML_ATTR_REQUIRE_MOVESPEED);
 	_Attribute(&pTalentInfo->m_bAvailableOnGuard,	pElement, TALENT_XML_ATTR_AVAILABLE_ON_GUARD);
+
+	_Attribute(&pTalentInfo->m_bGuardKnockback,		pElement, TALENT_XML_ATTR_GUARD_KNOCKBACK);
 
 
 	ParseInvokeBuff(pTalentInfo->m_Buff1, "1", pElement);
@@ -239,7 +315,10 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 
 
 	// 초기화 허용여부
-	_Attribute(pTalentInfo->m_bUntrainable, pElement, TALENT_XML_ATTR_UNTRAINABLE);
+	_Attribute(pTalentInfo->m_bUntrainable,			pElement, TALENT_XML_ATTR_UNTRAINABLE);
+
+	_Attribute(&pTalentInfo->m_bShowLearnedTalent,	pElement, TALENT_XML_ATTR_SHOW_LEARNED_TALENT);
+	_Attribute(&pTalentInfo->m_bShowEmoteMsg,		pElement, TALENT_XML_ATTR_SHOW_EMOTE_MSG);
 
 	// 데미지 min, max
 	_Attribute(&pTalentInfo->m_nMinDamage,		pElement, TALENT_XML_ATTR_MIN_DAMAGE);
@@ -249,6 +328,15 @@ void CSTalentInfoParser::ParseTalentCommon(CSTalentInfo* pTalentInfo, MXmlElemen
 	_ParseUsableAtDead(pElement, pTalentInfo);	
 
 	ParseResist(pTalentInfo->m_Resist, pElement, TALENT_XML_ATTR_RESIST_METHOD, TALENT_XML_ATTR_RESIST_TYPE, TALENT_XML_ATTR_RESIST_DIFFICULTY);
+
+	ParseApplyRate(pElement, pTalentInfo->m_WeaponApplyRate);
+	ParseDamageType(pElement, pTalentInfo->m_nDamageType);
+	ParseUsableType(pElement, pTalentInfo->m_nUsableType);
+	ParseFreezeFrame(pElement, pTalentInfo->m_bFreezeFrame);
+	_ParseDamageSoundAttrib(pElement, pTalentInfo);
+
+	_Attribute(&pTalentInfo->m_bUseBloodEffect,		pElement, TALENT_XML_ATTR_USE_BLOOD_EFFECT);
+	_Attribute(&pTalentInfo->m_fHitBloodScale,		pElement, TALENT_XML_ATTR_HIT_BLOOD_SCALE);
 }
 
 void CSTalentInfoParser::ParseInvokeBuff( CSBuffEnchantInfo& outBuffInvokeInfo, const char* pszSuffix, MXmlElement* pElement )
@@ -298,10 +386,13 @@ void CSTalentInfoParser::ParseTalentServer( CSTalentInfo* pTalentInfo, MXml* pXm
 	_Attribute(&pTalentInfo->m_nENCost,				pElement, TALENT_XML_ATTR_EN_COST);
 	_Attribute(&pTalentInfo->m_nSTACost,				pElement, TALENT_XML_ATTR_STA_COST);
 	_Attribute(pTalentInfo->m_szCastingAnimation,		pElement, TALENT_XML_ATTR_CASTING_ANI);
+	_Attribute(pTalentInfo->m_szCastingLoopAnimation,	pElement, TALENT_XML_ATTR_CASTING_LOOP_ANI);
 	_Attribute(&pTalentInfo->m_fCastingTime,			pElement, TALENT_XML_ATTR_CASTING_TIME);
 	_Attribute(pTalentInfo->m_szUseAnimation,			pElement, TALENT_XML_ATTR_USE_ANI);
+	_Attribute(pTalentInfo->m_szGrappledAni,			pElement, TALENT_XML_ATTR_GRAPPLED_ANI);
+	_Attribute(pTalentInfo->m_szGrappledBone,			pElement, TALENT_XML_ATTR_GRAPPLED_BONE);
 
-	_Attribute(&pTalentInfo->m_bCriticalEnable,		pElement, TALENT_XML_ATTR_CRITICAL_ENABLE);
+	_Attribute(&pTalentInfo->m_bCriticalEnable,		pElement, TALENT_XML_ATTR_CRITICAL_ENABLE, true);
 
 	_Attribute(&pTalentInfo->m_Drain.m_fRate,			pElement, TALENT_XML_ATTR_DRAIN_RATE);
 	if (_Attribute(strValue,			pElement, TALENT_XML_ATTR_DRAIN_TYPE))
@@ -319,8 +410,6 @@ void CSTalentInfoParser::ParseTalentServer( CSTalentInfo* pTalentInfo, MXml* pXm
 	int nDamageType=0;
 	_Attribute(&pTalentInfo->m_nMinHeal,		pElement, TALENT_XML_ATTR_MIN_HEAL);
 	_Attribute(&pTalentInfo->m_nMaxHeal,		pElement, TALENT_XML_ATTR_MAX_HEAL);
-	
-	_Attribute(&pTalentInfo->m_fWeaponApplyRate,	pElement, TALENT_XML_ATTR_WEAPON_APPLY_RATE);
 
 	_Attribute(&pTalentInfo->m_fCriticalApplyRate,	pElement, TALENT_XML_ATTR_CRITICAL_APPLY_RATE);
 
@@ -382,6 +471,17 @@ void CSTalentInfoParser::ParseTalentServer( CSTalentInfo* pTalentInfo, MXml* pXm
 	_Attribute(&pTalentInfo->m_nAICategories,				pElement, TALENT_XML_ATTR_CATEGORY);
 
 	_ParseHit(pTalentInfo, pElement);
+
+
+	_Attribute(&pTalentInfo->m_nSkillIntensity,				pElement, TALENT_XML_ATTR_SKILL_INTENSITY);
+	_Attribute(&pTalentInfo->m_fPC_ReturnAniStartTime,		pElement, TALENT_XML_ATTR_PC_RETURN_ANI_START_TIME);
+	_Attribute(&pTalentInfo->m_bArenaCooltimeResetable,		pElement, TALENT_XML_ATTR_ARENA_COOLTIME_RESETABLE);
+
+	_ParseConvertTalent(pElement, pTalentInfo);
+	_ParseConvertBuff(pElement, pTalentInfo);
+
+	_ParsePCShoveType(pElement, pTalentInfo);
+	_ParseNPCShoveType(pElement, pTalentInfo);
 
 
 }
@@ -463,6 +563,9 @@ void ParseExtraPassiveType(string strValue, TALENT_EXTRA_PASSIVE_TYPE& outnValue
 	else if (strValue == TALENT_XML_VALUE_EXTRAPASSIVE_MAGICAL_DYNAMICS) outnValue = TEPT_MAGICAL_DYNAMICS;
 	else if (strValue == TALENT_XML_VALUE_EXTRAPASSIVE_ITEM_THROWING) outnValue = TEPT_ITEM_THROWING;
 	else if (strValue == TALENT_XML_VALUE_EXTRAPASSIVE_ITEM_TRAP) outnValue = TEPT_ITEM_TRAP;
+
+	else if (strValue == TALENT_XML_VALUE_EXTRAPASSIVE_HYBRID) outnValue = TEPT_HYBIRD;
+	else if (strValue == TALENT_XML_VALUE_EXTRAPASSIVE_CONVERT_BUFF) outnValue = TEPT_CONVERT_BUFF;
 }
 
 void CSTalentInfoParser::_ParseExtraPassiveType( MXmlElement* pElement, CSTalentInfo* pTalentInfo )
@@ -481,11 +584,25 @@ void CSTalentInfoParser::_ParseExtraPassiveType( MXmlElement* pElement, CSTalent
 	{
 		if (strValue == "$ID")
 		{
-			pTalentInfo->m_nExtraPassiveParam = pTalentInfo->m_nID;
+			pTalentInfo->m_nExtraPassiveParam[0] = pTalentInfo->m_nID;
+		}
+		else if (strValue.find(':') != string::npos)
+		{
+			int nParam1, nParam2;
+
+			if (sscanf_s(strValue.c_str(), "%d:%d", &nParam1, &nParam2) == 2)
+			{
+				pTalentInfo->m_nExtraPassiveParam[0] = nParam1;
+				pTalentInfo->m_nExtraPassiveParam[1] = nParam2;
+			}
+			else
+			{
+				_ASSERT(0);
+			}
 		}
 		else
 		{
-			pTalentInfo->m_nExtraPassiveParam = atoi(strValue.c_str());
+			pTalentInfo->m_nExtraPassiveParam[0] = atoi(strValue.c_str());
 		}
 	}
 
@@ -493,11 +610,25 @@ void CSTalentInfoParser::_ParseExtraPassiveType( MXmlElement* pElement, CSTalent
 	{
 		if (strValue == "$ID")
 		{
-			pTalentInfo->m_nExtraPassiveParam2 = pTalentInfo->m_nID;
+			pTalentInfo->m_nExtraPassiveParam2[0] = pTalentInfo->m_nID;
+		}
+		else if (strValue.find(':') != string::npos)
+		{
+			int nParam1, nParam2;
+
+			if (sscanf_s(strValue.c_str(), "%d:%d", &nParam1, &nParam2) == 2)
+			{
+				pTalentInfo->m_nExtraPassiveParam2[0] = nParam1;
+				pTalentInfo->m_nExtraPassiveParam2[1] = nParam2;
+			}
+			else
+			{
+				_ASSERT(0);
+			}
 		}
 		else
 		{
-			pTalentInfo->m_nExtraPassiveParam2 = atoi(strValue.c_str());
+			pTalentInfo->m_nExtraPassiveParam2[0] = atoi(strValue.c_str());
 		}
 	}
 }
@@ -728,6 +859,154 @@ void CSTalentInfoParser::_ParseUsableAtDead( MXmlElement* pElement, CSTalentInfo
 }
 
 
+void CSTalentInfoParser::ParseApplyRate( MXmlElement* pElement, CSTalentWeaponApplyRate& outApplyRate )
+{
+	_Attribute(&outApplyRate.fApplyRate,			pElement, TALENT_XML_ATTR_APPLY_RATE);
+	_Attribute(&outApplyRate.fFireApplyRate,		pElement, TALENT_XML_ATTR_FIRE_APPLY_RATE);
+	_Attribute(&outApplyRate.fColdApplyRate,		pElement, TALENT_XML_ATTR_COLD_APPLY_RATE);
+	_Attribute(&outApplyRate.fLightningApplyRate,	pElement, TALENT_XML_ATTR_LIGHTNING_APPLY_RATE);
+	_Attribute(&outApplyRate.fPoisonApplyRate,		pElement, TALENT_XML_ATTR_POISON_APPLY_RATE);
+	_Attribute(&outApplyRate.fHolyApplyRate,		pElement, TALENT_XML_ATTR_HOLY_APPLY_RATE);
+	_Attribute(&outApplyRate.fUnholyApplyRate,		pElement, TALENT_XML_ATTR_UNHOLY_APPLY_RATE);
+}
+
+void CSTalentInfoParser::ParseDamageType( MXmlElement* pElement, TALENT_DAMAGE_TYPE& outnDamageType )
+{
+	string strValue;
+	if (_Attribute(strValue, pElement, TALENT_XML_ATTR_DAMAGE_TYPE))
+	{
+		if (strValue == TALENT_XML_VALUE_DAMAGE_TYPE_PHYSIC)
+		{
+			outnDamageType = TDT_PHYSIC;
+		}
+		else if (strValue == TALENT_XML_VALUE_DAMAGE_TYPE_MAGIC)
+		{
+			outnDamageType = TDT_MAGIC;
+		}
+		else
+		{
+			_ASSERT(0);
+		}
+	}
+}
+
+void CSTalentInfoParser::ParseUsableType( MXmlElement* pElement, TALENT_USABLE_TYPE& outnUsableType )
+{
+	string strValue;
+	if (_Attribute(strValue,				pElement, TALENT_XML_ATTR_USABLE_TYPE))
+	{
+		if (strValue == TALENT_XML_VALUE_USABLE_TYPE_DAMAGE)
+		{
+			outnUsableType = TUT_DAMAGE;
+		}
+		else if (strValue == TALENT_XML_VALUE_USABLE_TYPE_HEAL)
+		{
+			outnUsableType = TUT_HEAL;
+		}
+	}
+}
+
+void CSTalentInfoParser::ParseFreezeFrame(MXmlElement* pElement, bool& outbFreezeFrame)
+{
+	_Attribute(&outbFreezeFrame,			pElement, TALENT_XML_ATTR_FREEZE_FRAME);
+}
+
+void CSTalentInfoParser::_ParseShoveType( MXmlElement* pElement, PC_SHOVE_TYPE& eShoveType, const char* szAttrName )
+{
+	string strValue;
+	if (_Attribute(strValue,		pElement, szAttrName))
+	{
+		if (strValue == TALENT_XML_VALUE_PC_SHOVE_TYPE_PASS)
+		{
+			eShoveType = PST_PASS;
+		}
+		else if (strValue == TALENT_XML_VALUE_PC_SHOVE_TYPE_PUSH)
+		{
+			eShoveType = PST_PUSH;
+		}
+		else if (strValue == TALENT_XML_VALUE_PC_SHOVE_TYPE_SCRAPE)
+		{
+			eShoveType = PST_SCRAPE;
+		}
+		else if (strValue == TALENT_XML_VALUE_PC_SHOVE_TYPE_STOP)
+		{
+			eShoveType = PST_STOP;
+		}
+		else
+		{
+			_ASSERT(0);
+		}
+	}
+}
+
+void CSTalentInfoParser::_ParsePCShoveType( MXmlElement* pElement, CSTalentInfo* pTalentInfo )
+{
+	_ParseShoveType(pElement, pTalentInfo->m_nPC_ShoveType, TALENT_XML_ATTR_PC_SHOVE_TYPE);
+}
+
+void CSTalentInfoParser::_ParseNPCShoveType( MXmlElement* pElement, CSTalentInfo* pTalentInfo )
+{
+	_ParseShoveType(pElement, pTalentInfo->m_nNPC_ShoveType, TALENT_XML_ATTR_NPC_SHOVE_TYPE);
+}
+
+void CSTalentInfoParser::_ParseDamageSoundAttrib( MXmlElement* pElement, CSTalentInfo* pTalentInfo )
+{
+	string strValue;
+	if (_Attribute(strValue,				pElement, TALENT_XML_ATTR_DAMAGE_SOUND_ATTRIB))
+	{
+		if (strValue == TALENT_XML_VALUE_DAMAGE_SOUND_ATTRIB_BLUNT)
+		{
+			pTalentInfo->m_nDamageSoundAttrib = DSA_BLUNT;
+		}
+		else if (strValue == TALENT_XML_VALUE_DAMAGE_SOUND_ATTRIB_PIERCE)
+		{
+			pTalentInfo->m_nDamageSoundAttrib = DSA_PIERCE;
+		}
+		else if (strValue == TALENT_XML_VALUE_DAMAGE_SOUND_ATTRIB_SLICE)
+		{
+			pTalentInfo->m_nDamageSoundAttrib = DSA_SLICE;
+		}
+		else
+		{
+			_ASSERT(0);
+		}
+	}
+}
+
+void CSTalentInfoParser::_ParseConvertID( MXmlElement* pElement, CSConvertIDContainer* pContainer, const char* szAttrName )
+{
+	vector<string> vecstrValues;
+
+	CSCSVParser csv_parser;
+	csv_parser.Parse_CSV(pElement, szAttrName, vecstrValues);
+
+	for (size_t i = 0; i < vecstrValues.size(); i++)
+	{
+		string& strValue = vecstrValues[i];
+
+		int nFromID, nToID;
+		if (sscanf_s(strValue.c_str(), "%d:%d", &nFromID, &nToID) == 2)
+		{
+			pContainer->Add(nFromID, nToID);
+		}
+		else
+		{
+			_ASSERT(0);
+		}
+	}
+}
+
+void CSTalentInfoParser::_ParseConvertTalent( MXmlElement* pElement, CSTalentInfo* pTalentInfo )
+{
+	_ParseConvertID(pElement, &pTalentInfo->m_ConvertTalent, TALENT_XML_ATTR_CONVERT_TALENT);
+}
+
+void CSTalentInfoParser::_ParseConvertBuff( MXmlElement* pElement, CSTalentInfo* pTalentInfo )
+{
+	_ParseConvertID(pElement, &pTalentInfo->m_ConvertBuff, TALENT_XML_ATTR_CONVERT_BUFF);
+}
+
+
 //////////////////////////////////////////////////////////////////////////
 void CSTalentInfoWeaponAllowedParser::Parse( const TCHAR* szValue, CSTalentWeaponAllowdInfo& outWeaponAllowedInfo )
 {
@@ -787,6 +1066,10 @@ void CSTalentInfoWeaponAllowedParser::Parse( const TCHAR* szValue, CSTalentWeapo
 			{
 				outWeaponAllowedInfo.m_setWeapons.insert(TALENT_WEAPON_ALLOWED_STF);
 			}
+			else if (strTrimWeapon == "dwp")
+			{
+				outWeaponAllowedInfo.m_setWeapons.insert(TALENT_WEAPON_ALLOWED_DWP);
+			}
 			else if (strTrimWeapon == "all")
 			{
 				outWeaponAllowedInfo.m_bAllAllowed = true;
@@ -804,6 +1087,7 @@ void CSTalentInfoWeaponAllowedParser::Parse( const TCHAR* szValue, CSTalentWeapo
 				outWeaponAllowedInfo.m_setWeapons.insert(TALENT_WEAPON_ALLOWED_DWD);
 				outWeaponAllowedInfo.m_setWeapons.insert(TALENT_WEAPON_ALLOWED_STF);
 				outWeaponAllowedInfo.m_setWeapons.insert(TALENT_WEAPON_ALLOWED_2HB);
+				outWeaponAllowedInfo.m_setWeapons.insert(TALENT_WEAPON_ALLOWED_DWP);
 			}
 			else if (strTrimWeapon == "2hd")
 			{
@@ -885,7 +1169,7 @@ bool CSTalentWeaponAllowdInfo::IsAllowed( WEAPON_TYPE nWeaponType, bool bEquipSh
 		break;
 	case WEAPON_DUAL_PIERCE:
 		{
-//			_ASSERT(0);
+			if (IsAllowed(TALENT_WEAPON_ALLOWED_DWP)) return true;
 		}
 		break;
 	default:

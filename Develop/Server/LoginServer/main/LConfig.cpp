@@ -17,6 +17,7 @@ bool LConfig::m_bStandAlone = false;			///< 마스터서버 없이 실행할지 여부
 int LConfig::m_nMoveServerTimeout = 300000;		// 5 분
 int LConfig::m_nCommandTimeout = 300000;		// 5 분
 bool LConfig::m_isAllowInsertNewAccount = true;
+bool LConfig::m_bImmediateDeleteChar = true;
 
 std::wstring	LConfig::m_strSystemPath;
 std::wstring	LConfig::m_strFieldPath;
@@ -48,9 +49,12 @@ bool LConfig::m_bPMSEnable = false;
 // pmang db encrypt.
 bool LConfig::m_bPmangDBEncrypt = false;
 
+LConfig::LLoginMode LConfig::m_eLoginMode = LLM_PWE_INGAME;
+
 // debug
 wstring LConfig::m_strDumpDestServerIP = L"localhost";
 int LConfig::m_nDumpDestServerPort = m_nDumpDestServerPort;
+bool LConfig::m_bDBTraceAllTask = false;
 
 #define CONFIG_TOKEN_APP_DB					L"DB"
 #define CONFIG_TOKEN_APP_ACCOUNTDB			L"ACCOUNTDB"
@@ -95,6 +99,8 @@ void LConfig::Init_INI()
 	m_nSocketPoolSize	= GetPrivateProfileInt(CONFIG_TOKEN_APP_SERVER_INFO,	L"SOCKET_POOL_SIZE",	2000,	szFileName);
 	m_nSendPendingLimitCount = GetPrivateProfileInt(CONFIG_TOKEN_APP_SERVER_INFO, L"SEND_PENDING_LIMIT_COUNT",	100, szFileName);
 
+	InitLoginMode(szFileName);
+
 	// master server
 	m_nMasterServer_NetworkCardID	= GetPrivateProfileInt(CONFIG_TOKEN_APP_MASTER_SERVER, L"NETWORK_CARD",	0, szFileName);
 	GetPrivateProfileString(CONFIG_TOKEN_APP_MASTER_SERVER, L"IP",		L"localhost",		szValue, 256, szFileName);	m_strMasterServerIP = szValue;
@@ -118,10 +124,12 @@ void LConfig::Init_INI()
 	m_nMoveServerTimeout	= GetPrivateProfileInt(CONFIG_TOKEN_APP_CONST,	L"MOVE_SERVER_TIMEOUT",	60000,	szFileName);
 	m_nCommandTimeout		= GetPrivateProfileInt(CONFIG_TOKEN_APP_CONST,	L"COMMAND_TIMEOUT",		30000,	szFileName);
 	m_isAllowInsertNewAccount = GetPrivateProfileBool(CONFIG_TOKEN_APP_CONST, L"ALLOW_INSERT_NEW_ACCOUNT", true, szFileName);
+	m_bImmediateDeleteChar	= GetPrivateProfileBool(CONFIG_TOKEN_APP_CONST, L"IMMEDIATE_DELETE_CHAR", true, szFileName);
 
 	// debug
 	GetPrivateProfileString(CONFIG_TOKEN_APP_DEBUG,	L"DUMP_DEST_SERVERIP",	L"localhost", szValue, 128, szFileName); m_strDumpDestServerIP = szValue;
 	m_nDumpDestServerPort = GetPrivateProfileInt(CONFIG_TOKEN_APP_DEBUG,	L"DUMP_DEST_SERVERPORT",	21,			szFileName);
+	m_bDBTraceAllTask = GetPrivateProfileBool(CONFIG_TOKEN_APP_DEBUG,		L"DB_TRACE_ALL",		false,	szFileName);
 }
 
 
@@ -149,7 +157,7 @@ wstring LConfig::GetPathString( const wchar_t* szFileName, const wchar_t* szKeyN
 
 void LConfig::InitAccountDB( const wchar_t* szFileName )
 {
-	wchar_t szValue[512];
+	wchar_t szValue[256];
 
 	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"SERVER",		L"SH_DB",	szValue, 256, szFileName);	m_AccountDBConfig.strServer		= szValue;
 	GetPrivateProfileString(CONFIG_TOKEN_APP_ACCOUNTDB, L"DATABASE",	L"Main",		szValue, 256, szFileName);	m_AccountDBConfig.strDBName		= szValue;
@@ -159,7 +167,7 @@ void LConfig::InitAccountDB( const wchar_t* szFileName )
 
 void LConfig::InitGameDB( const wchar_t* szFileName )
 {
-	wchar_t szValue[512];
+	wchar_t szValue[256];
 
 	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"SERVER",		L"SH_DB",		szValue, 256, szFileName);	m_GameDBConfig.strServer	= szValue;
 	GetPrivateProfileString(CONFIG_TOKEN_APP_DB, L"DATABASE",	L"SoulHuntDB",	szValue, 256, szFileName);	m_GameDBConfig.strDBName	= szValue;
@@ -169,10 +177,46 @@ void LConfig::InitGameDB( const wchar_t* szFileName )
 
 void LConfig::InitLogDB( const wchar_t* szFileName )
 {
-	wchar_t szValue[512];
+	wchar_t szValue[256];
 
 	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"SERVER",		L"SH_DB",	szValue, 256, szFileName);	m_LogDBConfig.strServer		= szValue;
 	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"DATABASE",	L"LogDB",	szValue, 256, szFileName);	m_LogDBConfig.strDBName		= szValue;
 	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"USERNAME",	L"dev",		szValue, 256, szFileName);	m_LogDBConfig.strUserName	= szValue;
 	GetPrivateProfileString(CONFIG_TOKEN_APP_LOGDB, L"PASSWORD",	L"dev",		szValue, 256, szFileName);	m_LogDBConfig.strPassword	= szValue;
+}
+
+
+void LConfig::InitLoginMode( const wchar_t* szFileName )
+{
+	wchar_t szValue[256];
+	GetPrivateProfileString(CONFIG_TOKEN_APP_SERVER_INFO, L"LOGIN_MODE", L"PWE", szValue, 256, szFileName);
+
+	static const struct {
+		const wchar_t*		szKey;
+		const LLoginMode	eValue;
+	} loginmode_pair[] = {
+		{ L"DEBUG",			LLM_DEBUG },
+		{ L"NORMAL",		LLM_NORMAL },
+		{ L"PMANG",			LLM_PMANG },
+		{ L"WMO",			LLM_WMO },
+		{ L"PWE",			LLM_PWE },
+		{ L"PWE_INGAME",	LLM_PWE_INGAME },
+		{ L"PWE_ARC",		LLM_PWE_ARC },
+		{ L"GAMEFORGE",		LLM_GAMEFORGE }
+	};
+
+	bool bExist = false;
+	size_t nPairCount = sizeof(loginmode_pair) / sizeof(loginmode_pair[0]);
+
+	for (size_t i = 0; i < nPairCount; i++)
+	{
+		if (_wcsicmp(loginmode_pair[i].szKey, szValue) == 0)
+		{
+			m_eLoginMode = loginmode_pair[i].eValue;
+			bExist = true;
+			break;
+		}
+	}
+
+	_ASSERT(bExist);
 }

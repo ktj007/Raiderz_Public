@@ -44,7 +44,7 @@ void GNPCRewardOwner::OnLostHateEntry(MUID nEnemy)
 	GEntityPlayer* pEnemyPlayer = gmgr.pPlayerObjectManager->GetEntity(nEnemy);
 	if (NULL == pEnemyPlayer) return;
 
-	vector<int> vecDeletableCandidateCID = SelectDeletableCandidateCID(pEnemyPlayer);
+	vector<CID> vecDeletableCandidateCID = SelectDeletableCandidateCID(pEnemyPlayer);
 
 	Delete(vecDeletableCandidateCID);
 }
@@ -54,12 +54,12 @@ void GNPCRewardOwner::OnEmptyHateTable()
 	Clear();
 }
 
-vector<int> GNPCRewardOwner::SelectDeletableCandidateCID(GEntityPlayer* pPlayer)
+vector<CID> GNPCRewardOwner::SelectDeletableCandidateCID(GEntityPlayer* pPlayer)
 {
 	MUID nPartyUID = pPlayer->GetPartyUID();
 	GParty* pParty = gsys.pPartySystem->FindParty(nPartyUID);
 
-	vector<int> vecDeletableCandidataCID;
+	vector<CID> vecDeletableCandidataCID;
 
 	// 헤이트 테이블에 등재된 파티원이 하나도 없으면 그때 제거된다.
 	if (NULL == pParty)

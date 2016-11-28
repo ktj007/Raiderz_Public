@@ -30,7 +30,7 @@ public:
 
 	bool PutDownAllTalent(GEntityPlayer* pPlayer);
 
-	void MakeTD_PALETTE(GEntityPlayer* pPlayer, TD_PALETTE& outtdPalette);
+	void MakeTD_PALETTE(GEntityPlayer* pPlayer, vector<TD_PALETTE>& outvecTDPalette);
 };
 
 #endif

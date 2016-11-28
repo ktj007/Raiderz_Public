@@ -148,12 +148,12 @@ public:
 	/// @param pData	[out] 커맨드 데이터 블럭
 	/// @param nSize	[in] 커맨드 데이터 블럭 최대 사이즈
 	/// @return			블럭 사이즈
-	int GetData(char* pData, uint16 nSize);
+	int GetData(char* pData, uint32 nSize);
 	/// 커맨드 메모리 블럭 데이터로부터 저장
 	/// @param pData	[in] 커맨드 데이터 블럭
 	/// @param pPM		[in] 커맨드 매니져(MCommandDesc를 enum할 수 있다.)
 	/// @return			성공 여부
-	bool SetData(char* pData, uint16 nDataLen=USHRT_MAX);
+	bool SetData(char* pData, uint32 nDataLen=UINT_MAX);
 
 	int GetSize();
 

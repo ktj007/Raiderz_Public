@@ -6,7 +6,11 @@
 #include "XAnim.h"
 #include <vector>
 #include <string>
+#if (_MSC_VER >= 1900)
+#include <unordered_map>
+#else
 #include <hash_map>
+#endif
 using namespace std;
 
 #include "CSItemData.h"

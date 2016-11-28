@@ -8,7 +8,7 @@ XCmdHandler_GM::XCmdHandler_GM(MCommandCommunicator* pCC) : MCommandHandler(pCC)
 	SetCmdHandler(MC_GM_QUEST_RESET,		OnQuestResetDone);
 	SetCmdHandler(MC_GM_QUEST_VAR,			OnQuestVar);
 	SetCmdHandler(MC_GM_SHOW_ENEMY_UID,		OnShowEnemyUID);
-	SetCmdHandler(MC_GM_LOG_CRT_LIST,		OnLogCRTList);	
+//	SetCmdHandler(MC_GM_LOG_CRT_LIST,		OnLogCRTList);	
 	SetCmdHandler(MC_GM_SERVER_DUMP_RESP,	OnResponseServerDump);
 	SetCmdHandler(MC_GM_CHANGE_SERVER_MODE,	OnGMChangeServerMode);
 }

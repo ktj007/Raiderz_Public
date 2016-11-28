@@ -12,6 +12,7 @@ public:
 
 	DECL_CMD_HANDLER(OnLogin);			
 	DECL_CMD_HANDLER(OnPmangLogin);			
+	DECL_CMD_HANDLER(OnPWELogin);
 	DECL_CMD_HANDLER(OnNetClear);
 	DECL_CMD_HANDLER(OnRequestAccountCharList);
 	DECL_CMD_HANDLER(OnRequestInsertCharacter);

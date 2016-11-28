@@ -10,6 +10,7 @@ using namespace minet;
 void GAddCommandTable()
 {
 	AddCommonCommandTable();
+	AddGMCommandTable();
 	AddServerCommonCommandTable();
 	AddLoginCommandTable();
 	AddMaster2GameCommandTable();

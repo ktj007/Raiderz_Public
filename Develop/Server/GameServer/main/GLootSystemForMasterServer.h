@@ -15,8 +15,8 @@ public:
 	GLootSystemForMasterServer(void);
 	~GLootSystemForMasterServer(void);
 
-	void MasterLootNotify(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify);
-	void OtherGainItem(const vector<int>& vecBeneficiaryCID, const MUID& nGainerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem);
-	void GettableItemAdd(int nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd);
-	void RollResult(const vector<int>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult);
+	void MasterLootNotify(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_MASTERLOOT_NOTIFY>& vecTDMasterLootNotify);
+	void OtherGainItem(const vector<CID>& vecBeneficiaryCID, const MUID& nGainerUID, const vector<TD_LOOT_OTHERGAIN_ITEM>& vecTDOtherGainItem);
+	void GettableItemAdd(CID nBeneficiaryCID, const vector<TD_LOOT_GETTABLE_ITEM_ADD>& vecTDGettableItemAdd);
+	void RollResult(const vector<CID>& vecBeneficiaryCID, const vector<TD_LOOT_ROLL_ITEM>& vecTDRollItem, const vector<TD_LOOT_ROLL_RESULT>& vecTDRollResult);
 };

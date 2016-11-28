@@ -11,10 +11,10 @@
 #include "XCameraManager.h"
 
 
-vec3 DEFAULT_PLAYER_POS ( 2812.435f, 952.378f, -125.592f); //( 655.0f, -88.0f, -130.0f); //Needs updating
+vec3 DEFAULT_PLAYER_POS (0.0f, 5.0f, 0.0f);//( 2812.435f, 952.378f, -125.592f); //( 655.0f, -88.0f, -130.0f); //Needs updating
 vec3 DEFAULT_PLAYER_DIR( 0.0f, -1.0f, 0.0f);
-vec3 DEFAULT_MOCKCHAR_POS ( 22735.951f, 85.614f, 5.686f); //( 20622.0f, -1853.0f, 0.0f);
-vec3 DEFAULT_MOCKCHAR_DIR( 20.0f, 20.0f, 20.0f);
+//vec3 DEFAULT_MOCKCHAR_POS ( 22735.951f, 85.614f, 5.686f); //( 20622.0f, -1853.0f, 0.0f);
+//vec3 DEFAULT_MOCKCHAR_DIR( 20.0f, 20.0f, 20.0f);
 
 
 
@@ -82,6 +82,9 @@ void XCharFrame::Load()
 	m_bLoadCampaign = XGetLoginCampaign()->Create();
 
 	if ( global.script && !m_bLoadCampaign)		global.script->GetGlueGameEvent().OnCharacterEvent( "UI", "LOADED");
+
+	global.camera->GetCamera()->SetPosition(0.0f, -300.0, 120.0f);
+	global.camera->GetCamera()->SetDirection(vec3(0.0f, 1.0f, -0.1f));
 
 	m_bLoaded = true;
 }
@@ -370,8 +373,11 @@ void XCharFrame::SelectChar( int nIndex)
 	ci.bBattleStance = false;
 
 	TD_UPDATE_CACHE_PLAYER _info = GetDefaultCharData( ci);
-	_info.vPos = DEFAULT_PLAYER_POS;
-	_info.svDir = DEFAULT_PLAYER_DIR;
+	_info.SimpleInfo.vPos = DEFAULT_PLAYER_POS;
+	_info.SimpleInfo.svDir = DEFAULT_PLAYER_DIR;
+
+	global.camera->GetCamera()->SetPosition(0.0f, -300.0, 120.0f);
+	global.camera->GetCamera()->SetDirection(vec3(0.0f, 1.0f, -0.1f));
 
 	TD_PLAYER_FEATURE_TATTOO _tattoo;
 	_tattoo.nTattooType = ci.nTattoo;
@@ -379,11 +385,16 @@ void XCharFrame::SelectChar( int nIndex)
 	_tattoo.nTattooPosX = (short)( ci.vTattooPos.x * 100.0f);
 	_tattoo.nTattooPosY = (short)( ci.vTattooPos.y * 100.0f);
 
+	TD_PLAYER_BUFF_LIST _buffList;
+	for (int j = 0; j < MAX_OWN_BUFF_NUMBER; j++)
+		_buffList.nBuffID[j] = 0;
+	_buffList.nUIID = 0;
+
 	for (int i = 0; i < FEATURE_ITEMSLOT_MAX; i++)
 	{
-		_info.Feature.nItemID[i] = _feature.nEquipedItemID[i];
-		_info.Feature.nItemID_DyedColor[i] = _feature.nEquipedItemColor[i];
-		_info.Feature.nItemID_EnchantBuff[i] = _feature.nEquipedItemEnchantBuff[i];
+		_info.ExtraInfo.Feature.nItemID[i] = _feature.nEquipedItemID[i];
+		_info.ExtraInfo.Feature.nItemID_DyedColor[i] = _feature.nEquipedItemColor[i];
+		_info.ExtraInfo.Feature.nItemID_EnchantBuff[i] = _feature.nEquipedItemEnchantBuff[i];
 	}
 
 	if ( m_pPlayers[ nIndex] != NULL)
@@ -398,7 +409,7 @@ void XCharFrame::SelectChar( int nIndex)
 	m_pPlayers[ nIndex]->Create();
 	m_pPlayers[ nIndex]->ActiveModule( XMID_MOVABLE, false);
 	m_pPlayers[ nIndex]->RemoveFromSceneManager();
-	m_pPlayers[ nIndex]->InPlayer( &_info, &_tattoo, false);
+	m_pPlayers[ nIndex]->InPlayer( &_info, &_tattoo, NULL, false);
 	m_pPlayers[ nIndex]->ChangeStance( CS_BATTLE, true);
 	m_pPlayers[ nIndex]->AddToSceneManager();
 	m_pPlayers[ nIndex]->GetModuleMotion()->ChangeMotion( L"select_char", MT_DEFAULT, true);
@@ -429,24 +440,24 @@ TD_UPDATE_CACHE_PLAYER XCharFrame::GetDefaultCharData( const XCHARACTER_CREATEIN
 {
 	// Set player info
 	TD_UPDATE_CACHE_PLAYER ret;
-	ret.nUIID = 0;
-	ret.vPos = vec3( 0.0f, 0.0f, 0.0f);
-	ret.svDir = vec3( 0.0f, 1.0f, 0.0f);
-	ret.szName[ 0] = 0;
-	ret.nStance = CS_NORMAL;
-	ret.Feature.nSex = ci.nSex;
-	ret.Feature.nHair = ci.nHair;
-	ret.Feature.nFace = ci.nFace;	
-	ret.Feature.nHairColor = ci.nHairColor;
-	ret.Feature.nSkinColor = ci.nSkinColor;
-	ret.Feature.nEyeColor = ci.nEyeColor;
-	ret.Feature.nMakeUp = ci.nMakeUp;
-	ret.Feature.nWeaponSet = 0;
+	ret.SimpleInfo.nUIID = 0;
+	ret.SimpleInfo.vPos = vec3( 0.0f, 0.0f, 0.0f);
+	ret.SimpleInfo.svDir = vec3( 0.0f, 1.0f, 0.0f);
+	ret.ExtraInfo.szName[ 0] = 0;
+	ret.SimpleInfo.nStance = CS_NORMAL;
+	ret.ExtraInfo.Feature.nSex = ci.nSex;
+	ret.ExtraInfo.Feature.nHair = ci.nHair;
+	ret.ExtraInfo.Feature.nFace = ci.nFace;
+	ret.ExtraInfo.Feature.nHairColor = ci.nHairColor;
+	ret.ExtraInfo.Feature.nSkinColor = ci.nSkinColor;
+	ret.ExtraInfo.Feature.nEyeColor = ci.nEyeColor;
+	ret.ExtraInfo.Feature.nMakeUp = ci.nMakeUp;
+	ret.ExtraInfo.Feature.nWeaponSet = 0;
 
 	for ( int i = 0; i < FEATURE_ITEMSLOT_MAX; i++)
 	{
-		ret.Feature.nItemID[ i] = 0;
-		ret.Feature.nItemID_DyedColor[ i] = 0;
+		ret.ExtraInfo.Feature.nItemID[ i] = 0;
+		ret.ExtraInfo.Feature.nItemID_DyedColor[ i] = 0;
 	}
 
 	if ( ci.nEquipments >= 0)
@@ -460,17 +471,17 @@ TD_UPDATE_CACHE_PLAYER XCharFrame::GetDefaultCharData( const XCHARACTER_CREATEIN
 			if ( pItemData == NULL)		continue;
 
 			SH_FEATURE_ITEMSLOT nItemSlot = XPlayerInfoFeature::TransItemSlotToNetSlot( pItemData->m_nItemSlot);
-			ret.Feature.nItemID[ nItemSlot] = nItemID;
+			ret.ExtraInfo.Feature.nItemID[ nItemSlot] = nItemID;
 
 			if ( nItemSlot == FEATURE_ITEMSLOT_LWEAPON  ||  nItemSlot == FEATURE_ITEMSLOT_RWEAPON  ||
 				nItemSlot == FEATURE_ITEMSLOT_LWEAPON2  ||  nItemSlot == FEATURE_ITEMSLOT_RWEAPON2 ||
 				ci.nEquipments >= 3)
 			{
 				if ( pItemData->m_bUseTexColor == true)
-					ret.Feature.nItemID_DyedColor[ nItemSlot] = pItemData->m_nTexColor;
+					ret.ExtraInfo.Feature.nItemID_DyedColor[ nItemSlot] = pItemData->m_nTexColor;
 			}
 			else
-				ret.Feature.nItemID_DyedColor[ nItemSlot] = ci.nEquipmentsCol;
+				ret.ExtraInfo.Feature.nItemID_DyedColor[ nItemSlot] = ci.nEquipmentsCol;
 		}
 	}
 
@@ -497,27 +508,22 @@ TD_UPDATE_CACHE_PLAYER XCharFrame::GetDefaultCharData( const XCHARACTER_CREATEIN
 				if ( pItemData == NULL)		continue;
 
 				SH_FEATURE_ITEMSLOT nItemSlot = XPlayerInfoFeature::TransItemSlotToNetSlot( pItemData->m_nItemSlot);
-				if ( ret.Feature.nItemID[ nItemSlot] > 0)		continue;
+				if ( ret.ExtraInfo.Feature.nItemID[ nItemSlot] > 0)		continue;
 
-				ret.Feature.nItemID[ nItemSlot] = nItemID;
+				ret.ExtraInfo.Feature.nItemID[ nItemSlot] = nItemID;
 
 				if ( nItemSlot == FEATURE_ITEMSLOT_LWEAPON  ||  nItemSlot == FEATURE_ITEMSLOT_RWEAPON  ||
 					nItemSlot == FEATURE_ITEMSLOT_LWEAPON2  ||  nItemSlot == FEATURE_ITEMSLOT_RWEAPON2 ||
 					ci.nEquipments >= 3)
 				{
 					if ( pItemData->m_bUseTexColor == true)
-						ret.Feature.nItemID_DyedColor[ nItemSlot] = pItemData->m_nTexColor;
+						ret.ExtraInfo.Feature.nItemID_DyedColor[ nItemSlot] = pItemData->m_nTexColor;
 				}
 				else
-					ret.Feature.nItemID_DyedColor[ nItemSlot] = ci.nEquipmentsCol;
+					ret.ExtraInfo.Feature.nItemID_DyedColor[ nItemSlot] = ci.nEquipmentsCol;
 			}
 		}
 	}
-
-
-	for( int j = 0; j < MAX_OWN_BUFF_NUMBER; j++)
-		ret.Buffs[ j] = 0;
-
 	return ret;
 }
 
@@ -535,7 +541,7 @@ void XCharFrame::ChangeMockChar( const XCHARACTER_CREATEINFO& ci)
 		( m_pCurrPlayer->GetStance() == CS_BATTLE  &&  ci.bBattleStance == false) )
 		bChangeMotion = true;
 
-	vec3 _dir = DEFAULT_MOCKCHAR_DIR;
+	vec3 _dir = DEFAULT_PLAYER_DIR;
 	if ( m_pCurrPlayer != NULL)
 	{
 		for ( int i = (int)SEX_MALE;  i < (int)SEX_MAX;  i++)
@@ -551,9 +557,13 @@ void XCharFrame::ChangeMockChar( const XCHARACTER_CREATEINFO& ci)
 	}
 
 	TD_UPDATE_CACHE_PLAYER _info = GetDefaultCharData( ci);
-	_info.vPos = DEFAULT_MOCKCHAR_POS;
-	_info.svDir = _dir;
-	_info.nStance = ci.bBattleStance ? CS_BATTLE : CS_NORMAL;
+	_info.SimpleInfo.vPos = DEFAULT_PLAYER_POS;
+	_info.SimpleInfo.svDir = DEFAULT_PLAYER_DIR;
+
+	global.camera->GetCamera()->SetPosition(0.0f, -300.0, 120.0f);
+	global.camera->GetCamera()->SetDirection(vec3(0.0f, 1.0f, -0.1f));
+
+	_info.SimpleInfo.nStance = ci.bBattleStance ? CS_BATTLE : CS_NORMAL;
 
 	TD_PLAYER_FEATURE_TATTOO _tattoo;
 	_tattoo.nTattooType = ci.nTattoo;
@@ -636,7 +646,8 @@ bool XCharFrame::UpdateOnce( float fDelta )
 
 		// Update base
 		XBaseFrame::Update( fDelta);
-
+		global.camera->GetCamera()->SetPosition(0.0f, -300.0, 120.0f);
+		global.camera->GetCamera()->SetDirection(vec3(0.0f, 1.0f, -0.1f));
 		return true;
 	}
 

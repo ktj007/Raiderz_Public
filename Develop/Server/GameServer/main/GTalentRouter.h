@@ -23,9 +23,12 @@ public:
 	// ¸¶¹ý
 	void			RouteActRecastingSpell(int nSpellPhase, int nRet);
 	void			RouteActTalentProjectileMissile(int nTalentID, vec3 vTargetPos, MUID uidTarget, int8 nCapsuleGroupIndex, int8 nCapsuleIndex );
-	void			RouteActSpellMagicArea( int nTalentID, vec3 vTargetPos );
-	void			RouteTalentHeal( GEntityActor* pUser, GEntityActor* pTarget, int nTalentID, int nHealAmount );
-	void			RouteBuffHeal( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nHealAmount );
+	// void			RouteActSpellMagicArea( int nTalentID, vec3 vTargetPos );
+	void			RouteActTalentMiss(int nTalentID);
+	void			RouteTalentHeal( GEntityActor* pUser, GEntityActor* pTarget, int nTalentID, int nHealAmount, bool bCriticalHit );
+	void			RouteBuffHeal( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nHealAmount, bool bCriticalHit );
+	void			RouteBuffRestoreEN( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nRestoreAmount );
+	void			RouteBuffRestoreSTA( GEntityActor* pUser, GEntityActor* pTarget, int nBuffID, int nRestoreAmount );
 	// È°
 	void			RouteAttackArchery();
 

@@ -67,7 +67,11 @@ public:
 #define XML_ATTR_MOD_STA_MAX			"ModSTAMax"
 
 #define XML_ATTR_MOD_MOVE_SPEED			"ModMoveSpeed"
+#define XML_ATTR_MOD_BATTLE_MOVE_SPEED	"ModBattleMoveSpeed"
 #define XML_ATTR_MOD_RIDE_SPEED			"ModRideSpeed"
+#define XML_ATTR_MOD_ATTACK_SPEED		"ModAttackSpeed"
+#define XML_ATTR_MOD_CAST_SPEED			"ModCastSpeed"
+
 #define XML_ATTR_MOD_HP_REGEN			"ModHPRegen"
 #define XML_ATTR_MOD_EN_REGEN			"ModENRegen"
 #define XML_ATTR_MOD_STA_REGEN			"ModSTARegen"
@@ -75,8 +79,7 @@ public:
 #define XML_ATTR_MOD_EN_REGEN_AMP		"ModENRegenAmp"
 #define XML_ATTR_MOD_STA_REGEN_AMP		"ModSTARegenAmp"
 
-#define XML_ATTR_MOD_MELEE_ATK_AMP		"ModMeleeAtkAmp"
-#define XML_ATTR_MOD_RANGE_ATK_AMP		"ModRangeAtkAmp"
+#define XML_ATTR_MOD_PHYSIC_ATK_AMP		"ModPhysicAtkAmp"
 #define XML_ATTR_MOD_MAGIC_ATK_AMP		"ModMagicAtkAmp"
 
 #define XML_ATTR_MOD_DEF_SLASH_AMP		"ModDefSlashAmp"
@@ -93,9 +96,10 @@ public:
 #define XML_ATTR_MOD_ABS				"ModABS"
 #define XML_ATTR_MOD_GUARDRATE			"ModGuardRate"
 
-#define XML_ATTR_MOD_CRITICAL_MELEE_DAMAGE_AMP		"ModCriticalMeleeDamageAmp"
-#define XML_ATTR_MOD_CRITICAL_RANGE_DAMAGE_AMP		"ModCriticalRangeDamageAmp"
-#define XML_ATTR_MOD_CRITICAL_MAGIC_DAMAGE_AMP		"ModCriticalMagicDamageAmp"
+#define XML_ATTR_MOD_CRITICAL_PHYSIC_DAMAGE_AMP				"ModCriticalPhysicDamageAmp"
+#define XML_ATTR_MOD_CRITICAL_PHYSIC_DAMAGE_AMP_FORME		"ModCriticalPhysicDamageAmpForMe"
+#define XML_ATTR_MOD_CRITICAL_MAGIC_DAMAGE_AMP				"ModCriticalMagicDamageAmp"
+#define XML_ATTR_MOD_CRITICAL_MAGIC_DAMAGE_AMP_FORME		"ModCriticalMagicDamageAmpForMe"
 
 #define XML_ATTR_MOD_AP_RATE			"ModAPRate"
 
@@ -112,8 +116,27 @@ public:
 #define XML_ATTR_MOD_HR_RATE			"ModHRRate"
 #define XML_ATTR_MOD_UR_RATE			"ModURRate"
 
-#define XML_ATTR_MOD_MELEE_PENE			"ModMeleePene"	
-#define XML_ATTR_MOD_RANGE_PENE			"ModRangePene"
+#define XML_ATTR_MOD_HOLY_AP			"ModHolyAP"
+#define XML_ATTR_MOD_UNHOLY_AP			"ModUnholyAP"
+#define XML_ATTR_MOD_FIRE_AP			"ModFireAP"
+#define XML_ATTR_MOD_COLD_AP			"ModColdAP"
+#define XML_ATTR_MOD_LIGHTNING_AP		"ModLightningAP"
+#define XML_ATTR_MOD_POISON_AP			"ModPoisonAP"
+#define XML_ATTR_MOD_HOLY_AP_RATE		"ModHolyAPRate"
+#define XML_ATTR_MOD_UNHOLY_AP_RATE		"ModUnholyAPRate"
+#define XML_ATTR_MOD_FIRE_AP_RATE		"ModFireAPRate"
+#define XML_ATTR_MOD_COLD_AP_RATE		"ModColdAPRate"
+#define XML_ATTR_MOD_LIGHTNING_AP_RATE	"ModLightningAPRate"
+#define XML_ATTR_MOD_POISON_AP_RATE		"ModPoisonAPRate"
+
+#define XML_ATTR_MOD_HOLY_MAGIC_AP		"ModHolyMagicAP"
+#define XML_ATTR_MOD_UNHOLY_MAGIC_AP	"ModUnholyMagicAP"
+#define XML_ATTR_MOD_FIRE_MAGIC_AP		"ModFireMagicAP"
+#define XML_ATTR_MOD_COLD_MAGIC_AP		"ModColdMagicAP"
+#define XML_ATTR_MOD_LIGHTNING_MAGIC_AP	"ModLightningMagicAP"
+#define XML_ATTR_MOD_POISON_MAGIC_AP	"ModPoisonMagicAP"
+
+#define XML_ATTR_MOD_PHYSIC_PENE		"ModPhysicPene"	
 #define XML_ATTR_MOD_MAGIC_PENE			"ModMagicPene"
 
 #define XML_ATTR_MOD_GATHER_TIME_MINE_AMP	"ModGatherTimeMineAmp"
@@ -151,18 +174,37 @@ public:
 #define XML_ATTR_MOD_HP_MAX_AMP					"ModHPMaxAmp"
 #define XML_ATTR_MOD_EN_MAX_AMP					"ModENMaxAmp"
 #define XML_ATTR_MOD_STA_MAX_AMP				"ModSTAMaxAmp"
-#define XML_ATTR_MOD_MELEE_DODGE_AMP			"ModMeleeDodgeAmp"
-#define XML_ATTR_MOD_RANGE_DODGE_AMP			"ModRangeDodgeAmp"
+#define XML_ATTR_MOD_PHYSIC_DODGE_AMP			"ModPhysicDodgeAmp"
 #define XML_ATTR_MOD_MAGIC_DODGE_AMP			"ModMagicDodgeAmp"
-#define XML_ATTR_MOD_MELEE_HIT_RATE_AMP			"ModMeleeHitRateAmp"
-#define XML_ATTR_MOD_RANGE_HIT_RATE_AMP			"ModRangeHitRateAmp"
+#define XML_ATTR_MOD_PHYSIC_HIT_RATE_AMP			"ModPhysicHitRateAmp"
 #define XML_ATTR_MOD_MAGIC_HIT_RATE_AMP			"ModMagicHitRateAmp"
 
 #define XML_ATTR_MOD_CRITICAL_AMP				"ModCriticalAmp"
-#define XML_ATTR_MOD_CRITICAL_MELEE_AMP			"ModCriticalMeleeAmp"
-#define XML_ATTR_MOD_CRITICAL_MELEE_AMP_FORME	"ModCriticalMeleeAmpForMe"
-#define XML_ATTR_MOD_CRITICAL_RANGE_AMP			"ModCriticalRangeAmp"
-#define XML_ATTR_MOD_CRITICAL_MAGIC_AMP			"ModCriticalMagicAmp"
+#define XML_ATTR_MOD_CRITICAL_PHYSIC_AMP		"ModCriticalPhysic"
+#define XML_ATTR_MOD_CRITICAL_PHYSIC_AMP_FORME	"ModCriticalPhysicForMe"
+#define XML_ATTR_MOD_CRITICAL_MAGIC_AMP			"ModCriticalMagic"
+#define XML_ATTR_MOD_CRITICAL_MAGIC_AMP_FORME	"ModCriticalMagicForMe"
+
+#define XML_ATTR_MOD_HEAL_AMP					"ModHealAmp"
+#define XML_ATTR_MOD_HEAL_AMP_FORME				"ModHealAmpForMe"
+
+/*
+	ModRangeAtkAmp
+	ModRangeDodgeAmp
+	ModRangeHitRateAmp
+*/
+
+#define XML_ATTR_MOD_PVP_DAMAGE					"ModPVPDamage"
+#define XML_ATTR_MOD_PVP_AP						"ModPVPAP"
+
+#define XML_ATTR_MOD_EXP_RATE					"ModEXPRate"
+#define XML_ATTR_MOD_DROP_MONEY_AMOUNT			"ModDropMoneyAmount"
+#define XML_ATTR_MOD_DROP_ITEM_RATE				"ModDropItemRate"
+#define XML_ATTR_MOD_DROP_ITEM_AMOUNT			"ModDropItemAmount"
+
+/*
+#define XML_ATTR_MOD_ENCHANT_SUCCESS_RATE		"ModEnchantSuccessRate"
+*/
 
 
 #endif

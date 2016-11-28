@@ -34,7 +34,7 @@ void ZDuplicationLoginLogic::StartKickInWorldPlayer(MUID uidPlayer, AID nAID, co
 	ZPlayer* pExistPlayer = gmgr.pPlayerManager->Find(nAID);
 	if (NULL == pExistPlayer)
 	{
-		mlog("Error! ZPlayerLogic::KickDuplicatedLoginPlayer(), pExistPlayer(AID: %d) is Not Exist!\n", nAID);
+		mlog("Error! ZPlayerLogic::KickDuplicatedLoginPlayer(), pExistPlayer(AID: %I64d) is Not Exist!\n", nAID);
 		return;
 	}
 
@@ -53,7 +53,7 @@ void ZDuplicationLoginLogic::KickWaitingDupLoginPlayer(AID nAID)
 	ZDUPLICATION_LOGIN_INFO* pDuplicationInfo = gmgr.pDuplicationLoginManager->Get(nAID);
 	if (pDuplicationInfo == NULL)
 	{
-		mlog("Error! ZDuplicationLoginLogic::KickWaitingDupLoginPlayer(), pDuplicationInfo(AID: %d) is Not Exist!\n", nAID);
+		mlog("Error! ZDuplicationLoginLogic::KickWaitingDupLoginPlayer(), pDuplicationInfo(AID: %I64d) is Not Exist!\n", nAID);
 		return;
 	}
 
@@ -112,7 +112,7 @@ void ZDuplicationLoginLogic::FlushDuplicatedLogin(AID nAID, const MUID& uidLeave
 	playerLogic.DeletePlayer(nAID);
 	if (!playerLogic.AddPlayer(pDuplicationLiginInfo->uidPlayer, nAID, pDuplicationLiginInfo->strUserID, pPmUserData))
 	{
-		mlog("Error! ZPlayerLogic::FlushDuplicatedLogin(), Failed AddPlayer. UID(%u,%u) , AID(%d)\n"
+		mlog("Error! ZPlayerLogic::FlushDuplicatedLogin(), Failed AddPlayer. UID(%u,%u) , AID(%I64d)\n"
 			, pDuplicationLiginInfo->uidPlayer.High, pDuplicationLiginInfo->uidPlayer.Low, nAID);
 
 		gmgr.pDuplicationLoginManager->Del(nAID);

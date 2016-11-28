@@ -25,7 +25,7 @@ ZCmdHandler_Guild::ZCmdHandler_Guild(MCommandCommunicator* pCC) : MCommandHandle
 MCommandResult ZCmdHandler_Guild::OnMemberOnlineInfoReq(MCommand* pCommand, MCommandHandler* pHandler)
 {
 	MUID uidPlayer;
-	vector<int> vecMemberCID;
+	vector<CID> vecMemberCID;
 	if (!pCommand->GetParameter(&uidPlayer, 0, MPT_UID))	return CR_ERROR;
 	if (!pCommand->GetBlob(vecMemberCID, 1))				return CR_ERROR;
 
@@ -46,7 +46,7 @@ MCommandResult ZCmdHandler_Guild::OnDestroy(MCommand* pCommand, MCommandHandler*
 
 MCommandResult ZCmdHandler_Guild::OnJoin(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	AID nAID;
 	int nGID;
 	wstring strName;
@@ -54,8 +54,8 @@ MCommandResult ZCmdHandler_Guild::OnJoin(MCommand* pCommand, MCommandHandler* pH
 	int nFieldID;
 	int nChanneldID;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
-	if (!pCommand->GetParameter(&nAID, 1, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nAID, 1, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(strName, 3, MPT_WSTR))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nLevel, 4, MPT_INT))	return CR_ERROR;
@@ -72,10 +72,10 @@ MCommandResult ZCmdHandler_Guild::OnJoin(MCommand* pCommand, MCommandHandler* pH
 
 MCommandResult ZCmdHandler_Guild::OnLeave(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 1, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildLogic->Leave(nCID, nGID);
@@ -88,10 +88,10 @@ MCommandResult ZCmdHandler_Guild::OnLeave(MCommand* pCommand, MCommandHandler* p
 
 MCommandResult ZCmdHandler_Guild::OnKick(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 1, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildLogic->Kick(nCID, nGID);
@@ -101,12 +101,12 @@ MCommandResult ZCmdHandler_Guild::OnKick(MCommand* pCommand, MCommandHandler* pH
 
 MCommandResult ZCmdHandler_Guild::OnOnLine(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nFieldID;
 	int nChannelID;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nFieldID, 2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nChannelID, 3, MPT_INT))	return CR_ERROR;
@@ -118,10 +118,10 @@ MCommandResult ZCmdHandler_Guild::OnOnLine(MCommand* pCommand, MCommandHandler* 
 
 MCommandResult ZCmdHandler_Guild::OnOffLine(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 1, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildLogic->OffLine(nCID, nGID);
@@ -131,12 +131,12 @@ MCommandResult ZCmdHandler_Guild::OnOffLine(MCommand* pCommand, MCommandHandler*
 
 MCommandResult ZCmdHandler_Guild::OnMoveField(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nFieldID;
 	int nChannelID;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nFieldID, 2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nChannelID, 3, MPT_INT))	return CR_ERROR;
@@ -148,12 +148,12 @@ MCommandResult ZCmdHandler_Guild::OnMoveField(MCommand* pCommand, MCommandHandle
 
 MCommandResult ZCmdHandler_Guild::OnChaneMaster(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nOldCID;
-	int nNewCID;
+	CID nOldCID;
+	CID nNewCID;
 	int nGID;
 
-	if (!pCommand->GetParameter(&nOldCID, 0, MPT_INT))	return CR_ERROR;
-	if (!pCommand->GetParameter(&nNewCID, 1, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nOldCID, 0, MPT_INT64))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nNewCID, 1, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 2, MPT_INT))	return CR_ERROR;
 
 	gsys.pGuildLogic->ChangeMaster(nOldCID, nNewCID, nGID);
@@ -163,12 +163,12 @@ MCommandResult ZCmdHandler_Guild::OnChaneMaster(MCommand* pCommand, MCommandHand
 
 MCommandResult ZCmdHandler_Guild::OnDepositStorageMoney(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nDepoistMoney;
 	int nStorageMoney;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nDepoistMoney, 2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nStorageMoney, 3, MPT_INT))	return CR_ERROR;
@@ -180,12 +180,12 @@ MCommandResult ZCmdHandler_Guild::OnDepositStorageMoney(MCommand* pCommand, MCom
 
 MCommandResult ZCmdHandler_Guild::OnWithdrawStorageMoney(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	int nWithdrawMoney;
 	int nStorageMoney;
 
-	if (!pCommand->GetParameter(&nCID, 0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID, 0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID, 1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nWithdrawMoney, 2, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nStorageMoney, 3, MPT_INT))	return CR_ERROR;
@@ -197,11 +197,11 @@ MCommandResult ZCmdHandler_Guild::OnWithdrawStorageMoney(MCommand* pCommand, MCo
 
 MCommandResult ZCmdHandler_Guild::OnMoveStorageItem(MCommand* pCommand, MCommandHandler* pHandler)
 {
-	int nCID;
+	CID nCID;
 	int nGID;
 	vector<TD_PLAYER_GAME_DATA_ITEM_INSTANCE> vecTDItem;
 
-	if (!pCommand->GetParameter(&nCID,			0, MPT_INT))	return CR_ERROR;
+	if (!pCommand->GetParameter(&nCID,			0, MPT_INT64))	return CR_ERROR;
 	if (!pCommand->GetParameter(&nGID,			1, MPT_INT))	return CR_ERROR;
 	if (!pCommand->GetBlob(vecTDItem,			2))	return CR_ERROR;
 

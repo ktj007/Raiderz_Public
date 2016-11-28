@@ -27,6 +27,7 @@ private:
 	void UpdateEnemyEntry();
 
 	TD_ENEMY_INFO MakeTD( GEntityActor* pEachActor );
+	uint8 MakeTDState( GEntityActor* pActor );
 	void RouteInfo();
 	void RouteClearInfo();	
 
